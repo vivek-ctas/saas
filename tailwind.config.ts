@@ -66,12 +66,19 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				emerald: {
-					light: 'hsl(var(--emerald-light))',
-					dark: 'hsl(var(--emerald-dark))',
+					50: 'hsl(var(--emerald-50))',
+					100: 'hsl(var(--emerald-100))',
+					500: 'hsl(var(--emerald-500))',
+					600: 'hsl(var(--emerald-600))',
+					700: 'hsl(var(--emerald-700))',
+					900: 'hsl(var(--emerald-900))',
 				},
-				purple: {
-					light: 'hsl(var(--purple-light))',
-					dark: 'hsl(var(--purple-dark))',
+				slate: {
+					50: 'hsl(var(--slate-50))',
+					100: 'hsl(var(--slate-100))',
+					600: 'hsl(var(--slate-600))',
+					700: 'hsl(var(--slate-700))',
+					900: 'hsl(var(--slate-900))',
 				}
 			},
 			borderRadius: {

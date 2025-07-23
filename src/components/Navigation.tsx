@@ -18,15 +18,15 @@ const Navigation = () => {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <nav className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
+    <nav className="bg-white/95 backdrop-blur-sm border-b border-slate-100 sticky top-0 z-50 shadow-stripe">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 hero-gradient rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 gradient-primary rounded-lg flex items-center justify-center shadow-stripe">
               <span className="text-white font-bold text-sm">SC</span>
             </div>
-            <span className="text-xl font-bold text-foreground">Sync Central</span>
+            <span className="text-xl font-bold text-slate-900">Sync Central</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -35,16 +35,16 @@ const Navigation = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`transition-smooth ${
+                className={`transition-stripe ${
                   isActive(item.href)
-                    ? "text-primary font-medium"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-emerald-600 font-medium"
+                    : "text-slate-600 hover:text-slate-900"
                 }`}
               >
                 {item.name}
               </Link>
             ))}
-            <Button variant="default" className="ml-4">
+            <Button variant="default" className="ml-4 shadow-stripe">
               Get Started
             </Button>
           </div>
@@ -53,7 +53,7 @@ const Navigation = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-muted-foreground hover:text-foreground"
+              className="text-slate-600 hover:text-slate-900"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -63,15 +63,15 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-t border-border">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-slate-100">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`block px-3 py-2 rounded-md transition-smooth ${
+                  className={`block px-3 py-2 rounded-md transition-stripe ${
                     isActive(item.href)
-                      ? "text-primary bg-accent font-medium"
-                      : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                      ? "text-emerald-600 bg-emerald-50 font-medium"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                   }`}
                   onClick={() => setIsOpen(false)}
                 >

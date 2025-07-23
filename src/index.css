@@ -9,50 +9,64 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 157 14% 20%;
+    --foreground: 158 15% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 157 14% 20%;
+    --card-foreground: 158 15% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 157 14% 20%;
+    --popover-foreground: 158 15% 15%;
 
-    --primary: 160 84% 39%;
+    --primary: 158 64% 52%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 262 83% 58%;
+    --secondary: 158 30% 25%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 160 20% 95%;
-    --muted-foreground: 157 14% 45%;
+    --muted: 158 15% 96%;
+    --muted-foreground: 158 15% 45%;
 
-    --accent: 160 20% 95%;
-    --accent-foreground: 157 14% 20%;
+    --accent: 158 25% 94%;
+    --accent-foreground: 158 15% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 160 20% 90%;
-    --input: 160 20% 90%;
-    --ring: 160 84% 39%;
+    --border: 158 15% 88%;
+    --input: 158 15% 88%;
+    --ring: 158 64% 52%;
 
-    /* Sync Central Design System */
-    --emerald-light: 160 84% 55%;
-    --emerald-dark: 160 84% 25%;
-    --purple-light: 262 83% 70%;
-    --purple-dark: 262 83% 45%;
+    /* Enhanced Seller Central Design System */
+    --emerald-50: 158 54% 98%;
+    --emerald-100: 158 54% 95%;
+    --emerald-500: 158 64% 52%;
+    --emerald-600: 158 64% 47%;
+    --emerald-700: 158 64% 42%;
+    --emerald-900: 158 64% 25%;
     
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(160 84% 39%), hsl(262 83% 58%));
-    --gradient-subtle: linear-gradient(135deg, hsl(160 20% 98%), hsl(262 20% 98%));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(160 20% 99%));
+    --slate-50: 210 20% 98%;
+    --slate-100: 210 20% 95%;
+    --slate-600: 215 20% 45%;
+    --slate-700: 215 25% 35%;
+    --slate-900: 222 47% 11%;
     
-    /* Shadows */
-    --shadow-card: 0 4px 6px -1px hsl(160 84% 39% / 0.1), 0 2px 4px -1px hsl(160 84% 39% / 0.06);
-    --shadow-elevated: 0 10px 15px -3px hsl(160 84% 39% / 0.1), 0 4px 6px -2px hsl(160 84% 39% / 0.05);
+    /* Professional Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(158 64% 52%) 0%, hsl(158 64% 42%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(158 64% 47%) 0%, hsl(158 30% 25%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(158 15% 99%) 100%);
+    --gradient-section: linear-gradient(180deg, hsl(158 15% 98%) 0%, hsl(0 0% 100%) 100%);
     
-    /* Transitions */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Stripe-inspired Shadows */
+    --shadow-xs: 0 1px 2px 0 hsl(158 64% 25% / 0.05);
+    --shadow-sm: 0 1px 3px 0 hsl(158 64% 25% / 0.1), 0 1px 2px -1px hsl(158 64% 25% / 0.1);
+    --shadow-md: 0 4px 6px -1px hsl(158 64% 25% / 0.1), 0 2px 4px -2px hsl(158 64% 25% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(158 64% 25% / 0.1), 0 4px 6px -4px hsl(158 64% 25% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(158 64% 25% / 0.1), 0 8px 10px -6px hsl(158 64% 25% / 0.1);
+    --shadow-2xl: 0 25px 50px -12px hsl(158 64% 25% / 0.25);
+    
+    /* Enhanced Transitions */
+    --transition-all: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-transform: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.5rem;
 
@@ -123,39 +137,74 @@ All colors MUST be HSL.
 }
 
 @layer components {
+  /* Stripe-inspired Utilities */
+  .shadow-stripe {
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .shadow-stripe-xl {
+    box-shadow: var(--shadow-xl);
+  }
+  
+  .shadow-stripe-2xl {
+    box-shadow: var(--shadow-2xl);
+  }
+  
   .gradient-primary {
     background: var(--gradient-primary);
   }
   
-  .gradient-subtle {
-    background: var(--gradient-subtle);
+  .gradient-hero {
+    background: var(--gradient-hero);
   }
   
-  .gradient-card {
-    background: var(--gradient-card);
+  .gradient-section {
+    background: var(--gradient-section);
   }
   
-  .shadow-card {
-    box-shadow: var(--shadow-card);
+  .transition-stripe {
+    transition: var(--transition-all);
   }
   
-  .shadow-elevated {
-    box-shadow: var(--shadow-elevated);
-  }
-  
-  .transition-smooth {
-    transition: var(--transition-smooth);
-  }
-  
+  /* Enhanced Components */
   .feature-card {
-    @apply bg-card rounded-xl shadow-card p-6 transition-smooth hover:shadow-elevated hover:-translate-y-1;
+    @apply bg-card rounded-2xl p-8 transition-stripe hover:shadow-stripe-xl hover:-translate-y-1;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .feature-card-large {
+    @apply bg-card rounded-2xl p-10 transition-stripe hover:shadow-stripe-2xl hover:-translate-y-2;
+    box-shadow: var(--shadow-lg);
   }
   
   .pricing-card {
-    @apply bg-card rounded-xl shadow-card p-8 transition-smooth hover:shadow-elevated relative overflow-hidden;
+    @apply bg-card rounded-2xl p-8 transition-stripe hover:shadow-stripe-xl relative overflow-hidden border border-border;
+    box-shadow: var(--shadow-lg);
   }
   
-  .hero-gradient {
-    background: linear-gradient(135deg, hsl(160 84% 39%) 0%, hsl(262 83% 58%) 100%);
+  .hero-section {
+    background: var(--gradient-hero);
+  }
+  
+  .section-bg {
+    background: var(--gradient-section);
+  }
+  
+  /* Masonry-inspired Layout Classes */
+  .masonry-item-small {
+    @apply h-64;
+  }
+  
+  .masonry-item-medium {
+    @apply h-80;
+  }
+  
+  .masonry-item-large {
+    @apply h-96;
+  }
+  
+  .seller-card {
+    @apply bg-card rounded-xl border border-border transition-stripe hover:shadow-stripe hover:-translate-y-0.5;
+    box-shadow: var(--shadow-sm);
   }
 }
