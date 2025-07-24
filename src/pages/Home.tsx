@@ -13,8 +13,21 @@ import {
   Package,
   Globe,
   Clock,
-  CheckCircle
+  CheckCircle,
+  Sparkles,
+  Star,
+  ShoppingBag,
+  Smartphone,
+  Monitor,
+  Tablet
 } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import Layout from "@/components/Layout";
 import heroDashboard from "@/assets/hero-dashboard.jpg";
 import sellerWorkspace from "@/assets/seller-workspace.jpg";
@@ -54,8 +67,26 @@ const Home = () => {
   ];
 
   const marketplaces = [
-    "Amazon", "eBay", "Walmart", "Shopify", "Etsy", "Facebook", "Google", "WooCommerce",
-    "BigCommerce", "Magento", "Target", "Newegg", "Rakuten", "Bonanza", "Mercari", "Poshmark"
+    { name: "Amazon", icon: ShoppingBag, color: "text-orange-600" },
+    { name: "eBay", icon: Globe, color: "text-blue-600" },
+    { name: "Walmart", icon: Star, color: "text-blue-700" },
+    { name: "Shopify", icon: ShoppingCart, color: "text-green-600" },
+    { name: "Etsy", icon: Sparkles, color: "text-orange-500" },
+    { name: "Facebook", icon: Monitor, color: "text-blue-500" },
+    { name: "Google", icon: Globe, color: "text-red-500" },
+    { name: "WooCommerce", icon: Package, color: "text-purple-600" },
+    { name: "BigCommerce", icon: ShoppingBag, color: "text-blue-600" },
+    { name: "Magento", icon: Package, color: "text-orange-600" },
+    { name: "Target", icon: Star, color: "text-red-600" },
+    { name: "Newegg", icon: Monitor, color: "text-yellow-600" },
+    { name: "Rakuten", icon: Globe, color: "text-red-500" },
+    { name: "Bonanza", icon: Sparkles, color: "text-green-500" },
+    { name: "Mercari", icon: Smartphone, color: "text-blue-500" },
+    { name: "Poshmark", icon: Tablet, color: "text-pink-500" },
+    { name: "TikTok Shop", icon: Smartphone, color: "text-gray-800" },
+    { name: "Pinterest", icon: Sparkles, color: "text-red-500" },
+    { name: "Reverb", icon: Monitor, color: "text-purple-600" },
+    { name: "Depop", icon: Tablet, color: "text-blue-400" }
   ];
 
   const quickWins = [
@@ -215,15 +246,36 @@ const Home = () => {
             Connect to 50+ marketplaces and platforms
           </h3>
           
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {marketplaces.slice(0, 8).map((marketplace, index) => (
-              <Badge key={index} variant="outline" className="px-4 py-2 text-slate-700 border-slate-200">
-                {marketplace}
-              </Badge>
-            ))}
+          <div className="relative max-w-5xl mx-auto">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {marketplaces.map((marketplace, index) => (
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/5">
+                    <div className="p-1">
+                      <Card className="seller-card p-6 h-full">
+                        <div className="flex flex-col items-center space-y-3">
+                          <div className={`w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center ${marketplace.color}`}>
+                            <marketplace.icon className="w-6 h-6" />
+                          </div>
+                          <span className="text-sm font-medium text-slate-700">{marketplace.name}</span>
+                        </div>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="-left-12 h-12 w-12" />
+              <CarouselNext className="-right-12 h-12 w-12" />
+            </Carousel>
           </div>
           
-          <p className="text-slate-600">
+          <p className="text-slate-600 mt-8">
             And many more. Missing an integration? 
             <span className="text-emerald-600 font-medium"> We'll build it for you.</span>
           </p>
