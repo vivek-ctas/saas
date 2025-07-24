@@ -211,14 +211,17 @@ const Services = () => {
     <Layout>
       {/* Hero Section */}
       <section className="relative py-24 hero-gradient overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Darker overlay for better text visibility */}
+        <div className="absolute inset-0 bg-black/20"></div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Hero Content */}
             <div>
-              <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
                 Complete Multichannel Solutions
               </h1>
-              <p className="text-xl text-white/90 mb-8 leading-relaxed max-w-2xl">
+              <p className="text-xl text-white mb-8 leading-relaxed max-w-2xl drop-shadow">
                 Everything you need to manage, optimize, and scale your multichannel selling operations 
                 from a single, powerful platform. Trusted by 50,000+ sellers worldwide.
               </p>
@@ -229,7 +232,7 @@ const Services = () => {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="text-lg px-8 bg-white/10 border-white/20 text-white hover:bg-white/20 shadow-stripe"
+                  className="text-lg px-8 bg-white/10 border-white/20 text-white hover:bg-white/20 shadow-stripe backdrop-blur-sm"
                 >
                   Watch Demo
                 </Button>
@@ -338,8 +341,11 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 hero-gradient">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-24 relative overflow-hidden">
+        {/* Dark gradient background for better text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-900 to-emerald-900"></div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             Ready to Transform Your Business?
           </h2>
@@ -350,7 +356,7 @@ const Services = () => {
             <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl">
               Start Free Trial
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 bg-white/10 border-white/20 text-white hover:bg-white/20 shadow-stripe">
+            <Button size="lg" variant="outline" className="text-lg px-8 bg-white/10 border-white/20 text-white hover:bg-white/20 shadow-stripe backdrop-blur-sm">
               Schedule Demo
             </Button>
           </div>
