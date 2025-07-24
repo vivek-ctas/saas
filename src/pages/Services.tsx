@@ -21,6 +21,7 @@ import {
   Lock
 } from "lucide-react";
 import Layout from "@/components/Layout";
+import servicesHero from "@/assets/services-hero.jpg";
 
 const Services = () => {
   const services = [
@@ -209,15 +210,44 @@ const Services = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-24 hero-gradient">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Complete Multichannel Solutions
-          </h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Everything you need to manage, optimize, and scale your multichannel selling operations 
-            from a single, powerful platform.
-          </p>
+      <section className="relative py-24 hero-gradient overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Hero Content */}
+            <div>
+              <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+                Complete Multichannel Solutions
+              </h1>
+              <p className="text-xl text-white/90 mb-8 leading-relaxed max-w-2xl">
+                Everything you need to manage, optimize, and scale your multichannel selling operations 
+                from a single, powerful platform. Trusted by 50,000+ sellers worldwide.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl">
+                  Start Free Trial
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="text-lg px-8 bg-white/10 border-white/20 text-white hover:bg-white/20 shadow-stripe"
+                >
+                  Watch Demo
+                </Button>
+              </div>
+            </div>
+            
+            {/* Hero Image */}
+            <div className="relative">
+              <div className="relative z-10">
+                <img 
+                  src={servicesHero} 
+                  alt="Services Dashboard" 
+                  className="rounded-2xl shadow-stripe-2xl border-2 border-white/20"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-transparent rounded-2xl"></div>
+            </div>
+          </div>
         </div>
       </section>
 
