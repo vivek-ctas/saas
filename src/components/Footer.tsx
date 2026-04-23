@@ -94,9 +94,9 @@ const Footer = () => {
             <div className="lg:col-span-2">
               <Link to="/" className="flex items-center space-x-2 mb-6">
                 <div className="w-10 h-10 gradient-primary rounded-xl flex items-center justify-center shadow-stripe">
-                  <span className="text-white font-bold">SC</span>
+                  <span className="text-white font-bold">C</span>
                 </div>
-                <span className="text-2xl font-bold text-white">Ctasis Marketplace</span>
+                <span className="text-2xl font-bold text-white">Ctasis <span className="text-pink-400">Marketplace</span></span>
               </Link>
               <p className="text-slate-300 mb-6 max-w-sm">
                 The complete multichannel selling platform trusted by 50,000+ sellers worldwide. 

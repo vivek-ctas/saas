@@ -115,15 +115,15 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Hero Content */}
             <div>
-              <Badge className="mb-6 bg-emerald-100 text-emerald-700 hover:bg-emerald-100">
+              <Badge className="mb-6 bg-white/10 text-white border border-white/20 backdrop-blur-sm hover:bg-white/15">
                 <Zap className="w-4 h-4 mr-2" />
-                Now supporting 50+ marketplaces
+                Ahmedabad's Leading Tech Experts Since 2019
               </Badge>
               
               <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6 leading-tight">
-                Grow your
-                <span className="block text-emerald-100">multichannel</span>
-                business faster
+                Driving Business
+                <span className="block bg-gradient-to-r from-pink-300 to-fuchsia-200 bg-clip-text text-transparent">Efficiency</span>
+                with Next-Gen AI
               </h1>
               
               <p className="text-xl text-white/90 mb-8 leading-relaxed">
