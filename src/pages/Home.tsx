@@ -115,15 +115,15 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Hero Content */}
             <div>
-              <Badge className="mb-6 bg-emerald-100 text-emerald-700 hover:bg-emerald-100">
+              <Badge className="mb-6 bg-white/10 text-white border border-white/20 backdrop-blur-sm hover:bg-white/15">
                 <Zap className="w-4 h-4 mr-2" />
-                Now supporting 50+ marketplaces
+                Ahmedabad's Leading Tech Experts Since 2019
               </Badge>
               
               <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6 leading-tight">
-                Grow your
-                <span className="block text-emerald-100">multichannel</span>
-                business faster
+                Driving Business
+                <span className="block bg-gradient-to-r from-pink-300 to-fuchsia-200 bg-clip-text text-transparent">Efficiency</span>
+                with Next-Gen AI
               </h1>
               
               <p className="text-xl text-white/90 mb-8 leading-relaxed">
@@ -162,7 +162,7 @@ const Home = () => {
               <div className="relative z-10">
                 <img 
                   src={heroDashboard} 
-                  alt="Sync Central Dashboard" 
+                  alt="Ctasis Marketplace Dashboard" 
                   className="rounded-2xl shadow-stripe-2xl border-2 border-white/20"
                 />
               </div>
@@ -290,7 +290,7 @@ const Home = () => {
               See results immediately
             </h2>
             <p className="text-xl text-slate-600">
-              Join thousands of sellers who've transformed their business with Sync Central
+              Join thousands of sellers who've transformed their business with Ctasis Marketplace
             </p>
           </div>
 
@@ -342,7 +342,7 @@ const Home = () => {
             <div className="relative">
               <img 
                 src={sellerWorkspace} 
-                alt="Seller working with Sync Central" 
+                alt="Seller working with Ctasis Marketplace" 
                 className="rounded-2xl shadow-stripe-xl"
               />
             </div>
@@ -357,7 +357,7 @@ const Home = () => {
             Ready to grow your multichannel business?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Join 50,000+ successful sellers who trust Sync Central to manage their operations. 
+            Join 50,000+ successful sellers who trust Ctasis Marketplace to manage their operations. 
             Start your free trial today – no credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

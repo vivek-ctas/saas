@@ -23,10 +23,10 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 gradient-primary rounded-lg flex items-center justify-center shadow-stripe">
-              <span className="text-white font-bold text-sm">SC</span>
+            <div className="w-9 h-9 gradient-primary rounded-lg flex items-center justify-center shadow-stripe">
+              <span className="text-white font-bold text-sm">C</span>
             </div>
-            <span className="text-xl font-bold text-slate-900">Sync Central</span>
+            <span className="text-xl font-bold text-slate-900">Ctasis <span className="text-primary">Marketplace</span></span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -37,7 +37,7 @@ const Navigation = () => {
                 to={item.href}
                 className={`transition-stripe ${
                   isActive(item.href)
-                    ? "text-emerald-600 font-medium"
+                    ? "text-primary font-medium"
                     : "text-slate-600 hover:text-slate-900"
                 }`}
               >
@@ -70,7 +70,7 @@ const Navigation = () => {
                   to={item.href}
                   className={`block px-3 py-2 rounded-md transition-stripe ${
                     isActive(item.href)
-                      ? "text-emerald-600 bg-emerald-50 font-medium"
+                      ? "text-primary bg-accent font-medium"
                       : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                   }`}
                   onClick={() => setIsOpen(false)}

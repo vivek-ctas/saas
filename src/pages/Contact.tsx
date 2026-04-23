@@ -17,7 +17,7 @@ const Contact = () => {
             Get in Touch
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Have questions about Sync Central? We're here to help. Reach out to our team and we'll get back to you as soon as possible.
+            Have questions about Ctasis Marketplace? We're here to help. Reach out to our team and we'll get back to you as soon as possible.
           </p>
         </div>
       </section>
@@ -100,8 +100,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground">Email</h3>
-                      <p className="text-muted-foreground">hello@synccentral.com</p>
-                      <p className="text-muted-foreground">support@synccentral.com</p>
+                      <p className="text-muted-foreground">hello@ctasis.com</p>
+                      <p className="text-muted-foreground">support@ctasis.com</p>
                     </div>
                   </div>
                   

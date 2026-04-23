@@ -41,7 +41,7 @@ const About = () => {
       <section className="py-24 gradient-subtle">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-            About Sync Central
+            About Ctasis Marketplace
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             We're on a mission to empower multichannel sellers with the tools they need to scale their 
