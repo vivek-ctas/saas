@@ -297,7 +297,7 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Why Leading Sellers Choose Sync Central
+              Why Leading Sellers Choose Ctasis Marketplace
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Trusted by 50,000+ sellers worldwide to power their multichannel operations
@@ -350,7 +350,7 @@ const Services = () => {
             Ready to Transform Your Business?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Join thousands of successful sellers who trust Sync Central to power their multichannel operations.
+            Join thousands of successful sellers who trust Ctasis Marketplace to power their multichannel operations.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl">

@@ -162,7 +162,7 @@ const Home = () => {
               <div className="relative z-10">
                 <img 
                   src={heroDashboard} 
-                  alt="Sync Central Dashboard" 
+                  alt="Ctasis Marketplace Dashboard" 
                   className="rounded-2xl shadow-stripe-2xl border-2 border-white/20"
                 />
               </div>
@@ -290,7 +290,7 @@ const Home = () => {
               See results immediately
             </h2>
             <p className="text-xl text-slate-600">
-              Join thousands of sellers who've transformed their business with Sync Central
+              Join thousands of sellers who've transformed their business with Ctasis Marketplace
             </p>
           </div>
 
@@ -342,7 +342,7 @@ const Home = () => {
             <div className="relative">
               <img 
                 src={sellerWorkspace} 
-                alt="Seller working with Sync Central" 
+                alt="Seller working with Ctasis Marketplace" 
                 className="rounded-2xl shadow-stripe-xl"
               />
             </div>
@@ -357,7 +357,7 @@ const Home = () => {
             Ready to grow your multichannel business?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Join 50,000+ successful sellers who trust Sync Central to manage their operations. 
+            Join 50,000+ successful sellers who trust Ctasis Marketplace to manage their operations. 
             Start your free trial today – no credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
