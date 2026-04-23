@@ -9,61 +9,65 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 158 15% 15%;
+    --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 158 15% 15%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 158 15% 15%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 158 64% 52%;
+    /* Ctasis brand: deep indigo/blue primary */
+    --primary: 226 71% 40%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 158 30% 25%;
+    /* Ctasis accent: pink/magenta */
+    --secondary: 330 81% 60%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 158 15% 96%;
-    --muted-foreground: 158 15% 45%;
+    --muted: 220 20% 96%;
+    --muted-foreground: 222 15% 45%;
 
-    --accent: 158 25% 94%;
-    --accent-foreground: 158 15% 15%;
+    --accent: 226 71% 95%;
+    --accent-foreground: 226 71% 30%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 158 15% 88%;
-    --input: 158 15% 88%;
-    --ring: 158 64% 52%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 226 71% 40%;
 
-    /* Enhanced Seller Central Design System */
-    --emerald-50: 158 54% 98%;
-    --emerald-100: 158 54% 95%;
-    --emerald-500: 158 64% 52%;
-    --emerald-600: 158 64% 47%;
-    --emerald-700: 158 64% 42%;
-    --emerald-900: 158 64% 25%;
-    
-    --slate-50: 210 20% 98%;
-    --slate-100: 210 20% 95%;
-    --slate-600: 215 20% 45%;
-    --slate-700: 215 25% 35%;
-    --slate-900: 222 47% 11%;
-    
-    /* Professional Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(158 64% 52%) 0%, hsl(158 64% 42%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(158 64% 47%) 0%, hsl(158 30% 25%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(158 15% 99%) 100%);
-    --gradient-section: linear-gradient(180deg, hsl(158 15% 98%) 0%, hsl(0 0% 100%) 100%);
-    
-    /* Stripe-inspired Shadows */
-    --shadow-xs: 0 1px 2px 0 hsl(158 64% 25% / 0.05);
-    --shadow-sm: 0 1px 3px 0 hsl(158 64% 25% / 0.1), 0 1px 2px -1px hsl(158 64% 25% / 0.1);
-    --shadow-md: 0 4px 6px -1px hsl(158 64% 25% / 0.1), 0 2px 4px -2px hsl(158 64% 25% / 0.1);
-    --shadow-lg: 0 10px 15px -3px hsl(158 64% 25% / 0.1), 0 4px 6px -4px hsl(158 64% 25% / 0.1);
-    --shadow-xl: 0 20px 25px -5px hsl(158 64% 25% / 0.1), 0 8px 10px -6px hsl(158 64% 25% / 0.1);
-    --shadow-2xl: 0 25px 50px -12px hsl(158 64% 25% / 0.25);
-    
+    /* Brand palette tokens (kept under emerald-* keys for back-compat
+       so existing utility classes inherit the new Ctasis blue scale) */
+    --emerald-50: 226 100% 97%;
+    --emerald-100: 226 90% 93%;
+    --emerald-500: 226 71% 50%;
+    --emerald-600: 226 71% 40%;
+    --emerald-700: 230 65% 32%;
+    --emerald-900: 232 60% 18%;
+
+    --slate-50: 220 20% 98%;
+    --slate-100: 220 20% 95%;
+    --slate-600: 220 15% 45%;
+    --slate-700: 222 25% 30%;
+    --slate-900: 232 60% 12%;
+
+    /* Ctasis-inspired Gradients (deep blue → pink accent) */
+    --gradient-primary: linear-gradient(135deg, hsl(226 71% 40%) 0%, hsl(232 60% 22%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(232 60% 18%) 0%, hsl(226 71% 35%) 50%, hsl(280 70% 45%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(330 81% 60%) 0%, hsl(280 70% 55%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(226 30% 99%) 100%);
+    --gradient-section: linear-gradient(180deg, hsl(220 20% 98%) 0%, hsl(0 0% 100%) 100%);
+
+    /* Brand-tinted shadows */
+    --shadow-xs: 0 1px 2px 0 hsl(232 60% 18% / 0.05);
+    --shadow-sm: 0 1px 3px 0 hsl(232 60% 18% / 0.1), 0 1px 2px -1px hsl(232 60% 18% / 0.1);
+    --shadow-md: 0 4px 6px -1px hsl(232 60% 18% / 0.1), 0 2px 4px -2px hsl(232 60% 18% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(232 60% 18% / 0.12), 0 4px 6px -4px hsl(232 60% 18% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(232 60% 18% / 0.15), 0 8px 10px -6px hsl(232 60% 18% / 0.1);
+    --shadow-2xl: 0 25px 50px -12px hsl(232 60% 18% / 0.3);
+
     /* Enhanced Transitions */
     --transition-all: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-transform: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
@@ -157,7 +161,11 @@ All colors MUST be HSL.
   .gradient-hero {
     background: var(--gradient-hero);
   }
-  
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
   .gradient-section {
     background: var(--gradient-section);
   }
