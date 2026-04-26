@@ -195,3 +195,94 @@ export const WaveDivider = ({ flip = false, className = "" }: { flip?: boolean; 
     <path d="M0 40 C 240 80, 480 0, 720 40 S 1200 80, 1440 40 L1440 80 L0 80 Z" fill="currentColor" />
   </svg>
 );
+
+/* ------------------------------------------------------------------ */
+/* Neural network illustration – AI / analytics brain                  */
+/* ------------------------------------------------------------------ */
+export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="nn-line" x1="0" x2="1">
+        <stop offset="0%" stopColor="hsl(226 71% 50%)" />
+        <stop offset="100%" stopColor="hsl(330 81% 60%)" />
+      </linearGradient>
+    </defs>
+    {/* layers */}
+    {[80, 200, 320, 440].map((x, li) => (
+      <g key={li}>
+        {[60, 140, 220, 300].slice(0, li === 0 || li === 3 ? 3 : 4).map((y, ni) => (
+          <circle key={ni} cx={x} cy={y + (li === 0 || li === 3 ? 30 : 0)} r="12" fill="white" stroke="url(#nn-line)" strokeWidth="2.5" />
+        ))}
+      </g>
+    ))}
+    {/* connections */}
+    {[80, 200, 320].map((x1, li) => {
+      const next = [80, 200, 320, 440][li + 1];
+      const ys1 = li === 0 ? [90, 170, 250] : [60, 140, 220, 300];
+      const ys2 = li === 2 ? [90, 170, 250] : [60, 140, 220, 300];
+      return ys1.map((y1, i) => ys2.map((y2, j) => (
+        <line key={`${li}-${i}-${j}`} x1={x1 + 12} y1={y1} x2={next - 12} y2={y2} stroke="url(#nn-line)" strokeWidth="1" opacity="0.35" />
+      )));
+    })}
+    {/* label */}
+    <rect x="180" y="320" width="120" height="28" rx="14" fill="hsl(226 71% 96%)" />
+    <text x="240" y="338" textAnchor="middle" fontSize="12" fontWeight="700" fill="hsl(226 71% 30%)">AI · ML Engine</text>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* Infrastructure stack illustration – pods, k8s, queue                */
+/* ------------------------------------------------------------------ */
+export const InfraIllustration = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="if-pod" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="hsl(226 71% 96%)" />
+        <stop offset="100%" stopColor="hsl(280 70% 96%)" />
+      </linearGradient>
+    </defs>
+    {/* Cloud */}
+    <rect x="20" y="20" width="480" height="320" rx="20" fill="white" stroke="hsl(220 15% 88%)" />
+    <text x="40" y="50" fontSize="11" fontWeight="700" fill="hsl(226 71% 30%)" letterSpacing="2">AWS · CLOUD</text>
+    {/* Load balancer */}
+    <rect x="200" y="70" width="120" height="36" rx="10" fill="hsl(330 81% 60%)" />
+    <text x="260" y="93" textAnchor="middle" fontSize="12" fontWeight="700" fill="white">K8s · LB</text>
+    {/* pods */}
+    {[40, 160, 280, 400].map((x, i) => (
+      <g key={i}>
+        <line x1={260} y1={106} x2={x + 50} y2={150} stroke="hsl(226 71% 50%)" strokeDasharray="3 3" />
+        <rect x={x} y={150} width="100" height="80" rx="12" fill="url(#if-pod)" stroke="hsl(226 71% 50%)" />
+        <text x={x + 50} y={180} textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(226 71% 30%)">Pod {i + 1}</text>
+        <rect x={x + 14} y={192} width="72" height="6" rx="3" fill="hsl(226 71% 80%)" />
+        <rect x={x + 14} y={204} width="48" height="6" rx="3" fill="hsl(330 81% 80%)" />
+        <rect x={x + 14} y={216} width="60" height="6" rx="3" fill="hsl(280 70% 80%)" />
+      </g>
+    ))}
+    {/* Queue */}
+    <rect x="40" y="260" width="200" height="50" rx="10" fill="hsl(220 20% 96%)" stroke="hsl(220 15% 80%)" />
+    <text x="140" y="290" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(232 60% 18%)">Kafka · RabbitMQ</text>
+    <rect x="280" y="260" width="200" height="50" rx="10" fill="hsl(330 81% 96%)" stroke="hsl(330 81% 70%)" />
+    <text x="380" y="290" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(330 81% 35%)">Postgres · Isolated DB</text>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* Generic logo chip – consistent partner/brand pill                   */
+/* ------------------------------------------------------------------ */
+export const LogoChip = ({ name, tone = "primary" }: { name: string; tone?: "primary" | "secondary" | "accent" | "dark" }) => {
+  const tones: Record<string, string> = {
+    primary: "from-primary/10 to-fuchsia-100 text-primary border-primary/20",
+    secondary: "from-pink-100 to-rose-100 text-secondary border-pink-200",
+    accent: "from-indigo-100 to-blue-100 text-indigo-700 border-indigo-200",
+    dark: "from-slate-800 to-slate-900 text-white border-slate-700",
+  };
+  const initials = name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
+  return (
+    <div className={`flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-br border ${tones[tone]} hover-lift`}>
+      <div className="w-9 h-9 rounded-lg bg-white/70 backdrop-blur flex items-center justify-center font-bold text-sm shadow-sm">
+        {initials}
+      </div>
+      <span className="font-semibold whitespace-nowrap">{name}</span>
+    </div>
+  );
+};
