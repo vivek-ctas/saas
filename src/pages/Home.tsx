@@ -3,12 +3,15 @@ import { Badge } from "@/components/ui/badge";
 import {
   BarChart3, RefreshCw, ShoppingCart, TrendingUp, Zap, Shield,
   Users, DollarSign, Package, Globe, Clock, CheckCircle, Sparkles,
-  Star, ShoppingBag, Smartphone, Monitor, Tablet, ArrowRight, Quote
+  Star, ShoppingBag, Smartphone, Monitor, Tablet, ArrowRight, Quote,
+  Truck, Megaphone, Brain, Server, Workflow, Boxes, Store
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import {
   BlobBackdrop, DashboardMockup, SyncIllustration,
-  AnalyticsIllustration, GlobeIllustration, WorkflowIllustration
+  AnalyticsIllustration, GlobeIllustration, WorkflowIllustration,
+  NeuralIllustration, InfraIllustration, LogoChip
 } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
@@ -123,6 +126,107 @@ const Home = () => {
                   <span className="font-semibold text-slate-700 whitespace-nowrap">{m.name}</span>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* INTEGRATIONS STACK — full ecosystem */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-14 reveal max-w-3xl mx-auto">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
+                <Boxes className="w-3.5 h-3.5 mr-1" /> The integration stack
+              </Badge>
+              <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4 leading-tight">
+                One platform. <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Every connection</span> you'll ever need.
+              </h2>
+              <p className="text-xl text-slate-600">
+                Marketplaces, couriers, ad networks, ERPs, payment rails — Ctasis stitches it all into one source of truth.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  icon: Store, title: "Marketplaces", tone: "from-primary to-fuchsia-600",
+                  items: ["Amazon FBA/FBM", "Walmart", "eBay", "Lazada", "Shopee", "Rakuten", "Flipkart", "Allegro"]
+                },
+                {
+                  icon: Truck, title: "Logistics & couriers", tone: "from-secondary to-pink-600",
+                  items: ["Shiprocket", "Tirupati", "DHL", "USPS", "PostNL", "Rakuten Post", "Delhivery", "Blue Dart"]
+                },
+                {
+                  icon: Megaphone, title: "Ads & growth", tone: "from-fuchsia-500 to-purple-600",
+                  items: ["Amazon Ads", "Google Shopping", "Meta Ads", "TikTok Ads", "Walmart Connect", "Criteo"]
+                },
+                {
+                  icon: Brain, title: "AI & analytics", tone: "from-indigo-600 to-primary",
+                  items: ["Demand forecasting", "Repricing AI", "Sentiment analysis", "Customer behaviour", "Anomaly detection"]
+                },
+              ].map((b, i) => (
+                <div key={i} className="reveal rounded-3xl p-6 bg-gradient-to-br from-slate-50 to-white border border-slate-100 hover-lift relative overflow-hidden" style={{ transitionDelay: `${i * 80}ms` }}>
+                  <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full bg-gradient-to-br ${b.tone} opacity-15 blur-2xl`} />
+                  <div className={`relative w-12 h-12 rounded-xl bg-gradient-to-br ${b.tone} flex items-center justify-center mb-4 shadow-stripe`}>
+                    <b.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 text-lg mb-3">{b.title}</h3>
+                  <ul className="space-y-1.5">
+                    {b.items.map((it, j) => (
+                      <li key={j} className="text-sm text-slate-600 flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-primary" /> {it}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 text-center reveal">
+              <Link to="/marketplaces">
+                <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-accent group">
+                  Explore all 80+ integrations <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* INFRASTRUCTURE TEASER */}
+        <section className="py-24 section-bg relative overflow-hidden">
+          <div className="absolute inset-0 grid-bg opacity-30" />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="reveal">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
+                <Server className="w-3.5 h-3.5 mr-1" /> Built like a hyperscaler
+              </Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
+                Isolated pods. Kubernetes scaling. Kafka-driven events.
+              </h2>
+              <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                Each tenant runs in its own Docker pod with a dedicated Postgres database. Kubernetes load
+                balancers handle 10M+ daily events through Kafka and RabbitMQ — so your store never blinks
+                during a flash sale.
+              </p>
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                {[
+                  { icon: Server, label: "AWS multi-region" },
+                  { icon: Workflow, label: "Kafka + RabbitMQ" },
+                  { icon: Shield, label: "SOC 2 Type II" },
+                  { icon: Boxes, label: "Centralized catalog" },
+                ].map((f, i) => (
+                  <div key={i} className="flex items-center gap-2 text-sm text-slate-700 font-medium">
+                    <f.icon className="w-4 h-4 text-primary" /> {f.label}
+                  </div>
+                ))}
+              </div>
+              <Link to="/infrastructure">
+                <Button size="lg" className="shadow-stripe-xl group">
+                  See the architecture <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </div>
+            <div className="reveal delay-200">
+              <InfraIllustration className="w-full h-auto" />
             </div>
           </div>
         </section>
