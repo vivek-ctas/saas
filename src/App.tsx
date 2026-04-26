@@ -8,6 +8,8 @@ import Pricing from "./pages/Pricing";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
+import Marketplaces from "./pages/Marketplaces";
+import Infrastructure from "./pages/Infrastructure";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,6 +23,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/marketplaces" element={<Marketplaces />} />
+          <Route path="/infrastructure" element={<Infrastructure />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
