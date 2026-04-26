@@ -215,4 +215,29 @@ All colors MUST be HSL.
     @apply bg-card rounded-xl border border-border transition-stripe hover:shadow-stripe hover:-translate-y-0.5;
     box-shadow: var(--shadow-sm);
   }
+
+  /* Stagger delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-700 { animation-delay: 700ms; }
+
+  .gradient-animated {
+    background: linear-gradient(120deg, hsl(232 60% 18%), hsl(226 71% 35%), hsl(280 70% 45%), hsl(330 81% 55%));
+    background-size: 300% 300%;
+    animation: gradient-shift 14s ease infinite;
+  }
+
+  .hero-blob { @apply absolute rounded-full blur-3xl opacity-60 pointer-events-none; }
+  .marquee-track { @apply flex w-max; animation: marquee 40s linear infinite; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  .story-link { @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left; }
+  .hover-lift { @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-stripe-xl; }
+  .grid-bg { background-image: linear-gradient(hsl(var(--border)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px); background-size: 32px 32px; }
+}
 }
