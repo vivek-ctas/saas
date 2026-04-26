@@ -1,63 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  BarChart3, 
-  RefreshCw, 
-  ShoppingCart, 
-  TrendingUp, 
-  Zap, 
-  Shield, 
-  Users,
-  DollarSign,
-  Package,
-  Globe,
-  Clock,
-  CheckCircle,
-  Sparkles,
-  Star,
-  ShoppingBag,
-  Smartphone,
-  Monitor,
-  Tablet
-} from "lucide-react";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+  BarChart3, RefreshCw, ShoppingCart, TrendingUp, Zap, Shield,
+  Users, DollarSign, Package, Globe, Clock, CheckCircle, Sparkles,
+  Star, ShoppingBag, Smartphone, Monitor, Tablet, ArrowRight, Quote
+} from "lucide-react";
 import Layout from "@/components/Layout";
-import heroDashboard from "@/assets/hero-dashboard.jpg";
-import sellerWorkspace from "@/assets/seller-workspace.jpg";
-import inventorySync from "@/assets/inventory-sync.jpg";
-import analyticsDashboard from "@/assets/analytics-dashboard.jpg";
+import {
+  BlobBackdrop, DashboardMockup, SyncIllustration,
+  AnalyticsIllustration, GlobeIllustration, WorkflowIllustration
+} from "@/components/illustrations";
+import { useReveal } from "@/hooks/use-reveal";
 
 const Home = () => {
-  const features = [
-    {
-      icon: RefreshCw,
-      title: "Real-Time Inventory Sync",
-      description: "Never oversell again with instant inventory synchronization across all your marketplaces. Update once, sync everywhere.",
-      benefits: ["Prevent overselling", "Reduce manual work", "Real-time updates"],
-      image: inventorySync
-    },
-    {
-      icon: ShoppingCart,
-      title: "Intelligent Order Routing",
-      description: "Automatically route orders to the optimal fulfillment location based on shipping speed, cost, and inventory availability.",
-      benefits: ["Faster shipping", "Lower costs", "Better customer satisfaction"],
-      image: analyticsDashboard
-    },
-    {
-      icon: BarChart3,
-      title: "Advanced Analytics",
-      description: "Get deep insights into your multichannel performance with comprehensive reporting and AI-powered recommendations.",
-      benefits: ["Track profitability", "Identify trends", "Optimize listings"],
-      image: analyticsDashboard
-    }
-  ];
+  const ref = useReveal<HTMLDivElement>();
 
   const platformStats = [
     { icon: Users, value: "50,000+", label: "Active Sellers" },
@@ -67,328 +23,338 @@ const Home = () => {
   ];
 
   const marketplaces = [
-    { name: "Amazon", icon: ShoppingBag, color: "text-orange-600" },
-    { name: "eBay", icon: Globe, color: "text-blue-600" },
-    { name: "Walmart", icon: Star, color: "text-blue-700" },
-    { name: "Shopify", icon: ShoppingCart, color: "text-green-600" },
-    { name: "Etsy", icon: Sparkles, color: "text-orange-500" },
-    { name: "Facebook", icon: Monitor, color: "text-blue-500" },
-    { name: "Google", icon: Globe, color: "text-red-500" },
-    { name: "WooCommerce", icon: Package, color: "text-purple-600" },
-    { name: "BigCommerce", icon: ShoppingBag, color: "text-blue-600" },
-    { name: "Magento", icon: Package, color: "text-orange-600" },
-    { name: "Target", icon: Star, color: "text-red-600" },
-    { name: "Newegg", icon: Monitor, color: "text-yellow-600" },
-    { name: "Rakuten", icon: Globe, color: "text-red-500" },
-    { name: "Bonanza", icon: Sparkles, color: "text-green-500" },
-    { name: "Mercari", icon: Smartphone, color: "text-blue-500" },
-    { name: "Poshmark", icon: Tablet, color: "text-pink-500" },
-    { name: "TikTok Shop", icon: Smartphone, color: "text-gray-800" },
-    { name: "Pinterest", icon: Sparkles, color: "text-red-500" },
-    { name: "Reverb", icon: Monitor, color: "text-purple-600" },
-    { name: "Depop", icon: Tablet, color: "text-blue-400" }
+    { name: "Amazon", icon: ShoppingBag }, { name: "eBay", icon: Globe },
+    { name: "Walmart", icon: Star }, { name: "Shopify", icon: ShoppingCart },
+    { name: "Etsy", icon: Sparkles }, { name: "Facebook", icon: Monitor },
+    { name: "Google", icon: Globe }, { name: "WooCommerce", icon: Package },
+    { name: "BigCommerce", icon: ShoppingBag }, { name: "Magento", icon: Package },
+    { name: "Target", icon: Star }, { name: "TikTok", icon: Smartphone },
+    { name: "Pinterest", icon: Sparkles }, { name: "Reverb", icon: Monitor },
+    { name: "Mercari", icon: Smartphone }, { name: "Poshmark", icon: Tablet }
   ];
 
-  const quickWins = [
-    {
-      icon: Clock,
-      title: "Set up in 15 minutes",
-      description: "Connect your first marketplace and start syncing inventory immediately"
-    },
-    {
-      icon: TrendingUp,
-      title: "30% average sales increase",
-      description: "Sellers see significant growth within 60 days of onboarding"
-    },
-    {
-      icon: Shield,
-      title: "99.9% uptime guarantee",
-      description: "Enterprise-grade reliability with 24/7 monitoring and support"
-    }
+  const journey = [
+    { step: "01", title: "Connect", desc: "Link your marketplaces in minutes with one-click integrations.", icon: Zap },
+    { step: "02", title: "Sync", desc: "Inventory, orders & pricing flow automatically across every channel.", icon: RefreshCw },
+    { step: "03", title: "Grow", desc: "AI insights surface what to ship next, what to reprice, what to scale.", icon: TrendingUp }
   ];
 
   return (
     <Layout>
-      {/* Hero Section - Stripe-inspired */}
-      <section className="relative overflow-hidden hero-section">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Hero Content */}
-            <div>
-              <Badge className="mb-6 bg-white/10 text-white border border-white/20 backdrop-blur-sm hover:bg-white/15">
-                <Zap className="w-4 h-4 mr-2" />
-                Ahmedabad's Leading Tech Experts Since 2019
-              </Badge>
-              
-              <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6 leading-tight">
-                Driving Business
-                <span className="block bg-gradient-to-r from-pink-300 to-fuchsia-200 bg-clip-text text-transparent">Efficiency</span>
-                with Next-Gen AI
-              </h1>
-              
-              <p className="text-xl text-white/90 mb-8 leading-relaxed">
-                The complete seller central platform. Manage inventory, process orders, 
-                and analyze performance across Amazon, eBay, Walmart, Shopify, and 50+ marketplaces 
-                from one powerful dashboard.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl">
-                  Start free 14-day trial
-                </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="text-lg px-8 bg-white/10 border-white/20 text-white hover:bg-white/20 shadow-stripe"
-                >
-                  Watch 2-min demo
-                </Button>
-              </div>
-              
-              <div className="flex items-center space-x-6 text-white/80">
-                <div className="flex items-center">
-                  <CheckCircle className="w-5 h-5 mr-2 text-emerald-200" />
-                  <span>No credit card required</span>
+      <div ref={ref}>
+        {/* HERO */}
+        <section className="relative overflow-hidden gradient-animated">
+          <BlobBackdrop />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div className="reveal">
+                <Badge className="mb-6 bg-white/10 text-white border border-white/20 backdrop-blur-sm hover:bg-white/15">
+                  <Zap className="w-4 h-4 mr-2" />
+                  Ahmedabad's Leading Tech Experts Since 2019
+                </Badge>
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.05] tracking-tight">
+                  One dashboard.
+                  <span className="block bg-gradient-to-r from-pink-200 via-fuchsia-200 to-white bg-clip-text text-transparent">
+                    Every marketplace.
+                  </span>
+                </h1>
+                <p className="text-xl text-white/85 mb-8 leading-relaxed max-w-xl">
+                  Ctasis Marketplace unifies inventory, orders & analytics across Amazon, eBay,
+                  Walmart, Shopify and 50+ channels — built for sellers who refuse to babysit spreadsheets.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                  <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl group">
+                    Start free 14-day trial
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                  <Button size="lg" variant="outline"
+                    className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/20 shadow-stripe">
+                    Watch 2-min demo
+                  </Button>
                 </div>
-                <div className="flex items-center">
-                  <CheckCircle className="w-5 h-5 mr-2 text-emerald-200" />
-                  <span>Setup in 15 minutes</span>
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-white/80 text-sm">
+                  <div className="flex items-center"><CheckCircle className="w-4 h-4 mr-2 text-emerald-200" />No credit card</div>
+                  <div className="flex items-center"><CheckCircle className="w-4 h-4 mr-2 text-emerald-200" />15-min setup</div>
+                  <div className="flex items-center"><CheckCircle className="w-4 h-4 mr-2 text-emerald-200" />Cancel anytime</div>
                 </div>
               </div>
-            </div>
-            
-            {/* Hero Image */}
-            <div className="relative">
-              <div className="relative z-10">
-                <img 
-                  src={heroDashboard} 
-                  alt="Ctasis Marketplace Dashboard" 
-                  className="rounded-2xl shadow-stripe-2xl border-2 border-white/20"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-transparent rounded-2xl"></div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-white border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {platformStats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center mx-auto mb-4 shadow-stripe">
-                  <stat.icon className="w-6 h-6 text-white" />
+              <div className="relative reveal delay-200">
+                <div className="absolute -inset-6 bg-gradient-to-br from-pink-400/30 to-primary/30 blur-3xl rounded-3xl" />
+                <div className="relative animate-float-slow">
+                  <DashboardMockup className="w-full h-auto rounded-2xl shadow-stripe-2xl" />
                 </div>
-                <div className="text-3xl font-bold text-slate-900 mb-1">{stat.value}</div>
-                <div className="text-slate-600">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section - Masonry-inspired Layout */}
-      <section className="py-24 section-bg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
-              Everything you need to scale
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Built specifically for multichannel sellers who want to grow faster, 
-              reduce manual work, and maximize profitability across all platforms.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className={`feature-card-large ${index === 1 ? 'lg:col-span-1 lg:row-span-2' : ''}`}>
-                <div className="relative">
-                  <img 
-                    src={feature.image} 
-                    alt={feature.title}
-                    className="w-full h-48 object-cover rounded-xl mb-6"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <div className="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center shadow-stripe">
-                      <feature.icon className="w-5 h-5 text-white" />
-                    </div>
+                {/* Floating chips */}
+                <div className="absolute -top-6 -left-6 bg-white rounded-xl shadow-stripe-xl p-3 flex items-center gap-2 animate-float">
+                  <div className="w-9 h-9 rounded-lg gradient-primary flex items-center justify-center">
+                    <RefreshCw className="w-4 h-4 text-white" />
+                  </div>
+                  <div className="text-xs">
+                    <div className="font-semibold text-slate-900">Synced</div>
+                    <div className="text-slate-500">2 sec ago</div>
                   </div>
                 </div>
-                
-                <CardHeader className="pb-4">
-                  <CardTitle className="text-xl font-semibold text-slate-900">{feature.title}</CardTitle>
-                  <p className="text-slate-600 leading-relaxed">{feature.description}</p>
-                </CardHeader>
-                
-                <CardContent>
-                  <ul className="space-y-2">
-                    {feature.benefits.map((benefit, benefitIndex) => (
-                      <li key={benefitIndex} className="flex items-center text-sm text-slate-600">
-                        <CheckCircle className="w-4 h-4 text-emerald-500 mr-3 flex-shrink-0" />
-                        {benefit}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Marketplaces Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h3 className="text-2xl font-bold text-slate-900 mb-8">
-            Connect to 50+ marketplaces and platforms
-          </h3>
-          
-          <div className="relative max-w-5xl mx-auto">
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-2 md:-ml-4">
-                {marketplaces.map((marketplace, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/5">
-                    <div className="p-1">
-                      <Card className="seller-card p-6 h-full">
-                        <div className="flex flex-col items-center space-y-3">
-                          <div className={`w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center ${marketplace.color}`}>
-                            <marketplace.icon className="w-6 h-6" />
-                          </div>
-                          <span className="text-sm font-medium text-slate-700">{marketplace.name}</span>
-                        </div>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="-left-12 h-12 w-12" />
-              <CarouselNext className="-right-12 h-12 w-12" />
-            </Carousel>
-          </div>
-          
-          <p className="text-slate-600 mt-8">
-            And many more. Missing an integration? 
-            <span className="text-emerald-600 font-medium"> We'll build it for you.</span>
-          </p>
-        </div>
-      </section>
-
-      {/* Quick Wins Section */}
-      <section className="py-24 section-bg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
-              See results immediately
-            </h2>
-            <p className="text-xl text-slate-600">
-              Join thousands of sellers who've transformed their business with Ctasis Marketplace
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {quickWins.map((win, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-stripe">
-                  <win.icon className="w-8 h-8 text-white" />
+                <div className="absolute -bottom-4 -right-2 bg-white rounded-xl shadow-stripe-xl p-3 flex items-center gap-2 animate-float" style={{ animationDelay: "1.5s" }}>
+                  <div className="w-9 h-9 rounded-lg gradient-accent flex items-center justify-center">
+                    <TrendingUp className="w-4 h-4 text-white" />
+                  </div>
+                  <div className="text-xs">
+                    <div className="font-semibold text-slate-900">+24% MoM</div>
+                    <div className="text-slate-500">Revenue</div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-2">{win.title}</h3>
-                <p className="text-slate-600">{win.description}</p>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Seller Workspace Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">
-                Built by sellers, for sellers
+        {/* TRUSTED BY (marquee) */}
+        <section className="py-12 bg-white border-b border-slate-100 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 mb-6 text-center text-sm text-slate-500 uppercase tracking-widest">
+            Powering 50,000+ sellers across 50+ marketplaces
+          </div>
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10" />
+            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10" />
+            <div className="marquee-track gap-12">
+              {[...marketplaces, ...marketplaces].map((m, i) => (
+                <div key={i} className="flex items-center gap-3 px-6 py-3 rounded-xl bg-slate-50 hover:bg-accent transition-stripe">
+                  <m.icon className="w-5 h-5 text-primary" />
+                  <span className="font-semibold text-slate-700 whitespace-nowrap">{m.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* STATS */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+              {platformStats.map((stat, i) => (
+                <div key={i} className="reveal text-center" style={{ transitionDelay: `${i * 100}ms` }}>
+                  <div className="w-14 h-14 gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-stripe">
+                    <stat.icon className="w-7 h-7 text-white" />
+                  </div>
+                  <div className="text-4xl font-bold text-slate-900 mb-1 tracking-tight">{stat.value}</div>
+                  <div className="text-slate-600">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* STORY: PROBLEM → SOLUTION */}
+        <section className="py-24 section-bg relative overflow-hidden">
+          <div className="absolute inset-0 grid-bg opacity-30" />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
+              <div className="order-2 lg:order-1 reveal">
+                <Badge className="mb-4 bg-pink-100 text-pink-700 border-0">The problem</Badge>
+                <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
+                  Selling on 5 marketplaces shouldn't feel like running 5 businesses.
+                </h2>
+                <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                  Most sellers juggle a dozen tabs, broken CSV exports and 2 a.m. inventory mismatches.
+                  One overselling incident on Amazon can cost an account suspension worth months of revenue.
+                </p>
+                <ul className="space-y-3">
+                  {["Manual stock updates across platforms", "Lost orders & angry customers", "No single source of truth", "Hours wasted reconciling data"].map((p, i) => (
+                    <li key={i} className="flex items-start gap-3 text-slate-700">
+                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-pink-500 flex-shrink-0" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="order-1 lg:order-2 reveal delay-200">
+                <WorkflowIllustration className="w-full h-auto" />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div className="reveal">
+                <SyncIllustration className="w-full h-auto" />
+              </div>
+              <div className="reveal delay-200">
+                <Badge className="mb-4 bg-accent text-accent-foreground border-0">The Ctasis way</Badge>
+                <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
+                  One source of truth. Synced everywhere in milliseconds.
+                </h2>
+                <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                  Update a product once and watch it propagate to every connected marketplace
+                  instantly. Our event-driven sync engine processes 10M+ updates daily without breaking a sweat.
+                </p>
+                <Button size="lg" className="shadow-stripe-xl group">
+                  See how it works
+                  <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* BENTO FEATURES */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16 max-w-2xl mx-auto reveal">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Platform</Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">Everything you need to scale</h2>
+              <p className="text-xl text-slate-600">A complete operating system for multichannel commerce.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[200px]">
+              {/* Big tile */}
+              <div className="reveal lg:col-span-2 lg:row-span-2 rounded-3xl p-8 bg-gradient-to-br from-primary to-fuchsia-600 text-white relative overflow-hidden hover-lift">
+                <div className="relative z-10">
+                  <BarChart3 className="w-10 h-10 mb-4" />
+                  <h3 className="text-2xl font-bold mb-2">Real-time analytics</h3>
+                  <p className="text-white/85 mb-6 max-w-md">
+                    Profit margins, channel performance and AI-powered recommendations updated every second.
+                  </p>
+                </div>
+                <div className="absolute right-0 bottom-0 w-3/5 opacity-90">
+                  <AnalyticsIllustration className="w-full h-auto" />
+                </div>
+              </div>
+              <div className="reveal delay-100 rounded-3xl p-6 bg-slate-50 border border-slate-100 hover-lift">
+                <RefreshCw className="w-8 h-8 text-primary mb-3" />
+                <h3 className="font-bold text-slate-900 mb-1">Inventory sync</h3>
+                <p className="text-sm text-slate-600">Real-time across all channels.</p>
+              </div>
+              <div className="reveal delay-200 rounded-3xl p-6 bg-slate-50 border border-slate-100 hover-lift">
+                <ShoppingCart className="w-8 h-8 text-secondary mb-3" />
+                <h3 className="font-bold text-slate-900 mb-1">Smart routing</h3>
+                <p className="text-sm text-slate-600">Orders route to optimal warehouse.</p>
+              </div>
+              <div className="reveal delay-300 lg:col-span-2 rounded-3xl p-6 bg-slate-900 text-white hover-lift relative overflow-hidden">
+                <Shield className="w-8 h-8 text-pink-400 mb-3" />
+                <h3 className="font-bold mb-1">Enterprise security</h3>
+                <p className="text-sm text-white/70">SOC 2 Type II, 99.9% uptime SLA, end-to-end encryption.</p>
+                <div className="absolute -right-10 -bottom-10 w-48 h-48 bg-primary/30 rounded-full blur-3xl" />
+              </div>
+              <div className="reveal delay-400 rounded-3xl p-6 bg-gradient-to-br from-pink-100 to-purple-100 hover-lift">
+                <Globe className="w-8 h-8 text-secondary mb-3" />
+                <h3 className="font-bold text-slate-900 mb-1">Global reach</h3>
+                <p className="text-sm text-slate-700">150+ countries supported.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* JOURNEY / 3-STEP */}
+        <section className="py-24 section-bg">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16 reveal">
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">From signup to scale in 3 steps</h2>
+              <p className="text-xl text-slate-600">Set up in 15 minutes. See results within a week.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+              {/* dashed connector */}
+              <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-px border-t-2 border-dashed border-slate-300" />
+              {journey.map((j, i) => (
+                <div key={i} className="reveal text-center relative" style={{ transitionDelay: `${i * 150}ms` }}>
+                  <div className="relative inline-flex w-24 h-24 items-center justify-center mb-6">
+                    <span className="absolute inset-0 rounded-full bg-primary/10 animate-pulse-ring" />
+                    <span className="relative w-20 h-20 gradient-primary rounded-full flex items-center justify-center shadow-stripe-xl">
+                      <j.icon className="w-9 h-9 text-white" />
+                    </span>
+                  </div>
+                  <div className="text-sm font-bold text-secondary mb-2 tracking-widest">{j.step}</div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">{j.title}</h3>
+                  <p className="text-slate-600 max-w-xs mx-auto">{j.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* TESTIMONIAL */}
+        <section className="py-24 bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="reveal relative rounded-3xl bg-gradient-to-br from-slate-900 via-primary to-fuchsia-700 p-12 lg:p-16 text-white overflow-hidden shadow-stripe-2xl">
+              <div className="absolute -top-20 -right-20 w-80 h-80 bg-pink-500/30 rounded-full blur-3xl" />
+              <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-primary/40 rounded-full blur-3xl" />
+              <div className="relative">
+                <Quote className="w-12 h-12 text-pink-300 mb-6" />
+                <p className="text-2xl lg:text-3xl font-medium leading-relaxed mb-8">
+                  "Ctasis cut our order processing time by 80% and we haven't had a single overselling
+                  incident in 9 months. It's the operating system our business was missing."
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center font-bold text-xl">
+                    PR
+                  </div>
+                  <div>
+                    <div className="font-bold">Priya Ramaswamy</div>
+                    <div className="text-white/70 text-sm">Founder, Avenue Goods · Sells on 7 marketplaces</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* GLOBAL REACH */}
+        <section className="py-24 section-bg">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="reveal">
+              <GlobeIllustration className="w-full h-auto" />
+            </div>
+            <div className="reveal delay-200">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Global infrastructure</Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
+                Built for sellers, wherever they sell.
               </h2>
-              <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                Our team understands the challenges of multichannel selling because we've been there. 
-                Every feature is designed to solve real problems that sellers face every day.
+              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                Multi-currency, multi-language, multi-warehouse. We handle the complexity of cross-border
+                commerce so you can focus on growth.
               </p>
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-emerald-500 mr-3" />
-                  <span className="text-slate-700">Save 20+ hours per week on manual tasks</span>
-                </div>
-                <div className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-emerald-500 mr-3" />
-                  <span className="text-slate-700">Reduce errors and overselling by 99%</span>
-                </div>
-                <div className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-emerald-500 mr-3" />
-                  <span className="text-slate-700">Increase revenue with intelligent optimization</span>
-                </div>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { v: "30+", l: "Currencies" },
+                  { v: "12+", l: "Languages" },
+                  { v: "150+", l: "Countries" },
+                  { v: "24/7", l: "Support" }
+                ].map((s, i) => (
+                  <div key={i} className="rounded-xl bg-white p-4 border border-slate-100 shadow-sm">
+                    <div className="text-2xl font-bold text-primary">{s.v}</div>
+                    <div className="text-sm text-slate-600">{s.l}</div>
+                  </div>
+                ))}
               </div>
-              <Button size="lg" className="shadow-stripe-xl">
-                Start your free trial
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-24 relative overflow-hidden gradient-animated">
+          <BlobBackdrop />
+          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <Sparkles className="w-12 h-12 text-pink-200 mx-auto mb-6 animate-float" />
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+              Ready to grow your<br />multichannel business?
+            </h2>
+            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+              Join 50,000+ sellers who trust Ctasis Marketplace. Free 14 days, no credit card.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl">
+                Start free trial
+              </Button>
+              <Button size="lg" variant="outline"
+                className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/20 shadow-stripe">
+                Talk to our team
               </Button>
             </div>
-            
-            <div className="relative">
-              <img 
-                src={sellerWorkspace} 
-                alt="Seller working with Ctasis Marketplace" 
-                className="rounded-2xl shadow-stripe-xl"
-              />
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-white/80 text-sm">
+              <span className="flex items-center"><Clock className="w-4 h-4 mr-2" />Setup in 15 min</span>
+              <span className="flex items-center"><Shield className="w-4 h-4 mr-2" />SOC 2 compliant</span>
+              <span className="flex items-center"><CheckCircle className="w-4 h-4 mr-2" />Cancel anytime</span>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 hero-section">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to grow your multichannel business?
-          </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Join 50,000+ successful sellers who trust Ctasis Marketplace to manage their operations. 
-            Start your free trial today – no credit card required.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl">
-              Start free 14-day trial
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="text-lg px-8 bg-white/10 border-white/20 text-white hover:bg-white/20 shadow-stripe"
-            >
-              Talk to our team
-            </Button>
-          </div>
-          
-          <div className="mt-8 flex items-center justify-center space-x-8 text-white/80">
-            <span className="flex items-center">
-              <CheckCircle className="w-5 h-5 mr-2" />
-              14-day free trial
-            </span>
-            <span className="flex items-center">
-              <CheckCircle className="w-5 h-5 mr-2" />
-              No setup fees
-            </span>
-            <span className="flex items-center">
-              <CheckCircle className="w-5 h-5 mr-2" />
-              Cancel anytime
-            </span>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </Layout>
   );
 };

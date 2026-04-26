@@ -1,156 +1,235 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import {
+  Accordion, AccordionContent, AccordionItem, AccordionTrigger
+} from "@/components/ui/accordion";
+import { Check, X, Sparkles, ArrowRight, Quote, Star } from "lucide-react";
 import Layout from "@/components/Layout";
+import { BlobBackdrop, AnalyticsIllustration } from "@/components/illustrations";
+import { useReveal } from "@/hooks/use-reveal";
 
 const Pricing = () => {
+  const ref = useReveal<HTMLDivElement>();
+
   const plans = [
     {
-      name: "Starter",
-      price: "$29",
-      period: "/month",
-      description: "Perfect for new sellers getting started",
-      features: [
-        "Up to 3 marketplace connections",
-        "5,000 product listings",
-        "Basic inventory sync",
-        "Standard order routing",
-        "Email support",
-        "Basic analytics dashboard"
-      ],
-      popular: false,
-      cta: "Start Free Trial"
+      name: "Starter", price: "$29", period: "/mo",
+      description: "For new sellers getting started.",
+      features: ["3 marketplace connections", "5,000 product listings", "Basic inventory sync", "Standard order routing", "Email support", "Basic analytics"],
+      cta: "Start Free Trial", popular: false
     },
     {
-      name: "Pro",
-      price: "$79",
-      period: "/month",
-      description: "Ideal for growing businesses",
-      features: [
-        "Up to 10 marketplace connections",
-        "25,000 product listings",
-        "Real-time inventory sync",
-        "Advanced order routing",
-        "Priority support",
-        "Advanced analytics & reporting",
-        "Automated repricing",
-        "Custom workflows"
-      ],
-      popular: true,
-      cta: "Start Free Trial"
+      name: "Pro", price: "$79", period: "/mo",
+      description: "For growing multichannel businesses.",
+      features: ["10 marketplace connections", "25,000 product listings", "Real-time inventory sync", "Advanced order routing", "Priority support", "Advanced analytics", "Automated repricing", "Custom workflows"],
+      cta: "Start Free Trial", popular: true
     },
     {
-      name: "Enterprise",
-      price: "Custom",
-      period: "",
-      description: "For large-scale operations",
-      features: [
-        "Unlimited marketplace connections",
-        "Unlimited product listings",
-        "Enterprise inventory management",
-        "Custom order routing logic",
-        "Dedicated account manager",
-        "White-label solutions",
-        "API access",
-        "Custom integrations",
-        "SLA guarantee"
-      ],
-      popular: false,
-      cta: "Contact Sales"
+      name: "Enterprise", price: "Custom", period: "",
+      description: "For large operations & complex stacks.",
+      features: ["Unlimited connections", "Unlimited listings", "Enterprise inventory ops", "Custom routing logic", "Dedicated account manager", "White-label options", "Full API access", "Custom integrations", "SLA guarantee"],
+      cta: "Contact Sales", popular: false
     }
+  ];
+
+  const compare = [
+    ["Marketplace connections", "3", "10", "Unlimited"],
+    ["Product listings", "5,000", "25,000", "Unlimited"],
+    ["Real-time inventory sync", false, true, true],
+    ["Automated repricing", false, true, true],
+    ["Custom workflows", false, true, true],
+    ["API access", false, false, true],
+    ["Dedicated account manager", false, false, true],
+    ["SLA guarantee", false, false, true]
+  ];
+
+  const faqs = [
+    { q: "Is there a free trial?", a: "Yes — every plan includes a 14-day trial with no credit card required." },
+    { q: "Can I change plans anytime?", a: "Absolutely. Upgrade or downgrade at any time from your billing settings." },
+    { q: "What marketplaces are supported?", a: "Amazon, eBay, Walmart, Shopify, Etsy, TikTok Shop and 50+ more — and we'll build any missing one." },
+    { q: "How is my data secured?", a: "SOC 2 Type II certified, end-to-end encryption, regular pen-tests, and GDPR compliant." },
+    { q: "Do you offer migration help?", a: "Yes, our white-glove onboarding team will migrate your listings, orders and history for free on Pro & Enterprise." },
+    { q: "What happens if I exceed my plan limits?", a: "We'll notify you well before you hit a cap — no surprise charges, ever." }
   ];
 
   return (
     <Layout>
-      {/* Header */}
-      <section className="py-24 gradient-subtle">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            Simple, Transparent Pricing
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Choose the plan that fits your business. All plans include a 14-day free trial with no commitment.
-          </p>
-        </div>
-      </section>
-
-      {/* Pricing Cards */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {plans.map((plan, index) => (
-              <Card key={index} className={`pricing-card ${plan.popular ? 'border-primary' : ''}`}>
-                {plan.popular && (
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <span className="hero-gradient text-white px-4 py-1 rounded-full text-sm font-medium">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                
-                <CardHeader className="text-center pb-6">
-                  <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
-                  <div className="mt-4">
-                    <span className="text-4xl font-bold text-foreground">{plan.price}</span>
-                    <span className="text-muted-foreground">{plan.period}</span>
-                  </div>
-                  <p className="text-muted-foreground mt-2">{plan.description}</p>
-                </CardHeader>
-
-                <CardContent className="space-y-6">
-                  <ul className="space-y-3">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start">
-                        <Check className="w-5 h-5 text-primary mt-0.5 mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Button 
-                    className={`w-full ${plan.popular ? 'hero-gradient' : ''}`}
-                    variant={plan.popular ? "default" : "outline"}
-                    size="lg"
-                  >
-                    {plan.cta}
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+      <div ref={ref}>
+        {/* HERO */}
+        <section className="relative overflow-hidden gradient-animated">
+          <BlobBackdrop />
+          <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center reveal">
+            <Badge className="mb-6 bg-white/10 text-white border border-white/20 backdrop-blur-sm">
+              <Sparkles className="w-4 h-4 mr-2" /> Transparent pricing
+            </Badge>
+            <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+              Pricing that scales<br />
+              <span className="bg-gradient-to-r from-pink-200 to-white bg-clip-text text-transparent">with your business.</span>
+            </h1>
+            <p className="text-xl text-white/85 max-w-2xl mx-auto">
+              Start free for 14 days. No credit card. No surprises. Cancel anytime.
+            </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* FAQ Section */}
-      <section className="py-24 gradient-subtle">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-foreground mb-12">
-            Frequently Asked Questions
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="font-semibold text-foreground mb-2">Is there a free trial?</h3>
-              <p className="text-muted-foreground">Yes, all plans come with a 14-day free trial. No credit card required to get started.</p>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold text-foreground mb-2">Can I change plans anytime?</h3>
-              <p className="text-muted-foreground">Absolutely. You can upgrade or downgrade your plan at any time from your account settings.</p>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold text-foreground mb-2">What marketplaces do you support?</h3>
-              <p className="text-muted-foreground">We support Amazon, eBay, Walmart, Shopify, Etsy, and many more. Contact us for specific integrations.</p>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold text-foreground mb-2">Is my data secure?</h3>
-              <p className="text-muted-foreground">Yes, we use enterprise-grade security with encryption at rest and in transit. Your data is protected.</p>
+        {/* PLANS */}
+        <section className="py-24 bg-white -mt-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+              {plans.map((plan, i) => (
+                <Card key={i}
+                  className={`reveal relative overflow-hidden p-2 ${
+                    plan.popular
+                      ? "border-2 border-primary shadow-stripe-2xl scale-100 lg:scale-105 bg-gradient-to-br from-white via-accent/40 to-pink-50"
+                      : "border border-slate-200 hover-lift"
+                  }`}
+                  style={{ transitionDelay: `${i * 120}ms` }}>
+                  {plan.popular && (
+                    <>
+                      <div className="absolute -top-px left-0 right-0 h-1 gradient-primary" />
+                      <div className="absolute top-4 right-4">
+                        <Badge className="bg-gradient-to-r from-primary to-secondary text-white border-0 shadow-stripe">
+                          Most Popular
+                        </Badge>
+                      </div>
+                    </>
+                  )}
+                  <CardHeader className="pb-4 pt-8">
+                    <CardTitle className="text-2xl font-bold text-slate-900">{plan.name}</CardTitle>
+                    <p className="text-slate-600 text-sm">{plan.description}</p>
+                    <div className="mt-6 flex items-baseline gap-1">
+                      <span className="text-5xl font-bold text-slate-900 tracking-tight">{plan.price}</span>
+                      <span className="text-slate-500">{plan.period}</span>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="space-y-5">
+                    <Button
+                      size="lg"
+                      variant={plan.popular ? "default" : "outline"}
+                      className={`w-full ${plan.popular ? "shadow-stripe-xl" : ""}`}
+                    >
+                      {plan.cta}
+                      <ArrowRight className="w-4 h-4 ml-1" />
+                    </Button>
+                    <ul className="space-y-3 pt-2">
+                      {plan.features.map((f, j) => (
+                        <li key={j} className="flex items-start gap-3 text-sm">
+                          <span className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
+                            plan.popular ? "bg-primary text-white" : "bg-accent text-primary"
+                          }`}>
+                            <Check className="w-3 h-3" />
+                          </span>
+                          <span className="text-slate-700">{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* COMPARISON TABLE */}
+        <section className="py-24 section-bg">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12 reveal">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Plan comparison</Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">Compare every feature</h2>
+              <p className="text-xl text-slate-600">All the details, side by side.</p>
+            </div>
+            <div className="reveal rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-stripe">
+              <table className="w-full text-left">
+                <thead className="bg-slate-50">
+                  <tr>
+                    <th className="p-5 text-sm font-semibold text-slate-600">Feature</th>
+                    <th className="p-5 text-center text-sm font-semibold text-slate-600">Starter</th>
+                    <th className="p-5 text-center text-sm font-semibold text-primary bg-accent/40">Pro</th>
+                    <th className="p-5 text-center text-sm font-semibold text-slate-600">Enterprise</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {compare.map(([feat, ...vals], i) => (
+                    <tr key={i} className="border-t border-slate-100">
+                      <td className="p-5 font-medium text-slate-800">{feat as string}</td>
+                      {vals.map((v, j) => (
+                        <td key={j} className={`p-5 text-center ${j === 1 ? "bg-accent/20" : ""}`}>
+                          {typeof v === "boolean" ? (
+                            v ? <Check className="w-5 h-5 text-primary mx-auto" /> : <X className="w-5 h-5 text-slate-300 mx-auto" />
+                          ) : (
+                            <span className="font-semibold text-slate-700">{v}</span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        {/* TESTIMONIAL + ILLUSTRATION */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="reveal">
+              <AnalyticsIllustration className="w-full h-auto" />
+            </div>
+            <div className="reveal delay-200">
+              <div className="flex gap-1 mb-6">
+                {[...Array(5)].map((_,i) => <Star key={i} className="w-5 h-5 fill-secondary text-secondary" />)}
+              </div>
+              <Quote className="w-10 h-10 text-primary mb-4" />
+              <p className="text-2xl font-medium text-slate-900 leading-relaxed mb-6">
+                "We tried 3 other platforms before Ctasis. The Pro plan paid for itself in week one
+                from saved labor alone."
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full gradient-accent flex items-center justify-center text-white font-bold">MK</div>
+                <div>
+                  <div className="font-bold text-slate-900">Marcus Kovak</div>
+                  <div className="text-sm text-slate-500">COO · Northwind Outdoors</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="py-24 section-bg">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12 reveal">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">FAQ</Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">Frequently asked questions</h2>
+            </div>
+            <Accordion type="single" collapsible className="reveal space-y-3">
+              {faqs.map((f, i) => (
+                <AccordionItem key={i} value={`item-${i}`}
+                  className="bg-white rounded-2xl border border-slate-100 px-6 shadow-sm hover:shadow-stripe transition-stripe">
+                  <AccordionTrigger className="text-left font-semibold text-slate-900 hover:no-underline py-5">
+                    {f.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-slate-600 pb-5 leading-relaxed">{f.a}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-24 relative overflow-hidden gradient-animated">
+          <BlobBackdrop />
+          <div className="relative max-w-4xl mx-auto px-4 text-center reveal">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">Still have questions?</h2>
+            <p className="text-xl text-white/90 mb-8">Talk to our team — we'll help you pick the right plan.</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl">Start free trial</Button>
+              <Button size="lg" variant="outline" className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/20 shadow-stripe">Talk to sales</Button>
+            </div>
+          </div>
+        </section>
+      </div>
     </Layout>
   );
 };
