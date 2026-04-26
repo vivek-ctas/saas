@@ -16,10 +16,10 @@ import footerBackground from "@/assets/footer-background.jpg";
 const Footer = () => {
   const footerLinks = {
     product: [
-      { name: "Features", href: "/services" },
-      { name: "Integrations", href: "/services" },
+      { name: "Services", href: "/services" },
+      { name: "Marketplaces", href: "/marketplaces" },
+      { name: "Infrastructure", href: "/infrastructure" },
       { name: "Pricing", href: "/pricing" },
-      { name: "API", href: "/contact" },
     ],
     company: [
       { name: "About Us", href: "/about" },
