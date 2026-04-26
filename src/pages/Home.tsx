@@ -3,12 +3,15 @@ import { Badge } from "@/components/ui/badge";
 import {
   BarChart3, RefreshCw, ShoppingCart, TrendingUp, Zap, Shield,
   Users, DollarSign, Package, Globe, Clock, CheckCircle, Sparkles,
-  Star, ShoppingBag, Smartphone, Monitor, Tablet, ArrowRight, Quote
+  Star, ShoppingBag, Smartphone, Monitor, Tablet, ArrowRight, Quote,
+  Truck, Megaphone, Brain, Server, Workflow, Boxes, Store
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import {
   BlobBackdrop, DashboardMockup, SyncIllustration,
-  AnalyticsIllustration, GlobeIllustration, WorkflowIllustration
+  AnalyticsIllustration, GlobeIllustration, WorkflowIllustration,
+  NeuralIllustration, InfraIllustration, LogoChip
 } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
