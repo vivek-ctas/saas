@@ -32,27 +32,27 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
-                className={`transition-stripe ${
+                className={`text-sm transition-stripe ${
                   isActive(item.href)
-                    ? "text-primary font-medium"
+                    ? "text-primary font-semibold"
                     : "text-slate-600 hover:text-slate-900"
                 }`}
               >
                 {item.name}
               </Link>
             ))}
-            <Button variant="default" className="ml-4 shadow-stripe">
+            <Button variant="default" className="ml-2 shadow-stripe">
               Get Started
             </Button>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-slate-600 hover:text-slate-900"
@@ -64,7 +64,7 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-slate-100">
               {navigation.map((item) => (
                 <Link
