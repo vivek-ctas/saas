@@ -3,10 +3,11 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Sparkles, Heart, Shield, Lightbulb, Eye, Users, Globe,
-  Rocket, Trophy, Building2, Brain, ArrowRight
+  Rocket, Trophy, Building2, Brain, ArrowRight, Award, Lock,
+  Zap, Truck, Megaphone, Store, CheckCircle, Cpu
 } from "lucide-react";
 import Layout from "@/components/Layout";
-import { BlobBackdrop, WorkflowIllustration, GlobeIllustration } from "@/components/illustrations";
+import { BlobBackdrop, WorkflowIllustration, GlobeIllustration, NeuralIllustration, LogoChip } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
 const About = () => {
