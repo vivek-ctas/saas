@@ -157,6 +157,124 @@ const About = () => {
           </div>
         </section>
 
+        {/* TRUST FLAGS */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-14 reveal">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
+                <Award className="w-3.5 h-3.5 mr-1" /> Why sellers trust us
+              </Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">Trust isn't claimed. It's earned.</h2>
+              <p className="text-xl text-slate-600">Six commitments we ship against — every release, every day.</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { icon: Lock, title: "SOC 2 Type II", desc: "Independently audited every year. Your data, encrypted at rest and in transit.", tone: "from-primary to-indigo-600" },
+                { icon: Brain, title: "AI for customer favour", desc: "ML models surface what your buyers want next — purchase-behaviour analytics built in.", tone: "from-fuchsia-500 to-purple-600" },
+                { icon: Zap, title: "Innovation cadence", desc: "2-3 new integrations every month, shipped without breaking your workflows.", tone: "from-secondary to-pink-600" },
+                { icon: Shield, title: "99.99% uptime SLA", desc: "Multi-region failover means your store stays open even when AWS regions don't.", tone: "from-indigo-600 to-primary" },
+                { icon: Cpu, title: "Built-in compliance", desc: "GDPR, ISO 27001, PCI DSS L1 and HIPAA-ready out of the box.", tone: "from-rose-500 to-pink-600" },
+                { icon: Heart, title: "Transparent pricing", desc: "No hidden fees, no per-order surcharges. What you see is what you pay.", tone: "from-purple-600 to-fuchsia-600" },
+              ].map((t, i) => (
+                <Card key={i} className="reveal hover-lift relative overflow-hidden border border-slate-100" style={{ transitionDelay: `${i * 70}ms` }}>
+                  <div className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br ${t.tone} opacity-10 blur-2xl`} />
+                  <CardContent className="relative p-7">
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${t.tone} flex items-center justify-center mb-4 shadow-stripe`}>
+                      <t.icon className="w-7 h-7 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">{t.title}</h3>
+                    <p className="text-slate-600 leading-relaxed">{t.desc}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* PARTNERSHIP FLAGS */}
+        <section className="py-24 section-bg relative overflow-hidden">
+          <div className="absolute inset-0 grid-bg opacity-30" />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-14 reveal">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Partnership ecosystem</Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">Powered by world-class partners</h2>
+              <p className="text-xl text-slate-600">Logistics across India, Europe and the USA · marketplaces · ad networks · offline retail.</p>
+            </div>
+
+            <div className="space-y-8">
+              <div className="reveal">
+                <div className="flex items-center gap-2 mb-4">
+                  <Truck className="w-5 h-5 text-primary" />
+                  <h3 className="font-bold text-slate-900">Logistics & shipping APIs</h3>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  {["Shiprocket", "Tirupati", "DHL", "USPS", "PostNL", "Rakuten Post", "FedEx", "Delhivery", "Blue Dart", "DPD", "Royal Mail", "Aramex"].map((n, i) => (
+                    <LogoChip key={n} name={n} tone={i % 3 === 0 ? "primary" : i % 3 === 1 ? "secondary" : "accent"} />
+                  ))}
+                </div>
+              </div>
+
+              <div className="reveal delay-100">
+                <div className="flex items-center gap-2 mb-4">
+                  <Store className="w-5 h-5 text-secondary" />
+                  <h3 className="font-bold text-slate-900">Marketplaces & offline chains</h3>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  {["Amazon", "Walmart", "Lazada", "Shopee", "Rakuten", "Flipkart", "Meesho", "eBay", "Allegro", "Reliance Smart", "Croma", "Faire"].map((n, i) => (
+                    <LogoChip key={n} name={n} tone={i % 3 === 0 ? "secondary" : i % 3 === 1 ? "primary" : "accent"} />
+                  ))}
+                </div>
+              </div>
+
+              <div className="reveal delay-200">
+                <div className="flex items-center gap-2 mb-4">
+                  <Megaphone className="w-5 h-5 text-fuchsia-600" />
+                  <h3 className="font-bold text-slate-900">Ads & infrastructure</h3>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  {["Amazon Ads", "Google Shopping", "Meta Ads", "TikTok Ads", "AWS", "Kubernetes", "Kafka", "RabbitMQ", "PostgreSQL", "Datadog"].map((n, i) => (
+                    <LogoChip key={n} name={n} tone={i % 3 === 0 ? "accent" : i % 3 === 1 ? "primary" : "dark"} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* AI for customer favour — illustration block */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="reveal">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
+                <Brain className="w-3.5 h-3.5 mr-1" /> AI for customer favour
+              </Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
+                Predict what your buyers want — before they search for it.
+              </h2>
+              <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                Our ML engine learns from millions of orders to forecast demand, detect repricing
+                opportunities and segment customers by purchase behaviour — so every campaign lands
+                with the right buyer at the right moment.
+              </p>
+              <ul className="space-y-3 mb-6">
+                {[
+                  "Customer purchase-behaviour analytics",
+                  "Demand forecasting per SKU per channel",
+                  "AI-powered repricing & dynamic bundles",
+                  "Sentiment analysis from reviews & support",
+                ].map((it, i) => (
+                  <li key={i} className="flex items-start gap-3 text-slate-700">
+                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" /> {it}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="reveal delay-200">
+              <NeuralIllustration className="w-full h-auto" />
+            </div>
+          </div>
+        </section>
+
         {/* VALUES */}
         <section className="py-24 section-bg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
