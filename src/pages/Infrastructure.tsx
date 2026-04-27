@@ -201,7 +201,87 @@ const Infrastructure = () => {
           </div>
         </section>
 
-        {/* COMPLIANCE STRIP */}
+        {/* AI LISTING GENERATOR + A+ CONTENT + REPRICER */}
+        <section className="py-24 section-bg relative overflow-hidden">
+          <div className="absolute inset-0 grid-bg opacity-30" />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-14 reveal max-w-3xl mx-auto">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
+                <Brain className="w-3.5 h-3.5 mr-1" /> AI that does the heavy lifting
+              </Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">From raw spreadsheet to live listing — in minutes.</h2>
+              <p className="text-xl text-slate-600">
+                Three AI services most sellers used to hire agencies for. Now built into Ctasis.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: Workflow, title: "AI listing generator",
+                  desc: "Drop your raw product data — a CSV, a brief, even a photo — and our AI writes channel-perfect listings for Amazon, eBay and Flipkart. Titles, bullet points, search terms, backend keywords — all matched to each marketplace's rules so listings actually rank.",
+                  tone: "from-primary to-indigo-600",
+                },
+                {
+                  icon: Layers, title: "A+ content via S3",
+                  desc: "Manage every A+ content image, comparison chart and brand-story banner as versioned S3 objects. One click pushes the latest creative to Amazon Brand Registry — no more emailing PSDs to a designer or losing track of which version is live.",
+                  tone: "from-fuchsia-500 to-purple-600",
+                },
+                {
+                  icon: Cpu, title: "Auto-repricer (Premium)",
+                  desc: "Set your minimum and maximum margin once. Our repricer watches Buy Box competitors 24/7 and adjusts prices in real time — never below your floor, never above your ceiling. Profit-protected, hands-free.",
+                  tone: "from-secondary to-pink-600",
+                },
+              ].map((b, i) => (
+                <Card key={i} className="reveal hover-lift relative overflow-hidden border border-slate-100 bg-white" style={{ transitionDelay: `${i * 90}ms` }}>
+                  <div className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br ${b.tone} opacity-10 blur-2xl`} />
+                  <CardContent className="relative p-7">
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${b.tone} flex items-center justify-center mb-4 shadow-stripe`}>
+                      <b.icon className="w-7 h-7 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">{b.title}</h3>
+                    <p className="text-slate-600 leading-relaxed">{b.desc}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* POST-DATA ANALYTICS — BigQuery + Power BI */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="reveal delay-200 order-2 lg:order-1">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
+                <Boxes className="w-3.5 h-3.5 mr-1" /> Post-sale data analytics
+              </Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
+                Your sales data, finally answering questions.
+              </h2>
+              <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                Every order, refund, ad-click and review streams into our Google BigQuery warehouse the
+                moment it happens. From there, plug into Power BI, Looker Studio or any tool you already
+                use — and ask the questions that actually move revenue.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  "BigQuery warehouse with petabyte-scale querying",
+                  "Power BI & Looker Studio connectors out of the box",
+                  "Pre-built dashboards: profit by SKU, channel, region",
+                  "Cohort, retention & customer-lifetime-value reports",
+                  "Export raw data anytime — it's always yours",
+                ].map((it, i) => (
+                  <li key={i} className="flex items-start gap-3 text-slate-700">
+                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" /> {it}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="reveal order-1 lg:order-2">
+              <NeuralIllustration className="w-full h-auto" />
+            </div>
+          </div>
+        </section>
         <section className="py-16 section-bg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-6">Certified & compliant</p>
