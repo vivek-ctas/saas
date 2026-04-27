@@ -232,7 +232,7 @@ const About = () => {
                   <h3 className="font-bold text-slate-900">Ads & infrastructure</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  {["Amazon Ads", "Google Shopping", "Meta Ads", "TikTok Ads", "AWS", "Kubernetes", "Kafka", "RabbitMQ", "PostgreSQL", "Datadog"].map((n, i) => (
+                  {["Amazon Ads", "Google Shopping", "Meta Ads", "TikTok Ads", "AWS", "Kubernetes", "Kafka", "RabbitMQ", "PostgreSQL", "MongoDB", "BigQuery", "Power BI", "Datadog"].map((n, i) => (
                     <LogoChip key={n} name={n} tone={i % 3 === 0 ? "accent" : i % 3 === 1 ? "primary" : "dark"} />
                   ))}
                 </div>
