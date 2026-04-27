@@ -262,7 +262,7 @@ export const InfraIllustration = (props: SVGProps<SVGSVGElement>) => (
     <rect x="40" y="260" width="200" height="50" rx="10" fill="hsl(220 20% 96%)" stroke="hsl(220 15% 80%)" />
     <text x="140" y="290" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(232 60% 18%)">Kafka · RabbitMQ</text>
     <rect x="280" y="260" width="200" height="50" rx="10" fill="hsl(330 81% 96%)" stroke="hsl(330 81% 70%)" />
-    <text x="380" y="290" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(330 81% 35%)">Postgres · Isolated DB</text>
+    <text x="380" y="290" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(330 81% 35%)">PostgreSQL + MongoDB · Isolated</text>
   </svg>
 );
 

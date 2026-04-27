@@ -203,7 +203,7 @@ const Home = () => {
                 Isolated pods. Kubernetes scaling. Kafka-driven events.
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                Each tenant runs in its own Docker pod with a dedicated Postgres database. Kubernetes load
+                Each tenant runs in its own Docker pod with dedicated PostgreSQL + MongoDB databases. Kubernetes load
                 balancers handle 10M+ daily events through Kafka and RabbitMQ — so your store never blinks
                 during a flash sale.
               </p>

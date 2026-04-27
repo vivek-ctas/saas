@@ -16,7 +16,7 @@ const Infrastructure = () => {
     { icon: Cloud, title: "AWS multi-region", desc: "Active-active across 3 regions with automatic failover and edge caching via CloudFront.", tone: "from-primary to-indigo-600" },
     { icon: Container, title: "Isolated Docker pods", desc: "Each tenant gets isolated compute pods — noisy neighbors can't touch your throughput.", tone: "from-fuchsia-500 to-purple-600" },
     { icon: Network, title: "Kubernetes load balancing", desc: "Auto-scaling K8s clusters route traffic intelligently across thousands of pods.", tone: "from-secondary to-pink-600" },
-    { icon: Database, title: "Per-tenant Postgres", desc: "Logical database isolation per seller account. No shared schemas, no leak risk.", tone: "from-indigo-600 to-primary" },
+    { icon: Database, title: "Per-tenant PostgreSQL + MongoDB", desc: "Each seller gets isolated PostgreSQL for transactional data and MongoDB for catalog & event documents — no shared schemas, no leak risk.", tone: "from-indigo-600 to-primary" },
     { icon: Workflow, title: "Event-driven (Kafka)", desc: "Kafka + RabbitMQ pipelines handle 10M+ marketplace events daily with sub-second latency.", tone: "from-rose-500 to-pink-600" },
     { icon: Bell, title: "Realtime notifications", desc: "Webhooks, push, email and Slack alerts powered by our message bus — never miss an order.", tone: "from-purple-600 to-fuchsia-600" },
   ];
