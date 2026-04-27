@@ -23,11 +23,30 @@ const Infrastructure = () => {
 
   const stack = [
     { title: "Compute", items: ["AWS EKS", "Docker", "Kubernetes", "Nomad"], icon: Cpu },
-    { title: "Data", items: ["PostgreSQL", "Redis", "ClickHouse", "S3"], icon: Database },
+    { title: "Data", items: ["PostgreSQL", "MongoDB", "Redis", "ClickHouse", "S3"], icon: Database },
     { title: "Streaming", items: ["Apache Kafka", "RabbitMQ", "Kinesis", "EventBridge"], icon: Workflow },
+    { title: "Analytics & BI", items: ["Google BigQuery", "Power BI", "Looker Studio", "dbt"], icon: Boxes },
     { title: "Observability", items: ["Datadog", "Grafana", "Sentry", "OpenTelemetry"], icon: Layers },
     { title: "Security", items: ["SOC 2 Type II", "ISO 27001", "GDPR ready", "End-to-end TLS"], icon: Shield },
     { title: "DevOps", items: ["GitHub Actions", "Terraform", "ArgoCD", "Helm"], icon: GitBranch },
+  ];
+
+  const plainBenefits = [
+    {
+      icon: Lock, title: "Your data stays yours",
+      desc: "Think of every seller account as a private safe — not a shared drawer. We give each business its own database and its own little server, so your numbers, customers and products are never mixed with anyone else's. If a neighbour has a bad day, your store doesn't feel a thing.",
+      tone: "from-primary to-indigo-600",
+    },
+    {
+      icon: Shield, title: "Protection that actually protects",
+      desc: "Bank-grade encryption locks your information whether it's sitting still or flying across the internet. Independent auditors check us every year (SOC 2, ISO 27001, GDPR, PCI). Translation: the same level of safety big banks use — without you needing to lift a finger.",
+      tone: "from-fuchsia-500 to-purple-600",
+    },
+    {
+      icon: Zap, title: "Grows with you, instantly",
+      desc: "Black Friday traffic? A viral TikTok? Our system quietly spins up extra power the second you need it and shrinks back down when the rush is over. You'll never see a 'site is down' page during your biggest sales day — and you'll never pay for capacity you're not using.",
+      tone: "from-secondary to-pink-600",
+    },
   ];
 
   return (
