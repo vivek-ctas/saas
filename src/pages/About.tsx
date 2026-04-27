@@ -141,7 +141,7 @@ const About = () => {
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { v: "50K+", l: "Active sellers" },
-                  { v: "$2.5B+", l: "GMV processed" },
+                  { v: "$300M+", l: "GMV processed" },
                   { v: "10M+", l: "Orders managed" },
                   { v: "150+", l: "Countries" },
                   { v: "45%", l: "Avg. revenue lift" },
