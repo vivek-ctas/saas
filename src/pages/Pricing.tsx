@@ -196,6 +196,58 @@ const Pricing = () => {
           </div>
         </section>
 
+        {/* PREMIUM AI ADD-ONS — explained simply */}
+        <section className="py-24 section-bg relative overflow-hidden">
+          <div className="absolute inset-0 grid-bg opacity-30" />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-14 reveal max-w-3xl mx-auto">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Inside Pro & Enterprise</Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">The premium services that pay for the plan</h2>
+              <p className="text-xl text-slate-600">
+                These aren't buzzwords — they're the daily chores Ctasis does for you while you sleep.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Auto-repricer with your margin rules",
+                  desc: "Tell us your minimum profit and maximum price. We'll watch every Buy Box competitor 24/7 and reprice automatically — never below your floor, never above your ceiling. Sellers typically recover 8–18% margin in the first month.",
+                },
+                {
+                  title: "AI listing generator",
+                  desc: "Got a spreadsheet of products? Paste it in. Our AI writes complete Amazon, eBay and Flipkart listings — titles, bullets, search terms, even translations — formatted exactly to each marketplace's rules so you stop getting suppressed listings.",
+                },
+                {
+                  title: "A+ content managed in S3",
+                  desc: "Every brand banner, comparison chart and lifestyle image lives in versioned cloud storage. Update once, and the latest creative pushes to Amazon Brand Registry instantly. No more 'which version is live?' confusion.",
+                },
+                {
+                  title: "BigQuery + Power BI pipeline",
+                  desc: "Every order, refund and ad-click streams into a Google BigQuery warehouse you control. Plug it into Power BI or Looker and ask the questions that move revenue — profit by SKU, customer lifetime value, channel ROI.",
+                },
+                {
+                  title: "Customer-behaviour analytics",
+                  desc: "We learn from millions of orders to predict what your buyers want next. Surface bundle ideas, repurchase windows and the right ad audience — without you needing a data team.",
+                },
+                {
+                  title: "Centralized catalog + FBA/FBM",
+                  desc: "One golden record per SKU, mapped to every channel. Hybrid fulfillment routing decides whether to ship from FBA, your own warehouse or a 3PL — based on cost, speed and stock levels.",
+                },
+              ].map((b, i) => (
+                <Card key={i} className="reveal hover-lift bg-white border border-slate-100" style={{ transitionDelay: `${i * 80}ms` }}>
+                  <CardContent className="p-7">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Sparkles className="w-5 h-5 text-primary" />
+                      <h3 className="font-bold text-slate-900 text-lg">{b.title}</h3>
+                    </div>
+                    <p className="text-slate-600 leading-relaxed">{b.desc}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* FAQ */}
         <section className="py-24 section-bg">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
