@@ -20,7 +20,7 @@ const Home = () => {
 
   const platformStats = [
     { icon: Users, value: "50,000+", label: "Active Sellers" },
-    { icon: DollarSign, value: "$2.5B+", label: "GMV Processed" },
+    { icon: DollarSign, value: "$300M+", label: "GMV Processed" },
     { icon: Package, value: "10M+", label: "Orders Managed" },
     { icon: Globe, value: "150+", label: "Countries" }
   ];

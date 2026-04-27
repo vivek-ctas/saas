@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Cloud, Container, Network, Database, Workflow, Shield,
-  Cpu, GitBranch, Bell, Layers, Lock, Zap, ArrowRight, CheckCircle, Server, Boxes
+  Cpu, GitBranch, Bell, Layers, Lock, Zap, ArrowRight, CheckCircle, Server, Boxes, Brain
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import { BlobBackdrop, InfraIllustration, NeuralIllustration, LogoChip } from "@/components/illustrations";
@@ -23,11 +23,30 @@ const Infrastructure = () => {
 
   const stack = [
     { title: "Compute", items: ["AWS EKS", "Docker", "Kubernetes", "Nomad"], icon: Cpu },
-    { title: "Data", items: ["PostgreSQL", "Redis", "ClickHouse", "S3"], icon: Database },
+    { title: "Data", items: ["PostgreSQL", "MongoDB", "Redis", "ClickHouse", "S3"], icon: Database },
     { title: "Streaming", items: ["Apache Kafka", "RabbitMQ", "Kinesis", "EventBridge"], icon: Workflow },
+    { title: "Analytics & BI", items: ["Google BigQuery", "Power BI", "Looker Studio", "dbt"], icon: Boxes },
     { title: "Observability", items: ["Datadog", "Grafana", "Sentry", "OpenTelemetry"], icon: Layers },
     { title: "Security", items: ["SOC 2 Type II", "ISO 27001", "GDPR ready", "End-to-end TLS"], icon: Shield },
     { title: "DevOps", items: ["GitHub Actions", "Terraform", "ArgoCD", "Helm"], icon: GitBranch },
+  ];
+
+  const plainBenefits = [
+    {
+      icon: Lock, title: "Your data stays yours",
+      desc: "Think of every seller account as a private safe — not a shared drawer. We give each business its own database and its own little server, so your numbers, customers and products are never mixed with anyone else's. If a neighbour has a bad day, your store doesn't feel a thing.",
+      tone: "from-primary to-indigo-600",
+    },
+    {
+      icon: Shield, title: "Protection that actually protects",
+      desc: "Bank-grade encryption locks your information whether it's sitting still or flying across the internet. Independent auditors check us every year (SOC 2, ISO 27001, GDPR, PCI). Translation: the same level of safety big banks use — without you needing to lift a finger.",
+      tone: "from-fuchsia-500 to-purple-600",
+    },
+    {
+      icon: Zap, title: "Grows with you, instantly",
+      desc: "Black Friday traffic? A viral TikTok? Our system quietly spins up extra power the second you need it and shrinks back down when the rush is over. You'll never see a 'site is down' page during your biggest sales day — and you'll never pay for capacity you're not using.",
+      tone: "from-secondary to-pink-600",
+    },
   ];
 
   return (
@@ -83,6 +102,34 @@ const Infrastructure = () => {
                     </div>
                     <h3 className="text-xl font-bold text-slate-900 mb-2">{p.title}</h3>
                     <p className="text-slate-600 leading-relaxed">{p.desc}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* IN PLAIN ENGLISH — non-technical benefits */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-14 reveal max-w-3xl mx-auto">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">In plain English</Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">What this means for your business</h2>
+              <p className="text-xl text-slate-600">
+                You don't need to know what Kubernetes is. You just need to know your store stays open,
+                your data stays safe, and your growth never hits a ceiling. Here's the human version.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {plainBenefits.map((b, i) => (
+                <Card key={i} className="reveal hover-lift relative overflow-hidden border border-slate-100" style={{ transitionDelay: `${i * 100}ms` }}>
+                  <div className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br ${b.tone} opacity-10 blur-2xl`} />
+                  <CardContent className="relative p-7">
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${b.tone} flex items-center justify-center mb-4 shadow-stripe`}>
+                      <b.icon className="w-7 h-7 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">{b.title}</h3>
+                    <p className="text-slate-600 leading-relaxed">{b.desc}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -154,7 +201,87 @@ const Infrastructure = () => {
           </div>
         </section>
 
-        {/* COMPLIANCE STRIP */}
+        {/* AI LISTING GENERATOR + A+ CONTENT + REPRICER */}
+        <section className="py-24 section-bg relative overflow-hidden">
+          <div className="absolute inset-0 grid-bg opacity-30" />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-14 reveal max-w-3xl mx-auto">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
+                <Brain className="w-3.5 h-3.5 mr-1" /> AI that does the heavy lifting
+              </Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">From raw spreadsheet to live listing — in minutes.</h2>
+              <p className="text-xl text-slate-600">
+                Three AI services most sellers used to hire agencies for. Now built into Ctasis.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: Workflow, title: "AI listing generator",
+                  desc: "Drop your raw product data — a CSV, a brief, even a photo — and our AI writes channel-perfect listings for Amazon, eBay and Flipkart. Titles, bullet points, search terms, backend keywords — all matched to each marketplace's rules so listings actually rank.",
+                  tone: "from-primary to-indigo-600",
+                },
+                {
+                  icon: Layers, title: "A+ content via S3",
+                  desc: "Manage every A+ content image, comparison chart and brand-story banner as versioned S3 objects. One click pushes the latest creative to Amazon Brand Registry — no more emailing PSDs to a designer or losing track of which version is live.",
+                  tone: "from-fuchsia-500 to-purple-600",
+                },
+                {
+                  icon: Cpu, title: "Auto-repricer (Premium)",
+                  desc: "Set your minimum and maximum margin once. Our repricer watches Buy Box competitors 24/7 and adjusts prices in real time — never below your floor, never above your ceiling. Profit-protected, hands-free.",
+                  tone: "from-secondary to-pink-600",
+                },
+              ].map((b, i) => (
+                <Card key={i} className="reveal hover-lift relative overflow-hidden border border-slate-100 bg-white" style={{ transitionDelay: `${i * 90}ms` }}>
+                  <div className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br ${b.tone} opacity-10 blur-2xl`} />
+                  <CardContent className="relative p-7">
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${b.tone} flex items-center justify-center mb-4 shadow-stripe`}>
+                      <b.icon className="w-7 h-7 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">{b.title}</h3>
+                    <p className="text-slate-600 leading-relaxed">{b.desc}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* POST-DATA ANALYTICS — BigQuery + Power BI */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="reveal delay-200 order-2 lg:order-1">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
+                <Boxes className="w-3.5 h-3.5 mr-1" /> Post-sale data analytics
+              </Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
+                Your sales data, finally answering questions.
+              </h2>
+              <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                Every order, refund, ad-click and review streams into our Google BigQuery warehouse the
+                moment it happens. From there, plug into Power BI, Looker Studio or any tool you already
+                use — and ask the questions that actually move revenue.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  "BigQuery warehouse with petabyte-scale querying",
+                  "Power BI & Looker Studio connectors out of the box",
+                  "Pre-built dashboards: profit by SKU, channel, region",
+                  "Cohort, retention & customer-lifetime-value reports",
+                  "Export raw data anytime — it's always yours",
+                ].map((it, i) => (
+                  <li key={i} className="flex items-start gap-3 text-slate-700">
+                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" /> {it}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="reveal order-1 lg:order-2">
+              <NeuralIllustration className="w-full h-auto" />
+            </div>
+          </div>
+        </section>
         <section className="py-16 section-bg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-6">Certified & compliant</p>

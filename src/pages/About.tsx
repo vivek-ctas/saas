@@ -141,7 +141,7 @@ const About = () => {
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { v: "50K+", l: "Active sellers" },
-                  { v: "$2.5B+", l: "GMV processed" },
+                  { v: "$300M+", l: "GMV processed" },
                   { v: "10M+", l: "Orders managed" },
                   { v: "150+", l: "Countries" },
                   { v: "45%", l: "Avg. revenue lift" },
@@ -258,10 +258,12 @@ const About = () => {
               </p>
               <ul className="space-y-3 mb-6">
                 {[
-                  "Customer purchase-behaviour analytics",
+                  "AI listing generator — turns raw product data into channel-perfect Amazon, eBay & Flipkart listings",
+                  "Auto-repricer with your own min/max margin rules (Premium)",
+                  "A+ content managed as versioned S3 objects, one-click push to Amazon",
+                  "Customer purchase-behaviour analytics powered by BigQuery & Power BI",
                   "Demand forecasting per SKU per channel",
-                  "AI-powered repricing & dynamic bundles",
-                  "Sentiment analysis from reviews & support",
+                  "Sentiment analysis from reviews & support tickets",
                 ].map((it, i) => (
                   <li key={i} className="flex items-start gap-3 text-slate-700">
                     <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" /> {it}
