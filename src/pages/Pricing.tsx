@@ -22,13 +22,13 @@ const Pricing = () => {
     {
       name: "Pro", price: "$79", period: "/mo",
       description: "For growing multichannel businesses.",
-      features: ["10 marketplace connections", "25,000 product listings", "Real-time inventory sync", "Advanced order routing", "Priority support", "Advanced analytics", "Automated repricing", "Custom workflows"],
+      features: ["10 marketplace connections", "25,000 product listings", "Real-time inventory sync", "Advanced order routing", "Priority support", "Advanced analytics", "Auto-repricer (min/max margin rules)", "AI listing generator (Amazon/eBay/Flipkart)", "A+ content management via S3", "Custom workflows"],
       cta: "Start Free Trial", popular: true
     },
     {
       name: "Enterprise", price: "Custom", period: "",
       description: "For large operations & complex stacks.",
-      features: ["Unlimited connections", "Unlimited listings", "Enterprise inventory ops", "Custom routing logic", "Dedicated account manager", "White-label options", "Full API access", "Custom integrations", "SLA guarantee"],
+      features: ["Unlimited connections", "Unlimited listings", "Enterprise inventory ops", "Custom routing logic", "Dedicated account manager", "White-label options", "Full API access", "BigQuery + Power BI data pipeline", "Custom integrations", "SLA guarantee"],
       cta: "Contact Sales", popular: false
     }
   ];
