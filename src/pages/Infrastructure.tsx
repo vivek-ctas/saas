@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Cloud, Container, Network, Database, Workflow, Shield,
-  Cpu, GitBranch, Bell, Layers, Lock, Zap, ArrowRight, CheckCircle, Server, Boxes
+  Cpu, GitBranch, Bell, Layers, Lock, Zap, ArrowRight, CheckCircle, Server, Boxes, Brain
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import { BlobBackdrop, InfraIllustration, NeuralIllustration, LogoChip } from "@/components/illustrations";
