@@ -12,7 +12,44 @@ export const BlobBackdrop = ({ className = "" }: { className?: string }) => (
 );
 
 /* ------------------------------------------------------------------ */
-/* Hero dashboard mockup – animated bars + sparkline                   */
+/* Shared diagram defs                                                 */
+/* ------------------------------------------------------------------ */
+const DiagramDefs = () => (
+  <defs>
+    <linearGradient id="g-blue" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stopColor="#1e40af" />
+      <stop offset="100%" stopColor="#1e3a8a" />
+    </linearGradient>
+    <linearGradient id="g-purple" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stopColor="#6d28d9" />
+      <stop offset="100%" stopColor="#4c1d95" />
+    </linearGradient>
+    <linearGradient id="g-emerald" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stopColor="#047857" />
+      <stop offset="100%" stopColor="#064e3b" />
+    </linearGradient>
+    <linearGradient id="g-orange" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stopColor="#c2410c" />
+      <stop offset="100%" stopColor="#9a3412" />
+    </linearGradient>
+    <linearGradient id="g-pink" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stopColor="#db2777" />
+      <stop offset="100%" stopColor="#9d174d" />
+    </linearGradient>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3b82f6" />
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b5cf6" />
+    </marker>
+    <marker id="arrow-emerald" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#10b981" />
+    </marker>
+  </defs>
+);
+
+/* ------------------------------------------------------------------ */
+/* Hero dashboard – kept                                               */
 /* ------------------------------------------------------------------ */
 export const DashboardMockup = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 600 420" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -30,21 +67,17 @@ export const DashboardMockup = (props: SVGProps<SVGSVGElement>) => (
         <stop offset="100%" stopColor="hsl(280 70% 55%)" />
       </linearGradient>
     </defs>
-    {/* Window */}
     <rect x="20" y="20" width="560" height="380" rx="20" fill="url(#dm-bg)" stroke="hsl(220 15% 88%)" />
-    {/* Top bar */}
     <circle cx="46" cy="46" r="5" fill="#ef4444" />
     <circle cx="62" cy="46" r="5" fill="#f59e0b" />
     <circle cx="78" cy="46" r="5" fill="#10b981" />
     <rect x="120" y="38" width="200" height="16" rx="8" fill="hsl(220 20% 96%)" />
-    {/* Sidebar */}
     <rect x="40" y="80" width="120" height="300" rx="12" fill="hsl(226 71% 96%)" />
     <rect x="56" y="100" width="88" height="10" rx="5" fill="hsl(226 71% 50%)" />
     <rect x="56" y="124" width="64" height="8" rx="4" fill="hsl(226 30% 80%)" />
     <rect x="56" y="144" width="80" height="8" rx="4" fill="hsl(226 30% 80%)" />
     <rect x="56" y="164" width="56" height="8" rx="4" fill="hsl(226 30% 80%)" />
     <rect x="56" y="184" width="72" height="8" rx="4" fill="hsl(226 30% 80%)" />
-    {/* Stat cards */}
     <g>
       <rect x="180" y="80" width="120" height="70" rx="12" fill="white" stroke="hsl(220 15% 92%)" />
       <rect x="194" y="96" width="40" height="8" rx="4" fill="hsl(220 15% 80%)" />
@@ -56,13 +89,9 @@ export const DashboardMockup = (props: SVGProps<SVGSVGElement>) => (
       <rect x="458" y="96" width="40" height="8" rx="4" fill="hsl(220 15% 80%)" />
       <text x="458" y="130" fontFamily="Inter,system-ui" fontWeight="700" fontSize="20" fill="hsl(330 81% 50%)">+24%</text>
     </g>
-    {/* Chart card */}
     <rect x="180" y="170" width="384" height="210" rx="14" fill="white" stroke="hsl(220 15% 92%)" />
-    {/* Bars (animated grow) */}
     <g style={{ transformOrigin: "200px 360px" }}>
-      {[
-        [220, 80], [260, 120], [300, 60], [340, 140], [380, 100], [420, 170], [460, 130], [500, 180], [540, 110]
-      ].map(([x, h], i) => (
+      {[[220, 80], [260, 120], [300, 60], [340, 140], [380, 100], [420, 170], [460, 130], [500, 180], [540, 110]].map(([x, h], i) => (
         <rect key={i} x={x} y={360 - h} width="22" height={h} rx="6"
           fill={i % 2 === 0 ? "url(#dm-bar)" : "url(#dm-bar2)"}>
           <animate attributeName="height" from="0" to={h} dur={`${0.6 + i * 0.08}s`} fill="freeze" />
@@ -70,7 +99,6 @@ export const DashboardMockup = (props: SVGProps<SVGSVGElement>) => (
         </rect>
       ))}
     </g>
-    {/* Sparkline */}
     <path d="M200 260 Q 240 220, 280 240 T 360 220 T 440 200 T 540 180" stroke="hsl(330 81% 60%)" strokeWidth="3" fill="none" strokeLinecap="round" strokeDasharray="600" strokeDashoffset="0">
       <animate attributeName="stroke-dashoffset" from="600" to="0" dur="2.2s" fill="freeze" />
     </path>
@@ -78,68 +106,121 @@ export const DashboardMockup = (props: SVGProps<SVGSVGElement>) => (
 );
 
 /* ------------------------------------------------------------------ */
-/* Sync illustration – rotating arrows around marketplaces             */
+/* SyncIllustration – Channel-flow diagram (Listings <-> Ctasis <-> Orders / Shipping)
+   Styled after the dark "How Ctasis connects your channels" reference  */
 /* ------------------------------------------------------------------ */
 export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <defs>
-      <linearGradient id="si-ring" x1="0" x2="1">
-        <stop offset="0%" stopColor="hsl(226 71% 50%)" />
-        <stop offset="100%" stopColor="hsl(330 81% 60%)" />
-      </linearGradient>
-    </defs>
-    {/* Center hub */}
-    <circle cx="240" cy="180" r="60" fill="white" stroke="url(#si-ring)" strokeWidth="3" />
-    <text x="240" y="186" textAnchor="middle" fontFamily="Inter,system-ui" fontWeight="700" fontSize="18" fill="hsl(232 60% 18%)">Ctasis</text>
-    {/* Orbit */}
-    <g style={{ transformOrigin: "240px 180px" }}>
-      <animateTransform attributeName="transform" type="rotate" from="0 240 180" to="360 240 180" dur="30s" repeatCount="indefinite" />
-      <circle cx="240" cy="60" r="26" fill="hsl(226 71% 96%)" stroke="hsl(226 71% 50%)" />
-      <text x="240" y="66" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(226 71% 30%)">AMZ</text>
-      <circle cx="380" cy="180" r="26" fill="hsl(330 81% 96%)" stroke="hsl(330 81% 60%)" />
-      <text x="380" y="186" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(330 81% 40%)">eBay</text>
-      <circle cx="240" cy="300" r="26" fill="hsl(280 70% 96%)" stroke="hsl(280 70% 55%)" />
-      <text x="240" y="306" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(280 70% 35%)">Shop</text>
-      <circle cx="100" cy="180" r="26" fill="hsl(226 71% 96%)" stroke="hsl(226 71% 50%)" />
-      <text x="100" y="186" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(226 71% 30%)">WMT</text>
+  <svg viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <DiagramDefs />
+    {/* Card */}
+    <rect x="10" y="10" width="700" height="500" rx="22" fill="#0f172a" />
+    {/* Title */}
+    <g transform="translate(40,40)">
+      <rect width="92" height="22" rx="11" fill="#312e81" />
+      <text x="46" y="15" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight="700" fill="#c7d2fe" letterSpacing="1.5">LOGISTICS</text>
     </g>
-    {/* Connection arcs */}
-    <circle cx="240" cy="180" r="120" fill="none" stroke="url(#si-ring)" strokeWidth="2" strokeDasharray="6 8" opacity="0.5" />
+    <text x="40" y="100" fontFamily="Inter,system-ui" fontSize="22" fontWeight="700" fill="#f8fafc">How Ctasis connects your channels</text>
+    <text x="40" y="124" fontFamily="Inter,system-ui" fontSize="12" fill="#94a3b8">Real-time sync between Listings, Orders &amp; Shipping — one engine.</text>
+
+    {/* Listings node */}
+    <g>
+      <rect x="50" y="220" width="180" height="92" rx="14" fill="url(#g-blue)" stroke="#3b82f6" />
+      <circle cx="68" cy="238" r="4" fill="#60a5fa" />
+      <text x="140" y="262" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="16" fontWeight="700" fill="white">Listings</text>
+      <text x="140" y="284" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="11" fill="#bfdbfe">Product catalogue</text>
+    </g>
+    {/* Ctasis hub */}
+    <g>
+      <rect x="280" y="220" width="180" height="92" rx="14" fill="url(#g-purple)" stroke="#8b5cf6" />
+      <text x="370" y="262" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="16" fontWeight="700" fill="white">Ctasis</text>
+      <text x="370" y="284" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="11" fill="#ddd6fe">Central sync engine</text>
+    </g>
+    {/* Orders */}
+    <g>
+      <rect x="510" y="220" width="180" height="92" rx="14" fill="url(#g-emerald)" stroke="#10b981" />
+      <circle cx="528" cy="238" r="4" fill="#34d399" />
+      <text x="600" y="262" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="16" fontWeight="700" fill="white">Orders</text>
+      <text x="600" y="284" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="11" fill="#a7f3d0">Purchase records</text>
+    </g>
+    {/* Shipping */}
+    <g>
+      <rect x="280" y="380" width="180" height="92" rx="14" fill="url(#g-orange)" stroke="#fb923c" />
+      <circle cx="298" cy="398" r="4" fill="#fb923c" />
+      <text x="370" y="422" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="16" fontWeight="700" fill="white">Shipping</text>
+      <text x="370" y="444" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="11" fill="#fed7aa">Fulfilment &amp; tracking</text>
+    </g>
+
+    {/* Arrows */}
+    <line x1="230" y1="255" x2="278" y2="255" stroke="#3b82f6" strokeWidth="2" markerEnd="url(#arrow-blue)" />
+    <text x="254" y="245" textAnchor="middle" fontSize="10" fill="#94a3b8">Stock in</text>
+    <line x1="278" y1="280" x2="232" y2="280" stroke="#8b5cf6" strokeWidth="2" strokeDasharray="4 4" markerEnd="url(#arrow-purple)" />
+    <text x="254" y="298" textAnchor="middle" fontSize="10" fill="#94a3b8">← Updates</text>
+
+    <line x1="510" y1="255" x2="462" y2="255" stroke="#10b981" strokeWidth="2" markerEnd="url(#arrow-emerald)" />
+    <text x="486" y="245" textAnchor="middle" fontSize="10" fill="#94a3b8">Orders in</text>
+    <line x1="462" y1="280" x2="508" y2="280" stroke="#8b5cf6" strokeWidth="2" strokeDasharray="4 4" markerEnd="url(#arrow-purple)" />
+    <text x="486" y="298" textAnchor="middle" fontSize="10" fill="#94a3b8">→ Status</text>
+
+    <line x1="370" y1="312" x2="370" y2="378" stroke="#fb923c" strokeWidth="2" markerEnd="url(#arrow-blue)" />
+    <line x1="386" y1="378" x2="386" y2="312" stroke="#8b5cf6" strokeWidth="2" strokeDasharray="4 4" />
+    <text x="430" y="345" fontSize="10" fill="#94a3b8">→ Dispatch</text>
+    <text x="430" y="360" fontSize="10" fill="#94a3b8">← Tracking</text>
+
+    {/* live activity dot */}
+    <circle cx="370" cy="220" r="5" fill="#a78bfa">
+      <animate attributeName="opacity" values="1;0.3;1" dur="1.6s" repeatCount="indefinite" />
+    </circle>
   </svg>
 );
 
 /* ------------------------------------------------------------------ */
-/* Analytics illustration                                              */
+/* AnalyticsIllustration – BI dashboard mockup with bars + KPI cards   */
 /* ------------------------------------------------------------------ */
 export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <defs>
-      <linearGradient id="ai-fill" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0%" stopColor="hsl(226 71% 50%)" stopOpacity="0.4" />
-        <stop offset="100%" stopColor="hsl(226 71% 50%)" stopOpacity="0" />
-      </linearGradient>
-    </defs>
-    <rect x="20" y="20" width="440" height="320" rx="20" fill="white" stroke="hsl(220 15% 88%)" />
-    {/* Axes */}
-    <line x1="60" y1="280" x2="440" y2="280" stroke="hsl(220 15% 88%)" />
-    <line x1="60" y1="60" x2="60" y2="280" stroke="hsl(220 15% 88%)" />
-    {/* Area chart */}
-    <path d="M60 240 L120 200 L180 220 L240 150 L300 170 L360 110 L420 130 L420 280 L60 280 Z" fill="url(#ai-fill)" />
-    <path d="M60 240 L120 200 L180 220 L240 150 L300 170 L360 110 L420 130" stroke="hsl(226 71% 50%)" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-    {/* Dots */}
-    {[[120,200],[180,220],[240,150],[300,170],[360,110],[420,130]].map(([x,y],i)=>(
-      <circle key={i} cx={x} cy={y} r="5" fill="white" stroke="hsl(330 81% 60%)" strokeWidth="3"/>
+  <svg viewBox="0 0 560 400" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <DiagramDefs />
+    <rect x="10" y="10" width="540" height="380" rx="18" fill="white" stroke="#e2e8f0" />
+    {/* Header chip */}
+    <rect x="30" y="30" width="140" height="22" rx="11" fill="#ede9fe" />
+    <text x="100" y="45" textAnchor="middle" fontSize="10" fontWeight="700" fill="#6d28d9" letterSpacing="1.5">AI &amp; ANALYTICS</text>
+    <text x="30" y="80" fontSize="18" fontWeight="700" fill="#0f172a">Performance Insights</text>
+    {/* KPI cards */}
+    {[
+      { x: 30, label: "GMV", val: "$12.4M", tone: "#1e40af" },
+      { x: 200, label: "Orders", val: "84,210", tone: "#6d28d9" },
+      { x: 370, label: "ROAS", val: "4.8×", tone: "#db2777" },
+    ].map((k, i) => (
+      <g key={i}>
+        <rect x={k.x} y={100} width="160" height="74" rx="12" fill="#f8fafc" stroke="#e2e8f0" />
+        <text x={k.x + 16} y={124} fontSize="11" fontWeight="600" fill="#64748b">{k.label}</text>
+        <text x={k.x + 16} y={156} fontSize="22" fontWeight="800" fill={k.tone}>{k.val}</text>
+      </g>
     ))}
-    {/* Legend pills */}
-    <rect x="60" y="30" width="80" height="20" rx="10" fill="hsl(226 71% 96%)" />
-    <text x="100" y="44" textAnchor="middle" fontSize="11" fontWeight="600" fill="hsl(226 71% 30%)">Revenue</text>
-    <rect x="150" y="30" width="80" height="20" rx="10" fill="hsl(330 81% 96%)" />
-    <text x="190" y="44" textAnchor="middle" fontSize="11" fontWeight="600" fill="hsl(330 81% 40%)">Orders</text>
+    {/* Chart area */}
+    <rect x="30" y="194" width="500" height="176" rx="12" fill="#f8fafc" stroke="#e2e8f0" />
+    <line x1="50" y1="340" x2="510" y2="340" stroke="#cbd5e1" />
+    {[60, 110, 70, 140, 100, 160, 120, 180, 140, 200].map((h, i) => (
+      <g key={i}>
+        <rect x={60 + i * 46} y={340 - h} width="18" height={h} rx="4" fill="url(#g-purple)">
+          <animate attributeName="height" from="0" to={h} dur={`${0.5 + i * 0.07}s`} fill="freeze" />
+          <animate attributeName="y" from="340" to={340 - h} dur={`${0.5 + i * 0.07}s`} fill="freeze" />
+        </rect>
+        <rect x={82 + i * 46} y={340 - h * 0.7} width="18" height={h * 0.7} rx="4" fill="url(#g-pink)" opacity="0.85">
+          <animate attributeName="height" from="0" to={h * 0.7} dur={`${0.6 + i * 0.07}s`} fill="freeze" />
+          <animate attributeName="y" from="340" to={340 - h * 0.7} dur={`${0.6 + i * 0.07}s`} fill="freeze" />
+        </rect>
+      </g>
+    ))}
+    {/* Legend */}
+    <circle cx="50" cy="216" r="4" fill="#6d28d9" />
+    <text x="60" y="220" fontSize="10" fill="#475569">BigQuery</text>
+    <circle cx="120" cy="216" r="4" fill="#db2777" />
+    <text x="130" y="220" fontSize="10" fill="#475569">Power BI</text>
   </svg>
 );
 
 /* ------------------------------------------------------------------ */
-/* Globe / network illustration                                        */
+/* GlobeIllustration – globe with arc connections to marketplaces      */
 /* ------------------------------------------------------------------ */
 export const GlobeIllustration = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -154,36 +235,41 @@ export const GlobeIllustration = (props: SVGProps<SVGSVGElement>) => (
     <ellipse cx="240" cy="180" rx="120" ry="48" fill="none" stroke="hsl(226 71% 50%)" strokeWidth="1.5" opacity="0.5" />
     <ellipse cx="240" cy="180" rx="60" ry="120" fill="none" stroke="hsl(226 71% 50%)" strokeWidth="1.5" opacity="0.5" />
     <ellipse cx="240" cy="180" rx="120" ry="120" fill="none" stroke="hsl(226 71% 50%)" strokeWidth="1.5" opacity="0.5" />
-    {/* Pins */}
-    {[[160,120],[300,140],[340,220],[200,260],[260,180]].map(([x,y],i)=>(
+    {[[160, 120, "IN"], [300, 140, "US"], [340, 220, "EU"], [200, 260, "UK"], [260, 180, "SG"]].map(([x, y, l], i) => (
       <g key={i}>
-        <circle cx={x} cy={y} r="6" fill="hsl(330 81% 60%)" />
-        <circle cx={x} cy={y} r="6" fill="hsl(330 81% 60%)" opacity="0.4">
-          <animate attributeName="r" from="6" to="22" dur="2s" begin={`${i*0.4}s`} repeatCount="indefinite"/>
-          <animate attributeName="opacity" from="0.5" to="0" dur="2s" begin={`${i*0.4}s`} repeatCount="indefinite"/>
+        <circle cx={x as number} cy={y as number} r="6" fill="hsl(330 81% 60%)" />
+        <circle cx={x as number} cy={y as number} r="6" fill="hsl(330 81% 60%)" opacity="0.4">
+          <animate attributeName="r" from="6" to="22" dur="2s" begin={`${i * 0.4}s`} repeatCount="indefinite" />
+          <animate attributeName="opacity" from="0.5" to="0" dur="2s" begin={`${i * 0.4}s`} repeatCount="indefinite" />
         </circle>
+        <text x={(x as number) + 10} y={(y as number) - 8} fontSize="9" fontWeight="700" fill="#475569">{l}</text>
       </g>
     ))}
   </svg>
 );
 
 /* ------------------------------------------------------------------ */
-/* Story illustration – workflow                                       */
+/* WorkflowIllustration – clean 4-step flow with arrows                */
 /* ------------------------------------------------------------------ */
 export const WorkflowIllustration = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <rect x="30" y="60" width="120" height="80" rx="14" fill="hsl(226 71% 96%)" stroke="hsl(226 71% 50%)" />
-    <text x="90" y="105" textAnchor="middle" fontWeight="700" fontSize="14" fill="hsl(226 71% 30%)">Listings</text>
-    <rect x="180" y="120" width="120" height="80" rx="14" fill="hsl(280 70% 96%)" stroke="hsl(280 70% 55%)" />
-    <text x="240" y="165" textAnchor="middle" fontWeight="700" fontSize="14" fill="hsl(280 70% 35%)">Ctasis</text>
-    <rect x="330" y="60" width="120" height="80" rx="14" fill="hsl(330 81% 96%)" stroke="hsl(330 81% 60%)" />
-    <text x="390" y="105" textAnchor="middle" fontWeight="700" fontSize="14" fill="hsl(330 81% 40%)">Orders</text>
-    <rect x="180" y="220" width="120" height="60" rx="14" fill="white" stroke="hsl(220 15% 88%)" />
-    <text x="240" y="256" textAnchor="middle" fontWeight="700" fontSize="13" fill="hsl(232 60% 18%)">Shipping</text>
-    {/* Connectors */}
-    <path d="M150 100 Q 165 100, 180 140" stroke="hsl(226 71% 50%)" strokeWidth="2" fill="none" strokeDasharray="4 4"/>
-    <path d="M330 100 Q 315 100, 300 140" stroke="hsl(330 81% 60%)" strokeWidth="2" fill="none" strokeDasharray="4 4"/>
-    <path d="M240 200 L240 220" stroke="hsl(280 70% 55%)" strokeWidth="2" fill="none" strokeDasharray="4 4"/>
+  <svg viewBox="0 0 600 220" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <DiagramDefs />
+    {[
+      { x: 20, n: "1", t: "Order capture", c: "url(#g-blue)" },
+      { x: 170, n: "2", t: "Route & assign", c: "url(#g-purple)" },
+      { x: 320, n: "3", t: "Fulfil & ship", c: "url(#g-pink)" },
+      { x: 470, n: "4", t: "Track & close", c: "url(#g-emerald)" },
+    ].map((s, i) => (
+      <g key={i}>
+        <rect x={s.x} y="60" width="110" height="100" rx="14" fill="white" stroke="#e2e8f0" />
+        <circle cx={s.x + 55} cy="92" r="16" fill={s.c} />
+        <text x={s.x + 55} y="97" textAnchor="middle" fontSize="13" fontWeight="800" fill="white">{s.n}</text>
+        <text x={s.x + 55} y="135" textAnchor="middle" fontSize="11" fontWeight="700" fill="#0f172a">{s.t.split(" ")[0]}</text>
+        <text x={s.x + 55} y="150" textAnchor="middle" fontSize="11" fontWeight="700" fill="#0f172a">{s.t.split(" ").slice(1).join(" ")}</text>
+        {i < 3 && <line x1={s.x + 112} y1="110" x2={s.x + 168} y2="110" stroke="#94a3b8" strokeWidth="2" strokeDasharray="4 4" markerEnd="url(#arrow-purple)" />}
+      </g>
+    ))}
+    <text x="300" y="200" textAnchor="middle" fontSize="11" fill="#64748b">Unified across Amazon · Flipkart · Meesho · Walmart · Shopify</text>
   </svg>
 );
 
@@ -197,77 +283,213 @@ export const WaveDivider = ({ flip = false, className = "" }: { flip?: boolean; 
 );
 
 /* ------------------------------------------------------------------ */
-/* Neural network illustration – AI / analytics brain                  */
+/* NeuralIllustration – ML pipeline (inputs → layers → outputs)        */
+/* Styled after the AI Automation Engine reference card                */
 /* ------------------------------------------------------------------ */
 export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <defs>
-      <linearGradient id="nn-line" x1="0" x2="1">
-        <stop offset="0%" stopColor="hsl(226 71% 50%)" />
-        <stop offset="100%" stopColor="hsl(330 81% 60%)" />
-      </linearGradient>
-    </defs>
-    {/* layers */}
-    {[80, 200, 320, 440].map((x, li) => (
-      <g key={li}>
-        {[60, 140, 220, 300].slice(0, li === 0 || li === 3 ? 3 : 4).map((y, ni) => (
-          <circle key={ni} cx={x} cy={y + (li === 0 || li === 3 ? 30 : 0)} r="12" fill="white" stroke="url(#nn-line)" strokeWidth="2.5" />
+  <svg viewBox="0 0 560 320" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <DiagramDefs />
+    <rect x="10" y="10" width="540" height="300" rx="16" fill="#faf5ff" stroke="#e9d5ff" />
+    {/* Inputs */}
+    {["Data", "Price", "Stock", "Trend"].map((l, i) => (
+      <g key={l}>
+        <rect x="40" y={50 + i * 56} width="80" height="36" rx="8" fill="white" stroke="#a78bfa" />
+        <text x="80" y={73 + i * 56} textAnchor="middle" fontSize="12" fontWeight="700" fill="#6d28d9">{l}</text>
+        {[0, 1, 2].map((j) => (
+          <line key={j} x1="120" y1={68 + i * 56} x2="240" y2={90 + j * 70} stroke="#c4b5fd" strokeWidth="1" />
         ))}
       </g>
     ))}
-    {/* connections */}
-    {[80, 200, 320].map((x1, li) => {
-      const next = [80, 200, 320, 440][li + 1];
-      const ys1 = li === 0 ? [90, 170, 250] : [60, 140, 220, 300];
-      const ys2 = li === 2 ? [90, 170, 250] : [60, 140, 220, 300];
-      return ys1.map((y1, i) => ys2.map((y2, j) => (
-        <line key={`${li}-${i}-${j}`} x1={x1 + 12} y1={y1} x2={next - 12} y2={y2} stroke="url(#nn-line)" strokeWidth="1" opacity="0.35" />
-      )));
-    })}
-    {/* label */}
-    <rect x="180" y="320" width="120" height="28" rx="14" fill="hsl(226 71% 96%)" />
-    <text x="240" y="338" textAnchor="middle" fontSize="12" fontWeight="700" fill="hsl(226 71% 30%)">AI · ML Engine</text>
-  </svg>
-);
-
-/* ------------------------------------------------------------------ */
-/* Infrastructure stack illustration – pods, k8s, queue                */
-/* ------------------------------------------------------------------ */
-export const InfraIllustration = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <defs>
-      <linearGradient id="if-pod" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0%" stopColor="hsl(226 71% 96%)" />
-        <stop offset="100%" stopColor="hsl(280 70% 96%)" />
-      </linearGradient>
-    </defs>
-    {/* Cloud */}
-    <rect x="20" y="20" width="480" height="320" rx="20" fill="white" stroke="hsl(220 15% 88%)" />
-    <text x="40" y="50" fontSize="11" fontWeight="700" fill="hsl(226 71% 30%)" letterSpacing="2">AWS · CLOUD</text>
-    {/* Load balancer */}
-    <rect x="200" y="70" width="120" height="36" rx="10" fill="hsl(330 81% 60%)" />
-    <text x="260" y="93" textAnchor="middle" fontSize="12" fontWeight="700" fill="white">K8s · LB</text>
-    {/* pods */}
-    {[40, 160, 280, 400].map((x, i) => (
-      <g key={i}>
-        <line x1={260} y1={106} x2={x + 50} y2={150} stroke="hsl(226 71% 50%)" strokeDasharray="3 3" />
-        <rect x={x} y={150} width="100" height="80" rx="12" fill="url(#if-pod)" stroke="hsl(226 71% 50%)" />
-        <text x={x + 50} y={180} textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(226 71% 30%)">Pod {i + 1}</text>
-        <rect x={x + 14} y={192} width="72" height="6" rx="3" fill="hsl(226 71% 80%)" />
-        <rect x={x + 14} y={204} width="48" height="6" rx="3" fill="hsl(330 81% 80%)" />
-        <rect x={x + 14} y={216} width="60" height="6" rx="3" fill="hsl(280 70% 80%)" />
+    {/* Hidden layer */}
+    {[0, 1, 2].map((j) => (
+      <g key={j}>
+        <rect x="240" y={70 + j * 70} width="60" height="40" rx="10" fill="url(#g-purple)">
+          <animate attributeName="opacity" values="0.7;1;0.7" dur={`${1.5 + j * 0.3}s`} repeatCount="indefinite" />
+        </rect>
+        {[0, 1, 2].map((k) => (
+          <line key={k} x1="300" y1={90 + j * 70} x2="400" y2={80 + k * 70} stroke="#c4b5fd" strokeWidth="1" />
+        ))}
       </g>
     ))}
-    {/* Queue */}
-    <rect x="40" y="260" width="200" height="50" rx="10" fill="hsl(220 20% 96%)" stroke="hsl(220 15% 80%)" />
-    <text x="140" y="290" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(232 60% 18%)">Kafka · RabbitMQ</text>
-    <rect x="280" y="260" width="200" height="50" rx="10" fill="hsl(330 81% 96%)" stroke="hsl(330 81% 70%)" />
-    <text x="380" y="290" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(330 81% 35%)">PostgreSQL + MongoDB · Isolated</text>
+    {/* Outputs */}
+    {["Price opt.", "Forecast", "Restock"].map((l, i) => (
+      <g key={l}>
+        <rect x="400" y={60 + i * 70} width="120" height="40" rx="10" fill="white" stroke="#db2777" />
+        <text x="460" y={85 + i * 70} textAnchor="middle" fontSize="12" fontWeight="700" fill="#9d174d">{l}</text>
+      </g>
+    ))}
+    {/* Footer bar */}
+    <rect x="40" y="270" width="380" height="8" rx="4" fill="#ede9fe" />
+    <rect x="40" y="270" width="340" height="8" rx="4" fill="url(#g-purple)" />
+    <text x="430" y="278" fontSize="11" fontWeight="700" fill="#6d28d9">90%+ automation</text>
   </svg>
 );
 
 /* ------------------------------------------------------------------ */
-/* Generic logo chip – consistent partner/brand pill                   */
+/* InfraIllustration – Stacked cloud architecture (CDN → DB)            */
+/* Styled after the AWS Cloud Infrastructure reference card             */
+/* ------------------------------------------------------------------ */
+export const InfraIllustration = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 560 380" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <DiagramDefs />
+    <rect x="10" y="10" width="540" height="360" rx="16" fill="#ecfdf5" stroke="#a7f3d0" />
+    <text x="30" y="40" fontSize="11" fontWeight="700" fill="#047857" letterSpacing="2">AWS · CLOUD &amp; HOSTING</text>
+
+    {[
+      { y: 60, label: "CDN / Load balancer", tone: "#10b981" },
+      { y: 110, label: "Auto-scaling compute (EC2 + Lambda)", tone: "#059669" },
+      { y: 160, label: "Managed database (RDS + DynamoDB)", tone: "#047857" },
+      { y: 210, label: "PostgreSQL + MongoDB · isolated pods", tone: "#065f46" },
+      { y: 260, label: "Object storage (S3) · A+ content", tone: "#064e3b" },
+    ].map((row, i) => (
+      <g key={i}>
+        <rect x="60" y={row.y} width="440" height="38" rx="10" fill={row.tone} />
+        <text x="280" y={row.y + 24} textAnchor="middle" fontSize="13" fontWeight="700" fill="white">{row.label}</text>
+      </g>
+    ))}
+
+    {/* Region pills */}
+    <rect x="60" y="312" width="120" height="32" rx="16" fill="white" stroke="#10b981" />
+    <text x="120" y="332" textAnchor="middle" fontSize="12" fontWeight="700" fill="#047857">India</text>
+    <rect x="220" y="312" width="120" height="32" rx="16" fill="url(#g-emerald)" />
+    <text x="280" y="332" textAnchor="middle" fontSize="12" fontWeight="700" fill="white">99.99% Uptime SLA</text>
+    <rect x="380" y="312" width="120" height="32" rx="16" fill="white" stroke="#10b981" />
+    <text x="440" y="332" textAnchor="middle" fontSize="12" fontWeight="700" fill="#047857">USA · EU</text>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* MarketplaceConnectorIllustration – Our Platform <-> SP-API <-> AMZ  */
+/* Styled after the Amazon SP-API Integration reference card            */
+/* ------------------------------------------------------------------ */
+export const MarketplaceConnectorIllustration = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 560 320" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <DiagramDefs />
+    <rect x="10" y="10" width="540" height="300" rx="16" fill="#eff6ff" stroke="#bfdbfe" />
+    <text x="180" y="50" fontSize="11" fontWeight="700" fill="#1e40af" letterSpacing="1">Real-time bidirectional sync</text>
+    <line x1="180" y1="58" x2="380" y2="58" stroke="#3b82f6" strokeWidth="2" />
+
+    {/* Three nodes */}
+    {[
+      { x: 50, label1: "Our", label2: "Platform", fill: "white", stroke: "#3b82f6", text: "#1e40af" },
+      { x: 220, label1: "SP-API", label2: "connector", fill: "url(#g-blue)", stroke: "#1e3a8a", text: "white" },
+      { x: 390, label1: "Amazon", label2: "Marketplace", fill: "#fef3c7", stroke: "#f59e0b", text: "#92400e" },
+    ].map((n, i) => (
+      <g key={i}>
+        <rect x={n.x} y="80" width="120" height="80" rx="12" fill={n.fill} stroke={n.stroke} strokeWidth="2" />
+        <text x={n.x + 60} y="115" textAnchor="middle" fontSize="14" fontWeight="800" fill={n.text}>{n.label1}</text>
+        <text x={n.x + 60} y="135" textAnchor="middle" fontSize="11" fontWeight="600" fill={n.text}>{n.label2}</text>
+      </g>
+    ))}
+    {/* Arrows */}
+    <line x1="170" y1="110" x2="218" y2="110" stroke="#3b82f6" strokeWidth="2" markerEnd="url(#arrow-blue)" />
+    <line x1="218" y1="130" x2="170" y2="130" stroke="#3b82f6" strokeWidth="2" strokeDasharray="3 3" markerEnd="url(#arrow-blue)" />
+    <line x1="340" y1="110" x2="388" y2="110" stroke="#f59e0b" strokeWidth="2" markerEnd="url(#arrow-blue)" />
+    <line x1="388" y1="130" x2="340" y2="130" stroke="#f59e0b" strokeWidth="2" strokeDasharray="3 3" markerEnd="url(#arrow-blue)" />
+
+    {/* Pills */}
+    {["Orders", "Inventory", "Pricing", "Reports", "Returns"].map((p, i) => (
+      <g key={p}>
+        <rect x={40 + i * 100} y="220" width="86" height="28" rx="14" fill="white" stroke="#bfdbfe" />
+        <text x={83 + i * 100} y="238" textAnchor="middle" fontSize="11" fontWeight="700" fill="#1e40af">{p}</text>
+      </g>
+    ))}
+    <text x="280" y="285" textAnchor="middle" fontSize="11" fill="#475569">In-house built &amp; operated · zero manual intervention</text>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* InventoryIllustration – multi-warehouse grid + forecast              */
+/* Styled after the Inventory Management reference card                 */
+/* ------------------------------------------------------------------ */
+export const InventoryIllustration = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 560 320" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <DiagramDefs />
+    <rect x="10" y="10" width="540" height="300" rx="16" fill="#eff6ff" stroke="#bfdbfe" />
+    {/* SKU grid */}
+    {Array.from({ length: 12 }).map((_, i) => {
+      const c = i % 4, r = Math.floor(i / 4);
+      const fills = ["#3b82f6", "#8b5cf6", "#10b981", "#f59e0b"];
+      return (
+        <g key={i}>
+          <rect x={40 + c * 80} y={50 + r * 64} width="64" height="48" rx="8" fill="white" stroke="#bfdbfe" />
+          {[0, 1, 2].map((b) => (
+            <rect key={b} x={50 + c * 80} y={62 + r * 64 + b * 9} width={30 + ((i + b) % 4) * 6} height="5" rx="2" fill={fills[(i + b) % 4]} opacity={0.55 + b * 0.15} />
+          ))}
+        </g>
+      );
+    })}
+    {/* Forecast chart */}
+    <rect x="380" y="50" width="140" height="176" rx="10" fill="white" stroke="#bfdbfe" />
+    <text x="394" y="68" fontSize="10" fontWeight="700" fill="#475569">Forecast</text>
+    <polyline points="394,200 414,180 434,170 454,140 474,120 494,90" stroke="#1e40af" strokeWidth="2.5" fill="none" />
+    <polyline points="394,210 414,200 434,195 454,180 474,170 494,150" stroke="#db2777" strokeWidth="2" strokeDasharray="3 3" fill="none" />
+    <text x="394" y="220" fontSize="9" fill="#64748b">Demand</text>
+
+    {/* Warehouse labels */}
+    <text x="72" y="248" textAnchor="middle" fontSize="10" fontWeight="700" fill="#1e40af">India WH</text>
+    <text x="232" y="248" textAnchor="middle" fontSize="10" fontWeight="700" fill="#1e40af">USA WH</text>
+    {/* Auto-reorder pill */}
+    <rect x="40" y="262" width="160" height="32" rx="16" fill="url(#g-blue)" />
+    <text x="120" y="282" textAnchor="middle" fontSize="11" fontWeight="700" fill="white">Auto-reorder active</text>
+    <rect x="220" y="262" width="180" height="32" rx="16" fill="white" stroke="#3b82f6" />
+    <text x="310" y="282" textAnchor="middle" fontSize="11" fontWeight="700" fill="#1e40af">Live multi-warehouse sync</text>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* TimelineIllustration – Our evolution journey arrow                   */
+/* Styled after the "Cross-Border Foundation" reference                 */
+/* ------------------------------------------------------------------ */
+export const TimelineIllustration = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 480 240" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <DiagramDefs />
+    <rect x="10" y="10" width="460" height="220" rx="16" fill="#faf5ff" stroke="#e9d5ff" />
+    {/* Globe */}
+    <circle cx="240" cy="120" r="58" fill="none" stroke="#6d28d9" strokeWidth="2" />
+    <ellipse cx="240" cy="120" rx="58" ry="22" fill="none" stroke="#6d28d9" strokeWidth="1.5" />
+    <ellipse cx="240" cy="120" rx="22" ry="58" fill="none" stroke="#6d28d9" strokeWidth="1.5" />
+    <line x1="182" y1="120" x2="298" y2="120" stroke="#6d28d9" strokeWidth="1.5" />
+    {/* Arrow trajectory */}
+    <path d="M180 170 Q 240 40, 330 70" stroke="url(#g-pink)" strokeWidth="3" fill="none" strokeLinecap="round" markerEnd="url(#arrow-purple)" />
+    <text x="240" y="218" textAnchor="middle" fontSize="12" fontWeight="700" fill="#6d28d9">Cross-Border Foundation</text>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* RepricerIllustration – auto-repricer with min/max margin              */
+/* ------------------------------------------------------------------ */
+export const RepricerIllustration = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 560 280" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <DiagramDefs />
+    <rect x="10" y="10" width="540" height="260" rx="16" fill="white" stroke="#e2e8f0" />
+    <text x="30" y="40" fontSize="13" fontWeight="800" fill="#0f172a">Auto-Repricer · live</text>
+    {/* Track */}
+    <rect x="40" y="120" width="480" height="8" rx="4" fill="#f1f5f9" />
+    {/* Min / Max range */}
+    <rect x="120" y="116" width="320" height="16" rx="8" fill="url(#g-purple)" opacity="0.25" />
+    <line x1="120" y1="100" x2="120" y2="148" stroke="#6d28d9" strokeWidth="2" />
+    <text x="120" y="92" textAnchor="middle" fontSize="11" fontWeight="700" fill="#6d28d9">Min $18.40</text>
+    <line x1="440" y1="100" x2="440" y2="148" stroke="#db2777" strokeWidth="2" />
+    <text x="440" y="92" textAnchor="middle" fontSize="11" fontWeight="700" fill="#9d174d">Max $34.90</text>
+    {/* Current price */}
+    <circle cx="290" cy="124" r="12" fill="url(#g-pink)">
+      <animate attributeName="cx" values="200;360;240;300;290" dur="6s" repeatCount="indefinite" />
+    </circle>
+    <text x="290" y="172" textAnchor="middle" fontSize="13" fontWeight="800" fill="#0f172a">$24.90 · winning Buy Box</text>
+    <text x="290" y="190" textAnchor="middle" fontSize="11" fill="#64748b">Adjusts every 60s based on margin &amp; competitor signals</text>
+    {/* Marketplace pills */}
+    {["Amazon", "Flipkart", "eBay", "Walmart"].map((m, i) => (
+      <g key={m}>
+        <rect x={40 + i * 130} y="220" width="110" height="28" rx="14" fill="#f8fafc" stroke="#e2e8f0" />
+        <text x={95 + i * 130} y="238" textAnchor="middle" fontSize="11" fontWeight="700" fill="#475569">{m}</text>
+      </g>
+    ))}
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* Generic logo chip                                                    */
 /* ------------------------------------------------------------------ */
 export const LogoChip = ({ name, tone = "primary" }: { name: string; tone?: "primary" | "secondary" | "accent" | "dark" }) => {
   const tones: Record<string, string> = {
