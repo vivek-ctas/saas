@@ -9,7 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import {
-  BlobBackdrop, DashboardMockup, SyncIllustration,
+  BlobBackdrop, DashboardMockup, SellerHeroMockup, SyncIllustration,
   AnalyticsIllustration, GlobeIllustration, WorkflowIllustration,
   NeuralIllustration, InfraIllustration, LogoChip
 } from "@/components/illustrations";
@@ -45,75 +45,124 @@ const Home = () => {
   return (
     <Layout>
       <div ref={ref}>
-        {/* HERO */}
-        <section className="relative overflow-hidden gradient-animated">
-          <BlobBackdrop />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div className="reveal">
-                <Badge className="mb-6 bg-white/10 text-white border border-white/20 backdrop-blur-sm hover:bg-white/15">
-                  <Zap className="w-4 h-4 mr-2" />
-                  Ahmedabad's Leading Tech Experts Since 2019
+        {/* HERO – SellerSnap-style: warm cream canvas, light, polished */}
+        <section className="relative overflow-hidden hero-cream slope-divider-bottom">
+          <div className="absolute inset-0 hero-cream-grid pointer-events-none" />
+          <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-secondary/10 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32 sm:pt-28 sm:pb-40">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              {/* Copy */}
+              <div className="lg:col-span-6 reveal">
+                <Badge className="mb-6 bg-white/80 backdrop-blur-sm text-primary border border-primary/15 shadow-sm hover:bg-white">
+                  <Sparkles className="w-3.5 h-3.5 mr-1.5" />
+                  Trusted by 50,000+ multichannel sellers
                 </Badge>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.05] tracking-tight">
-                  One dashboard.
-                  <span className="block bg-gradient-to-r from-pink-200 via-fuchsia-200 to-white bg-clip-text text-transparent">
-                    Every marketplace.
+                <h1 className="text-5xl sm:text-6xl lg:text-[4.25rem] font-bold text-slate-900 mb-6 leading-[1.05] tracking-tight">
+                  The most advanced
+                  <span className="block bg-gradient-to-r from-primary via-fuchsia-600 to-secondary bg-clip-text text-transparent">
+                    AI Marketplace OS
                   </span>
+                  with built-in seller analytics
                 </h1>
-                <p className="text-xl text-white/85 mb-8 leading-relaxed max-w-xl">
-                  Ctasis Marketplace unifies inventory, orders & analytics across Amazon, eBay,
-                  Walmart, Shopify and 50+ channels — built for sellers who refuse to babysit spreadsheets.
+                <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-xl">
+                  Save time. Sync inventory. Avoid overselling. Maximize profit across Amazon,
+                  Walmart, eBay, Shopify and 50+ channels — from one beautiful dashboard.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                  <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl group">
-                    Start free 14-day trial
-                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+
+                <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                  <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
+                    Pricing
                   </Button>
-                  <Button size="lg" variant="outline"
-                    className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/20 shadow-stripe">
-                    Watch 2-min demo
+                  <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-fuchsia-600 hover:opacity-95 border-0">
+                    Free trial
+                    <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </div>
-                <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-white/80 text-sm">
-                  <div className="flex items-center"><CheckCircle className="w-4 h-4 mr-2 text-emerald-200" />No credit card</div>
-                  <div className="flex items-center"><CheckCircle className="w-4 h-4 mr-2 text-emerald-200" />15-min setup</div>
-                  <div className="flex items-center"><CheckCircle className="w-4 h-4 mr-2 text-emerald-200" />Cancel anytime</div>
+                <p className="text-sm text-slate-500 mb-8">No credit card · cancel anytime</p>
+
+                <div className="flex items-center gap-3">
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                    ))}
+                  </div>
+                  <span className="text-sm font-semibold text-slate-700">4.9 Amazon App Store Rating</span>
                 </div>
               </div>
 
-              <div className="relative reveal delay-200">
-                <div className="absolute -inset-6 bg-gradient-to-br from-pink-400/30 to-primary/30 blur-3xl rounded-3xl" />
+              {/* Mockup */}
+              <div className="lg:col-span-6 relative reveal delay-200">
+                <div className="absolute -inset-8 bg-gradient-to-br from-primary/15 via-fuchsia-300/15 to-secondary/15 blur-3xl rounded-[40px]" />
                 <div className="relative animate-float-slow">
-                  <DashboardMockup className="w-full h-auto rounded-2xl shadow-stripe-2xl" />
+                  <SellerHeroMockup className="w-full h-auto" />
                 </div>
+
                 {/* Floating chips */}
-                <div className="absolute -top-6 -left-6 bg-white rounded-xl shadow-stripe-xl p-3 flex items-center gap-2 animate-float">
-                  <div className="w-9 h-9 rounded-lg gradient-primary flex items-center justify-center">
-                    <RefreshCw className="w-4 h-4 text-white" />
+                <div className="absolute top-4 -left-4 sm:-left-8 bg-white rounded-2xl shadow-stripe-xl px-4 py-3 flex items-center gap-3 animate-float">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-fuchsia-600 flex items-center justify-center">
+                    <RefreshCw className="w-5 h-5 text-white" />
                   </div>
                   <div className="text-xs">
-                    <div className="font-semibold text-slate-900">Synced</div>
+                    <div className="font-bold text-slate-900">All channels synced</div>
                     <div className="text-slate-500">2 sec ago</div>
                   </div>
                 </div>
-                <div className="absolute -bottom-4 -right-2 bg-white rounded-xl shadow-stripe-xl p-3 flex items-center gap-2 animate-float" style={{ animationDelay: "1.5s" }}>
-                  <div className="w-9 h-9 rounded-lg gradient-accent flex items-center justify-center">
-                    <TrendingUp className="w-4 h-4 text-white" />
+                <div className="absolute -bottom-2 right-2 sm:-right-4 bg-white rounded-2xl shadow-stripe-xl px-4 py-3 flex items-center gap-3 animate-float" style={{ animationDelay: "1.5s" }}>
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-secondary to-pink-500 flex items-center justify-center">
+                    <TrendingUp className="w-5 h-5 text-white" />
                   </div>
                   <div className="text-xs">
-                    <div className="font-semibold text-slate-900">+24% MoM</div>
-                    <div className="text-slate-500">Revenue</div>
+                    <div className="font-bold text-slate-900">+24% MoM revenue</div>
+                    <div className="text-slate-500">Last 30 days</div>
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* Partner badges row */}
+            <div className="mt-20 flex flex-wrap items-center justify-center gap-4 sm:gap-6 reveal">
+              {[
+                { name: "Amazon SP-API Partner", sub: "Selling Partner Appstore" },
+                { name: "Walmart Solution Provider", sub: "Marketplace Connect" },
+                { name: "Shopify Plus Partner", sub: "Certified App" },
+                { name: "AWS Advanced Tier", sub: "Technology Partner" },
+              ].map((p, i) => (
+                <div key={i} className="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/90 backdrop-blur border border-slate-200/70 shadow-sm hover:shadow-stripe transition-stripe">
+                  <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-slate-900 to-slate-700 flex items-center justify-center text-white text-[10px] font-black tracking-tighter">
+                    {p.name.charAt(0)}
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-slate-900 leading-tight">{p.name}</div>
+                    <div className="text-[10px] text-slate-500">{p.sub}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* WALMART-STYLE LIVE BANNER (SellerSnap pattern) */}
+        <section className="relative -mt-12 z-10">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="rounded-2xl border-2 border-secondary/30 bg-white shadow-stripe-xl px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4 reveal">
+              <div className="flex items-center gap-3 text-center sm:text-left">
+                <div className="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse" />
+                <p className="text-base sm:text-lg font-semibold text-slate-900">
+                  AI Auto-Repricer is live! <span className="text-slate-500 font-normal">Trusted for Amazon, now for Walmart & Flipkart.</span>
+                </p>
+              </div>
+              <Link to="/services" className="flex items-center gap-1 text-secondary font-bold text-sm hover:gap-2 transition-all whitespace-nowrap">
+                Learn more <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </section>
 
         {/* TRUSTED BY (marquee) */}
-        <section className="py-12 bg-white border-b border-slate-100 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 mb-6 text-center text-sm text-slate-500 uppercase tracking-widest">
+        <section className="py-16 pt-24 bg-white overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 mb-8 text-center text-sm text-slate-500 uppercase tracking-widest font-semibold">
             Powering 50,000+ sellers across 50+ marketplaces
           </div>
           <div className="relative">
