@@ -6,7 +6,8 @@ import {
   Cpu, GitBranch, Bell, Layers, Lock, Zap, ArrowRight, CheckCircle, Server, Boxes, Brain
 } from "lucide-react";
 import Layout from "@/components/Layout";
-import { BlobBackdrop, InfraIllustration, NeuralIllustration, LogoChip } from "@/components/illustrations";
+import PageHero from "@/components/PageHero";
+import { BlobBackdrop, InfraIllustration, NeuralIllustration, OrderFlowDiagram, LogoChip } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
 const Infrastructure = () => {
@@ -52,37 +53,32 @@ const Infrastructure = () => {
   return (
     <Layout>
       <div ref={ref}>
-        {/* HERO */}
-        <section className="relative overflow-hidden gradient-animated">
-          <BlobBackdrop />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="reveal">
-              <Badge className="mb-6 bg-white/10 text-white border border-white/20 backdrop-blur-sm">
-                <Server className="w-4 h-4 mr-2" /> Built like a hyperscaler
-              </Badge>
-              <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
-                Infrastructure that<br />
-                <span className="bg-gradient-to-r from-pink-200 to-white bg-clip-text text-transparent">
-                  doesn't blink.
-                </span>
-              </h1>
-              <p className="text-xl text-white/85 mb-8 max-w-xl">
-                Isolated tenant pods, Kubernetes-native scaling, Kafka-driven events and a 99.99%
-                SLA — the same architecture trusted by enterprises, available to every seller.
-              </p>
-              <div className="flex flex-wrap gap-3 text-white/90 text-sm">
-                {["99.99% uptime", "SOC 2 Type II", "Multi-region", "Per-tenant DB"].map((t, i) => (
-                  <span key={i} className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/20">
-                    <CheckCircle className="w-4 h-4" /> {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="reveal delay-200">
-              <InfraIllustration className="w-full h-auto" />
-            </div>
+        <PageHero
+          badgeIcon={Server}
+          badgeText="Built like a hyperscaler"
+          title={<>Infrastructure that <span className="bg-gradient-to-r from-primary via-fuchsia-600 to-secondary bg-clip-text text-transparent">doesn't blink.</span></>}
+          subtitle="Isolated tenant pods, Kubernetes-native scaling, Kafka-driven events and a 99.99% SLA — the same architecture trusted by enterprises, available to every seller."
+          visual={<InfraIllustration className="w-full h-auto" />}
+          actions={
+            <>
+              <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
+                Read whitepaper
+              </Button>
+              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-fuchsia-600 hover:opacity-95 border-0">
+                Talk to engineering
+                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </>
+          }
+        >
+          <div className="mt-8 flex flex-wrap gap-3 text-slate-700 text-sm">
+            {["99.99% uptime", "SOC 2 Type II", "Multi-region", "Per-tenant DB"].map((t, i) => (
+              <span key={i} className="flex items-center gap-2 bg-white/80 backdrop-blur px-3 py-1.5 rounded-full border border-slate-200/70 shadow-sm">
+                <CheckCircle className="w-4 h-4 text-primary" /> {t}
+              </span>
+            ))}
           </div>
-        </section>
+        </PageHero>
 
         {/* PILLARS */}
         <section className="py-24 bg-white">
