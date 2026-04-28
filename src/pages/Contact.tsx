@@ -7,7 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Mail, MapPin, Phone, Clock, ArrowRight, MessageCircle, Headphones, BookOpen, Code, Video } from "lucide-react";
 import Layout from "@/components/Layout";
-import { BlobBackdrop, GlobeIllustration } from "@/components/illustrations";
+import PageHero from "@/components/PageHero";
+import { BlobBackdrop, GlobeIllustration, ContactMapIllustration } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
 const Contact = () => {
@@ -16,31 +17,24 @@ const Contact = () => {
   return (
     <Layout>
       <div ref={ref}>
-        {/* HERO */}
-        <section className="relative overflow-hidden gradient-animated">
-          <BlobBackdrop />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="reveal">
-              <Badge className="mb-6 bg-white/10 text-white border border-white/20 backdrop-blur-sm">
-                <MessageCircle className="w-4 h-4 mr-2" /> We reply within 4 hours
-              </Badge>
-              <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-                Let's talk about<br />
-                <span className="bg-gradient-to-r from-pink-200 to-white bg-clip-text text-transparent">your operations.</span>
-              </h1>
-              <p className="text-xl text-white/85 leading-relaxed max-w-xl">
-                Sales, support, partnerships — whatever brings you here, we're listening.
-                Real humans, no bots.
-              </p>
-            </div>
-            <div className="relative reveal delay-200">
-              <div className="absolute -inset-6 bg-gradient-to-br from-pink-400/30 to-primary/30 blur-3xl rounded-3xl" />
-              <div className="relative animate-float-slow">
-                <GlobeIllustration className="w-full h-auto" />
-              </div>
-            </div>
-          </div>
-        </section>
+        <PageHero
+          badgeIcon={MessageCircle}
+          badgeText="We reply within 4 hours"
+          title={<>Let's talk about <span className="bg-gradient-to-r from-primary via-fuchsia-600 to-secondary bg-clip-text text-transparent">your operations.</span></>}
+          subtitle="Sales, support, partnerships — whatever brings you here, we're listening. Real humans across 5 hubs, 24/7 coverage. No bots."
+          visual={<ContactMapIllustration className="w-full h-auto" />}
+          actions={
+            <>
+              <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
+                Browse docs
+              </Button>
+              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-fuchsia-600 hover:opacity-95 border-0">
+                Book a demo
+                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </>
+          }
+        />
 
         {/* QUICK CHANNELS */}
         <section className="py-16 bg-white -mt-8 relative z-10">

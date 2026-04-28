@@ -4,12 +4,13 @@ import { Badge } from "@/components/ui/badge";
 import {
   RefreshCw, ShoppingCart, BarChart3, TrendingUp, Zap, Globe, Shield,
   Truck, Calculator, Warehouse, Layers, Package2, Brain, Users,
-  ArrowRight, CheckCircle, Search, Settings, Rocket, LineChart
+  ArrowRight, CheckCircle, Search, Settings, Rocket, LineChart, Sparkles
 } from "lucide-react";
 import Layout from "@/components/Layout";
+import PageHero from "@/components/PageHero";
 import {
-  BlobBackdrop, AnalyticsIllustration, SyncIllustration,
-  WorkflowIllustration, GlobeIllustration
+  BlobBackdrop, AnalyticsIllustration, SyncIllustration, OrderFlowDiagram,
+  WorkflowIllustration, GlobeIllustration, RepricerIllustration
 } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
@@ -41,45 +42,41 @@ const Services = () => {
   return (
     <Layout>
       <div ref={ref}>
-        {/* HERO */}
-        <section className="relative overflow-hidden gradient-animated">
-          <BlobBackdrop />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="reveal">
-                <Badge className="mb-6 bg-white/10 text-white border border-white/20 backdrop-blur-sm">
-                  12 services · 1 platform
-                </Badge>
-                <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
-                  Services that<br />
-                  <span className="bg-gradient-to-r from-pink-200 to-white bg-clip-text text-transparent">do the heavy lifting.</span>
-                </h1>
-                <p className="text-xl text-white/85 mb-8 leading-relaxed max-w-xl">
-                  From inventory sync to AI-powered demand forecasting — every service is designed
-                  to remove a manual task and add a measurable result.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl group">
-                    Start Free Trial
-                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                  <Button size="lg" variant="outline" className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/20 shadow-stripe">
-                    Watch Demo
-                  </Button>
-                </div>
-              </div>
-              <div className="relative reveal delay-200">
-                <div className="absolute -inset-6 bg-gradient-to-br from-pink-400/30 to-primary/30 blur-3xl rounded-3xl" />
-                <div className="relative animate-float-slow">
-                  <SyncIllustration className="w-full h-auto" />
-                </div>
-              </div>
+        <PageHero
+          badgeIcon={Sparkles}
+          badgeText="12 services · 1 platform"
+          title={<>Services that <span className="bg-gradient-to-r from-primary via-fuchsia-600 to-secondary bg-clip-text text-transparent">do the heavy lifting.</span></>}
+          subtitle="From inventory sync to AI-powered demand forecasting — every service is designed to remove a manual task and add a measurable result."
+          visual={<SyncIllustration className="w-full h-auto" />}
+          actions={
+            <>
+              <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
+                Watch Demo
+              </Button>
+              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-fuchsia-600 hover:opacity-95 border-0">
+                Start Free Trial
+                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </>
+          }
+        />
+
+        {/* ORDER LIFECYCLE diagram */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12 max-w-3xl mx-auto reveal">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">End-to-end automation</Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">From marketplace ping to doorstep — automatically.</h2>
+              <p className="text-lg text-slate-600">Every step in the order lifecycle is event-driven and measurable.</p>
+            </div>
+            <div className="reveal delay-100 rounded-3xl bg-gradient-to-br from-slate-50 to-white p-6 sm:p-10 border border-slate-100 shadow-stripe">
+              <OrderFlowDiagram className="w-full h-auto" />
             </div>
           </div>
         </section>
 
         {/* PROCESS TIMELINE */}
-        <section className="py-24 bg-white">
+        <section className="py-24 section-bg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal">
               <Badge className="mb-4 bg-accent text-accent-foreground border-0">How it works</Badge>

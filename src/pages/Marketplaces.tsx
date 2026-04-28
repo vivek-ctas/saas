@@ -6,7 +6,8 @@ import {
   Smartphone, Truck, Megaphone, Store, ArrowRight, CheckCircle, Zap
 } from "lucide-react";
 import Layout from "@/components/Layout";
-import { BlobBackdrop, SyncIllustration, LogoChip } from "@/components/illustrations";
+import PageHero from "@/components/PageHero";
+import { BlobBackdrop, SyncIllustration, ContactMapIllustration, LogoChip } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
 const Marketplaces = () => {
@@ -65,37 +66,32 @@ const Marketplaces = () => {
   return (
     <Layout>
       <div ref={ref}>
-        {/* HERO */}
-        <section className="relative overflow-hidden gradient-animated">
-          <BlobBackdrop />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="reveal">
-              <Badge className="mb-6 bg-white/10 text-white border border-white/20 backdrop-blur-sm">
-                <Zap className="w-4 h-4 mr-2" /> 80+ live integrations
-              </Badge>
-              <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
-                Sell on every channel<br />
-                <span className="bg-gradient-to-r from-pink-200 to-white bg-clip-text text-transparent">
-                  that matters.
-                </span>
-              </h1>
-              <p className="text-xl text-white/85 max-w-xl mb-8">
-                From Amazon FBA to Lazada, TikTok Shop to Reliance Smart — Ctasis connects to every
-                marketplace, storefront, courier and ad network you need to scale globally.
-              </p>
-              <div className="flex flex-wrap gap-3 text-white/90 text-sm">
-                {["FBA & FBM support", "One-click connect", "Real-time sync"].map((t, i) => (
-                  <span key={i} className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/20">
-                    <CheckCircle className="w-4 h-4" /> {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="reveal delay-200">
-              <SyncIllustration className="w-full h-auto" />
-            </div>
+        <PageHero
+          badgeIcon={Zap}
+          badgeText="80+ live integrations"
+          title={<>Sell on every channel <span className="bg-gradient-to-r from-primary via-fuchsia-600 to-secondary bg-clip-text text-transparent">that matters.</span></>}
+          subtitle="From Amazon FBA to Lazada, TikTok Shop to Reliance Smart — Ctasis connects every marketplace, storefront, courier and ad network you need to scale globally."
+          visual={<ContactMapIllustration className="w-full h-auto" />}
+          actions={
+            <>
+              <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
+                See all integrations
+              </Button>
+              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-fuchsia-600 hover:opacity-95 border-0">
+                Connect a channel
+                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </>
+          }
+        >
+          <div className="mt-8 flex flex-wrap gap-3 text-slate-700 text-sm">
+            {["FBA & FBM support", "One-click connect", "Real-time sync"].map((t, i) => (
+              <span key={i} className="flex items-center gap-2 bg-white/80 backdrop-blur px-3 py-1.5 rounded-full border border-slate-200/70 shadow-sm">
+                <CheckCircle className="w-4 h-4 text-primary" /> {t}
+              </span>
+            ))}
           </div>
-        </section>
+        </PageHero>
 
         {/* MARKETPLACE GROUPS */}
         <section className="py-24 bg-white">

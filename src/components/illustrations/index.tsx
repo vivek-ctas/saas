@@ -595,6 +595,157 @@ export const RepricerIllustration = (props: SVGProps<SVGSVGElement>) => (
 );
 
 /* ------------------------------------------------------------------ */
+/* OrderFlowDiagram – Order → Pick → Pack → Ship → Delivered           */
+/* ------------------------------------------------------------------ */
+export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 720 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <DiagramDefs />
+    <rect x="10" y="10" width="700" height="340" rx="20" fill="white" stroke="#e2e8f0" />
+    <text x="40" y="46" fontFamily="Inter,system-ui" fontSize="14" fontWeight="800" fill="#0f172a">Order lifecycle · automated end-to-end</text>
+    <text x="40" y="66" fontFamily="Inter,system-ui" fontSize="11" fill="#64748b">From marketplace ping to doorstep delivery — zero clicks.</text>
+
+    {[
+      { x: 40, label: "Order received", sub: "Amazon SP-API", grad: "url(#g-blue)", color: "#1e40af" },
+      { x: 180, label: "Inventory check", sub: "Multi-WH route", grad: "url(#g-purple)", color: "#6d28d9" },
+      { x: 320, label: "Pick & pack", sub: "WMS barcode", grad: "url(#g-pink)", color: "#9d174d" },
+      { x: 460, label: "Label + ship", sub: "Best courier rate", grad: "url(#g-orange)", color: "#9a3412" },
+      { x: 600, label: "Tracked delivery", sub: "Customer notified", grad: "url(#g-blue)", color: "#1e40af" },
+    ].map((s, i, arr) => (
+      <g key={i}>
+        <rect x={s.x} y={120} width={110} height={88} rx={14} fill={s.grad} />
+        <circle cx={s.x + 22} cy={142} r={10} fill="white" opacity="0.25" />
+        <text x={s.x + 22} y={146} textAnchor="middle" fontSize={11} fontWeight={800} fill="white">{i + 1}</text>
+        <text x={s.x + 55} y={172} textAnchor="middle" fontSize={11} fontWeight={700} fill="white">{s.label}</text>
+        <text x={s.x + 55} y={190} textAnchor="middle" fontSize={9} fill="white" opacity={0.85}>{s.sub}</text>
+        {i < arr.length - 1 && (
+          <g>
+            <line x1={s.x + 110} y1={164} x2={arr[i + 1].x - 4} y2={164}
+                  stroke="#cbd5e1" strokeWidth={2} strokeDasharray="4 4" markerEnd="url(#arrow-purple)" />
+          </g>
+        )}
+      </g>
+    ))}
+
+    {/* Bottom timeline scale */}
+    <line x1={40} y1={260} x2={680} y2={260} stroke="#e2e8f0" strokeWidth={1.5} />
+    {["0s", "2s", "30s", "5m", "Out for delivery"].map((t, i) => (
+      <g key={t}>
+        <circle cx={68 + i * 152} cy={260} r={5} fill="white" stroke="#6d28d9" strokeWidth={2} />
+        <text x={68 + i * 152} y={282} textAnchor="middle" fontSize={10} fontWeight={700} fill="#475569">{t}</text>
+      </g>
+    ))}
+    <text x={360} y={320} textAnchor="middle" fontSize={11} fill="#94a3b8">Median order processing time across 50,000+ stores</text>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* PricingCalculatorMockup – seller-facing ROI / margin calc            */
+/* ------------------------------------------------------------------ */
+export const PricingCalculatorMockup = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 560 400" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="pc-grad" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="hsl(226 71% 50%)" />
+        <stop offset="100%" stopColor="hsl(330 81% 60%)" />
+      </linearGradient>
+    </defs>
+    <rect x="20" y="20" width="520" height="360" rx="20" fill="white" stroke="#e2e8f0" />
+    <text x="44" y="56" fontSize="13" fontWeight="800" fill="#0f172a">ROI calculator · projected impact</text>
+    <text x="44" y="76" fontSize="11" fill="#64748b">Based on your channels, SKUs and average order value.</text>
+
+    {/* Inputs panel */}
+    <rect x="44" y="100" width="220" height="240" rx="14" fill="#f8fafc" stroke="#e2e8f0" />
+    {[
+      { y: 124, label: "Marketplaces", value: "5" },
+      { y: 168, label: "Monthly orders", value: "12,400" },
+      { y: 212, label: "Avg. order value", value: "$48.20" },
+      { y: 256, label: "Current margin", value: "18%" },
+    ].map((f) => (
+      <g key={f.label}>
+        <text x={60} y={f.y + 4} fontSize={10} fontWeight={600} fill="#64748b">{f.label.toUpperCase()}</text>
+        <rect x={60} y={f.y + 12} width={188} height={28} rx={8} fill="white" stroke="#cbd5e1" />
+        <text x={70} y={f.y + 30} fontSize={12} fontWeight={700} fill="#0f172a">{f.value}</text>
+      </g>
+    ))}
+    <rect x={60} y={306} width={188} height={28} rx={14} fill="url(#pc-grad)" />
+    <text x={154} y={324} textAnchor="middle" fontSize={11} fontWeight={700} fill="white">Recalculate →</text>
+
+    {/* Output cards */}
+    <g>
+      <rect x={284} y={100} width={232} height={75} rx={14} fill="hsl(226 71% 96%)" stroke="hsl(226 71% 88%)" />
+      <text x={300} y={122} fontSize={10} fontWeight={700} fill="hsl(226 71% 40%)" letterSpacing="0.5">PROJECTED MARGIN</text>
+      <text x={300} y={156} fontSize={28} fontWeight={800} fill="hsl(226 71% 35%)">+9.4%</text>
+      <text x={420} y={156} fontSize={11} fill="#475569">in 90 days</text>
+
+      <rect x={284} y={185} width={232} height={75} rx={14} fill="hsl(330 81% 97%)" stroke="hsl(330 81% 90%)" />
+      <text x={300} y={207} fontSize={10} fontWeight={700} fill="hsl(330 81% 45%)" letterSpacing="0.5">EXTRA REVENUE</text>
+      <text x={300} y={241} fontSize={28} fontWeight={800} fill="hsl(330 81% 40%)">$54.8k</text>
+      <text x={430} y={241} fontSize={11} fill="#475569">/ month</text>
+
+      <rect x={284} y={270} width={232} height={70} rx={14} fill="#0f172a" />
+      <text x={300} y={292} fontSize={10} fontWeight={700} fill="#a78bfa" letterSpacing="0.5">PAYBACK PERIOD</text>
+      <text x={300} y={324} fontSize={24} fontWeight={800} fill="white">18 days</text>
+      <text x={420} y={324} fontSize={11} fill="#94a3b8">to break even</text>
+    </g>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* ContactMapIllustration – global presence map with hubs              */
+/* ------------------------------------------------------------------ */
+export const ContactMapIllustration = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 600 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="cm-bg" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="#fdf2f8" />
+        <stop offset="100%" stopColor="#eff6ff" />
+      </linearGradient>
+    </defs>
+    <rect x="10" y="10" width="580" height="340" rx="20" fill="url(#cm-bg)" stroke="#e2e8f0" />
+    {/* Dotted world grid */}
+    {Array.from({ length: 18 }).map((_, r) =>
+      Array.from({ length: 30 }).map((_, c) => {
+        const cx = 30 + c * 19, cy = 50 + r * 16;
+        // crude continent mask
+        const land =
+          (c > 3 && c < 11 && r > 2 && r < 9) || // americas
+          (c > 13 && c < 19 && r > 1 && r < 7) || // EU
+          (c > 18 && c < 27 && r > 4 && r < 12) || // asia
+          (c > 14 && c < 19 && r > 8 && r < 13) || // africa
+          (c > 23 && c < 28 && r > 11 && r < 15);  // oceania
+        return (
+          <circle key={`${r}-${c}`} cx={cx} cy={cy} r={1.6}
+                  fill={land ? "#6366f1" : "#cbd5e1"} opacity={land ? 0.7 : 0.35} />
+        );
+      })
+    )}
+    {/* Hub pins */}
+    {[
+      { x: 130, y: 180, label: "San Francisco" },
+      { x: 290, y: 130, label: "London" },
+      { x: 360, y: 175, label: "Ahmedabad HQ" },
+      { x: 460, y: 200, label: "Singapore" },
+      { x: 500, y: 270, label: "Sydney" },
+    ].map((h) => (
+      <g key={h.label}>
+        <circle cx={h.x} cy={h.y} r={14} fill="hsl(330 81% 60%)" opacity={0.2}>
+          <animate attributeName="r" values="10;22;10" dur="2.6s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.4;0;0.4" dur="2.6s" repeatCount="indefinite" />
+        </circle>
+        <circle cx={h.x} cy={h.y} r={6} fill="hsl(330 81% 55%)" stroke="white" strokeWidth={2} />
+        <rect x={h.x + 10} y={h.y - 18} width={h.label.length * 6.5 + 12} height={20} rx={10} fill="white" stroke="#e2e8f0" />
+        <text x={h.x + 16} y={h.y - 4} fontSize={10} fontWeight={700} fill="#0f172a">{h.label}</text>
+      </g>
+    ))}
+    {/* Arc connections */}
+    <path d="M130 180 Q 220 60, 360 175" stroke="hsl(226 71% 50%)" strokeWidth={1.5} fill="none" strokeDasharray="4 4" opacity={0.6} />
+    <path d="M360 175 Q 420 90, 460 200" stroke="hsl(330 81% 55%)" strokeWidth={1.5} fill="none" strokeDasharray="4 4" opacity={0.6} />
+    <path d="M460 200 Q 510 240, 500 270" stroke="hsl(226 71% 50%)" strokeWidth={1.5} fill="none" strokeDasharray="4 4" opacity={0.6} />
+    <text x={300} y={336} textAnchor="middle" fontSize={11} fill="#64748b">Sales · Support · Engineering — across 5 hubs, 24/7 coverage</text>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
 /* Generic logo chip                                                    */
 /* ------------------------------------------------------------------ */
 export const LogoChip = ({ name, tone = "primary" }: { name: string; tone?: "primary" | "secondary" | "accent" | "dark" }) => {

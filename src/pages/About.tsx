@@ -7,7 +7,8 @@ import {
   Zap, Truck, Megaphone, Store, CheckCircle, Cpu
 } from "lucide-react";
 import Layout from "@/components/Layout";
-import { BlobBackdrop, WorkflowIllustration, GlobeIllustration, NeuralIllustration, LogoChip } from "@/components/illustrations";
+import PageHero from "@/components/PageHero";
+import { BlobBackdrop, WorkflowIllustration, GlobeIllustration, NeuralIllustration, TimelineIllustration, LogoChip } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
 const About = () => {
@@ -32,24 +33,24 @@ const About = () => {
   return (
     <Layout>
       <div ref={ref}>
-        {/* HERO */}
-        <section className="relative overflow-hidden gradient-animated">
-          <BlobBackdrop />
-          <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-28 text-center reveal">
-            <Badge className="mb-6 bg-white/10 text-white border border-white/20 backdrop-blur-sm">
-              Our story
-            </Badge>
-            <h1 className="text-5xl sm:text-7xl font-bold text-white mb-6 leading-[1.05] tracking-tight">
-              We're building the<br />
-              <span className="bg-gradient-to-r from-pink-200 to-white bg-clip-text text-transparent">operating system</span>
-              <br />for modern commerce.
-            </h1>
-            <p className="text-xl text-white/85 max-w-2xl mx-auto leading-relaxed">
-              50,000+ sellers in 150+ countries trust Ctasis to power their multichannel operations.
-              This is how we got here — and where we're going.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          badgeIcon={Sparkles}
+          badgeText="Our story"
+          title={<>We're building the <span className="bg-gradient-to-r from-primary via-fuchsia-600 to-secondary bg-clip-text text-transparent">operating system</span> for modern commerce.</>}
+          subtitle="50,000+ sellers in 150+ countries trust Ctasis to power their multichannel operations. This is how we got here — and where we're going."
+          visual={<TimelineIllustration className="w-full h-auto" />}
+          actions={
+            <>
+              <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
+                Read our manifesto
+              </Button>
+              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-fuchsia-600 hover:opacity-95 border-0">
+                Join the team
+                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </>
+          }
+        />
 
         {/* MISSION + VISION */}
         <section className="py-24 bg-white">

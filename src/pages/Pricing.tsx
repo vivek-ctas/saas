@@ -6,7 +6,8 @@ import {
 } from "@/components/ui/accordion";
 import { Check, X, Sparkles, ArrowRight, Quote, Star } from "lucide-react";
 import Layout from "@/components/Layout";
-import { BlobBackdrop, AnalyticsIllustration } from "@/components/illustrations";
+import PageHero from "@/components/PageHero";
+import { BlobBackdrop, AnalyticsIllustration, PricingCalculatorMockup } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
 const Pricing = () => {
@@ -56,25 +57,27 @@ const Pricing = () => {
   return (
     <Layout>
       <div ref={ref}>
-        {/* HERO */}
-        <section className="relative overflow-hidden gradient-animated">
-          <BlobBackdrop />
-          <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center reveal">
-            <Badge className="mb-6 bg-white/10 text-white border border-white/20 backdrop-blur-sm">
-              <Sparkles className="w-4 h-4 mr-2" /> Transparent pricing
-            </Badge>
-            <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-              Pricing that scales<br />
-              <span className="bg-gradient-to-r from-pink-200 to-white bg-clip-text text-transparent">with your business.</span>
-            </h1>
-            <p className="text-xl text-white/85 max-w-2xl mx-auto">
-              Start free for 14 days. No credit card. No surprises. Cancel anytime.
-            </p>
-          </div>
-        </section>
+        <PageHero
+          badgeIcon={Sparkles}
+          badgeText="Transparent pricing"
+          title={<>Pricing that scales <span className="bg-gradient-to-r from-primary via-fuchsia-600 to-secondary bg-clip-text text-transparent">with your business.</span></>}
+          subtitle="Start free for 14 days. No credit card. No surprises. Cancel anytime — and see your projected ROI before you commit."
+          visual={<PricingCalculatorMockup className="w-full h-auto" />}
+          actions={
+            <>
+              <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
+                Compare plans
+              </Button>
+              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-fuchsia-600 hover:opacity-95 border-0">
+                Start Free Trial
+                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </>
+          }
+        />
 
         {/* PLANS */}
-        <section className="py-24 bg-white -mt-12">
+        <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
               {plans.map((plan, i) => (
