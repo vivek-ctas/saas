@@ -9,7 +9,7 @@ import {
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import {
-  AnalyticsIllustration, SyncIllustration, OrderFlowDiagram,
+  BlobBackdrop, AnalyticsIllustration, SyncIllustration, OrderFlowDiagram,
   WorkflowIllustration, GlobeIllustration, RepricerIllustration
 } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
