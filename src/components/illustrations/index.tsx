@@ -49,6 +49,112 @@ const DiagramDefs = () => (
 );
 
 /* ------------------------------------------------------------------ */
+/* SellerHeroMockup – SellerSnap-inspired product table dashboard      */
+/* Light, airy, with KPI row over a "listings" table behind it         */
+/* ------------------------------------------------------------------ */
+export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 760 520" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="shm-card" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="#ffffff" />
+        <stop offset="100%" stopColor="#fbfaff" />
+      </linearGradient>
+      <linearGradient id="shm-accent" x1="0" x2="1" y1="0" y2="0">
+        <stop offset="0%" stopColor="hsl(226 71% 50%)" />
+        <stop offset="100%" stopColor="hsl(330 81% 60%)" />
+      </linearGradient>
+      <filter id="shm-shadow" x="-10%" y="-10%" width="120%" height="130%">
+        <feGaussianBlur stdDeviation="14" />
+        <feOffset dy="10" />
+        <feComponentTransfer><feFuncA type="linear" slope="0.18" /></feComponentTransfer>
+        <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+      </filter>
+    </defs>
+
+    {/* Back browser frame – the "listings table" */}
+    <g filter="url(#shm-shadow)">
+      <rect x="40" y="40" width="680" height="440" rx="20" fill="url(#shm-card)" stroke="hsl(220 20% 92%)" />
+      {/* top bar */}
+      <circle cx="64" cy="64" r="4.5" fill="#ef4444" />
+      <circle cx="80" cy="64" r="4.5" fill="#f59e0b" />
+      <circle cx="96" cy="64" r="4.5" fill="#10b981" />
+      <rect x="120" y="56" width="140" height="16" rx="8" fill="hsl(226 71% 96%)" />
+      <text x="190" y="68" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="9" fontWeight="700" fill="hsl(226 71% 40%)">CTASIS · Listings</text>
+      {/* tabs */}
+      <text x="290" y="68" fontFamily="Inter,system-ui" fontSize="11" fontWeight="600" fill="hsl(226 71% 40%)">Overview</text>
+      <text x="360" y="68" fontFamily="Inter,system-ui" fontSize="11" fill="#64748b">Listings</text>
+      <text x="420" y="68" fontFamily="Inter,system-ui" fontSize="11" fill="#64748b">Settings</text>
+      <rect x="284" y="76" width="56" height="2" rx="1" fill="hsl(226 71% 40%)" />
+      {/* status pill */}
+      <rect x="630" y="50" width="68" height="22" rx="11" fill="hsl(150 70% 92%)" />
+      <circle cx="644" cy="61" r="3" fill="hsl(150 70% 40%)" />
+      <text x="685" y="65" textAnchor="end" fontFamily="Inter,system-ui" fontSize="10" fontWeight="700" fill="hsl(150 70% 30%)">In stock</text>
+
+      {/* Filter chips */}
+      <rect x="64" y="100" width="100" height="24" rx="12" fill="hsl(220 20% 96%)" />
+      <text x="114" y="116" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fill="#475569">This month ▾</text>
+      <rect x="172" y="100" width="120" height="24" rx="12" fill="hsl(220 20% 96%)" />
+      <text x="232" y="116" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fill="#475569">Compared to ▾</text>
+
+      {/* Skeleton table rows behind */}
+      {[170, 200, 230, 260, 290, 320, 350, 380, 410, 440].map((y, i) => (
+        <g key={i} opacity={0.6 - i * 0.04}>
+          <rect x="64" y={y} width="640" height="14" rx="7" fill={i % 2 ? "hsl(220 20% 97%)" : "hsl(220 20% 94%)"} />
+        </g>
+      ))}
+    </g>
+
+    {/* Floating product KPI card – the hero element */}
+    <g filter="url(#shm-shadow)" style={{ transformOrigin: "380px 260px" }}>
+      <rect x="80" y="200" width="640" height="110" rx="16" fill="white" stroke="hsl(220 20% 92%)" />
+      {/* Product thumb */}
+      <rect x="100" y="220" width="70" height="70" rx="12" fill="hsl(226 71% 95%)" />
+      <circle cx="135" cy="255" r="22" fill="hsl(226 71% 60%)" />
+      <circle cx="135" cy="255" r="14" fill="hsl(226 71% 80%)" />
+      <text x="100" y="305" fontFamily="Inter,system-ui" fontSize="8" fill="#94a3b8">SKU: 8632010</text>
+
+      {/* Column headers */}
+      <text x="195" y="225" fontFamily="Inter,system-ui" fontSize="9" fontWeight="600" fill="#94a3b8" letterSpacing="0.5">PRODUCT</text>
+      <text x="195" y="248" fontFamily="Inter,system-ui" fontSize="14" fontWeight="700" fill="#0f172a">Wireless Speaker</text>
+      <rect x="195" y="258" width="58" height="16" rx="8" fill="hsl(330 81% 95%)" />
+      <text x="224" y="269" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="9" fontWeight="700" fill="hsl(330 81% 45%)">Repricer ON</text>
+
+      {/* Platform pills */}
+      <text x="290" y="225" fontFamily="Inter,system-ui" fontSize="9" fontWeight="600" fill="#94a3b8" letterSpacing="0.5">PLATFORM</text>
+      <rect x="290" y="234" width="56" height="22" rx="6" fill="#0f172a" />
+      <text x="318" y="249" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="9" fontWeight="700" fill="white">amazon</text>
+      <rect x="290" y="262" width="56" height="22" rx="6" fill="hsl(210 100% 50%)" />
+      <text x="318" y="277" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="9" fontWeight="700" fill="white">walmart</text>
+
+      {/* KPI columns */}
+      {[
+        { x: 365, label: "ORDERS", value: "850", delta: "+10%" },
+        { x: 445, label: "BUY BOX", value: "82%", delta: "+9%" },
+        { x: 525, label: "REVENUE", value: "$21.5k", delta: "+19.4%" },
+        { x: 605, label: "PROFIT", value: "$6.8k", delta: "+23.6%" },
+      ].map((k, i) => (
+        <g key={i}>
+          <text x={k.x} y="225" fontFamily="Inter,system-ui" fontSize="9" fontWeight="600" fill="#94a3b8" letterSpacing="0.5">{k.label}</text>
+          <text x={k.x} y="252" fontFamily="Inter,system-ui" fontSize="18" fontWeight="800" fill="#0f172a">{k.value}</text>
+          <text x={k.x} y="275" fontFamily="Inter,system-ui" fontSize="10" fontWeight="700" fill="hsl(150 70% 40%)">▲ {k.delta}</text>
+        </g>
+      ))}
+
+      {/* Margin column */}
+      <text x="685" y="225" fontFamily="Inter,system-ui" fontSize="9" fontWeight="600" fill="#94a3b8" letterSpacing="0.5">MARGIN</text>
+      <text x="685" y="252" fontFamily="Inter,system-ui" fontSize="18" fontWeight="800" fill="url(#shm-accent)">31.6%</text>
+      <text x="685" y="275" fontFamily="Inter,system-ui" fontSize="10" fontWeight="700" fill="hsl(150 70% 40%)">▲ +3.6%</text>
+
+      {/* Subtle pulse ring on Repricer ON */}
+      <circle cx="200" cy="266" r="3" fill="hsl(330 81% 60%)">
+        <animate attributeName="r" values="3;7;3" dur="2.4s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="1;0;1" dur="2.4s" repeatCount="indefinite" />
+      </circle>
+    </g>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
 /* Hero dashboard – kept                                               */
 /* ------------------------------------------------------------------ */
 export const DashboardMockup = (props: SVGProps<SVGSVGElement>) => (
