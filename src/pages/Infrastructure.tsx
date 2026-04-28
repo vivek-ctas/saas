@@ -133,6 +133,20 @@ const Infrastructure = () => {
           </div>
         </section>
 
+        {/* EVENT FLOW DIAGRAM */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12 max-w-3xl mx-auto reveal">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Event pipeline</Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">10M+ events. Sub-second latency.</h2>
+              <p className="text-lg text-slate-600">Every marketplace ping flows through the same battle-tested pipeline — observable end-to-end.</p>
+            </div>
+            <div className="reveal delay-100 rounded-3xl bg-gradient-to-br from-slate-50 to-white p-6 sm:p-10 border border-slate-100 shadow-stripe">
+              <OrderFlowDiagram className="w-full h-auto" />
+            </div>
+          </div>
+        </section>
+
         {/* STACK */}
         <section className="py-24 section-bg relative overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-30" />
