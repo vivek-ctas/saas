@@ -179,50 +179,61 @@ const Home = () => {
           </div>
         </section>
 
-        {/* INTEGRATIONS STACK — full ecosystem */}
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-14 reveal max-w-3xl mx-auto">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
-                <Boxes className="w-3.5 h-3.5 mr-1" /> The integration stack
+        {/* INTEGRATIONS STACK — refined editorial layout */}
+        <section className="py-28 bg-gradient-to-b from-white via-slate-50/60 to-white relative overflow-hidden">
+          <div className="absolute inset-0 hero-cream-grid opacity-40 pointer-events-none" />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16 reveal max-w-3xl mx-auto">
+              <Badge className="mb-5 bg-white text-primary border border-primary/15 shadow-sm">
+                <Boxes className="w-3.5 h-3.5 mr-1.5" /> The integration stack
               </Badge>
-              <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4 leading-tight">
-                One platform. <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Every connection</span> you'll ever need.
+              <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-5 leading-[1.1] tracking-tight">
+                One platform.{" "}
+                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  Every connection
+                </span>{" "}
+                you'll ever need.
               </h2>
-              <p className="text-xl text-slate-600">
+              <p className="text-lg text-slate-600 leading-relaxed">
                 Marketplaces, couriers, ad networks, ERPs, payment rails — Ctasis stitches it all into one source of truth.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
               {[
                 {
-                  icon: Store, title: "Marketplaces", tone: "from-primary to-fuchsia-600",
+                  icon: Store, title: "Marketplaces", count: "20+",
                   items: ["Amazon FBA/FBM", "Walmart", "eBay", "Lazada", "Shopee", "Rakuten", "Flipkart", "Allegro"]
                 },
                 {
-                  icon: Truck, title: "Logistics & couriers", tone: "from-secondary to-pink-600",
+                  icon: Truck, title: "Logistics & couriers", count: "15+",
                   items: ["Shiprocket", "Tirupati", "DHL", "USPS", "PostNL", "Rakuten Post", "Delhivery", "Blue Dart"]
                 },
                 {
-                  icon: Megaphone, title: "Ads & growth", tone: "from-fuchsia-500 to-purple-600",
+                  icon: Megaphone, title: "Ads & growth", count: "10+",
                   items: ["Amazon Ads", "Google Shopping", "Meta Ads", "TikTok Ads", "Walmart Connect", "Criteo"]
                 },
                 {
-                  icon: Brain, title: "AI & analytics", tone: "from-indigo-600 to-primary",
+                  icon: Brain, title: "AI & analytics", count: "AI-native",
                   items: ["Demand forecasting", "Repricing AI", "Sentiment analysis", "Customer behaviour", "Anomaly detection"]
                 },
               ].map((b, i) => (
-                <div key={i} className="reveal rounded-3xl p-6 bg-gradient-to-br from-slate-50 to-white border border-slate-100 hover-lift relative overflow-hidden" style={{ transitionDelay: `${i * 80}ms` }}>
-                  <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full bg-gradient-to-br ${b.tone} opacity-15 blur-2xl`} />
-                  <div className={`relative w-12 h-12 rounded-xl bg-gradient-to-br ${b.tone} flex items-center justify-center mb-4 shadow-stripe`}>
-                    <b.icon className="w-6 h-6 text-white" />
+                <div
+                  key={i}
+                  className="reveal group rounded-2xl p-6 bg-white border border-slate-200/80 hover:border-primary/30 hover:shadow-stripe-xl transition-all duration-300"
+                  style={{ transitionDelay: `${i * 80}ms` }}
+                >
+                  <div className="flex items-start justify-between mb-5">
+                    <div className="w-11 h-11 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-fuchsia-600 transition-all duration-300">
+                      <b.icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
+                    </div>
+                    <span className="text-[11px] font-semibold tracking-wider uppercase text-slate-400">{b.count}</span>
                   </div>
-                  <h3 className="font-bold text-slate-900 text-lg mb-3">{b.title}</h3>
-                  <ul className="space-y-1.5">
+                  <h3 className="font-semibold text-slate-900 text-base mb-3 tracking-tight">{b.title}</h3>
+                  <ul className="space-y-2">
                     {b.items.map((it, j) => (
-                      <li key={j} className="text-sm text-slate-600 flex items-center gap-2">
-                        <span className="w-1 h-1 rounded-full bg-primary" /> {it}
+                      <li key={j} className="text-[13px] text-slate-600 flex items-center gap-2 leading-relaxed">
+                        <span className="w-1 h-1 rounded-full bg-slate-300 group-hover:bg-primary transition-colors" /> {it}
                       </li>
                     ))}
                   </ul>
@@ -230,10 +241,11 @@ const Home = () => {
               ))}
             </div>
 
-            <div className="mt-10 text-center reveal">
+            <div className="mt-12 text-center reveal">
               <Link to="/marketplaces">
-                <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-accent group">
-                  Explore all 80+ integrations <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                <Button size="lg" variant="outline" className="rounded-full px-7 border-slate-300 bg-white hover:bg-slate-50 hover:border-primary/40 group">
+                  Explore all 80+ integrations
+                  <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
             </div>
