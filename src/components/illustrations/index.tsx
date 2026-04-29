@@ -765,3 +765,365 @@ export const LogoChip = ({ name, tone = "primary" }: { name: string; tone?: "pri
     </div>
   );
 };
+
+/* ------------------------------------------------------------------ */
+/* NodeFlowDiagram — n8n / React Flow style repricer pipeline          */
+/* ------------------------------------------------------------------ */
+export const NodeFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 880 460" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="nf-bg" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="#fafbff" />
+        <stop offset="100%" stopColor="#f5f3ff" />
+      </linearGradient>
+      <linearGradient id="nf-blue" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="#3b82f6" /><stop offset="100%" stopColor="#1d4ed8" />
+      </linearGradient>
+      <linearGradient id="nf-pink" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="#ec4899" /><stop offset="100%" stopColor="#be185d" />
+      </linearGradient>
+      <linearGradient id="nf-violet" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="#8b5cf6" /><stop offset="100%" stopColor="#6d28d9" />
+      </linearGradient>
+      <linearGradient id="nf-amber" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="#f59e0b" /><stop offset="100%" stopColor="#b45309" />
+      </linearGradient>
+      <pattern id="nf-dots" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="1.2" fill="#cbd5e1" />
+      </pattern>
+    </defs>
+
+    <rect x="10" y="10" width="860" height="440" rx="20" fill="url(#nf-bg)" stroke="#e2e8f0" />
+    <rect x="10" y="10" width="860" height="440" rx="20" fill="url(#nf-dots)" opacity="0.45" />
+
+    {/* Toolbar */}
+    <rect x="30" y="30" width="820" height="38" rx="10" fill="white" stroke="#e2e8f0" />
+    <circle cx="50" cy="49" r="5" fill="#ef4444" /><circle cx="66" cy="49" r="5" fill="#f59e0b" /><circle cx="82" cy="49" r="5" fill="#22c55e" />
+    <text x="110" y="53" fontSize="11" fontWeight="700" fill="#0f172a">repricer-pipeline.flow</text>
+    <rect x="730" y="38" width="100" height="22" rx="11" fill="#10b981" />
+    <text x="780" y="53" textAnchor="middle" fontSize="10" fontWeight="700" fill="white">● LIVE · 24/7</text>
+
+    {/* Nodes */}
+    {/* Trigger */}
+    <g>
+      <rect x="50" y="110" width="170" height="78" rx="14" fill="white" stroke="#3b82f6" strokeWidth="2" />
+      <rect x="50" y="110" width="170" height="22" rx="14" fill="url(#nf-blue)" />
+      <text x="62" y="126" fontSize="10" fontWeight="700" fill="white">⚡ TRIGGER</text>
+      <text x="62" y="152" fontSize="12" fontWeight="800" fill="#0f172a">Buy Box change</text>
+      <text x="62" y="170" fontSize="10" fill="#64748b">Amazon SP-API · webhook</text>
+      <circle cx="220" cy="149" r="6" fill="white" stroke="#3b82f6" strokeWidth="2" />
+    </g>
+
+    {/* Fetch competitors */}
+    <g>
+      <rect x="290" y="60" width="180" height="78" rx="14" fill="white" stroke="#8b5cf6" strokeWidth="2" />
+      <rect x="290" y="60" width="180" height="22" rx="14" fill="url(#nf-violet)" />
+      <text x="302" y="76" fontSize="10" fontWeight="700" fill="white">◆ FETCH</text>
+      <text x="302" y="102" fontSize="12" fontWeight="800" fill="#0f172a">Competitor prices</text>
+      <text x="302" y="120" fontSize="10" fill="#64748b">Top 5 sellers · ratings · FBA</text>
+      <circle cx="290" cy="99" r="6" fill="white" stroke="#8b5cf6" strokeWidth="2" />
+      <circle cx="470" cy="99" r="6" fill="white" stroke="#8b5cf6" strokeWidth="2" />
+    </g>
+
+    {/* Read margin rules */}
+    <g>
+      <rect x="290" y="160" width="180" height="78" rx="14" fill="white" stroke="#8b5cf6" strokeWidth="2" />
+      <rect x="290" y="160" width="180" height="22" rx="14" fill="url(#nf-violet)" />
+      <text x="302" y="176" fontSize="10" fontWeight="700" fill="white">▤ READ</text>
+      <text x="302" y="202" fontSize="12" fontWeight="800" fill="#0f172a">Margin floor / ceiling</text>
+      <text x="302" y="220" fontSize="10" fill="#64748b">Min 14% · Max 32%</text>
+      <circle cx="290" cy="199" r="6" fill="white" stroke="#8b5cf6" strokeWidth="2" />
+      <circle cx="470" cy="199" r="6" fill="white" stroke="#8b5cf6" strokeWidth="2" />
+    </g>
+
+    {/* Decision */}
+    <g>
+      <rect x="540" y="110" width="180" height="92" rx="14" fill="white" stroke="#f59e0b" strokeWidth="2" />
+      <rect x="540" y="110" width="180" height="22" rx="14" fill="url(#nf-amber)" />
+      <text x="552" y="126" fontSize="10" fontWeight="700" fill="white">⌥ DECIDE · AI</text>
+      <text x="552" y="152" fontSize="12" fontWeight="800" fill="#0f172a">Optimal price</text>
+      <text x="552" y="170" fontSize="10" fill="#64748b">Win Buy Box · stay in margin</text>
+      <text x="552" y="188" fontSize="10" fontWeight="700" fill="#0f172a">→ $24.49</text>
+      <circle cx="540" cy="149" r="6" fill="white" stroke="#f59e0b" strokeWidth="2" />
+      <circle cx="720" cy="149" r="6" fill="white" stroke="#f59e0b" strokeWidth="2" />
+    </g>
+
+    {/* Push price */}
+    <g>
+      <rect x="50" y="260" width="170" height="78" rx="14" fill="white" stroke="#ec4899" strokeWidth="2" />
+      <rect x="50" y="260" width="170" height="22" rx="14" fill="url(#nf-pink)" />
+      <text x="62" y="276" fontSize="10" fontWeight="700" fill="white">⤴ ACTION</text>
+      <text x="62" y="302" fontSize="12" fontWeight="800" fill="#0f172a">Update listing</text>
+      <text x="62" y="320" fontSize="10" fill="#64748b">SP-API · &lt; 800ms</text>
+      <circle cx="50" cy="299" r="6" fill="white" stroke="#ec4899" strokeWidth="2" />
+    </g>
+
+    {/* Log to BigQuery */}
+    <g>
+      <rect x="290" y="290" width="180" height="78" rx="14" fill="white" stroke="#ec4899" strokeWidth="2" />
+      <rect x="290" y="290" width="180" height="22" rx="14" fill="url(#nf-pink)" />
+      <text x="302" y="306" fontSize="10" fontWeight="700" fill="white">▣ STREAM</text>
+      <text x="302" y="332" fontSize="12" fontWeight="800" fill="#0f172a">Log → BigQuery</text>
+      <text x="302" y="350" fontSize="10" fill="#64748b">Audit trail · Power BI ready</text>
+      <circle cx="290" cy="329" r="6" fill="white" stroke="#ec4899" strokeWidth="2" />
+      <circle cx="470" cy="329" r="6" fill="white" stroke="#ec4899" strokeWidth="2" />
+    </g>
+
+    {/* Notify */}
+    <g>
+      <rect x="540" y="290" width="180" height="78" rx="14" fill="white" stroke="#3b82f6" strokeWidth="2" />
+      <rect x="540" y="290" width="180" height="22" rx="14" fill="url(#nf-blue)" />
+      <text x="552" y="306" fontSize="10" fontWeight="700" fill="white">✉ NOTIFY</text>
+      <text x="552" y="332" fontSize="12" fontWeight="800" fill="#0f172a">Slack / Email</text>
+      <text x="552" y="350" fontSize="10" fill="#64748b">Daily digest to seller</text>
+      <circle cx="540" cy="329" r="6" fill="white" stroke="#3b82f6" strokeWidth="2" />
+    </g>
+
+    {/* Edges */}
+    <path d="M226 149 C 260 149, 260 99, 290 99" stroke="#8b5cf6" strokeWidth="2" fill="none" markerEnd="url(#arrow-purple)" />
+    <path d="M226 149 C 260 149, 260 199, 290 199" stroke="#8b5cf6" strokeWidth="2" fill="none" markerEnd="url(#arrow-purple)" />
+    <path d="M476 99 C 510 99, 510 149, 540 149" stroke="#f59e0b" strokeWidth="2" fill="none" />
+    <path d="M476 199 C 510 199, 510 149, 540 149" stroke="#f59e0b" strokeWidth="2" fill="none" />
+    <path d="M630 202 C 630 240, 135 240, 135 260" stroke="#ec4899" strokeWidth="2" fill="none" strokeDasharray="5 4" markerEnd="url(#arrow-purple)" />
+    <path d="M226 299 C 258 299, 258 329, 290 329" stroke="#ec4899" strokeWidth="2" fill="none" />
+    <path d="M476 329 C 510 329, 510 329, 540 329" stroke="#ec4899" strokeWidth="2" fill="none" />
+
+    {/* Sidebar palette */}
+    <rect x="30" y="395" width="820" height="40" rx="10" fill="white" stroke="#e2e8f0" />
+    {[
+      { c: "#3b82f6", l: "Triggers" }, { c: "#8b5cf6", l: "Data" },
+      { c: "#f59e0b", l: "AI logic" }, { c: "#ec4899", l: "Actions" },
+    ].map((p, i) => (
+      <g key={i}>
+        <circle cx={60 + i * 130} cy={415} r={6} fill={p.c} />
+        <text x={74 + i * 130} y={419} fontSize="11" fontWeight="700" fill="#334155">{p.l}</text>
+      </g>
+    ))}
+    <text x="838" y="419" textAnchor="end" fontSize="10" fill="#94a3b8">7 nodes · auto-saved</text>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* AnalyticsFlowDiagram — BigQuery + Power BI data flow                */
+/* ------------------------------------------------------------------ */
+export const AnalyticsFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 820 380" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="af-bg" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="#fff7ed" />
+        <stop offset="100%" stopColor="#fdf2f8" />
+      </linearGradient>
+      <pattern id="af-dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="1" fill="#cbd5e1" />
+      </pattern>
+    </defs>
+    <rect x="10" y="10" width="800" height="360" rx="20" fill="url(#af-bg)" stroke="#e2e8f0" />
+    <rect x="10" y="10" width="800" height="360" rx="20" fill="url(#af-dots)" opacity="0.4" />
+
+    {/* Sources column */}
+    <text x="40" y="46" fontSize="11" fontWeight="800" fill="#64748b" letterSpacing="1">SOURCES</text>
+    {[
+      { y: 60, l: "Amazon SP-API", c: "#f59e0b" },
+      { y: 110, l: "Walmart Marketplace", c: "#1d4ed8" },
+      { y: 160, l: "Shopify Plus", c: "#10b981" },
+      { y: 210, l: "Meta · Google Ads", c: "#ec4899" },
+      { y: 260, l: "Customer reviews", c: "#8b5cf6" },
+    ].map((s, i) => (
+      <g key={i}>
+        <rect x={30} y={s.y} width={170} height={38} rx={10} fill="white" stroke="#e2e8f0" />
+        <circle cx={48} cy={s.y + 19} r={6} fill={s.c} />
+        <text x={62} y={s.y + 23} fontSize={11} fontWeight={700} fill="#0f172a">{s.l}</text>
+      </g>
+    ))}
+
+    {/* Pipeline */}
+    <g>
+      <rect x={250} y={120} width={170} height={120} rx={16} fill="white" stroke="#6366f1" strokeWidth={2} />
+      <rect x={250} y={120} width={170} height={26} rx={14} fill="#6366f1" />
+      <text x={262} y={138} fontSize={11} fontWeight={800} fill="white">▶ KAFKA STREAM</text>
+      <text x={262} y={170} fontSize={11} fontWeight={800} fill="#0f172a">Real-time ingest</text>
+      <text x={262} y={188} fontSize={10} fill="#64748b">10M+ events / day</text>
+      <text x={262} y={208} fontSize={10} fill="#64748b">Schema-validated</text>
+      <text x={262} y={226} fontSize={10} fill="#64748b">Sub-second latency</text>
+    </g>
+
+    {/* BigQuery warehouse */}
+    <g>
+      <rect x={460} y={100} width={180} height={160} rx={16} fill="white" stroke="#0ea5e9" strokeWidth={2} />
+      <rect x={460} y={100} width={180} height={26} rx={14} fill="#0ea5e9" />
+      <text x={472} y={118} fontSize={11} fontWeight={800} fill="white">▣ BIGQUERY WAREHOUSE</text>
+      {/* mini bars */}
+      {[40, 70, 55, 85, 60, 92, 75].map((h, i) => (
+        <rect key={i} x={478 + i * 22} y={234 - h} width={14} height={h} rx={2} fill={i % 2 ? "#a5f3fc" : "#0ea5e9"} />
+      ))}
+      <text x={472} y={250} fontSize={10} fill="#64748b">Petabyte-scale · SQL anywhere</text>
+    </g>
+
+    {/* Outputs column */}
+    <text x={680} y={46} fontSize={11} fontWeight={800} fill="#64748b" letterSpacing={1}>CONSUMERS</text>
+    {[
+      { y: 70, l: "Power BI", c: "#f59e0b" },
+      { y: 120, l: "Looker Studio", c: "#3b82f6" },
+      { y: 170, l: "Custom dashboards", c: "#8b5cf6" },
+      { y: 220, l: "CSV / API export", c: "#10b981" },
+      { y: 270, l: "AI forecast model", c: "#ec4899" },
+    ].map((s, i) => (
+      <g key={i}>
+        <rect x={670} y={s.y} width={130} height={36} rx={10} fill="white" stroke="#e2e8f0" />
+        <circle cx={688} cy={s.y + 18} r={6} fill={s.c} />
+        <text x={702} y={s.y + 22} fontSize={11} fontWeight={700} fill="#0f172a">{s.l}</text>
+      </g>
+    ))}
+
+    {/* Edges in */}
+    {[79, 129, 179, 229, 279].map((y, i) => (
+      <path key={i} d={`M200 ${y} C 230 ${y}, 230 ${130 + i * 18}, 250 ${130 + i * 18}`}
+            stroke="#94a3b8" strokeWidth={1.5} fill="none" strokeDasharray="3 4" />
+    ))}
+    {/* Stream → BigQuery */}
+    <path d="M420 180 L 460 180" stroke="#6366f1" strokeWidth={2.5} markerEnd="url(#arrow-purple)" />
+    {/* BQ → consumers */}
+    {[88, 138, 188, 238, 288].map((y, i) => (
+      <path key={i} d={`M640 180 C 660 180, 660 ${y}, 670 ${y}`}
+            stroke="#0ea5e9" strokeWidth={1.5} fill="none" strokeDasharray="3 4" />
+    ))}
+
+    <text x={410} y={344} textAnchor="middle" fontSize={11} fill="#64748b">Every order, click and review — queryable in seconds, exportable forever.</text>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* MarketplaceMeshDiagram — radial channel hub                         */
+/* ------------------------------------------------------------------ */
+export const MarketplaceMeshDiagram = (props: SVGProps<SVGSVGElement>) => {
+  const channels = [
+    { a: -90, l: "Amazon", c: "#f59e0b" },
+    { a: -54, l: "Walmart", c: "#1d4ed8" },
+    { a: -18, l: "eBay", c: "#ef4444" },
+    { a: 18,  l: "Shopify", c: "#10b981" },
+    { a: 54,  l: "TikTok", c: "#0f172a" },
+    { a: 90,  l: "Flipkart", c: "#3b82f6" },
+    { a: 126, l: "Etsy", c: "#ea580c" },
+    { a: 162, l: "Lazada", c: "#0ea5e9" },
+    { a: 198, l: "Meesho", c: "#db2777" },
+    { a: 234, l: "Allegro", c: "#7c3aed" },
+    { a: 270, l: "Shopee", c: "#f97316" },
+    { a: 306, l: "Bol.com", c: "#2563eb" },
+  ];
+  const cx = 380, cy = 220, R = 165;
+  return (
+    <svg viewBox="0 0 760 440" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <defs>
+        <radialGradient id="mm-bg" cx="50%" cy="50%" r="60%">
+          <stop offset="0%" stopColor="#fdf4ff" />
+          <stop offset="100%" stopColor="#eff6ff" />
+        </radialGradient>
+        <linearGradient id="mm-core" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stopColor="hsl(226 71% 50%)" />
+          <stop offset="100%" stopColor="hsl(330 81% 55%)" />
+        </linearGradient>
+      </defs>
+      <rect x="10" y="10" width="740" height="420" rx="20" fill="url(#mm-bg)" stroke="#e2e8f0" />
+      <text x="40" y="46" fontSize="13" fontWeight="800" fill="#0f172a">One platform · every channel</text>
+      <text x="40" y="64" fontSize="11" fill="#64748b">Inventory, pricing and orders sync bi-directionally in real time.</text>
+
+      {/* concentric rings */}
+      {[60, 110, 165].map((r, i) => (
+        <circle key={i} cx={cx} cy={cy} r={r} stroke="#cbd5e1" strokeDasharray="3 4" fill="none" opacity={0.5} />
+      ))}
+
+      {/* Edges */}
+      {channels.map((ch, i) => {
+        const rad = (ch.a * Math.PI) / 180;
+        const x = cx + R * Math.cos(rad);
+        const y = cy + R * Math.sin(rad);
+        return (
+          <line key={i} x1={cx} y1={cy} x2={x} y2={y} stroke={ch.c} strokeWidth={1.4} opacity={0.45} strokeDasharray="2 3" />
+        );
+      })}
+
+      {/* Channel nodes */}
+      {channels.map((ch, i) => {
+        const rad = (ch.a * Math.PI) / 180;
+        const x = cx + R * Math.cos(rad);
+        const y = cy + R * Math.sin(rad);
+        return (
+          <g key={i}>
+            <circle cx={x} cy={y} r={26} fill="white" stroke={ch.c} strokeWidth={2} />
+            <text x={x} y={y + 4} textAnchor="middle" fontSize={10} fontWeight={800} fill={ch.c}>{ch.l}</text>
+            <circle cx={x} cy={y} r={32} fill={ch.c} opacity={0.12}>
+              <animate attributeName="r" values={`28;36;28`} dur={`${2.4 + (i % 5) * 0.3}s`} repeatCount="indefinite" />
+              <animate attributeName="opacity" values="0.18;0;0.18" dur={`${2.4 + (i % 5) * 0.3}s`} repeatCount="indefinite" />
+            </circle>
+          </g>
+        );
+      })}
+
+      {/* Core */}
+      <circle cx={cx} cy={cy} r={56} fill="url(#mm-core)" />
+      <circle cx={cx} cy={cy} r={56} fill="white" opacity={0.08} />
+      <text x={cx} y={cy - 4} textAnchor="middle" fontSize={14} fontWeight={800} fill="white">Ctasis</text>
+      <text x={cx} y={cy + 14} textAnchor="middle" fontSize={9} fontWeight={700} fill="white" opacity={0.85}>Sync engine</text>
+
+      {/* Legend chips */}
+      <g transform="translate(40,390)">
+        {[{c:"#10b981",l:"Live sync"},{c:"#f59e0b",l:"Auto-repricer"},{c:"#ec4899",l:"AI listing"}].map((p,i)=>(
+          <g key={i} transform={`translate(${i*150},0)`}>
+            <rect x="0" y="-14" width="140" height="22" rx="11" fill="white" stroke="#e2e8f0" />
+            <circle cx="14" cy="-3" r="5" fill={p.c} />
+            <text x="26" y="0" fontSize="10" fontWeight="700" fill="#334155">{p.l}</text>
+          </g>
+        ))}
+      </g>
+    </svg>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+/* RepricerStrategyChart — line chart competitor vs Ctasis price       */
+/* ------------------------------------------------------------------ */
+export const RepricerStrategyChart = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 600 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="rsc-fill" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="hsl(330 81% 60%)" stopOpacity="0.3" />
+        <stop offset="100%" stopColor="hsl(330 81% 60%)" stopOpacity="0" />
+      </linearGradient>
+    </defs>
+    <rect x="10" y="10" width="580" height="340" rx="20" fill="white" stroke="#e2e8f0" />
+    <text x="36" y="44" fontSize="13" fontWeight="800" fill="#0f172a">Buy Box price race · last 24h</text>
+    <text x="36" y="62" fontSize="11" fill="#64748b">Your floor: $21.50 · ceiling: $28.90 · Buy Box won 92% of the day</text>
+
+    {/* axes */}
+    <line x1="60" y1="280" x2="560" y2="280" stroke="#e2e8f0" />
+    {[0,1,2,3,4,5,6].map(i=>(
+      <text key={i} x={60 + i*83} y={300} fontSize="9" textAnchor="middle" fill="#94a3b8">
+        {`${i*4}h`}
+      </text>
+    ))}
+    {/* floor / ceiling lines */}
+    <line x1="60" y1="240" x2="560" y2="240" stroke="#10b981" strokeDasharray="4 4" />
+    <text x="566" y="244" fontSize="9" fill="#10b981" fontWeight="700">FLOOR</text>
+    <line x1="60" y1="110" x2="560" y2="110" stroke="#ef4444" strokeDasharray="4 4" />
+    <text x="566" y="114" fontSize="9" fill="#ef4444" fontWeight="700">CEILING</text>
+
+    {/* competitor line (jagged) */}
+    <polyline points="60,200 120,180 180,210 240,160 300,220 360,170 420,150 480,200 540,170"
+              stroke="#94a3b8" strokeWidth="2" fill="none" strokeDasharray="3 3" />
+    <text x="540" y="160" fontSize="9" fontWeight="700" fill="#64748b">Competitor</text>
+
+    {/* Ctasis line (smooth, slightly under ceiling) */}
+    <path d="M60 195 C 110 175, 170 200, 230 155 S 350 215, 410 145 S 500 195, 540 165"
+          stroke="hsl(330 81% 55%)" strokeWidth="3" fill="none" />
+    <path d="M60 195 C 110 175, 170 200, 230 155 S 350 215, 410 145 S 500 195, 540 165 L 540 280 L 60 280 Z"
+          fill="url(#rsc-fill)" />
+    <text x="540" y="155" fontSize="10" fontWeight="800" fill="hsl(330 81% 45%)">Ctasis</text>
+
+    {/* Data points */}
+    {[[230,155],[410,145],[540,165]].map(([x,y],i)=>(
+      <g key={i}>
+        <circle cx={x} cy={y} r="5" fill="white" stroke="hsl(330 81% 55%)" strokeWidth="2.5" />
+      </g>
+    ))}
+  </svg>
+);
