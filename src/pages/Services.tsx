@@ -10,7 +10,7 @@ import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import {
   BlobBackdrop, AnalyticsIllustration, SyncIllustration, OrderFlowDiagram,
-  WorkflowIllustration, GlobeIllustration, RepricerIllustration,
+  WorkflowIllustration, RepricerIllustration,
   NodeFlowDiagram, RepricerStrategyChart, AnalyticsFlowDiagram
 } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
