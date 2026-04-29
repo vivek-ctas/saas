@@ -303,28 +303,23 @@ const About = () => {
           </div>
         </section>
 
-        {/* GLOBAL CTA */}
+        {/* CAREERS CTA — clean, minimal */}
         <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="reveal relative rounded-3xl bg-gradient-to-br from-slate-900 via-primary to-fuchsia-700 p-12 lg:p-16 overflow-hidden shadow-stripe-2xl">
-              <div className="absolute -bottom-20 -right-20 w-96 h-96 opacity-30">
-                <GlobeIllustration className="w-full h-full" />
-              </div>
-              <div className="relative max-w-2xl text-white">
-                <Trophy className="w-12 h-12 text-pink-300 mb-4" />
-                <h2 className="text-4xl font-bold mb-4 leading-tight">Want to build the future of commerce with us?</h2>
-                <p className="text-xl text-white/90 mb-6">
-                  We're hiring engineers, designers and seller-success folks across India and remote.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" variant="secondary" className="shadow-stripe-xl">
-                    See open roles <ArrowRight className="w-4 h-4 ml-1" />
-                  </Button>
-                  <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20">
-                    Read our blog
-                  </Button>
-                </div>
-              </div>
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <Trophy className="w-10 h-10 text-primary mx-auto mb-5" />
+            <h2 className="text-4xl font-bold text-slate-900 mb-4 leading-tight">
+              Want to build the future of commerce with us?
+            </h2>
+            <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
+              We're hiring engineers, designers and seller-success folks across India and remote.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button size="lg" className="rounded-full px-8 shadow-stripe-xl bg-gradient-to-r from-primary to-fuchsia-600 border-0">
+                See open roles <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+              <Button size="lg" variant="outline" className="rounded-full px-8 border-slate-300 bg-white">
+                Read our blog
+              </Button>
             </div>
           </div>
         </section>
