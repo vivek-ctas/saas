@@ -224,7 +224,15 @@ const Infrastructure = () => {
               </Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">From raw spreadsheet to live listing — in minutes.</h2>
               <p className="text-xl text-slate-600">
-                Three AI services most sellers used to hire agencies for. Now built into Ctasis.
+                Three AI services most sellers used to hire agencies for. Now built into Ctasis — and visualized like a flow you can actually follow.
+              </p>
+            </div>
+
+            {/* Visual flow */}
+            <div className="reveal mb-12 rounded-3xl bg-white p-4 sm:p-8 border border-slate-100 shadow-stripe">
+              <NodeFlowDiagram className="w-full h-auto" />
+              <p className="text-center text-sm text-slate-500 mt-4">
+                A live look at the auto-repricer pipeline — every node is observable, replayable and version-controlled.
               </p>
             </div>
 
@@ -232,17 +240,17 @@ const Infrastructure = () => {
               {[
                 {
                   icon: Workflow, title: "AI listing generator",
-                  desc: "Drop your raw product data — a CSV, a brief, even a photo — and our AI writes channel-perfect listings for Amazon, eBay and Flipkart. Titles, bullet points, search terms, backend keywords — all matched to each marketplace's rules so listings actually rank.",
+                  desc: "Drop your raw product data — a CSV, a brief, even a phone photo — and our AI writes channel-perfect listings for Amazon, eBay and Flipkart. Titles, bullets, search terms and backend keywords are tuned to each marketplace's ranking rules so listings actually surface to buyers, not just sit in your catalog.",
                   tone: "from-primary to-indigo-600",
                 },
                 {
                   icon: Layers, title: "A+ content via S3",
-                  desc: "Manage every A+ content image, comparison chart and brand-story banner as versioned S3 objects. One click pushes the latest creative to Amazon Brand Registry — no more emailing PSDs to a designer or losing track of which version is live.",
+                  desc: "Manage every A+ image, comparison chart and brand-story banner as versioned S3 objects. One click pushes the latest creative to Amazon Brand Registry — no more emailing PSDs to a designer or wondering which version is live in which region.",
                   tone: "from-fuchsia-500 to-purple-600",
                 },
                 {
                   icon: Cpu, title: "Auto-repricer (Premium)",
-                  desc: "Set your minimum and maximum margin once. Our repricer watches Buy Box competitors 24/7 and adjusts prices in real time — never below your floor, never above your ceiling. Profit-protected, hands-free.",
+                  desc: "Set your minimum and maximum margin once. Our repricer watches Buy Box competitors 24/7 and re-prices in real time — never below your floor, never above your ceiling. Profit-protected, hands-free, and explainable: every move is logged with the reason.",
                   tone: "from-secondary to-pink-600",
                 },
               ].map((b, i) => (
@@ -257,6 +265,41 @@ const Infrastructure = () => {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* REPRICER STRATEGY CHART — visual proof */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="reveal">
+              <RepricerStrategyChart className="w-full h-auto" />
+            </div>
+            <div className="reveal delay-200">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
+                <Cpu className="w-3.5 h-3.5 mr-1" /> Smart repricing strategies
+              </Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
+                Win the Buy Box without<br />a race to the bottom.
+              </h2>
+              <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                Cheap repricers chase the lowest price and quietly destroy your margin. Ours plays a smarter game —
+                it studies competitor velocity, FBA status, ratings and stock depth, then prices just enough to win
+                the Buy Box while staying inside the floor and ceiling you set. You stay profitable, your customer
+                gets a fair price, and you never wake up to a "we sold 800 units at a loss" surprise.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  "Min / max margin rails — your floor is sacred",
+                  "Competitor-aware, not just price-aware",
+                  "Custom strategies per SKU, brand or category",
+                  "Every price change logged with a human-readable reason",
+                ].map((it, i) => (
+                  <li key={i} className="flex items-start gap-3 text-slate-700">
+                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" /> {it}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
