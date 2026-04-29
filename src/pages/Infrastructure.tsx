@@ -7,7 +7,10 @@ import {
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
-import { BlobBackdrop, InfraIllustration, NeuralIllustration, OrderFlowDiagram, LogoChip } from "@/components/illustrations";
+import {
+  BlobBackdrop, InfraIllustration, NeuralIllustration, OrderFlowDiagram,
+  NodeFlowDiagram, AnalyticsFlowDiagram, RepricerStrategyChart, LogoChip
+} from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
 const Infrastructure = () => {
