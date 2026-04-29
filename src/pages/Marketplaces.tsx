@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
-import { BlobBackdrop, SyncIllustration, ContactMapIllustration, LogoChip } from "@/components/illustrations";
+import { BlobBackdrop, SyncIllustration, ContactMapIllustration, MarketplaceMeshDiagram, NodeFlowDiagram, LogoChip } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
 const Marketplaces = () => {
