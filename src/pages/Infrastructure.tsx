@@ -334,7 +334,7 @@ const Infrastructure = () => {
               </ul>
             </div>
             <div className="reveal order-1 lg:order-2">
-              <NeuralIllustration className="w-full h-auto" />
+              <AnalyticsFlowDiagram className="w-full h-auto" />
             </div>
           </div>
         </section>
