@@ -124,6 +124,75 @@ const Marketplaces = () => {
           </div>
         </section>
 
+        {/* CHANNEL SYNC FLOW — n8n style visual */}
+        <section className="py-24 section-bg relative overflow-hidden">
+          <div className="absolute inset-0 grid-bg opacity-30" />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12 reveal max-w-3xl mx-auto">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
+                <Zap className="w-3.5 h-3.5 mr-1" /> How a channel goes live
+              </Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">Connect once. Sync forever.</h2>
+              <p className="text-lg text-slate-600">
+                Every marketplace integration looks the same under the hood — a visual flow you can audit, replay and tweak without writing a line of code.
+              </p>
+            </div>
+            <div className="reveal rounded-3xl bg-white p-4 sm:p-8 border border-slate-100 shadow-stripe">
+              <NodeFlowDiagram className="w-full h-auto" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+              {[
+                { t: "Two-way inventory", d: "When stock moves on Shopify, it moves on Amazon, eBay and Walmart in the same breath. No more 'oversold' emails at 2 AM." },
+                { t: "Smart price guardrails", d: "Push a new price to one channel and our rules check your floor and ceiling before it hits the others. You set the boundaries — we enforce them." },
+                { t: "Order de-duplication", d: "If the same buyer hits two channels in the same minute, we catch the duplicate before fulfillment ever sees it. Clean orders, clean books." },
+              ].map((b, i) => (
+                <Card key={i} className="reveal hover-lift border border-slate-100 bg-white" style={{ transitionDelay: `${i * 80}ms` }}>
+                  <CardContent className="p-6">
+                    <div className="w-10 h-10 rounded-lg gradient-primary flex items-center justify-center mb-3 shadow-stripe">
+                      <Sparkles className="w-5 h-5 text-white" />
+                    </div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-2">{b.t}</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">{b.d}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SELLER ANALYTICS PROMISE */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="reveal">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Seller analytics</Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
+                See every channel side-by-side — finally.
+              </h2>
+              <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                Most sellers run their business across six tabs and a Google Sheet. Ctasis pulls Amazon, Walmart, Shopify, eBay and your ad networks into one honest profit view — so you stop guessing which channel is actually paying the bills and which one is quietly bleeding cash.
+              </p>
+              <ul className="space-y-3 mb-8">
+                {[
+                  "True profit per SKU per channel — fees, ads and refunds included",
+                  "Buy Box win-rate trends with hour-level resolution",
+                  "Inventory health score: days of cover, dead stock, stockout risk",
+                  "One-click drill-down from a number to the order behind it",
+                ].map((t, i) => (
+                  <li key={i} className="flex items-center gap-3 text-slate-700">
+                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" /> {t}
+                  </li>
+                ))}
+              </ul>
+              <Button size="lg" className="shadow-stripe-xl group">
+                See sample dashboard <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </div>
+            <div className="reveal delay-200">
+              <ContactMapIllustration className="w-full h-auto" />
+            </div>
+          </div>
+        </section>
+
         {/* LOGISTICS */}
         <section className="py-24 section-bg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
