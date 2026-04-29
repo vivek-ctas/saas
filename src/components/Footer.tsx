@@ -28,7 +28,7 @@ const Footer = () => {
       { name: "Partners", href: "/contact" },
     ],
     resources: [
-      { name: "Blog", href: "/contact" },
+      { name: "Blog", href: "/blog" },
       { name: "Help Center", href: "/contact" },
       { name: "Guides", href: "/contact" },
       { name: "Webinars", href: "/contact" },
