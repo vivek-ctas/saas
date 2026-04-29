@@ -10,7 +10,7 @@ import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import {
   BlobBackdrop, AnalyticsIllustration, SyncIllustration, OrderFlowDiagram,
-  WorkflowIllustration, GlobeIllustration, RepricerIllustration,
+  WorkflowIllustration, RepricerIllustration,
   NodeFlowDiagram, RepricerStrategyChart, AnalyticsFlowDiagram
 } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
@@ -280,26 +280,7 @@ const Services = () => {
           </div>
         </section>
 
-        {/* GLOBAL CARD */}
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="reveal relative rounded-3xl bg-gradient-to-br from-primary via-fuchsia-700 to-pink-600 p-12 lg:p-16 overflow-hidden shadow-stripe-2xl">
-              <div className="absolute -bottom-20 -right-20 w-96 h-96 opacity-30">
-                <GlobeIllustration className="w-full h-full" />
-              </div>
-              <div className="relative max-w-2xl text-white">
-                <Globe className="w-12 h-12 mb-4" />
-                <h2 className="text-4xl font-bold mb-4 leading-tight">Built for global commerce</h2>
-                <p className="text-xl text-white/90 mb-6">
-                  Multi-currency, multi-language, multi-warehouse. We handle compliance across 150+ countries.
-                </p>
-                <Button size="lg" variant="secondary" className="shadow-stripe-xl">
-                  Talk to sales <ArrowRight className="w-4 h-4 ml-1" />
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
+
 
         {/* CTA */}
         <section className="py-24 relative overflow-hidden gradient-animated">

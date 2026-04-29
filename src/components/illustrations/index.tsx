@@ -749,19 +749,14 @@ export const ContactMapIllustration = (props: SVGProps<SVGSVGElement>) => (
 /* Generic logo chip                                                    */
 /* ------------------------------------------------------------------ */
 export const LogoChip = ({ name, tone = "primary" }: { name: string; tone?: "primary" | "secondary" | "accent" | "dark" }) => {
-  const tones: Record<string, string> = {
-    primary: "from-primary/10 to-fuchsia-100 text-primary border-primary/20",
-    secondary: "from-pink-100 to-rose-100 text-secondary border-pink-200",
-    accent: "from-indigo-100 to-blue-100 text-indigo-700 border-indigo-200",
-    dark: "from-slate-800 to-slate-900 text-white border-slate-700",
-  };
+  void tone;
   const initials = name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
   return (
-    <div className={`flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-br border ${tones[tone]} hover-lift`}>
-      <div className="w-9 h-9 rounded-lg bg-white/70 backdrop-blur flex items-center justify-center font-bold text-sm shadow-sm">
+    <div className="group inline-flex items-center gap-2.5 pl-2 pr-4 py-2 rounded-full bg-white border border-slate-200 hover:border-primary/40 hover:shadow-sm transition-all duration-200">
+      <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary/10 to-fuchsia-100 text-primary flex items-center justify-center text-[11px] font-bold tracking-tight">
         {initials}
       </div>
-      <span className="font-semibold whitespace-nowrap">{name}</span>
+      <span className="text-sm font-medium text-slate-700 whitespace-nowrap group-hover:text-slate-900">{name}</span>
     </div>
   );
 };
