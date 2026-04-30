@@ -8,8 +8,8 @@ import {
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import {
-  BlobBackdrop, InfraIllustration, NeuralIllustration, OrderFlowDiagram,
-  NodeFlowDiagram, AnalyticsFlowDiagram, RepricerStrategyChart, LogoChip
+  BlobBackdrop, InfraTopologyDiagram, NeuralIllustration, OrderFlowDiagram,
+  AIPipelineDiagram, AnalyticsFlowDiagram, RepricerStrategyChart, LogoChip
 } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
@@ -61,7 +61,7 @@ const Infrastructure = () => {
           badgeText="Built like a hyperscaler"
           title={<>Infrastructure that <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">doesn't blink.</span></>}
           subtitle="Isolated tenant pods, Kubernetes-native scaling, Kafka-driven events and a 99.99% SLA — the same architecture trusted by enterprises, available to every seller."
-          visual={<InfraIllustration className="w-full h-auto" />}
+          visual={<InfraTopologyDiagram className="w-full h-auto" />}
           actions={
             <>
               <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">

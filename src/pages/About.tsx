@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
-import { BlobBackdrop, WorkflowIllustration, GlobeIllustration, NeuralIllustration, TimelineIllustration, LogoChip } from "@/components/illustrations";
+import { BlobBackdrop, WorkflowIllustration, GlobeIllustration, NeuralIllustration, AboutJourneyMockup, LogoChip } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
 const About = () => {
@@ -38,7 +38,7 @@ const About = () => {
           badgeText="Our story"
           title={<>We're building the <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">operating system</span> for modern commerce.</>}
           subtitle="50,000+ sellers in 150+ countries trust Ctasis to power their multichannel operations. This is how we got here — and where we're going."
-          visual={<TimelineIllustration className="w-full h-auto" />}
+          visual={<AboutJourneyMockup className="w-full h-auto" />}
           actions={
             <>
               <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">

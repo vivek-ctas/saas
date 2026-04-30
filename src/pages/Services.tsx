@@ -9,9 +9,9 @@ import {
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import {
-  BlobBackdrop, AnalyticsIllustration, SyncIllustration, OrderFlowDiagram,
-  WorkflowIllustration, RepricerIllustration,
-  NodeFlowDiagram, RepricerStrategyChart, AnalyticsFlowDiagram
+  BlobBackdrop, AnalyticsIllustration, ServicesHeroMockup, OrderFlowDiagram,
+  WorkflowIllustration,
+  AIPipelineDiagram, RepricerStrategyChart, AnalyticsFlowDiagram
 } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
@@ -48,7 +48,7 @@ const Services = () => {
           badgeText="12 services · 1 platform"
           title={<>Services that <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">do the heavy lifting.</span></>}
           subtitle="From inventory sync to AI-powered demand forecasting — every service is designed to remove a manual task and add a measurable result."
-          visual={<SyncIllustration className="w-full h-auto" />}
+          visual={<ServicesHeroMockup className="w-full h-auto" />}
           actions={
             <>
               <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
@@ -120,7 +120,7 @@ const Services = () => {
               </p>
             </div>
             <div className="reveal rounded-3xl bg-gradient-to-br from-slate-50 to-white p-4 sm:p-8 border border-slate-100 shadow-stripe">
-              <NodeFlowDiagram className="w-full h-auto" />
+              <AIPipelineDiagram className="w-full h-auto" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12 items-center">
               <div className="reveal">

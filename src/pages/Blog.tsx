@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, BookOpen, Clock, Sparkles, Cpu, BarChart3, Workflow, Brain, Layers } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
-import { BlobBackdrop, NodeFlowDiagram } from "@/components/illustrations";
+import { BlobBackdrop, BlogEditorialMockup } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
 const posts = [
@@ -83,7 +83,7 @@ const Blog = () => {
           badgeText="Ctasis · Blog"
           title={<>Stories from <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">the seller front line.</span></>}
           subtitle="Repricer deep-dives, marketplace playbooks and honest takes on what actually grows a multichannel business — written by the engineers and sellers who build Ctasis."
-          visual={<NodeFlowDiagram className="w-full h-auto" />}
+          visual={<BlogEditorialMockup className="w-full h-auto" />}
           actions={
             <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
               Subscribe to updates
