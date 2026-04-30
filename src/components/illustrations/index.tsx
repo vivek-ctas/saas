@@ -1122,3 +1122,427 @@ export const RepricerStrategyChart = (props: SVGProps<SVGSVGElement>) => (
     ))}
   </svg>
 );
+
+/* ------------------------------------------------------------------ */
+/* ServicesHeroMockup — operator console with service tiles + activity */
+/* ------------------------------------------------------------------ */
+export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 760 520" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="svh-bg" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="#ffffff" /><stop offset="100%" stopColor="#fff7ed" />
+      </linearGradient>
+      <linearGradient id="svh-tile" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="hsl(226 71% 50%)" /><stop offset="100%" stopColor="hsl(226 71% 38%)" />
+      </linearGradient>
+      <linearGradient id="svh-tile2" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="hsl(14 88% 62%)" /><stop offset="100%" stopColor="hsl(20 90% 50%)" />
+      </linearGradient>
+      <filter id="svh-shadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="10" /><feOffset dy="6" />
+        <feComponentTransfer><feFuncA type="linear" slope="0.18" /></feComponentTransfer>
+        <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+      </filter>
+    </defs>
+    <rect x="20" y="20" width="720" height="480" rx="24" fill="url(#svh-bg)" stroke="#e2e8f0" />
+    <text x="48" y="60" fontSize="13" fontWeight="800" fill="#0f172a">Service Console</text>
+    <text x="48" y="80" fontSize="11" fill="#64748b">12 services, one operator view — every action is auditable.</text>
+    <rect x="600" y="44" width="118" height="26" rx="13" fill="#10b981" />
+    <text x="659" y="61" textAnchor="middle" fontSize="10" fontWeight="800" fill="white">● ALL HEALTHY</text>
+
+    {/* Service tiles grid */}
+    {[
+      { x: 48, y: 110, t: "Inventory Sync", v: "12,840 SKUs", k: "↻ 2s", c: "url(#svh-tile)" },
+      { x: 232, y: 110, t: "Order Routing", v: "847 today", k: "▶ live", c: "url(#svh-tile)" },
+      { x: 416, y: 110, t: "Repricer", v: "Buy Box 92%", k: "AI", c: "url(#svh-tile2)" },
+      { x: 48, y: 230, t: "Analytics", v: "$48.2k GMV", k: "+24%", c: "url(#svh-tile)" },
+      { x: 232, y: 230, t: "AI Listings", v: "184 generated", k: "AI", c: "url(#svh-tile2)" },
+      { x: 416, y: 230, t: "Logistics", v: "8 carriers", k: "✓", c: "url(#svh-tile)" },
+    ].map((tile, i) => (
+      <g key={i} filter="url(#svh-shadow)">
+        <rect x={tile.x} y={tile.y} width={168} height={104} rx={16} fill="white" stroke="#e2e8f0" />
+        <rect x={tile.x} y={tile.y} width={168} height={6} rx={3} fill={tile.c} />
+        <text x={tile.x + 16} y={tile.y + 36} fontSize={11} fontWeight={800} fill="#0f172a">{tile.t}</text>
+        <text x={tile.x + 16} y={tile.y + 64} fontSize={18} fontWeight={800} fill="#0f172a">{tile.v}</text>
+        <rect x={tile.x + 16} y={tile.y + 76} width={56} height={18} rx={9} fill="hsl(150 70% 92%)" />
+        <text x={tile.x + 44} y={tile.y + 89} textAnchor="middle" fontSize={9} fontWeight={800} fill="hsl(150 70% 30%)">{tile.k}</text>
+      </g>
+    ))}
+
+    {/* Activity feed strip */}
+    <g filter="url(#svh-shadow)">
+      <rect x="48" y="358" width="664" height="124" rx="16" fill="white" stroke="#e2e8f0" />
+      <text x="64" y="382" fontSize="11" fontWeight="800" fill="#64748b" letterSpacing="1">LIVE ACTIVITY</text>
+      {[
+        { y: 402, t: "Repricer raised SKU-8632 to $24.49", c: "hsl(14 88% 62%)" },
+        { y: 424, t: "Inventory synced from Shopify → Amazon (FBM)", c: "hsl(226 71% 50%)" },
+        { y: 446, t: "Order #14829 routed to USA-East warehouse", c: "hsl(150 70% 40%)" },
+        { y: 468, t: "AI listing generator drafted 18 new bullets", c: "hsl(20 90% 55%)" },
+      ].map((a, i) => (
+        <g key={i}>
+          <circle cx="74" cy={a.y - 4} r="4" fill={a.c} />
+          <text x="90" y={a.y} fontSize="11" fill="#334155">{a.t}</text>
+          <text x="700" y={a.y} fontSize="10" textAnchor="end" fill="#94a3b8">{i + 1}s ago</text>
+        </g>
+      ))}
+    </g>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* InfraTopologyDiagram — multi-region cluster topology                */
+/* ------------------------------------------------------------------ */
+export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 760 480" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="it-bg" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="#0b1220" /><stop offset="100%" stopColor="#111d39" />
+      </linearGradient>
+      <linearGradient id="it-pod" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="#3b82f6" /><stop offset="100%" stopColor="#1e3a8a" />
+      </linearGradient>
+      <linearGradient id="it-edge" x1="0" x2="1" y1="0" y2="0">
+        <stop offset="0%" stopColor="hsl(14 88% 62%)" /><stop offset="100%" stopColor="hsl(226 71% 60%)" />
+      </linearGradient>
+    </defs>
+    <rect x="10" y="10" width="740" height="460" rx="22" fill="url(#it-bg)" />
+    <text x="40" y="48" fontSize="12" fontWeight="800" fill="#a5b4fc" letterSpacing="2">MULTI-REGION TOPOLOGY</text>
+    <text x="40" y="74" fontSize="20" fontWeight="800" fill="white">3 regions · 47 pods · 1 control plane</text>
+
+    {/* Edge ring */}
+    <ellipse cx="380" cy="270" rx="320" ry="130" stroke="#334155" strokeDasharray="3 5" fill="none" />
+    <text x="60" y="270" fontSize="10" fontWeight="700" fill="#64748b">CDN / Edge</text>
+
+    {/* Regions */}
+    {[
+      { x: 110, y: 220, label: "us-east-1", pods: 18 },
+      { x: 380, y: 180, label: "eu-west-2", pods: 14 },
+      { x: 620, y: 240, label: "ap-south-1", pods: 15 },
+    ].map((r, i) => (
+      <g key={i}>
+        <rect x={r.x - 76} y={r.y - 50} width={152} height={140} rx={16} fill="#0f1c33" stroke="#3b82f6" strokeOpacity={0.5} />
+        <text x={r.x} y={r.y - 30} textAnchor="middle" fontSize="11" fontWeight="800" fill="#a5b4fc">{r.label}</text>
+        {/* pods */}
+        {Array.from({ length: 12 }).map((_, j) => {
+          const c = j % 4, row = Math.floor(j / 4);
+          return (
+            <rect key={j} x={r.x - 60 + c * 30} y={r.y - 14 + row * 22} width={22} height={16} rx={4} fill="url(#it-pod)" opacity={0.85}>
+              <animate attributeName="opacity" values="0.6;1;0.6" dur={`${1.6 + (j % 5) * 0.3}s`} repeatCount="indefinite" />
+            </rect>
+          );
+        })}
+        <text x={r.x} y={r.y + 78} textAnchor="middle" fontSize={10} fill="#94a3b8">{r.pods} pods · K8s</text>
+      </g>
+    ))}
+
+    {/* Control plane */}
+    <g>
+      <rect x="290" y="350" width="180" height="80" rx="14" fill="hsl(14 88% 62%)" />
+      <text x="380" y="378" textAnchor="middle" fontSize="12" fontWeight="800" fill="white">Control Plane</text>
+      <text x="380" y="396" textAnchor="middle" fontSize="10" fill="white" opacity="0.85">Kafka · etcd · ArgoCD</text>
+      <text x="380" y="416" textAnchor="middle" fontSize="10" fill="white" opacity="0.85">99.99% SLA</text>
+    </g>
+
+    {/* Lines from regions to control plane */}
+    {[110, 380, 620].map((x, i) => (
+      <path key={i} d={`M${x} 280 Q ${x} 340, 380 380`} stroke="url(#it-edge)" strokeWidth="1.5" strokeDasharray="3 4" fill="none" opacity="0.7" />
+    ))}
+
+    {/* Legend chips */}
+    <g transform="translate(40,432)">
+      {[
+        { c: "#3b82f6", l: "Tenant pod (Docker + K8s)" },
+        { c: "hsl(14 88% 62%)", l: "Control plane" },
+        { c: "#10b981", l: "Live · auto-failover" },
+      ].map((p, i) => (
+        <g key={i} transform={`translate(${i * 220},0)`}>
+          <circle cx="6" cy="0" r="5" fill={p.c} />
+          <text x="18" y="4" fontSize="10" fontWeight="700" fill="#cbd5e1">{p.l}</text>
+        </g>
+      ))}
+    </g>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* AIPipelineDiagram — distinct from NodeFlow: vertical AI pipeline    */
+/* ------------------------------------------------------------------ */
+export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 760 460" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="ap-bg" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="#fff7ed" /><stop offset="100%" stopColor="#eff6ff" />
+      </linearGradient>
+      <linearGradient id="ap-stage" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="hsl(226 71% 50%)" /><stop offset="100%" stopColor="hsl(226 71% 36%)" />
+      </linearGradient>
+      <linearGradient id="ap-action" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="hsl(14 88% 62%)" /><stop offset="100%" stopColor="hsl(20 90% 50%)" />
+      </linearGradient>
+    </defs>
+    <rect x="10" y="10" width="740" height="440" rx="20" fill="url(#ap-bg)" stroke="#e2e8f0" />
+    <text x="40" y="46" fontSize="13" fontWeight="800" fill="#0f172a">AI Pipeline · listing → live</text>
+    <text x="40" y="64" fontSize="11" fill="#64748b">Vector embeddings, marketplace rules and a human-in-the-loop QA gate.</text>
+
+    {/* Stages (4 wide columns) */}
+    {[
+      { x: 40,  t: "INGEST", h: "Raw product CSV", d: "Photos · brief · specs", c: "url(#ap-stage)" },
+      { x: 220, t: "EMBED", h: "Vector + tags", d: "OpenAI · category model", c: "url(#ap-stage)" },
+      { x: 400, t: "GENERATE", h: "Per-channel listing", d: "Title · bullets · keywords", c: "url(#ap-stage)" },
+      { x: 580, t: "PUBLISH", h: "Push to live", d: "Amazon · eBay · Flipkart", c: "url(#ap-action)" },
+    ].map((s, i) => (
+      <g key={i}>
+        <rect x={s.x} y={110} width={140} height={150} rx={16} fill="white" stroke="#e2e8f0" />
+        <rect x={s.x} y={110} width={140} height={28} rx={14} fill={s.c} />
+        <text x={s.x + 12} y={128} fontSize={10} fontWeight={800} fill="white" letterSpacing={1}>{s.t}</text>
+        <text x={s.x + 12} y={170} fontSize={12} fontWeight={800} fill="#0f172a">{s.h}</text>
+        <text x={s.x + 12} y={190} fontSize={10} fill="#64748b">{s.d}</text>
+        {/* mini visual per stage */}
+        <g transform={`translate(${s.x + 12}, 210)`}>
+          {i === 0 && [0,1,2,3].map(j => <rect key={j} x={j*30} y={0} width={24} height={28} rx={4} fill="#f1f5f9" />)}
+          {i === 1 && [0,1,2,3,4,5].map(j => (
+            <circle key={j} cx={j*18 + 8} cy={14} r={4 + (j%3)*2} fill="hsl(226 71% 50%)" opacity={0.4 + (j%3)*0.2} />
+          ))}
+          {i === 2 && (<>
+            <rect width={116} height={6} rx={3} fill="hsl(226 71% 50%)" />
+            <rect y={12} width={92} height={6} rx={3} fill="hsl(226 71% 70%)" />
+            <rect y={24} width={70} height={6} rx={3} fill="hsl(226 71% 80%)" />
+          </>)}
+          {i === 3 && [["A","#f59e0b"],["W","#1d4ed8"],["F","#ef4444"]].map((m,j) => (
+            <g key={j}>
+              <circle cx={j*32 + 14} cy={14} r={12} fill={m[1] as string} />
+              <text x={j*32 + 14} y={18} textAnchor="middle" fontSize={11} fontWeight={800} fill="white">{m[0] as string}</text>
+            </g>
+          ))}
+        </g>
+        {i < 3 && (
+          <path d={`M${s.x + 140} 185 L ${s.x + 220} 185`} stroke="#94a3b8" strokeWidth={2} strokeDasharray="4 4" markerEnd="url(#arrow-purple)" />
+        )}
+      </g>
+    ))}
+
+    {/* QA gate */}
+    <g>
+      <rect x="220" y="300" width="320" height="76" rx="14" fill="white" stroke="hsl(14 88% 62%)" strokeWidth={2} strokeDasharray="6 4" />
+      <text x="380" y="324" textAnchor="middle" fontSize="11" fontWeight="800" fill="hsl(14 88% 50%)">⚑ HUMAN-IN-THE-LOOP QA</text>
+      <text x="380" y="346" textAnchor="middle" fontSize="11" fill="#475569">Reviewer approves / edits before publish</text>
+      <text x="380" y="364" textAnchor="middle" fontSize="10" fill="#94a3b8">Auto-approve threshold: confidence &gt; 0.92</text>
+    </g>
+    <path d="M470 260 L 470 300" stroke="hsl(14 88% 62%)" strokeWidth={2} strokeDasharray="3 3" />
+    <path d="M380 376 Q 380 400, 470 400 L 650 400" stroke="hsl(14 88% 62%)" strokeWidth={2} strokeDasharray="3 3" />
+
+    <text x="380" y="430" textAnchor="middle" fontSize={10} fill="#94a3b8">~4 min raw CSV → 3 channel-perfect listings · 92% auto-approved</text>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* ChannelSyncFlow — distinct sync flow for marketplaces page          */
+/* ------------------------------------------------------------------ */
+export const ChannelSyncFlow = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 820 420" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="cs-bg" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="#fdf4ff" /><stop offset="100%" stopColor="#fff7ed" />
+      </linearGradient>
+      <linearGradient id="cs-core" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="hsl(226 71% 45%)" /><stop offset="100%" stopColor="hsl(14 88% 55%)" />
+      </linearGradient>
+    </defs>
+    <rect x="10" y="10" width="800" height="400" rx="20" fill="url(#cs-bg)" stroke="#e2e8f0" />
+    <text x="40" y="46" fontSize="13" fontWeight="800" fill="#0f172a">Channel sync · bidirectional</text>
+    <text x="40" y="64" fontSize="11" fill="#64748b">Inventory · pricing · orders · returns — propagated across every channel in real time.</text>
+
+    {/* Left channels */}
+    {[
+      { y: 110, l: "Amazon", c: "#f59e0b" },
+      { y: 170, l: "Walmart", c: "#1d4ed8" },
+      { y: 230, l: "eBay", c: "#ef4444" },
+      { y: 290, l: "Shopify", c: "#10b981" },
+    ].map((s, i) => (
+      <g key={i}>
+        <rect x="40" y={s.y - 20} width="140" height="44" rx="10" fill="white" stroke="#e2e8f0" />
+        <circle cx="60" cy={s.y + 2} r="7" fill={s.c} />
+        <text x="76" y={s.y + 6} fontSize="12" fontWeight="800" fill="#0f172a">{s.l}</text>
+        {/* arrows */}
+        <path d={`M180 ${s.y - 4} L 330 ${s.y - 4}`} stroke={s.c} strokeWidth="1.8" strokeDasharray="3 3" markerEnd="url(#arrow-purple)" />
+        <path d={`M330 ${s.y + 8} L 180 ${s.y + 8}`} stroke="#94a3b8" strokeWidth="1.8" strokeDasharray="3 3" markerEnd="url(#arrow-purple)" />
+      </g>
+    ))}
+
+    {/* Center sync engine */}
+    <g>
+      <rect x="330" y="110" width="160" height="200" rx="18" fill="url(#cs-core)" />
+      <text x="410" y="142" textAnchor="middle" fontSize="13" fontWeight="800" fill="white">Ctasis Sync</text>
+      <text x="410" y="162" textAnchor="middle" fontSize="10" fill="white" opacity="0.85">event bus · &lt; 800ms</text>
+      {/* pulse ring */}
+      <circle cx="410" cy="220" r="22" fill="white" opacity="0.18">
+        <animate attributeName="r" values="18;34;18" dur="2.4s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.3;0;0.3" dur="2.4s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="410" cy="220" r="14" fill="white" opacity="0.9" />
+      <text x="410" y="290" textAnchor="middle" fontSize="10" fill="white" opacity="0.9">Kafka · RabbitMQ</text>
+    </g>
+
+    {/* Right outputs */}
+    {[
+      { y: 110, l: "Inventory", v: "✓ in sync", c: "#10b981" },
+      { y: 170, l: "Pricing", v: "Buy Box 92%", c: "hsl(14 88% 55%)" },
+      { y: 230, l: "Orders", v: "847 today", c: "hsl(226 71% 50%)" },
+      { y: 290, l: "Returns", v: "12 open", c: "#94a3b8" },
+    ].map((s, i) => (
+      <g key={i}>
+        <path d={`M490 ${s.y + 2} L 640 ${s.y + 2}`} stroke={s.c} strokeWidth="1.8" strokeDasharray="3 3" markerEnd="url(#arrow-purple)" />
+        <rect x="640" y={s.y - 20} width="140" height="44" rx="10" fill="white" stroke="#e2e8f0" />
+        <text x="654" y={s.y - 4} fontSize="10" fontWeight="700" fill="#64748b">{s.l}</text>
+        <text x="654" y={s.y + 14} fontSize="12" fontWeight="800" fill={s.c}>{s.v}</text>
+      </g>
+    ))}
+
+    <text x="410" y="392" textAnchor="middle" fontSize="11" fill="#64748b">One write here = updated everywhere. Two-way, audited, replayable.</text>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* BlogEditorialMockup — magazine-style hero for blog                  */
+/* ------------------------------------------------------------------ */
+export const BlogEditorialMockup = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 720 500" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="be-cover" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="hsl(226 71% 32%)" /><stop offset="100%" stopColor="hsl(14 88% 55%)" />
+      </linearGradient>
+      <linearGradient id="be-bg" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="#ffffff" /><stop offset="100%" stopColor="#fff7ed" />
+      </linearGradient>
+      <filter id="be-shadow" x="-10%" y="-10%" width="120%" height="130%">
+        <feGaussianBlur stdDeviation="12" /><feOffset dy="8" />
+        <feComponentTransfer><feFuncA type="linear" slope="0.18" /></feComponentTransfer>
+        <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+      </filter>
+    </defs>
+    <rect x="10" y="10" width="700" height="480" rx="22" fill="url(#be-bg)" stroke="#e2e8f0" />
+
+    {/* Magazine cover left */}
+    <g filter="url(#be-shadow)">
+      <rect x="40" y="50" width="280" height="400" rx="16" fill="url(#be-cover)" />
+      <rect x="60" y="70" width="80" height="22" rx="11" fill="white" opacity="0.18" />
+      <text x="100" y="86" textAnchor="middle" fontSize="10" fontWeight="800" fill="white" letterSpacing="1.5">ISSUE 04</text>
+      <text x="60" y="180" fontSize="22" fontWeight="800" fill="white">The Repricer</text>
+      <text x="60" y="208" fontSize="22" fontWeight="800" fill="white">Playbook</text>
+      <line x1="60" y1="226" x2="240" y2="226" stroke="white" opacity="0.3" />
+      <text x="60" y="252" fontSize="11" fill="white" opacity="0.85">Inside the algorithm that</text>
+      <text x="60" y="268" fontSize="11" fill="white" opacity="0.85">protected $2.1M in margin</text>
+      <text x="60" y="284" fontSize="11" fill="white" opacity="0.85">across 40,000 SKUs.</text>
+      {/* Decorative chart */}
+      <polyline points="60,400 90,380 120,390 150,360 180,370 210,340 240,350 270,320"
+        stroke="white" strokeWidth="2" fill="none" opacity="0.7" />
+      <text x="60" y="430" fontSize="9" fill="white" opacity="0.6">— Buy Box win rate, last 30 days</text>
+    </g>
+
+    {/* Right column — article cards */}
+    {[
+      { y: 50, t: "Algorithmic vs rule-based repricing", c: "Strategy", k: "8 min" },
+      { y: 160, t: "Walmart Buy Box: a different game", c: "Walmart", k: "9 min" },
+      { y: 270, t: "5 analytics that actually move revenue", c: "Analytics", k: "7 min" },
+      { y: 380, t: "From CSV to Flipkart in 4 minutes", c: "AI", k: "5 min" },
+    ].map((p, i) => (
+      <g key={i} filter="url(#be-shadow)">
+        <rect x="350" y={p.y} width="320" height="92" rx="14" fill="white" stroke="#e2e8f0" />
+        <rect x="366" y={p.y + 18} width="60" height="18" rx="9" fill="hsl(14 88% 92%)" />
+        <text x="396" y={p.y + 31} textAnchor="middle" fontSize="9" fontWeight="800" fill="hsl(14 88% 40%)">{p.c}</text>
+        <text x="436" y={p.y + 31} fontSize="10" fill="#94a3b8">· {p.k}</text>
+        <text x="366" y={p.y + 58} fontSize="13" fontWeight="800" fill="#0f172a">{p.t}</text>
+        <text x="366" y={p.y + 78} fontSize="10" fill="#64748b">Read the full article →</text>
+      </g>
+    ))}
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* AboutJourneyMockup — founder story / milestones panel               */
+/* ------------------------------------------------------------------ */
+export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="aj-bg" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="#fff7ed" /><stop offset="100%" stopColor="#eff6ff" />
+      </linearGradient>
+      <linearGradient id="aj-card" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="hsl(226 71% 38%)" /><stop offset="100%" stopColor="hsl(232 60% 18%)" />
+      </linearGradient>
+      <linearGradient id="aj-accent" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="hsl(14 88% 62%)" /><stop offset="100%" stopColor="hsl(20 90% 50%)" />
+      </linearGradient>
+      <filter id="aj-shadow" x="-10%" y="-10%" width="120%" height="130%">
+        <feGaussianBlur stdDeviation="12" /><feOffset dy="8" />
+        <feComponentTransfer><feFuncA type="linear" slope="0.2" /></feComponentTransfer>
+        <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+      </filter>
+    </defs>
+    <rect x="10" y="10" width="700" height="500" rx="22" fill="url(#aj-bg)" stroke="#e2e8f0" />
+
+    {/* Founder card */}
+    <g filter="url(#aj-shadow)">
+      <rect x="40" y="50" width="320" height="420" rx="20" fill="url(#aj-card)" />
+      <rect x="60" y="70" width="80" height="22" rx="11" fill="white" opacity="0.18" />
+      <text x="100" y="86" textAnchor="middle" fontSize="10" fontWeight="800" fill="white" letterSpacing="1.5">2019 → 2026</text>
+
+      {/* Founders avatars */}
+      <g transform="translate(60, 120)">
+        <circle cx="28" cy="28" r="28" fill="hsl(14 88% 62%)" />
+        <text x="28" y="33" textAnchor="middle" fontSize="14" fontWeight="800" fill="white">RS</text>
+        <circle cx="76" cy="28" r="28" fill="hsl(226 71% 60%)" />
+        <text x="76" y="33" textAnchor="middle" fontSize="14" fontWeight="800" fill="white">AP</text>
+      </g>
+
+      <text x="60" y="220" fontSize="20" fontWeight="800" fill="white">Two engineers,</text>
+      <text x="60" y="246" fontSize="20" fontWeight="800" fill="white">one mission.</text>
+      <line x1="60" y1="266" x2="160" y2="266" stroke="hsl(14 88% 62%)" strokeWidth="3" />
+      <text x="60" y="296" fontSize="11" fill="white" opacity="0.85">We started Ctasis in an Ahmedabad</text>
+      <text x="60" y="312" fontSize="11" fill="white" opacity="0.85">garage to end the spreadsheet hell</text>
+      <text x="60" y="328" fontSize="11" fill="white" opacity="0.85">of multichannel sellers.</text>
+
+      {/* Stat strip */}
+      <g transform="translate(60, 360)">
+        {[
+          { l: "Sellers", v: "50K+" },
+          { l: "Countries", v: "150+" },
+          { l: "GMV", v: "$300M" },
+        ].map((s, i) => (
+          <g key={i} transform={`translate(${i * 90}, 0)`}>
+            <text x="0" y="0" fontSize="20" fontWeight="800" fill="white">{s.v}</text>
+            <text x="0" y="18" fontSize="10" fill="white" opacity="0.7">{s.l}</text>
+          </g>
+        ))}
+      </g>
+
+      <rect x="60" y="420" width="260" height="32" rx="16" fill="url(#aj-accent)" />
+      <text x="190" y="441" textAnchor="middle" fontSize="11" fontWeight="800" fill="white">Read the founder story →</text>
+    </g>
+
+    {/* Right milestones */}
+    <g>
+      <text x="400" y="74" fontSize="11" fontWeight="800" fill="#64748b" letterSpacing="2">MILESTONES</text>
+      {[
+        { y: 100, year: "2019", t: "Founded in Ahmedabad", c: "hsl(226 71% 50%)" },
+        { y: 170, year: "2021", t: "Series A · $12M raised", c: "hsl(14 88% 60%)" },
+        { y: 240, year: "2023", t: "Crossed 50 countries", c: "hsl(226 71% 50%)" },
+        { y: 310, year: "2024", t: "AI Repricer launched", c: "hsl(14 88% 60%)" },
+        { y: 380, year: "2026", t: "100K-seller goal", c: "hsl(150 70% 40%)" },
+      ].map((m, i, arr) => (
+        <g key={i}>
+          {i < arr.length - 1 && (
+            <line x1="412" y1={m.y + 8} x2="412" y2={arr[i + 1].y - 8} stroke="#cbd5e1" strokeDasharray="2 4" />
+          )}
+          <circle cx="412" cy={m.y} r="10" fill="white" stroke={m.c} strokeWidth="3" />
+          <circle cx="412" cy={m.y} r="4" fill={m.c} />
+          <g filter="url(#aj-shadow)">
+            <rect x="436" y={m.y - 22} width="240" height="48" rx="12" fill="white" stroke="#e2e8f0" />
+            <text x="448" y={m.y - 6} fontSize="14" fontWeight="800" fill={m.c}>{m.year}</text>
+            <text x="448" y={m.y + 14} fontSize="11" fontWeight="700" fill="#0f172a">{m.t}</text>
+          </g>
+        </g>
+      ))}
+    </g>
+  </svg>
+);
