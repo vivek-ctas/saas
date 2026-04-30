@@ -230,7 +230,7 @@ const Infrastructure = () => {
 
             {/* Visual flow */}
             <div className="reveal mb-12 rounded-3xl bg-white p-4 sm:p-8 border border-slate-100 shadow-stripe">
-              <NodeFlowDiagram className="w-full h-auto" />
+              <AIPipelineDiagram className="w-full h-auto" />
               <p className="text-center text-sm text-slate-500 mt-4">
                 A live look at the auto-repricer pipeline — every node is observable, replayable and version-controlled.
               </p>

@@ -138,7 +138,7 @@ const Marketplaces = () => {
               </p>
             </div>
             <div className="reveal rounded-3xl bg-white p-4 sm:p-8 border border-slate-100 shadow-stripe">
-              <NodeFlowDiagram className="w-full h-auto" />
+              <ChannelSyncFlow className="w-full h-auto" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
               {[
