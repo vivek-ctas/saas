@@ -7,7 +7,7 @@ export const BlobBackdrop = ({ className = "" }: { className?: string }) => (
   <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden>
     <div className="hero-blob bg-primary/40 w-[420px] h-[420px] -top-24 -left-20 animate-blob" />
     <div className="hero-blob bg-secondary/40 w-[360px] h-[360px] top-32 right-0 animate-blob" style={{ animationDelay: "3s" }} />
-    <div className="hero-blob bg-fuchsia-500/30 w-[300px] h-[300px] bottom-0 left-1/3 animate-blob" style={{ animationDelay: "6s" }} />
+    <div className="hero-blob bg-orange-300/30 w-[300px] h-[300px] bottom-0 left-1/3 animate-blob" style={{ animationDelay: "6s" }} />
   </div>
 );
 

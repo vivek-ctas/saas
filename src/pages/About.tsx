@@ -229,7 +229,7 @@ const About = () => {
 
               <div className="reveal delay-200">
                 <div className="flex items-center gap-2 mb-4">
-                  <Megaphone className="w-5 h-5 text-fuchsia-600" />
+                  <Megaphone className="w-5 h-5 text-primary" />
                   <h3 className="font-bold text-slate-900">Ads & infrastructure</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">

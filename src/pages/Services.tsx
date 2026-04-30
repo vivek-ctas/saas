@@ -21,14 +21,14 @@ const Services = () => {
   const services = [
     { icon: RefreshCw, title: "Inventory Sync", desc: "Real-time stock levels across every channel.", tone: "from-blue-500 to-indigo-600", bg: "bg-blue-50" },
     { icon: ShoppingCart, title: "Order Management", desc: "One inbox for orders from all marketplaces.", tone: "from-secondary to-orange-500", bg: "bg-pink-50" },
-    { icon: BarChart3, title: "Analytics & Reporting", desc: "Dashboards that surface profit, not noise.", tone: "from-indigo-500 to-secondary", bg: "bg-purple-50" },
+    { icon: BarChart3, title: "Analytics & Reporting", desc: "Dashboards that surface profit, not noise.", tone: "from-indigo-500 to-secondary", bg: "bg-indigo-50" },
     { icon: TrendingUp, title: "Performance Optimization", desc: "AI-driven repricing and listing tweaks.", tone: "from-orange-500 to-red-500", bg: "bg-orange-50" },
     { icon: Truck, title: "Logistics & Fulfillment", desc: "Multi-carrier shipping with smart routing.", tone: "from-indigo-500 to-blue-600", bg: "bg-indigo-50" },
     { icon: Calculator, title: "Tax & Compliance", desc: "Sales tax, VAT and GST — handled.", tone: "from-rose-500 to-pink-600", bg: "bg-rose-50" },
     { icon: Warehouse, title: "Warehouse Management", desc: "Multi-location inventory with barcode scanning.", tone: "from-teal-500 to-cyan-600", bg: "bg-teal-50" },
     { icon: Layers, title: "Cross-Platform Integration", desc: "ERP, CRM and accounting — connected.", tone: "from-cyan-500 to-blue-500", bg: "bg-cyan-50" },
     { icon: Package2, title: "Product Information Mgmt", desc: "One catalog, infinite channels.", tone: "from-emerald-500 to-teal-500", bg: "bg-emerald-50" },
-    { icon: Brain, title: "AI-Powered Insights", desc: "Forecast demand 90 days out.", tone: "from-indigo-600 to-primary", bg: "bg-violet-50" },
+    { icon: Brain, title: "AI-Powered Insights", desc: "Forecast demand 90 days out.", tone: "from-indigo-600 to-primary", bg: "bg-indigo-50" },
     { icon: Users, title: "Team Collaboration", desc: "Role-based access and audit trails.", tone: "from-secondary to-rose-500", bg: "bg-pink-50" },
     { icon: Shield, title: "Security & Compliance", desc: "SOC 2 Type II with 99.9% uptime SLA.", tone: "from-slate-600 to-slate-800", bg: "bg-slate-50" }
   ];

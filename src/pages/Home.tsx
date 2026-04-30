@@ -224,7 +224,7 @@ const Home = () => {
                   style={{ transitionDelay: `${i * 80}ms` }}
                 >
                   <div className="flex items-start justify-between mb-5">
-                    <div className="w-11 h-11 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-fuchsia-600 transition-all duration-300">
+                    <div className="w-11 h-11 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-secondary transition-all duration-300">
                       <b.icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
                     </div>
                     <span className="text-[11px] font-semibold tracking-wider uppercase text-slate-400">{b.count}</span>
@@ -398,7 +398,7 @@ const Home = () => {
                 <p className="text-sm text-white/70">SOC 2 Type II, 99.9% uptime SLA, end-to-end encryption.</p>
                 <div className="absolute -right-10 -bottom-10 w-48 h-48 bg-primary/30 rounded-full blur-3xl" />
               </div>
-              <div className="reveal delay-400 rounded-3xl p-6 bg-gradient-to-br from-pink-100 to-purple-100 hover-lift">
+              <div className="reveal delay-400 rounded-3xl p-6 bg-gradient-to-br from-orange-50 to-amber-100 hover-lift">
                 <Globe className="w-8 h-8 text-secondary mb-3" />
                 <h3 className="font-bold text-slate-900 mb-1">Global reach</h3>
                 <p className="text-sm text-slate-700">150+ countries supported.</p>
@@ -437,7 +437,7 @@ const Home = () => {
         {/* TESTIMONIAL */}
         <section className="py-24 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="reveal relative rounded-3xl bg-gradient-to-br from-slate-900 via-primary to-fuchsia-700 p-12 lg:p-16 text-white overflow-hidden shadow-stripe-2xl">
+            <div className="reveal relative rounded-3xl bg-gradient-to-br from-slate-900 via-primary to-orange-500 p-12 lg:p-16 text-white overflow-hidden shadow-stripe-2xl">
               <div className="absolute -top-20 -right-20 w-80 h-80 bg-pink-500/30 rounded-full blur-3xl" />
               <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-primary/40 rounded-full blur-3xl" />
               <div className="relative">
@@ -447,7 +447,7 @@ const Home = () => {
                   incident in 9 months. It's the operating system our business was missing."
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center font-bold text-xl">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-secondary to-orange-500 flex items-center justify-center font-bold text-xl">
                     PR
                   </div>
                   <div>

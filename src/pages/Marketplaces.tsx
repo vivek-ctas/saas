@@ -17,7 +17,7 @@ const Marketplaces = () => {
     {
       title: "Global marketplaces",
       icon: ShoppingBag,
-      tone: "from-primary to-fuchsia-600",
+      tone: "from-primary to-secondary",
       items: ["Amazon (FBA + FBM)", "eBay", "Walmart", "Etsy", "Target Plus", "Best Buy", "Newegg", "Wayfair"]
     },
     {
@@ -29,7 +29,7 @@ const Marketplaces = () => {
     {
       title: "Europe",
       icon: Star,
-      tone: "from-indigo-600 to-purple-600",
+      tone: "from-primary to-indigo-600",
       items: ["Allegro", "Cdiscount", "Bol.com", "OTTO", "Zalando", "Fnac", "ManoMano", "Kaufland"]
     },
     {

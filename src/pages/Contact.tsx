@@ -119,7 +119,7 @@ const Contact = () => {
 
               {/* Sidebar info */}
               <div className="lg:col-span-2 space-y-6">
-                <Card className="reveal delay-200 relative overflow-hidden bg-gradient-to-br from-slate-900 via-primary to-fuchsia-700 text-white border-0 shadow-stripe-2xl">
+                <Card className="reveal delay-200 relative overflow-hidden bg-gradient-to-br from-slate-900 via-primary to-orange-500 text-white border-0 shadow-stripe-2xl">
                   <div className="absolute -bottom-16 -right-16 w-60 h-60 bg-pink-500/40 rounded-full blur-3xl" />
                   <CardContent className="relative p-8 space-y-6">
                     <h3 className="text-2xl font-bold">Reach our team</h3>
