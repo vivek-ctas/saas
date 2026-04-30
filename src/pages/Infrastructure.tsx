@@ -8,8 +8,8 @@ import {
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import {
-  BlobBackdrop, InfraIllustration, NeuralIllustration, OrderFlowDiagram,
-  NodeFlowDiagram, AnalyticsFlowDiagram, RepricerStrategyChart, LogoChip
+  BlobBackdrop, InfraTopologyDiagram, NeuralIllustration, OrderFlowDiagram,
+  AIPipelineDiagram, AnalyticsFlowDiagram, RepricerStrategyChart, LogoChip
 } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
@@ -18,11 +18,11 @@ const Infrastructure = () => {
 
   const pillars = [
     { icon: Cloud, title: "AWS multi-region", desc: "Active-active across 3 regions with automatic failover and edge caching via CloudFront.", tone: "from-primary to-indigo-600" },
-    { icon: Container, title: "Isolated Docker pods", desc: "Each tenant gets isolated compute pods — noisy neighbors can't touch your throughput.", tone: "from-fuchsia-500 to-purple-600" },
+    { icon: Container, title: "Isolated Docker pods", desc: "Each tenant gets isolated compute pods — noisy neighbors can't touch your throughput.", tone: "from-secondary to-orange-500" },
     { icon: Network, title: "Kubernetes load balancing", desc: "Auto-scaling K8s clusters route traffic intelligently across thousands of pods.", tone: "from-secondary to-pink-600" },
     { icon: Database, title: "Per-tenant PostgreSQL + MongoDB", desc: "Each seller gets isolated PostgreSQL for transactional data and MongoDB for catalog & event documents — no shared schemas, no leak risk.", tone: "from-indigo-600 to-primary" },
     { icon: Workflow, title: "Event-driven (Kafka)", desc: "Kafka + RabbitMQ pipelines handle 10M+ marketplace events daily with sub-second latency.", tone: "from-rose-500 to-pink-600" },
-    { icon: Bell, title: "Realtime notifications", desc: "Webhooks, push, email and Slack alerts powered by our message bus — never miss an order.", tone: "from-purple-600 to-fuchsia-600" },
+    { icon: Bell, title: "Realtime notifications", desc: "Webhooks, push, email and Slack alerts powered by our message bus — never miss an order.", tone: "from-primary to-secondary" },
   ];
 
   const stack = [
@@ -44,7 +44,7 @@ const Infrastructure = () => {
     {
       icon: Shield, title: "Protection that actually protects",
       desc: "Bank-grade encryption locks your information whether it's sitting still or flying across the internet. Independent auditors check us every year (SOC 2, ISO 27001, GDPR, PCI). Translation: the same level of safety big banks use — without you needing to lift a finger.",
-      tone: "from-fuchsia-500 to-purple-600",
+      tone: "from-secondary to-orange-500",
     },
     {
       icon: Zap, title: "Grows with you, instantly",
@@ -59,15 +59,15 @@ const Infrastructure = () => {
         <PageHero
           badgeIcon={Server}
           badgeText="Built like a hyperscaler"
-          title={<>Infrastructure that <span className="bg-gradient-to-r from-primary via-fuchsia-600 to-secondary bg-clip-text text-transparent">doesn't blink.</span></>}
+          title={<>Infrastructure that <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">doesn't blink.</span></>}
           subtitle="Isolated tenant pods, Kubernetes-native scaling, Kafka-driven events and a 99.99% SLA — the same architecture trusted by enterprises, available to every seller."
-          visual={<InfraIllustration className="w-full h-auto" />}
+          visual={<InfraTopologyDiagram className="w-full h-auto" />}
           actions={
             <>
               <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
                 Read whitepaper
               </Button>
-              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-fuchsia-600 hover:opacity-95 border-0">
+              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
                 Talk to engineering
                 <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -246,7 +246,7 @@ const Infrastructure = () => {
                 {
                   icon: Layers, title: "A+ content via S3",
                   desc: "Manage every A+ image, comparison chart and brand-story banner as versioned S3 objects. One click pushes the latest creative to Amazon Brand Registry — no more emailing PSDs to a designer or wondering which version is live in which region.",
-                  tone: "from-fuchsia-500 to-purple-600",
+                  tone: "from-secondary to-orange-500",
                 },
                 {
                   icon: Cpu, title: "Auto-repricer (Premium)",

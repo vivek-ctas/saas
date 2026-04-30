@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
-import { BlobBackdrop, WorkflowIllustration, GlobeIllustration, NeuralIllustration, TimelineIllustration, LogoChip } from "@/components/illustrations";
+import { BlobBackdrop, WorkflowIllustration, GlobeIllustration, NeuralIllustration, AboutJourneyMockup, LogoChip } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
 const About = () => {
@@ -24,9 +24,9 @@ const About = () => {
   ];
 
   const values = [
-    { icon: Lightbulb, title: "Simplicity", desc: "Complex problems deserve simple, beautiful solutions.", tone: "from-pink-500 to-rose-500" },
+    { icon: Lightbulb, title: "Simplicity", desc: "Complex problems deserve simple, beautiful solutions.", tone: "from-secondary to-rose-500" },
     { icon: Shield, title: "Reliability", desc: "Your business depends on us. We don't take that lightly.", tone: "from-primary to-indigo-600" },
-    { icon: Sparkles, title: "Innovation", desc: "We ship the next thing — not the obvious thing.", tone: "from-fuchsia-500 to-purple-600" },
+    { icon: Sparkles, title: "Innovation", desc: "We ship the next thing — not the obvious thing.", tone: "from-secondary to-orange-500" },
     { icon: Heart, title: "Transparency", desc: "Honest pricing. Honest roadmap. Honest support.", tone: "from-secondary to-pink-600" }
   ];
 
@@ -36,15 +36,15 @@ const About = () => {
         <PageHero
           badgeIcon={Sparkles}
           badgeText="Our story"
-          title={<>We're building the <span className="bg-gradient-to-r from-primary via-fuchsia-600 to-secondary bg-clip-text text-transparent">operating system</span> for modern commerce.</>}
+          title={<>We're building the <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">operating system</span> for modern commerce.</>}
           subtitle="50,000+ sellers in 150+ countries trust Ctasis to power their multichannel operations. This is how we got here — and where we're going."
-          visual={<TimelineIllustration className="w-full h-auto" />}
+          visual={<AboutJourneyMockup className="w-full h-auto" />}
           actions={
             <>
               <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
                 Read our manifesto
               </Button>
-              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-fuchsia-600 hover:opacity-95 border-0">
+              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
                 Join the team
                 <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -70,8 +70,8 @@ const About = () => {
               </p>
             </div>
             <div className="reveal delay-200 relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-pink-300/20 blur-3xl rounded-3xl" />
-              <div className="relative rounded-3xl bg-gradient-to-br from-primary via-fuchsia-700 to-pink-600 p-10 text-white shadow-stripe-2xl overflow-hidden">
+              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-orange-200/20 blur-3xl rounded-3xl" />
+              <div className="relative rounded-3xl bg-gradient-to-br from-primary to-secondary p-10 text-white shadow-stripe-2xl overflow-hidden">
                 <div className="absolute -top-12 -right-12 w-40 h-40 bg-white/10 rounded-full blur-2xl" />
                 <Eye className="w-10 h-10 mb-6" />
                 <h3 className="text-3xl font-bold mb-4">Our vision</h3>
@@ -96,7 +96,7 @@ const About = () => {
 
             <div className="relative">
               {/* Center line */}
-              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-secondary to-pink-300 md:-translate-x-1/2" />
+              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-secondary to-orange-200 md:-translate-x-1/2" />
 
               <div className="space-y-12">
                 {milestones.map((m, i) => {
@@ -171,11 +171,11 @@ const About = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 { icon: Lock, title: "SOC 2 Type II", desc: "Independently audited every year. Your data, encrypted at rest and in transit.", tone: "from-primary to-indigo-600" },
-                { icon: Brain, title: "AI for customer favour", desc: "ML models surface what your buyers want next — purchase-behaviour analytics built in.", tone: "from-fuchsia-500 to-purple-600" },
+                { icon: Brain, title: "AI for customer favour", desc: "ML models surface what your buyers want next — purchase-behaviour analytics built in.", tone: "from-secondary to-orange-500" },
                 { icon: Zap, title: "Innovation cadence", desc: "2-3 new integrations every month, shipped without breaking your workflows.", tone: "from-secondary to-pink-600" },
                 { icon: Shield, title: "99.99% uptime SLA", desc: "Multi-region failover means your store stays open even when AWS regions don't.", tone: "from-indigo-600 to-primary" },
                 { icon: Cpu, title: "Built-in compliance", desc: "GDPR, ISO 27001, PCI DSS L1 and HIPAA-ready out of the box.", tone: "from-rose-500 to-pink-600" },
-                { icon: Heart, title: "Transparent pricing", desc: "No hidden fees, no per-order surcharges. What you see is what you pay.", tone: "from-purple-600 to-fuchsia-600" },
+                { icon: Heart, title: "Transparent pricing", desc: "No hidden fees, no per-order surcharges. What you see is what you pay.", tone: "from-primary to-secondary" },
               ].map((t, i) => (
                 <Card key={i} className="reveal hover-lift relative overflow-hidden border border-slate-100" style={{ transitionDelay: `${i * 70}ms` }}>
                   <div className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br ${t.tone} opacity-10 blur-2xl`} />
@@ -229,7 +229,7 @@ const About = () => {
 
               <div className="reveal delay-200">
                 <div className="flex items-center gap-2 mb-4">
-                  <Megaphone className="w-5 h-5 text-fuchsia-600" />
+                  <Megaphone className="w-5 h-5 text-primary" />
                   <h3 className="font-bold text-slate-900">Ads & infrastructure</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">
@@ -314,7 +314,7 @@ const About = () => {
               We're hiring engineers, designers and seller-success folks across India and remote.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button size="lg" className="rounded-full px-8 shadow-stripe-xl bg-gradient-to-r from-primary to-fuchsia-600 border-0">
+              <Button size="lg" className="rounded-full px-8 shadow-stripe-xl bg-gradient-to-r from-primary to-secondary border-0">
                 See open roles <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
               <Button size="lg" variant="outline" className="rounded-full px-8 border-slate-300 bg-white">

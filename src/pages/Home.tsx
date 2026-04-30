@@ -61,7 +61,7 @@ const Home = () => {
                 </Badge>
                 <h1 className="text-5xl sm:text-6xl lg:text-[4.25rem] font-bold text-slate-900 mb-6 leading-[1.05] tracking-tight">
                   The most advanced
-                  <span className="block bg-gradient-to-r from-primary via-fuchsia-600 to-secondary bg-clip-text text-transparent">
+                  <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                     AI Marketplace OS
                   </span>
                   with built-in seller analytics
@@ -75,7 +75,7 @@ const Home = () => {
                   <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
                     Pricing
                   </Button>
-                  <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-fuchsia-600 hover:opacity-95 border-0">
+                  <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
                     Free trial
                     <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                   </Button>
@@ -94,14 +94,14 @@ const Home = () => {
 
               {/* Mockup */}
               <div className="lg:col-span-6 relative reveal delay-200">
-                <div className="absolute -inset-8 bg-gradient-to-br from-primary/15 via-fuchsia-300/15 to-secondary/15 blur-3xl rounded-[40px]" />
+                <div className="absolute -inset-8 bg-gradient-to-br from-primary/15 via-orange-200/15 to-secondary/15 blur-3xl rounded-[40px]" />
                 <div className="relative animate-float-slow">
                   <SellerHeroMockup className="w-full h-auto" />
                 </div>
 
                 {/* Floating chips */}
                 <div className="absolute top-4 -left-4 sm:-left-8 bg-white rounded-2xl shadow-stripe-xl px-4 py-3 flex items-center gap-3 animate-float">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-fuchsia-600 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
                     <RefreshCw className="w-5 h-5 text-white" />
                   </div>
                   <div className="text-xs">
@@ -224,7 +224,7 @@ const Home = () => {
                   style={{ transitionDelay: `${i * 80}ms` }}
                 >
                   <div className="flex items-start justify-between mb-5">
-                    <div className="w-11 h-11 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-fuchsia-600 transition-all duration-300">
+                    <div className="w-11 h-11 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-secondary transition-all duration-300">
                       <b.icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
                     </div>
                     <span className="text-[11px] font-semibold tracking-wider uppercase text-slate-400">{b.count}</span>
@@ -370,7 +370,7 @@ const Home = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[200px]">
               {/* Big tile */}
-              <div className="reveal lg:col-span-2 lg:row-span-2 rounded-3xl p-8 bg-gradient-to-br from-primary to-fuchsia-600 text-white relative overflow-hidden hover-lift">
+              <div className="reveal lg:col-span-2 lg:row-span-2 rounded-3xl p-8 bg-gradient-to-br from-primary to-secondary text-white relative overflow-hidden hover-lift">
                 <div className="relative z-10">
                   <BarChart3 className="w-10 h-10 mb-4" />
                   <h3 className="text-2xl font-bold mb-2">Real-time analytics</h3>
@@ -398,7 +398,7 @@ const Home = () => {
                 <p className="text-sm text-white/70">SOC 2 Type II, 99.9% uptime SLA, end-to-end encryption.</p>
                 <div className="absolute -right-10 -bottom-10 w-48 h-48 bg-primary/30 rounded-full blur-3xl" />
               </div>
-              <div className="reveal delay-400 rounded-3xl p-6 bg-gradient-to-br from-pink-100 to-purple-100 hover-lift">
+              <div className="reveal delay-400 rounded-3xl p-6 bg-gradient-to-br from-orange-50 to-amber-100 hover-lift">
                 <Globe className="w-8 h-8 text-secondary mb-3" />
                 <h3 className="font-bold text-slate-900 mb-1">Global reach</h3>
                 <p className="text-sm text-slate-700">150+ countries supported.</p>
@@ -437,7 +437,7 @@ const Home = () => {
         {/* TESTIMONIAL */}
         <section className="py-24 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="reveal relative rounded-3xl bg-gradient-to-br from-slate-900 via-primary to-fuchsia-700 p-12 lg:p-16 text-white overflow-hidden shadow-stripe-2xl">
+            <div className="reveal relative rounded-3xl bg-gradient-to-br from-slate-900 via-primary to-orange-500 p-12 lg:p-16 text-white overflow-hidden shadow-stripe-2xl">
               <div className="absolute -top-20 -right-20 w-80 h-80 bg-pink-500/30 rounded-full blur-3xl" />
               <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-primary/40 rounded-full blur-3xl" />
               <div className="relative">
@@ -447,7 +447,7 @@ const Home = () => {
                   incident in 9 months. It's the operating system our business was missing."
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center font-bold text-xl">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-secondary to-orange-500 flex items-center justify-center font-bold text-xl">
                     PR
                   </div>
                   <div>

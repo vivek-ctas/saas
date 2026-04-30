@@ -20,7 +20,7 @@ const Contact = () => {
         <PageHero
           badgeIcon={MessageCircle}
           badgeText="We reply within 4 hours"
-          title={<>Let's talk about <span className="bg-gradient-to-r from-primary via-fuchsia-600 to-secondary bg-clip-text text-transparent">your operations.</span></>}
+          title={<>Let's talk about <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">your operations.</span></>}
           subtitle="Sales, support, partnerships — whatever brings you here, we're listening. Real humans across 5 hubs, 24/7 coverage. No bots."
           visual={<ContactMapIllustration className="w-full h-auto" />}
           actions={
@@ -28,7 +28,7 @@ const Contact = () => {
               <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
                 Browse docs
               </Button>
-              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-fuchsia-600 hover:opacity-95 border-0">
+              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
                 Book a demo
                 <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -119,7 +119,7 @@ const Contact = () => {
 
               {/* Sidebar info */}
               <div className="lg:col-span-2 space-y-6">
-                <Card className="reveal delay-200 relative overflow-hidden bg-gradient-to-br from-slate-900 via-primary to-fuchsia-700 text-white border-0 shadow-stripe-2xl">
+                <Card className="reveal delay-200 relative overflow-hidden bg-gradient-to-br from-slate-900 via-primary to-orange-500 text-white border-0 shadow-stripe-2xl">
                   <div className="absolute -bottom-16 -right-16 w-60 h-60 bg-pink-500/40 rounded-full blur-3xl" />
                   <CardContent className="relative p-8 space-y-6">
                     <h3 className="text-2xl font-bold">Reach our team</h3>
