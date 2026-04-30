@@ -60,7 +60,7 @@ const Pricing = () => {
         <PageHero
           badgeIcon={Sparkles}
           badgeText="Transparent pricing"
-          title={<>Pricing that scales <span className="bg-gradient-to-r from-primary via-fuchsia-600 to-secondary bg-clip-text text-transparent">with your business.</span></>}
+          title={<>Pricing that scales <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">with your business.</span></>}
           subtitle="Start free for 14 days. No credit card. No surprises. Cancel anytime — and see your projected ROI before you commit."
           visual={<PricingCalculatorMockup className="w-full h-auto" />}
           actions={
@@ -68,7 +68,7 @@ const Pricing = () => {
               <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
                 Compare plans
               </Button>
-              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-fuchsia-600 hover:opacity-95 border-0">
+              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
                 Start Free Trial
                 <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
               </Button>

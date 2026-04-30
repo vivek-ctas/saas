@@ -66,7 +66,7 @@ const PageHero = ({
               {children}
             </div>
             <div className="lg:col-span-6 relative reveal delay-200">
-              <div className="absolute -inset-8 bg-gradient-to-br from-primary/15 via-fuchsia-300/15 to-secondary/15 blur-3xl rounded-[40px]" />
+              <div className="absolute -inset-8 bg-gradient-to-br from-primary/15 via-orange-200/15 to-secondary/15 blur-3xl rounded-[40px]" />
               <div className="relative animate-float-slow">{visual}</div>
             </div>
           </div>

@@ -753,7 +753,7 @@ export const LogoChip = ({ name, tone = "primary" }: { name: string; tone?: "pri
   const initials = name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
   return (
     <div className="group inline-flex items-center gap-2.5 pl-2 pr-4 py-2 rounded-full bg-white border border-slate-200 hover:border-primary/40 hover:shadow-sm transition-all duration-200">
-      <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary/10 to-fuchsia-100 text-primary flex items-center justify-center text-[11px] font-bold tracking-tight">
+      <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary/10 to-orange-50 text-primary flex items-center justify-center text-[11px] font-bold tracking-tight">
         {initials}
       </div>
       <span className="text-sm font-medium text-slate-700 whitespace-nowrap group-hover:text-slate-900">{name}</span>

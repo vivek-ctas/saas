@@ -23,7 +23,7 @@ const Marketplaces = () => {
     {
       title: "Asia-Pacific",
       icon: Globe,
-      tone: "from-pink-500 to-rose-500",
+      tone: "from-secondary to-rose-500",
       items: ["Lazada", "Shopee", "Rakuten", "Tokopedia", "Flipkart", "Meesho", "Myntra", "Ajio"]
     },
     {
@@ -35,7 +35,7 @@ const Marketplaces = () => {
     {
       title: "Storefronts & D2C",
       icon: ShoppingCart,
-      tone: "from-fuchsia-500 to-purple-600",
+      tone: "from-secondary to-orange-500",
       items: ["Shopify", "WooCommerce", "BigCommerce", "Magento", "Wix", "Squarespace", "Shift4Shop", "PrestaShop"]
     },
     {
@@ -69,7 +69,7 @@ const Marketplaces = () => {
         <PageHero
           badgeIcon={Zap}
           badgeText="80+ live integrations"
-          title={<>Sell on every channel <span className="bg-gradient-to-r from-primary via-fuchsia-600 to-secondary bg-clip-text text-transparent">that matters.</span></>}
+          title={<>Sell on every channel <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">that matters.</span></>}
           subtitle="From Amazon FBA to Lazada, TikTok Shop to Reliance Smart — Ctasis connects every marketplace, storefront, courier and ad network you need to scale globally."
           visual={<MarketplaceMeshDiagram className="w-full h-auto" />}
           actions={
@@ -77,7 +77,7 @@ const Marketplaces = () => {
               <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
                 See all integrations
               </Button>
-              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-fuchsia-600 hover:opacity-95 border-0">
+              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
                 Connect a channel
                 <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
               </Button>

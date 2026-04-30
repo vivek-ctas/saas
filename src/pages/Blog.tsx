@@ -27,7 +27,7 @@ const posts = [
     icon: Brain,
     readTime: "8 min read",
     date: "Apr 18, 2026",
-    tone: "from-fuchsia-500 to-purple-600",
+    tone: "from-secondary to-orange-500",
   },
   {
     slug: "custom-repricing-strategies",
@@ -67,7 +67,7 @@ const posts = [
     icon: Sparkles,
     readTime: "5 min read",
     date: "Mar 20, 2026",
-    tone: "from-purple-600 to-fuchsia-600",
+    tone: "from-primary to-secondary",
   },
 ];
 
@@ -81,11 +81,11 @@ const Blog = () => {
         <PageHero
           badgeIcon={BookOpen}
           badgeText="Ctasis · Blog"
-          title={<>Stories from <span className="bg-gradient-to-r from-primary via-fuchsia-600 to-secondary bg-clip-text text-transparent">the seller front line.</span></>}
+          title={<>Stories from <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">the seller front line.</span></>}
           subtitle="Repricer deep-dives, marketplace playbooks and honest takes on what actually grows a multichannel business — written by the engineers and sellers who build Ctasis."
           visual={<NodeFlowDiagram className="w-full h-auto" />}
           actions={
-            <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-fuchsia-600 hover:opacity-95 border-0">
+            <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
               Subscribe to updates
               <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
             </Button>
