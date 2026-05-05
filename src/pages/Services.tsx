@@ -282,6 +282,46 @@ const Services = () => {
         </section>
 
 
+        {/* AUTOMATION + NOTIFICATIONS + REPORTS */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12 max-w-3xl mx-auto reveal">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
+                <Zap className="w-3.5 h-3.5 mr-1" /> Notifications &amp; reports
+              </Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">
+                Build the alerts and reports your team actually opens.
+              </h2>
+              <p className="text-lg text-slate-600">
+                Drag a trigger, drop an action, pick a channel. Wire Slack, email, SMS, Zapier or n8n
+                in minutes — no engineer required. Every flow is versioned, testable and replayable.
+              </p>
+            </div>
+            <div className="reveal rounded-3xl bg-gradient-to-br from-slate-50 to-white p-4 sm:p-6 border border-slate-100 shadow-stripe">
+              <AutomationBuilderDiagram className="w-full h-auto" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+              {[
+                { icon: Zap, title: "Trigger on anything", desc: "Buy Box drops, stockouts, refund spikes, margin floors, competitor moves — every event in Ctasis is a trigger you can subscribe to.", tone: "from-primary to-indigo-600" },
+                { icon: Settings, title: "Customisable per role", desc: "Ops gets stockouts in Slack. Finance gets P&L PDFs by email. On-call gets SMS. Each user picks their channel, frequency and quiet hours.", tone: "from-secondary to-orange-500" },
+                { icon: Layers, title: "Zapier & n8n native", desc: "Fan out to 5,000+ Zapier apps or your self-hosted n8n. Signed webhooks, automatic retries, replay on failure — production-grade out of the box.", tone: "from-secondary to-pink-600" },
+              ].map((b, i) => (
+                <Card key={i} className="reveal hover-lift relative overflow-hidden border border-slate-100 bg-white" style={{ transitionDelay: `${i * 90}ms` }}>
+                  <div className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br ${b.tone} opacity-10 blur-2xl`} />
+                  <CardContent className="relative p-7">
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${b.tone} flex items-center justify-center mb-4 shadow-stripe`}>
+                      <b.icon className="w-7 h-7 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">{b.title}</h3>
+                    <p className="text-slate-600 leading-relaxed">{b.desc}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
 
         {/* CTA */}
         <section className="py-24 relative overflow-hidden gradient-animated">
