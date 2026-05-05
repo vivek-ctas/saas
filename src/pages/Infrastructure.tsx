@@ -146,7 +146,7 @@ const Infrastructure = () => {
               <p className="text-lg text-slate-600">Every marketplace ping flows through the same battle-tested pipeline — observable end-to-end.</p>
             </div>
             <div className="reveal delay-100 rounded-3xl bg-gradient-to-br from-slate-50 to-white p-6 sm:p-10 border border-slate-100 shadow-stripe">
-              <OrderFlowDiagram className="w-full h-auto" />
+              <ChannelSyncFlow className="w-full h-auto" />
             </div>
           </div>
         </section>
