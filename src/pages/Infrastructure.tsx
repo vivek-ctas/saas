@@ -8,8 +8,9 @@ import {
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import {
-  BlobBackdrop, InfraTopologyDiagram, NeuralIllustration, OrderFlowDiagram,
-  AIPipelineDiagram, AnalyticsFlowDiagram, RepricerStrategyChart, LogoChip
+  BlobBackdrop, InfraTopologyDiagram, NeuralIllustration, ChannelSyncFlow,
+  AIPipelineDiagram, AnalyticsFlowDiagram, RepricerStrategyChart, LogoChip,
+  ReportingConsoleMockup, AlertTriageDiagram
 } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
@@ -145,7 +146,7 @@ const Infrastructure = () => {
               <p className="text-lg text-slate-600">Every marketplace ping flows through the same battle-tested pipeline — observable end-to-end.</p>
             </div>
             <div className="reveal delay-100 rounded-3xl bg-gradient-to-br from-slate-50 to-white p-6 sm:p-10 border border-slate-100 shadow-stripe">
-              <OrderFlowDiagram className="w-full h-auto" />
+              <ChannelSyncFlow className="w-full h-auto" />
             </div>
           </div>
         </section>
@@ -338,7 +339,75 @@ const Infrastructure = () => {
             </div>
           </div>
         </section>
+
+        {/* REPORTS & NOTIFICATIONS */}
+        <section className="py-24 section-bg relative overflow-hidden">
+          <div className="absolute inset-0 grid-bg opacity-30" />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12 max-w-3xl mx-auto reveal">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
+                <Bell className="w-3.5 h-3.5 mr-1" /> Reports &amp; notifications
+              </Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">
+                The control room for every alert and report.
+              </h2>
+              <p className="text-lg text-slate-600">
+                Schedule any report. Route any alert. Toggle a channel and the change is live in
+                seconds — across Slack, email, SMS, Microsoft Teams, PagerDuty, Zapier and n8n.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+              <div className="reveal rounded-3xl bg-white p-4 sm:p-6 border border-slate-100 shadow-stripe">
+                <ReportingConsoleMockup className="w-full h-auto" />
+              </div>
+              <div className="reveal delay-150">
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">Customisation that fits each role.</h3>
+                <p className="text-slate-600 leading-relaxed mb-6">
+                  Reports aren't one-size-fits-all. Finance wants a monthly P&amp;L PDF. Ops wants a
+                  daily Slack digest at 9am. The on-call engineer wants an SMS the second a hero
+                  SKU goes out of stock. Ctasis lets each user pick their channel, frequency, format
+                  and quiet hours — without bothering an admin.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    "Schedule any metric — daily, weekly, monthly or real-time",
+                    "Per-user channel, format (PDF / CSV / Slack block) and quiet hours",
+                    "Branded PDF reports with your logo, colours and commentary",
+                    "Route to Slack, email, SMS, Teams, PagerDuty, Zapier or n8n",
+                    "Signed webhooks with automatic retries and replay-on-failure",
+                  ].map((t, i) => (
+                    <li key={i} className="flex items-start gap-3 text-slate-700">
+                      <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" /> {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-16 grid grid-cols-1 lg:grid-cols-5 gap-10 items-center">
+              <div className="reveal delay-150 lg:col-span-2">
+                <Badge className="mb-4 bg-accent text-accent-foreground border-0">Live triage</Badge>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">Alerts, sorted by what hurts.</h3>
+                <p className="text-slate-600 leading-relaxed mb-4">
+                  Not every event deserves a 3am phone call. Ctasis classifies alerts into Info,
+                  Warning and Critical lanes — then routes each lane through your rules. Critical
+                  events page on-call. Warnings drop into Slack. Info quietly logs to the timeline.
+                </p>
+                <p className="text-slate-600 leading-relaxed">
+                  Trigger any flow into Zapier or n8n to stitch together the rest of your stack:
+                  open a Linear issue, create a HubSpot task, append a row in Sheets — your call.
+                </p>
+              </div>
+              <div className="reveal lg:col-span-3 rounded-3xl bg-white p-4 sm:p-6 border border-slate-100 shadow-stripe">
+                <AlertTriageDiagram className="w-full h-auto" />
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-16 section-bg">
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-6">Certified & compliant</p>
             <div className="flex flex-wrap justify-center gap-3">

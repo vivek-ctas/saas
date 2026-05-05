@@ -1546,3 +1546,308 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
     </g>
   </svg>
 );
+
+/* ------------------------------------------------------------------ */
+/* AutomationBuilderDiagram — n8n/Zapier-style node graph              */
+/* Used on Services for notification & report automation               */
+/* ------------------------------------------------------------------ */
+export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 860 500" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <pattern id="ab-grid" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
+        <circle cx="1" cy="1" r="1" fill="#cbd5e1" opacity="0.6" />
+      </pattern>
+      <linearGradient id="ab-trig" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="hsl(226 71% 52%)" /><stop offset="100%" stopColor="hsl(226 71% 38%)" />
+      </linearGradient>
+      <linearGradient id="ab-act" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="hsl(14 88% 60%)" /><stop offset="100%" stopColor="hsl(20 90% 48%)" />
+      </linearGradient>
+      <linearGradient id="ab-cond" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="hsl(265 60% 60%)" /><stop offset="100%" stopColor="hsl(265 60% 45%)" />
+      </linearGradient>
+      <marker id="ab-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M0,0 L10,5 L0,10 z" fill="#64748b" />
+      </marker>
+    </defs>
+
+    <rect x="10" y="10" width="840" height="480" rx="20" fill="white" stroke="#e2e8f0" />
+    <rect x="10" y="10" width="840" height="480" rx="20" fill="url(#ab-grid)" opacity="0.5" />
+
+    {/* Top toolbar */}
+    <rect x="10" y="10" width="840" height="46" rx="20" fill="white" stroke="#e2e8f0" />
+    <circle cx="32" cy="33" r="5" fill="#ef4444" />
+    <circle cx="48" cy="33" r="5" fill="#f59e0b" />
+    <circle cx="64" cy="33" r="5" fill="#10b981" />
+    <text x="92" y="38" fontSize="12" fontWeight="800" fill="#0f172a">Ctasis Flow · "Buy Box dropped → Slack + PDF report"</text>
+    <rect x="700" y="20" width="60" height="24" rx="12" fill="hsl(150 70% 92%)" />
+    <text x="730" y="36" textAnchor="middle" fontSize="10" fontWeight="800" fill="hsl(150 70% 32%)">● Live</text>
+    <rect x="770" y="20" width="64" height="24" rx="12" fill="white" stroke="#e2e8f0" />
+    <text x="802" y="36" textAnchor="middle" fontSize="10" fontWeight="700" fill="#475569">Test run</text>
+
+    {/* Nodes */}
+    {/* 1. Trigger */}
+    <g>
+      <rect x="40" y="120" width="180" height="86" rx="14" fill="white" stroke="#e2e8f0" />
+      <rect x="40" y="120" width="180" height="26" rx="14" fill="url(#ab-trig)" />
+      <text x="56" y="138" fontSize="10" fontWeight="800" fill="white" letterSpacing="1">TRIGGER</text>
+      <text x="56" y="170" fontSize="12" fontWeight="800" fill="#0f172a">Marketplace event</text>
+      <text x="56" y="188" fontSize="10" fill="#64748b">Buy Box %, price, stock…</text>
+      <circle cx="220" cy="163" r="6" fill="white" stroke="#94a3b8" strokeWidth="2" />
+    </g>
+
+    {/* 2. Condition */}
+    <g>
+      <rect x="280" y="120" width="180" height="86" rx="14" fill="white" stroke="#e2e8f0" />
+      <rect x="280" y="120" width="180" height="26" rx="14" fill="url(#ab-cond)" />
+      <text x="296" y="138" fontSize="10" fontWeight="800" fill="white" letterSpacing="1">IF / FILTER</text>
+      <text x="296" y="170" fontSize="12" fontWeight="800" fill="#0f172a">Buy Box &lt; 80%</text>
+      <text x="296" y="188" fontSize="10" fill="#64748b">on hero SKUs only</text>
+      <circle cx="280" cy="163" r="6" fill="white" stroke="#94a3b8" strokeWidth="2" />
+      <circle cx="460" cy="163" r="6" fill="white" stroke="#94a3b8" strokeWidth="2" />
+    </g>
+
+    {/* 3a. Slack */}
+    <g>
+      <rect x="520" y="60" width="180" height="86" rx="14" fill="white" stroke="#e2e8f0" />
+      <rect x="520" y="60" width="180" height="26" rx="14" fill="url(#ab-act)" />
+      <text x="536" y="78" fontSize="10" fontWeight="800" fill="white" letterSpacing="1">ACTION · SLACK</text>
+      <text x="536" y="110" fontSize="12" fontWeight="800" fill="#0f172a">Post to #pricing</text>
+      <text x="536" y="128" fontSize="10" fill="#64748b">@channel · with chart</text>
+      <circle cx="520" cy="103" r="6" fill="white" stroke="#94a3b8" strokeWidth="2" />
+    </g>
+
+    {/* 3b. Email PDF */}
+    <g>
+      <rect x="520" y="180" width="180" height="86" rx="14" fill="white" stroke="#e2e8f0" />
+      <rect x="520" y="180" width="180" height="26" rx="14" fill="url(#ab-act)" />
+      <text x="536" y="198" fontSize="10" fontWeight="800" fill="white" letterSpacing="1">ACTION · EMAIL</text>
+      <text x="536" y="230" fontSize="12" fontWeight="800" fill="#0f172a">Send PDF report</text>
+      <text x="536" y="248" fontSize="10" fill="#64748b">to ops@brand.com</text>
+      <circle cx="520" cy="223" r="6" fill="white" stroke="#94a3b8" strokeWidth="2" />
+    </g>
+
+    {/* 4. Webhook to Zapier/n8n */}
+    <g>
+      <rect x="280" y="290" width="180" height="86" rx="14" fill="white" stroke="#e2e8f0" />
+      <rect x="280" y="290" width="180" height="26" rx="14" fill="url(#ab-cond)" />
+      <text x="296" y="308" fontSize="10" fontWeight="800" fill="white" letterSpacing="1">FAN OUT · WEBHOOK</text>
+      <text x="296" y="340" fontSize="12" fontWeight="800" fill="#0f172a">Push to Zapier / n8n</text>
+      <text x="296" y="358" fontSize="10" fill="#64748b">JSON · signed · retried</text>
+      <circle cx="280" cy="333" r="6" fill="white" stroke="#94a3b8" strokeWidth="2" />
+      <circle cx="460" cy="333" r="6" fill="white" stroke="#94a3b8" strokeWidth="2" />
+    </g>
+
+    {/* 5a. Zapier */}
+    <g>
+      <rect x="520" y="290" width="130" height="60" rx="12" fill="#fff7ed" stroke="hsl(14 88% 60%)" />
+      <text x="585" y="316" textAnchor="middle" fontSize="12" fontWeight="800" fill="hsl(14 88% 45%)">Zapier</text>
+      <text x="585" y="334" textAnchor="middle" fontSize="9" fill="#64748b">5,000+ apps</text>
+    </g>
+    {/* 5b. n8n */}
+    <g>
+      <rect x="520" y="358" width="130" height="60" rx="12" fill="#fdf4ff" stroke="hsl(265 60% 60%)" />
+      <text x="585" y="384" textAnchor="middle" fontSize="12" fontWeight="800" fill="hsl(265 60% 45%)">n8n</text>
+      <text x="585" y="402" textAnchor="middle" fontSize="9" fill="#64748b">self-hosted workflows</text>
+    </g>
+
+    {/* 6. Schedule loop */}
+    <g>
+      <rect x="40" y="290" width="180" height="86" rx="14" fill="white" stroke="#e2e8f0" />
+      <rect x="40" y="290" width="180" height="26" rx="14" fill="url(#ab-trig)" />
+      <text x="56" y="308" fontSize="10" fontWeight="800" fill="white" letterSpacing="1">SCHEDULE · DAILY 09:00</text>
+      <text x="56" y="340" fontSize="12" fontWeight="800" fill="#0f172a">Daily digest report</text>
+      <text x="56" y="358" fontSize="10" fill="#64748b">profit · BB · stockouts</text>
+      <circle cx="220" cy="333" r="6" fill="white" stroke="#94a3b8" strokeWidth="2" />
+    </g>
+
+    {/* edges */}
+    <path d="M226 163 C 252 163, 254 163, 280 163" stroke="#64748b" strokeWidth="1.8" fill="none" markerEnd="url(#ab-arrow)" />
+    <path d="M466 163 C 492 130, 494 103, 520 103" stroke="#64748b" strokeWidth="1.8" fill="none" markerEnd="url(#ab-arrow)" />
+    <path d="M466 163 C 492 200, 494 223, 520 223" stroke="#64748b" strokeWidth="1.8" fill="none" markerEnd="url(#ab-arrow)" />
+    <path d="M370 206 C 370 248, 370 248, 370 290" stroke="#64748b" strokeWidth="1.8" fill="none" markerEnd="url(#ab-arrow)" strokeDasharray="4 4" />
+    <path d="M226 333 C 252 333, 254 333, 280 333" stroke="#64748b" strokeWidth="1.8" fill="none" markerEnd="url(#ab-arrow)" />
+    <path d="M466 333 C 490 320, 494 320, 520 320" stroke="#64748b" strokeWidth="1.8" fill="none" markerEnd="url(#ab-arrow)" />
+    <path d="M466 333 C 490 388, 494 388, 520 388" stroke="#64748b" strokeWidth="1.8" fill="none" markerEnd="url(#ab-arrow)" />
+
+    {/* footer */}
+    <text x="430" y="466" textAnchor="middle" fontSize="11" fill="#475569">Drag, drop, ship. Every notification &amp; report path is a node — versioned, replayable, observable.</text>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* ReportingConsoleMockup — scheduled reports + delivery channels      */
+/* Used on Infrastructure (notifications & reports section)            */
+/* ------------------------------------------------------------------ */
+export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 760 500" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="rc-bg" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="#fffaf2" /><stop offset="100%" stopColor="#f5f7ff" />
+      </linearGradient>
+      <linearGradient id="rc-line" x1="0" x2="1" y1="0" y2="0">
+        <stop offset="0%" stopColor="hsl(226 71% 50%)" /><stop offset="100%" stopColor="hsl(14 88% 55%)" />
+      </linearGradient>
+    </defs>
+    <rect x="10" y="10" width="740" height="480" rx="20" fill="url(#rc-bg)" stroke="#e2e8f0" />
+
+    {/* Header */}
+    <text x="36" y="46" fontSize="13" fontWeight="800" fill="#0f172a">Reports &amp; Notifications</text>
+    <rect x="36" y="58" width="160" height="22" rx="11" fill="hsl(226 71% 94%)" />
+    <text x="116" y="73" textAnchor="middle" fontSize="10" fontWeight="800" fill="hsl(226 71% 40%)">12 schedules · 4 channels</text>
+
+    {/* Left: schedule list */}
+    <g>
+      <rect x="36" y="100" width="320" height="370" rx="14" fill="white" stroke="#e2e8f0" />
+      <text x="52" y="124" fontSize="11" fontWeight="800" fill="#0f172a">Scheduled reports</text>
+      <text x="340" y="124" textAnchor="end" fontSize="10" fill="#64748b">+ New</text>
+      {[
+        { t: "Daily profit digest", c: "Slack · #sales", time: "09:00", color: "hsl(150 70% 40%)" },
+        { t: "Weekly Buy Box recap", c: "Email · ops team", time: "Mon 08:00", color: "hsl(226 71% 50%)" },
+        { t: "Stockout alert", c: "SMS · on-call", time: "real-time", color: "hsl(14 88% 55%)" },
+        { t: "Returns spike (>5%)", c: "Slack + Webhook", time: "real-time", color: "hsl(265 60% 55%)" },
+        { t: "Monthly P&L PDF", c: "Email · finance@", time: "1st 07:00", color: "hsl(200 80% 45%)" },
+        { t: "Competitor moved", c: "n8n webhook", time: "real-time", color: "hsl(14 88% 55%)" },
+      ].map((r, i) => (
+        <g key={i}>
+          <rect x="52" y={144 + i * 50} width="288" height="40" rx="10" fill={i === 1 ? "#f8fafc" : "white"} stroke="#e2e8f0" />
+          <circle cx="68" cy={164 + i * 50} r="5" fill={r.color} />
+          <text x="82" y={161 + i * 50} fontSize="11" fontWeight="800" fill="#0f172a">{r.t}</text>
+          <text x="82" y={176 + i * 50} fontSize="9" fill="#64748b">{r.c}</text>
+          <text x="328" y={170 + i * 50} textAnchor="end" fontSize="10" fontWeight="700" fill="#475569">{r.time}</text>
+        </g>
+      ))}
+    </g>
+
+    {/* Right: report preview */}
+    <g>
+      <rect x="376" y="100" width="348" height="200" rx="14" fill="white" stroke="#e2e8f0" />
+      <text x="392" y="124" fontSize="11" fontWeight="800" fill="#0f172a">Daily profit digest · preview</text>
+      <text x="708" y="124" textAnchor="end" fontSize="10" fill="hsl(226 71% 50%)" fontWeight="700">PDF · 2pp</text>
+      {/* mini chart */}
+      <path d="M392 250 L 420 230 L 450 245 L 480 210 L 510 220 L 540 195 L 570 200 L 600 175 L 630 185 L 660 160 L 690 170 L 708 150"
+        stroke="url(#rc-line)" strokeWidth="2.6" fill="none" strokeLinecap="round" />
+      {/* baseline */}
+      <line x1="392" y1="270" x2="708" y2="270" stroke="#e2e8f0" />
+      {/* KPIs */}
+      <text x="392" y="290" fontSize="9" fontWeight="700" fill="#64748b">REVENUE</text>
+      <text x="392" y="282" fontSize="0" fill="transparent">.</text>
+      {[
+        { x: 392, l: "Revenue", v: "$48.2k", d: "+12%" },
+        { x: 502, l: "Margin", v: "31.4%", d: "+1.6%" },
+        { x: 612, l: "Buy Box", v: "92%",   d: "+4%" },
+      ].map((k, i) => (
+        <g key={i}>
+          <text x={k.x} y={290} fontSize="9" fontWeight="700" fill="#94a3b8" letterSpacing="0.6">{k.l.toUpperCase()}</text>
+        </g>
+      ))}
+    </g>
+
+    {/* Channels row */}
+    <g>
+      <rect x="376" y="316" width="348" height="154" rx="14" fill="white" stroke="#e2e8f0" />
+      <text x="392" y="340" fontSize="11" fontWeight="800" fill="#0f172a">Delivery channels</text>
+      {[
+        { x: 392, l: "Slack",    c: "hsl(150 70% 40%)", on: true },
+        { x: 470, l: "Email",    c: "hsl(226 71% 50%)", on: true },
+        { x: 548, l: "SMS",      c: "hsl(14 88% 55%)",  on: true },
+        { x: 626, l: "Webhook",  c: "hsl(265 60% 55%)", on: true },
+        { x: 392, l: "Zapier",   c: "hsl(14 88% 55%)",  on: true, y: 412 },
+        { x: 470, l: "n8n",      c: "hsl(265 60% 55%)", on: true, y: 412 },
+        { x: 548, l: "Teams",    c: "hsl(226 71% 50%)", on: false, y: 412 },
+        { x: 626, l: "PagerDuty",c: "hsl(0 80% 55%)",   on: false, y: 412 },
+      ].map((ch, i) => (
+        <g key={i}>
+          <rect x={ch.x} y={(ch.y ?? 354) - 0} width="68" height="48" rx="10" fill={ch.on ? "white" : "#f8fafc"} stroke={ch.on ? ch.c : "#e2e8f0"} strokeWidth={ch.on ? 1.6 : 1} />
+          <circle cx={ch.x + 14} cy={(ch.y ?? 354) + 24} r="5" fill={ch.c} opacity={ch.on ? 1 : 0.35} />
+          <text x={ch.x + 26} y={(ch.y ?? 354) + 28} fontSize="10" fontWeight="700" fill={ch.on ? "#0f172a" : "#94a3b8"}>{ch.l}</text>
+        </g>
+      ))}
+      <text x="392" y={464} fontSize="10" fill="#64748b">Toggle a channel — Ctasis re-routes notifications instantly. No code, no redeploy.</text>
+    </g>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* AlertTriageDiagram — incident triage visual                         */
+/* ------------------------------------------------------------------ */
+export const AlertTriageDiagram = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 720 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="at-bg" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="#0f172a" /><stop offset="100%" stopColor="#1e1b4b" />
+      </linearGradient>
+    </defs>
+    <rect x="10" y="10" width="700" height="340" rx="20" fill="url(#at-bg)" />
+    <text x="36" y="44" fontSize="12" fontWeight="800" fill="#e0e7ff" letterSpacing="1">ALERT TRIAGE · LIVE</text>
+    {/* lanes */}
+    {["INFO", "WARNING", "CRITICAL"].map((lane, li) => (
+      <g key={li}>
+        <text x={48 + li * 220} y={78} fontSize="10" fontWeight="800" fill="#94a3b8" letterSpacing="1.5">{lane}</text>
+        <rect x={36 + li * 220} y={86} width="200" height="240" rx="14" fill="#1e293b" stroke="#334155" />
+      </g>
+    ))}
+    {/* cards */}
+    {[
+      { lane: 0, t: "Inventory restocked", s: "Amazon · SKU 8632", color: "#60a5fa" },
+      { lane: 0, t: "Listing approved", s: "eBay · auto-publish", color: "#60a5fa" },
+      { lane: 1, t: "Buy Box dropped", s: "Walmart · 4 SKUs", color: "#fbbf24" },
+      { lane: 1, t: "Margin near floor", s: "SKU 4421 · 12.4%", color: "#fbbf24" },
+      { lane: 2, t: "Stockout in 4h", s: "Hero SKU · FBA", color: "#f87171" },
+      { lane: 2, t: "Returns spike +18%", s: "Shopify · last 1h", color: "#f87171" },
+    ].map((c, i) => {
+      const inLane = i < 2 ? i : (i < 4 ? i - 2 : i - 4);
+      return (
+        <g key={i}>
+          <rect x={48 + c.lane * 220} y={102 + inLane * 64} width="176" height="52" rx="10" fill="#0f172a" stroke="#334155" />
+          <circle cx={62 + c.lane * 220} cy={128 + inLane * 64} r="4" fill={c.color} />
+          <text x={74 + c.lane * 220} y={124 + inLane * 64} fontSize="11" fontWeight="800" fill="#f1f5f9">{c.t}</text>
+          <text x={74 + c.lane * 220} y={140 + inLane * 64} fontSize="9" fill="#94a3b8">{c.s}</text>
+        </g>
+      );
+    })}
+    {/* ticker */}
+    <text x="36" y="346" fontSize="10" fill="#64748b">Routed via your rules to Slack / Email / SMS / Zapier / n8n in under a second.</text>
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* ArticleHeroMockup — visual for blog detail pages                    */
+/* ------------------------------------------------------------------ */
+export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 720 420" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="ah-bg" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="hsl(226 71% 50%)" /><stop offset="100%" stopColor="hsl(14 88% 55%)" />
+      </linearGradient>
+    </defs>
+    <rect x="10" y="10" width="700" height="400" rx="22" fill="url(#ah-bg)" />
+    {/* abstract paper */}
+    <g opacity="0.95">
+      <rect x="60" y="60" width="380" height="300" rx="14" fill="white" />
+      <rect x="80" y="84" width="80" height="14" rx="7" fill="hsl(226 71% 92%)" />
+      <rect x="80" y="112" width="320" height="14" rx="4" fill="#0f172a" />
+      <rect x="80" y="134" width="260" height="14" rx="4" fill="#0f172a" />
+      {[160,180,200,220,240,260,280,300,320].map((y,i) => (
+        <rect key={i} x="80" y={y} width={i%3===0?280: i%3===1?260:200} height="6" rx="3" fill="#e2e8f0" />
+      ))}
+    </g>
+    {/* floating chart */}
+    <g>
+      <rect x="430" y="120" width="240" height="180" rx="14" fill="white" />
+      <text x="448" y="142" fontSize="10" fontWeight="800" fill="#64748b">BUY BOX % vs price</text>
+      <path d="M448 270 L 478 250 L 508 258 L 538 230 L 568 220 L 598 200 L 628 210 L 658 180"
+        stroke="hsl(226 71% 50%)" strokeWidth="2.4" fill="none" strokeLinecap="round" />
+      <path d="M448 270 L 478 264 L 508 258 L 538 252 L 568 246 L 598 240 L 628 234 L 658 228"
+        stroke="hsl(14 88% 55%)" strokeWidth="2.4" fill="none" strokeLinecap="round" strokeDasharray="4 4" />
+      <text x="448" y="290" fontSize="9" fill="#94a3b8">algo wins · floor protected</text>
+    </g>
+    {/* badges */}
+    <g>
+      <rect x="60" y="370" width="74" height="22" rx="11" fill="white" />
+      <text x="97" y="385" textAnchor="middle" fontSize="10" fontWeight="800" fill="hsl(226 71% 40%)">Repricing</text>
+      <rect x="142" y="370" width="74" height="22" rx="11" fill="white" />
+      <text x="179" y="385" textAnchor="middle" fontSize="10" fontWeight="800" fill="hsl(14 88% 50%)">8 min read</text>
+    </g>
+  </svg>
+);
