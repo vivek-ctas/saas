@@ -8,8 +8,9 @@ import {
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import {
-  BlobBackdrop, InfraTopologyDiagram, NeuralIllustration, OrderFlowDiagram,
-  AIPipelineDiagram, AnalyticsFlowDiagram, RepricerStrategyChart, LogoChip
+  BlobBackdrop, InfraTopologyDiagram, NeuralIllustration, ChannelSyncFlow,
+  AIPipelineDiagram, AnalyticsFlowDiagram, RepricerStrategyChart, LogoChip,
+  ReportingConsoleMockup, AlertTriageDiagram
 } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
