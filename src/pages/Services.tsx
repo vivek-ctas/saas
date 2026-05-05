@@ -11,7 +11,8 @@ import PageHero from "@/components/PageHero";
 import {
   BlobBackdrop, AnalyticsIllustration, ServicesHeroMockup, OrderFlowDiagram,
   WorkflowIllustration,
-  AIPipelineDiagram, RepricerStrategyChart, AnalyticsFlowDiagram
+  AIPipelineDiagram, RepricerStrategyChart, AnalyticsFlowDiagram,
+  AutomationBuilderDiagram
 } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
