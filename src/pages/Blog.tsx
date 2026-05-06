@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, BookOpen, Clock, Sparkles, Cpu, BarChart3, Workflow, Brain, Layers, Plug, Boxes } from "lucide-react";
+import { ArrowRight, BookOpen, Clock, Sparkles, Cpu, BarChart3, Workflow, Brain, Layers, Plug, Boxes, Truck } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import { BlobBackdrop, BlogEditorialMockup } from "@/components/illustrations";
