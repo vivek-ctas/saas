@@ -131,6 +131,38 @@ const posts: Post[] = [
       { h: "Human in the loop, not human in the way", p: ["Anything below a confidence threshold goes to a reviewer; anything above is auto-published. The result: 92% of listings ship without a human touching them — and the 8% that do are exactly the ones worth a human's time."] },
     ],
   },
+  {
+    slug: "amazon-new-selling-api",
+    title: "Amazon's new Selling Partner API: what changed, and what it means for your stack",
+    category: "Integrations",
+    readTime: "7 min read",
+    date: "May 2, 2026",
+    author: "Aman Shah · Product",
+    excerpt: "Tighter rate limits, granular roles, and a much friendlier auth flow — here's what we rebuilt for SP-API v2.",
+    intro: "Amazon's Selling Partner API has quietly become the backbone of every serious multichannel operation. The latest revision tightens rate limits, splits permissions into granular roles, and finally fixes the painful LWA refresh dance. Here's what changed and why your integration probably needs a tune-up.",
+    Visual: MarketplaceMeshDiagram,
+    sections: [
+      { h: "Granular roles, not godmode tokens", p: ["The old MWS keys gave any integration the keys to the kingdom. SP-API v2 splits scope into pricing, inventory, orders, finance and brand analytics — each with its own approval flow.", "We rewrote our auth layer so each Ctasis module requests only the scopes it actually needs. The result: cleaner audit trails and faster Amazon approvals."] },
+      { h: "Rate limits that punish polling", p: ["The new limits are forgiving for event-driven listeners and brutal for naive pollers. If your stack still hits /orders every 60 seconds, you're already throttled."], bullets: ["Use Notifications (SQS/EventBridge) for order + pricing updates", "Cache catalog calls aggressively — they're the most expensive", "Backoff with jitter, not fixed retries"] },
+      { h: "What we shipped for Ctasis sellers", p: ["Every Ctasis tenant now runs on SP-API v2 with per-module scopes, EventBridge subscriptions for orders and pricing, and a refresh-token rotation that just works. You don't have to think about it — and that's the whole point."] },
+    ],
+  },
+  {
+    slug: "fba-vs-fbm",
+    title: "FBA vs FBM in 2026: the honest cost, control and growth trade-off",
+    category: "Operations",
+    readTime: "8 min read",
+    date: "Apr 28, 2026",
+    author: "Jordan Reyes · Marketplaces",
+    excerpt: "Fulfilment By Amazon vs Merchant. Not a religious war — a maths problem with three variables.",
+    intro: "Every seller eventually has the FBA-vs-FBM conversation. Most do it badly: gut feel, founder bias, or whatever a YouTube influencer said last week. The honest answer is that it's a maths problem with three variables — margin, velocity and control — and it's worth doing properly.",
+    Visual: OrderFlowDiagram,
+    sections: [
+      { h: "FBA: speed, trust, and a fee schedule that bites", p: ["FBA wins you Prime eligibility, the Buy Box edge, and the operational silence of not running a warehouse. It also charges you for storage, removal, returns processing, and a fulfilment fee that quietly creeps every year.", "For high-velocity, small-and-light SKUs with margins above 25%, FBA is almost always the right answer."] },
+      { h: "FBM: control, margin, and a real ops team", p: ["FBM keeps fulfilment in-house (or with a 3PL). You keep more margin per order, control packaging and unboxing, and don't get hit with long-term storage fees on slow movers."], bullets: ["Best for oversized, heavy, or low-margin SKUs", "Best for fragile or brand-experience-led products", "Requires a real ops team and reliable carriers", "Demands flawless on-time shipping — Amazon punishes lateness hard"] },
+      { h: "The hybrid playbook (what most winners do)", p: ["The biggest sellers we work with don't pick one. They run FBA on hero SKUs and seasonal pushes, and FBM on long-tail, oversized and brand-experience products. Ctasis routes orders to the right fulfilment node automatically based on SKU rules you set once."] },
+    ],
+  },
 ];
 
 const BlogPost = () => {
