@@ -13,6 +13,8 @@ import {
   AutomationBuilderDiagram,
   ReportingConsoleMockup,
   AlertTriageDiagram,
+  MarketplaceMeshDiagram,
+  OrderFlowDiagram,
 } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
