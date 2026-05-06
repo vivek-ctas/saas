@@ -163,6 +163,24 @@ const posts: Post[] = [
       { h: "The hybrid playbook (what most winners do)", p: ["The biggest sellers we work with don't pick one. They run FBA on hero SKUs and seasonal pushes, and FBM on long-tail, oversized and brand-experience products. Ctasis routes orders to the right fulfilment node automatically based on SKU rules you set once."] },
     ],
   },
+  {
+    slug: "amazon-fulfilment-strategies",
+    title: "Amazon fulfilment strategies: blending FBA, FBM, SFP and 3PL without losing your margin",
+    category: "Operations",
+    readTime: "9 min read",
+    date: "May 5, 2026",
+    author: "Daniel Park · Customer Success",
+    excerpt: "Most sellers default to one fulfilment model and pay for it later. Here's how the top operators mix FBA, FBM, SFP and 3PL by SKU cohort.",
+    intro: "There is no single 'best' Amazon fulfilment strategy — only the right mix for your catalogue, your cash position and your tolerance for operational pain. The sellers who scale past eight figures stop arguing about FBA vs FBM and start treating fulfilment as a routing problem, solved per SKU cohort.",
+    Visual: ReportingConsoleMockup,
+    sections: [
+      { h: "Start by segmenting the catalogue, not the warehouse", p: ["Group SKUs by velocity, size, margin and seasonality before you decide where they ship from. A 200g hero SKU with a 35% margin belongs nowhere near the same fulfilment lane as a 12kg seasonal bundle with 14% margin.", "We typically end up with four cohorts: hero, steady, long-tail, and seasonal — each with its own default fulfilment node."] },
+      { h: "FBA for velocity, Prime trust and the Buy Box edge", p: ["FBA earns its fees on fast-moving, small-and-light SKUs where Prime eligibility moves the conversion needle. Treat it as a premium service you pay for — not a default."], bullets: ["Hero SKUs and proven steady sellers", "Anything where 2-day Prime visibly lifts conversion", "Avoid for slow movers — long-term storage fees compound fast"] },
+      { h: "Seller-Fulfilled Prime: the underused middle ground", p: ["SFP gives you the Prime badge while keeping inventory in your own (or your 3PL's) warehouse. The bar is high — sub-2-day delivery, weekend shipping, near-perfect on-time rate — but the unit economics on heavy or fragile SKUs can beat FBA by 30%+.", "It's the right answer when you want Prime conversion without surrendering control of packaging or returns."] },
+      { h: "FBM and 3PL for oversized, fragile and brand-experience SKUs", p: ["For anything heavy, fragile, custom-packaged or brand-experience-led, FBM (in-house or via a 3PL) almost always wins on margin and customer experience. The trade-off is operational: you own the SLA, the carrier relationship and the returns desk."] },
+      { h: "How Ctasis routes orders automatically", p: ["Inside Ctasis you define fulfilment rules once per SKU cohort — and every incoming order is routed to FBA, SFP, your 3PL or your own warehouse based on stock, SLA risk and unit economics. No spreadsheets, no 2am re-routing, no missed Prime promises."] },
+    ],
+  },
 ];
 
 const BlogPost = () => {

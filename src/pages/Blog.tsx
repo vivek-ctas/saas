@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, BookOpen, Clock, Sparkles, Cpu, BarChart3, Workflow, Brain, Layers, Plug, Boxes } from "lucide-react";
+import { ArrowRight, BookOpen, Clock, Sparkles, Cpu, BarChart3, Workflow, Brain, Layers, Plug, Boxes, Truck } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import { BlobBackdrop, BlogEditorialMockup } from "@/components/illustrations";
@@ -88,6 +88,16 @@ const posts = [
     readTime: "8 min read",
     date: "Apr 28, 2026",
     tone: "from-orange-500 to-secondary",
+  },
+  {
+    slug: "amazon-fulfilment-strategies",
+    title: "Amazon fulfilment strategies: blending FBA, FBM, SFP and 3PL without losing your margin",
+    excerpt: "Most sellers default to one fulfilment model and pay for it later. Here's how the top operators mix FBA, FBM, Seller-Fulfilled Prime and 3PL by SKU cohort.",
+    category: "Operations",
+    icon: Truck,
+    readTime: "9 min read",
+    date: "May 5, 2026",
+    tone: "from-primary to-indigo-600",
   },
 ];
 
