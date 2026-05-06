@@ -89,6 +89,16 @@ const posts = [
     date: "Apr 28, 2026",
     tone: "from-orange-500 to-secondary",
   },
+  {
+    slug: "amazon-fulfilment-strategies",
+    title: "Amazon fulfilment strategies: blending FBA, FBM, SFP and 3PL without losing your margin",
+    excerpt: "Most sellers default to one fulfilment model and pay for it later. Here's how the top operators mix FBA, FBM, Seller-Fulfilled Prime and 3PL by SKU cohort.",
+    category: "Operations",
+    icon: Truck,
+    readTime: "9 min read",
+    date: "May 5, 2026",
+    tone: "from-primary to-indigo-600",
+  },
 ];
 
 const Blog = () => {
