@@ -69,6 +69,26 @@ const posts = [
     date: "Mar 20, 2026",
     tone: "from-primary to-secondary",
   },
+  {
+    slug: "amazon-new-selling-api",
+    title: "Amazon's new Selling Partner API: what changed, and what it means for your stack",
+    excerpt: "Tighter rate limits, granular roles, and a much friendlier auth flow — here's what we rebuilt for SP-API v2 and why your integration probably needs a tune-up.",
+    category: "Integrations",
+    icon: Plug,
+    readTime: "7 min read",
+    date: "May 2, 2026",
+    tone: "from-indigo-500 to-primary",
+  },
+  {
+    slug: "fba-vs-fbm",
+    title: "FBA vs FBM in 2026: the honest cost, control and growth trade-off",
+    excerpt: "Fulfilment By Amazon vs Merchant. Not a religious war — a maths problem with three variables. Here's how we help sellers run the numbers properly.",
+    category: "Operations",
+    icon: Boxes,
+    readTime: "8 min read",
+    date: "Apr 28, 2026",
+    tone: "from-orange-500 to-secondary",
+  },
 ];
 
 const Blog = () => {
