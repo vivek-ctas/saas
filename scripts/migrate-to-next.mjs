@@ -29,6 +29,7 @@ const ROUTES = [
   { route: "/",               page: "Home" },
   { route: "/services",       page: "Services" },
   { route: "/marketplaces",   page: "Marketplaces" },
+  { route: "/marketplaces/:slug", page: "integrations/IntegrationDetail" },
   { route: "/infrastructure", page: "Infrastructure" },
   { route: "/pricing",        page: "Pricing" },
   { route: "/about",          page: "About" },
