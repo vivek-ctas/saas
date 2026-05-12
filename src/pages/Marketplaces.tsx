@@ -95,6 +95,39 @@ const Marketplaces = () => {
           </div>
         </PageHero>
 
+        {/* FEATURED INTEGRATIONS — deep-dive subpages */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16 reveal">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
+                <Plug className="w-3.5 h-3.5 mr-1" /> Deep-dive integrations
+              </Badge>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">Pick a channel — see how Ctasis runs it</h2>
+              <p className="text-xl text-slate-600">Each integration has its own operator console, automations and analytics.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {INTEGRATIONS.map((it, i) => (
+                <Link key={it.slug} to={`/marketplaces/${it.slug}`} className="reveal block" style={{ transitionDelay: `${i * 60}ms` }}>
+                  <Card className="hover-lift overflow-hidden border border-slate-100 h-full">
+                    <div className={`h-2 bg-gradient-to-r ${it.tone}`} />
+                    <CardContent className="p-6">
+                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${it.tone} flex items-center justify-center mb-4 shadow-stripe`}>
+                        <it.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="text-xs uppercase tracking-wide text-slate-500 mb-1">{it.region}</div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-2">{it.name}</h3>
+                      <p className="text-slate-600 text-sm mb-4 line-clamp-2">{it.tagline}</p>
+                      <span className="text-primary text-sm font-semibold inline-flex items-center gap-1">
+                        Explore <ArrowRight className="w-4 h-4" />
+                      </span>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* MARKETPLACE GROUPS */}
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
