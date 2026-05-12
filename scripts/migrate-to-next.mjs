@@ -29,6 +29,7 @@ const ROUTES = [
   { route: "/",               page: "Home" },
   { route: "/services",       page: "Services" },
   { route: "/marketplaces",   page: "Marketplaces" },
+  { route: "/marketplaces/:slug", page: "integrations/IntegrationDetail" },
   { route: "/infrastructure", page: "Infrastructure" },
   { route: "/pricing",        page: "Pricing" },
   { route: "/about",          page: "About" },
@@ -59,7 +60,8 @@ function routeToFsPath(route) {
   return resolve(APP_DIR, ...segments);
 }
 
-function pageContent(componentName, isDynamic) {
+function pageContent(pagePath, isDynamic) {
+  const componentName = pagePath.split("/").pop();
   const propsType = isDynamic
     ? `\n\ntype PageProps = { params: { slug: string } };`
     : "";
@@ -69,7 +71,7 @@ function pageContent(componentName, isDynamic) {
 // Edit freely once you start migrating this route to Next.js.
 "use client";
 
-import ${componentName} from "@/src/pages/${componentName}";${propsType}
+import ${componentName} from "@/src/pages/${pagePath}";${propsType}
 
 export default function Page${propsArg} {
   return <${componentName}${passProps} />;
