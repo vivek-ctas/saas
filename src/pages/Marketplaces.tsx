@@ -3,12 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   ShoppingBag, Globe, Star, ShoppingCart, Sparkles, Package,
-  Smartphone, Truck, Megaphone, Store, ArrowRight, CheckCircle, Zap
+  Smartphone, Truck, Megaphone, Store, ArrowRight, CheckCircle, Zap, Plug
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import { BlobBackdrop, ContactMapIllustration, MarketplaceMeshDiagram, ChannelSyncFlow, LogoChip } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
+import { INTEGRATIONS } from "./integrations/integrations.data";
 
 const Marketplaces = () => {
   const ref = useReveal<HTMLDivElement>();
