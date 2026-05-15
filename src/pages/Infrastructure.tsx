@@ -62,7 +62,12 @@ const Infrastructure = () => {
           badgeText="Built like a hyperscaler"
           title={<>Infrastructure that <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">doesn't blink.</span></>}
           subtitle="Isolated tenant pods, Kubernetes-native scaling, Kafka-driven events and a 99.99% SLA — the same architecture trusted by enterprises, available to every seller."
-          visual={<InfraTopologyDiagram className="w-full h-auto" />}
+          visual={
+          <div className="scale-110 origin-center">
+          <InfraTopologyDiagram className="w-full h-auto" />
+          </div>
+            
+          }
           actions={
             <>
               <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">

@@ -141,23 +141,24 @@ All colors MUST be HSL.
 }
 
 @layer components {
+
   /* Stripe-inspired Utilities */
   .shadow-stripe {
     box-shadow: var(--shadow-lg);
   }
-  
+
   .shadow-stripe-xl {
     box-shadow: var(--shadow-xl);
   }
-  
+
   .shadow-stripe-2xl {
     box-shadow: var(--shadow-2xl);
   }
-  
+
   .gradient-primary {
     background: var(--gradient-primary);
   }
-  
+
   .gradient-hero {
     background: var(--gradient-hero);
   }
@@ -169,60 +170,77 @@ All colors MUST be HSL.
   .gradient-section {
     background: var(--gradient-section);
   }
-  
+
   .transition-stripe {
     transition: var(--transition-all);
   }
-  
+
   /* Enhanced Components */
   .feature-card {
     @apply bg-card rounded-2xl p-8 transition-stripe hover:shadow-stripe-xl hover:-translate-y-1;
     box-shadow: var(--shadow-md);
   }
-  
+
   .feature-card-large {
     @apply bg-card rounded-2xl p-10 transition-stripe hover:shadow-stripe-2xl hover:-translate-y-2;
     box-shadow: var(--shadow-lg);
   }
-  
+
   .pricing-card {
     @apply bg-card rounded-2xl p-8 transition-stripe hover:shadow-stripe-xl relative overflow-hidden border border-border;
     box-shadow: var(--shadow-lg);
   }
-  
+
   .hero-section {
     background: var(--gradient-hero);
   }
-  
+
   .section-bg {
     background: var(--gradient-section);
   }
-  
+
   /* Masonry-inspired Layout Classes */
   .masonry-item-small {
     @apply h-64;
   }
-  
+
   .masonry-item-medium {
     @apply h-80;
   }
-  
+
   .masonry-item-large {
     @apply h-96;
   }
-  
+
   .seller-card {
     @apply bg-card rounded-xl border border-border transition-stripe hover:shadow-stripe hover:-translate-y-0.5;
     box-shadow: var(--shadow-sm);
   }
 
   /* Stagger delays */
-  .delay-100 { animation-delay: 100ms; }
-  .delay-200 { animation-delay: 200ms; }
-  .delay-300 { animation-delay: 300ms; }
-  .delay-400 { animation-delay: 400ms; }
-  .delay-500 { animation-delay: 500ms; }
-  .delay-700 { animation-delay: 700ms; }
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .delay-700 {
+    animation-delay: 700ms;
+  }
 
   .gradient-animated {
     background: linear-gradient(120deg, hsl(232 60% 16%), hsl(226 71% 32%), hsl(226 71% 40%), hsl(14 88% 52%));
@@ -237,6 +255,7 @@ All colors MUST be HSL.
       radial-gradient(900px 400px at 0% 30%, hsl(226 90% 95% / 0.7), transparent 60%),
       linear-gradient(180deg, hsl(40 50% 97%) 0%, hsl(35 60% 95%) 100%);
   }
+
   .hero-cream-grid {
     background-image:
       linear-gradient(hsl(30 20% 88% / 0.5) 1px, transparent 1px),
@@ -244,18 +263,778 @@ All colors MUST be HSL.
     background-size: 56px 56px;
     mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
   }
+
   /* Diagonal slope divider — like SellerSnap section transition */
   .slope-divider-bottom {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 64px));
   }
 
-  .hero-blob { @apply absolute rounded-full blur-3xl opacity-60 pointer-events-none; }
-  .marquee-track { @apply flex w-max; animation: marquee 40s linear infinite; }
+  .hero-blob {
+    @apply absolute rounded-full blur-3xl opacity-60 pointer-events-none;
+  }
 
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
-  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .marquee-track {
+    @apply flex w-max;
+    animation: marquee 40s linear infinite;
+  }
 
-  .story-link { @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left; }
-  .hover-lift { @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-stripe-xl; }
-  .grid-bg { background-image: linear-gradient(hsl(var(--border)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px); background-size: 32px 32px; }
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .7s cubic-bezier(.22, 1, .36, 1), transform .7s cubic-bezier(.22, 1, .36, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .story-link {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-stripe-xl;
+  }
+
+  .grid-bg {
+    background-image: linear-gradient(hsl(var(--border)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}
+
+
+
+@keyframes csPulseRing {
+  0% {
+    r: 18;
+    opacity: .45;
+  }
+
+  100% {
+    r: 36;
+    opacity: 0;
+  }
+}
+
+@keyframes csPulseRingB {
+  0% {
+    r: 18;
+    opacity: .28;
+  }
+
+  100% {
+    r: 52;
+    opacity: 0;
+  }
+}
+
+@keyframes csCorePop {
+  0% {
+    transform: scale(.86);
+  }
+
+  65% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes csDashRight {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+@keyframes csDashLeft {
+  to {
+    stroke-dashoffset: 28;
+  }
+}
+
+@keyframes csFadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes csFadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes csGlow {
+
+  0%,
+  100% {
+    opacity: .55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes csOrbit {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+.cs-left-card {
+  animation: csFadeLeft .55s ease both;
+}
+
+.cs-right-card {
+  animation: csFadeRight .55s ease both;
+}
+
+.cs-core-pop {
+  animation: csCorePop .7s cubic-bezier(.34, 1.56, .64, 1) both;
+  transform-origin: 410px 220px;
+}
+
+.cs-pulse-a {
+  animation: csPulseRing 2.5s ease-out infinite;
+}
+
+.cs-pulse-b {
+  animation: csPulseRingB 2.5s ease-out infinite .8s;
+}
+
+.cs-arrow-r {
+  stroke-dasharray: 5 4;
+  animation: csDashRight 1.4s linear infinite;
+}
+
+.cs-arrow-l {
+  stroke-dasharray: 5 4;
+  animation: csDashLeft 1.8s linear infinite;
+}
+
+.cs-glow-dot {
+  animation: csGlow 2s ease-in-out infinite;
+}
+
+.cs-orbit {
+  stroke-dasharray: 4 5;
+  animation: csOrbit 3s linear infinite;
+}
+
+
+@keyframes rcSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rcSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rcFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rcChipPop {
+  from {
+    opacity: 0;
+    transform: scale(0.78);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rcPulse {
+  0% {
+    r: 5;
+    opacity: 0.7;
+  }
+
+  100% {
+    r: 11;
+    opacity: 0;
+  }
+}
+
+@keyframes rcPulseB {
+  0% {
+    r: 5;
+    opacity: 0.4;
+  }
+
+  100% {
+    r: 15;
+    opacity: 0;
+  }
+}
+
+@keyframes rcLineDraw {
+  from {
+    stroke-dashoffset: 600;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes rcGlow {
+
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.rc-row-anim {
+  animation: rcSlideLeft .42s ease both;
+}
+
+.rc-right-anim {
+  animation: rcSlideRight .45s ease both;
+}
+
+.rc-kpi-anim {
+  animation: rcFadeUp .5s ease both;
+}
+
+.rc-chip-anim {
+  animation: rcChipPop .5s cubic-bezier(.34, 1.56, .64, 1) both;
+}
+
+.rc-line-draw {
+  stroke-dasharray: 600;
+  animation: rcLineDraw 1.6s cubic-bezier(.4, 0, .2, 1) both .2s;
+}
+
+.rc-pulse-a {
+  animation: rcPulse 1.9s ease-out infinite;
+}
+
+.rc-pulse-b {
+  animation: rcPulseB 1.9s ease-out infinite .7s;
+}
+
+.rc-glow {
+  animation: rcGlow 2.2s ease-in-out infinite;
+}
+
+
+
+
+@keyframes itPodBlink {
+
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes itPulseA {
+  0% {
+    r: 6;
+    opacity: 0.6;
+  }
+
+  100% {
+    r: 16;
+    opacity: 0;
+  }
+}
+
+@keyframes itPulseB {
+  0% {
+    r: 6;
+    opacity: 0.35;
+  }
+
+  100% {
+    r: 24;
+    opacity: 0;
+  }
+}
+
+@keyframes itDashFlow {
+  to {
+    stroke-dashoffset: -30;
+  }
+}
+
+@keyframes itDashFlowUp {
+  to {
+    stroke-dashoffset: 30;
+  }
+}
+
+@keyframes itRegionPop {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes itCorePop {
+  0% {
+    transform: scale(0.85);
+  }
+
+  65% {
+    transform: scale(1.04);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes itGlow {
+
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes itFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes itOrbit {
+  to {
+    stroke-dashoffset: -120;
+  }
+}
+
+.it-spoke-r {
+  stroke-dasharray: 5 4;
+  animation: itDashFlow 1.8s linear infinite;
+}
+
+.it-spoke-l {
+  stroke-dasharray: 5 4;
+  animation: itDashFlowUp 2.1s linear infinite;
+}
+
+.it-orbit {
+  stroke-dasharray: 8 6;
+  animation: itOrbit 6s linear infinite;
+}
+
+.it-pulse-a {
+  animation: itPulseA 2.1s ease-out infinite;
+}
+
+.it-pulse-b {
+  animation: itPulseB 2.1s ease-out infinite 0.8s;
+}
+
+.it-glow {
+  animation: itGlow 2.4s ease-in-out infinite;
+}
+
+.it-core-pop {
+  animation: itCorePop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both 0.1s;
+  transform-origin: 380px 390px;
+}
+
+.it-region-0 {
+  animation: itRegionPop 0.5s ease both 0.05s;
+  transform-origin: 130px 220px;
+}
+
+.it-region-1 {
+  animation: itRegionPop 0.5s ease both 0.15s;
+  transform-origin: 380px 195px;
+}
+
+.it-region-2 {
+  animation: itRegionPop 0.5s ease both 0.25s;
+  transform-origin: 630px 225px;
+}
+
+.it-fade {
+  animation: itFadeIn 0.7s ease both 0.4s;
+}
+
+
+/* AlertTriageDiagram */
+@keyframes atPulseRing {
+  0% {
+    r: 5;
+    opacity: 0.6;
+  }
+
+  100% {
+    r: 14;
+    opacity: 0;
+  }
+}
+
+@keyframes atPulseRingB {
+  0% {
+    r: 5;
+    opacity: 0.35;
+  }
+
+  100% {
+    r: 20;
+    opacity: 0;
+  }
+}
+
+@keyframes atCriticalFlash {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@keyframes atSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes atLanePop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes atHeaderDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes atLivePulse {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.at-header-anim {
+  animation: atHeaderDrop 0.4s ease both;
+}
+
+.at-lane-0-anim {
+  animation: atLanePop 0.45s ease both 0.06s;
+}
+
+.at-lane-1-anim {
+  animation: atLanePop 0.45s ease both 0.14s;
+}
+
+.at-lane-2-anim {
+  animation: atLanePop 0.45s ease both 0.22s;
+}
+
+.at-card-anim-0 {
+  animation: atSlideUp 0.42s ease both 0.12s;
+}
+
+.at-card-anim-1 {
+  animation: atSlideUp 0.42s ease both 0.20s;
+}
+
+.at-card-anim-2 {
+  animation: atSlideUp 0.42s ease both 0.22s;
+}
+
+.at-card-anim-3 {
+  animation: atSlideUp 0.42s ease both 0.30s;
+}
+
+.at-card-anim-4 {
+  animation: atSlideUp 0.42s ease both 0.32s;
+}
+
+.at-card-anim-5 {
+  animation: atSlideUp 0.42s ease both 0.40s;
+}
+
+.at-pulse-a {
+  animation: atPulseRing 2.1s ease-out infinite;
+}
+
+.at-pulse-b {
+  animation: atPulseRingB 2.1s ease-out infinite 0.8s;
+}
+
+.at-critical-dot {
+  animation: atCriticalFlash 0.9s ease-in-out infinite;
+}
+
+.at-live-glow {
+  animation: atLivePulse 1.8s ease-in-out infinite;
+}
+
+
+
+/* AIPipelineDiagram */
+@keyframes apStagePop {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes apArrowFlow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+@keyframes apQaPop {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes apQaDash {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+@keyframes apGlow {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes apBlobFloat {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+@keyframes apMktPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+}
+@keyframes apBarGrow {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes apFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes apConnPulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes apQaConnDrop {
+  from {
+    opacity: 0;
+    height: 0;
+  }
+
+  to {
+    opacity: 1;
+    height: 20px;
+  }
+}
+
+.ap-hdr-anim {
+  animation: apFadeIn 0.4s ease both;
+}
+
+.ap-stage-0 {
+  animation: apStagePop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both 0.06s;
+  transform-origin: center top;
+}
+
+.ap-stage-1 {
+  animation: apStagePop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both 0.14s;
+  transform-origin: center top;
+}
+
+.ap-stage-2 {
+  animation: apStagePop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both 0.22s;
+  transform-origin: center top;
+}
+
+.ap-stage-3 {
+  animation: apStagePop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both 0.30s;
+  transform-origin: center top;
+}
+
+.ap-qa-anim {
+  animation: apQaPop 0.5s ease both 0.38s;
+  transform-origin: center center;
+}
+
+.ap-arrow-flow {
+  stroke-dasharray: 5 4;
+  animation: apArrowFlow 1.6s linear infinite;
+}
+
+.ap-qa-dash {
+  stroke-dasharray: 7 5;
+  animation: apQaDash 2s linear infinite;
+}
+
+.ap-glow {
+  animation: apGlow 2s ease-in-out infinite;
+}
+
+.ap-blob-anim {
+  animation: apBlobFloat 2.4s ease-in-out infinite;
+}
+
+.ap-mkt-anim {
+  animation: apMktPulse 2.2s ease-in-out infinite;
+}
+
+.ap-conn-pulse {
+  stroke-dasharray: 4 4;
+  animation: apConnPulse 2.1s ease-in-out infinite;
 }

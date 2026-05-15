@@ -73,7 +73,12 @@ const Marketplaces = () => {
           badgeText="80+ live integrations"
           title={<>Sell on every channel <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">that matters.</span></>}
           subtitle="From Amazon FBA to Lazada, TikTok Shop to Reliance Smart — Ctasis connects every marketplace, storefront, courier and ad network you need to scale globally."
-          visual={<MarketplaceMeshDiagram className="w-full h-auto" />}
+          // visual={<MarketplaceMeshDiagram className="w-full h-auto" />}
+          visual={
+            <div className="scale-110 origin-center">
+              <MarketplaceMeshDiagram className="w-full h-auto" />
+            </div>
+          }
           actions={
             <>
               <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">

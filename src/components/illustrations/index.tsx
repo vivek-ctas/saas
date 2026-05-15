@@ -105,8 +105,8 @@ export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => (
     </g>
 
     {/* Floating product KPI card – the hero element */}
-    <g filter="url(#shm-shadow)" style={{ transformOrigin: "380px 260px" }}>
-      <rect x="80" y="200" width="640" height="110" rx="16" fill="white" stroke="hsl(220 20% 92%)" />
+    <g filter="url(#shm-shadow)" style={{ transformOrigin: "380px 260px" }} >
+      <rect x="80" y="200" width="680" height="140" rx="16" fill="white" stroke="hsl(220 20% 92%)" />
       {/* Product thumb */}
       <rect x="100" y="220" width="70" height="70" rx="12" fill="hsl(226 71% 95%)" />
       <circle cx="135" cy="255" r="22" fill="hsl(226 71% 60%)" />
@@ -283,45 +283,110 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
 /* AnalyticsIllustration – BI dashboard mockup with bars + KPI cards   */
 /* ------------------------------------------------------------------ */
 export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 560 400" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <DiagramDefs />
-    <rect x="10" y="10" width="540" height="380" rx="18" fill="white" stroke="#e2e8f0" />
-    {/* Header chip */}
-    <rect x="30" y="30" width="140" height="22" rx="11" fill="#ede9fe" />
-    <text x="100" y="45" textAnchor="middle" fontSize="10" fontWeight="700" fill="#6d28d9" letterSpacing="1.5">AI &amp; ANALYTICS</text>
-    <text x="30" y="80" fontSize="18" fontWeight="700" fill="#0f172a">Performance Insights</text>
-    {/* KPI cards */}
+  <svg
+    viewBox="0 0 560 500"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="xMidYMid meet"
+    {...props}
+  >
+    <DiagramDefs /> {/*Keep your defs */}
+
+    {/* Main Card */}
+    <rect x="10" y="10" width="540" height="480" rx="20" fill="white" stroke="#e2e8f0" strokeWidth="8" />
+
+    {/* Header Chip */}
+    <rect x="32" y="42" width="148" height="26" rx="13" fill="#f3e8ff" />
+    <text x="106" y="59" textAnchor="middle" fontSize="11.5" fontWeight="700" fill="#6d28d9" letterSpacing="1.2">
+      AI & ANALYTICS
+    </text>
+
+    <text x="32" y="100" fontSize="19" fontWeight="700" fill="#0f172a">Performance Insights</text>
+
+    {/* KPI Cards - Improved Spacing */}
     {[
-      { x: 30, label: "GMV", val: "$12.4M", tone: "#1e40af" },
-      { x: 200, label: "Orders", val: "84,210", tone: "#6d28d9" },
-      { x: 370, label: "ROAS", val: "4.8×", tone: "#db2777" },
+      { x: 32, label: "GMV", val: "$12.4M", color: "#1e40af" },
+      { x: 198, label: "Orders", val: "84,210", color: "#6d28d9" },
+      { x: 364, label: "ROAS", val: "4.8×", color: "#db2777" },
     ].map((k, i) => (
       <g key={i}>
-        <rect x={k.x} y={100} width="160" height="74" rx="12" fill="#f8fafc" stroke="#e2e8f0" />
-        <text x={k.x + 16} y={124} fontSize="11" fontWeight="600" fill="#64748b">{k.label}</text>
-        <text x={k.x + 16} y={156} fontSize="22" fontWeight="800" fill={k.tone}>{k.val}</text>
+        <rect x={k.x} y="130" width="158" height="78" rx="14" fill="#f8fafc" stroke="#e2e8f0" />
+        <text x={k.x + 18} y="156" fontSize="12" fontWeight="600" fill="#64748b">{k.label}</text>
+        <text x={k.x + 18} y="190" fontSize="24" fontWeight="800" fill={k.color}>{k.val}</text>
       </g>
     ))}
-    {/* Chart area */}
-    <rect x="30" y="194" width="500" height="176" rx="12" fill="#f8fafc" stroke="#e2e8f0" />
-    <line x1="50" y1="340" x2="510" y2="340" stroke="#cbd5e1" />
-    {[60, 110, 70, 140, 100, 160, 120, 180, 140, 200].map((h, i) => (
-      <g key={i}>
-        <rect x={60 + i * 46} y={340 - h} width="18" height={h} rx="4" fill="url(#g-purple)">
-          <animate attributeName="height" from="0" to={h} dur={`${0.5 + i * 0.07}s`} fill="freeze" />
-          <animate attributeName="y" from="340" to={340 - h} dur={`${0.5 + i * 0.07}s`} fill="freeze" />
-        </rect>
-        <rect x={82 + i * 46} y={340 - h * 0.7} width="18" height={h * 0.7} rx="4" fill="url(#g-pink)" opacity="0.85">
-          <animate attributeName="height" from="0" to={h * 0.7} dur={`${0.6 + i * 0.07}s`} fill="freeze" />
-          <animate attributeName="y" from="340" to={340 - h * 0.7} dur={`${0.6 + i * 0.07}s`} fill="freeze" />
-        </rect>
-      </g>
-    ))}
+
+    {/* Chart Area */}
+    <rect x="32" y="260" width="496" height="200" rx="14" fill="#f8fafc" stroke="#e2e8f0" />
+
+    {/* X Axis Line */}
+    <line x1="48" y1="440" x2="512" y2="440" stroke="#cbd5e1" strokeWidth="2" />
+
+    {[62, 118, 78, 152, 105, 178, 128, 195, 145, 210].map((h, i) => {
+      const purpleH = h * 0.82;
+      const pinkH = h * 0.65;
+
+      return (
+        <g key={i}>
+          {/* Purple Bar */}
+          <rect
+            x={52 + i * 45}
+            y={440 - purpleH}
+            width="19"
+            height={purpleH}
+            rx="5"
+            fill="url(#g-purple)"
+          >
+            <animate
+              attributeName="height"
+              from="0"
+              to={purpleH}
+              dur="0.8s"
+              fill="freeze"
+            />
+            <animate
+              attributeName="y"
+              from="440"
+              to={440 - purpleH}
+              dur="0.8s"
+              fill="freeze"
+            />
+          </rect>
+
+          {/* Pink Bar */}
+          <rect
+            x={76 + i * 45}
+            y={440 - pinkH}
+            width="19"
+            height={pinkH}
+            rx="5"
+            fill="url(#g-pink)"
+            opacity="0.9"
+          >
+            <animate
+              attributeName="height"
+              from="0"
+              to={pinkH}
+              dur="0.9s"
+              fill="freeze"
+            />
+            <animate
+              attributeName="y"
+              from="440"
+              to={440 - pinkH}
+              dur="0.9s"
+              fill="freeze"
+            />
+          </rect>
+        </g>
+      );
+    })}
     {/* Legend */}
-    <circle cx="50" cy="216" r="4" fill="#6d28d9" />
-    <text x="60" y="220" fontSize="10" fill="#475569">BigQuery</text>
-    <circle cx="120" cy="216" r="4" fill="#db2777" />
-    <text x="130" y="220" fontSize="10" fill="#475569">Power BI</text>
+    <circle cx="52" cy="236" r="4.5" fill="#6d28d9" />
+    <text x="64" y="240" fontSize="11" fill="#475569" fontWeight="500">BigQuery</text>
+
+    <circle cx="138" cy="236" r="4.5" fill="#db2777" />
+    <text x="150" y="240" fontSize="11" fill="#475569" fontWeight="500">Power BI</text>
   </svg>
 );
 
@@ -358,25 +423,185 @@ export const GlobeIllustration = (props: SVGProps<SVGSVGElement>) => (
 /* WorkflowIllustration – clean 4-step flow with arrows                */
 /* ------------------------------------------------------------------ */
 export const WorkflowIllustration = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 600 220" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+  <svg
+    viewBox="0 0 600 240"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
     <DiagramDefs />
+
+    {/* Background */}
+    <rect
+      x="10"
+      y="20"
+      width="580"
+      height="190"
+      rx="24"
+      fill="#ffffff"
+      stroke="#e2e8f0"
+    />
+
+    {/* Glow */}
+    <circle cx="120" cy="40" r="90" fill="#dbeafe" opacity="0.35" />
+    <circle cx="520" cy="190" r="90" fill="#f5d0fe" opacity="0.35" />
+
     {[
-      { x: 20, n: "1", t: "Order capture", c: "url(#g-blue)" },
-      { x: 170, n: "2", t: "Route & assign", c: "url(#g-purple)" },
-      { x: 320, n: "3", t: "Fulfil & ship", c: "url(#g-pink)" },
-      { x: 470, n: "4", t: "Track & close", c: "url(#g-emerald)" },
+      {
+        x: 25,
+        n: "1",
+        t: "Order capture",
+        c: "#89aad9",
+        icon: "S1",
+      },
+      {
+        x: 170,
+        n: "2",
+        t: "Route & assign",
+        c: "#76b7f5",
+        icon: "S2",
+      },
+      {
+        x: 315,
+        n: "3",
+        t: "Fulfil & ship",
+        c: "#488afa",
+        icon: "S3",
+      },
+      {
+        x: 460,
+        n: "4",
+        t: "Track & close",
+        c: "#faaa55",
+        icon: "S4",
+      },
     ].map((s, i) => (
       <g key={i}>
-        <rect x={s.x} y="60" width="110" height="100" rx="14" fill="white" stroke="#e2e8f0" />
-        <circle cx={s.x + 55} cy="92" r="16" fill={s.c} />
-        <text x={s.x + 55} y="97" textAnchor="middle" fontSize="13" fontWeight="800" fill="white">{s.n}</text>
-        <text x={s.x + 55} y="135" textAnchor="middle" fontSize="11" fontWeight="700" fill="#0f172a">{s.t.split(" ")[0]}</text>
-        <text x={s.x + 55} y="150" textAnchor="middle" fontSize="11" fontWeight="700" fill="#0f172a">{s.t.split(" ").slice(1).join(" ")}</text>
-        {i < 3 && <line x1={s.x + 112} y1="110" x2={s.x + 168} y2="110" stroke="#94a3b8" strokeWidth="2" strokeDasharray="4 4" markerEnd="url(#arrow-purple)" />}
+        {/* Animated Card */}
+        <rect
+          x={s.x}
+          y="60"
+          width="115"
+          height="110"
+          rx="18"
+          fill="white"
+          stroke={s.c}
+        >
+
+          <animate
+            attributeName="y"
+            values="70;60;70"
+            dur={`${3 + i * 0.4}s`}
+            repeatCount="indefinite"
+          />
+        </rect>
+        <rect
+          x={s.x}
+          y="60"
+          width="115"
+          height="22"
+          rx="18"
+          fill="white"
+          stroke={s.c}
+        >
+
+          <animate
+            attributeName="y"
+            values="70;60;70"
+            dur={`${3 + i * 0.4}s`}
+            repeatCount="indefinite"
+          />
+        </rect>
+        {/* Animated Icon Circle */}
+        <circle cx={s.x + 57} cy="96" r="20" fill={s.c}>
+          <animate
+            attributeName="r"
+            values="20;22;20"
+            dur="2s"
+            repeatCount="indefinite"
+          />
+        </circle>
+
+        {/* Icon */}
+        <text
+          x={s.x + 57}
+          y="101"
+          textAnchor="middle"
+          fontSize="14"
+          fontWeight="700"
+          fill="white"
+        >
+          {s.icon}
+        </text>
+
+        {/* Title */}
+        <text
+          x={s.x + 57}
+          y="140"
+          textAnchor="middle"
+          fontSize="11"
+          fontWeight="700"
+          fill="#0f172a"
+        >
+          {s.t.split(" ")[0]}
+        </text>
+
+        <text
+          x={s.x + 57}
+          y="155"
+          textAnchor="middle"
+          fontSize="11"
+          fontWeight="700"
+          fill="#0f172a"
+        >
+          {s.t.split(" ").slice(1).join(" ")}
+        </text>
+
+        {/* Connection Line */}
+        {i < 3 && (
+          <>
+            <line
+              x1={s.x + 116}
+              y1="112"
+              x2={s.x + 150}
+              y2="112"
+              stroke={s.c}
+              strokeWidth="2"
+              strokeDasharray="5 5"
+            >
+              <animate
+                attributeName="stroke-dashoffset"
+                values="20;0"
+                dur="1s"
+                repeatCount="indefinite"
+              />
+            </line>
+
+            {/* Moving Dot */}
+            <circle r="4" fill={s.c}>
+              <animateMotion
+                dur="2s"
+                repeatCount="indefinite"
+                path={`M ${s.x + 116} 112 L ${s.x + 150} 112`}
+              />
+            </circle>
+          </>
+        )}
       </g>
     ))}
-    <text x="300" y="200" textAnchor="middle" fontSize="11" fill="#64748b">Unified across Amazon · Flipkart · Meesho · Walmart · Shopify</text>
-  </svg>
+
+    {/* Bottom caption */}
+    <text
+      x="300"
+      y="205"
+      textAnchor="middle"
+      fontSize="11"
+      fill="#64748b"
+      fontWeight="600"
+    >
+      Unified across Amazon · Flipkart · Meesho · Walmart · Shopify
+    </text>
+  </svg >
 );
 
 /* ------------------------------------------------------------------ */
@@ -620,7 +845,7 @@ export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
         {i < arr.length - 1 && (
           <g>
             <line x1={s.x + 110} y1={164} x2={arr[i + 1].x - 4} y2={164}
-                  stroke="#cbd5e1" strokeWidth={2} strokeDasharray="4 4" markerEnd="url(#arrow-purple)" />
+              stroke="#cbd5e1" strokeWidth={2} strokeDasharray="4 4" markerEnd="url(#arrow-purple)" />
           </g>
         )}
       </g>
@@ -715,7 +940,7 @@ export const ContactMapIllustration = (props: SVGProps<SVGSVGElement>) => (
           (c > 23 && c < 28 && r > 11 && r < 15);  // oceania
         return (
           <circle key={`${r}-${c}`} cx={cx} cy={cy} r={1.6}
-                  fill={land ? "#6366f1" : "#cbd5e1"} opacity={land ? 0.7 : 0.35} />
+            fill={land ? "#6366f1" : "#cbd5e1"} opacity={land ? 0.7 : 0.35} />
         );
       })
     )}
@@ -902,7 +1127,7 @@ export const NodeFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
 /* AnalyticsFlowDiagram — BigQuery + Power BI data flow                */
 /* ------------------------------------------------------------------ */
 export const AnalyticsFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 820 380" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+  <svg viewBox="0 0 850 380" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <defs>
       <linearGradient id="af-bg" x1="0" x2="1" y1="0" y2="1">
         <stop offset="0%" stopColor="#fff7ed" />
@@ -912,8 +1137,8 @@ export const AnalyticsFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
         <circle cx="2" cy="2" r="1" fill="#cbd5e1" />
       </pattern>
     </defs>
-    <rect x="10" y="10" width="800" height="360" rx="20" fill="url(#af-bg)" stroke="#e2e8f0" />
-    <rect x="10" y="10" width="800" height="360" rx="20" fill="url(#af-dots)" opacity="0.4" />
+    <rect x="10" y="10" width="830" height="360" rx="20" fill="url(#af-bg)" stroke="#e2e8f0" />
+    <rect x="10" y="10" width="830" height="360" rx="20" fill="url(#af-dots)" opacity="0.4" />
 
     {/* Sources column */}
     <text x="40" y="46" fontSize="11" fontWeight="800" fill="#64748b" letterSpacing="1">SOURCES</text>
@@ -964,7 +1189,7 @@ export const AnalyticsFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
       { y: 270, l: "AI forecast model", c: "#ec4899" },
     ].map((s, i) => (
       <g key={i}>
-        <rect x={670} y={s.y} width={130} height={36} rx={10} fill="white" stroke="#e2e8f0" />
+        <rect x={670} y={s.y} width={150} height={38} rx={10} fill="white" stroke="#e2e8f0" />
         <circle cx={688} cy={s.y + 18} r={6} fill={s.c} />
         <text x={702} y={s.y + 22} fontSize={11} fontWeight={700} fill="#0f172a">{s.l}</text>
       </g>
@@ -973,14 +1198,14 @@ export const AnalyticsFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
     {/* Edges in */}
     {[79, 129, 179, 229, 279].map((y, i) => (
       <path key={i} d={`M200 ${y} C 230 ${y}, 230 ${130 + i * 18}, 250 ${130 + i * 18}`}
-            stroke="#94a3b8" strokeWidth={1.5} fill="none" strokeDasharray="3 4" />
+        stroke="#94a3b8" strokeWidth={1.5} fill="none" strokeDasharray="3 4" />
     ))}
     {/* Stream → BigQuery */}
     <path d="M420 180 L 460 180" stroke="#6366f1" strokeWidth={2.5} markerEnd="url(#arrow-purple)" />
     {/* BQ → consumers */}
     {[88, 138, 188, 238, 288].map((y, i) => (
       <path key={i} d={`M640 180 C 660 180, 660 ${y}, 670 ${y}`}
-            stroke="#0ea5e9" strokeWidth={1.5} fill="none" strokeDasharray="3 4" />
+        stroke="#0ea5e9" strokeWidth={1.5} fill="none" strokeDasharray="3 4" />
     ))}
 
     <text x={410} y={344} textAnchor="middle" fontSize={11} fill="#64748b">Every order, click and review — queryable in seconds, exportable forever.</text>
@@ -990,90 +1215,336 @@ export const AnalyticsFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
 /* ------------------------------------------------------------------ */
 /* MarketplaceMeshDiagram — radial channel hub                         */
 /* ------------------------------------------------------------------ */
-export const MarketplaceMeshDiagram = (props: SVGProps<SVGSVGElement>) => {
+export const MarketplaceMeshDiagram = (
+  props: SVGProps<SVGSVGElement>
+) => {
   const channels = [
-    { a: -90, l: "Amazon", c: "#f59e0b" },
-    { a: -54, l: "Walmart", c: "#1d4ed8" },
-    { a: -18, l: "eBay", c: "#ef4444" },
-    { a: 18,  l: "Shopify", c: "#10b981" },
-    { a: 54,  l: "TikTok", c: "#0f172a" },
-    { a: 90,  l: "Flipkart", c: "#3b82f6" },
-    { a: 126, l: "Etsy", c: "#ea580c" },
-    { a: 162, l: "Lazada", c: "#0ea5e9" },
-    { a: 198, l: "Meesho", c: "#db2777" },
-    { a: 234, l: "Allegro", c: "#7c3aed" },
-    { a: 270, l: "Shopee", c: "#f97316" },
-    { a: 306, l: "Bol.com", c: "#2563eb" },
+    { a: -90, l: "Amazon", c: "#f59e0b", bg: "#fffbeb" },
+    { a: -54, l: "Walmart", c: "#1d4ed8", bg: "#eff6ff" },
+    { a: -18, l: "eBay", c: "#ef4444", bg: "#fef2f2" },
+    { a: 18, l: "Shopify", c: "#059669", bg: "#ecfdf5" },
+    { a: 54, l: "TikTok", c: "#0f172a", bg: "#f8fafc" },
+    { a: 90, l: "Flipkart", c: "#3b82f6", bg: "#eff6ff" },
+    { a: 126, l: "Etsy", c: "#ea580c", bg: "#fff7ed" },
+    { a: 162, l: "Lazada", c: "#0ea5e9", bg: "#f0f9ff" },
+    { a: 198, l: "Meesho", c: "#db2777", bg: "#fdf2f8" },
+    { a: 234, l: "Allegro", c: "#7c3aed", bg: "#f5f3ff" },
+    { a: 270, l: "Shopee", c: "#f97316", bg: "#fff7ed" },
+    { a: 306, l: "Bol.com", c: "#2563eb", bg: "#eff6ff" },
   ];
-  const cx = 380, cy = 220, R = 165;
+
+  const cx = 380;
+  const cy = 220;
+  const R = 175;
+
   return (
-    <svg viewBox="0 0 760 440" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <defs>
-        <radialGradient id="mm-bg" cx="50%" cy="50%" r="60%">
-          <stop offset="0%" stopColor="#fdf4ff" />
-          <stop offset="100%" stopColor="#eff6ff" />
-        </radialGradient>
-        <linearGradient id="mm-core" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0%" stopColor="hsl(226 71% 50%)" />
-          <stop offset="100%" stopColor="hsl(330 81% 55%)" />
-        </linearGradient>
-      </defs>
-      <rect x="10" y="10" width="740" height="420" rx="20" fill="url(#mm-bg)" stroke="#e2e8f0" />
-      <text x="40" y="46" fontSize="13" fontWeight="800" fill="#0f172a">One platform · every channel</text>
-      <text x="40" y="64" fontSize="11" fill="#64748b">Inventory, pricing and orders sync bi-directionally in real time.</text>
+    <div className="relative w-full overflow-hidden rounded-[28px] bg-gradient-to-br from-[#eef2ff] via-[#f8f5ff] to-[#fdf2fb] p-6 shadow-[0_20px_60px_rgba(91,61,232,.12)]">
+      {/* ambient glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,80,255,.08),transparent_70%)] pointer-events-none" />
 
-      {/* concentric rings */}
-      {[60, 110, 165].map((r, i) => (
-        <circle key={i} cx={cx} cy={cy} r={r} stroke="#cbd5e1" strokeDasharray="3 4" fill="none" opacity={0.5} />
-      ))}
+      <div className="relative z-10 mb-4">
+        <h3 className="text-[18px] font-bold tracking-tight text-slate-900">
+          One platform · every channel
+        </h3>
 
-      {/* Edges */}
-      {channels.map((ch, i) => {
-        const rad = (ch.a * Math.PI) / 180;
-        const x = cx + R * Math.cos(rad);
-        const y = cy + R * Math.sin(rad);
-        return (
-          <line key={i} x1={cx} y1={cy} x2={x} y2={y} stroke={ch.c} strokeWidth={1.4} opacity={0.45} strokeDasharray="2 3" />
-        );
-      })}
+        <p className="mt-1 text-sm text-slate-500">
+          Inventory, pricing and orders sync bi-directionally in
+          real time.
+        </p>
+      </div>
 
-      {/* Channel nodes */}
-      {channels.map((ch, i) => {
-        const rad = (ch.a * Math.PI) / 180;
-        const x = cx + R * Math.cos(rad);
-        const y = cy + R * Math.sin(rad);
-        return (
-          <g key={i}>
-            <circle cx={x} cy={y} r={26} fill="white" stroke={ch.c} strokeWidth={2} />
-            <text x={x} y={y + 4} textAnchor="middle" fontSize={10} fontWeight={800} fill={ch.c}>{ch.l}</text>
-            <circle cx={x} cy={y} r={32} fill={ch.c} opacity={0.12}>
-              <animate attributeName="r" values={`28;36;28`} dur={`${2.4 + (i % 5) * 0.3}s`} repeatCount="indefinite" />
-              <animate attributeName="opacity" values="0.18;0;0.18" dur={`${2.4 + (i % 5) * 0.3}s`} repeatCount="indefinite" />
-            </circle>
-          </g>
-        );
-      })}
+      <svg
+        viewBox="0 0 760 500"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-full h-auto"
+        {...props}
+      >
+        <defs>
+          <radialGradient id="mm-bg" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stopColor="#fdf4ff" />
+            <stop offset="100%" stopColor="#eff6ff" />
+          </radialGradient>
 
-      {/* Core */}
-      <circle cx={cx} cy={cy} r={56} fill="url(#mm-core)" />
-      <circle cx={cx} cy={cy} r={56} fill="white" opacity={0.08} />
-      <text x={cx} y={cy - 4} textAnchor="middle" fontSize={14} fontWeight={800} fill="white">Ctasis</text>
-      <text x={cx} y={cy + 14} textAnchor="middle" fontSize={9} fontWeight={700} fill="white" opacity={0.85}>Sync engine</text>
+          <linearGradient id="mm-core" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0%" stopColor="#7c5ef7" />
+            <stop offset="100%" stopColor="#c23b8e" />
+          </linearGradient>
 
-      {/* Legend chips */}
-      <g transform="translate(40,390)">
-        {[{c:"#10b981",l:"Live sync"},{c:"#f59e0b",l:"Auto-repricer"},{c:"#ec4899",l:"AI listing"}].map((p,i)=>(
-          <g key={i} transform={`translate(${i*150},0)`}>
-            <rect x="0" y="-14" width="140" height="22" rx="11" fill="white" stroke="#e2e8f0" />
-            <circle cx="14" cy="-3" r="5" fill={p.c} />
-            <text x="26" y="0" fontSize="10" fontWeight="700" fill="#334155">{p.l}</text>
-          </g>
+          <radialGradient id="mm-shine" cx="35%" cy="30%" r="60%">
+            <stop offset="0%" stopColor="rgba(255,255,255,.28)" />
+            <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+          </radialGradient>
+
+          <filter
+            id="glow"
+            x="-40%"
+            y="-40%"
+            width="180%"
+            height="180%"
+          >
+            <feGaussianBlur stdDeviation="8" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        {/* orbit rings */}
+        {[70, 120, 175].map((r, i) => (
+          <circle
+            key={i}
+            cx={cx}
+            cy={cy}
+            r={r}
+            stroke="#c7c5e8"
+            strokeWidth="1"
+            strokeDasharray="4 5"
+            opacity={0.4}
+            fill="none"
+          >
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              from={`0 ${cx} ${cy}`}
+              to={`360 ${cx} ${cy}`}
+              dur={`${28 + i * 8}s`}
+              repeatCount="indefinite"
+            />
+          </circle>
         ))}
-      </g>
-    </svg>
+
+        {/* edge lines */}
+        {channels.map((ch, i) => {
+          const rad = (ch.a * Math.PI) / 180;
+          const x = cx + R * Math.cos(rad);
+          const y = cy + R * Math.sin(rad);
+
+          return (
+            <line
+              key={i}
+              x1={cx}
+              y1={cy}
+              x2={x}
+              y2={y}
+              stroke={ch.c}
+              strokeWidth={1.4}
+              opacity={0.38}
+              strokeDasharray="4 5"
+            >
+              <animate
+                attributeName="stroke-dashoffset"
+                values="0;-40"
+                dur={`${2 + (i % 4) * 0.4}s`}
+                repeatCount="indefinite"
+              />
+            </line>
+          );
+        })}
+
+        {/* pulse rings */}
+        <circle cx={cx} cy={cy} r="56" fill="#7c5ef7" opacity="0.18">
+          <animate
+            attributeName="r"
+            values="56;90"
+            dur="2.8s"
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="opacity"
+            values="0.22;0"
+            dur="2.8s"
+            repeatCount="indefinite"
+          />
+        </circle>
+
+        <circle cx={cx} cy={cy} r="56" fill="#c23b8e" opacity="0.12">
+          <animate
+            attributeName="r"
+            values="56;110"
+            dur="3.4s"
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="opacity"
+            values="0.18;0"
+            dur="3.4s"
+            repeatCount="indefinite"
+          />
+        </circle>
+
+        {/* nodes */}
+        {channels.map((ch, i) => {
+          const rad = (ch.a * Math.PI) / 180;
+          const x = cx + R * Math.cos(rad);
+          const y = cy + R * Math.sin(rad);
+
+          return (
+            <g key={i}>
+              {/* shimmer halo */}
+              <circle
+                cx={x}
+                cy={y}
+                r="34"
+                fill="none"
+                stroke={ch.c}
+                strokeWidth="1"
+                opacity="0.22"
+              >
+                <animate
+                  attributeName="opacity"
+                  values="0.15;0.5;0.15"
+                  dur={`${2.2 + (i % 5) * 0.3}s`}
+                  repeatCount="indefinite"
+                />
+              </circle>
+
+              {/* soft halo */}
+              <circle
+                cx={x}
+                cy={y}
+                r="30"
+                fill={ch.c}
+                opacity="0.12"
+              >
+                <animate
+                  attributeName="r"
+                  values="28;36;28"
+                  dur={`${2.5 + (i % 5) * 0.3}s`}
+                  repeatCount="indefinite"
+                />
+              </circle>
+
+              {/* floating wrapper */}
+              <g>
+                <animateTransform
+                  attributeName="transform"
+                  type="translate"
+                  values={`0 0;0 -4;0 0`}
+                  dur={`${3 + (i % 5) * 0.4}s`}
+                  repeatCount="indefinite"
+                />
+
+                {/* node bg */}
+                <circle
+                  cx={x}
+                  cy={y}
+                  r="26"
+                  fill={ch.bg}
+                  stroke={ch.c}
+                  strokeWidth="2"
+                />
+
+                {/* label */}
+                <text
+                  x={x}
+                  y={y + 4}
+                  textAnchor="middle"
+                  fontSize="10"
+                  fontWeight="700"
+                  fill={ch.c}
+                  style={{
+                    fontFamily: "DM Sans, sans-serif",
+                  }}
+                >
+                  {ch.l}
+                </text>
+              </g>
+            </g>
+          );
+        })}
+
+        {/* core */}
+        <g filter="url(#glow)">
+          <circle
+            cx={cx}
+            cy={cy}
+            r="58"
+            fill="url(#mm-core)"
+          />
+
+          <circle
+            cx={cx}
+            cy={cy}
+            r="58"
+            fill="url(#mm-shine)"
+          />
+        </g>
+
+        <text
+          x={cx}
+          y={cy - 4}
+          textAnchor="middle"
+          fontSize="16"
+          fontWeight="800"
+          fill="white"
+          style={{
+            fontFamily: "Space Grotesk, sans-serif",
+          }}
+        >
+          Ctasis
+        </text>
+
+        <text
+          x={cx}
+          y={cy + 16}
+          textAnchor="middle"
+          fontSize="10"
+          fontWeight="600"
+          fill="rgba(255,255,255,.82)"
+          letterSpacing=".5"
+          style={{
+            fontFamily: "DM Sans, sans-serif",
+          }}
+        >
+          Sync engine
+        </text>
+
+        {/* legend */}
+        <g transform="translate(70,455)">
+          {[
+            { c: "#10b981", l: "Live sync" },
+            { c: "#f59e0b", l: "Auto-repricer" },
+            { c: "#ec4899", l: "AI listing" },
+          ].map((p, i) => (
+            <g key={i} transform={`translate(${i * 180},0)`}>
+              <rect
+                x="0"
+                y="-16"
+                width="160"
+                height="28"
+                rx="14"
+                fill="white"
+                stroke="#e2e8f0"
+              />
+
+              <circle
+                cx="16"
+                cy="-2"
+                r="5"
+                fill={p.c}
+              />
+
+              <text
+                x="30"
+                y="1"
+                fontSize="11"
+                fontWeight="700"
+                fill="#334155"
+                style={{
+                  fontFamily: "DM Sans, sans-serif",
+                }}
+              >
+                {p.l}
+              </text>
+            </g>
+          ))}
+        </g>
+      </svg>
+    </div>
   );
 };
-
 /* ------------------------------------------------------------------ */
 /* RepricerStrategyChart — line chart competitor vs Ctasis price       */
 /* ------------------------------------------------------------------ */
@@ -1091,9 +1562,9 @@ export const RepricerStrategyChart = (props: SVGProps<SVGSVGElement>) => (
 
     {/* axes */}
     <line x1="60" y1="280" x2="560" y2="280" stroke="#e2e8f0" />
-    {[0,1,2,3,4,5,6].map(i=>(
-      <text key={i} x={60 + i*83} y={300} fontSize="9" textAnchor="middle" fill="#94a3b8">
-        {`${i*4}h`}
+    {[0, 1, 2, 3, 4, 5, 6].map(i => (
+      <text key={i} x={60 + i * 83} y={300} fontSize="9" textAnchor="middle" fill="#94a3b8">
+        {`${i * 4}h`}
       </text>
     ))}
     {/* floor / ceiling lines */}
@@ -1104,18 +1575,18 @@ export const RepricerStrategyChart = (props: SVGProps<SVGSVGElement>) => (
 
     {/* competitor line (jagged) */}
     <polyline points="60,200 120,180 180,210 240,160 300,220 360,170 420,150 480,200 540,170"
-              stroke="#94a3b8" strokeWidth="2" fill="none" strokeDasharray="3 3" />
+      stroke="#94a3b8" strokeWidth="2" fill="none" strokeDasharray="3 3" />
     <text x="540" y="160" fontSize="9" fontWeight="700" fill="#64748b">Competitor</text>
 
     {/* Ctasis line (smooth, slightly under ceiling) */}
     <path d="M60 195 C 110 175, 170 200, 230 155 S 350 215, 410 145 S 500 195, 540 165"
-          stroke="hsl(330 81% 55%)" strokeWidth="3" fill="none" />
+      stroke="hsl(330 81% 55%)" strokeWidth="3" fill="none" />
     <path d="M60 195 C 110 175, 170 200, 230 155 S 350 215, 410 145 S 500 195, 540 165 L 540 280 L 60 280 Z"
-          fill="url(#rsc-fill)" />
+      fill="url(#rsc-fill)" />
     <text x="540" y="155" fontSize="10" fontWeight="800" fill="hsl(330 81% 45%)">Ctasis</text>
 
     {/* Data points */}
-    {[[230,155],[410,145],[540,165]].map(([x,y],i)=>(
+    {[[230, 155], [410, 145], [540, 165]].map(([x, y], i) => (
       <g key={i}>
         <circle cx={x} cy={y} r="5" fill="white" stroke="hsl(330 81% 55%)" strokeWidth="2.5" />
       </g>
@@ -1192,167 +1663,702 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
 /* ------------------------------------------------------------------ */
 /* InfraTopologyDiagram — multi-region cluster topology                */
 /* ------------------------------------------------------------------ */
-export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 760 480" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <defs>
-      <linearGradient id="it-bg" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stopColor="#0b1220" /><stop offset="100%" stopColor="#111d39" />
-      </linearGradient>
-      <linearGradient id="it-pod" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0%" stopColor="#3b82f6" /><stop offset="100%" stopColor="#1e3a8a" />
-      </linearGradient>
-      <linearGradient id="it-edge" x1="0" x2="1" y1="0" y2="0">
-        <stop offset="0%" stopColor="hsl(14 88% 62%)" /><stop offset="100%" stopColor="hsl(226 71% 60%)" />
-      </linearGradient>
-    </defs>
-    <rect x="10" y="10" width="740" height="460" rx="22" fill="url(#it-bg)" />
-    <text x="40" y="48" fontSize="12" fontWeight="800" fill="#a5b4fc" letterSpacing="2">MULTI-REGION TOPOLOGY</text>
-    <text x="40" y="74" fontSize="20" fontWeight="800" fill="white">3 regions · 47 pods · 1 control plane</text>
+export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => {
+  const REGIONS = [
+    { cx: 130, cy: 225, label: "us-east-1", pods: 18, cols: 4, rows: 3 },
+    { cx: 380, cy: 195, label: "eu-west-2", pods: 16, cols: 4, rows: 3 },
+    { cx: 630, cy: 230, label: "ap-south-1", pods: 15, cols: 4, rows: 3 },
+  ];
 
-    {/* Edge ring */}
-    <ellipse cx="380" cy="270" rx="320" ry="130" stroke="#334155" strokeDasharray="3 5" fill="none" />
-    <text x="60" y="270" fontSize="10" fontWeight="700" fill="#64748b">CDN / Edge</text>
+  const POD_W = 22;
+  const POD_H = 15;
+  const POD_GAP_X = 28;
+  const POD_GAP_Y = 21;
+  return (
+    <svg
+      viewBox="0 0 800 500"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <defs>
 
-    {/* Regions */}
-    {[
-      { x: 110, y: 220, label: "us-east-1", pods: 18 },
-      { x: 380, y: 180, label: "eu-west-2", pods: 14 },
-      { x: 620, y: 240, label: "ap-south-1", pods: 15 },
-    ].map((r, i) => (
-      <g key={i}>
-        <rect x={r.x - 76} y={r.y - 50} width={152} height={140} rx={16} fill="#0f1c33" stroke="#3b82f6" strokeOpacity={0.5} />
-        <text x={r.x} y={r.y - 30} textAnchor="middle" fontSize="11" fontWeight="800" fill="#a5b4fc">{r.label}</text>
-        {/* pods */}
-        {Array.from({ length: 12 }).map((_, j) => {
-          const c = j % 4, row = Math.floor(j / 4);
-          return (
-            <rect key={j} x={r.x - 60 + c * 30} y={r.y - 14 + row * 22} width={22} height={16} rx={4} fill="url(#it-pod)" opacity={0.85}>
-              <animate attributeName="opacity" values="0.6;1;0.6" dur={`${1.6 + (j % 5) * 0.3}s`} repeatCount="indefinite" />
-            </rect>
-          );
-        })}
-        <text x={r.x} y={r.y + 78} textAnchor="middle" fontSize={10} fill="#94a3b8">{r.pods} pods · K8s</text>
-      </g>
-    ))}
+        {/* Card background — soft lavender-to-sky light gradient */}
+        <linearGradient id="it-bg" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stopColor="#f0f4ff" />
+          <stop offset="55%" stopColor="#f8f6ff" />
+          <stop offset="100%" stopColor="#fff0f9" />
+        </linearGradient>
 
-    {/* Control plane */}
-    <g>
-      <rect x="290" y="350" width="180" height="80" rx="14" fill="hsl(14 88% 62%)" />
-      <text x="380" y="378" textAnchor="middle" fontSize="12" fontWeight="800" fill="white">Control Plane</text>
-      <text x="380" y="396" textAnchor="middle" fontSize="10" fill="white" opacity="0.85">Kafka · etcd · ArgoCD</text>
-      <text x="380" y="416" textAnchor="middle" fontSize="10" fill="white" opacity="0.85">99.99% SLA</text>
-    </g>
+        {/* Region card bg */}
+        <linearGradient id="it-region-bg" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="100%" stopColor="#f5f3ff" />
+        </linearGradient>
 
-    {/* Lines from regions to control plane */}
-    {[110, 380, 620].map((x, i) => (
-      <path key={i} d={`M${x} 280 Q ${x} 340, 380 380`} stroke="url(#it-edge)" strokeWidth="1.5" strokeDasharray="3 4" fill="none" opacity="0.7" />
-    ))}
+        {/* Pod gradient — blue pill */}
+        <linearGradient id="it-pod" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#60a5fa" />
+          <stop offset="100%" stopColor="#2563eb" />
+        </linearGradient>
 
-    {/* Legend chips */}
-    <g transform="translate(40,432)">
+        {/* Spoke gradient */}
+        <linearGradient id="it-spoke-grad" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="#f97316" />
+          <stop offset="100%" stopColor="#6366f1" />
+        </linearGradient>
+
+        {/* Core card gradient — warm orange */}
+        <linearGradient id="it-core-grad" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stopColor="#f97316" />
+          <stop offset="100%" stopColor="#ea580c" />
+        </linearGradient>
+
+        {/* Core shine */}
+        <radialGradient id="it-core-shine" cx="35%" cy="25%" r="55%">
+          <stop offset="0%" stopColor="rgba(255,255,255,0.28)" />
+          <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+        </radialGradient>
+
+        {/* Drop shadow */}
+        <filter id="it-card-shadow" x="-6%" y="-6%" width="112%" height="118%">
+          <feDropShadow dx="0" dy="3" stdDeviation="7" floodColor="#c4b5fd" floodOpacity="0.18" />
+        </filter>
+        <filter id="it-region-shadow" x="-8%" y="-8%" width="116%" height="120%">
+          <feDropShadow dx="0" dy="2" stdDeviation="5" floodColor="#818cf8" floodOpacity="0.14" />
+        </filter>
+        <filter id="it-core-shadow" x="-12%" y="-12%" width="124%" height="130%">
+          <feDropShadow dx="0" dy="4" stdDeviation="10" floodColor="#f97316" floodOpacity="0.30" />
+        </filter>
+      </defs>
+
+      {/* ── Outer card ── */}
+      <rect
+        x="8" y="8" width="784" height="484" rx="24"
+        fill="url(#it-bg)"
+        stroke="#e0d9f7" strokeWidth="1.2"
+        filter="url(#it-card-shadow)"
+      />
+
+      {/* ── Header ── */}
+      <text
+        x="36" y="44"
+        fontFamily="'Space Grotesk','DM Sans',sans-serif"
+        fontSize="10.5" fontWeight="700" fill="#818cf8"
+        letterSpacing="2.5"
+      >
+        MULTI-REGION TOPOLOGY
+      </text>
+      <text
+        x="36" y="70"
+        fontFamily="'Space Grotesk','DM Sans',sans-serif"
+        fontSize="20" fontWeight="700" fill="#1e1b4b"
+        letterSpacing="-0.4"
+      >
+        3 regions · 47 pods · 1 control plane
+      </text>
+
+      {/* ── Orbit ellipse (CDN edge ring) ── */}
+      <ellipse
+        cx="380" cy="290" rx="310" ry="145"
+        stroke="#c7d2fe" strokeWidth="1"
+        className="it-orbit"
+        fill="none" opacity="0.6"
+      />
+      <text
+        x="52" y="290"
+        fontFamily="'DM Sans',sans-serif"
+        fontSize="10" fontWeight="700" fill="#a5b4fc"
+        className="it-fade"
+      >
+        CDN / Edge
+      </text>
+
+      {/* ── Spoke paths from regions to control plane ── */}
       {[
-        { c: "#3b82f6", l: "Tenant pod (Docker + K8s)" },
-        { c: "hsl(14 88% 62%)", l: "Control plane" },
-        { c: "#10b981", l: "Live · auto-failover" },
-      ].map((p, i) => (
-        <g key={i} transform={`translate(${i * 220},0)`}>
-          <circle cx="6" cy="0" r="5" fill={p.c} />
-          <text x="18" y="4" fontSize="10" fontWeight="700" fill="#cbd5e1">{p.l}</text>
-        </g>
+        { sx: 130, sy: 300, spokeClass: "it-spoke-r" },
+        { sx: 380, sy: 270, spokeClass: "it-spoke-r" },
+        { sx: 630, sy: 305, spokeClass: "it-spoke-l" },
+      ].map((sp, i) => (
+        <path
+          key={`spoke-${i}`}
+          d={`M${sp.sx} ${sp.sy} Q${sp.sx} 370, 380 400`}
+          stroke="url(#it-spoke-grad)"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          fill="none"
+          opacity="0.55"
+          className={sp.spokeClass}
+          style={{ animationDelay: `${i * 0.12}s` }}
+        />
       ))}
-    </g>
-  </svg>
-);
+
+      {/* ── Region cards ── */}
+      {REGIONS.map((r, ri) => {
+        const W = 160, H = 148;
+        const x0 = r.cx - W / 2;
+        const y0 = r.cy - H / 2;
+        const podStartX = r.cx - (r.cols * POD_GAP_X) / 2 + 3;
+        const podStartY = y0 + 36;
+        const regionClass = `it-region-${ri}`;
+
+        return (
+          <g key={`region-${ri}`} className={regionClass}>
+            {/* Card */}
+            <rect
+              x={x0} y={y0} width={W} height={H} rx="16"
+              fill="url(#it-region-bg)"
+              stroke="#818cf8" strokeWidth="1.2" strokeOpacity="0.5"
+              filter="url(#it-region-shadow)"
+            />
+            {/* Top colored accent bar */}
+            <rect x={x0} y={y0} width={W} height={H - 120} rx="16" fill="#818cf8" opacity="0.5" />
+
+            {/* Label */}
+            <text
+              x={r.cx} y={y0 + 18}
+              textAnchor="middle"
+              fontFamily="'DM Sans',sans-serif"
+              fontSize="11" fontWeight="700" fill="#4338ca"
+            >
+              {r.label}
+            </text>
+
+            {/* Pod grid */}
+            {Array.from({ length: r.cols * r.rows }).map((_, j) => {
+              const col = j % r.cols;
+              const row = Math.floor(j / r.cols);
+              const px = podStartX + col * POD_GAP_X;
+              const py = podStartY + row * POD_GAP_Y;
+              const dur = 1.6 + (j % 5) * 0.28;
+              return (
+                <rect
+                  key={j}
+                  x={px} y={py}
+                  width={POD_W} height={POD_H}
+                  rx="4"
+                  fill="url(#it-pod)"
+                  opacity="0.75"
+                  style={{
+                    animation: `itPodBlink ${dur}s ease-in-out infinite`,
+                    animationDelay: `${j * 0.1}s`,
+                  }}
+                />
+              );
+            })}
+
+            {/* Pod count label */}
+            <text
+              x={r.cx} y={y0 + H - 10}
+              textAnchor="middle"
+              fontFamily="'DM Sans',sans-serif"
+              fontSize="10" fill="#818cf8"
+            >
+              {r.pods} pods · K8s
+            </text>
+          </g>
+        );
+      })}
+
+      {/* ── Control Plane ── */}
+      <g className="it-core-pop">
+        {/* Pulse rings */}
+        <circle cx="380" cy="400" r="6" fill="#f97316" opacity="0" className="it-pulse-a" />
+        <circle cx="380" cy="400" r="6" fill="#ea580c" opacity="0" className="it-pulse-b" />
+
+        <rect
+          x="290" y="368" width="180" height="88" rx="16"
+          fill="url(#it-core-grad)"
+          filter="url(#it-core-shadow)"
+        />
+        <rect
+          x="290" y="368" width="180" height="88" rx="16"
+          fill="url(#it-core-shine)"
+        />
+        <text
+          x="380" y="393"
+          textAnchor="middle"
+          fontFamily="'Space Grotesk','DM Sans',sans-serif"
+          fontSize="13" fontWeight="700" fill="white"
+        >
+          Control Plane
+        </text>
+        <text
+          x="380" y="412"
+          textAnchor="middle"
+          fontFamily="'DM Sans',sans-serif"
+          fontSize="10" fill="rgba(255,255,255,0.88)"
+        >
+          Kafka · etcd · ArgoCD
+        </text>
+        <text
+          x="380" y="430"
+          textAnchor="middle"
+          fontFamily="'DM Sans',sans-serif"
+          fontSize="10" fontWeight="700" fill="rgba(255,255,255,0.92)"
+        >
+          99.99% SLA
+        </text>
+      </g>
+
+      {/* ── Legend chips ── */}
+      <g className="it-fade">
+        {[
+          { c: "#2563eb", l: "Tenant pod (Docker + K8s)" },
+          { c: "#f97316", l: "Control plane" },
+          { c: "#10b981", l: "Live · auto-failover" },
+        ].map((p, i) => (
+          <g key={i} transform={`translate(${36 + i * 228}, 472)`}>
+            <circle cx="6" cy="0" r="5" fill={p.c} className="it-glow" style={{ animationDelay: `${i * 0.3}s` }} />
+            <text
+              x="18" y="4"
+              fontFamily="'DM Sans',sans-serif"
+              fontSize="10.5" fontWeight="600" fill="#4b5563"
+            >
+              {p.l}
+            </text>
+          </g>
+        ))}
+      </g>
+    </svg>
+  );
+}
+
+
 
 /* ------------------------------------------------------------------ */
 /* AIPipelineDiagram — distinct from NodeFlow: vertical AI pipeline    */
 /* ------------------------------------------------------------------ */
-export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 760 460" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <defs>
-      <linearGradient id="ap-bg" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stopColor="#fff7ed" /><stop offset="100%" stopColor="#eff6ff" />
-      </linearGradient>
-      <linearGradient id="ap-stage" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0%" stopColor="hsl(226 71% 50%)" /><stop offset="100%" stopColor="hsl(226 71% 36%)" />
-      </linearGradient>
-      <linearGradient id="ap-action" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0%" stopColor="hsl(14 88% 62%)" /><stop offset="100%" stopColor="hsl(20 90% 50%)" />
-      </linearGradient>
-    </defs>
-    <rect x="10" y="10" width="740" height="440" rx="20" fill="url(#ap-bg)" stroke="#e2e8f0" />
-    <text x="40" y="46" fontSize="13" fontWeight="800" fill="#0f172a">AI Pipeline · listing → live</text>
-    <text x="40" y="64" fontSize="11" fill="#64748b">Vector embeddings, marketplace rules and a human-in-the-loop QA gate.</text>
+export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
+  const STAGE_W = 150;
+  const STAGE_H = 170;
+  const STAGE_Y = 90;
+  const STAGE_GAP = 30;
+  const STAGE_XS = [32, 32 + STAGE_W + STAGE_GAP, 32 + (STAGE_W + STAGE_GAP) * 2, 32 + (STAGE_W + STAGE_GAP) * 3];
 
-    {/* Stages (4 wide columns) */}
-    {[
-      { x: 40,  t: "INGEST", h: "Raw product CSV", d: "Photos · brief · specs", c: "url(#ap-stage)" },
-      { x: 220, t: "EMBED", h: "Vector + tags", d: "OpenAI · category model", c: "url(#ap-stage)" },
-      { x: 400, t: "GENERATE", h: "Per-channel listing", d: "Title · bullets · keywords", c: "url(#ap-stage)" },
-      { x: 580, t: "PUBLISH", h: "Push to live", d: "Amazon · eBay · Flipkart", c: "url(#ap-action)" },
-    ].map((s, i) => (
-      <g key={i}>
-        <rect x={s.x} y={110} width={140} height={150} rx={16} fill="white" stroke="#e2e8f0" />
-        <rect x={s.x} y={110} width={140} height={28} rx={14} fill={s.c} />
-        <text x={s.x + 12} y={128} fontSize={10} fontWeight={800} fill="white" letterSpacing={1}>{s.t}</text>
-        <text x={s.x + 12} y={170} fontSize={12} fontWeight={800} fill="#0f172a">{s.h}</text>
-        <text x={s.x + 12} y={190} fontSize={10} fill="#64748b">{s.d}</text>
-        {/* mini visual per stage */}
-        <g transform={`translate(${s.x + 12}, 210)`}>
-          {i === 0 && [0,1,2,3].map(j => <rect key={j} x={j*30} y={0} width={24} height={28} rx={4} fill="#f1f5f9" />)}
-          {i === 1 && [0,1,2,3,4,5].map(j => (
-            <circle key={j} cx={j*18 + 8} cy={14} r={4 + (j%3)*2} fill="hsl(226 71% 50%)" opacity={0.4 + (j%3)*0.2} />
-          ))}
-          {i === 2 && (<>
-            <rect width={116} height={6} rx={3} fill="hsl(226 71% 50%)" />
-            <rect y={12} width={92} height={6} rx={3} fill="hsl(226 71% 70%)" />
-            <rect y={24} width={70} height={6} rx={3} fill="hsl(226 71% 80%)" />
-          </>)}
-          {i === 3 && [["A","#f59e0b"],["W","#1d4ed8"],["F","#ef4444"]].map((m,j) => (
-            <g key={j}>
-              <circle cx={j*32 + 14} cy={14} r={12} fill={m[1] as string} />
-              <text x={j*32 + 14} y={18} textAnchor="middle" fontSize={11} fontWeight={800} fill="white">{m[0] as string}</text>
-            </g>
-          ))}
-        </g>
-        {i < 3 && (
-          <path d={`M${s.x + 140} 185 L ${s.x + 220} 185`} stroke="#94a3b8" strokeWidth={2} strokeDasharray="4 4" markerEnd="url(#arrow-purple)" />
-        )}
+  const STAGES = [
+    { label: "INGEST", title: "Raw product CSV", sub: "Photos · brief · specs", hdr: "#6366f1", border: "#c7d2fe", cls: "ap-stage-0" },
+    { label: "EMBED", title: "Vector + tags", sub: "OpenAI · category model", hdr: "#3b82f6", border: "#bfdbfe", cls: "ap-stage-1" },
+    { label: "GENERATE", title: "Per-channel listing", sub: "Title · bullets · keywords", hdr: "#4f46e5", border: "#c7d2fe", cls: "ap-stage-2" },
+    { label: "PUBLISH", title: "Push to live", sub: "Amazon · eBay · Flipkart", hdr: "#f97316", border: "#fed7aa", cls: "ap-stage-3" },
+  ];
+
+  return (
+    <svg
+      viewBox="0 0 760 430"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <defs>
+        {/* Outer bg */}
+        <linearGradient id="ap-bg" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stopColor="#fdf8ff" />
+          <stop offset="50%" stopColor="#f0f5ff" />
+          <stop offset="100%" stopColor="#fff9f0" />
+        </linearGradient>
+
+        {/* Stage header gradients */}
+        <linearGradient id="ap-hdr-ingest" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="#6366f1" />
+          <stop offset="100%" stopColor="#818cf8" />
+        </linearGradient>
+        <linearGradient id="ap-hdr-embed" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#60a5fa" />
+        </linearGradient>
+        <linearGradient id="ap-hdr-gen" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="#4338ca" />
+          <stop offset="100%" stopColor="#6366f1" />
+        </linearGradient>
+        <linearGradient id="ap-hdr-pub" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="#f97316" />
+          <stop offset="100%" stopColor="#fb923c" />
+        </linearGradient>
+
+        {/* Bar fill gradient */}
+        <linearGradient id="ap-bar" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="#4f46e5" />
+          <stop offset="100%" stopColor="#818cf8" />
+        </linearGradient>
+
+        {/* Card shadow */}
+        <filter id="ap-card-shadow" x="-6%" y="-6%" width="112%" height="120%">
+          <feDropShadow dx="0" dy="2" stdDeviation="5" floodColor="#c4b5fd" floodOpacity="0.14" />
+        </filter>
+        <filter id="ap-outer-shadow" x="-4%" y="-4%" width="108%" height="112%">
+          <feDropShadow dx="0" dy="3" stdDeviation="8" floodColor="#c4b5fd" floodOpacity="0.16" />
+        </filter>
+
+        {/* Arrow marker */}
+        <marker id="ap-arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M1 1L7 4L1 7" fill="none" stroke="#94a3b8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </marker>
+        <marker id="ap-arr-orange" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M1 1L7 4L1 7" fill="none" stroke="#f97316" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </marker>
+      </defs>
+
+      {/* ── Outer card ── */}
+      <rect
+        x="8" y="8" width="744" height="414" rx="22"
+        fill="url(#ap-bg)"
+        stroke="#e0d9f7" strokeWidth="1.2"
+        filter="url(#ap-outer-shadow)"
+      />
+
+      {/* ── Header ── */}
+      <g className="ap-hdr-anim">
+        <text
+          x="32" y="50"
+          fontFamily="'Space Grotesk','DM Sans',sans-serif"
+          fontSize="16" fontWeight="700" fill="#1a1340" letterSpacing="-0.2"
+        >
+          AI Pipeline · listing → live
+        </text>
+        <text
+          x="32" y="70"
+          fontFamily="'DM Sans',sans-serif"
+          fontSize="11" fill="#6b7280"
+        >
+          Vector embeddings, marketplace rules and a human-in-the-loop QA gate.
+        </text>
       </g>
-    ))}
 
-    {/* QA gate */}
-    <g>
-      <rect x="220" y="300" width="320" height="76" rx="14" fill="white" stroke="hsl(14 88% 62%)" strokeWidth={2} strokeDasharray="6 4" />
-      <text x="380" y="324" textAnchor="middle" fontSize="11" fontWeight="800" fill="hsl(14 88% 50%)">⚑ HUMAN-IN-THE-LOOP QA</text>
-      <text x="380" y="346" textAnchor="middle" fontSize="11" fill="#475569">Reviewer approves / edits before publish</text>
-      <text x="380" y="364" textAnchor="middle" fontSize="10" fill="#94a3b8">Auto-approve threshold: confidence &gt; 0.92</text>
-    </g>
-    <path d="M470 260 L 470 300" stroke="hsl(14 88% 62%)" strokeWidth={2} strokeDasharray="3 3" />
-    <path d="M380 376 Q 380 400, 470 400 L 650 400" stroke="hsl(14 88% 62%)" strokeWidth={2} strokeDasharray="3 3" />
+      {/* ══════════ STAGE CARDS ══════════ */}
+      {STAGES.map((s, i) => {
+        const sx = STAGE_XS[i];
+        const hdrGrads = ["url(#ap-hdr-ingest)", "url(#ap-hdr-embed)", "url(#ap-hdr-gen)", "url(#ap-hdr-pub)"];
+        return (
+          <g key={i} className={s.cls}>
+            {/* Card */}
+            <rect x={sx} y={STAGE_Y} width={STAGE_W} height={STAGE_H} rx="14"
+              fill="#fff" stroke={s.border} strokeWidth="1.5"
+              filter="url(#ap-card-shadow)"
+            />
+            {/* Header band */}
+            <rect x={sx} y={STAGE_Y} width={STAGE_W} height="28" rx="10"
+              fill={hdrGrads[i]}
+            />
+            <rect x={sx} y={STAGE_Y + 18} width={STAGE_W} height="10" fill={hdrGrads[i]} />
+            <text
+              x={sx + 12} y={STAGE_Y + 18}
+              fontFamily="'DM Sans',sans-serif"
+              fontSize="9.5" fontWeight="700" fill="white" letterSpacing="1.8"
+            >
+              {s.label}
+            </text>
 
-    <text x="380" y="430" textAnchor="middle" fontSize={10} fill="#94a3b8">~4 min raw CSV → 3 channel-perfect listings · 92% auto-approved</text>
-  </svg>
-);
+            {/* Title + sub */}
+            <text x={sx + 12} y={STAGE_Y + 60}
+              fontFamily="'DM Sans',sans-serif"
+              fontSize="12.5" fontWeight="700" fill="#1e1b4b"
+            >{s.title}</text>
+            <text x={sx + 12} y={STAGE_Y + 90}
+              fontFamily="'DM Sans',sans-serif"
+              fontSize="10" fill="#6b7280"
+            >{s.sub}</text>
 
+            {/* ── Stage visual ── */}
+            {i === 0 && (
+              /* INGEST: coloured file chips */
+              <>
+                {[["CSV", "#dbeafe", "#1d4ed8"], ["IMG", "#ede9fe", "#5b21b6"], ["SKU", "#dcfce7", "#15803d"], ["TXT", "#fee2e2", "#b91c1c"]].map(([l, bg, col], j) => (
+                  <g key={j}>
+                    <rect x={sx + 12 + j * 32} y={STAGE_Y + 120} width={28} height={22} rx="6" fill={bg} />
+                    <text x={sx + 26 + j * 32} y={STAGE_Y + 135} textAnchor="middle"
+                      fontFamily="'DM Sans',sans-serif" fontSize="8.5" fontWeight="700" fill={col}>{l}</text>
+                  </g>
+                ))}
+              </>
+            )}
+            {i === 1 && (
+              /* EMBED: floating blobs */
+              <>
+                {[18, 24, 30, 24, 18].map((r, j) => (
+                  <circle key={j}
+                    cx={sx + 22 + j * 26} cy={STAGE_Y + 130}
+                    r={r / 2}
+                    fill="#3b82f6"
+                    opacity={0.3 + j * 0.1}
+                    className="ap-blob-anim"
+                    style={{ animationDelay: `${j * 0.18}s`, transformOrigin: `${sx + 18 + j * 22}px ${STAGE_Y + 108}px` }}
+                  />
+                ))}
+              </>
+            )}
+            {i === 2 && (
+              /* GENERATE: text bars */
+              <>
+                {[[100, 0.4], [80, 0.55], [62, 0.7]].map(([w, delay], j) => (
+                  <g key={j}>
+                    <rect x={sx + 12} y={STAGE_Y + 120 + j * 14} width={STAGE_W - 24} height={7} rx="3" fill="#e0e7ff" />
+                    <rect
+                      x={sx + 12} y={STAGE_Y + 120 + j * 14}
+                      width={((STAGE_W - 24) * w) / 100}
+                      height={7} rx="3"
+                      fill="url(#ap-bar)"
+                      // style={{ animation: `apBarGrow .9s ease both ${delay}s` }}
+                      style={{
+                        animation: `apBarGrow .9s ease both ${delay}s`,
+                        transformOrigin: "left center",
+                        transformBox: "fill-box",
+                      }}
+                    />
+                  </g>
+                ))}
+              </>
+            )}
+            {i === 3 && (
+              /* PUBLISH: marketplace circles */
+              <>
+                {[["A", "#f59e0b"], ["W", "#1d4ed8"], ["F", "#ef4444"]].map(([label, col], j) => (
+                  <g key={j} className="ap-mkt-anim" style={{ animationDelay: `${j * 0.35}s`, transformOrigin: `${sx + 22 + j * 38}px ${STAGE_Y + 108}px` }}>
+                    <circle cx={sx + 35 + j * 38} cy={STAGE_Y + 130} r="14" fill={col} />
+                    <text x={sx + 35 + j * 38} y={STAGE_Y + 135} textAnchor="middle"
+                      fontFamily="'DM Sans',sans-serif" fontSize="12" fontWeight="700" fill="white">{label}</text>
+                  </g>
+                ))}
+              </>
+            )}
+          </g>
+        );
+      })}
+
+      {/* ══════════ CONNECTOR ARROWS ══════════ */}
+      {[0, 1, 2].map(i => {
+        const x1 = STAGE_XS[i] + STAGE_W + 4;
+        const x2 = STAGE_XS[i + 1] - 4;
+        const y = STAGE_Y + STAGE_H / 2;
+        return (
+          <line key={i}
+            x1={x1} y1={y} x2={x2} y2={y}
+            stroke="#94a3b8" strokeWidth="1.5"
+            markerEnd="url(#ap-arr)"
+            className="ap-conn-pulse"
+            style={{ animationDelay: `${i * 0.2}s` }}
+          />
+        );
+      })}
+
+      {/* ══════════ QA GATE ══════════ */}
+      {/* Connector line from GENERATE stage down to QA */}
+      <line
+        x1={STAGE_XS[2] + STAGE_W / 2} y1={STAGE_Y + STAGE_H + 2}
+        x2={STAGE_XS[2] + STAGE_W / 2} y2={280}
+        stroke="#f97316" strokeWidth="1.5"
+        markerEnd="url(#ap-arr-orange)"
+        className="ap-conn-pulse"
+        style={{ animationDelay: "0.5s" }}
+      />
+
+      <g className="ap-qa-anim">
+        <rect x={186} y={280} width={372} height={90} rx="16"
+          fill="#fff9f5"
+          stroke="#f97316" strokeWidth="1.5"
+          strokeDasharray="8 5"
+          filter="url(#ap-card-shadow)"
+          className="ap-qa-dash"
+        />
+        {/* QA flag badge */}
+        <rect x={202} y={296} width={22} height={22} rx="7" fill="#f97316" className="ap-glow" />
+        <text x={213} y={311} textAnchor="middle"
+          fontFamily="'DM Sans',sans-serif" fontSize="12" fontWeight="700" fill="white">⚑</text>
+
+        <text x={232} y={310}
+          fontFamily="'DM Sans',sans-serif"
+          fontSize="11.5" fontWeight="700" fill="#c2410c" letterSpacing="0.5"
+        >
+          HUMAN-IN-THE-LOOP QA
+        </text>
+        <text x={372} y={330} textAnchor="middle"
+          fontFamily="'DM Sans',sans-serif"
+          fontSize="11" fill="#475569"
+        >
+          Reviewer approves / edits listing before publish
+        </text>
+        {/* Confidence badge */}
+        <rect x={275} y={340} width={210} height={20} rx="8" fill="#fef3c7" stroke="#fde68a" strokeWidth="0.8" />
+        <text x={373} y={354} textAnchor="middle"
+          fontFamily="'DM Sans',sans-serif"
+          fontSize="10" fontWeight="700" fill="#b45309"
+        >
+          ⚡ Auto-approve threshold: confidence &gt; 0.92
+        </text>
+      </g>
+
+      {/* ── Footer ── */}
+      <text x="372" y="402" textAnchor="middle"
+        fontFamily="'DM Sans',sans-serif"
+        fontSize="10.5" fill="#9ca3af" fontStyle="italic"
+      >
+        ~4 min raw CSV → 3 channel-perfect listings · 92% auto-approved
+      </text>
+    </svg>
+  );
+}
 /* ------------------------------------------------------------------ */
 /* ChannelSyncFlow — distinct sync flow for marketplaces page          */
 /* ------------------------------------------------------------------ */
-export const ChannelSyncFlow = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 820 420" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+export const ChannelSyncFlow = (
+  props: SVGProps<SVGSVGElement>
+) => (
+  <svg
+    viewBox="0 0 820 420"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
     <defs>
-      <linearGradient id="cs-bg" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stopColor="#fdf4ff" /><stop offset="100%" stopColor="#fff7ed" />
-      </linearGradient>
-      <linearGradient id="cs-core" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stopColor="hsl(226 71% 45%)" /><stop offset="100%" stopColor="hsl(14 88% 55%)" />
-      </linearGradient>
-    </defs>
-    <rect x="10" y="10" width="800" height="400" rx="20" fill="url(#cs-bg)" stroke="#e2e8f0" />
-    <text x="40" y="46" fontSize="13" fontWeight="800" fill="#0f172a">Channel sync · bidirectional</text>
-    <text x="40" y="64" fontSize="11" fill="#64748b">Inventory · pricing · orders · returns — propagated across every channel in real time.</text>
+      {/* Background */}
+      <radialGradient
+        id="cs-bg"
+        cx="50%"
+        cy="50%"
+        r="70%"
+      >
+        <stop offset="0%" stopColor="#f8f4ff" />
+        <stop offset="60%" stopColor="#fff0f7" />
+        <stop offset="100%" stopColor="#fff8ed" />
+      </radialGradient>
 
-    {/* Left channels */}
+      {/* Core gradient */}
+
+
+      <linearGradient id="cs-core" x1="30%" y1="15%" x2="70%" y2="88%" gradientUnits="objectBoundingBox">
+        <stop offset="0%" stopColor="#FDBA74" />
+        <stop offset="45%" stopColor="#FB923C" />
+        <stop offset="100%" stopColor="#F97316" />
+      </linearGradient>
+
+      {/* Core shine */}
+      <radialGradient
+        id="cs-shine"
+        cx="35%"
+        cy="25%"
+        r="60%"
+      >
+        <stop
+          offset="0%"
+          stopColor="rgba(255,255,255,.22)"
+        />
+        <stop
+          offset="100%"
+          stopColor="rgba(255,255,255,0)"
+        />
+      </radialGradient>
+
+      {/* Glow */}
+      <filter
+        id="cs-glow"
+        x="-40%"
+        y="-40%"
+        width="180%"
+        height="180%"
+      >
+        <feGaussianBlur
+          stdDeviation="6"
+          result="blur"
+        />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+
+      {/* Shadow */}
+      <filter
+        id="cs-shadow"
+        x="-5%"
+        y="-5%"
+        width="110%"
+        height="115%"
+      >
+        <feDropShadow
+          dx="0"
+          dy="2"
+          stdDeviation="5"
+          floodColor="#c4b5fd"
+          floodOpacity="0.18"
+        />
+      </filter>
+
+      {/* Arrows */}
+      <marker
+        id="arrow-purple"
+        viewBox="0 0 8 8"
+        refX="7"
+        refY="4"
+        markerWidth="5"
+        markerHeight="5"
+        orient="auto"
+      >
+        <path
+          d="M1 1L7 4L1 7"
+          fill="none"
+          stroke="context-stroke"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </marker>
+
+      <marker
+        id="arrow-left"
+        viewBox="0 0 8 8"
+        refX="1"
+        refY="4"
+        markerWidth="5"
+        markerHeight="5"
+        orient="auto-start-reverse"
+      >
+        <path
+          d="M7 1L1 4L7 7"
+          fill="none"
+          stroke="context-stroke"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </marker>
+    </defs>
+
+    {/* CARD */}
+    <rect
+      x="10"
+      y="10"
+      width="800"
+      height="400"
+      rx="20"
+      fill="url(#cs-bg)"
+      stroke="#e9d5ff"
+      filter="url(#cs-shadow)"
+    />
+
+    {/* HEADER */}
+    <text
+      x="40"
+      y="46"
+      fontSize="13"
+      fontWeight="800"
+      fill="#0f172a"
+      fontFamily="'Space Grotesk',sans-serif"
+    >
+      Channel sync · bidirectional
+    </text>
+
+    <text
+      x="40"
+      y="64"
+      fontSize="11"
+      fill="#64748b"
+      fontFamily="'DM Sans',sans-serif"
+    >
+      Inventory · pricing · orders · returns —
+      propagated across every channel in real time.
+    </text>
+
+    {/* LEFT CHANNELS */}
     {[
       { y: 110, l: "Amazon", c: "#f59e0b" },
       { y: 170, l: "Walmart", c: "#1d4ed8" },
@@ -1360,47 +2366,271 @@ export const ChannelSyncFlow = (props: SVGProps<SVGSVGElement>) => (
       { y: 290, l: "Shopify", c: "#10b981" },
     ].map((s, i) => (
       <g key={i}>
-        <rect x="40" y={s.y - 20} width="140" height="44" rx="10" fill="white" stroke="#e2e8f0" />
-        <circle cx="60" cy={s.y + 2} r="7" fill={s.c} />
-        <text x="76" y={s.y + 6} fontSize="12" fontWeight="800" fill="#0f172a">{s.l}</text>
-        {/* arrows */}
-        <path d={`M180 ${s.y - 4} L 330 ${s.y - 4}`} stroke={s.c} strokeWidth="1.8" strokeDasharray="3 3" markerEnd="url(#arrow-purple)" />
-        <path d={`M330 ${s.y + 8} L 180 ${s.y + 8}`} stroke="#94a3b8" strokeWidth="1.8" strokeDasharray="3 3" markerEnd="url(#arrow-purple)" />
+        {/* CARD */}
+        <g
+          className="cs-left-card"
+          style={{
+            animationDelay: `${i * 0.1}s`,
+          }}
+        >
+          <rect
+            x="40"
+            y={s.y - 20}
+            width="140"
+            height="44"
+            rx="10"
+            fill="white"
+            stroke="#e2e8f0"
+            filter="url(#cs-shadow)"
+          />
+
+          {/* accent */}
+          <rect
+            x="40"
+            y={s.y - 20}
+            width="5"
+            height="44"
+            rx="3"
+            fill={s.c}
+            opacity=".7"
+          />
+
+          <circle
+            cx="60"
+            cy={s.y + 2}
+            r="7"
+            fill={s.c}
+          />
+
+          <text
+            x="76"
+            y={s.y + 6}
+            fontSize="12"
+            fontWeight="800"
+            fill="#0f172a"
+            fontFamily="'DM Sans',sans-serif"
+          >
+            {s.l}
+          </text>
+        </g>
+
+        {/* RIGHT FLOW */}
+        <line
+          x1="180"
+          y1={s.y - 4}
+          x2="330"
+          y2={s.y - 4}
+          stroke={s.c}
+          strokeWidth="1.8"
+          className="cs-arrow-r"
+          markerEnd="url(#arrow-purple)"
+          style={{
+            animationDelay: `${i * 0.08}s`,
+          }}
+        />
+
+        {/* RETURN FLOW */}
+        <line
+          x1="330"
+          y1={s.y + 8}
+          x2="180"
+          y2={s.y + 8}
+          stroke="#94a3b8"
+          strokeWidth="1.5"
+          className="cs-arrow-l"
+          markerEnd="url(#arrow-left)"
+          style={{
+            animationDelay: `${i * 0.12}s`,
+          }}
+        />
       </g>
     ))}
 
-    {/* Center sync engine */}
-    <g>
-      <rect x="330" y="110" width="160" height="200" rx="18" fill="url(#cs-core)" />
-      <text x="410" y="142" textAnchor="middle" fontSize="13" fontWeight="800" fill="white">Ctasis Sync</text>
-      <text x="410" y="162" textAnchor="middle" fontSize="10" fill="white" opacity="0.85">event bus · &lt; 800ms</text>
-      {/* pulse ring */}
-      <circle cx="410" cy="220" r="22" fill="white" opacity="0.18">
-        <animate attributeName="r" values="18;34;18" dur="2.4s" repeatCount="indefinite" />
-        <animate attributeName="opacity" values="0.3;0;0.3" dur="2.4s" repeatCount="indefinite" />
-      </circle>
-      <circle cx="410" cy="220" r="14" fill="white" opacity="0.9" />
-      <text x="410" y="290" textAnchor="middle" fontSize="10" fill="white" opacity="0.9">Kafka · RabbitMQ</text>
+    {/* CENTER CORE */}
+    <g className="cs-core-pop">
+      {/* orbit */}
+      <circle
+        cx="410"
+        cy="220"
+        r="78"
+        stroke="#7c3aed"
+        strokeWidth=".8"
+        opacity=".25"
+        className="cs-orbit"
+      />
+
+      {/* pulse */}
+      <circle
+        cx="410"
+        cy="220"
+        r="18"
+        fill="#7c3aed"
+        opacity="0"
+        className="cs-pulse-a"
+      />
+
+      <circle
+        cx="410"
+        cy="220"
+        r="18"
+        fill="#dc2626"
+        opacity="0"
+        className="cs-pulse-b"
+      />
+
+      {/* core box */}
+      <rect
+        x="330"
+        y="95"
+        width="160"
+        height="215"
+        rx="18"
+        fill="url(#cs-core)"
+        filter="url(#cs-glow)"
+      />
+      {/* title */}
+      <text
+        x="410"
+        y="142"
+        textAnchor="middle"
+        fontSize="13"
+        fontWeight="800"
+        fill="white"
+        fontFamily="'Space Grotesk',sans-serif"
+      >
+        Ctasis Sync
+      </text>
+
+      <text
+        x="410"
+        y="162"
+        textAnchor="middle"
+        fontSize="10"
+        fill="white"
+        opacity="0.85"
+        fontFamily="'DM Sans',sans-serif"
+      >
+        event bus · &lt; 800ms
+      </text>
+
+      {/* heartbeat */}
+      <circle
+        cx="410"
+        cy="220"
+        r="22"
+        fill="white"
+        opacity="0.12"
+        className="cs-glow-dot"
+      />
+
+      <circle
+        cx="410"
+        cy="220"
+        r="14"
+        fill="white"
+        opacity="0.9"
+      />
+
+      <circle
+        cx="410"
+        cy="220"
+        r="5"
+        fill="#7c3aed"
+        opacity="0.75"
+      />
+
+      {/* footer */}
+      <text
+        x="410"
+        y="290"
+        textAnchor="middle"
+        fontSize="10"
+        fill="white"
+        opacity="0.9"
+        fontFamily="'DM Sans',sans-serif"
+      >
+        Kafka · RabbitMQ
+      </text>
     </g>
 
-    {/* Right outputs */}
+    {/* RIGHT OUTPUTS */}
     {[
       { y: 110, l: "Inventory", v: "✓ in sync", c: "#10b981" },
-      { y: 170, l: "Pricing", v: "Buy Box 92%", c: "hsl(14 88% 55%)" },
-      { y: 230, l: "Orders", v: "847 today", c: "hsl(226 71% 50%)" },
+      { y: 170, l: "Pricing", v: "Buy Box 92%", c: "#ea580c" },
+      { y: 230, l: "Orders", v: "847 today", c: "#2563eb" },
       { y: 290, l: "Returns", v: "12 open", c: "#94a3b8" },
     ].map((s, i) => (
       <g key={i}>
-        <path d={`M490 ${s.y + 2} L 640 ${s.y + 2}`} stroke={s.c} strokeWidth="1.8" strokeDasharray="3 3" markerEnd="url(#arrow-purple)" />
-        <rect x="640" y={s.y - 20} width="140" height="44" rx="10" fill="white" stroke="#e2e8f0" />
-        <text x="654" y={s.y - 4} fontSize="10" fontWeight="700" fill="#64748b">{s.l}</text>
-        <text x="654" y={s.y + 14} fontSize="12" fontWeight="800" fill={s.c}>{s.v}</text>
+        {/* flow */}
+        <line
+          x1="490"
+          y1={s.y + 2}
+          x2="640"
+          y2={s.y + 2}
+          stroke={s.c}
+          strokeWidth="1.8"
+          className="cs-arrow-r"
+          markerEnd="url(#arrow-purple)"
+          style={{
+            animationDelay: `${i * 0.09}s`,
+          }}
+        />
+
+        {/* card */}
+        <g
+          className="cs-right-card"
+          style={{
+            animationDelay: `${i * 0.14}s`,
+          }}
+        >
+          <rect
+            x="640"
+            y={s.y - 20}
+            width="140"
+            height="44"
+            rx="10"
+            fill="white"
+            stroke="#e2e8f0"
+            filter="url(#cs-shadow)"
+          />
+
+          {/* accent */}
+          <rect
+            x="775"
+            y={s.y - 20}
+            width="5"
+            height="44"
+            rx="3"
+            fill={s.c}
+            opacity=".7"
+          />
+
+          <text
+            x="654"
+            y={s.y - 4}
+            fontSize="10"
+            fontWeight="700"
+            fill="#64748b"
+            fontFamily="'DM Sans',sans-serif"
+          >
+            {s.l}
+          </text>
+
+          <text x="654" y={s.y + 14} fontSize="12" fontWeight="800" fill={s.c} fontFamily="'DM Sans',sans-serif"  >
+            {s.v}
+          </text>
+        </g>
       </g>
     ))}
 
-    <text x="410" y="392" textAnchor="middle" fontSize="11" fill="#64748b">One write here = updated everywhere. Two-way, audited, replayable.</text>
+    {/* FOOTER */}
+    <text x="410" y="392" textAnchor="middle" fontSize="11" fill="#64748b" fontStyle="italic" fontFamily="'DM Sans',sans-serif" >
+      One write here = updated everywhere. Two-way,
+      audited, replayable.
+    </text>
   </svg>
 );
+
 
 /* ------------------------------------------------------------------ */
 /* BlogEditorialMockup — magazine-style hero for blog                  */
@@ -1552,302 +2782,1413 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
 /* Used on Services for notification & report automation               */
 /* ------------------------------------------------------------------ */
 export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 860 500" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+  <svg
+    viewBox="0 0 920 520"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
     <defs>
-      <pattern id="ab-grid" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
-        <circle cx="1" cy="1" r="1" fill="#cbd5e1" opacity="0.6" />
+      {/* Background grid */}
+      <pattern id="ab-grid" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+        <path d="M24 0H0V24" stroke="#e5e7eb" strokeWidth="1" />
       </pattern>
-      <linearGradient id="ab-trig" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stopColor="hsl(226 71% 52%)" /><stop offset="100%" stopColor="hsl(226 71% 38%)" />
+
+      {/* Gradients */}
+      <linearGradient id="ab-orange" x1="0" x2="1">
+        <stop offset="0%" stopColor="#fb923c" />
+        <stop offset="100%" stopColor="#f97316" />
       </linearGradient>
-      <linearGradient id="ab-act" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stopColor="hsl(14 88% 60%)" /><stop offset="100%" stopColor="hsl(20 90% 48%)" />
+
+      <linearGradient id="ab-purple" x1="0" x2="1">
+        <stop offset="0%" stopColor="#8b5cf6" />
+        <stop offset="100%" stopColor="#7c3aed" />
       </linearGradient>
-      <linearGradient id="ab-cond" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stopColor="hsl(265 60% 60%)" /><stop offset="100%" stopColor="hsl(265 60% 45%)" />
-      </linearGradient>
-      <marker id="ab-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-        <path d="M0,0 L10,5 L0,10 z" fill="#64748b" />
+
+      {/* Arrow */}
+      <marker
+        id="ab-arrow"
+        viewBox="0 0 10 10"
+        refX="9"
+        refY="5"
+        markerWidth="6"
+        markerHeight="6"
+        orient="auto"
+      >
+        {/* <path d="M9 0L1 3.5L9 9Z" fill="#fb923c" /> */}
+        {/* <path d="M6 0L0 3L6 6Z" fill="#f97316" />        <path d="M10 0L0 5L10 10Z" fill="#f97316" /> */}
       </marker>
+      {/* <marker
+        id="ab-arrow"
+        viewBox="0 0 20 20"
+        refX="10"
+        refY="10"
+        markerWidth="10"
+        markerHeight="10"
+        orient="auto"
+      >
+        <circle
+          cx="10"
+          cy="10"
+          r="6"
+          fill="#f97316"
+        />
+      </marker> */}
     </defs>
 
-    <rect x="10" y="10" width="840" height="480" rx="20" fill="white" stroke="#e2e8f0" />
-    <rect x="10" y="10" width="840" height="480" rx="20" fill="url(#ab-grid)" opacity="0.5" />
+    {/* Background */}
+    <rect x="20" y="20" width="880" height="480" rx="24" fill="#f8fafc" stroke="#e2e8f0" />
 
-    {/* Top toolbar */}
-    <rect x="10" y="10" width="840" height="46" rx="20" fill="white" stroke="#e2e8f0" />
-    <circle cx="32" cy="33" r="5" fill="#ef4444" />
-    <circle cx="48" cy="33" r="5" fill="#f59e0b" />
-    <circle cx="64" cy="33" r="5" fill="#10b981" />
-    <text x="92" y="38" fontSize="12" fontWeight="800" fill="#0f172a">Ctasis Flow · "Buy Box dropped → Slack + PDF report"</text>
-    <rect x="700" y="20" width="60" height="24" rx="12" fill="hsl(150 70% 92%)" />
-    <text x="730" y="36" textAnchor="middle" fontSize="10" fontWeight="800" fill="hsl(150 70% 32%)">● Live</text>
-    <rect x="770" y="20" width="64" height="24" rx="12" fill="white" stroke="#e2e8f0" />
-    <text x="802" y="36" textAnchor="middle" fontSize="10" fontWeight="700" fill="#475569">Test run</text>
+    {/* Grid area */}
+    <rect
+      x="60"
+      y="60"
+      width="800"
+      height="400"
+      rx="20"
+      fill="url(#ab-grid)"
+      opacity="0.8"
+      stroke="#e5e7eb"
+    />
 
-    {/* Nodes */}
-    {/* 1. Trigger */}
+
+    {/* TRIGGER */}
     <g>
-      <rect x="40" y="120" width="180" height="86" rx="14" fill="white" stroke="#e2e8f0" />
-      <rect x="40" y="120" width="180" height="26" rx="14" fill="url(#ab-trig)" />
-      <text x="56" y="138" fontSize="10" fontWeight="800" fill="white" letterSpacing="1">TRIGGER</text>
-      <text x="56" y="170" fontSize="12" fontWeight="800" fill="#0f172a">Marketplace event</text>
-      <text x="56" y="188" fontSize="10" fill="#64748b">Buy Box %, price, stock…</text>
-      <circle cx="220" cy="163" r="6" fill="white" stroke="#94a3b8" strokeWidth="2" />
+      <rect x="5" y="5" width="260" height="170" rx="18" fill="#f6e7d2" stroke="#fb923c" strokeWidth="2" />
+      <text x="25" y="40" fontSize="14" fontWeight="800" fill="#f56905">
+        TRIGGER
+      </text>
+
+      {/* Inner box */}
+      <rect
+        x="20"
+        y="60"
+        width="200"
+        height="30"
+        rx="12"
+        fill="#fff7ed"
+        stroke="#fb923c"
+        strokeWidth="2"
+      />
+
+      <text x="120" y="80" textAnchor="middle" fontSize="16" fontWeight="800" fill="#111827">
+        Marketplace event
+      </text>
+      <text x="25" y="120" fontSize="14" fontWeight="800" fill="#2b3442">
+        Buy Box %, price, stock…
+      </text>
+
+      {/* Amazon badge */}
+      {/* <rect x="110" y="235" width="96" height="38" rx="10" fill="white" />
+
+      <text x="158" y="258" textAnchor="middle" fontSize="15" fontWeight="800" fill="#111827">
+        amazon
+      </text> */}
     </g>
 
-    {/* 2. Condition */}
+    {/* Schedule loop */}
     <g>
-      <rect x="280" y="120" width="180" height="86" rx="14" fill="white" stroke="#e2e8f0" />
-      <rect x="280" y="120" width="180" height="26" rx="14" fill="url(#ab-cond)" />
-      <text x="296" y="138" fontSize="10" fontWeight="800" fill="white" letterSpacing="1">IF / FILTER</text>
-      <text x="296" y="170" fontSize="12" fontWeight="800" fill="#0f172a">Buy Box &lt; 80%</text>
-      <text x="296" y="188" fontSize="10" fill="#64748b">on hero SKUs only</text>
-      <circle cx="280" cy="163" r="6" fill="white" stroke="#94a3b8" strokeWidth="2" />
-      <circle cx="460" cy="163" r="6" fill="white" stroke="#94a3b8" strokeWidth="2" />
+      <rect x="5" y="345" width="260" height="170" rx="18" fill="#f6e7d2" stroke="#fb923c" strokeWidth="2" />
+      <text x="25" y="390" fontSize="14" fontWeight="800" fill="#f56905">
+        SCHEDULE · DAILY 09:00
+      </text>
+
+      {/* Inner box */}
+      <rect
+        x="20"
+        y="410"
+        width="200"
+        height="30"
+        rx="12"
+        fill="#fff7ed"
+        stroke="#fb923c"
+        strokeWidth="2"
+      />
+
+      <text x="120" y="430" textAnchor="middle" fontSize="16" fontWeight="800" fill="#111827">
+        Daily digest report
+      </text>
+      <text x="25" y="470" fontSize="14" fontWeight="800" fill="#2b3442">
+        profit · BB · stockouts
+      </text>
+    </g>
+    {/* Condition  */}
+    <g>
+      <rect x="350" y="40" width="260" height="170" rx="18" fill="#f6e7d2" stroke="#fb923c" strokeWidth="2" />
+      <text x="374" y="80" fontSize="14" fontWeight="800" fill="#f56905">
+        IF / FILTER
+      </text>
+
+      {/* Inner box */}
+      <rect
+        x="370"
+        y="100"
+        width="200"
+        height="30"
+        rx="12"
+        fill="#fff7ed"
+        stroke="#fb923c"
+        strokeWidth="2"
+      />
+
+      <text x="470" y="120" textAnchor="middle" fontSize="16" fontWeight="800" fill="#111827">
+        Buy Box &lt; 80%
+      </text>
+      <text x="375" y="160" fontSize="14" fontWeight="800" fill="#2b3442">
+        on hero SKUs only
+      </text>
+    </g>
+    {/* Webhook to Zapier/n8n */}
+
+    <g>
+      <rect x="350" y="340" width="260" height="170" rx="18" fill="#f6e7d2" stroke="#fb923c" strokeWidth="2" />
+      <text x="374" y="380" fontSize="14" fontWeight="800" fill="#f56905">
+        FAN OUT · WEBHOOK
+      </text>
+
+      {/* Inner box */}
+      <rect
+        x="370"
+        y="400"
+        width="200"
+        height="30"
+        rx="12"
+        fill="#fff7ed"
+        stroke="#fb923c"
+        strokeWidth="2"
+      />
+
+      <text x="470" y="420" textAnchor="middle" fontSize="16" fontWeight="800" fill="#111827">
+        Push to Zapier / n8n
+      </text>
+      <text x="375" y="460" fontSize="14" fontWeight="800" fill="#2b3442">
+        JSON · signed · retried
+      </text>
     </g>
 
-    {/* 3a. Slack */}
+    {/* Slack */}
+
     <g>
-      <rect x="520" y="60" width="180" height="86" rx="14" fill="white" stroke="#e2e8f0" />
-      <rect x="520" y="60" width="180" height="26" rx="14" fill="url(#ab-act)" />
-      <text x="536" y="78" fontSize="10" fontWeight="800" fill="white" letterSpacing="1">ACTION · SLACK</text>
-      <text x="536" y="110" fontSize="12" fontWeight="800" fill="#0f172a">Post to #pricing</text>
-      <text x="536" y="128" fontSize="10" fill="#64748b">@channel · with chart</text>
-      <circle cx="520" cy="103" r="6" fill="white" stroke="#94a3b8" strokeWidth="2" />
+      <rect x="655" y="5" width="260" height="170" rx="18" fill="#f6e7d2" stroke="#fb923c" strokeWidth="2" />
+      <text x="684" y="45" fontSize="14" fontWeight="800" fill="#f56905">
+        ACTION · SLACK
+      </text>
+
+      {/* Inner box */}
+      <rect
+        x="680"
+        y="65"
+        width="200"
+        height="30"
+        rx="12"
+        fill="#fff7ed"
+        stroke="#fb923c"
+        strokeWidth="2"
+      />
+
+      <text x="780" y="85" textAnchor="middle" fontSize="16" fontWeight="800" fill="#111827">
+        Post to #pricing
+      </text>
+      <text x="685" y="125" fontSize="14" fontWeight="800" fill="#2b3442">
+        @channel · with chart
+      </text>
     </g>
 
-    {/* 3b. Email PDF */}
+    {/* Email PDF */}
+
     <g>
-      <rect x="520" y="180" width="180" height="86" rx="14" fill="white" stroke="#e2e8f0" />
-      <rect x="520" y="180" width="180" height="26" rx="14" fill="url(#ab-act)" />
-      <text x="536" y="198" fontSize="10" fontWeight="800" fill="white" letterSpacing="1">ACTION · EMAIL</text>
-      <text x="536" y="230" fontSize="12" fontWeight="800" fill="#0f172a">Send PDF report</text>
-      <text x="536" y="248" fontSize="10" fill="#64748b">to ops@brand.com</text>
-      <circle cx="520" cy="223" r="6" fill="white" stroke="#94a3b8" strokeWidth="2" />
+      <rect x="655" y="200" width="260" height="170" rx="18" fill="#f6e7d2" stroke="#fb923c" strokeWidth="2" />
+      <text x="684" y="240" fontSize="14" fontWeight="800" fill="#f56905">
+        ACTION · EMAIL
+      </text>
+
+      {/* Inner box */}
+      <rect
+        x="680"
+        y="260"
+        width="200"
+        height="30"
+        rx="12"
+        fill="#fff7ed"
+        stroke="#fb923c"
+        strokeWidth="2"
+      />
+
+      <text x="780" y="280" textAnchor="middle" fontSize="16" fontWeight="800" fill="#111827">
+        Send PDF report
+      </text>
+      <text x="685" y="320" fontSize="14" fontWeight="800" fill="#2b3442">
+        to ops@brand.com
+      </text>
+    </g>
+    {/* Zapier */}
+    <g>
+      <rect
+        x="670"
+        y="415"
+        width="200"
+        height="100"
+        rx="12"
+        fill="#fff7ed"
+        stroke="#fb923c"
+        strokeWidth="2"
+      />
+
+      <text x="765" y="460" textAnchor="middle" fontSize="22" fontWeight="800" fill="#f56905">
+        Zapier
+      </text>
+      <text x="725" y="490" fontSize="14" fontWeight="800" fill="#2b3442">5,000+ apps
+      </text>
+    </g>
+    {/* n8n */}
+    <g>
+      <rect
+        x="120"
+        y="220"
+        width="200"
+        height="100"
+        rx="12"
+        fill="#fff7ed"
+        stroke="#fb923c"
+        strokeWidth="2"
+      />
+
+      <text x="215" y="260" textAnchor="middle" fontSize="22" fontWeight="800" fill="#f56905">
+        n8n
+      </text>
+      <text x="145" y="290" fontSize="14" fontWeight="800" fill="#2b3442">self-hosted workflows
+      </text>
     </g>
 
-    {/* 4. Webhook to Zapier/n8n */}
-    <g>
-      <rect x="280" y="290" width="180" height="86" rx="14" fill="white" stroke="#e2e8f0" />
-      <rect x="280" y="290" width="180" height="26" rx="14" fill="url(#ab-cond)" />
-      <text x="296" y="308" fontSize="10" fontWeight="800" fill="white" letterSpacing="1">FAN OUT · WEBHOOK</text>
-      <text x="296" y="340" fontSize="12" fontWeight="800" fill="#0f172a">Push to Zapier / n8n</text>
-      <text x="296" y="358" fontSize="10" fill="#64748b">JSON · signed · retried</text>
-      <circle cx="280" cy="333" r="6" fill="white" stroke="#94a3b8" strokeWidth="2" />
-      <circle cx="460" cy="333" r="6" fill="white" stroke="#94a3b8" strokeWidth="2" />
-    </g>
+    {/* Middle top condition */}
+    {/* <g>
+      <rect x="420" y="145" width="190" height="64" rx="12" fill="white" stroke="#e2e8f0" />
+      <text x="515" y="183" textAnchor="middle" fontSize="15" fontWeight="700" fill="#111827">
+        No sales in X hours
+      </text>
+    </g> */}
 
-    {/* 5a. Zapier */}
-    <g>
-      <rect x="520" y="290" width="130" height="60" rx="12" fill="#fff7ed" stroke="hsl(14 88% 60%)" />
-      <text x="585" y="316" textAnchor="middle" fontSize="12" fontWeight="800" fill="hsl(14 88% 45%)">Zapier</text>
-      <text x="585" y="334" textAnchor="middle" fontSize="9" fill="#64748b">5,000+ apps</text>
-    </g>
-    {/* 5b. n8n */}
-    <g>
-      <rect x="520" y="358" width="130" height="60" rx="12" fill="#fdf4ff" stroke="hsl(265 60% 60%)" />
-      <text x="585" y="384" textAnchor="middle" fontSize="12" fontWeight="800" fill="hsl(265 60% 45%)">n8n</text>
-      <text x="585" y="402" textAnchor="middle" fontSize="9" fill="#64748b">self-hosted workflows</text>
-    </g>
+    {/* Lines */}
+    {/* TRIGGER-IF / FILTER */}
+    <path
+      d="M260 80  C320 80 320 120 350 120"
+      stroke="#fb923c"
+      strokeWidth="3"
+      fill="none"
+      markerEnd="url(#ab-arrow)"
+    />
 
-    {/* 6. Schedule loop */}
-    <g>
-      <rect x="40" y="290" width="180" height="86" rx="14" fill="white" stroke="#e2e8f0" />
-      <rect x="40" y="290" width="180" height="26" rx="14" fill="url(#ab-trig)" />
-      <text x="56" y="308" fontSize="10" fontWeight="800" fill="white" letterSpacing="1">SCHEDULE · DAILY 09:00</text>
-      <text x="56" y="340" fontSize="12" fontWeight="800" fill="#0f172a">Daily digest report</text>
-      <text x="56" y="358" fontSize="10" fill="#64748b">profit · BB · stockouts</text>
-      <circle cx="220" cy="333" r="6" fill="white" stroke="#94a3b8" strokeWidth="2" />
-    </g>
+    <circle r="5" fill="#fb923c">
+      <animateMotion dur="2.5s" repeatCount="indefinite" path="M260 80  C320 80 320 120 350 120" />
+    </circle>
 
-    {/* edges */}
-    <path d="M226 163 C 252 163, 254 163, 280 163" stroke="#64748b" strokeWidth="1.8" fill="none" markerEnd="url(#ab-arrow)" />
-    <path d="M466 163 C 492 130, 494 103, 520 103" stroke="#64748b" strokeWidth="1.8" fill="none" markerEnd="url(#ab-arrow)" />
-    <path d="M466 163 C 492 200, 494 223, 520 223" stroke="#64748b" strokeWidth="1.8" fill="none" markerEnd="url(#ab-arrow)" />
-    <path d="M370 206 C 370 248, 370 248, 370 290" stroke="#64748b" strokeWidth="1.8" fill="none" markerEnd="url(#ab-arrow)" strokeDasharray="4 4" />
-    <path d="M226 333 C 252 333, 254 333, 280 333" stroke="#64748b" strokeWidth="1.8" fill="none" markerEnd="url(#ab-arrow)" />
-    <path d="M466 333 C 490 320, 494 320, 520 320" stroke="#64748b" strokeWidth="1.8" fill="none" markerEnd="url(#ab-arrow)" />
-    <path d="M466 333 C 490 388, 494 388, 520 388" stroke="#64748b" strokeWidth="1.8" fill="none" markerEnd="url(#ab-arrow)" />
+    {/* SCHEDULE · DAILY 09:00-FAN OUT · WEBHOOK */}
+    <path
+      d="M264 430 C300 430 300 420 350 420" stroke="#fb923c"
+      strokeWidth="3"
+      fill="none"
+      markerEnd="url(#ab-arrow)"
+    />
+    <circle r="5" fill="#fb923c">
+      <animateMotion dur="2.5s" repeatCount="indefinite" path="M264 430 C300 430 300 420 350 420" />
+    </circle>
 
-    {/* footer */}
-    <text x="430" y="466" textAnchor="middle" fontSize="11" fill="#475569">Drag, drop, ship. Every notification &amp; report path is a node — versioned, replayable, observable.</text>
+
+
+
+    {/* IF / FILTER -FAN OUT · WEBHOOK */}
+    <path
+      // d="M460 210 C490 210 490 340 465 340"
+      d="M460 210 L460 340"
+
+      stroke="#fb923c"
+      strokeWidth="3"
+      fill="none"
+      markerEnd="url(#ab-arrow)"
+    />
+    <circle r="5" fill="#fb923c">
+      <animateMotion dur="2.5s" repeatCount="indefinite" path="M460 210 L460 340" />
+    </circle>
+
+    {/* IF / FILTER -ACTION · SLACK*/}
+    <path
+      // d="M610 120  C485 120 485 85 660 85"
+      d="M610 120 C630 120 630 85 655 85"
+      stroke="#fb923c"
+      strokeWidth="3"
+      fill="none"
+      markerEnd="url(#ab-arrow)"
+    />
+    <circle r="5" fill="#fb923c">
+      <animateMotion dur="2.5s" repeatCount="indefinite" path="M610 120 C630 120 630 85 655 85" />
+    </circle>
+
+    {/* IF / FILTER -ACTION · EMAIL */}
+
+    <path
+      // d="M610 120  C485 120 485 85 660 85"
+      d="M610 120 C630 120 630 280 655 280"
+      stroke="#fb923c"
+      strokeWidth="3"
+      fill="none"
+      markerEnd="url(#ab-arrow)"
+    />
+    <circle r="5" fill="#fb923c">
+      <animateMotion dur="2.5s" repeatCount="indefinite" path="M610 120 C630 120 630 280 655 280" />
+    </circle>
+    {/* FAN OUT · WEBHOOK -Zapier */}
+
+    <path
+      d="M610 420 C630 420 630 460 670 460"
+      stroke="#fb923c"
+      strokeWidth="3"
+      fill="none"
+      markerEnd="url(#ab-arrow)"
+    />
+    <circle r="5" fill="#fb923c">
+      <animateMotion dur="2.5s" repeatCount="indefinite" path="M610 420 C630 420 630 460 670 460" />
+    </circle>
+    {/* FAN OUT · WEBHOOK -n8n */}
+    <path
+      d="M460 340 C400 340 400 270 320 270"
+      stroke="#fb923c"
+      strokeWidth="3"
+      fill="none"
+      markerEnd="url(#ab-arrow)"
+    />
+    <circle r="5" fill="#fb923c">
+      <animateMotion dur="2.5s" repeatCount="indefinite" path="M460 340 C400 340 400 270 320 270" />
+    </circle>
+
   </svg>
 );
-
 /* ------------------------------------------------------------------ */
 /* ReportingConsoleMockup — scheduled reports + delivery channels      */
 /* Used on Infrastructure (notifications & reports section)            */
 /* ------------------------------------------------------------------ */
-export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 760 500" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <defs>
-      <linearGradient id="rc-bg" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stopColor="#fffaf2" /><stop offset="100%" stopColor="#f5f7ff" />
-      </linearGradient>
-      <linearGradient id="rc-line" x1="0" x2="1" y1="0" y2="0">
-        <stop offset="0%" stopColor="hsl(226 71% 50%)" /><stop offset="100%" stopColor="hsl(14 88% 55%)" />
-      </linearGradient>
-    </defs>
-    <rect x="10" y="10" width="740" height="480" rx="20" fill="url(#rc-bg)" stroke="#e2e8f0" />
+export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
+  const REPORTS = [
+    { t: "Daily profit digest", c: "Slack · #sales", time: "09:00", col: "#10b981", live: true },
+    { t: "Weekly Buy Box recap", c: "Email · ops team", time: "Mon 08:00", col: "#2563eb", live: false },
+    { t: "Stockout alert", c: "SMS · on-call", time: "real-time", col: "#ef4444", live: true },
+    { t: "Returns spike (>5%)", c: "Slack + Webhook", time: "real-time", col: "#7c3aed", live: true },
+    { t: "Monthly P&L PDF", c: "Email · finance@", time: "1st 07:00", col: "#0ea5e9", live: false },
+    { t: "Competitor moved", c: "n8n webhook", time: "real-time", col: "#ea580c", live: true },
+  ];
 
-    {/* Header */}
-    <text x="36" y="46" fontSize="13" fontWeight="800" fill="#0f172a">Reports &amp; Notifications</text>
-    <rect x="36" y="58" width="160" height="22" rx="11" fill="hsl(226 71% 94%)" />
-    <text x="116" y="73" textAnchor="middle" fontSize="10" fontWeight="800" fill="hsl(226 71% 40%)">12 schedules · 4 channels</text>
+  const KPIS = [
+    { l: "Revenue", v: "$48.2k", d: "+12%", col: "#7c3aed" },
+    { l: "Margin", v: "31.4%", d: "+1.6%", col: "#2563eb" },
+    { l: "Buy Box", v: "92%", d: "+4%", col: "#10b981" },
+  ];
 
-    {/* Left: schedule list */}
-    <g>
-      <rect x="36" y="100" width="320" height="370" rx="14" fill="white" stroke="#e2e8f0" />
-      <text x="52" y="124" fontSize="11" fontWeight="800" fill="#0f172a">Scheduled reports</text>
-      <text x="340" y="124" textAnchor="end" fontSize="10" fill="#64748b">+ New</text>
-      {[
-        { t: "Daily profit digest", c: "Slack · #sales", time: "09:00", color: "hsl(150 70% 40%)" },
-        { t: "Weekly Buy Box recap", c: "Email · ops team", time: "Mon 08:00", color: "hsl(226 71% 50%)" },
-        { t: "Stockout alert", c: "SMS · on-call", time: "real-time", color: "hsl(14 88% 55%)" },
-        { t: "Returns spike (>5%)", c: "Slack + Webhook", time: "real-time", color: "hsl(265 60% 55%)" },
-        { t: "Monthly P&L PDF", c: "Email · finance@", time: "1st 07:00", color: "hsl(200 80% 45%)" },
-        { t: "Competitor moved", c: "n8n webhook", time: "real-time", color: "hsl(14 88% 55%)" },
-      ].map((r, i) => (
-        <g key={i}>
-          <rect x="52" y={144 + i * 50} width="288" height="40" rx="10" fill={i === 1 ? "#f8fafc" : "white"} stroke="#e2e8f0" />
-          <circle cx="68" cy={164 + i * 50} r="5" fill={r.color} />
-          <text x="82" y={161 + i * 50} fontSize="11" fontWeight="800" fill="#0f172a">{r.t}</text>
-          <text x="82" y={176 + i * 50} fontSize="9" fill="#64748b">{r.c}</text>
-          <text x="328" y={170 + i * 50} textAnchor="end" fontSize="10" fontWeight="700" fill="#475569">{r.time}</text>
-        </g>
-      ))}
-    </g>
+  const CHANNELS = [
+    { l: "Slack", c: "#10b981", on: true },
+    { l: "Email", c: "#2563eb", on: true },
+    { l: "SMS", c: "#ef4444", on: true },
+    { l: "Webhook", c: "#7c3aed", on: true },
+    { l: "Zapier", c: "#ea580c", on: true },
+    { l: "n8n", c: "#7c3aed", on: true },
+    { l: "Teams", c: "#2563eb", on: false },
+    { l: "PagerDuty", c: "#ef4444", on: false },
+  ];
 
-    {/* Right: report preview */}
-    <g>
-      <rect x="376" y="100" width="348" height="200" rx="14" fill="white" stroke="#e2e8f0" />
-      <text x="392" y="124" fontSize="11" fontWeight="800" fill="#0f172a">Daily profit digest · preview</text>
-      <text x="708" y="124" textAnchor="end" fontSize="10" fill="hsl(226 71% 50%)" fontWeight="700">PDF · 2pp</text>
-      {/* mini chart */}
-      <path d="M392 250 L 420 230 L 450 245 L 480 210 L 510 220 L 540 195 L 570 200 L 600 175 L 630 185 L 660 160 L 690 170 L 708 150"
-        stroke="url(#rc-line)" strokeWidth="2.6" fill="none" strokeLinecap="round" />
-      {/* baseline */}
-      <line x1="392" y1="270" x2="708" y2="270" stroke="#e2e8f0" />
-      {/* KPIs */}
-      <text x="392" y="290" fontSize="9" fontWeight="700" fill="#64748b">REVENUE</text>
-      <text x="392" y="282" fontSize="0" fill="transparent">.</text>
-      {[
-        { x: 392, l: "Revenue", v: "$48.2k", d: "+12%" },
-        { x: 502, l: "Margin", v: "31.4%", d: "+1.6%" },
-        { x: 612, l: "Buy Box", v: "92%",   d: "+4%" },
-      ].map((k, i) => (
-        <g key={i}>
-          <text x={k.x} y={290} fontSize="9" fontWeight="700" fill="#94a3b8" letterSpacing="0.6">{k.l.toUpperCase()}</text>
-        </g>
-      ))}
-    </g>
+  // Sparkline path points (D-values for the profit line)
+  const SPARK_PTS = [
+    [392, 252], [418, 236], [444, 248], [470, 218],
+    [496, 226], [522, 205], [548, 210], [574, 188],
+    [600, 196], [626, 172], [652, 180], [672, 162],
+  ];
 
-    {/* Channels row */}
-    <g>
-      <rect x="376" y="316" width="348" height="154" rx="14" fill="white" stroke="#e2e8f0" />
-      <text x="392" y="340" fontSize="11" fontWeight="800" fill="#0f172a">Delivery channels</text>
-      {[
-        { x: 392, l: "Slack",    c: "hsl(150 70% 40%)", on: true },
-        { x: 470, l: "Email",    c: "hsl(226 71% 50%)", on: true },
-        { x: 548, l: "SMS",      c: "hsl(14 88% 55%)",  on: true },
-        { x: 626, l: "Webhook",  c: "hsl(265 60% 55%)", on: true },
-        { x: 392, l: "Zapier",   c: "hsl(14 88% 55%)",  on: true, y: 412 },
-        { x: 470, l: "n8n",      c: "hsl(265 60% 55%)", on: true, y: 412 },
-        { x: 548, l: "Teams",    c: "hsl(226 71% 50%)", on: false, y: 412 },
-        { x: 626, l: "PagerDuty",c: "hsl(0 80% 55%)",   on: false, y: 412 },
-      ].map((ch, i) => (
-        <g key={i}>
-          <rect x={ch.x} y={(ch.y ?? 354) - 0} width="68" height="48" rx="10" fill={ch.on ? "white" : "#f8fafc"} stroke={ch.on ? ch.c : "#e2e8f0"} strokeWidth={ch.on ? 1.6 : 1} />
-          <circle cx={ch.x + 14} cy={(ch.y ?? 354) + 24} r="5" fill={ch.c} opacity={ch.on ? 1 : 0.35} />
-          <text x={ch.x + 26} y={(ch.y ?? 354) + 28} fontSize="10" fontWeight="700" fill={ch.on ? "#0f172a" : "#94a3b8"}>{ch.l}</text>
-        </g>
-      ))}
-      <text x="392" y={464} fontSize="10" fill="#64748b">Toggle a channel — Ctasis re-routes notifications instantly. No code, no redeploy.</text>
-    </g>
-  </svg>
-);
+  function sparkPath(pts: number[][]): string {
+    return pts.map((p, i) => `${i === 0 ? "M" : "L"} ${p[0]} ${p[1]}`).join(" ");
+  }
+
+  return (
+    <svg
+      viewBox="0 0 820 560"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <defs>
+        {/* Background */}
+        <radialGradient id="rc-bg" cx="45%" cy="40%" r="65%">
+          <stop offset="0%" stopColor="#f6f2ff" />
+          <stop offset="55%" stopColor="#fff8f2" />
+          <stop offset="100%" stopColor="#eff6ff" />
+        </radialGradient>
+
+        {/* Profit line gradient */}
+        <linearGradient id="rc-line" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="#4338ca" />
+          <stop offset="100%" stopColor="#dc2626" />
+        </linearGradient>
+
+        {/* Chart area fill */}
+        <linearGradient id="rc-fill" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#7c3aed" stopOpacity="0.18" />
+          <stop offset="100%" stopColor="#7c3aed" stopOpacity="0" />
+        </linearGradient>
+
+        {/* Card shadow filter */}
+        <filter id="rc-shadow" x="-5%" y="-5%" width="110%" height="115%">
+          <feDropShadow dx="0" dy="2" stdDeviation="5" floodColor="#c4b5fd" floodOpacity="0.15" />
+        </filter>
+      </defs>
+
+      {/* ── Outer card ── */}
+      <rect
+        x="10" y="10" width="800" height="540" rx="22"
+        fill="url(#rc-bg)"
+        stroke="#ede9fe" strokeWidth="1.2"
+        filter="url(#rc-shadow)"
+      />
+
+      {/* ── Header ── */}
+      <text
+        x="36" y="52"
+        fontFamily="'Space Grotesk','DM Sans',sans-serif"
+        fontSize="16" fontWeight="700" fill="#1a1340" letterSpacing="-0.3"
+      >
+        Reports &amp; Notifications
+      </text>
+      {/* Badge */}
+      <rect x="36" y="62" width="182" height="22" rx="11" fill="#ede9fe" />
+      <circle cx="50" cy="73" r="4" fill="#7c3aed" className="rc-glow" />
+      <text
+        x="60" y="77"
+        fontFamily="'DM Sans',sans-serif"
+        fontSize="10" fontWeight="700" fill="#5b21b6"
+      >
+        12 schedules · 4 channels active
+      </text>
+
+      {/* ══════════════════ LEFT PANEL ══════════════════ */}
+      <g>
+        {/* Panel bg */}
+        <rect
+          x="30" y="98" width="332" height="440" rx="16"
+          fill="white" stroke="#ede9fe" strokeWidth="1"
+          filter="url(#rc-shadow)"
+        />
+        {/* Panel header */}
+        <text
+          x="48" y="123"
+          fontFamily="'DM Sans',sans-serif"
+          fontSize="12" fontWeight="700" fill="#1e1b4b"
+        >
+          Scheduled reports
+        </text>
+        <text
+          x="348" y="123"
+          textAnchor="end"
+          fontFamily="'DM Sans',sans-serif"
+          fontSize="11" fontWeight="700" fill="#7c3aed"
+        >
+          + New
+        </text>
+        <line x1="30" y1="132" x2="362" y2="132" stroke="#f3f0ff" strokeWidth="1" />
+
+        {/* Report rows */}
+        {REPORTS.map((r, i) => {
+          const ry = 144 + i * 65;
+          const isActive = i === 0;
+          return (
+            <g
+              key={i}
+              className="rc-row-anim"
+              style={{ animationDelay: `${i * 0.07}s` }}
+            >
+              {/* Row bg */}
+              <rect
+                x="36" y={ry} width="320" height="54" rx="10"
+                fill={isActive ? "#f5f2ff" : "white"}
+                stroke={isActive ? "#c4b5fd" : "#f3f0ff"}
+                strokeWidth={isActive ? 1.2 : 1}
+              />
+              {/* Left accent */}
+              {isActive && (
+                <rect x="36" y={ry} width="4" height="54" rx="2" fill={r.col} opacity="0.75" />
+              )}
+
+              {/* Live pulse dot or static dot */}
+              {r.live ? (
+                <>
+                  <circle cx="58" cy={ry + 27} r="5" fill={r.col} opacity="0" className="rc-pulse-a" />
+                  <circle cx="58" cy={ry + 27} r="5" fill={r.col} opacity="0" className="rc-pulse-b" />
+                  <circle cx="58" cy={ry + 27} r="5" fill={r.col} />
+                </>
+              ) : (
+                <circle cx="58" cy={ry + 27} r="5" fill={r.col} opacity="0.75" />
+              )}
+
+              {/* Title */}
+              <text
+                x="72" y={ry + 23}
+                fontFamily="'DM Sans',sans-serif"
+                fontSize="12" fontWeight="700" fill="#1e1b4b"
+              >
+                {r.t}
+              </text>
+              {/* Subtitle */}
+              <text
+                x="72" y={ry + 38}
+                fontFamily="'DM Sans',sans-serif"
+                fontSize="10" fill="#94a3b8"
+              >
+                {r.c}
+              </text>
+              {/* Time */}
+              <text
+                x="342" y={ry + 30}
+                textAnchor="end"
+                fontFamily="'DM Sans',sans-serif"
+                fontSize="11" fontWeight="700" fill="#64748b"
+              >
+                {r.time}
+              </text>
+            </g>
+          );
+        })}
+      </g>
+
+      {/* ══════════════════ RIGHT TOP: Chart preview ══════════════════ */}
+      <g className="rc-right-anim" style={{ animationDelay: "0.1s" }}>
+        <rect
+          x="378" y="98" width="402" height="230" rx="16"
+          fill="white" stroke="#ede9fe" strokeWidth="1"
+          filter="url(#rc-shadow)"
+        />
+        <text
+          x="394" y="123"
+          fontFamily="'DM Sans',sans-serif"
+          fontSize="12" fontWeight="700" fill="#1a1340"
+        >
+          Daily profit digest · preview
+        </text>
+        <rect x="722" y="110" width="48" height="18" rx="6" fill="#eff6ff" />
+        <text
+          x="746" y="122"
+          textAnchor="middle"
+          fontFamily="'DM Sans',sans-serif"
+          fontSize="9.5" fontWeight="700" fill="#2563eb"
+        >
+          PDF · 2pp
+        </text>
+
+        {/* Y-axis baseline */}
+        <line x1="392" y1="268" x2="768" y2="268" stroke="#f0eeff" strokeWidth="1" />
+        <line x1="392" y1="245" x2="768" y2="245" stroke="#f0eeff" strokeWidth="1" strokeDasharray="2 3" />
+        <line x1="392" y1="222" x2="768" y2="222" stroke="#f0eeff" strokeWidth="1" strokeDasharray="2 3" />
+
+        {/* Y labels */}
+        {[["$52k", 168], ["$45k", 191], ["$38k", 214]].map(([l, y], i) => (
+          <text key={i} x="388" y={Number(y)} textAnchor="end" fontFamily="'DM Sans',sans-serif" fontSize="9" fill="#cbd5e1">{l}</text>
+        ))}
+
+        {/* Area fill under sparkline */}
+        <path
+          d={`${sparkPath(SPARK_PTS)} L ${SPARK_PTS[SPARK_PTS.length - 1][0]} 268 L ${SPARK_PTS[0][0]} 268 Z`}
+          fill="url(#rc-fill)"
+        />
+
+        {/* Sparkline */}
+        <path
+          d={sparkPath(SPARK_PTS)}
+          stroke="url(#rc-line)"
+          strokeWidth="2.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+          className="rc-line-draw"
+        />
+
+        {/* Endpoint glow dot */}
+        <circle cx="672" cy="180" r="4" fill="#dc2626" opacity="0.6" className="rc-pulse-a" />
+        <circle cx="672" cy="180" r="4" fill="#dc2626" />
+
+        {/* KPI chips */}
+        {KPIS.map((k, i) => {
+          const kx = 394 + i * 126;
+          return (
+            <g
+              key={i}
+              className="rc-kpi-anim"
+              style={{ animationDelay: `${0.4 + i * 0.1}s` }}
+            >
+              <rect x={kx} y="278" width="118" height="42" rx="9" fill="#faf8ff" stroke={k.col} strokeWidth="0" />
+              <rect x={kx} y="278" width="4" height="42" rx="2" fill={k.col} opacity="0.65" />
+              <text
+                x={kx + 12} y="292"
+                fontFamily="'DM Sans',sans-serif"
+                fontSize="9" fontWeight="700" fill="#94a3b8"
+                letterSpacing="0.5"
+              >
+                {k.l.toUpperCase()}
+              </text>
+              <text
+                x={kx + 12} y="307"
+                fontFamily="'DM Sans',sans-serif"
+                fontSize="13" fontWeight="700" fill={k.col}
+              >
+                {k.v}
+              </text>
+              <text
+                x={kx + 12} y="316"
+                fontFamily="'DM Sans',sans-serif"
+                fontSize="0" fill="transparent"
+              >
+                {k.d}
+              </text>
+              <text
+                x={kx + 70} y="307"
+                fontFamily="'DM Sans',sans-serif"
+                fontSize="10" fontWeight="700" fill={k.col}
+              >
+                {k.d} ↑
+              </text>
+            </g>
+          );
+        })}
+      </g>
+
+      {/* ══════════════════ RIGHT BOTTOM: Channels ══════════════════ */}
+      <g className="rc-right-anim" style={{ animationDelay: "0.2s" }}>
+        <rect
+          x="378" y="340" width="402" height="198" rx="16"
+          fill="white" stroke="#ede9fe" strokeWidth="1"
+          filter="url(#rc-shadow)"
+        />
+        <text
+          x="394" y="363"
+          fontFamily="'DM Sans',sans-serif"
+          fontSize="12" fontWeight="700" fill="#1a1340"
+        >
+          Delivery channels
+        </text>
+
+        {/* Channel chips — 4 per row */}
+        {CHANNELS.map((ch, i) => {
+          const col = i % 4;
+          const row = Math.floor(i / 4);
+          const cx2 = 390 + col * 98;
+          const cy2 = 375 + row * 60;
+          const opacity = ch.on ? 1 : 0.38;
+
+          return (
+            <g
+              key={i}
+              className="rc-chip-anim"
+              style={{ animationDelay: `${0.25 + i * 0.06}s`, opacity }}
+            >
+              <rect
+                x={cx2} y={cy2} width="90" height="44" rx="10"
+                fill={ch.on ? "white" : "#f8f7ff"}
+                stroke={ch.c}
+                strokeWidth={ch.on ? 1.6 : 0.8}
+              />
+              <circle cx={cx2 + 14} cy={cy2 + 22} r="5" fill={ch.c} />
+              <text
+                x={cx2 + 25} y={cy2 + 26}
+                fontFamily="'DM Sans',sans-serif"
+                fontSize="11" fontWeight="700"
+                fill={ch.on ? "#1e1b4b" : "#94a3b8"}
+              >
+                {ch.l}
+              </text>
+            </g>
+          );
+        })}
+
+        {/* Footer */}
+        <text
+          x="394" y="508"
+          fontFamily="'DM Sans',sans-serif"
+          fontSize="10" fill="#94a3b8"
+        >
+          Toggle a channel — Ctasis re-routes instantly. No code, no redeploy.
+        </text>
+      </g>
+
+      {/* ── Bottom footer ── */}
+      <text
+        x="410" y="552"
+        textAnchor="middle"
+        fontFamily="'DM Sans',sans-serif"
+        fontSize="10.5" fill="#9ca3af"
+        fontStyle="italic"
+      >
+        One write here = updated everywhere. Two-way, audited, replayable.
+      </text>
+    </svg>
+  )
+};
 
 /* ------------------------------------------------------------------ */
 /* AlertTriageDiagram — incident triage visual                         */
 /* ------------------------------------------------------------------ */
-export const AlertTriageDiagram = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 720 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <defs>
-      <linearGradient id="at-bg" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stopColor="#0f172a" /><stop offset="100%" stopColor="#1e1b4b" />
-      </linearGradient>
-    </defs>
-    <rect x="10" y="10" width="700" height="340" rx="20" fill="url(#at-bg)" />
-    <text x="36" y="44" fontSize="12" fontWeight="800" fill="#e0e7ff" letterSpacing="1">ALERT TRIAGE · LIVE</text>
-    {/* lanes */}
-    {["INFO", "WARNING", "CRITICAL"].map((lane, li) => (
-      <g key={li}>
-        <text x={48 + li * 220} y={78} fontSize="10" fontWeight="800" fill="#94a3b8" letterSpacing="1.5">{lane}</text>
-        <rect x={36 + li * 220} y={86} width="200" height="240" rx="14" fill="#1e293b" stroke="#334155" />
+export const AlertTriageDiagram = (props: SVGProps<SVGSVGElement>) => {
+  interface AlertCard {
+    t: string;
+    s: string;
+    lane: 0 | 1 | 2;
+    cardIdx: number;
+  }
+
+  const CARDS: AlertCard[] = [
+    { t: "Inventory restocked", s: "Amazon · SKU 8632", lane: 0, cardIdx: 0 },
+    { t: "Listing approved", s: "eBay · auto-publish", lane: 0, cardIdx: 1 },
+    { t: "Buy Box dropped", s: "Walmart · 4 SKUs", lane: 1, cardIdx: 2 },
+    { t: "Margin near floor", s: "SKU 4421 · 12.4%", lane: 1, cardIdx: 3 },
+    { t: "Stockout in 4h", s: "Hero SKU · FBA", lane: 2, cardIdx: 4 },
+    { t: "Returns spike +18%", s: "Shopify · last 1h", lane: 2, cardIdx: 5 },
+  ];
+
+  const LANE_META = [
+    { label: "INFO", dotColor: "#3b82f6", laneBg: "#eff6ff", laneBorder: "#bfdbfe", cardBg: "#ffffff", cardBorder: "#dbeafe", labelColor: "#1d4ed8" },
+    { label: "WARNING", dotColor: "#f59e0b", laneBg: "#fffbeb", laneBorder: "#fde68a", cardBg: "#ffffff", cardBorder: "#fef3c7", labelColor: "#b45309" },
+    { label: "CRITICAL", dotColor: "#f43f5e", laneBg: "#fff1f2", laneBorder: "#fecdd3", cardBg: "#ffffff", cardBorder: "#fce7f3", labelColor: "#be123c" },
+  ];
+
+  const LANE_X = [36, 264, 492];
+  const LANE_W = 210;
+  const LANE_H = 220;
+  const LANE_Y = 92;
+  const CARD_W = 186;
+  const CARD_H = 52;
+  const CARD_X_OFF = 12;
+  const CARD_Y_START = 126;
+  const CARD_GAP = 62;
+
+  return (
+    <svg
+      viewBox="0 0 738 368"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <defs>
+        {/* Outer card gradient */}
+        <linearGradient id="at-bg" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stopColor="#f0f4ff" />
+          <stop offset="55%" stopColor="#fdf8ff" />
+          <stop offset="100%" stopColor="#fff0f5" />
+        </linearGradient>
+
+        {/* Card shadow */}
+        <filter id="at-card-shadow" x="-5%" y="-5%" width="110%" height="114%">
+          <feDropShadow dx="0" dy="2" stdDeviation="6" floodColor="#c4b5fd" floodOpacity="0.16" />
+        </filter>
+        <filter id="at-lane-shadow" x="-6%" y="-6%" width="112%" height="116%">
+          <feDropShadow dx="0" dy="1" stdDeviation="4" floodColor="#c4b5fd" floodOpacity="0.10" />
+        </filter>
+      </defs>
+
+      {/* ── Outer card ── */}
+      <rect
+        x="8" y="8" width="722" height="352" rx="20"
+        fill="url(#at-bg)"
+        stroke="#e0d9f7" strokeWidth="1.2"
+        filter="url(#at-card-shadow)"
+      />
+
+      {/* ── Header ── */}
+      <g className="at-header-anim">
+        {/* LIVE badge */}
+        <rect x="28" y="26" width="56" height="22" rx="11" fill="#fff" stroke="#e0d9f7" strokeWidth="0.8" />
+        <circle cx="42" cy="37" r="4" fill="#10b981" className="at-live-glow" />
+        <text
+          x="50" y="41"
+          fontFamily="'DM Sans',sans-serif"
+          fontSize="9.5" fontWeight="700" fill="#059669" letterSpacing="0.5"
+        >
+          LIVE
+        </text>
+
+        {/* Title */}
+        <text
+          x="92" y="43"
+          fontFamily="'Space Grotesk','DM Sans',sans-serif"
+          fontSize="16" fontWeight="700" fill="#1a1340" letterSpacing="-0.2"
+        >
+          Alert triage
+        </text>
       </g>
-    ))}
-    {/* cards */}
-    {[
-      { lane: 0, t: "Inventory restocked", s: "Amazon · SKU 8632", color: "#60a5fa" },
-      { lane: 0, t: "Listing approved", s: "eBay · auto-publish", color: "#60a5fa" },
-      { lane: 1, t: "Buy Box dropped", s: "Walmart · 4 SKUs", color: "#fbbf24" },
-      { lane: 1, t: "Margin near floor", s: "SKU 4421 · 12.4%", color: "#fbbf24" },
-      { lane: 2, t: "Stockout in 4h", s: "Hero SKU · FBA", color: "#f87171" },
-      { lane: 2, t: "Returns spike +18%", s: "Shopify · last 1h", color: "#f87171" },
-    ].map((c, i) => {
-      const inLane = i < 2 ? i : (i < 4 ? i - 2 : i - 4);
-      return (
-        <g key={i}>
-          <rect x={48 + c.lane * 220} y={102 + inLane * 64} width="176" height="52" rx="10" fill="#0f172a" stroke="#334155" />
-          <circle cx={62 + c.lane * 220} cy={128 + inLane * 64} r="4" fill={c.color} />
-          <text x={74 + c.lane * 220} y={124 + inLane * 64} fontSize="11" fontWeight="800" fill="#f1f5f9">{c.t}</text>
-          <text x={74 + c.lane * 220} y={140 + inLane * 64} fontSize="9" fill="#94a3b8">{c.s}</text>
+
+      {/* ── 3 Lane columns ── */}
+      {LANE_META.map((lane, li) => (
+        <g key={li} className={`at-lane-${li}-anim`}>
+          {/* Lane background card */}
+          <rect
+            x={LANE_X[li]} y={LANE_Y}
+            width={LANE_W} height={LANE_H}
+            rx="14"
+            fill={lane.laneBg}
+            stroke={lane.laneBorder}
+            strokeWidth="1"
+            filter="url(#at-lane-shadow)"
+          />
+          {/* Lane label */}
+          <text
+            x={LANE_X[li] + 12} y={LANE_Y + 22}
+            fontFamily="'DM Sans',sans-serif"
+            fontSize="9.5" fontWeight="700" fill={lane.labelColor}
+            letterSpacing="1.8"
+          >
+            {lane.label}
+          </text>
+          {/* Label underline */}
+          <line
+            x1={LANE_X[li] + 12} y1={LANE_Y + 30}
+            x2={LANE_X[li] + LANE_W - 12} y2={LANE_Y + 30}
+            stroke={lane.laneBorder} strokeWidth="1"
+          />
+
+          {/* Cards in this lane */}
+          {CARDS.filter(c => c.lane === li).map((card, ci) => {
+            const cx = LANE_X[li] + CARD_X_OFF;
+            const cy = CARD_Y_START + ci * CARD_GAP;
+            const isCritical = li === 2;
+
+            return (
+              <g key={ci} className={`at-card-anim-${card.cardIdx}`}>
+                {/* Card bg */}
+                <rect
+                  x={cx} y={cy}
+                  width={CARD_W} height={CARD_H}
+                  rx="10"
+                  fill={lane.cardBg}
+                  stroke={lane.cardBorder}
+                  strokeWidth="1"
+                />
+
+                {/* Pulse rings behind dot */}
+                <circle
+                  cx={cx + 16} cy={cy + 26}
+                  r="5" fill={lane.dotColor} opacity="0"
+                  className="at-pulse-a"
+                  style={{ animationDelay: `${ci * 0.4}s` }}
+                />
+                <circle
+                  cx={cx + 16} cy={cy + 26}
+                  r="5" fill={lane.dotColor} opacity="0"
+                  className="at-pulse-b"
+                  style={{ animationDelay: `${ci * 0.4 + 0.8}s` }}
+                />
+
+                {/* Status dot */}
+                <circle
+                  cx={cx + 16} cy={cy + 26}
+                  r="5" fill={lane.dotColor}
+                  className={isCritical ? "at-critical-dot" : undefined}
+                  style={isCritical ? { animationDelay: `${ci * 0.35}s` } : undefined}
+                />
+
+                {/* Card text */}
+                <text
+                  x={cx + 28} y={cy + 22}
+                  fontFamily="'DM Sans',sans-serif"
+                  fontSize="12" fontWeight="700" fill="#1e1b4b"
+                >
+                  {card.t}
+                </text>
+                <text
+                  x={cx + 28} y={cy + 38}
+                  fontFamily="'DM Sans',sans-serif"
+                  fontSize="10.5" fill="#6b7280"
+                >
+                  {card.s}
+                </text>
+              </g>
+            );
+          })}
         </g>
-      );
-    })}
-    {/* ticker */}
-    <text x="36" y="346" fontSize="10" fill="#64748b">Routed via your rules to Slack / Email / SMS / Zapier / n8n in under a second.</text>
-  </svg>
-);
+      ))}
+
+      {/* ── Footer ticker ── */}
+      <text
+        x="369" y="340"
+        textAnchor="middle"
+        fontFamily="'DM Sans',sans-serif"
+        fontSize="10.5" fill="#9ca3af"
+        fontStyle="italic"
+      >
+        Routed via your rules to Slack / Email / SMS / Zapier / n8n in under a second.
+      </text>
+    </svg>
+  )
+};
 
 /* ------------------------------------------------------------------ */
 /* ArticleHeroMockup — visual for blog detail pages                    */
 /* ------------------------------------------------------------------ */
 export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 720 420" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+  <svg
+    viewBox="0 0 720 420"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    {...props}
+  >
     <defs>
+      {/* Light background gradient — soft sky-to-lavender */}
       <linearGradient id="ah-bg" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stopColor="hsl(226 71% 50%)" /><stop offset="100%" stopColor="hsl(14 88% 55%)" />
+        <stop offset="0%" stopColor="#e0f2fe" />
+        <stop offset="45%" stopColor="#ede9fe" />
+        <stop offset="75%" stopColor="#fce7f3" />
+        <stop offset="100%" stopColor="#fff7ed" />
       </linearGradient>
-    </defs>
-    <rect x="10" y="10" width="700" height="400" rx="22" fill="url(#ah-bg)" />
-    {/* abstract paper */}
-    <g opacity="0.95">
-      <rect x="60" y="60" width="380" height="300" rx="14" fill="white" />
-      <rect x="80" y="84" width="80" height="14" rx="7" fill="hsl(226 71% 92%)" />
-      <rect x="80" y="112" width="320" height="14" rx="4" fill="#0f172a" />
-      <rect x="80" y="134" width="260" height="14" rx="4" fill="#0f172a" />
-      {[160,180,200,220,240,260,280,300,320].map((y,i) => (
-        <rect key={i} x="80" y={y} width={i%3===0?280: i%3===1?260:200} height="6" rx="3" fill="#e2e8f0" />
-      ))}
+
+      {/* Ambient glow blobs */}
+      <linearGradient id="glow1" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="#a5b4fc" stopOpacity="0.35" />
+        <stop offset="100%" stopColor="#a5b4fc" stopOpacity="0" />
+      </linearGradient>
+      <linearGradient id="glow2" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="#fb923c" stopOpacity="0.22" />
+        <stop offset="100%" stopColor="#fb923c" stopOpacity="0" />
+      </linearGradient>
+
+      {/* Chart fill under the algo line */}
+      <linearGradient id="chart-fill" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="#6366f1" stopOpacity="0.15" />
+        <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
+      </linearGradient>
+
+      {/* Card drop shadow */}
+      <filter id="card-shadow" x="-8%" y="-8%" width="116%" height="120%">
+        <feDropShadow
+          dx="0"
+          dy="6"
+          stdDeviation="12"
+          floodColor="#94a3b8"
+          floodOpacity="0.25"
+        />
+      </filter>
+
+      {/* Paper card shadow */}
+      <filter id="paper-shadow" x="-5%" y="-5%" width="110%" height="115%">
+        <feDropShadow
+          dx="0"
+          dy="4"
+          stdDeviation="8"
+          floodColor="#94a3b8"
+          floodOpacity="0.18"
+        />
+      </filter>
+
+      {/* Chart card shadow */}
+      <filter id="chart-shadow" x="-5%" y="-5%" width="110%" height="115%">
+        <feDropShadow
+          dx="0"
+          dy="3"
+          stdDeviation="6"
+          floodColor="#94a3b8"
+          floodOpacity="0.15"
+        />
+      </filter>
+    </defs> 
+
+    {/* ── BACKGROUND ── */}
+    <rect
+      x="10"
+      y="10"
+      width="700"
+      height="400"
+      rx="22"
+      fill="url(#ah-bg)"
+      filter="url(#card-shadow)"
+    />
+
+    {/* Subtle border */}
+    <rect
+      x="10"
+      y="10"
+      width="700"
+      height="400"
+      rx="22"
+      fill="none"
+      stroke="#c7d2fe"
+      strokeWidth="1"
+    />
+
+    {/* Ambient glow blobs */}
+    <ellipse cx="160" cy="120" rx="140" ry="100" fill="url(#glow1)" />
+    <ellipse cx="580" cy="320" rx="160" ry="110" fill="url(#glow2)" />
+
+    {/* Subtle grid dots */}
+    <g opacity="0.12">
+      {[60, 100, 140, 180, 220, 260, 300, 340, 380, 420].map((cx) =>
+        [60, 100, 140, 180, 220, 260, 300, 340, 380].map((cy) => (
+          <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="1.2" fill="#6366f1" />
+        ))
+      )}
     </g>
-    {/* floating chart */}
-    <g>
-      <rect x="430" y="120" width="240" height="180" rx="14" fill="white" />
-      <text x="448" y="142" fontSize="10" fontWeight="800" fill="#64748b">BUY BOX % vs price</text>
-      <path d="M448 270 L 478 250 L 508 258 L 538 230 L 568 220 L 598 200 L 628 210 L 658 180"
-        stroke="hsl(226 71% 50%)" strokeWidth="2.4" fill="none" strokeLinecap="round" />
-      <path d="M448 270 L 478 264 L 508 258 L 538 252 L 568 246 L 598 240 L 628 234 L 658 228"
-        stroke="hsl(14 88% 55%)" strokeWidth="2.4" fill="none" strokeLinecap="round" strokeDasharray="4 4" />
-      <text x="448" y="290" fontSize="9" fill="#94a3b8">algo wins · floor protected</text>
-    </g>
-    {/* badges */}
-    <g>
-      <rect x="60" y="370" width="74" height="22" rx="11" fill="white" />
-      <text x="97" y="385" textAnchor="middle" fontSize="10" fontWeight="800" fill="hsl(226 71% 40%)">Repricing</text>
-      <rect x="142" y="370" width="74" height="22" rx="11" fill="white" />
-      <text x="179" y="385" textAnchor="middle" fontSize="10" fontWeight="800" fill="hsl(14 88% 50%)">8 min read</text>
-    </g>
+
+    {/* ── PAPER CARD ── */}
+    <rect
+      x="48"
+      y="52"
+      width="360"
+      height="298"
+      rx="16"
+      fill="white"
+      filter="url(#paper-shadow)"
+    />
+    {/* Paper top accent strip */}
+    <rect x="48" y="52" width="360" height="6" rx="3" fill="#6366f1" opacity="0.15" />
+
+    {/* Category pill */}
+    <rect x="68" y="72" width="68" height="16" rx="8" fill="#ede9fe" />
+    <text
+      x="102"
+      y="84"
+      textAnchor="middle"
+      fontSize="8.5"
+      fontWeight="700"
+      fill="#6d28d9"
+      fontFamily="Georgia, serif"
+    >
+      Repricing
+    </text>
+
+    {/* Article title lines */}
+    <rect x="68" y="110" width="300" height="13" rx="3" fill="url(#glow1)" />
+    <text
+      x="200"
+      y="120"
+      textAnchor="middle"
+      fontSize="8"
+      fontWeight="700"
+      fill="#64748b"
+      fontFamily="Georgia, serif"
+    >
+      Most sellers start with rules and outgrow them in a quarter.
+    </text>
+
+    <rect x="68" y="130" width="260" height="13" rx="3" fill="url(#glow1)" />
+    <text
+      x="200"
+      y="140"
+      textAnchor="middle"
+      fontSize="8"
+      fontWeight="700"
+      fill="#64748b"
+      fontFamily="Georgia, serif"
+    >
+      Here's the honest breakdown on Buy Box wins and margins.
+    </text>
+    {/* Subtitle line */}
+    <rect x="68" y="160" width="280" height="8" rx="3" fill="url(#glow2)" />
+
+    <rect x="68" y="180" width="275" height="110" rx="12" fill="url(#glow1)" />
+    <circle cx="84" cy="200" r="5" fill="#6366f1" />
+    <circle cx="84" cy="230" r="5" fill="#6366f1" />
+    <circle cx="84" cy="260" r="5" fill="#6366f1" />
+    <text
+      x="95"
+      y="203"
+      fontSize="9"
+      fontWeight="800"
+      fill="#475569"
+      fontFamily="Georgia, serif"
+      letterSpacing="0.5"
+    >
+      Per-SKU minimum margin (e.g. 18%)
+    </text>
+    <text
+      x="95"
+      y="233"
+      fontSize="9"
+      fontWeight="800"
+      fill="#475569"
+      fontFamily="Georgia, serif"
+      letterSpacing="0.5"
+    >
+      Per-brand MAP guard rails
+    </text>
+    <text
+      x="95"
+      y="263"
+      fontSize="9"
+      fontWeight="800"
+      fill="#475569"
+      fontFamily="Georgia, serif"
+      letterSpacing="0.5"
+    >
+      Inventory-velocity overrides for clearance
+    </text>
+
+    {/* Divider */}
+    <line x1="68" y1="310" x2="388" y2="310" stroke="#e2e8f0" strokeWidth="1" />
+
+    {/* Author row inside paper */}
+    <circle cx="84" cy="330" r="10" fill="#6366f1" />
+    <text
+      x="84"
+      y="334"
+      textAnchor="middle"
+      fontSize="8"
+      fontWeight="700"
+      fill="white"
+      fontFamily="Georgia, serif"
+    >
+      PM
+    </text>
+    <text
+      x="100"
+      y="326"
+      fontSize="8"
+      fontWeight="600"
+      fill="#334155"
+      fontFamily="Georgia, serif"
+    >
+      Priya Mehta
+    </text>
+    <text
+      x="100"
+      y="337"
+      fontSize="7"
+      fill="#94a3b8"
+      fontFamily="Georgia, serif"
+    >
+      Ctasis team · Apr 18, 2026
+    </text>
+
+    {/* ── CHART CARD ── */}
+    <rect
+      x="432"
+      y="52"
+      width="248"
+      height="248"
+      rx="16"
+      fill="white"
+      filter="url(#chart-shadow)"
+    />
+    <rect
+      x="432"
+      y="52"
+      width="248"
+      height="248"
+      rx="16"
+      fill="none"
+      stroke="#e2e8f0"
+      strokeWidth="0.8"
+    />
+
+    {/* Chart header */}
+    <text
+      x="452"
+      y="76"
+      fontSize="9"
+      fontWeight="800"
+      fill="#475569"
+      fontFamily="Georgia, serif"
+      letterSpacing="0.5"
+    >
+      BUY BOX % vs PRICE
+    </text>
+
+    {/* Y-axis labels */}
+    {[100, 80, 60, 40].map((val, i) => (
+      <text
+        key={val}
+        x="444"
+        y={115 + i * 32}
+        fontSize="7"
+        fill="#64748b"
+        textAnchor="end"
+        fontFamily="Georgia, serif"
+      >
+        {val}%
+      </text>
+    ))}
+
+    {/* Grid lines */}
+    {[112, 144, 176, 208].map((y) => (
+      <line
+        key={y}
+        x1="452"
+        x2="660"
+        y1={y}
+        y2={y}
+        stroke="#475569"
+        strokeWidth="1"
+      />
+    ))}
+
+    {/* Chart fill area under algo line */}
+    <path
+      d="M452 230 L482 210 L512 218 L542 192 L572 178 L602 160 L632 168 L662 140 L662 240 L452 240 Z"
+      fill="url(#chart-fill)"
+    />
+
+    {/* Algo line (solid indigo) */}
+    <path
+      d="M452 230 L482 210 L512 218 L542 192 L572 178 L602 160 L632 168 L662 140"
+      stroke="#6366f1"
+      strokeWidth="2.4"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+
+    {/* Floor protected line (dashed orange) */}
+    <path
+      d="M452 238 L482 232 L512 226 L542 220 L572 214 L602 208 L632 202 L662 196"
+      stroke="#f97316"
+      strokeWidth="2"
+      fill="none"
+      strokeLinecap="round"
+      strokeDasharray="4 3"
+    />
+
+    {/* Data point dots — algo */}
+    {[
+      [452, 230], [482, 210], [512, 218], [542, 192],
+      [572, 178], [602, 160], [632, 168], [662, 140],
+    ].map(([cx, cy], i) => (
+      <circle key={i} cx={cx} cy={cy} r="3" fill="#6366f1" />
+    ))}
+
+    {/* +7% callout badge */}
+    <rect x="622" y="126" width="32" height="15" rx="7" fill="#6366f1" />
+    <text
+      x="638"
+      y="137"
+      textAnchor="middle"
+      fontSize="7.5"
+      fontWeight="700"
+      fill="white"
+      fontFamily="Georgia, serif"
+    >
+      +7%
+    </text>
+
+    {/* Legend */}
+    <line x1="452" y1="252" x2="466" y2="252" stroke="#6366f1" strokeWidth="2.5" strokeLinecap="round" />
+    <text x="470" y="256" fontSize="8" fill="#64748b" fontFamily="Georgia, serif">
+      algo wins
+    </text>
+    <line
+      x1="514"
+      y1="252"
+      x2="528"
+      y2="252"
+      stroke="#f97316"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeDasharray="4 3"
+    />
+    <text x="532" y="256" fontSize="8" fill="#64748b" fontFamily="Georgia, serif">
+      floor protected
+    </text>
+
+    {/* Metric callout bar */}
+    <rect x="452" y="264" width="210" height="14" rx="5" fill="#f8fafc" />
+    <text
+      x="557"
+      y="274"
+      textAnchor="middle"
+      fontSize="7.5"
+      fill="#64748b"
+      fontFamily="Georgia, serif"
+    >
+      Buy Box share 88–94% · Avg sell price ↑4–7%
+    </text>
+
+    {/* ── STAT CHIPS BOTTOM RIGHT ── */}
+    {[
+      { x: 432, label: "3.2×", sub: "Buy Box wins", accent: "#6366f1" },
+      { x: 514, label: "200+", sub: "SKU threshold", accent: "#0ea5e9" },
+      { x: 596, label: "24/7", sub: "Auto repricing", accent: "#10b981" },
+    ].map(({ x, label, sub, accent }) => (
+      <g key={x}>
+        <rect
+          x={x}
+          y="315"
+          width="72"
+          height="40"
+          rx="12"
+          fill="white"
+          stroke="#e2e8f0"
+          strokeWidth="0.8"
+        />
+        <text
+          x={x + 36}
+          y="332"
+          textAnchor="middle"
+          fontSize="13"
+          fontWeight="700"
+          fill={accent}
+          fontFamily="Georgia, serif"
+        >
+          {label}
+        </text>
+        <text
+          x={x + 36}
+          y="346"
+          textAnchor="middle"
+          fontSize="7"
+          fill="#94a3b8"
+          fontFamily="Georgia, serif"
+        >
+          {sub}
+        </text>
+      </g>
+    ))}
+
+    {/* ── BADGES BOTTOM LEFT ── */}
+    {/* Strategy badge */}
+    <rect x="48" y="368" width="78" height="24" rx="12" fill="#ede9fe" />
+    <text
+      x="87"
+      y="384"
+      textAnchor="middle"
+      fontSize="9.5"
+      fontWeight="700"
+      fill="#4f46e5"
+      fontFamily="Georgia, serif"
+    >
+      Strategy
+    </text>
+
+    {/* Read time badge */}
+    <rect x="134" y="368" width="82" height="24" rx="12" fill="#fff7ed" />
+    <text
+      x="175"
+      y="384"
+      textAnchor="middle"
+      fontSize="9.5"
+      fontWeight="700"
+      fill="#c2410c"
+      fontFamily="Georgia, serif"
+    >
+      8 min read
+    </text>
+
+    {/* Date badge */}
+    <rect
+      x="224"
+      y="368"
+      width="88"
+      height="24"
+      rx="12"
+      fill="white"
+      stroke="#e2e8f0"
+      strokeWidth="0.8"
+    />
+    <text
+      x="268"
+      y="384"
+      textAnchor="middle"
+      fontSize="9.5"
+      fontWeight="600"
+      fill="#64748b"
+      fontFamily="Georgia, serif"
+    >
+      Apr 18, 2026
+    </text>
   </svg>
 );

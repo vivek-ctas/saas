@@ -370,18 +370,42 @@ const Home = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[200px]">
               {/* Big tile */}
-              <div className="reveal lg:col-span-2 lg:row-span-2 rounded-3xl p-8 bg-gradient-to-br from-primary to-secondary text-white relative overflow-hidden hover-lift">
-                <div className="relative z-10">
-                  <BarChart3 className="w-10 h-10 mb-4" />
-                  <h3 className="text-2xl font-bold mb-2">Real-time analytics</h3>
-                  <p className="text-white/85 mb-6 max-w-md">
-                    Profit margins, channel performance and AI-powered recommendations updated every second.
-                  </p>
-                </div>
-                <div className="absolute right-0 bottom-0 w-3/5 opacity-90">
-                  <AnalyticsIllustration className="w-full h-auto" />
+              <div
+                className="reveal lg:col-span-2 lg:row-span-2 rounded-3xl p-0  bg-gradient-to-br from-primary to-secondary text-white relative overflow-hidden hover-lift"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-2 items-start  h-full">
+
+                  {/* LEFT SIDE */}
+                  <div className="relative z-10 flex flex-col justify-start pt-8 pb-8 pl-8 pr-6 lg:pl-10 lg:pr-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center backdrop-blur-md">
+                        <BarChart3 className="w-6 h-6" />
+                      </div>
+                    </div>
+
+                    <h3 className="text-3xl lg:text-[34px] font-bold leading-tight tracking-tight mb-3">
+                      Real-time analytics
+                    </h3>
+
+                    <p className="text-white/85 text-[15px] leading-relaxed max-w-[280px]">
+                      Profit margins, channel performance and AI-powered recommendations
+                      updated <span className="font-medium text-white">every second</span>.
+                    </p>
+                  </div>
+                  {/* RIGHT SIDE */}
+                  <div className="relative flex items-center justify-center pr-4 lg:pr-6 h-full
+                  ">
+                    <div className="absolute inset-0 bg-white/10 rounded-[22px] blur-3xl scale-90 opacity-60" />
+
+                    {/* Main Illustration */}
+                    <div className="relative z-10 w-full max-w-[420px]  drop-shadow-2xl">
+                      <AnalyticsIllustration className="w-full h-auto block" />
+                    </div>
+                  </div>
+
                 </div>
               </div>
+
               <div className="reveal delay-100 rounded-3xl p-6 bg-slate-50 border border-slate-100 hover-lift">
                 <RefreshCw className="w-8 h-8 text-primary mb-3" />
                 <h3 className="font-bold text-slate-900 mb-1">Inventory sync</h3>
