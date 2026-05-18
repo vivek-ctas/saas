@@ -822,46 +822,224 @@ export const RepricerIllustration = (props: SVGProps<SVGSVGElement>) => (
 /* ------------------------------------------------------------------ */
 /* OrderFlowDiagram – Order → Pick → Pack → Ship → Delivered           */
 /* ------------------------------------------------------------------ */
-export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 720 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <DiagramDefs />
-    <rect x="10" y="10" width="700" height="340" rx="20" fill="white" stroke="#e2e8f0" />
-    <text x="40" y="46" fontFamily="Inter,system-ui" fontSize="14" fontWeight="800" fill="#0f172a">Order lifecycle · automated end-to-end</text>
-    <text x="40" y="66" fontFamily="Inter,system-ui" fontSize="11" fill="#64748b">From marketplace ping to doorstep delivery — zero clicks.</text>
+export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
+  const STAGES = [
+    { n: 1, title: "Order received", sub: "Amazon SP-API", from: "#4338ca", to: "#6366f1" },
+    { n: 2, title: "Inventory check", sub: "Multi-WH route", from: "#6d28d9", to: "#8b5cf6" },
+    { n: 3, title: "Pick & pack", sub: "WMS barcode", from: "#be185d", to: "#db2777" },
+    { n: 4, title: "Label + ship", sub: "Best courier rate", from: "#c2410c", to: "#ea580c" },
+    { n: 5, title: "Tracked delivery", sub: "Customer notified", from: "#1d4ed8", to: "#3b82f6" },
+  ];
 
-    {[
-      { x: 40, label: "Order received", sub: "Amazon SP-API", grad: "url(#g-blue)", color: "#1e40af" },
-      { x: 180, label: "Inventory check", sub: "Multi-WH route", grad: "url(#g-purple)", color: "#6d28d9" },
-      { x: 320, label: "Pick & pack", sub: "WMS barcode", grad: "url(#g-pink)", color: "#9d174d" },
-      { x: 460, label: "Label + ship", sub: "Best courier rate", grad: "url(#g-orange)", color: "#9a3412" },
-      { x: 600, label: "Tracked delivery", sub: "Customer notified", grad: "url(#g-blue)", color: "#1e40af" },
-    ].map((s, i, arr) => (
-      <g key={i}>
-        <rect x={s.x} y={120} width={110} height={88} rx={14} fill={s.grad} />
-        <circle cx={s.x + 22} cy={142} r={10} fill="white" opacity="0.25" />
-        <text x={s.x + 22} y={146} textAnchor="middle" fontSize={11} fontWeight={800} fill="white">{i + 1}</text>
-        <text x={s.x + 55} y={172} textAnchor="middle" fontSize={11} fontWeight={700} fill="white">{s.label}</text>
-        <text x={s.x + 55} y={190} textAnchor="middle" fontSize={9} fill="white" opacity={0.85}>{s.sub}</text>
-        {i < arr.length - 1 && (
-          <g>
-            <line x1={s.x + 110} y1={164} x2={arr[i + 1].x - 4} y2={164}
-              stroke="#cbd5e1" strokeWidth={2} strokeDasharray="4 4" markerEnd="url(#arrow-purple)" />
+  const TIMES = ["0s", "2s", "30s", "5m", "Out for delivery"];
+
+  const CARD_W = 118;
+  const CARD_H = 108;
+  const CARD_Y = 88;
+  const ARROW_W = 16;
+  const TOTAL_W = STAGES.length * CARD_W + (STAGES.length - 1) * ARROW_W;
+  const OFFSET_X = (760 - TOTAL_W) / 2;
+
+  const TL_Y = 238;
+  const TL_X1 = OFFSET_X + CARD_W / 2;
+  const TL_X2 = OFFSET_X + TOTAL_W - CARD_W / 2;
+  const TL_SPAN = TL_X2 - TL_X1;
+  const DOT_YS = TL_Y;
+
+  return (
+    <svg
+      viewBox="0 0 760 340"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <defs>
+        {/* Outer card gradient */}
+        <linearGradient id="of-bg" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stopColor="#f5f3ff" />
+          <stop offset="55%" stopColor="#eff6ff" />
+          <stop offset="100%" stopColor="#fff7ed" />
+        </linearGradient>
+
+        {/* Timeline gradient */}
+        <linearGradient
+          id="of-tl-grad"
+          x1={TL_X1}
+          y1={TL_Y}
+          x2={TL_X2}
+          y2={TL_Y}
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0%" stopColor="#6366f1" />
+          <stop offset="100%" stopColor="#f59e0b" />
+        </linearGradient>
+
+        {/* Per-stage card gradients */}
+        {STAGES.map((s, i) => (
+          <linearGradient key={i} id={`of-g${i}`} x1="0" x2="0.7" y1="0" y2="1">
+            <stop offset="0%" stopColor={s.from} />
+            <stop offset="100%" stopColor={s.to} />
+          </linearGradient>
+        ))}
+
+        {/* Card shadow */}
+        <filter id="of-card-shadow" x="-5%" y="-5%" width="110%" height="115%">
+          <feDropShadow dx="0" dy="3" stdDeviation="7" floodColor="#c4b5fd" floodOpacity="0.18" />
+        </filter>
+        <filter id="of-outer-shadow" x="-3%" y="-3%" width="106%" height="110%">
+          <feDropShadow dx="0" dy="2" stdDeviation="8" floodColor="#c4b5fd" floodOpacity="0.15" />
+        </filter>
+      </defs>
+
+      {/* ── Outer card ── */}
+      <rect
+        x="8" y="8" width="744" height="324" rx="22"
+        fill="url(#of-bg)"
+        stroke="#e0d9f7" strokeWidth="1.2"
+        filter="url(#of-outer-shadow)"
+      />
+
+      {/* ── Header ── */}
+      <g className="of-hdr-anim">
+        <text
+          x="36" y="48"
+          fontFamily="'Space Grotesk','DM Sans',sans-serif"
+          fontSize="17" fontWeight="700" fill="#1a1340" letterSpacing="-0.25"
+        >
+          Order lifecycle · automated end-to-end
+        </text>
+        <text
+          x="36" y="68"
+          fontFamily="'DM Sans',sans-serif"
+          fontSize="11.5" fill="#6b7280"
+        >
+          From marketplace ping to doorstep delivery — zero clicks.
+        </text>
+      </g>
+
+      {/* ══════════ STAGE CARDS + ARROWS ══════════ */}
+      {STAGES.map((s, i) => {
+        const sx = OFFSET_X + i * (CARD_W + ARROW_W);
+        const midX = sx + CARD_W / 2;
+
+        return (
+          <g key={i}>
+            {/* Stage card */}
+            <g className={`of-stage-${i}`}>
+              <rect
+                x={sx} y={CARD_Y}
+                width={CARD_W} height={CARD_H}
+                rx="13"
+                fill={`url(#of-g${i})`}
+                filter="url(#of-card-shadow)"
+              />
+              {/* Number badge */}
+              <circle
+                cx={sx + 18} cy={CARD_Y + 18} r="11"
+                fill="rgba(255,255,255,0.22)"
+              />
+              <text
+                x={sx + 18} y={CARD_Y + 22}
+                textAnchor="middle"
+                fontFamily="'DM Sans',sans-serif"
+                fontSize="11" fontWeight="700" fill="white"
+              >
+                {s.n}
+              </text>
+
+              {/* Stage title */}
+              <text
+                x={sx + 10} y={CARD_Y + 52}
+                fontFamily="'DM Sans',sans-serif"
+                fontSize="12.5" fontWeight="700" fill="white"
+              >
+                {s.title.split(" ")[0]}
+              </text>
+              {s.title.includes(" ") && (
+                <text
+                  x={sx + 10} y={CARD_Y + 68}
+                  fontFamily="'DM Sans',sans-serif"
+                  fontSize="12.5" fontWeight="700" fill="white"
+                >
+                  {s.title.split(" ").slice(1).join(" ")}
+                </text>
+              )}
+
+              {/* Subtitle */}
+              <text
+                x={sx + 10} y={CARD_Y + 90}
+                fontFamily="'DM Sans',sans-serif"
+                fontSize="10" fill="rgba(255,255,255,0.82)"
+              >
+                {s.sub}
+              </text>
+            </g>
+
+            {/* Arrow between stages */}
+            {i < STAGES.length - 1 && (
+              <g>
+                <line
+                  x1={sx + CARD_W + 2} y1={CARD_Y + CARD_H / 2}
+                  x2={sx + CARD_W + ARROW_W - 2} y2={CARD_Y + CARD_H / 2}
+                  stroke="#a5b4fc" strokeWidth="1.5"
+                  className="of-arrow-flow"
+                  style={{ animationDelay: `${i * 0.15}s` }}
+                />
+                <path
+                  d={`M${sx + CARD_W + ARROW_W - 7} ${CARD_Y + CARD_H / 2 - 5} L${sx + CARD_W + ARROW_W - 1} ${CARD_Y + CARD_H / 2} L${sx + CARD_W + ARROW_W - 7} ${CARD_Y + CARD_H / 2 + 5}`}
+                  stroke="#a5b4fc" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                />
+              </g>
+            )}
+
+            {/* Timeline dot */}
+            <circle
+              cx={midX} cy={DOT_YS}
+              r="5"
+              fill="white" stroke="#6366f1" strokeWidth="2"
+              className={`of-dot-${i}`}
+            />
+
+            {/* Time label */}
+            <text
+              x={midX} y={DOT_YS + 26}
+              textAnchor={i === STAGES.length - 1 ? "end" : "middle"}
+              fontFamily="'DM Sans',sans-serif"
+              fontSize="11" fontWeight="700" fill="#4b5563"
+              className="of-footer-anim"
+            >
+              {TIMES[i]}
+            </text>
           </g>
-        )}
-      </g>
-    ))}
+        );
+      })}
 
-    {/* Bottom timeline scale */}
-    <line x1={40} y1={260} x2={680} y2={260} stroke="#e2e8f0" strokeWidth={1.5} />
-    {["0s", "2s", "30s", "5m", "Out for delivery"].map((t, i) => (
-      <g key={t}>
-        <circle cx={68 + i * 152} cy={260} r={5} fill="white" stroke="#6d28d9" strokeWidth={2} />
-        <text x={68 + i * 152} y={282} textAnchor="middle" fontSize={10} fontWeight={700} fill="#475569">{t}</text>
-      </g>
-    ))}
-    <text x={360} y={320} textAnchor="middle" fontSize={11} fill="#94a3b8">Median order processing time across 50,000+ stores</text>
-  </svg>
-);
+      {/* ══════════ TIMELINE LINE ══════════ */}
+      <line
+        x1={TL_X1 - 10}
+        y1={TL_Y + 10}
+        x2={TL_X2 + 10}
+        y2={TL_Y + 10}
+        stroke="url(#of-tl-grad)"
+        strokeWidth="2"
+        strokeLinecap="round"
+        fill="none"
+        className="of-tl-draw"
+      />
+      {/* ── Footer ── */}
+      <text
+        x="376" y="316"
+        textAnchor="middle"
+        fontFamily="'DM Sans',sans-serif"
+        fontSize="11" fill="#9ca3af" fontStyle="italic"
+        className="of-footer-anim"
+      >
+        Median order processing time across 50,000+ stores
+      </text>
+    </svg>
+  )
+};
+
 
 /* ------------------------------------------------------------------ */
 /* PricingCalculatorMockup – seller-facing ROI / margin calc            */
@@ -2226,9 +2404,10 @@ export const ChannelSyncFlow = (
 
 
       <linearGradient id="cs-core" x1="30%" y1="15%" x2="70%" y2="88%" gradientUnits="objectBoundingBox">
-        <stop offset="0%" stopColor="#FDBA74" />
-        <stop offset="45%" stopColor="#FB923C" />
-        <stop offset="100%" stopColor="#F97316" />
+        <stop offset="0%" stopColor="#7C92FF" />
+        <stop offset="38%" stopColor="#4564F7" />
+        <stop offset="72%" stopColor="#314EDB" />
+        <stop offset="100%" stopColor="#1F369F" />
       </linearGradient>
 
       {/* Core shine */}
@@ -2535,7 +2714,7 @@ export const ChannelSyncFlow = (
         cx="410"
         cy="220"
         r="5"
-        fill="#7c3aed"
+        fill="#4564F7"
         opacity="0.75"
       />
 
@@ -2834,6 +3013,14 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
           fill="#f97316"
         />
       </marker> */}
+      <linearGradient id="ab-border-bl" x1="0" x2="1" y1="0" y2="0" >
+        <stop offset="0%" stopColor="#4338ca" />
+        <stop offset="100%" stopColor="#6366f1" />
+      </linearGradient>
+      <linearGradient id="ab-card-bl" x1="0" x2="1" y1="0" y2="0">
+        <stop offset="0%" stopColor="#6366f1" />
+        <stop offset="100%" stopColor="#818cf8" />
+      </linearGradient>
     </defs>
 
     {/* Background */}
@@ -2854,8 +3041,8 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
 
     {/* TRIGGER */}
     <g>
-      <rect x="5" y="5" width="260" height="170" rx="18" fill="#f6e7d2" stroke="#fb923c" strokeWidth="2" />
-      <text x="25" y="40" fontSize="14" fontWeight="800" fill="#f56905">
+      <rect x="5" y="5" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3c4df0" strokeWidth="2" />
+      <text x="25" y="40" fontSize="14" fontWeight="800" fill="white">
         TRIGGER
       </text>
 
@@ -2866,30 +3053,30 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
         width="200"
         height="30"
         rx="12"
-        fill="#fff7ed"
-        stroke="#fb923c"
+        fill="#dbeafe"
+        stroke="#3c4df0"
         strokeWidth="2"
       />
 
-      <text x="120" y="80" textAnchor="middle" fontSize="16" fontWeight="800" fill="#111827">
+      <text x="120" y="80" textAnchor="middle" fontSize="16" fontWeight="800" fill="#193745">
         Marketplace event
       </text>
-      <text x="25" y="120" fontSize="14" fontWeight="800" fill="#2b3442">
+      <text x="25" y="120" fontSize="14" fontWeight="800" fill="white">
         Buy Box %, price, stock…
       </text>
 
       {/* Amazon badge */}
       {/* <rect x="110" y="235" width="96" height="38" rx="10" fill="white" />
 
-      <text x="158" y="258" textAnchor="middle" fontSize="15" fontWeight="800" fill="#111827">
+      <text x="158" y="258" textAnchor="middle" fontSize="15" fontWeight="800" fill="#193745">
         amazon
       </text> */}
     </g>
 
     {/* Schedule loop */}
     <g>
-      <rect x="5" y="345" width="260" height="170" rx="18" fill="#f6e7d2" stroke="#fb923c" strokeWidth="2" />
-      <text x="25" y="390" fontSize="14" fontWeight="800" fill="#f56905">
+      <rect x="5" y="345" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3c4df0" strokeWidth="2" />
+      <text x="25" y="390" fontSize="14" fontWeight="800" fill="white">
         SCHEDULE · DAILY 09:00
       </text>
 
@@ -2900,22 +3087,22 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
         width="200"
         height="30"
         rx="12"
-        fill="#fff7ed"
-        stroke="#fb923c"
+        fill="#dbeafe"
+        stroke="#3c4df0"
         strokeWidth="2"
       />
 
-      <text x="120" y="430" textAnchor="middle" fontSize="16" fontWeight="800" fill="#111827">
+      <text x="120" y="430" textAnchor="middle" fontSize="16" fontWeight="800" fill="#193745">
         Daily digest report
       </text>
-      <text x="25" y="470" fontSize="14" fontWeight="800" fill="#2b3442">
+      <text x="25" y="470" fontSize="14" fontWeight="800" fill="white">
         profit · BB · stockouts
       </text>
     </g>
     {/* Condition  */}
     <g>
-      <rect x="350" y="40" width="260" height="170" rx="18" fill="#f6e7d2" stroke="#fb923c" strokeWidth="2" />
-      <text x="374" y="80" fontSize="14" fontWeight="800" fill="#f56905">
+      <rect x="350" y="40" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3c4df0" strokeWidth="2" />
+      <text x="374" y="80" fontSize="14" fontWeight="800" fill="white">
         IF / FILTER
       </text>
 
@@ -2926,23 +3113,23 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
         width="200"
         height="30"
         rx="12"
-        fill="#fff7ed"
-        stroke="#fb923c"
+        fill="#dbeafe"
+        stroke="#3c4df0"
         strokeWidth="2"
       />
 
-      <text x="470" y="120" textAnchor="middle" fontSize="16" fontWeight="800" fill="#111827">
+      <text x="470" y="120" textAnchor="middle" fontSize="16" fontWeight="800" fill="#193745">
         Buy Box &lt; 80%
       </text>
-      <text x="375" y="160" fontSize="14" fontWeight="800" fill="#2b3442">
+      <text x="375" y="160" fontSize="14" fontWeight="800" fill="white">
         on hero SKUs only
       </text>
     </g>
     {/* Webhook to Zapier/n8n */}
 
     <g>
-      <rect x="350" y="340" width="260" height="170" rx="18" fill="#f6e7d2" stroke="#fb923c" strokeWidth="2" />
-      <text x="374" y="380" fontSize="14" fontWeight="800" fill="#f56905">
+      <rect x="350" y="340" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3c4df0" strokeWidth="2" />
+      <text x="374" y="380" fontSize="14" fontWeight="800" fill="white">
         FAN OUT · WEBHOOK
       </text>
 
@@ -2953,15 +3140,15 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
         width="200"
         height="30"
         rx="12"
-        fill="#fff7ed"
-        stroke="#fb923c"
+        fill="#dbeafe"
+        stroke="#3c4df0"
         strokeWidth="2"
       />
 
-      <text x="470" y="420" textAnchor="middle" fontSize="16" fontWeight="800" fill="#111827">
+      <text x="470" y="420" textAnchor="middle" fontSize="16" fontWeight="800" fill="#193745">
         Push to Zapier / n8n
       </text>
-      <text x="375" y="460" fontSize="14" fontWeight="800" fill="#2b3442">
+      <text x="375" y="460" fontSize="14" fontWeight="800" fill="white">
         JSON · signed · retried
       </text>
     </g>
@@ -2969,8 +3156,8 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
     {/* Slack */}
 
     <g>
-      <rect x="655" y="5" width="260" height="170" rx="18" fill="#f6e7d2" stroke="#fb923c" strokeWidth="2" />
-      <text x="684" y="45" fontSize="14" fontWeight="800" fill="#f56905">
+      <rect x="655" y="5" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3c4df0" strokeWidth="2" />
+      <text x="684" y="45" fontSize="14" fontWeight="800" fill="white">
         ACTION · SLACK
       </text>
 
@@ -2981,15 +3168,15 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
         width="200"
         height="30"
         rx="12"
-        fill="#fff7ed"
-        stroke="#fb923c"
+        fill="#dbeafe"
+        stroke="#3c4df0"
         strokeWidth="2"
       />
 
-      <text x="780" y="85" textAnchor="middle" fontSize="16" fontWeight="800" fill="#111827">
+      <text x="780" y="85" textAnchor="middle" fontSize="16" fontWeight="800" fill="#193745">
         Post to #pricing
       </text>
-      <text x="685" y="125" fontSize="14" fontWeight="800" fill="#2b3442">
+      <text x="685" y="125" fontSize="14" fontWeight="800" fill="white">
         @channel · with chart
       </text>
     </g>
@@ -2997,8 +3184,8 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
     {/* Email PDF */}
 
     <g>
-      <rect x="655" y="200" width="260" height="170" rx="18" fill="#f6e7d2" stroke="#fb923c" strokeWidth="2" />
-      <text x="684" y="240" fontSize="14" fontWeight="800" fill="#f56905">
+      <rect x="655" y="200" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3c4df0" strokeWidth="2" />
+      <text x="684" y="240" fontSize="14" fontWeight="800" fill="white">
         ACTION · EMAIL
       </text>
 
@@ -3009,15 +3196,15 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
         width="200"
         height="30"
         rx="12"
-        fill="#fff7ed"
-        stroke="#fb923c"
+        fill="#dbeafe"
+        stroke="#3c4df0"
         strokeWidth="2"
       />
 
-      <text x="780" y="280" textAnchor="middle" fontSize="16" fontWeight="800" fill="#111827">
+      <text x="780" y="280" textAnchor="middle" fontSize="16" fontWeight="800" fill="#193745">
         Send PDF report
       </text>
-      <text x="685" y="320" fontSize="14" fontWeight="800" fill="#2b3442">
+      <text x="685" y="320" fontSize="14" fontWeight="800" fill="white">
         to ops@brand.com
       </text>
     </g>
@@ -3029,12 +3216,12 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
         width="200"
         height="100"
         rx="12"
-        fill="#fff7ed"
-        stroke="#fb923c"
+        fill="#dbeafe"
+        stroke="#3c4df0"
         strokeWidth="2"
       />
 
-      <text x="765" y="460" textAnchor="middle" fontSize="22" fontWeight="800" fill="#f56905">
+      <text x="765" y="460" textAnchor="middle" fontSize="22" fontWeight="800" fill="#193745">
         Zapier
       </text>
       <text x="725" y="490" fontSize="14" fontWeight="800" fill="#2b3442">5,000+ apps
@@ -3048,12 +3235,12 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
         width="200"
         height="100"
         rx="12"
-        fill="#fff7ed"
-        stroke="#fb923c"
+        fill="#dbeafe"
+        stroke="#3c4df0"
         strokeWidth="2"
       />
 
-      <text x="215" y="260" textAnchor="middle" fontSize="22" fontWeight="800" fill="#f56905">
+      <text x="215" y="260" textAnchor="middle" fontSize="22" fontWeight="800" fill="#193745">
         n8n
       </text>
       <text x="145" y="290" fontSize="14" fontWeight="800" fill="#2b3442">self-hosted workflows
@@ -3063,7 +3250,7 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
     {/* Middle top condition */}
     {/* <g>
       <rect x="420" y="145" width="190" height="64" rx="12" fill="white" stroke="#e2e8f0" />
-      <text x="515" y="183" textAnchor="middle" fontSize="15" fontWeight="700" fill="#111827">
+      <text x="515" y="183" textAnchor="middle" fontSize="15" fontWeight="700" fill="#193745">
         No sales in X hours
       </text>
     </g> */}
@@ -3071,25 +3258,25 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
     {/* Lines */}
     {/* TRIGGER-IF / FILTER */}
     <path
-      d="M260 80  C320 80 320 120 350 120"
-      stroke="#fb923c"
+      d="M264 80  C320 80 320 120 350 120"
+      stroke="#3c4df0"
       strokeWidth="3"
       fill="none"
       markerEnd="url(#ab-arrow)"
     />
 
-    <circle r="5" fill="#fb923c">
+    <circle r="5" fill="url(#ab-card-bl)">
       <animateMotion dur="2.5s" repeatCount="indefinite" path="M260 80  C320 80 320 120 350 120" />
     </circle>
 
     {/* SCHEDULE · DAILY 09:00-FAN OUT · WEBHOOK */}
     <path
-      d="M264 430 C300 430 300 420 350 420" stroke="#fb923c"
+      d="M264 430 C300 430 300 420 350 420" stroke="#3c4df0"
       strokeWidth="3"
       fill="none"
       markerEnd="url(#ab-arrow)"
     />
-    <circle r="5" fill="#fb923c">
+    <circle r="5" fill="url(#ab-card-bl)">
       <animateMotion dur="2.5s" repeatCount="indefinite" path="M264 430 C300 430 300 420 350 420" />
     </circle>
 
@@ -3101,12 +3288,12 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
       // d="M460 210 C490 210 490 340 465 340"
       d="M460 210 L460 340"
 
-      stroke="#fb923c"
+      stroke="#3c4df0"
       strokeWidth="3"
       fill="none"
       markerEnd="url(#ab-arrow)"
     />
-    <circle r="5" fill="#fb923c">
+    <circle r="5" fill="url(#ab-card-bl)">
       <animateMotion dur="2.5s" repeatCount="indefinite" path="M460 210 L460 340" />
     </circle>
 
@@ -3114,12 +3301,12 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
     <path
       // d="M610 120  C485 120 485 85 660 85"
       d="M610 120 C630 120 630 85 655 85"
-      stroke="#fb923c"
+      stroke="#3c4df0"
       strokeWidth="3"
       fill="none"
       markerEnd="url(#ab-arrow)"
     />
-    <circle r="5" fill="#fb923c">
+    <circle r="5" fill="url(#ab-card-bl)">
       <animateMotion dur="2.5s" repeatCount="indefinite" path="M610 120 C630 120 630 85 655 85" />
     </circle>
 
@@ -3128,35 +3315,35 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
     <path
       // d="M610 120  C485 120 485 85 660 85"
       d="M610 120 C630 120 630 280 655 280"
-      stroke="#fb923c"
+      stroke="#3c4df0"
       strokeWidth="3"
       fill="none"
       markerEnd="url(#ab-arrow)"
     />
-    <circle r="5" fill="#fb923c">
+    <circle r="5" fill="url(#ab-card-bl)">
       <animateMotion dur="2.5s" repeatCount="indefinite" path="M610 120 C630 120 630 280 655 280" />
     </circle>
     {/* FAN OUT · WEBHOOK -Zapier */}
 
     <path
       d="M610 420 C630 420 630 460 670 460"
-      stroke="#fb923c"
+      stroke="#3c4df0"
       strokeWidth="3"
       fill="none"
       markerEnd="url(#ab-arrow)"
     />
-    <circle r="5" fill="#fb923c">
+    <circle r="5" fill="url(#ab-card-bl)">
       <animateMotion dur="2.5s" repeatCount="indefinite" path="M610 420 C630 420 630 460 670 460" />
     </circle>
     {/* FAN OUT · WEBHOOK -n8n */}
     <path
       d="M460 340 C400 340 400 270 320 270"
-      stroke="#fb923c"
+      stroke="#3c4df0"
       strokeWidth="3"
       fill="none"
       markerEnd="url(#ab-arrow)"
     />
-    <circle r="5" fill="#fb923c">
+    <circle r="5" fill="url(#ab-card-bl)">
       <animateMotion dur="2.5s" repeatCount="indefinite" path="M460 340 C400 340 400 270 320 270" />
     </circle>
 
@@ -3788,7 +3975,7 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
           floodOpacity="0.15"
         />
       </filter>
-    </defs> 
+    </defs>
 
     {/* ── BACKGROUND ── */}
     <rect

@@ -405,27 +405,81 @@ const Home = () => {
 
                 </div>
               </div>
-
               <div className="reveal delay-100 rounded-3xl p-6 bg-slate-50 border border-slate-100 hover-lift">
-                <RefreshCw className="w-8 h-8 text-primary mb-3" />
-                <h3 className="font-bold text-slate-900 mb-1">Inventory sync</h3>
-                <p className="text-sm text-slate-600">Real-time across all channels.</p>
+                <RefreshCw className="w-8 h-8 text-primary mb-4" />
+
+                <h3 className="font-bold text-slate-900 text-lg mb-2">
+                  Inventory sync
+                </h3>
+
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                  Real-time stock sync across marketplaces and warehouses.
+                </p>
+
+                <div className="flex items-center gap-2 text-xs font-medium text-primary">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  Live updates
+                </div>
               </div>
+
               <div className="reveal delay-200 rounded-3xl p-6 bg-slate-50 border border-slate-100 hover-lift">
-                <ShoppingCart className="w-8 h-8 text-secondary mb-3" />
-                <h3 className="font-bold text-slate-900 mb-1">Smart routing</h3>
-                <p className="text-sm text-slate-600">Orders route to optimal warehouse.</p>
+                <ShoppingCart className="w-8 h-8 text-secondary mb-4" />
+
+                <h3 className="font-bold text-slate-900 text-lg mb-2">
+                  Smart routing
+                </h3>
+
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                  Orders route automatically to the best fulfilment node.
+                </p>
+
+                <div className="flex items-center gap-3 text-xs text-slate-500">
+                  <span>AI optimized</span>
+                </div>
               </div>
+
               <div className="reveal delay-300 lg:col-span-2 rounded-3xl p-6 bg-slate-900 text-white hover-lift relative overflow-hidden">
-                <Shield className="w-8 h-8 text-pink-400 mb-3" />
-                <h3 className="font-bold mb-1">Enterprise security</h3>
-                <p className="text-sm text-white/70">SOC 2 Type II, 99.9% uptime SLA, end-to-end encryption.</p>
+                <Shield className="w-8 h-8 text-pink-400 mb-4" />
+
+                <h3 className="font-bold text-xl mb-2">
+                  Enterprise security
+                </h3>
+
+                <p className="text-sm text-white/70 leading-relaxed max-w-lg mb-5">
+                  SOC 2 infrastructure with encrypted data and enterprise-grade uptime.
+                </p>
+
+                <div className="flex flex-wrap gap-3">
+                  <div className="px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-medium">
+                    SOC 2
+                  </div>
+
+                  <div className="px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-medium">
+                    99.9% SLA
+                  </div>
+
+                  <div className="px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-medium">
+                    Encrypted
+                  </div>
+                </div>
+
                 <div className="absolute -right-10 -bottom-10 w-48 h-48 bg-primary/30 rounded-full blur-3xl" />
               </div>
-              <div className="reveal delay-400 rounded-3xl p-6 bg-gradient-to-br from-orange-50 to-amber-100 hover-lift">
-                <Globe className="w-8 h-8 text-secondary mb-3" />
-                <h3 className="font-bold text-slate-900 mb-1">Global reach</h3>
-                <p className="text-sm text-slate-700">150+ countries supported.</p>
+
+              <div className="reveal delay-400 rounded-3xl p-6 bg-gradient-to-br from-indigo-50 to-blue-100 border border-blue-100 hover-lift">
+                <Globe className="w-8 h-8 text-primary mb-4" />
+
+                <h3 className="font-bold text-slate-900 text-lg mb-2">
+                  Global reach
+                </h3>
+
+                <p className="text-sm text-slate-700 leading-relaxed mb-4">
+                  Sell globally with multi-currency and regional support.
+                </p>
+
+                <div className="flex items-center gap-2 text-xs font-medium text-primary">
+                  <span>150+ countries</span>
+                </div>
               </div>
             </div>
           </div>
