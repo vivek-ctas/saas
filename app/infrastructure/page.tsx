@@ -2,7 +2,7 @@
 // Edit freely once you start migrating this route to Next.js.
 "use client";
 
-import Infrastructure from "@/src/pages/Infrastructure";
+import Infrastructure from "@/screens/Infrastructure";
 
 export default function Page() {
   return <Infrastructure />;

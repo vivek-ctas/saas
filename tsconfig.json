@@ -9,16 +9,20 @@
     }
   ],
   "compilerOptions": {
+    "baseUrl": ".",
+
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     },
-    "noImplicitAny": false,
-    "noUnusedParameters": false,
-    "skipLibCheck": true,
+
+    "jsx": "preserve",
+
     "allowJs": true,
+    "skipLibCheck": true,
+
+    "strictNullChecks": false,
+    "noImplicitAny": false,
     "noUnusedLocals": false,
-    "strictNullChecks": false
+    "noUnusedParameters": false
   }
 }

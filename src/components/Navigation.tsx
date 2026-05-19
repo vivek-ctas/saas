@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -18,14 +19,14 @@ const Navigation = () => {
     { name: "Contact", href: "/contact" },
   ];
 
-  const isActive = (href: string) => location.pathname === href;
+  const isActive = (href: string) => pathname === href;
 
   return (
     <nav className="bg-white/95 backdrop-blur-sm border-b border-slate-100 sticky top-0 z-50 shadow-stripe">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2">
             <div className="w-9 h-9 gradient-primary rounded-lg flex items-center justify-center shadow-stripe">
               <span className="text-white font-bold text-sm">C</span>
             </div>
@@ -37,12 +38,11 @@ const Navigation = () => {
             {navigation.map((item) => (
               <Link
                 key={item.name}
-                to={item.href}
-                className={`text-sm transition-stripe ${
-                  isActive(item.href)
+                href={item.href}
+                className={`text-sm transition-stripe ${isActive(item.href)
                     ? "text-primary font-semibold"
                     : "text-slate-600 hover:text-slate-900"
-                }`}
+                  }`}
               >
                 {item.name}
               </Link>
@@ -70,12 +70,11 @@ const Navigation = () => {
               {navigation.map((item) => (
                 <Link
                   key={item.name}
-                  to={item.href}
-                  className={`block px-3 py-2 rounded-md transition-stripe ${
-                    isActive(item.href)
+                  href={item.href}
+                  className={`block px-3 py-2 rounded-md transition-stripe ${isActive(item.href)
                       ? "text-primary bg-accent font-medium"
                       : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
-                  }`}
+                    }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}

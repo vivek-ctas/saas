@@ -5,7 +5,7 @@ import {
   ShoppingBag, Globe, Star, ShoppingCart, Sparkles, Package,
   Smartphone, Truck, Megaphone, Store, ArrowRight, CheckCircle, Zap, Plug
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import  Link  from "next/link";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import { BlobBackdrop, ContactMapIllustration, MarketplaceMeshDiagram, ChannelSyncFlow, LogoChip } from "@/components/illustrations";
@@ -112,7 +112,7 @@ const Marketplaces = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {INTEGRATIONS.map((it, i) => (
-                <Link key={it.slug} to={`/marketplaces/${it.slug}`} className="reveal block" style={{ transitionDelay: `${i * 60}ms` }}>
+                <Link key={it.slug} href={`/marketplaces/${it.slug}`} className="reveal block" style={{ transitionDelay: `${i * 60}ms` }}>
                   <Card className="hover-lift overflow-hidden border border-slate-100 h-full">
                     <div className={`h-2 bg-gradient-to-r ${it.tone}`} />
                     <CardContent className="p-6">

@@ -2,7 +2,7 @@
 // Edit freely once you start migrating this route to Next.js.
 "use client";
 
-import Contact from "@/src/pages/Contact";
+import Contact from "@/screens/Contact";
 
 export default function Page() {
   return <Contact />;

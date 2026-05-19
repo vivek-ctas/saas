@@ -1,16 +1,18 @@
-import { Link } from "react-router-dom";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Facebook, 
-  Twitter, 
-  Linkedin, 
+"use client";
+import Link from "next/link";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Twitter,
+  Linkedin,
   Instagram,
   ArrowRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import Image from "next/image";
 import footerBackground from "@/assets/footer-background.jpg";
 
 const Footer = () => {
@@ -52,14 +54,15 @@ const Footer = () => {
     <footer className="relative bg-slate-900 text-white overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
-        <img 
-          src={footerBackground} 
-          alt="Footer background" 
-          className="w-full h-full object-cover opacity-20"
+        <Image
+          src={footerBackground}
+          alt="Footer background"
+          fill
+          className="object-cover opacity-20"
         />
         <div className="absolute inset-0 bg-slate-900/80"></div>
       </div>
-      
+
       {/* Content */}
       <div className="relative z-10">
         {/* Newsletter Section */}
@@ -73,9 +76,9 @@ const Footer = () => {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Input 
-                  type="email" 
-                  placeholder="Enter your email" 
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
                   className="flex-1 bg-slate-800 border-slate-600 text-white placeholder:text-slate-400"
                 />
                 <Button variant="default" className="gradient-primary shadow-stripe">
@@ -92,17 +95,17 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
             {/* Company Info */}
             <div className="lg:col-span-2">
-              <Link to="/" className="flex items-center space-x-2 mb-6">
+              <Link href="/" className="flex items-center space-x-2 mb-6">
                 <div className="w-10 h-10 gradient-primary rounded-xl flex items-center justify-center shadow-stripe">
                   <span className="text-white font-bold">C</span>
                 </div>
                 <span className="text-2xl font-bold text-white">Ctasis <span className="text-pink-400">Marketplace</span></span>
               </Link>
               <p className="text-slate-300 mb-6 max-w-sm">
-                The complete multichannel selling platform trusted by 50,000+ sellers worldwide. 
+                The complete multichannel selling platform trusted by 50,000+ sellers worldwide.
                 Manage inventory, process orders, and grow your business faster.
               </p>
-              
+
               {/* Contact Info */}
               <div className="space-y-3">
                 <div className="flex items-center text-slate-300">
@@ -126,8 +129,8 @@ const Footer = () => {
               <ul className="space-y-3">
                 {footerLinks.product.map((link) => (
                   <li key={link.name}>
-                    <Link 
-                      to={link.href} 
+                    <Link
+                      href={link.href}
                       className="text-slate-300 hover:text-emerald-400 transition-colors"
                     >
                       {link.name}
@@ -143,8 +146,8 @@ const Footer = () => {
               <ul className="space-y-3">
                 {footerLinks.company.map((link) => (
                   <li key={link.name}>
-                    <Link 
-                      to={link.href} 
+                    <Link
+                      href={link.href}
                       className="text-slate-300 hover:text-emerald-400 transition-colors"
                     >
                       {link.name}
@@ -160,8 +163,8 @@ const Footer = () => {
               <ul className="space-y-3">
                 {footerLinks.resources.map((link) => (
                   <li key={link.name}>
-                    <Link 
-                      to={link.href} 
+                    <Link
+                      href={link.href}
                       className="text-slate-300 hover:text-emerald-400 transition-colors"
                     >
                       {link.name}
@@ -177,8 +180,8 @@ const Footer = () => {
               <ul className="space-y-3">
                 {footerLinks.legal.map((link) => (
                   <li key={link.name}>
-                    <Link 
-                      to={link.href} 
+                    <Link
+                      href={link.href}
                       className="text-slate-300 hover:text-emerald-400 transition-colors"
                     >
                       {link.name}
@@ -197,7 +200,7 @@ const Footer = () => {
               <div className="text-slate-400 text-sm mb-4 md:mb-0">
                 © 2024 Ctasis Marketplace. All rights reserved.
               </div>
-              
+
               {/* Social Links */}
               <div className="flex space-x-4">
                 {socialLinks.map((social) => (

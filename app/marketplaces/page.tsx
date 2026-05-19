@@ -2,7 +2,7 @@
 // Edit freely once you start migrating this route to Next.js.
 "use client";
 
-import Marketplaces from "@/src/pages/Marketplaces";
+import Marketplaces from "@/screens/Marketplaces";
 
 export default function Page() {
   return <Marketplaces />;

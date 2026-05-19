@@ -2,7 +2,7 @@
 // Edit freely once you start migrating this route to Next.js.
 "use client";
 
-import Blog from "@/src/pages/Blog";
+import Blog from "@/screens/Blog";
 
 export default function Page() {
   return <Blog />;

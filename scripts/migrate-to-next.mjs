@@ -71,7 +71,7 @@ function pageContent(pagePath, isDynamic) {
 // Edit freely once you start migrating this route to Next.js.
 "use client";
 
-import ${componentName} from "@/src/pages/${pagePath}";${propsType}
+import ${componentName} from "@/screens/${pagePath}";${propsType}
 
 export default function Page${propsArg} {
   return <${componentName}${passProps} />;
@@ -82,7 +82,7 @@ export default function Page${propsArg} {
 function rootLayoutContent() {
   return `// AUTO-GENERATED root layout (Next.js App Router style)
 import type { ReactNode } from "react";
-import "@/src/index.css";
+import "@/index.css";
 
 export const metadata = {
   title: "Ctasis",
@@ -103,7 +103,7 @@ function notFoundContent() {
   return `// AUTO-GENERATED not-found page
 "use client";
 
-import NotFound from "@/src/pages/${NOT_FOUND_PAGE}";
+import NotFound from "@/screens/${NOT_FOUND_PAGE}";
 
 export default function NotFoundPage() {
   return <NotFound />;

@@ -1171,3 +1171,18 @@ All colors MUST be HSL.
 .of-footer-anim {
   animation: ofFooterFade 0.7s ease both 0.65s;
 }
+
+
+/* RouteLoader */
+@keyframes progress-bar {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-progress-bar {
+  animation: progress-bar 0.8s ease-in-out infinite;
+}

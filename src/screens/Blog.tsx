@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -125,7 +125,7 @@ const Blog = () => {
         {/* FEATURED POST */}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Link to={`/blog/${featured.slug}`} className="reveal block group">
+            <Link href={`/blog/${featured.slug}`} className="reveal block group">
               <Card className="overflow-hidden border border-slate-100 hover-lift">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   <div className={`relative bg-gradient-to-br ${featured.tone} p-12 flex items-center justify-center min-h-[280px]`}>
@@ -171,7 +171,7 @@ const Blog = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {rest.map((p, i) => (
-                <Link to={`/blog/${p.slug}`} key={p.slug} className="reveal block group" style={{ transitionDelay: `${i * 70}ms` }}>
+                <Link href={`/blog/${p.slug}`} key={p.slug} className="reveal block group" style={{ transitionDelay: `${i * 70}ms` }}>
                   <Card className="h-full border border-slate-100 hover-lift overflow-hidden">
                     <div className={`relative h-44 bg-gradient-to-br ${p.tone} flex items-center justify-center`}>
                       <div className="absolute inset-0 grid-bg opacity-20" />

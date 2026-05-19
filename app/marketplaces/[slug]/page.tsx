@@ -2,10 +2,10 @@
 // Edit freely once you start migrating this route to Next.js.
 "use client";
 
-import BlogPost from "@/screens/BlogPost";
+import IntegrationDetail from "@/screens/integrations/IntegrationDetail";
 
 type PageProps = { params: { slug: string } };
 
 export default function Page(props: PageProps) {
-  return <BlogPost />;
+  return <IntegrationDetail />;
 }

@@ -2,7 +2,7 @@
 // Edit freely once you start migrating this route to Next.js.
 "use client";
 
-import Pricing from "@/src/pages/Pricing";
+import Pricing from "@/screens/Pricing";
 
 export default function Page() {
   return <Pricing />;

@@ -2,7 +2,7 @@
 // Edit freely once you start migrating this route to Next.js.
 "use client";
 
-import Home from "@/src/pages/Home";
+import Home from "@/screens/Home";
 
 export default function Page() {
   return <Home />;
