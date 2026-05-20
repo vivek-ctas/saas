@@ -6,7 +6,7 @@ import Contact from "@/screens/Contact";
 export const metadata: Metadata = buildMetadata({
   title: "Contact Us — Sales, Support & Partnerships",
   description:
-    "Reach Ctasis via email at hello@ctasis.com, live chat (24/7 for Pro & Enterprise), or phone. We reply within 4 hours. Real humans across 5 global hubs — no bots.",
+    "Reach Ctasis via email at info@ctasis.com, live chat (24/7 for Pro & Enterprise), or phone. We reply within 4 hours. Real humans across 5 global hubs — no bots.",
   path: "/contact",
 });
 
@@ -21,13 +21,13 @@ const contactJsonLd = {
     "@type": "Organization",
     name: "Ctasis",
     url: SITE_URL,
-    email: "hello@ctasis.com",
-    telephone: "+1-555-123-4567",
+    email: "info@ctasis.com",
+    telephone: "+91 7948993409",
     contactPoint: [
       {
         "@type": "ContactPoint",
         contactType: "customer support",
-        email: "hello@ctasis.com",
+        email: "info@ctasis.com",
         availableLanguage: "English",
         hoursAvailable: {
           "@type": "OpeningHoursSpecification",
@@ -39,7 +39,7 @@ const contactJsonLd = {
       {
         "@type": "ContactPoint",
         contactType: "sales",
-        email: "hello@ctasis.com",
+        email: "info@ctasis.com",
         availableLanguage: "English",
       },
     ],

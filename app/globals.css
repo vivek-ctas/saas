@@ -136,7 +136,8 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   }
 }
 
@@ -197,6 +198,8 @@ All colors MUST be HSL.
 
   .section-bg {
     background: var(--gradient-section);
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
   }
 
   /* Masonry-inspired Layout Classes */
@@ -271,6 +274,8 @@ All colors MUST be HSL.
 
   .hero-blob {
     @apply absolute rounded-full blur-3xl opacity-60 pointer-events-none;
+    will-change: transform;
+    contain: layout style;
   }
 
   .marquee-track {
@@ -939,6 +944,7 @@ All colors MUST be HSL.
     transform: scale(1.12);
   }
 }
+
 @keyframes apBarGrow {
   from {
     transform: scaleX(0);
@@ -1170,19 +1176,4 @@ All colors MUST be HSL.
 
 .of-footer-anim {
   animation: ofFooterFade 0.7s ease both 0.65s;
-}
-
-
-/* RouteLoader */
-@keyframes progress-bar {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.animate-progress-bar {
-  animation: progress-bar 0.8s ease-in-out infinite;
 }

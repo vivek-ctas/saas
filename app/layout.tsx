@@ -1,16 +1,25 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import Providers from "./providers";
 
 import "./globals.css";
 import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
+// ─── Font — loaded via next/font to eliminate render-blocking requests ────────
+// next/font self-hosts the font, inlines the @font-face, and uses font-display:swap
+// This removes the 17.2 KiB render-blocking CSS chunk Lighthouse flagged.
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  preload: true,
+  // Only load weights actually used in the design system
+  weight: ["400", "500", "600", "700", "800"],
+});
+
 // ─── Global / fallback metadata ────────────────────────────────────────────
 export const metadata: Metadata = {
-  // title.template applied to every child page that sets title as a string
-  title: {
-    default: `${SITE_NAME} — AI Marketplace OS for Multichannel Sellers`,
-    template: `%s | ${SITE_NAME}`,
-  },
+  title: `${SITE_NAME} — AI Marketplace OS for Multichannel Sellers`,
   description: SITE_DESCRIPTION,
   metadataBase: new URL(SITE_URL),
 
@@ -28,15 +37,6 @@ export const metadata: Metadata = {
     images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: SITE_NAME }],
   },
 
-  // Twitter / X
-  twitter: {
-    card: "summary_large_image",
-    site: "@ctasis_hq",
-    title: `${SITE_NAME} — AI Marketplace OS for Multichannel Sellers`,
-    description: SITE_DESCRIPTION,
-    images: [DEFAULT_OG_IMAGE],
-  },
-
   // Crawling
   robots: {
     index: true,
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
 
-  // Icons (put real files in /public)
+  // Icons
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -54,10 +54,8 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
 
-  // Verification tags (fill in real codes)
   verification: {
-    google: "REPLACE_GOOGLE_SEARCH_CONSOLE_CODE",
-    // yandex: "REPLACE_YANDEX_CODE",
+    // google: "REPLACE_GOOGLE_SEARCH_CONSOLE_CODE",
   },
 };
 
@@ -68,13 +66,10 @@ const organizationJsonLd = {
   name: SITE_NAME,
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
-  sameAs: [
-    "https://twitter.com/ctasis_hq",
-    "https://linkedin.com/company/ctasis",
-  ],
+  sameAs: ["https://www.linkedin.com/in/ctas-info-services-llp"],
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+1-555-123-4567",
+    telephone: "+91 7948993409",
     contactType: "customer support",
     availableLanguage: "English",
   },
@@ -107,7 +102,7 @@ const softwareJsonLd = {
 // ─── Layout ─────────────────────────────────────────────────────────────────
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
         {/* JSON-LD structured data */}
         <script
@@ -119,7 +114,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }}
         />
       </head>
-      <body>
+      <body className={inter.className}>
         <Providers>{children}</Providers>
       </body>
     </html>

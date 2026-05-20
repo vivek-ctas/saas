@@ -42,9 +42,9 @@ const Contact = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { icon: Mail, title: "Email us", value: "hello@ctasis.com", note: "General & sales" },
+                { icon: Mail, title: "Email us", value: "info@ctasis.com", note: "General & sales" },
                 { icon: Headphones, title: "Live chat", value: "Available 24/7", note: "For Pro & Enterprise" },
-                { icon: Phone, title: "Call us", value: "+1 (555) 123-4567", note: "Mon–Fri · 9–6 EST" }
+                { icon: Phone, title: "Call us", value: "+91 7948993409", note: "Mon–Fri · 9–6 EST" }
               ].map((c, i) => (
                 <Card key={i} className="reveal hover-lift group" style={{ transitionDelay: `${i * 100}ms` }}>
                   <CardContent className="p-6 flex items-start gap-4">
@@ -125,8 +125,8 @@ const Contact = () => {
                   <CardContent className="relative p-8 space-y-6">
                     <h3 className="text-2xl font-bold">Reach our team</h3>
                     {[
-                      { icon: Mail, title: "Email", lines: ["hello@ctasis.com", "support@ctasis.com"] },
-                      { icon: Phone, title: "Phone", lines: ["+1 (555) 123-4567", "Mon–Fri · 9–6 EST"] },
+                      { icon: Mail, title: "Email", lines: ["info@ctasis.com"] },
+                      { icon: Phone, title: "Phone", lines: ["info@ctasis.com", "Mon–Fri · 9–6 EST"] },
                       { icon: MapPin, title: "HQ", lines: ["Ahmedabad, Gujarat", "India · 380015"] },
                       { icon: Clock, title: "Hours", lines: ["24/7 chat for Pro+", "Email · always open"] }
                     ].map((b, i) => (

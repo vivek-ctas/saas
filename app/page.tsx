@@ -5,9 +5,9 @@ import Home from "@/screens/Home";
 
 // ─── Page metadata ───────────────────────────────────────────────────────────
 export const metadata: Metadata = buildMetadata({
-  title: "AI Marketplace OS for Multichannel Sellers",
+  title: "Ctasis Marketplace - Multichannel Seller Management Platform",
   description:
-    "Ctasis helps 50,000+ sellers sync inventory, manage orders and automate repricing across Amazon, Walmart, eBay, Shopify and 50+ channels — from one beautiful dashboard. Start free, no credit card.",
+    "Manage all your marketplace accounts from one dashboard. Sync inventory, route orders, and analyze performance across Amazon, eBay, Walmart, Shopify and more.",
   path: "/",
 });
 

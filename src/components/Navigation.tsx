@@ -27,11 +27,13 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-9 h-9 gradient-primary rounded-lg flex items-center justify-center shadow-stripe">
-              <span className="text-white font-bold text-sm">C</span>
-            </div>
-            <span className="text-xl font-bold text-slate-900">Ctasis <span className="text-primary">Marketplace</span></span>
+          <Link href="/" className="flex items-center space-x-1 sm:space-x-2 flex-shrink-0">
+            <img
+              src="/ctasis-logo.svg"
+              alt="Ctasis Logo"
+              className="w-12 h-9 sm:w-16 md:w-20 transition-all"
+            />
+            <span className="text-black text-sm sm:text-base font-semibold">Marketplace</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -41,8 +43,8 @@ const Navigation = () => {
                 key={item.name}
                 href={item.href}
                 className={`text-sm transition-stripe ${isActive(item.href)
-                    ? "text-primary font-semibold"
-                    : "text-slate-600 hover:text-slate-900"
+                  ? "text-primary font-semibold"
+                  : "text-slate-600 hover:text-slate-900"
                   }`}
               >
                 {item.name}
@@ -58,6 +60,9 @@ const Navigation = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-slate-600 hover:text-slate-900"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -66,15 +71,15 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden">
+          <div id="mobile-menu" className="lg:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-slate-100">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
                   className={`block px-3 py-2 rounded-md transition-stripe ${isActive(item.href)
-                      ? "text-primary bg-accent font-medium"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                    ? "text-primary bg-accent font-medium"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                     }`}
                   onClick={() => setIsOpen(false)}
                 >
