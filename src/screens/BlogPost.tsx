@@ -1,5 +1,6 @@
-import { Link, useParams, Navigate } from "react-router-dom";
-import { Badge } from "@/components/ui/badge";
+"use client";
+import Link from "next/link";
+import { useParams, useRouter } from "next/navigation"; import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight, Clock, Share2, BookOpen, CheckCircle } from "lucide-react";
@@ -185,11 +186,16 @@ const posts: Post[] = [
 
 const BlogPost = () => {
   const ref = useReveal<HTMLDivElement>();
-  const { slug } = useParams();
-  const post = posts.find((p) => p.slug === slug);
+  const params = useParams();
+  const slug = params.slug as string;
+   const post = posts.find((p) => p.slug === slug);
 
-  if (!post) return <Navigate to="/blog" replace />;
+  const router = useRouter();
 
+  if (!post) {
+    router.push("/blog");
+    return null;
+  }
   const others = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
   const Visual = post.Visual;
 
@@ -199,7 +205,7 @@ const BlogPost = () => {
         {/* HERO */}
         <section className="relative pt-28 pb-16 overflow-hidden bg-gradient-to-br from-amber-50 via-white to-indigo-50">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Link to="/blog" className="reveal inline-flex items-center gap-2 text-sm text-slate-600 hover:text-primary mb-6">
+            <Link href="/blog" className="reveal inline-flex items-center gap-2 text-sm text-slate-600 hover:text-primary mb-6">
               <ArrowLeft className="w-4 h-4" /> Back to all articles
             </Link>
             <div className="reveal flex items-center gap-3 text-sm text-slate-500 mb-4">
@@ -265,7 +271,7 @@ const BlogPost = () => {
               <div className="text-xs font-bold uppercase tracking-widest opacity-80 mb-2">TL;DR</div>
               <p className="text-lg leading-relaxed">{post.excerpt}</p>
               <Button variant="secondary" className="mt-6 rounded-full" asChild>
-                <Link to="/contact">Talk to our team <ArrowRight className="w-4 h-4 ml-1" /></Link>
+                <Link href="/contact">Talk to our team <ArrowRight className="w-4 h-4 ml-1" /></Link>
               </Button>
             </div>
           </div>
@@ -279,13 +285,13 @@ const BlogPost = () => {
                 <Badge className="mb-3 bg-accent text-accent-foreground border-0">Keep reading</Badge>
                 <h2 className="text-3xl font-bold text-slate-900">More from the blog</h2>
               </div>
-              <Link to="/blog" className="text-primary text-sm font-semibold inline-flex items-center gap-1 story-link">
+              <Link href="/blog" className="text-primary text-sm font-semibold inline-flex items-center gap-1 story-link">
                 <BookOpen className="w-4 h-4" /> All articles
               </Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {others.map((o, i) => (
-                <Link key={o.slug} to={`/blog/${o.slug}`} className="reveal block group" style={{ transitionDelay: `${i * 80}ms` }}>
+                <Link key={o.slug} href={`/blog/${o.slug}`} className="reveal block group" style={{ transitionDelay: `${i * 80}ms` }}>
                   <Card className="h-full border border-slate-100 hover-lift overflow-hidden bg-white">
                     <div className="relative h-40 bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
                       <div className="absolute inset-0 grid-bg opacity-20" />

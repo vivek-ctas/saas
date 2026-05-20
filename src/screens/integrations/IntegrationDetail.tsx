@@ -1,4 +1,7 @@
-import { useParams, Link, Navigate } from "react-router-dom";
+"use client";
+import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -14,11 +17,19 @@ const IntegrationDetail = () => {
   const integration = getIntegration(slug);
   const ref = useReveal<HTMLDivElement>();
 
-  if (!integration) return <Navigate to="/marketplaces" replace />;
+  const router = useRouter();
+  useEffect(() => {
+    if (!integration) {
+      router.push("/marketplaces");
+    }
+  }, [integration, router]);
 
+  if (!integration) {
+    return null;
+  }
   const { name, region, tone, icon: Icon, tagline, description,
-          hero: Hero, flow: Flow, detail: Detail,
-          features, highlights, stats } = integration;
+    hero: Hero, flow: Flow, detail: Detail,
+    features, highlights, stats } = integration;
 
   const related = INTEGRATIONS.filter(i => i.slug !== integration.slug).slice(0, 3);
 
@@ -34,7 +45,7 @@ const IntegrationDetail = () => {
           actions={
             <>
               <Button asChild size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
-                <Link to="/marketplaces"><ArrowLeft className="w-4 h-4 mr-1.5" /> All marketplaces</Link>
+                <Link href="/marketplaces"><ArrowLeft className="w-4 h-4 mr-1.5" /> All marketplaces</Link>
               </Button>
               <Button size="lg" className={`text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r ${tone} hover:opacity-95 border-0`}>
                 Connect {name}
@@ -158,7 +169,7 @@ const IntegrationDetail = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {related.map((r, i) => (
-                <Link key={r.slug} to={`/marketplaces/${r.slug}`} className="reveal block" style={{ transitionDelay: `${i * 80}ms` }}>
+                <Link key={r.slug} href={`/marketplaces/${r.slug}`} className="reveal block" style={{ transitionDelay: `${i * 80}ms` }}>
                   <Card className="hover-lift overflow-hidden border border-slate-100 h-full">
                     <div className={`h-2 bg-gradient-to-r ${r.tone}`} />
                     <CardContent className="p-6">
@@ -188,7 +199,7 @@ const IntegrationDetail = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="secondary" className="shadow-stripe-xl">Connect {name}</Button>
               <Button asChild size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20">
-                <Link to="/marketplaces">Browse all integrations</Link>
+                <Link href="/marketplaces">Browse all integrations</Link>
               </Button>
             </div>
           </div>

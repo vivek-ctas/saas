@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -6,7 +7,7 @@ import {
   Star, ShoppingBag, Smartphone, Monitor, Tablet, ArrowRight, Quote,
   Truck, Megaphone, Brain, Server, Workflow, Boxes, Store
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import  Link  from "next/link";
 import Layout from "@/components/Layout";
 import {
   BlobBackdrop, DashboardMockup, SellerHeroMockup, SyncIllustration,
@@ -153,7 +154,7 @@ const Home = () => {
                   AI Auto-Repricer is live! <span className="text-slate-500 font-normal">Trusted for Amazon, now for Walmart & Flipkart.</span>
                 </p>
               </div>
-              <Link to="/services" className="flex items-center gap-1 text-secondary font-bold text-sm hover:gap-2 transition-all whitespace-nowrap">
+              <Link href="/services" className="flex items-center gap-1 text-secondary font-bold text-sm hover:gap-2 transition-all whitespace-nowrap">
                 Learn more <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -242,7 +243,7 @@ const Home = () => {
             </div>
 
             <div className="mt-12 text-center reveal">
-              <Link to="/marketplaces">
+              <Link href="/marketplaces">
                 <Button size="lg" variant="outline" className="rounded-full px-7 border-slate-300 bg-white hover:bg-slate-50 hover:border-primary/40 group">
                   Explore all 80+ integrations
                   <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
@@ -280,7 +281,7 @@ const Home = () => {
                   </div>
                 ))}
               </div>
-              <Link to="/infrastructure">
+              <Link href="/infrastructure">
                 <Button size="lg" className="shadow-stripe-xl group">
                   See the architecture <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                 </Button>

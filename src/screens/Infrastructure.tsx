@@ -1,3 +1,4 @@
+"use client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -63,10 +64,10 @@ const Infrastructure = () => {
           title={<>Infrastructure that <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">doesn't blink.</span></>}
           subtitle="Isolated tenant pods, Kubernetes-native scaling, Kafka-driven events and a 99.99% SLA — the same architecture trusted by enterprises, available to every seller."
           visual={
-          <div className="scale-110 origin-center">
-          <InfraTopologyDiagram className="w-full h-auto" />
-          </div>
-            
+            <div className="scale-110 origin-center">
+              <InfraTopologyDiagram className="w-full h-auto" />
+            </div>
+
           }
           actions={
             <>
