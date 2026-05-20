@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
-import footerBackground from "@/assets/footer-background.jpg";
+import footerBackground from "@/assets/footer-background.webp";
 
 const Footer = () => {
   const footerLinks = {
@@ -59,6 +59,7 @@ const Footer = () => {
           alt="Footer background"
           fill
           className="object-cover opacity-20"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-slate-900/80"></div>
       </div>

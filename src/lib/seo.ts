@@ -4,12 +4,13 @@ import type { Metadata } from "next";
 export const SITE_NAME = "Ctasis";
 export const SITE_URL = "https://ctasis.com";
 export const SITE_DESCRIPTION =
-  "Ctasis is the AI-powered Marketplace OS trusted by 50,000+ multichannel sellers. Sync inventory, manage orders and automate repricing across Amazon, Walmart, eBay, Shopify and 50+ channels.";
+  "Manage all your marketplace accounts from one dashboard. Sync inventory, route orders, and analyze performance across Amazon, eBay, Walmart, Shopify and more";
 
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-default.png`; 
+// export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-default.png`; 
+export const DEFAULT_OG_IMAGE = `/ctas-logo.png`;
 
 // ─── Shared Twitter handle ──────────────────────────────────────────────────
-const TWITTER_HANDLE = "@ctasis_hq"; 
+// const TWITTER_HANDLE = "@ctasis_hq"; 
 
 // ─── Helper: build a canonical URL ─────────────────────────────────────────
 export function canonicalUrl(path: string) {
@@ -50,13 +51,13 @@ export function buildMetadata({
       type,
       images: [{ url: image, width: 1200, height: 630, alt: title }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: `${title} | ${SITE_NAME}`,
-      description,
-      site: TWITTER_HANDLE,
-      images: [image],
-    },
+    // twitter: {
+    //   card: "summary_large_image",
+    //   title: `${title} | ${SITE_NAME}`,
+    //   description,
+    //   site: TWITTER_HANDLE,
+    //   images: [image],
+    // },
     robots: noIndex
       ? { index: false, follow: false }
       : { index: true, follow: true, googleBot: { index: true, follow: true } },

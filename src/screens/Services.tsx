@@ -1,4 +1,5 @@
 "use client";
+import dynamic from "next/dynamic";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -9,12 +10,41 @@ import {
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
-import {
-  BlobBackdrop, AnalyticsIllustration, ServicesHeroMockup, OrderFlowDiagram,
-  WorkflowIllustration,
-  AIPipelineDiagram, RepricerStrategyChart, AnalyticsFlowDiagram,
-  AutomationBuilderDiagram
-} from "@/components/illustrations";
+
+// ─── Above-fold components: loaded immediately ───────────────────────────────
+import { BlobBackdrop, ServicesHeroMockup } from "@/components/illustrations";
+
+// ─── Below-fold diagrams: lazy-loaded to reduce initial JS bundle ────────────
+// Each dynamic import creates a separate chunk, loaded only when needed.
+const OrderFlowDiagram = dynamic(
+  () => import("@/components/illustrations").then((m) => ({ default: m.OrderFlowDiagram })),
+  { ssr: false, loading: () => <div className="w-full h-64 animate-pulse bg-slate-100 rounded-2xl" /> }
+);
+const AIPipelineDiagram = dynamic(
+  () => import("@/components/illustrations").then((m) => ({ default: m.AIPipelineDiagram })),
+  { ssr: false, loading: () => <div className="w-full h-64 animate-pulse bg-slate-100 rounded-2xl" /> }
+);
+const RepricerStrategyChart = dynamic(
+  () => import("@/components/illustrations").then((m) => ({ default: m.RepricerStrategyChart })),
+  { ssr: false, loading: () => <div className="w-full h-48 animate-pulse bg-slate-100 rounded-2xl" /> }
+);
+const AnalyticsFlowDiagram = dynamic(
+  () => import("@/components/illustrations").then((m) => ({ default: m.AnalyticsFlowDiagram })),
+  { ssr: false, loading: () => <div className="w-full h-64 animate-pulse bg-slate-100 rounded-2xl" /> }
+);
+const AnalyticsIllustration = dynamic(
+  () => import("@/components/illustrations").then((m) => ({ default: m.AnalyticsIllustration })),
+  { ssr: false, loading: () => <div className="w-full h-64 animate-pulse bg-slate-100 rounded-2xl" /> }
+);
+const WorkflowIllustration = dynamic(
+  () => import("@/components/illustrations").then((m) => ({ default: m.WorkflowIllustration })),
+  { ssr: false, loading: () => <div className="w-full h-64 animate-pulse bg-slate-100 rounded-2xl" /> }
+);
+const AutomationBuilderDiagram = dynamic(
+  () => import("@/components/illustrations").then((m) => ({ default: m.AutomationBuilderDiagram })),
+  { ssr: false, loading: () => <div className="w-full h-64 animate-pulse bg-slate-100 rounded-2xl" /> }
+);
+
 import { useReveal } from "@/hooks/use-reveal";
 
 const Services = () => {
@@ -153,7 +183,7 @@ const Services = () => {
           </div>
         </section>
 
-        {/* SELLER ANALYTICS — BigQuery flow */}
+        {/* SELLER ANALYTICS */}
         <section className="py-24 section-bg relative overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-30" />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -221,7 +251,7 @@ const Services = () => {
           </div>
         </section>
 
-        {/* SERVICES GRID — varied sizes */}
+        {/* SERVICES GRID */}
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal">
@@ -231,11 +261,9 @@ const Services = () => {
                 Pick the services that matter today. Add the rest when you're ready.
               </p>
             </div>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {services.map((s, i) => (
                 <Card key={i} className="reveal group relative overflow-hidden border border-slate-100 hover-lift bg-white" style={{ transitionDelay: `${(i % 6) * 60}ms` }}>
-                  {/* gradient halo on hover */}
                   <div className={`absolute -top-12 -right-12 w-40 h-40 rounded-full bg-gradient-to-br ${s.tone} opacity-10 group-hover:opacity-25 transition-opacity blur-2xl`} />
                   <CardHeader>
                     <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${s.tone} flex items-center justify-center shadow-stripe mb-4 group-hover:scale-110 transition-transform duration-300`}>
@@ -268,7 +296,7 @@ const Services = () => {
                 shaving days off delivery and 25% off shipping spend.
               </p>
               <div className="grid grid-cols-2 gap-4 mb-8">
-                {[{v:"-25%",l:"Shipping cost"},{v:"-2 days",l:"Delivery time"},{v:"40+",l:"Carriers"},{v:"99.8%",l:"Tracking accuracy"}].map((s,i)=>(
+                {[{ v: "-25%", l: "Shipping cost" }, { v: "-2 days", l: "Delivery time" }, { v: "40+", l: "Carriers" }, { v: "99.8%", l: "Tracking accuracy" }].map((s, i) => (
                   <div key={i} className="rounded-xl bg-white p-4 border border-slate-100">
                     <div className="text-2xl font-bold text-secondary">{s.v}</div>
                     <div className="text-sm text-slate-600">{s.l}</div>
@@ -281,7 +309,6 @@ const Services = () => {
             </div>
           </div>
         </section>
-
 
         {/* AUTOMATION + NOTIFICATIONS + REPORTS */}
         <section className="py-24 bg-white">
@@ -301,7 +328,6 @@ const Services = () => {
             <div className="reveal rounded-3xl bg-gradient-to-br from-slate-50 to-white p-4 sm:p-6 border border-slate-100 shadow-stripe">
               <AutomationBuilderDiagram className="w-full h-auto" />
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
               {[
                 { icon: Zap, title: "Trigger on anything", desc: "Buy Box drops, stockouts, refund spikes, margin floors, competitor moves — every event in Ctasis is a trigger you can subscribe to.", tone: "from-primary to-indigo-600" },
@@ -322,7 +348,6 @@ const Services = () => {
             </div>
           </div>
         </section>
-
 
         {/* CTA */}
         <section className="py-24 relative overflow-hidden gradient-animated">
