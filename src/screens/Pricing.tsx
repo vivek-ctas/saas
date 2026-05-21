@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -69,10 +70,13 @@ const Pricing = () => {
               <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
                 Compare plans
               </Button>
-              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
+              <Link
+                href="/checkout"
+                className="inline-flex items-center justify-center rounded-full text-base px-8 h-12 shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0 text-white"
+              >
                 Start Free Trial
                 <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              </Link>
             </>
           }
         />
@@ -83,11 +87,10 @@ const Pricing = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
               {plans.map((plan, i) => (
                 <Card key={i}
-                  className={`reveal relative overflow-hidden p-2 ${
-                    plan.popular
-                      ? "border-2 border-primary shadow-stripe-2xl scale-100 lg:scale-105 bg-gradient-to-br from-white via-accent/40 to-pink-50"
-                      : "border border-slate-200 hover-lift"
-                  }`}
+                  className={`reveal relative overflow-hidden p-2 ${plan.popular
+                    ? "border-2 border-primary shadow-stripe-2xl scale-100 lg:scale-105 bg-gradient-to-br from-white via-accent/40 to-pink-50"
+                    : "border border-slate-200 hover-lift"
+                    }`}
                   style={{ transitionDelay: `${i * 120}ms` }}>
                   {plan.popular && (
                     <>
@@ -108,20 +111,18 @@ const Pricing = () => {
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-5">
-                    <Button
-                      size="lg"
-                      variant={plan.popular ? "default" : "outline"}
-                      className={`w-full ${plan.popular ? "shadow-stripe-xl" : ""}`}
+                    <Link
+                      href="/checkout"
+                      className={`inline-flex w-full items-center justify-center gap-2 rounded-lg text-base font-medium h-12 px-8 ${plan.popular ? "bg-primary text-primary-foreground shadow-stripe-xl" : "border border-border bg-background hover:bg-accent hover:text-accent-foreground shadow-stripe hover:shadow-stripe-xl"}`}
                     >
                       {plan.cta}
                       <ArrowRight className="w-4 h-4 ml-1" />
-                    </Button>
+                    </Link>
                     <ul className="space-y-3 pt-2">
                       {plan.features.map((f, j) => (
                         <li key={j} className="flex items-start gap-3 text-sm">
-                          <span className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
-                            plan.popular ? "bg-primary text-white" : "bg-accent text-primary"
-                          }`}>
+                          <span className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${plan.popular ? "bg-primary text-white" : "bg-accent text-primary"
+                            }`}>
                             <Check className="w-3 h-3" />
                           </span>
                           <span className="text-slate-700">{f}</span>
@@ -182,7 +183,7 @@ const Pricing = () => {
             </div>
             <div className="reveal delay-200">
               <div className="flex gap-1 mb-6">
-                {[...Array(5)].map((_,i) => <Star key={i} className="w-5 h-5 fill-secondary text-secondary" />)}
+                {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-secondary text-secondary" />)}
               </div>
               <Quote className="w-10 h-10 text-primary mb-4" />
               <p className="text-2xl font-medium text-slate-900 leading-relaxed mb-6">
