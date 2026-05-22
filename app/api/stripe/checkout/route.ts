@@ -5,7 +5,6 @@ export async function POST(req: Request) {
         const body = await req.json().catch(() => ({}));
 
         const origin = req.headers.get('origin') || req.headers.get('referer') || 'http://localhost:3000';
-        console.log('origin', origin)
 
         if (!process.env.STRIPE_SECRET_KEY) {
             return new Response(JSON.stringify({ error: 'Missing STRIPE_SECRET_KEY in environment' }), { status: 500 });
@@ -31,8 +30,8 @@ export async function POST(req: Request) {
             metadata: {
                 payment_method: method,
             },
-            success_url: `${origin}/payment/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${origin}/payment/checkout/cancel`,
+            success_url: `${origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${origin}/checkout/cancel`,
         });
 
         return new Response(JSON.stringify({ url: session.url }), { status: 200 });

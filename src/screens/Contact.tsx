@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -6,14 +7,84 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, MapPin, Phone, Clock, ArrowRight, MessageCircle, Headphones, BookOpen, Code, Video } from "lucide-react";
+import { Mail, MapPin, Phone, Clock, ArrowRight, MessageCircle, Headphones, BookOpen, Code, Video, CheckCircle2, Loader2 } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
-import { BlobBackdrop, GlobeIllustration, ContactMapIllustration } from "@/components/illustrations";
+import { BlobBackdrop, ContactMapIllustration } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
+import { apiFetch } from "@/lib/api";
+
+interface ContactForm {
+  first_name: string;
+  last_name: string;
+  email: string;
+  company: string;
+  inquiry_type: string;
+  message: string;
+}
+
+const INITIAL_FORM: ContactForm = {
+  first_name: "",
+  last_name: "",
+  email: "",
+  company: "",
+  inquiry_type: "",
+  message: "",
+};
 
 const Contact = () => {
   const ref = useReveal<HTMLDivElement>();
+
+  const [form, setForm] = useState<ContactForm>(INITIAL_FORM);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleChange = (field: keyof ContactForm, value: string) => {
+    setForm((prev) => ({ ...prev, [field]: value }));
+    setError(null);
+  };
+
+  const handleSubmit = async () => {
+    // Basic client-side validation
+    if (!form.first_name.trim() || !form.last_name.trim()) {
+      setError("Please enter your full name.");
+      return;
+    }
+    if (!form.email.trim()) {
+      setError("Please enter your email address.");
+      return;
+    }
+    if (!form.message.trim() || form.message.trim().length < 10) {
+      setError("Message must be at least 10 characters.");
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    const { data, error: apiError } = await apiFetch("/v1/contact/submit", {
+      method: "POST",
+      body: JSON.stringify({
+        first_name: form.first_name.trim(),
+        last_name: form.last_name.trim(),
+        email: form.email.trim(),
+        company: form.company.trim() || undefined,
+        inquiry_type: form.inquiry_type || "general",
+        message: form.message.trim(),
+      }),
+    });
+
+    setLoading(false);
+
+    if (apiError) {
+      setError(apiError);
+      return;
+    }
+
+    setSuccess(true);
+    setForm(INITIAL_FORM);
+  };
 
   return (
     <Layout>
@@ -75,46 +146,113 @@ const Contact = () => {
                   <p className="text-slate-600">We'll respond within 24 hours, usually faster.</p>
                 </CardHeader>
                 <CardContent className="relative space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName">First name</Label>
-                      <Input id="firstName" placeholder="John" />
+                  {success ? (
+                    <div className="flex flex-col items-center justify-center py-12 text-center gap-4">
+                      <CheckCircle2 className="w-16 h-16 text-primary" />
+                      <h3 className="text-2xl font-bold text-slate-900">Message sent!</h3>
+                      <p className="text-slate-600 max-w-sm">
+                        Thank you for reaching out. Our team will get back to you within 24 hours.
+                      </p>
+                      <Button
+                        variant="outline"
+                        onClick={() => setSuccess(false)}
+                        className="mt-2"
+                      >
+                        Send another message
+                      </Button>
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName">Last name</Label>
-                      <Input id="lastName" placeholder="Doe" />
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input id="email" type="email" placeholder="john@example.com" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="company">Company</Label>
-                      <Input id="company" placeholder="Optional" />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="inquiry">Inquiry type</Label>
-                    <Select>
-                      <SelectTrigger><SelectValue placeholder="Select inquiry type" /></SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="sales">Sales Inquiry</SelectItem>
-                        <SelectItem value="support">Technical Support</SelectItem>
-                        <SelectItem value="partnership">Partnership</SelectItem>
-                        <SelectItem value="general">General Question</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea id="message" placeholder="Tell us how we can help…" className="min-h-[140px]" />
-                  </div>
-                  <Button className="w-full shadow-stripe-xl group" size="lg">
-                    Send message
-                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </Button>
+                  ) : (
+                    <>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="firstName">First name</Label>
+                          <Input
+                            id="firstName"
+                            placeholder="John"
+                            value={form.first_name}
+                            onChange={(e) => handleChange("first_name", e.target.value)}
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="lastName">Last name</Label>
+                          <Input
+                            id="lastName"
+                            placeholder="Doe"
+                            value={form.last_name}
+                            onChange={(e) => handleChange("last_name", e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="email">Email</Label>
+                          <Input
+                            id="email"
+                            type="email"
+                            placeholder="john@example.com"
+                            value={form.email}
+                            onChange={(e) => handleChange("email", e.target.value)}
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="company">Company</Label>
+                          <Input
+                            id="company"
+                            placeholder="Optional"
+                            value={form.company}
+                            onChange={(e) => handleChange("company", e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="inquiry">Inquiry type</Label>
+                        <Select
+                          value={form.inquiry_type}
+                          onValueChange={(val) => handleChange("inquiry_type", val)}
+                        >
+                          <SelectTrigger><SelectValue placeholder="Select inquiry type" /></SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="sales">Sales Inquiry</SelectItem>
+                            <SelectItem value="support">Technical Support</SelectItem>
+                            <SelectItem value="partnership">Partnership</SelectItem>
+                            <SelectItem value="general">General Question</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="message">Message</Label>
+                        <Textarea
+                          id="message"
+                          placeholder="Tell us how we can help…"
+                          className="min-h-[140px]"
+                          value={form.message}
+                          onChange={(e) => handleChange("message", e.target.value)}
+                        />
+                      </div>
+
+                      {error && (
+                        <p className="text-sm text-red-500 bg-red-50 border border-red-100 rounded-lg px-4 py-3">
+                          {error}
+                        </p>
+                      )}
+
+                      <Button
+                        className="w-full shadow-stripe-xl group"
+                        size="lg"
+                        onClick={handleSubmit}
+                        disabled={loading}
+                      >
+                        {loading ? (
+                          <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Sending…</>
+                        ) : (
+                          <>
+                            Send message
+                            <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                          </>
+                        )}
+                      </Button>
+                    </>
+                  )}
                 </CardContent>
               </Card>
 
@@ -126,7 +264,7 @@ const Contact = () => {
                     <h3 className="text-2xl font-bold">Reach our team</h3>
                     {[
                       { icon: Mail, title: "Email", lines: ["info@ctasis.com"] },
-                      { icon: Phone, title: "Phone", lines: ["info@ctasis.com", "Mon–Fri · 9–6 EST"] },
+                      { icon: Phone, title: "Phone", lines: ["+91 7948993409", "Mon–Fri · 9–6 EST"] },
                       { icon: MapPin, title: "HQ", lines: ["Ahmedabad, Gujarat", "India · 380015"] },
                       { icon: Clock, title: "Hours", lines: ["24/7 chat for Pro+", "Email · always open"] }
                     ].map((b, i) => (

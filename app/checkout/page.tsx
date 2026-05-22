@@ -1,8 +1,8 @@
-import CheckoutPage from "../../src/screens/payment/checkout/page";
+import CheckoutPage from "@/screens/payment/checkout/page";
 export default function Page() {
-    return (
-        <>
-            <CheckoutPage />
-        </>
-    );
+  return (
+    <>
+      <CheckoutPage />
+    </>
+  );
 }
