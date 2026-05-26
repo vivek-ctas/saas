@@ -1,90 +1,25 @@
 "use client";
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Mail, MapPin, Phone, Clock, ArrowRight, MessageCircle, Headphones, BookOpen, Code, Video, CheckCircle2, Loader2 } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import { BlobBackdrop, ContactMapIllustration } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
-import { apiFetch } from "@/lib/api";
 
-interface ContactForm {
-  first_name: string;
-  last_name: string;
-  email: string;
-  company: string;
-  inquiry_type: string;
-  message: string;
-}
-
-const INITIAL_FORM: ContactForm = {
-  first_name: "",
-  last_name: "",
-  email: "",
-  company: "",
-  inquiry_type: "",
-  message: "",
-};
+// ── Contact-specific hooks ───────────────────────────────────────────────
+import { useCompanyContact } from "@/hooks/use-company-contact";
+import { useContactForm } from "@/hooks/use-contact-form";
 
 const Contact = () => {
   const ref = useReveal<HTMLDivElement>();
 
-  const [form, setForm] = useState<ContactForm>(INITIAL_FORM);
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const handleChange = (field: keyof ContactForm, value: string) => {
-    setForm((prev) => ({ ...prev, [field]: value }));
-    setError(null);
-  };
-
-  const handleSubmit = async () => {
-    // Basic client-side validation
-    if (!form.first_name.trim() || !form.last_name.trim()) {
-      setError("Please enter your full name.");
-      return;
-    }
-    if (!form.email.trim()) {
-      setError("Please enter your email address.");
-      return;
-    }
-    if (!form.message.trim() || form.message.trim().length < 10) {
-      setError("Message must be at least 10 characters.");
-      return;
-    }
-
-    setLoading(true);
-    setError(null);
-
-    const { data, error: apiError } = await apiFetch("/v1/contact/submit", {
-      method: "POST",
-      body: JSON.stringify({
-        first_name: form.first_name.trim(),
-        last_name: form.last_name.trim(),
-        email: form.email.trim(),
-        company: form.company.trim() || undefined,
-        inquiry_type: form.inquiry_type || "general",
-        message: form.message.trim(),
-      }),
-    });
-
-    setLoading(false);
-
-    if (apiError) {
-      setError(apiError);
-      return;
-    }
-
-    setSuccess(true);
-    setForm(INITIAL_FORM);
-  };
+  const { companyData } = useCompanyContact();
+  const { form, loading, success, error, handleChange, handleSubmit, resetForm } = useContactForm();
 
   return (
     <Layout>
@@ -113,9 +48,9 @@ const Contact = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { icon: Mail, title: "Email us", value: "info@ctasis.com", note: "General & sales" },
+                { icon: Mail, title: "Email us", value: companyData?.email || "", note: "General & sales" },
                 { icon: Headphones, title: "Live chat", value: "Available 24/7", note: "For Pro & Enterprise" },
-                { icon: Phone, title: "Call us", value: "+91 7948993409", note: "Mon–Fri · 9–6 EST" }
+                { icon: Phone, title: "Call us", value: companyData?.phone || "", note: "Mon–Fri · 9–6 EST" }
               ].map((c, i) => (
                 <Card key={i} className="reveal hover-lift group" style={{ transitionDelay: `${i * 100}ms` }}>
                   <CardContent className="p-6 flex items-start gap-4">
@@ -153,11 +88,7 @@ const Contact = () => {
                       <p className="text-slate-600 max-w-sm">
                         Thank you for reaching out. Our team will get back to you within 24 hours.
                       </p>
-                      <Button
-                        variant="outline"
-                        onClick={() => setSuccess(false)}
-                        className="mt-2"
-                      >
+                      <Button variant="outline" onClick={resetForm} className="mt-2">
                         Send another message
                       </Button>
                     </div>
@@ -263,10 +194,10 @@ const Contact = () => {
                   <CardContent className="relative p-8 space-y-6">
                     <h3 className="text-2xl font-bold">Reach our team</h3>
                     {[
-                      { icon: Mail, title: "Email", lines: ["info@ctasis.com"] },
-                      { icon: Phone, title: "Phone", lines: ["+91 7948993409", "Mon–Fri · 9–6 EST"] },
-                      { icon: MapPin, title: "HQ", lines: ["Ahmedabad, Gujarat", "India · 380015"] },
-                      { icon: Clock, title: "Hours", lines: ["24/7 chat for Pro+", "Email · always open"] }
+                      { icon: Mail, title: "Email", lines: [companyData?.email || ""] },
+                      { icon: Phone, title: "Phone", lines: [companyData?.phone || "", "Mon–Fri · 9–6 EST"] },
+                      { icon: MapPin, title: "HQ", lines: [companyData?.address || "", companyData?.postal_code || ""] },
+                      { icon: Clock, title: "Hours", lines: [companyData?.support_hours || "", companyData?.email_hours || ""] },
                     ].map((b, i) => (
                       <div key={i} className="flex gap-4">
                         <div className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur flex items-center justify-center flex-shrink-0">
