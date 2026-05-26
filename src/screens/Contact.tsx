@@ -4,16 +4,22 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, MapPin, Phone, Clock, ArrowRight, MessageCircle, Headphones, BookOpen, Code, Video } from "lucide-react";
+import { Mail, MapPin, Phone, Clock, ArrowRight, MessageCircle, Headphones, BookOpen, Code, Video, CheckCircle2, Loader2 } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
-import { BlobBackdrop, GlobeIllustration, ContactMapIllustration } from "@/components/illustrations";
+import { BlobBackdrop, ContactMapIllustration } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
+
+// ── Contact-specific hooks ───────────────────────────────────────────────
+import { useCompanyContact } from "@/hooks/use-company-contact";
+import { useContactForm } from "@/hooks/use-contact-form";
 
 const Contact = () => {
   const ref = useReveal<HTMLDivElement>();
+
+  const { companyData } = useCompanyContact();
+  const { form, loading, success, error, handleChange, handleSubmit, resetForm } = useContactForm();
 
   return (
     <Layout>
@@ -42,9 +48,9 @@ const Contact = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { icon: Mail, title: "Email us", value: "info@ctasis.com", note: "General & sales" },
+                { icon: Mail, title: "Email us", value: companyData?.email || "", note: "General & sales" },
                 { icon: Headphones, title: "Live chat", value: "Available 24/7", note: "For Pro & Enterprise" },
-                { icon: Phone, title: "Call us", value: "+91 7948993409", note: "Mon–Fri · 9–6 EST" }
+                { icon: Phone, title: "Call us", value: companyData?.phone || "", note: "Mon–Fri · 9–6 EST" }
               ].map((c, i) => (
                 <Card key={i} className="reveal hover-lift group" style={{ transitionDelay: `${i * 100}ms` }}>
                   <CardContent className="p-6 flex items-start gap-4">
@@ -75,46 +81,109 @@ const Contact = () => {
                   <p className="text-slate-600">We'll respond within 24 hours, usually faster.</p>
                 </CardHeader>
                 <CardContent className="relative space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName">First name</Label>
-                      <Input id="firstName" placeholder="John" />
+                  {success ? (
+                    <div className="flex flex-col items-center justify-center py-12 text-center gap-4">
+                      <CheckCircle2 className="w-16 h-16 text-primary" />
+                      <h3 className="text-2xl font-bold text-slate-900">Message sent!</h3>
+                      <p className="text-slate-600 max-w-sm">
+                        Thank you for reaching out. Our team will get back to you within 24 hours.
+                      </p>
+                      <Button variant="outline" onClick={resetForm} className="mt-2">
+                        Send another message
+                      </Button>
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName">Last name</Label>
-                      <Input id="lastName" placeholder="Doe" />
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input id="email" type="email" placeholder="john@example.com" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="company">Company</Label>
-                      <Input id="company" placeholder="Optional" />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="inquiry">Inquiry type</Label>
-                    <Select>
-                      <SelectTrigger><SelectValue placeholder="Select inquiry type" /></SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="sales">Sales Inquiry</SelectItem>
-                        <SelectItem value="support">Technical Support</SelectItem>
-                        <SelectItem value="partnership">Partnership</SelectItem>
-                        <SelectItem value="general">General Question</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea id="message" placeholder="Tell us how we can help…" className="min-h-[140px]" />
-                  </div>
-                  <Button className="w-full shadow-stripe-xl group" size="lg">
-                    Send message
-                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </Button>
+                  ) : (
+                    <>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="firstName">First name</Label>
+                          <Input
+                            id="firstName"
+                            placeholder="John"
+                            value={form.first_name}
+                            onChange={(e) => handleChange("first_name", e.target.value)}
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="lastName">Last name</Label>
+                          <Input
+                            id="lastName"
+                            placeholder="Doe"
+                            value={form.last_name}
+                            onChange={(e) => handleChange("last_name", e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="email">Email</Label>
+                          <Input
+                            id="email"
+                            type="email"
+                            placeholder="john@example.com"
+                            value={form.email}
+                            onChange={(e) => handleChange("email", e.target.value)}
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="company">Company</Label>
+                          <Input
+                            id="company"
+                            placeholder="Optional"
+                            value={form.company}
+                            onChange={(e) => handleChange("company", e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="inquiry">Inquiry type</Label>
+                        <Select
+                          value={form.inquiry_type}
+                          onValueChange={(val) => handleChange("inquiry_type", val)}
+                        >
+                          <SelectTrigger><SelectValue placeholder="Select inquiry type" /></SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="sales">Sales Inquiry</SelectItem>
+                            <SelectItem value="support">Technical Support</SelectItem>
+                            <SelectItem value="partnership">Partnership</SelectItem>
+                            <SelectItem value="general">General Question</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="message">Message</Label>
+                        <Textarea
+                          id="message"
+                          placeholder="Tell us how we can help…"
+                          className="min-h-[140px]"
+                          value={form.message}
+                          onChange={(e) => handleChange("message", e.target.value)}
+                        />
+                      </div>
+
+                      {error && (
+                        <p className="text-sm text-red-500 bg-red-50 border border-red-100 rounded-lg px-4 py-3">
+                          {error}
+                        </p>
+                      )}
+
+                      <Button
+                        className="w-full shadow-stripe-xl group"
+                        size="lg"
+                        onClick={handleSubmit}
+                        disabled={loading}
+                      >
+                        {loading ? (
+                          <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Sending…</>
+                        ) : (
+                          <>
+                            Send message
+                            <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                          </>
+                        )}
+                      </Button>
+                    </>
+                  )}
                 </CardContent>
               </Card>
 
@@ -125,10 +194,10 @@ const Contact = () => {
                   <CardContent className="relative p-8 space-y-6">
                     <h3 className="text-2xl font-bold">Reach our team</h3>
                     {[
-                      { icon: Mail, title: "Email", lines: ["info@ctasis.com"] },
-                      { icon: Phone, title: "Phone", lines: ["info@ctasis.com", "Mon–Fri · 9–6 EST"] },
-                      { icon: MapPin, title: "HQ", lines: ["Ahmedabad, Gujarat", "India · 380015"] },
-                      { icon: Clock, title: "Hours", lines: ["24/7 chat for Pro+", "Email · always open"] }
+                      { icon: Mail, title: "Email", lines: [companyData?.email || ""] },
+                      { icon: Phone, title: "Phone", lines: [companyData?.phone || "", "Mon–Fri · 9–6 EST"] },
+                      { icon: MapPin, title: "HQ", lines: [companyData?.address || "", companyData?.postal_code || ""] },
+                      { icon: Clock, title: "Hours", lines: [companyData?.support_hours || "", companyData?.email_hours || ""] },
                     ].map((b, i) => (
                       <div key={i} className="flex gap-4">
                         <div className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur flex items-center justify-center flex-shrink-0">
