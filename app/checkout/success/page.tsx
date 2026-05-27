@@ -1,8 +1,14 @@
-import SuccessPage from '@/screens/payment/checkout/success/page';
+import { Suspense }     from 'react';
+import CheckoutSuccessPage from '@/screens/checkout/success/page';
+
+export const metadata = {
+  title: 'Payment Successful — Ctasis',
+};
+
 export default function Page() {
-    return (
-        <>
-            <SuccessPage />
-        </>
-    );
+  return (
+    <Suspense>
+      <CheckoutSuccessPage />
+    </Suspense>
+  );
 }

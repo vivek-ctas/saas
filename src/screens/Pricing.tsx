@@ -1,34 +1,29 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import {
+  Check, X, Sparkles, ArrowRight, Quote, Star, Loader2, AlertCircle,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from '@/components/ui/accordion';
-import {
-  Check, X, Sparkles, ArrowRight, Quote, Star, Loader2, AlertCircle,
-} from 'lucide-react';
 import Layout from '@/components/Layout';
 import PageHero from '@/components/PageHero';
-import {
-  BlobBackdrop, AnalyticsIllustration, PricingCalculatorMockup,
-} from '@/components/illustrations';
+import { BlobBackdrop, AnalyticsIllustration, PricingCalculatorMockup } from '@/components/illustrations';
 import { useReveal } from '@/hooks/use-reveal';
 
 // ── New imports (pricing API integration) ─────────────────────────────────
 import { usePlans } from '@/hooks/use-plans';
-import { useRazorpay } from '@/hooks/use-razorpay';
-import { createRazorpayOrder, verifyRazorpayPayment } from '@/services/payment.service';
-import PaymentMethodModal, { type PaymentMethodId } from '@/components/PaymentMethodModal';
+import { useCountry } from '@/hooks/use-country';
+import { useCheckout } from '@/hooks/use-checkout';
+
+import CheckoutModal from '@/components/CheckoutModal';
 import type { RazorpayPlan } from '@/types/payment.types';
 
-// ── Razorpay key from env ─────────────────────────────────────────────────
-const RAZORPAY_KEY = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || '';
-
-// ── Static content (unchanged from your original file) ────────────────────
+// ── Static content ────────────────────
 const COMPARE = [
   ['Marketplace connections', '3', '10', 'Unlimited'],
   ['Product listings', '5,000', '25,000', 'Unlimited'],
@@ -92,96 +87,44 @@ function getCtaLabel(plan: RazorpayPlan): string {
   if (plan.cta_label) return plan.cta_label;
   if (plan.is_custom_pricing) return 'Contact Sales';
   if (plan.trial_days > 0) return 'Start Free Trial';
-  return 'Buy Now';
+  return 'Get Started';
 }
 
 // ── Component ──────────────────────────────────────────────────────────────
 const Pricing = () => {
   const ref = useReveal<HTMLDivElement>();
-  const router = useRouter();
-  const { openCheckout } = useRazorpay();
 
-  // Fetch plans from backend
+  // Plans from backend
   const { plans, loading: plansLoading, error: plansError } = usePlans();
 
-  // Modal state
-  const [selectedPlan, setSelectedPlan] = useState<RazorpayPlan | null>(null);
-  const [payLoading, setPayLoading] = useState(false);
-  const [payError, setPayError] = useState<string | null>(null);
+  // Country detection (auto-selects gateway)
+  const { country, detecting, gateway: detectedGateway } = useCountry();
+
+  // Which plan the user clicked — drives modal
+  const [activePlan, setActivePlan] = useState<RazorpayPlan | null>(null);
+
+  // Checkout state machine
+  const checkout = useCheckout(detectedGateway);
 
   // ── Open modal when user clicks a plan card ────────────────────────────
   function handlePlanClick(plan: RazorpayPlan) {
-    // Enterprise / Custom pricing → go to contact
     if (plan.is_custom_pricing) {
-      router.push('/contact');
+      window.location.href = '/contact';
       return;
     }
-    // Must be logged in
-    const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;
-    if (!token) {
-      router.push('/login?redirect=/pricing');
-      return;
+    // Pre-fill country from detection
+    if (country) {
+      checkout.setForm('country', country.code);
+      checkout.setForm('country_name', country.name);
+      checkout.setGateway(country.defaultGateway);
     }
-    setPayError(null);
-    setSelectedPlan(plan);
+    setActivePlan(plan);
   }
 
-  // ── Called when user picks a payment method in modal and clicks Pay ────
-  async function handleProceed(methodId: PaymentMethodId) {
-    if (!selectedPlan) return;
-
-    // Stripe → future, do nothing for now
-    if (methodId === 'stripe') return;
-
-    setPayLoading(true);
-    setPayError(null);
-
-    try {
-      // STEP 1 — create order on backend
-      const { data: order, error: orderErr } = await createRazorpayOrder({ plan_id: selectedPlan._id });
-      if (orderErr || !order) throw new Error(orderErr || 'Could not create order. Please try again.');
-
-      // STEP 2 — open Razorpay Checkout (handles GPay/PhonePe/Paytm/UPI/Cards inside)
-      await openCheckout({
-        key: RAZORPAY_KEY,
-        amount: order.amount,           // paise
-        currency: order.currency,
-        name: 'Ctasis',
-        description: `${selectedPlan.name} Plan${order.trial_days > 0 ? ` — ${order.trial_days}-day trial` : ''}`,
-        order_id: order.razorpay_order_id,
-        theme: { color: '#6366f1' },
-
-        // STEP 3 — verify on backend after payment success
-        handler: async (response) => {
-          try {
-            const { data: verified, error: verifyErr } = await verifyRazorpayPayment({
-              razorpay_order_id: response.razorpay_order_id,
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_signature: response.razorpay_signature,
-            });
-            if (verifyErr) throw new Error(verifyErr);
-            setSelectedPlan(null);
-            router.push(
-              `/payment/success?plan=${selectedPlan.slug}&msg=${encodeURIComponent(verified?.plan_name ? `${verified.plan_name} activated!` : 'Plan activated!')}`
-            );
-          } catch (e: any) {
-            setPayError(e?.message || 'Payment verification failed. Contact support.');
-            setPayLoading(false);
-          }
-        },
-
-        modal: {
-          ondismiss: () => {
-            setPayLoading(false);
-          },
-        },
-      });
-    } catch (err: any) {
-      setPayError(err?.message || 'Something went wrong. Please try again.');
-      setPayLoading(false);
-    }
+  function handleCloseModal() {
+    setActivePlan(null);
+    checkout.reset();
   }
-
   // ── Render ───────────────────────────────────────────────────────────────
   return (
     <Layout>
@@ -223,14 +166,6 @@ const Pricing = () => {
         <section id="plans" className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            {/* Pay error (shown above cards) */}
-            {payError && (
-              <div className="mb-8 flex items-center gap-3 rounded-xl bg-red-50 border border-red-200 px-5 py-4 text-red-700">
-                <AlertCircle className="w-5 h-5 flex-shrink-0" />
-                <p className="text-sm font-medium">{payError}</p>
-              </div>
-            )}
-
             {/* Loading */}
             {plansLoading && (
               <div className="flex flex-col items-center justify-center py-24 gap-4">
@@ -248,21 +183,15 @@ const Pricing = () => {
               </div>
             )}
 
-            {/* Empty */}
-            {!plansLoading && !plansError && plans.length === 0 && (
-              <p className="text-center text-slate-500 py-24">No plans available right now. Check back soon.</p>
-            )}
-
             {/* Plan cards */}
             {!plansLoading && !plansError && plans.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                 {plans.map((plan, i) => (
-
                   <Card
                     key={plan._id}
-                    className={`relative overflow-hidden p-2 ${plan.is_popular
-                        ? 'border-2 border-primary shadow-stripe-2xl scale-100 lg:scale-105 bg-gradient-to-br from-white via-accent/40 to-pink-50'
-                        : 'border border-slate-200 hover-lift'
+                    className={`relative overflow-hidden p-2 transition-all ${plan.is_popular
+                      ? 'border-2 border-primary shadow-stripe-2xl lg:scale-105 bg-gradient-to-br from-white via-accent/40 to-pink-50'
+                      : 'border border-slate-200 hover-lift'
                       }`}
                     style={{ transitionDelay: `${i * 120}ms` }}
                   >
@@ -296,15 +225,16 @@ const Pricing = () => {
                     <CardContent className="space-y-5">
                       {/* CTA button — opens modal */}
                       <button
-                        type="button"
                         onClick={() => handlePlanClick(plan)}
-                        className={`inline-flex w-full items-center justify-center gap-2 rounded-lg text-base font-medium h-12 px-8 transition-all ${plan.is_popular
-                          ? 'bg-primary text-primary-foreground shadow-stripe-xl hover:opacity-90'
-                          : 'border border-border bg-background hover:bg-accent hover:text-accent-foreground shadow-stripe hover:shadow-stripe-xl'
-                          }`}
+                        disabled={detecting}
+                        className={`w-full py-3 rounded-2xl text-sm font-semibold transition-all ${plan.is_popular
+                          ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-stripe hover:opacity-90'
+                          : plan.is_custom_pricing
+                            ? 'bg-slate-900 text-white hover:bg-slate-700'
+                            : 'border-2 border-primary text-primary hover:bg-primary hover:text-white'
+                          } disabled:opacity-60 disabled:cursor-not-allowed`}
                       >
-                        {getCtaLabel(plan)}
-                        <ArrowRight className="w-4 h-4 ml-1" />
+                        {detecting ? 'Detecting location…' : getCtaLabel(plan)}
                       </button>
 
                       <ul className="space-y-3 pt-2">
@@ -325,6 +255,21 @@ const Pricing = () => {
                 ))}
               </div>
             )}
+            {/* Trust indicators below plans */}
+            {!plansLoading && !plansError && (
+              <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-slate-500">
+                {[
+                  '🔒 No account needed',
+                  '🇮🇳 Razorpay · UPI · Cards for India',
+                  '🌍 Stripe for international',
+                  '✅ Instant activation',
+                  '↩️ Cancel anytime',
+                ].map((item, i) => (
+                  <span key={i} className="flex items-center gap-1">{item}</span>
+                ))}
+              </div>
+            )}
+
           </div>
         </section>
 
@@ -482,13 +427,26 @@ const Pricing = () => {
         </section>
       </div>
 
-      {/* ── PAYMENT METHOD MODAL (rendered at root so no z-index issues) ── */}
-      {selectedPlan && (
-        <PaymentMethodModal
-          plan={selectedPlan}
-          loading={payLoading}
-          onClose={() => { if (!payLoading) setSelectedPlan(null); }}
-          onProceed={handleProceed}
+      {/* ── CHECKOUT MODAL (portal-like, above everything) ── */}
+      {activePlan && (
+        <CheckoutModal
+          plan={activePlan}
+          step={checkout.step}
+          form={checkout.form}
+          gateway={checkout.gateway}
+          billingCycle={checkout.billingCycle}
+          leadData={checkout.leadData}
+          loading={checkout.loading}
+          error={checkout.error}
+          isIndian={country?.isIndia ?? false}
+
+          onClose={handleCloseModal}
+          onFormChange={checkout.setForm}
+          onGateway={checkout.setGateway}
+          onBilling={checkout.setBillingCycle}
+          onSubmitForm={() => checkout.submitForm(activePlan)}
+          onStartPayment={() => checkout.startPayment(activePlan)}
+          onBack={() => checkout.reset()}
         />
       )}
     </Layout>
