@@ -23,6 +23,52 @@ import { useCheckout } from '@/hooks/use-checkout';
 import CheckoutModal from '@/components/CheckoutModal';
 import type { RazorpayPlan } from '@/types/payment.types';
 
+// ── Backend plan response type (raw format from API) ───────────────────────
+interface BackendPlan {
+  _id: string;
+  name: string;
+  slug: string;
+  desc: string;
+  price_cents: number;
+  currency: string;
+  interval: 'month' | 'year';
+  interval_count: number;
+  trial_days: number;
+  marketing_features: string[];
+  features: string[];
+  is_popular: boolean;
+  cta_label: string;
+  sort_order: number;
+  status: number;
+  is_custom_plan: boolean;
+  metadata: Record<string, any>;
+  planIdStr: string;
+}
+
+// ── Transform backend plan to normalized format ────────────────────────────
+function normalizePlan(plan: BackendPlan): RazorpayPlan {
+  const monthlyPrice = plan.price_cents / 100;
+  const durationDays = plan.interval === 'year' ? 365 * plan.interval_count : 30 * plan.interval_count;
+
+  return {
+    _id: plan._id,
+    name: plan.name,
+    slug: plan.slug,
+    description: plan.desc,
+    currency: plan.currency,
+    monthly_price: monthlyPrice,
+    yearly_price: plan.interval === 'year' ? monthlyPrice : monthlyPrice * 12,
+    duration_days: durationDays,
+    trial_days: plan.trial_days,
+    features: plan.marketing_features && plan.marketing_features.length > 0 ? plan.marketing_features : plan.features,
+    is_popular: plan.is_popular,
+    is_custom_pricing: plan.is_custom_plan,
+    cta_label: plan.cta_label || (plan.is_custom_plan ? 'Contact Sales' : plan.trial_days > 0 ? 'Start Free Trial' : 'Get Started'),
+    sort_order: plan.sort_order,
+    status: plan.status,
+  };
+}
+
 // ── Static content ────────────────────
 const COMPARE = [
   ['Marketplace connections', '3', '10', 'Unlimited'],
@@ -74,8 +120,10 @@ const ADDONS = [
 // ── Display helpers ────────────────────────────────────────────────────────
 function formatPrice(plan: RazorpayPlan): string {
   if (plan.is_custom_pricing) return 'Custom';
-  if (plan.currency === 'INR') return `₹${plan.monthly_price.toLocaleString('en-IN')}`;
-  return `$${plan.monthly_price}`;
+  if (plan.monthly_price === 0) return 'Custom';
+  const price = Math.round(plan.monthly_price);
+  if (plan.currency === 'INR') return `₹${price.toLocaleString('en-IN')}`;
+  return `$${price}`;
 }
 
 function getPeriod(plan: RazorpayPlan): string {
@@ -95,7 +143,8 @@ const Pricing = () => {
   const ref = useReveal<HTMLDivElement>();
 
   // Plans from backend
-  const { plans, loading: plansLoading, error: plansError } = usePlans();
+  const { plans: rawPlans, loading: plansLoading, error: plansError } = usePlans();
+  const plans = (rawPlans as BackendPlan[]).map(normalizePlan);
 
   // Country detection (auto-selects gateway)
   const { country, detecting, gateway: detectedGateway } = useCountry();

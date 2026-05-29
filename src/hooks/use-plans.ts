@@ -1,17 +1,17 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { fetchPublicPlans } from '@/services/payment.service';
-import type { RazorpayPlan } from '@/types/payment.types';
+import { fetchPublicPlans } from '@/services/user-plan.service';
+import type { Plan } from '@/types/user-plan.types';
 
 interface UsePlansResult {
-  plans: RazorpayPlan[];
+  plans: Plan[];
   loading: boolean;
   error: string | null;
   refetch: () => void;
 }
 
 export function usePlans(): UsePlansResult {
-  const [plans, setPlans] = useState<RazorpayPlan[]>([]);
+  const [plans, setPlans] = useState<Plan[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [tick, setTick] = useState(0);

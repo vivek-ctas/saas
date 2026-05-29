@@ -1,12 +1,8 @@
 import { apiFetch } from '@/lib/api';
 import type {
-  RazorpayPlan,
+  Plan,
   PlansApiResponse,
-  CreateOrderPayload,
-  CreateOrderResponse,
-  VerifyPaymentPayload,
-  VerifyPaymentResponse,
-} from '@/types/payment.types';
+} from '@/types/user-plan.types';
 
 // ── Plans ─────────────────────────────────────────────────────────────────
 
@@ -15,10 +11,16 @@ import type {
  * Public — no auth required.
  * Endpoint: GET /manage-plan/plan-list
  */
-export async function fetchPublicPlans(): Promise<{ plans: RazorpayPlan[]; error: string | null }> {
+export async function fetchPublicPlans(): Promise<{ plans: Plan[]; error: string | null }> {
   const { data, error } = await apiFetch<PlansApiResponse>('/v1/manage-plan/plan-list');
   return { plans: data?.data ?? [], error };
-}
+} 
+
+
+
+
+
+
 
 // // ── Payments ──────────────────────────────────────────────────────────────
 

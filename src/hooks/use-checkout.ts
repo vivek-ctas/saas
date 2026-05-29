@@ -16,7 +16,7 @@ import type {
   CreateLeadData,
   ActivationData,
 } from '@/types/checkout.types';
-import type { RazorpayPlan } from '@/types/payment.types';
+import type { Plan } from '@/types/user-plan.types';
 
 
 const EMPTY_FORM: CheckoutFormState = {
@@ -43,8 +43,8 @@ export interface UseCheckoutResult {
   setForm: (field: keyof CheckoutFormState, value: string) => void;
   setGateway: (g: Gateway) => void;
   setBillingCycle: (c: BillingCycle) => void;
-  submitForm: (plan: RazorpayPlan) => Promise<void>;   // Step 1 → save lead
-  startPayment: (plan: RazorpayPlan) => Promise<void>;   // Step 2 → open gateway
+  submitForm: (plan: Plan) => Promise<void>;   // Step 1 → save lead
+  startPayment: (plan: Plan) => Promise<void>;   // Step 2 → open gateway
   reset: () => void;
 }
 
@@ -68,7 +68,7 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
 
   // ── STEP 1: Validate form + create lead ───────────────────────────────
 
-  const submitForm = useCallback(async (plan: RazorpayPlan) => {
+  const submitForm = useCallback(async (plan: Plan) => {
     // Client-side validation
     const { full_name, email, company_name, contact_number, country, country_name } = form;
     if (!full_name.trim()) return setError('Please enter your full name.');
@@ -103,7 +103,7 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
 
   // ── STEP 2: Open payment gateway ──────────────────────────────────────
 
-  const startPayment = useCallback(async (plan: RazorpayPlan) => {
+  const startPayment = useCallback(async (plan: Plan) => {
     if (!leadData) return setError('Lead data missing. Please go back and re-submit.');
 
     setLoading(true);
@@ -125,7 +125,7 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
 
   // ── Razorpay flow ──────────────────────────────────────────────────────
 
-  async function _handleRazorpay(plan: RazorpayPlan) {
+  async function _handleRazorpay(plan: Plan) {
     const { data: order, error: orderErr } = await createGuestRazorpayOrder(leadData!.lead_id);
     if (orderErr || !order) throw new Error(orderErr || 'Could not create order. Please try again.');
     // Open Razorpay Checkout SDK (handles UPI / GPay / PhonePe / cards)
