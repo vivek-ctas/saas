@@ -1,38 +1,39 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { useSearchParams }     from 'next/navigation';
-import Link                    from 'next/link';
+import { useEffect, useState }  from 'react';
+import { useSearchParams }       from 'next/navigation';
+import Link                      from 'next/link';
 import {
-  CheckCircle2, ArrowRight, Loader2, AlertCircle,
-  Calendar, Mail, Sparkles,
+  CheckCircle2, ArrowRight, Loader2, AlertCircle, Calendar, Mail, Sparkles,
 } from 'lucide-react';
-import { verifyStripeSession } from '@/services/checkout.service';
-import type { ActivationData } from '@/types/checkout.types';
+import { verifyStripeSession }   from '@/services/checkout.service';
+import type { ActivationData }   from '@/types';
 
 /**
  * /checkout/success
  *
- * Two cases land here:
- *  1. Razorpay  → Pricing.tsx already called verifyRazorpayPayment, then
- *                 router.push('/checkout/success?plan=...&email=...&gateway=razorpay')
- *  2. Stripe    → Stripe redirects to
- *                 /checkout/success?session_id=cs_xxx&lead_id=xxx
- *                 This page calls verifyStripeSession and shows result.
+ * Two landing scenarios:
+ *
+ * 1. Razorpay — useCheckout already called verifyRazorpayPayment, then
+ *    router.push('/checkout/success?gateway=razorpay&lead_id=xxx&expires_at=...')
+ *    → No API call needed here.
+ *
+ * 2. Stripe — Stripe redirects to:
+ *    /checkout/success?session_id=cs_xxx&lead_id=xxx
+ *    → This page calls verifyStripeSession (field: session_id) and shows result.
  */
 export default function CheckoutSuccessPage() {
-  const params  = useSearchParams();
+  const params = useSearchParams();
 
-  const gateway    = params.get('gateway') || 'stripe';
-  const planSlug   = params.get('plan')       || '';
-  const emailParam = params.get('email')      || '';
-  const sessionId  = params.get('session_id') || '';
-  const leadId     = params.get('lead_id')    || '';
+  const gateway   = params.get('gateway')    || 'stripe';
+  const leadId    = params.get('lead_id')    || '';
+  const sessionId = params.get('session_id') || '';          // Stripe
+  const expiresAt = params.get('expires_at') || '';          // Razorpay (pre-verified)
 
-  const [verifying,   setVerifying]   = useState(gateway === 'stripe');
+  const [verifying,   setVerifying]   = useState(gateway === 'stripe' && !!sessionId);
   const [activation,  setActivation]  = useState<ActivationData | null>(null);
   const [verifyError, setVerifyError] = useState<string | null>(null);
 
-  // ── Stripe: verify session on mount ──────────────────────────────────
+  // ── Stripe: verify session on mount ────────────────────────────────────────
 
   useEffect(() => {
     if (gateway !== 'stripe' || !sessionId || !leadId) {
@@ -40,7 +41,7 @@ export default function CheckoutSuccessPage() {
       return;
     }
 
-    verifyStripeSession({ lead_id: leadId, stripe_session_id: sessionId })
+    verifyStripeSession({ lead_id: leadId, session_id: sessionId })
       .then(({ data, error }) => {
         if (error || !data) setVerifyError(error || 'Verification failed. Please contact support.');
         else                setActivation(data);
@@ -48,15 +49,19 @@ export default function CheckoutSuccessPage() {
       });
   }, [gateway, sessionId, leadId]);
 
-  // ── Razorpay: data is passed as URL params (already verified) ─────────
+  // ── Display values ──────────────────────────────────────────────────────────
 
-  const displayEmail = activation?.email     || emailParam || '';
-  const displayPlan  = activation?.plan_name || planSlug   || 'Your plan';
-  const expiresAt    = activation?.expires_at
-    ? new Date(activation.expires_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })
+  // For Razorpay: expires_at comes from URL param (already verified by useCheckout)
+  // For Stripe: expires_at comes from activation response
+  const displayExpiry = activation?.expires_at || expiresAt;
+
+  const formattedExpiry = displayExpiry
+    ? new Date(displayExpiry).toLocaleDateString('en-IN', {
+        day: 'numeric', month: 'long', year: 'numeric',
+      })
     : null;
 
-  // ── Loading state ─────────────────────────────────────────────────────
+  // ── Loading state ───────────────────────────────────────────────────────────
 
   if (verifying) {
     return (
@@ -72,7 +77,7 @@ export default function CheckoutSuccessPage() {
     );
   }
 
-  // ── Error state ───────────────────────────────────────────────────────
+  // ── Error state ─────────────────────────────────────────────────────────────
 
   if (verifyError) {
     return (
@@ -101,49 +106,37 @@ export default function CheckoutSuccessPage() {
     );
   }
 
-  // ── Success state ─────────────────────────────────────────────────────
+  // ── Success state ───────────────────────────────────────────────────────────
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-primary/5 flex items-center justify-center px-4">
       <div className="bg-white rounded-3xl border border-slate-200 shadow-xl px-10 py-14 max-w-lg w-full text-center relative overflow-hidden">
-        {/* Decorative blur */}
+        {/* Decorative blurs */}
         <div className="absolute -top-20 -right-20 w-64 h-64 bg-emerald-100 rounded-full blur-3xl opacity-40 pointer-events-none" />
         <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl opacity-40 pointer-events-none" />
 
         <div className="relative">
-          {/* Success icon */}
+          {/* Icon */}
           <div className="w-24 h-24 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-emerald-200">
             <CheckCircle2 className="w-12 h-12 text-white" />
           </div>
 
           <h1 className="text-3xl font-bold text-slate-900 mb-2">You're all set! 🎉</h1>
           <p className="text-slate-500 text-sm mb-8 leading-relaxed">
-            Your <span className="font-semibold text-slate-700">{displayPlan}</span> subscription is now active.
+            Your subscription is now active.
             Our team will reach out within 24 hours to help you get started.
           </p>
 
-          {/* Details cards */}
+          {/* Detail cards */}
           <div className="space-y-3 mb-8 text-left">
-            {displayEmail && (
-              <div className="flex items-center gap-3 rounded-2xl bg-slate-50 border border-slate-100 px-5 py-4">
-                <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-4 h-4 text-slate-500" />
-                </div>
-                <div>
-                  <div className="text-xs text-slate-500">Confirmation sent to</div>
-                  <div className="text-sm font-semibold text-slate-800">{displayEmail}</div>
-                </div>
-              </div>
-            )}
-
-            {expiresAt && (
+            {formattedExpiry && (
               <div className="flex items-center gap-3 rounded-2xl bg-slate-50 border border-slate-100 px-5 py-4">
                 <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center flex-shrink-0">
                   <Calendar className="w-4 h-4 text-slate-500" />
                 </div>
                 <div>
                   <div className="text-xs text-slate-500">Subscription active until</div>
-                  <div className="text-sm font-semibold text-slate-800">{expiresAt}</div>
+                  <div className="text-sm font-semibold text-slate-800">{formattedExpiry}</div>
                 </div>
               </div>
             )}
@@ -154,7 +147,9 @@ export default function CheckoutSuccessPage() {
               </div>
               <div>
                 <div className="text-xs text-slate-500">Next step</div>
-                <div className="text-sm font-semibold text-slate-800">Our onboarding team will email you shortly</div>
+                <div className="text-sm font-semibold text-slate-800">
+                  Our onboarding team will email you shortly
+                </div>
               </div>
             </div>
           </div>

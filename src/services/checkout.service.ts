@@ -3,21 +3,20 @@ import type {
   CreateLeadPayload,
   CreateLeadResponse,
   CreateLeadData,
-  CreateGuestRazorpayOrderData,
-  CreateGuestRazorpayOrderResponse,
-  VerifyGuestRazorpayPayload,
+  CreateRazorpayOrderData,
+  CreateRazorpayOrderResponse,
+  VerifyRazorpayPayload,
   CreateStripeSessionData,
   CreateStripeSessionResponse,
   VerifyStripePayload,
   ActivationData,
   ActivationResponse,
-  CountryInfo,
-} from '@/types/checkout.types';
+} from '@/types';
 
-// ── STEP 1: Create Lead ───────────────────────────────────────────────────
+// ── STEP 1: Create Lead ────────────────────────────────────────────────────────
 
 /**
- * Saves user info + selected plan as a guest lead in the DB.
+ * Saves user info + selected plan as a GuestLead in the DB.
  * Returns lead_id used by all subsequent steps.
  * Endpoint: POST /v1/public-checkout/lead
  */
@@ -31,32 +30,32 @@ export async function createGuestLead(
   return { data: data?.data ?? null, error };
 }
 
-// ── STEP 2a: Razorpay — create order ─────────────────────────────────────
+// ── STEP 2a: Razorpay — Create Order ──────────────────────────────────────────
 
 /**
  * Creates a Razorpay order for the given lead.
  * Returns razorpay_order_id + amount (paise) to open Razorpay Checkout.
  * Endpoint: POST /v1/public-checkout/razorpay/create-order
  */
-export async function createGuestRazorpayOrder(
+export async function createRazorpayOrder(
   leadId: string,
-): Promise<{ data: CreateGuestRazorpayOrderData | null; error: string | null }> {
-  const { data, error } = await apiFetch<CreateGuestRazorpayOrderResponse>(
+): Promise<{ data: CreateRazorpayOrderData | null; error: string | null }> {
+  const { data, error } = await apiFetch<CreateRazorpayOrderResponse>(
     '/v1/public-checkout/razorpay/create-order',
     { method: 'POST', body: JSON.stringify({ lead_id: leadId }) },
   );
   return { data: data?.data ?? null, error };
 }
 
-// ── STEP 3a: Razorpay — verify & activate ────────────────────────────────
+// ── STEP 3a: Razorpay — Verify & Activate ─────────────────────────────────────
 
 /**
- * Sends Razorpay handler response to backend for HMAC verification.
- * On success, backend creates GuestSubscription and returns activation info.
+ * Sends Razorpay payment result to backend for HMAC verification.
+ * On success, backend creates GuestSubscription.
  * Endpoint: POST /v1/public-checkout/razorpay/verify
  */
-export async function verifyGuestRazorpayPayment(
-  payload: VerifyGuestRazorpayPayload,
+export async function verifyRazorpayPayment(
+  payload: VerifyRazorpayPayload,
 ): Promise<{ data: ActivationData | null; error: string | null }> {
   const { data, error } = await apiFetch<ActivationResponse>(
     '/v1/public-checkout/razorpay/verify',
@@ -65,60 +64,49 @@ export async function verifyGuestRazorpayPayment(
   return { data: data?.data ?? null, error };
 }
 
-// ── STEP 2b: Stripe — create checkout session ─────────────────────────────
+// ── STEP 2b: Stripe — Create Checkout Session ──────────────────────────────────
 
 /**
  * Creates a Stripe Checkout Session.
- * Returns checkout_url → frontend redirects user to this URL.
+ * Returns checkout_url — redirect user to this URL.
+ * Stripe will append ?session_id=cs_xxx to your success_url.
  * Endpoint: POST /v1/public-checkout/stripe/create-session
  */
 export async function createStripeSession(
   leadId: string,
 ): Promise<{ data: CreateStripeSessionData | null; error: string | null }> {
+  const successUrl = `${window.location.origin}/checkout/success`;
+  const cancelUrl = `${window.location.origin}/checkout/cancel`;
+
   const { data, error } = await apiFetch<CreateStripeSessionResponse>(
     '/v1/public-checkout/stripe/create-session',
-    { method: 'POST', body: JSON.stringify({ lead_id: leadId }) },
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        lead_id: leadId,
+        success_url: `${successUrl}?lead_id=${leadId}`,
+        cancel_url: `${cancelUrl}?lead_id=${leadId}`,
+      }),
+    },
   );
   return { data: data?.data ?? null, error };
 }
 
-// ── STEP 3b: Stripe — verify after redirect ───────────────────────────────
+// ── STEP 3b: Stripe — Verify Session (after redirect) ─────────────────────────
 
 /**
- * Called by /checkout/success page after Stripe redirects back.
+ * Called by /checkout/success after Stripe redirects back.
  * Backend verifies session with Stripe API and activates subscription.
- * Endpoint: POST /v1/public-checkout/stripe/verify
+ * Endpoint: POST /v1/public-checkout/stripe/verify-session
+ *
+ * Note: field name is `session_id` (not `stripe_session_id`) — matches backend exactly.
  */
 export async function verifyStripeSession(
   payload: VerifyStripePayload,
 ): Promise<{ data: ActivationData | null; error: string | null }> {
   const { data, error } = await apiFetch<ActivationResponse>(
-    '/v1/public-checkout/stripe/verify',
+    '/v1/public-checkout/stripe/verify-session',
     { method: 'POST', body: JSON.stringify(payload) },
   );
   return { data: data?.data ?? null, error };
-}
-
-// ── Country detection ─────────────────────────────────────────────────────
-
-/**
- * Detects user country via ipapi.co (free, no key needed up to 1000 req/day).
- * Falls back to 'US' on error.
- * Used to auto-select gateway: India → Razorpay, others → Stripe.
- */
-export async function detectUserCountry(): Promise<CountryInfo> {
-  try {
-    const res = await fetch('https://ipapi.co/json/');
-    const json = await res.json();
-    const code = (json?.country_code as string)?.toUpperCase() || 'US';
-    const name = (json?.country_name as string) || 'United States';
-    return {
-      code,
-      name,
-      isIndia: code === 'IN',
-      defaultGateway: code === 'IN' ? 'razorpay' : 'stripe',
-    };
-  } catch {
-    return { code: 'US', name: 'United States', isIndia: false, defaultGateway: 'stripe' };
-  }
 }

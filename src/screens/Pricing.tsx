@@ -7,69 +7,20 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import {
-  Accordion, AccordionContent, AccordionItem, AccordionTrigger,
-} from '@/components/ui/accordion';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Layout from '@/components/Layout';
 import PageHero from '@/components/PageHero';
 import { BlobBackdrop, AnalyticsIllustration, PricingCalculatorMockup } from '@/components/illustrations';
 import { useReveal } from '@/hooks/use-reveal';
 
-// ── New imports (pricing API integration) ─────────────────────────────────
 import { usePlans } from '@/hooks/use-plans';
-import { useCountry } from '@/hooks/use-country';
+
 import { useCheckout } from '@/hooks/use-checkout';
-
 import CheckoutModal from '@/components/CheckoutModal';
-import type { RazorpayPlan } from '@/types/payment.types';
+import type { Plan } from '@/types';
 
-// ── Backend plan response type (raw format from API) ───────────────────────
-interface BackendPlan {
-  _id: string;
-  name: string;
-  slug: string;
-  desc: string;
-  price_cents: number;
-  currency: string;
-  interval: 'month' | 'year';
-  interval_count: number;
-  trial_days: number;
-  marketing_features: string[];
-  features: string[];
-  is_popular: boolean;
-  cta_label: string;
-  sort_order: number;
-  status: number;
-  is_custom_plan: boolean;
-  metadata: Record<string, any>;
-  planIdStr: string;
-}
+// ── Static content ─────────────────────────────────────────────────────────────
 
-// ── Transform backend plan to normalized format ────────────────────────────
-function normalizePlan(plan: BackendPlan): RazorpayPlan {
-  const monthlyPrice = plan.price_cents / 100;
-  const durationDays = plan.interval === 'year' ? 365 * plan.interval_count : 30 * plan.interval_count;
-
-  return {
-    _id: plan._id,
-    name: plan.name,
-    slug: plan.slug,
-    description: plan.desc,
-    currency: plan.currency,
-    monthly_price: monthlyPrice,
-    yearly_price: plan.interval === 'year' ? monthlyPrice : monthlyPrice * 12,
-    duration_days: durationDays,
-    trial_days: plan.trial_days,
-    features: plan.marketing_features && plan.marketing_features.length > 0 ? plan.marketing_features : plan.features,
-    is_popular: plan.is_popular,
-    is_custom_pricing: plan.is_custom_plan,
-    cta_label: plan.cta_label || (plan.is_custom_plan ? 'Contact Sales' : plan.trial_days > 0 ? 'Start Free Trial' : 'Get Started'),
-    sort_order: plan.sort_order,
-    status: plan.status,
-  };
-}
-
-// ── Static content ────────────────────
 const COMPARE = [
   ['Marketplace connections', '3', '10', 'Unlimited'],
   ['Product listings', '5,000', '25,000', 'Unlimited'],
@@ -87,7 +38,7 @@ const FAQS = [
   { q: 'What marketplaces are supported?', a: "Amazon, eBay, Walmart, Shopify, Etsy, TikTok Shop and 50+ more — and we'll build any missing one." },
   { q: 'How is my data secured?', a: 'SOC 2 Type II certified, end-to-end encryption, regular pen-tests, and GDPR compliant.' },
   { q: 'Do you offer migration help?', a: 'Yes, our white-glove onboarding team will migrate your listings, orders and history for free on Pro & Enterprise.' },
-  { q: 'What happens if I exceed my plan limits?', a: "We'll notify you well before you hit a cap — no surprise charges, ever." },
+  { q: 'What happens if I exceed limits?', a: "We'll notify you well before you hit a cap — no surprise charges, ever." },
 ];
 
 const ADDONS = [
@@ -117,55 +68,45 @@ const ADDONS = [
   },
 ];
 
-// ── Display helpers ────────────────────────────────────────────────────────
-function formatPrice(plan: RazorpayPlan): string {
-  if (plan.is_custom_pricing) return 'Custom';
-  if (plan.monthly_price === 0) return 'Custom';
-  const price = Math.round(plan.monthly_price);
-  if (plan.currency === 'INR') return `₹${price.toLocaleString('en-IN')}`;
-  return `$${price}`;
+// ── Display helpers ────────────────────────────────────────────────────────────
+
+/** price_cents → human readable (₹999 or $9.99) */
+function formatPrice(plan: Plan): string {
+  if (plan.is_custom_plan) return 'Custom';
+  const amount = plan.price_cents / 100;
+  if (plan.currency === 'inr') return `₹${Math.round(amount).toLocaleString('en-IN')}`;
+  return `$${amount.toFixed(2)}`;
 }
 
-function getPeriod(plan: RazorpayPlan): string {
-  if (plan.is_custom_pricing) return '';
-  return plan.duration_days <= 31 ? '/mo' : '/yr';
+function getPeriod(plan: Plan): string {
+  if (plan.is_custom_plan) return '';
+  const count = plan.interval_count || 1;
+  if (plan.interval === 'month') return count === 1 ? '/mo' : `/${count}mo`;
+  if (plan.interval === 'year') return count === 1 ? '/yr' : `/${count}yr`;
+  return `/${plan.interval}`;
 }
 
-function getCtaLabel(plan: RazorpayPlan): string {
+function getCtaLabel(plan: Plan): string {
   if (plan.cta_label) return plan.cta_label;
-  if (plan.is_custom_pricing) return 'Contact Sales';
+  if (plan.is_custom_plan) return 'Contact Sales';
   if (plan.trial_days > 0) return 'Start Free Trial';
   return 'Get Started';
 }
 
-// ── Component ──────────────────────────────────────────────────────────────
+// ── Component ──────────────────────────────────────────────────────────────────
+
 const Pricing = () => {
   const ref = useReveal<HTMLDivElement>();
 
-  // Plans from backend
-  const { plans: rawPlans, loading: plansLoading, error: plansError } = usePlans();
-  const plans = (rawPlans as BackendPlan[]).map(normalizePlan);
+  const { plans, loading: plansLoading, error: plansError } = usePlans();
+  const [activePlan, setActivePlan] = useState<Plan | null>(null);
+  const checkout = useCheckout('stripe'); // default; user will manually select on summary step
+  console.log('checkout', checkout)
 
-  // Country detection (auto-selects gateway)
-  const { country, detecting, gateway: detectedGateway } = useCountry();
-
-  // Which plan the user clicked — drives modal
-  const [activePlan, setActivePlan] = useState<RazorpayPlan | null>(null);
-
-  // Checkout state machine
-  const checkout = useCheckout(detectedGateway);
-
-  // ── Open modal when user clicks a plan card ────────────────────────────
-  function handlePlanClick(plan: RazorpayPlan) {
-    if (plan.is_custom_pricing) {
+  function handlePlanClick(plan: Plan) {
+    if (plan.is_custom_plan) {
       window.location.href = '/contact';
       return;
-    }
-    // Pre-fill country from detection
-    if (country) {
-      checkout.setForm('country', country.code);
-      checkout.setForm('country_name', country.name);
-      checkout.setGateway(country.defaultGateway);
     }
     setActivePlan(plan);
   }
@@ -174,7 +115,7 @@ const Pricing = () => {
     setActivePlan(null);
     checkout.reset();
   }
-  // ── Render ───────────────────────────────────────────────────────────────
+
   return (
     <Layout>
       <div ref={ref}>
@@ -189,7 +130,7 @@ const Pricing = () => {
               </span>
             </>
           }
-          subtitle="Start free for 14 days. No credit card. No surprises. Cancel anytime — and see your projected ROI before you commit."
+          subtitle="Start free for 14 days. No credit card. No surprises. Cancel anytime."
           visual={<PricingCalculatorMockup className="w-full h-auto" />}
           actions={
             <>
@@ -211,7 +152,7 @@ const Pricing = () => {
           }
         />
 
-        {/* ── PLANS SECTION ─────────────────────────────────────────────── */}
+        {/* ── PLANS SECTION ──────────────────────────────────────────────────── */}
         <section id="plans" className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -257,14 +198,14 @@ const Pricing = () => {
 
                     <CardHeader className="pb-4 pt-8">
                       <CardTitle className="text-2xl font-bold text-slate-900">{plan.name}</CardTitle>
-                      <p className="text-slate-600 text-sm">{plan.description}</p>
+                      <p className="text-slate-600 text-sm">{plan.desc}</p>
                       <div className="mt-6 flex items-baseline gap-1">
                         <span className="text-5xl font-bold text-slate-900 tracking-tight">
                           {formatPrice(plan)}
                         </span>
                         <span className="text-slate-500">{getPeriod(plan)}</span>
                       </div>
-                      {plan.trial_days > 0 && !plan.is_custom_pricing && (
+                      {plan.trial_days > 0 && !plan.is_custom_plan && (
                         <p className="text-xs text-emerald-600 font-medium mt-1">
                           ✓ {plan.trial_days}-day free trial included
                         </p>
@@ -272,27 +213,23 @@ const Pricing = () => {
                     </CardHeader>
 
                     <CardContent className="space-y-5">
-                      {/* CTA button — opens modal */}
                       <button
                         onClick={() => handlePlanClick(plan)}
-                        disabled={detecting}
                         className={`w-full py-3 rounded-2xl text-sm font-semibold transition-all ${plan.is_popular
                           ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-stripe hover:opacity-90'
-                          : plan.is_custom_pricing
+                          : plan.is_custom_plan
                             ? 'bg-slate-900 text-white hover:bg-slate-700'
                             : 'border-2 border-primary text-primary hover:bg-primary hover:text-white'
                           } disabled:opacity-60 disabled:cursor-not-allowed`}
                       >
-                        {detecting ? 'Detecting location…' : getCtaLabel(plan)}
+                        {getCtaLabel(plan)}
                       </button>
 
                       <ul className="space-y-3 pt-2">
-                        {plan.features.map((f, j) => (
+                        {plan.marketing_features.map((f, j) => (
                           <li key={j} className="flex items-start gap-3 text-sm">
-                            <span
-                              className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${plan.is_popular ? 'bg-primary text-white' : 'bg-accent text-primary'
-                                }`}
-                            >
+                            <span className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${plan.is_popular ? 'bg-primary text-white' : 'bg-accent text-primary'
+                              }`}>
                               <Check className="w-3 h-3" />
                             </span>
                             <span className="text-slate-700">{f}</span>
@@ -304,7 +241,8 @@ const Pricing = () => {
                 ))}
               </div>
             )}
-            {/* Trust indicators below plans */}
+
+            {/* Trust indicators */}
             {!plansLoading && !plansError && (
               <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-slate-500">
                 {[
@@ -318,11 +256,10 @@ const Pricing = () => {
                 ))}
               </div>
             )}
-
           </div>
         </section>
 
-        {/* ── COMPARISON TABLE ──────────────────────────────────────────── */}
+        {/* ── COMPARISON TABLE ────────────────────────────────────────────────── */}
         <section className="py-24 section-bg">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 reveal">
@@ -347,11 +284,9 @@ const Pricing = () => {
                       {vals.map((v, j) => (
                         <td key={j} className={`p-5 text-center ${j === 1 ? 'bg-accent/20' : ''}`}>
                           {typeof v === 'boolean' ? (
-                            v ? (
-                              <Check className="w-5 h-5 text-primary mx-auto" />
-                            ) : (
-                              <X className="w-5 h-5 text-slate-300 mx-auto" />
-                            )
+                            v
+                              ? <Check className="w-5 h-5 text-primary mx-auto" />
+                              : <X className="w-5 h-5 text-slate-300 mx-auto" />
                           ) : (
                             <span className="font-semibold text-slate-700">{v}</span>
                           )}
@@ -365,7 +300,7 @@ const Pricing = () => {
           </div>
         </section>
 
-        {/* ── TESTIMONIAL ──────────────────────────────────────────────── */}
+        {/* ── TESTIMONIAL ────────────────────────────────────────────────────── */}
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
@@ -395,7 +330,7 @@ const Pricing = () => {
           </div>
         </section>
 
-        {/* ── AI ADD-ONS ────────────────────────────────────────────────── */}
+        {/* ── AI ADD-ONS ──────────────────────────────────────────────────────── */}
         <section className="py-24 section-bg relative overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-30" />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -428,7 +363,7 @@ const Pricing = () => {
           </div>
         </section>
 
-        {/* ── FAQ ──────────────────────────────────────────────────────── */}
+        {/* ── FAQ ────────────────────────────────────────────────────────────── */}
         <section className="py-24 section-bg">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 reveal">
@@ -454,7 +389,7 @@ const Pricing = () => {
           </div>
         </section>
 
-        {/* ── BOTTOM CTA ───────────────────────────────────────────────── */}
+        {/* ── BOTTOM CTA ─────────────────────────────────────────────────────── */}
         <section className="py-24 relative overflow-hidden gradient-animated">
           <BlobBackdrop />
           <div className="relative max-w-4xl mx-auto px-4 text-center reveal">
@@ -476,7 +411,7 @@ const Pricing = () => {
         </section>
       </div>
 
-      {/* ── CHECKOUT MODAL (portal-like, above everything) ── */}
+      {/* ── CHECKOUT MODAL ── */}
       {activePlan && (
         <CheckoutModal
           plan={activePlan}
@@ -487,7 +422,6 @@ const Pricing = () => {
           leadData={checkout.leadData}
           loading={checkout.loading}
           error={checkout.error}
-          isIndian={country?.isIndia ?? false}
 
           onClose={handleCloseModal}
           onFormChange={checkout.setForm}

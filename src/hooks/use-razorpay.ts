@@ -1,6 +1,6 @@
 'use client';
 import { useCallback } from 'react';
-import type { RazorpayOptions } from '@/types/payment.types';
+import type { RazorpayOptions } from '@/types';
 
 const RAZORPAY_SCRIPT = 'https://checkout.razorpay.com/v1/checkout.js';
 
@@ -10,10 +10,10 @@ function loadRazorpayScript(): Promise<boolean> {
       resolve(true);
       return;
     }
-    const script = document.createElement('script');
-    script.src = RAZORPAY_SCRIPT;
-    script.onload = () => resolve(true);
-    script.onerror = () => resolve(false);
+    const script    = document.createElement('script');
+    script.src      = RAZORPAY_SCRIPT;
+    script.onload   = () => resolve(true);
+    script.onerror  = () => resolve(false);
     document.body.appendChild(script);
   });
 }

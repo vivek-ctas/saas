@@ -1,88 +1,62 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
-  ArrowLeft, ArrowRight, Check, CreditCard, Globe, Loader2,
-  Lock, Shield, Smartphone, X, Zap,
+  ArrowLeft, ArrowRight, Check, CreditCard,
+  Globe, Loader2, Lock, Shield, Smartphone, X, Zap, ChevronDown,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
-import type { RazorpayPlan } from '@/types/payment.types';
-import type { Gateway, BillingCycle, CheckoutFormState, CheckoutStep, CreateLeadData } from '@/types/checkout.types';
+import { fetchCurrencies } from '@/services/plan.service';
+import type {
+  Plan, Gateway, BillingCycle, CheckoutFormState, CheckoutStep,
+  CreateLeadData, CurrencyOption,
+} from '@/types';
 
-// ── Country list (common subset) ──────────────────────────────────────────
-
-const COUNTRIES = [
-  { code: 'IN', name: 'India' },
-  { code: 'US', name: 'United States' },
-  { code: 'GB', name: 'United Kingdom' },
-  { code: 'AU', name: 'Australia' },
-  { code: 'CA', name: 'Canada' },
-  { code: 'SG', name: 'Singapore' },
-  { code: 'AE', name: 'United Arab Emirates' },
-  { code: 'DE', name: 'Germany' },
-  { code: 'FR', name: 'France' },
-  { code: 'NL', name: 'Netherlands' },
-  { code: 'JP', name: 'Japan' },
-  { code: 'NZ', name: 'New Zealand' },
-  { code: 'ZA', name: 'South Africa' },
-  { code: 'BR', name: 'Brazil' },
-  { code: 'MX', name: 'Mexico' },
-  { code: 'OTHER', name: 'Other' },
-];
-
-// ── Gateway configs ───────────────────────────────────────────────────────
+// ── Gateway config ─────────────────────────────────────────────────────────────
 
 const GATEWAYS: {
-  id: Gateway; label: string; desc: string; badge?: string;
-  methods: string; icon: React.ReactNode;
+  id: Gateway; label: string; desc: string; badge: string;
+  icon: React.ReactNode;
 }[] = [
     {
       id: 'razorpay',
       label: 'Razorpay',
-      badge: 'India',
-      desc: 'UPI · PhonePe · Google Pay · Cards',
-      methods: 'UPI, Cards, Net Banking, Wallets',
+      badge: 'India — UPI / Cards',
+      desc: 'UPI · PhonePe · Google Pay · Net Banking · Cards',
       icon: <Smartphone className="w-5 h-5" />,
     },
     {
       id: 'stripe',
       label: 'Stripe',
-      badge: 'International',
-      desc: 'Visa · Mastercard · Amex · Apple Pay',
-      methods: 'Credit/Debit Cards, Apple Pay, Google Pay',
+      badge: 'International — Cards',
+      desc: 'Visa · Mastercard · Amex · Apple Pay · Google Pay',
       icon: <CreditCard className="w-5 h-5" />,
     },
   ];
 
-// ── Price display ─────────────────────────────────────────────────────────
+// ── Price helpers ──────────────────────────────────────────────────────────────
 
-function displayPrice(plan: RazorpayPlan, cycle: BillingCycle, gateway: Gateway): string {
-  if (plan.is_custom_pricing) return 'Custom';
-  const isYearly = cycle === 'yearly';
-
-  if (gateway === 'razorpay') {
-    // Always INR
-    const price = isYearly ? plan.yearly_price || plan.monthly_price * 10 : plan.monthly_price;
-    return `₹${price.toLocaleString('en-IN')}`;
-  } else {
-    // USD — backend converts; show approximate
-    if (plan.currency === 'USD') {
-      const price = isYearly ? plan.yearly_price || plan.monthly_price * 10 : plan.monthly_price;
-      return `$${price}`;
-    }
-    const rate = 83;
-    const inrPrice = isYearly ? plan.yearly_price || plan.monthly_price * 10 : plan.monthly_price;
-    const usd = Math.round((inrPrice / rate) * 100) / 100;
-    return `$${usd.toFixed(2)}`;
-  }
+function displayPrice(plan: Plan): string {
+  if (plan.is_custom_plan) return 'Custom';
+  const amount = plan.price_cents / 100;
+  if (plan.currency === 'inr') return `₹${Math.round(amount).toLocaleString('en-IN')}`;
+  return `$${amount.toFixed(2)}`;
 }
 
-// ── Props ─────────────────────────────────────────────────────────────────
+function periodLabel(plan: Plan): string {
+  if (plan.is_custom_plan) return '';
+  const count = plan.interval_count || 1;
+  if (plan.interval === 'month') return count === 1 ? '/mo' : `/${count}mo`;
+  if (plan.interval === 'year') return count === 1 ? '/yr' : `/${count}yr`;
+  return `/${plan.interval}`;
+}
+
+// ── Props ──────────────────────────────────────────────────────────────────────
 
 interface CheckoutModalProps {
-  plan: RazorpayPlan;
+  plan: Plan;
   step: CheckoutStep;
   form: CheckoutFormState;
   gateway: Gateway;
@@ -90,7 +64,6 @@ interface CheckoutModalProps {
   leadData: CreateLeadData | null;
   loading: boolean;
   error: string | null;
-  isIndian: boolean;
 
   onClose: () => void;
   onFormChange: (field: keyof CheckoutFormState, value: string) => void;
@@ -101,12 +74,23 @@ interface CheckoutModalProps {
   onBack: () => void;
 }
 
-// ── Component ─────────────────────────────────────────────────────────────
+// ── Component ──────────────────────────────────────────────────────────────────
 
 export default function CheckoutModal({
-  plan, step, form, gateway, billingCycle, leadData, loading, error, isIndian,
+  plan, step, form, gateway, billingCycle, leadData, loading, error,
   onClose, onFormChange, onGateway, onBilling, onSubmitForm, onStartPayment, onBack,
 }: CheckoutModalProps) {
+
+  // Countries from /manage-plan/get-currencies
+  const [countries, setCountries] = useState<CurrencyOption[]>([]);
+  const [countriesLoading, setCountriesLoading] = useState(true);
+
+  useEffect(() => {
+    fetchCurrencies().then(({ currencies }) => {
+      setCountries(currencies);
+      setCountriesLoading(false);
+    });
+  }, []);
 
   // Close on Escape
   useEffect(() => {
@@ -121,18 +105,19 @@ export default function CheckoutModal({
     return () => { document.body.style.overflow = ''; };
   }, []);
 
-  const priceDisplay = displayPrice(plan, billingCycle, gateway);
-  const periodLabel = billingCycle === 'yearly' ? '/yr' : '/mo';
-  const currencySymbol = gateway === 'razorpay' ? 'INR' : 'USD';
+  const price = displayPrice(plan);
+  const period = periodLabel(plan);
+
+  const humanAmount = plan.price_cents / 100;
+  const currencySymbol = plan.currency === 'inr' ? '₹' : '$';
+
+  // Use the display name provided by backend (or fallback)
+  const selectedCountryLabel = form.country_name || '';
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
-      <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-        onClick={onClose}
-        aria-hidden
-      />
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} aria-hidden />
 
       {/* Modal */}
       <div className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
@@ -151,28 +136,27 @@ export default function CheckoutModal({
             )}
             <div>
               <h2 className="text-lg font-bold text-slate-900 leading-tight">
-                {step === 'form' ? 'Get Started' : null}
-                {step === 'summary' ? 'Payment Summary' : null}
-                {step === 'processing' ? 'Processing…' : null}
+                {step === 'form' && 'Get Started'}
+                {step === 'summary' && 'Payment Summary'}
+                {step === 'processing' && 'Processing…'}
               </h2>
               <p className="text-xs text-slate-500 mt-0.5">
-                {step === 'form' ? `${plan.name} plan selected` : null}
-                {step === 'summary' ? `${plan.name} · ${billingCycle}` : null}
+                {step === 'form' && `${plan.name} plan selected`}
+                {step === 'summary' && `${plan.name} · ${billingCycle}`}
               </p>
             </div>
           </div>
 
-          {/* Step indicator */}
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1.5 mr-2">
-              {['form', 'summary'].map((s, i) => (
+              {(['form', 'summary'] as CheckoutStep[]).map((s, i) => (
                 <div
                   key={s}
                   className={`rounded-full transition-all ${step === s
-                      ? 'w-6 h-2 bg-primary'
-                      : step === 'summary' && i === 0
-                        ? 'w-2 h-2 bg-primary/40'
-                        : 'w-2 h-2 bg-slate-200'
+                    ? 'w-6 h-2 bg-primary'
+                    : step === 'summary' && i === 0
+                      ? 'w-2 h-2 bg-primary/40'
+                      : 'w-2 h-2 bg-slate-200'
                     }`}
                 />
               ))}
@@ -193,15 +177,16 @@ export default function CheckoutModal({
           {/* ══ STEP 1: INFO FORM ══ */}
           {step === 'form' && (
             <div className="space-y-4">
+
               {/* Plan mini-card */}
               <div className="rounded-2xl bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20 px-5 py-4 flex items-center justify-between">
                 <div>
                   <div className="font-semibold text-slate-900">{plan.name} Plan</div>
-                  <div className="text-xs text-slate-500 mt-0.5">{plan.description}</div>
+                  <div className="text-xs text-slate-500 mt-0.5">{plan.desc}</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-xl font-bold text-primary">{priceDisplay}</div>
-                  <div className="text-xs text-slate-500">{periodLabel}</div>
+                  <div className="text-xl font-bold text-primary">{price}</div>
+                  <div className="text-xs text-slate-500">{period}</div>
                 </div>
               </div>
 
@@ -216,8 +201,8 @@ export default function CheckoutModal({
                       key={c}
                       onClick={() => onBilling(c)}
                       className={`flex-1 py-2.5 rounded-xl border text-sm font-semibold capitalize transition-all ${billingCycle === c
-                          ? 'border-primary bg-primary text-white shadow-sm'
-                          : 'border-slate-200 text-slate-600 hover:border-slate-300'
+                        ? 'border-primary bg-primary text-white shadow-sm'
+                        : 'border-slate-200 text-slate-600 hover:border-slate-300'
                         }`}
                     >
                       {c}
@@ -233,6 +218,7 @@ export default function CheckoutModal({
 
               {/* Form fields */}
               <div className="space-y-3.5">
+
                 <div>
                   <Label htmlFor="full_name" className="text-sm font-medium text-slate-700">Full Name *</Label>
                   <Input
@@ -279,26 +265,42 @@ export default function CheckoutModal({
                   />
                 </div>
 
+                {/* Country dropdown — from /manage-plan/get-currencies API */}
                 <div>
                   <Label htmlFor="country" className="text-sm font-medium text-slate-700">Country *</Label>
-                  <select
-                    id="country"
-                    value={form.country}
-                    onChange={(e) => {
-                      const selected = COUNTRIES.find(c => c.code === e.target.value);
-                      onFormChange('country', e.target.value);
-                      onFormChange('country_name', selected?.name || '');
-                      // Auto-switch gateway based on country
-                      onGateway(e.target.value === 'IN' ? 'razorpay' : 'stripe');
-                    }}
-                    className="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                  >
-                    <option value="">Select your country</option>
-                    {COUNTRIES.map((c) => (
-                      <option key={c.code} value={c.code}>{c.name}</option>
-                    ))}
-                  </select>
+                  <div className="relative mt-1.5">
+                    <select
+                      id="country"
+                      value={form.country_code}
+                      disabled={countriesLoading}
+                      onChange={(e) => {
+                        const selected = countries.find(
+                          (c) => c.code === e.target.value
+                        );
+
+                        onFormChange('country_code', e.target.value);
+                        onFormChange('country_name', selected?.country ?? '');
+                      }}
+                      className="w-full appearance-none rounded-xl border border-slate-200 bg-white pl-3 pr-9 py-2.5 text-sm text-slate-900 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-60"
+                    >
+                      <option value="">
+                        {countriesLoading ? 'Loading countries…' : 'Select your country'}
+                      </option>
+                      {countries.map((c) => (
+                        <option key={c.id} value={c.code}>
+                          {c.country}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                      {countriesLoading
+                        ? <Loader2 className="w-4 h-4 text-slate-400 animate-spin" />
+                        : <ChevronDown className="w-4 h-4 text-slate-400" />
+                      }
+                    </div>
+                  </div>
                 </div>
+
               </div>
 
               {/* Error */}
@@ -326,8 +328,9 @@ export default function CheckoutModal({
           )}
 
           {/* ══ STEP 2: PAYMENT SUMMARY ══ */}
-          {step === 'summary' && leadData && (
+          {step === 'summary' && (
             <div className="space-y-5">
+
               {/* Order summary card */}
               <div className="rounded-2xl border border-slate-200 overflow-hidden">
                 <div className="bg-slate-50 px-5 py-3.5 border-b border-slate-200">
@@ -344,8 +347,14 @@ export default function CheckoutModal({
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-slate-600">Currency</span>
-                    <span className="font-semibold text-slate-900">{leadData.currency}</span>
+                    <span className="font-semibold text-slate-900">{plan.currency.toUpperCase()}</span>
                   </div>
+                  {selectedCountryLabel && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-slate-600">Country</span>
+                      <span className="font-semibold text-slate-900">{selectedCountryLabel}</span>
+                    </div>
+                  )}
                   {plan.trial_days > 0 && (
                     <div className="flex justify-between text-sm">
                       <span className="text-slate-600">Trial</span>
@@ -355,50 +364,53 @@ export default function CheckoutModal({
                   <div className="border-t border-slate-100 pt-3 flex justify-between items-baseline">
                     <span className="text-slate-700 font-semibold">Total due today</span>
                     <span className="text-2xl font-bold text-slate-900">
-                      {leadData.currency === 'INR' ? '₹' : '$'}
-                      {leadData.plan_price.toLocaleString()}
+                      {currencySymbol}{humanAmount.toLocaleString()}
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* Features summary */}
+              {/* Features */}
               <div>
                 <p className="text-xs font-semibold text-slate-500 tracking-widest uppercase mb-3">What's included</p>
                 <ul className="space-y-2">
-                  {plan.features.slice(0, 5).map((f, i) => (
-                    <li key={i} className="flex items-center gap-2.5 text-sm text-slate-700">
-                      <div className="w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                        <Check className="w-2.5 h-2.5 text-emerald-600" />
-                      </div>
-                      {f}
-                    </li>
-                  ))}
+                  {(plan.marketing_features.length > 0 ? plan.marketing_features : plan.features)
+                    .slice(0, 5)
+                    .map((f, i) => (
+                      <li key={i} className="flex items-center gap-2.5 text-sm text-slate-700">
+                        <div className="w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                          <Check className="w-2.5 h-2.5 text-emerald-600" />
+                        </div>
+                        {f}
+                      </li>
+                    ))}
                 </ul>
               </div>
 
-              {/* Gateway selector */}
+              {/* ── Gateway Selector — user must pick manually ── */}
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <p className="text-xs font-semibold text-slate-500 tracking-widest uppercase">Payment Gateway</p>
-                  <div className="flex items-center gap-1 text-xs text-slate-400">
-                    <Globe className="w-3.5 h-3.5" />
-                    {form.country_name}
-                  </div>
+                  <p className="text-xs font-semibold text-slate-500 tracking-widest uppercase">
+                    Select Payment Gateway
+                  </p>
+                  {selectedCountryLabel && (
+                    <div className="flex items-center gap-1 text-xs text-slate-400">
+                      <Globe className="w-3.5 h-3.5" />
+                      {selectedCountryLabel}
+                    </div>
+                  )}
                 </div>
 
                 <div className="space-y-2.5">
                   {GATEWAYS.map((gw) => {
-                    // Only show Razorpay option prominently for Indian users
-                    // but always show both (Indian users may want Stripe for cards)
                     const isSelected = gateway === gw.id;
                     return (
                       <button
                         key={gw.id}
                         onClick={() => onGateway(gw.id)}
                         className={`w-full flex items-center gap-3.5 rounded-2xl border px-4 py-3.5 text-left transition-all ${isSelected
-                            ? 'border-primary bg-primary/5 shadow-sm ring-1 ring-primary'
-                            : 'border-slate-200 hover:border-slate-300'
+                          ? 'border-primary bg-primary/5 shadow-sm ring-1 ring-primary'
+                          : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'
                           }`}
                       >
                         <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${isSelected ? 'bg-primary text-white' : 'bg-slate-100 text-slate-500'
@@ -406,19 +418,17 @@ export default function CheckoutModal({
                           {gw.icon}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-2 flex-wrap">
                             <span className="font-semibold text-slate-900 text-sm">{gw.label}</span>
-                            {gw.badge && (
-                              <Badge
-                                variant="secondary"
-                                className={`text-[10px] font-bold px-1.5 py-0 ${gw.id === 'razorpay' && isIndian
-                                    ? 'bg-emerald-100 text-emerald-700'
-                                    : 'bg-slate-100 text-slate-600'
-                                  }`}
-                              >
-                                {gw.id === 'razorpay' && isIndian ? '✓ RECOMMENDED' : gw.badge}
-                              </Badge>
-                            )}
+                            <Badge
+                              variant="secondary"
+                              className={`text-[10px] font-bold px-1.5 py-0 ${isSelected
+                                ? 'bg-primary/15 text-primary'
+                                : 'bg-slate-100 text-slate-500'
+                                }`}
+                            >
+                              {gw.badge}
+                            </Badge>
                           </div>
                           <p className="text-xs text-slate-500 mt-0.5">{gw.desc}</p>
                         </div>
@@ -431,11 +441,9 @@ export default function CheckoutModal({
                   })}
                 </div>
 
-                {isIndian && (
-                  <p className="mt-2.5 text-xs text-slate-500 text-center">
-                    🇮🇳 Indian users can also use Stripe for international card payments
-                  </p>
-                )}
+                <p className="mt-2.5 text-xs text-slate-400 text-center">
+                  🇮🇳 Use Razorpay for Indian UPI/cards &nbsp;·&nbsp; 🌍 Use Stripe for international cards
+                </p>
               </div>
 
               {/* Error */}
@@ -449,8 +457,7 @@ export default function CheckoutModal({
               <div className="flex items-center gap-3 rounded-xl bg-slate-50 border border-slate-100 px-4 py-3">
                 <Shield className="w-4 h-4 text-emerald-500 flex-shrink-0" />
                 <p className="text-xs text-slate-500">
-                  Your payment is secured with 256-bit SSL encryption.
-                  We never store card details.
+                  Your payment is secured with 256-bit SSL encryption. We never store card details.
                 </p>
               </div>
             </div>
@@ -478,7 +485,7 @@ export default function CheckoutModal({
               <Button
                 className="w-full h-12 rounded-2xl text-base font-semibold shadow-lg group"
                 onClick={onSubmitForm}
-                disabled={loading}
+                disabled={loading || countriesLoading}
               >
                 {loading ? (
                   <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Saving details…</>
@@ -501,10 +508,8 @@ export default function CheckoutModal({
                   <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Connecting…</>
                 ) : (
                   <>
-                    Pay {leadData?.currency === 'INR' ? '₹' : '$'}
-                    {leadData?.plan_price?.toLocaleString()} with {
-                      gateway === 'razorpay' ? 'Razorpay' : 'Stripe'
-                    }
+                    Pay {currencySymbol}{humanAmount.toLocaleString()} with{' '}
+                    {gateway === 'razorpay' ? 'Razorpay' : 'Stripe'}
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </>
                 )}

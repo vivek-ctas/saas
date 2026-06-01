@@ -1,20 +1,20 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { fetchPublicPlans } from '@/services/user-plan.service';
-import type { Plan } from '@/types/user-plan.types';
+import { fetchPublicPlans } from '@/services/plan.service';
+import type { Plan } from '@/types';
 
 interface UsePlansResult {
-  plans: Plan[];
+  plans:   Plan[];
   loading: boolean;
-  error: string | null;
+  error:   string | null;
   refetch: () => void;
 }
 
 export function usePlans(): UsePlansResult {
-  const [plans, setPlans] = useState<Plan[]>([]);
+  const [plans,   setPlans]   = useState<Plan[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [tick, setTick] = useState(0);
+  const [error,   setError]   = useState<string | null>(null);
+  const [tick,    setTick]    = useState(0);
 
   useEffect(() => {
     let cancelled = false;
@@ -24,13 +24,11 @@ export function usePlans(): UsePlansResult {
     fetchPublicPlans().then(({ plans: fetched, error: err }) => {
       if (cancelled) return;
       if (err) setError(err);
-      else setPlans(fetched);
+      else     setPlans(fetched);
       setLoading(false);
     });
 
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   }, [tick]);
 
   return { plans, loading, error, refetch: () => setTick((t) => t + 1) };
