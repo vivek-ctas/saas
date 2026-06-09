@@ -1,6 +1,6 @@
 // =============================================================================
 // ALL FRONTEND TYPES — Single source of truth
-// Matches backend schemas exactly (price_cents, is_custom_plan, etc.)
+// Aligned exactly with backend schemas (public-checkout.service.ts)
 // =============================================================================
 
 // ── Gateway / Billing ─────────────────────────────────────────────────────────
@@ -8,16 +8,15 @@
 export type Gateway = 'razorpay' | 'stripe';
 export type BillingCycle = 'monthly' | 'yearly';
 
-// ── Currency (matches GET /manage-plan/get-currencies response) ───────────────
+// ── Currency (matches GET /manage-plan/get-currencies) ────────────────────────
 
 export interface CurrencyOption {
-  id: string;         // "68394c67e652686f23c84031"
-  code: string;       // "afn" — lowercase (legacy/alias for country_code)
-  country: string;    // "AFGHANISTAN" — uppercase (legacy)
-  // New backend fields (preferred):
-  country_name?: string; // "Afghanistan" — display name
-  country_code?: string; // "afn" — lowercase ISO/code
-  status: number;     // 1 = active
+  id: string;  // ObjectId
+  code: string;  // "inr", "usd" — lowercase
+  country: string;  // "INDIA" — uppercase (legacy field)
+  country_name?: string; // "India" — display name
+  country_code?: string; // "inr" — alias for code
+  status: number;  // 1 = active
 }
 
 export interface CurrenciesApiResponse {
@@ -26,36 +25,19 @@ export interface CurrenciesApiResponse {
   data: CurrencyOption[];
 }
 
-// ── Plan limits (from plan.metadata) ─────────────────────────────────────────
-
-export interface PlanLimits {
-  max_marketplaces?: number;
-  max_listings?: number;
-  max_users?: number;
-  ai_enabled?: boolean;
-  [key: string]: any;
-}
-
-// ── Plan (matches GET /manage-plan/public/plans response) ─────────────────────
+// ── Plan (matches GET /manage-plan/public/plans) ──────────────────────────────
 
 export interface Plan {
   _id: string;
   name: string;
-  slug: string;
   desc: string;
-  price_cents: number;      // smallest unit — paise for INR, cents for USD
-  currency: string;         // lowercase: "inr" | "usd"
+  price: number;
+  is_popular: boolean;
+  currency: string;   // lowercase: "inr" | "usd"
   interval: 'day' | 'week' | 'month' | 'year';
-  interval_count: number;
   trial_days: number;
   marketing_features: string[];
-  features: string[];
-  is_popular: boolean;
   is_custom_plan: boolean;
-  cta_label: string;
-  sort_order: number;
-  status: number;
-  metadata: PlanLimits;    // limits + feature flags
 }
 
 export interface PlansApiResponse {
@@ -64,38 +46,45 @@ export interface PlansApiResponse {
   data: Plan[];
 }
 
-// ── Checkout form ─────────────────────────────────────────────────────────────
+// ── Checkout form state ───────────────────────────────────────────────────────
 
 export interface CheckoutFormState {
-  full_name: string;
+  // full_name: string;
+  first_name: string;
+  last_name: string;
   email: string;
   company_name: string;
   contact_number: string;
-  country_name: string;    // display name e.g. "India"
-  country_code?: string;   // selected country code e.g. "inr"
+  currency_id: string;   // tbl_currencies._id
+  country_name: string;  // e.g. "India" — display only
 }
 
 export type CheckoutStep =
-  | 'form'
-  | 'summary'
-  | 'processing'
-  | 'success'
+  | 'form'        // Step 1: collect user info
+  | 'summary'     // Step 2: payment summary + gateway selection
+  | 'processing'  // Step 3: payment in progress
+  | 'success'     // Step 4: done
   | 'error';
 
-// ── Step 1 — Create lead ──────────────────────────────────────────────────────
+// ── Step 1: Create Guest Lead ─────────────────────────────────────────────────
+//
+// Backend: POST /v1/public-checkout/lead
+// Body fields match createLead() in public-checkout.service.ts EXACTLY.
 
 export interface CreateLeadPayload {
-  full_name: string;
+  // full_name: string;
+  first_name: string;
+  last_name: string;
   email: string;
   company_name: string;
   contact_number: string;
-  country_name: string;
-  country_code?: string;
+  currency_id: string;  // ISO-like code, stored as-is on GuestLead
+  country_name: string;   // stored as-is
   plan_id: string;
   billing_cycle: BillingCycle;
-  gateway: Gateway;
 }
 
+// Backend returns: createResponse(200, 'Details saved', { lead_id: lead._id })
 export interface CreateLeadData {
   lead_id: string;
 }
@@ -106,13 +95,16 @@ export interface CreateLeadResponse {
   data: CreateLeadData;
 }
 
-// ── Step 2a — Razorpay create order ──────────────────────────────────────────
+// ── Step 2a: Razorpay — create order ─────────────────────────────────────────
+//
+// Backend: POST /v1/public-checkout/razorpay/create-order
+// Returns: { payment_id, razorpay_order_id, amount, currency, plan_name, trial_days }
 
 export interface CreateRazorpayOrderData {
   payment_id: string;
   razorpay_order_id: string;
-  amount: number;
-  currency: string;
+  amount: number;   // paise
+  currency: string;   // "INR"
   plan_name: string;
   trial_days: number;
 }
@@ -123,7 +115,10 @@ export interface CreateRazorpayOrderResponse {
   data: CreateRazorpayOrderData;
 }
 
-// ── Step 3a — Razorpay verify ─────────────────────────────────────────────────
+// ── Step 3a: Razorpay — verify & activate ────────────────────────────────────
+//
+// Backend: POST /v1/public-checkout/razorpay/verify
+// Returns: { user_plan_id, expires_at, plan_name }
 
 export interface VerifyRazorpayPayload {
   lead_id: string;
@@ -132,7 +127,10 @@ export interface VerifyRazorpayPayload {
   razorpay_signature: string;
 }
 
-// ── Step 2b — Stripe create session ──────────────────────────────────────────
+// ── Step 2b: Stripe — create checkout session ─────────────────────────────────
+//
+// Backend: POST /v1/public-checkout/stripe/create-session
+// Returns: { payment_id, session_id, checkout_url }
 
 export interface CreateStripeSessionData {
   payment_id: string;
@@ -146,18 +144,25 @@ export interface CreateStripeSessionResponse {
   data: CreateStripeSessionData;
 }
 
-// ── Step 3b — Stripe verify after redirect ────────────────────────────────────
+// ── Step 3b: Stripe — verify session after redirect ───────────────────────────
+//
+// Backend: POST /v1/public-checkout/stripe/verify-session
+// Body: { lead_id, session_id }   ← field is session_id (NOT stripe_session_id)
 
 export interface VerifyStripePayload {
   lead_id: string;
-  session_id: string;
+  session_id: string;   // Stripe checkout session ID (cs_xxx)
 }
 
 // ── Shared activation result ──────────────────────────────────────────────────
+//
+// Backend _activateUserPlan() returns the UserPlan document.
+// Controller wraps with createResponse: { user_plan_id, expires_at, plan_name }
 
 export interface ActivationData {
-  subscription_id: string;
-  expires_at: string;
+  user_plan_id: string;
+  expires_at: string;   // ISO 8601
+  plan_name: string;
 }
 
 export interface ActivationResponse {
@@ -166,13 +171,11 @@ export interface ActivationResponse {
   data: ActivationData;
 }
 
-// ── Razorpay SDK types (loaded from CDN) ──────────────────────────────────────
+// ── Razorpay SDK types ────────────────────────────────────────────────────────
 
 export interface RazorpayDisplayConfig {
   hide?: string[];
-  preferences?: {
-    show_default_blocks?: boolean;
-  };
+  preferences?: { show_default_blocks?: boolean };
 }
 
 export interface RazorpayOptions {
@@ -187,10 +190,6 @@ export interface RazorpayOptions {
     email?: string;
     contact?: string;
   };
-  /** Display config — controls which payment methods are shown.
-   *  Leave unset (or set show_default_blocks: true) to enable ALL methods:
-   *  UPI, Cards, Net Banking, Wallets, EMI, etc.
-   */
   config?: {
     display?: RazorpayDisplayConfig;
   };
@@ -204,6 +203,9 @@ export interface RazorpayHandlerResponse {
   razorpay_order_id: string;
   razorpay_signature: string;
 }
+
+// Re-export for legacy imports
+export type { RazorpayOptions as RazorpayPlan };
 
 declare global {
   interface Window {

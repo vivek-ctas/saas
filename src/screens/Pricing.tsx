@@ -73,21 +73,27 @@ const ADDONS = [
 /** price_cents → human readable (₹999 or $9.99) */
 function formatPrice(plan: Plan): string {
   if (plan.is_custom_plan) return 'Custom';
-  const amount = plan.price_cents / 100;
+  const amount = plan.price / 100;
   if (plan.currency === 'inr') return `₹${Math.round(amount).toLocaleString('en-IN')}`;
   return `$${amount.toFixed(2)}`;
 }
 
 function getPeriod(plan: Plan): string {
   if (plan.is_custom_plan) return '';
-  const count = plan.interval_count || 1;
-  if (plan.interval === 'month') return count === 1 ? '/mo' : `/${count}mo`;
-  if (plan.interval === 'year') return count === 1 ? '/yr' : `/${count}yr`;
-  return `/${plan.interval}`;
+
+  switch (plan.interval) {
+    case 'month':
+      return '/mo';
+
+    case 'year':
+      return '/yr';
+
+    default:
+      return plan.interval ? `/${plan.interval}` : '';
+  }
 }
 
 function getCtaLabel(plan: Plan): string {
-  if (plan.cta_label) return plan.cta_label;
   if (plan.is_custom_plan) return 'Contact Sales';
   if (plan.trial_days > 0) return 'Start Free Trial';
   return 'Get Started';
@@ -101,8 +107,6 @@ const Pricing = () => {
   const { plans, loading: plansLoading, error: plansError } = usePlans();
   const [activePlan, setActivePlan] = useState<Plan | null>(null);
   const checkout = useCheckout('stripe'); // default; user will manually select on summary step
-  console.log('checkout', checkout)
-
   function handlePlanClick(plan: Plan) {
     if (plan.is_custom_plan) {
       window.location.href = '/contact';
@@ -429,7 +433,7 @@ const Pricing = () => {
           onBilling={checkout.setBillingCycle}
           onSubmitForm={() => checkout.submitForm(activePlan)}
           onStartPayment={() => checkout.startPayment(activePlan)}
-          onBack={() => checkout.reset()}
+          onBack={checkout.reset}
         />
       )}
     </Layout>

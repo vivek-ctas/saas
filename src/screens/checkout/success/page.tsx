@@ -1,64 +1,82 @@
 'use client';
-import { useEffect, useState }  from 'react';
-import { useSearchParams }       from 'next/navigation';
-import Link                      from 'next/link';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import {
-  CheckCircle2, ArrowRight, Loader2, AlertCircle, Calendar, Mail, Sparkles,
+  CheckCircle2, ArrowRight, Loader2, AlertCircle, Calendar, Sparkles, Mail,
 } from 'lucide-react';
-import { verifyStripeSession }   from '@/services/checkout.service';
-import type { ActivationData }   from '@/types';
+import { verifyStripeSession } from '@/services/checkout.service';
+import type { ActivationData } from '@/types';
 
 /**
  * /checkout/success
  *
  * Two landing scenarios:
  *
- * 1. Razorpay — useCheckout already called verifyRazorpayPayment, then
- *    router.push('/checkout/success?gateway=razorpay&lead_id=xxx&expires_at=...')
- *    → No API call needed here.
+ * 1. Razorpay — useCheckout already called verifyRazorpayPayment(), then
+ *    router.push('/checkout/success?gateway=razorpay&lead_id=xxx&expires_at=...&plan_name=...')
+ *    → No extra API call needed here. Data is in URL params.
  *
  * 2. Stripe — Stripe redirects to:
  *    /checkout/success?session_id=cs_xxx&lead_id=xxx
- *    → This page calls verifyStripeSession (field: session_id) and shows result.
+ *    (session_id is appended by Stripe to the success_url we passed)
+ *    → This page calls verifyStripeSession({ lead_id, session_id }) once.
+ *    → Backend verifies with Stripe API → creates tbl_user_plans → returns activation.
  */
 export default function CheckoutSuccessPage() {
   const params = useSearchParams();
 
-  const gateway   = params.get('gateway')    || 'stripe';
-  const leadId    = params.get('lead_id')    || '';
-  const sessionId = params.get('session_id') || '';          // Stripe
-  const expiresAt = params.get('expires_at') || '';          // Razorpay (pre-verified)
+  // Common params
+  const gateway = params.get('gateway') || 'stripe';
+  const leadId = params.get('lead_id') || '';
 
-  const [verifying,   setVerifying]   = useState(gateway === 'stripe' && !!sessionId);
-  const [activation,  setActivation]  = useState<ActivationData | null>(null);
+  // Razorpay: pre-verified by useCheckout, values come in URL
+  const expiresAt = params.get('expires_at') || '';
+  const planName = params.get('plan_name') || '';
+
+  // Stripe: session_id appended by Stripe to success_url
+  const sessionId = params.get('session_id') || '';
+
+  const isStripe = gateway === 'stripe' && !!sessionId && !!leadId;
+  const isRazorpay = gateway === 'razorpay';
+
+  const [verifying, setVerifying] = useState(isStripe);
+  const [activation, setActivation] = useState<ActivationData | null>(null);
   const [verifyError, setVerifyError] = useState<string | null>(null);
 
-  // ── Stripe: verify session on mount ────────────────────────────────────────
+  // ── Stripe: verify session once on mount ────────────────────────────────────
 
   useEffect(() => {
-    if (gateway !== 'stripe' || !sessionId || !leadId) {
+    if (!isStripe) {
       setVerifying(false);
       return;
     }
 
+    // POST /v1/public-checkout/stripe/verify-session
+    // Body: { lead_id, session_id }  ← EXACT field names backend expects
     verifyStripeSession({ lead_id: leadId, session_id: sessionId })
       .then(({ data, error }) => {
-        if (error || !data) setVerifyError(error || 'Verification failed. Please contact support.');
-        else                setActivation(data);
+        console.log('Stripe verification result:', { data, error });
+        if (error || !data) {
+          setVerifyError(error || 'Verification failed. Please contact support.');
+        } else {
+          setActivation(data);
+        }
         setVerifying(false);
       });
-  }, [gateway, sessionId, leadId]);
+  }, []); // run once on mount only
 
   // ── Display values ──────────────────────────────────────────────────────────
 
-  // For Razorpay: expires_at comes from URL param (already verified by useCheckout)
-  // For Stripe: expires_at comes from activation response
+  // Razorpay: from URL params (already verified server-side)
+  // Stripe:   from activation API response
   const displayExpiry = activation?.expires_at || expiresAt;
+  const displayPlanName = activation?.plan_name || planName;
 
   const formattedExpiry = displayExpiry
     ? new Date(displayExpiry).toLocaleDateString('en-IN', {
-        day: 'numeric', month: 'long', year: 'numeric',
-      })
+      day: 'numeric', month: 'long', year: 'numeric',
+    })
     : null;
 
   // ── Loading state ───────────────────────────────────────────────────────────
@@ -71,7 +89,9 @@ export default function CheckoutSuccessPage() {
             <Loader2 className="w-10 h-10 text-primary animate-spin" />
           </div>
           <h1 className="text-xl font-bold text-slate-900 mb-2">Confirming your payment…</h1>
-          <p className="text-slate-500 text-sm">Please wait while we verify your transaction with Stripe.</p>
+          <p className="text-slate-500 text-sm">
+            Please wait while we verify your transaction with Stripe.
+          </p>
         </div>
       </div>
     );
@@ -123,12 +143,13 @@ export default function CheckoutSuccessPage() {
 
           <h1 className="text-3xl font-bold text-slate-900 mb-2">You're all set! 🎉</h1>
           <p className="text-slate-500 text-sm mb-8 leading-relaxed">
-            Your subscription is now active.
+            Your{displayPlanName ? ` ${displayPlanName}` : ''} subscription is now active.
             Our team will reach out within 24 hours to help you get started.
           </p>
 
           {/* Detail cards */}
           <div className="space-y-3 mb-8 text-left">
+
             {formattedExpiry && (
               <div className="flex items-center gap-3 rounded-2xl bg-slate-50 border border-slate-100 px-5 py-4">
                 <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center flex-shrink-0">
@@ -141,14 +162,26 @@ export default function CheckoutSuccessPage() {
               </div>
             )}
 
+            <div className="flex items-center gap-3 rounded-2xl bg-emerald-50 border border-emerald-100 px-5 py-4">
+              <div className="w-9 h-9 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                <Mail className="w-4 h-4 text-emerald-600" />
+              </div>
+              <div>
+                <div className="text-xs text-slate-500">What happens next</div>
+                <div className="text-sm font-semibold text-slate-800">
+                  Check your inbox — welcome email is on its way
+                </div>
+              </div>
+            </div>
+
             <div className="flex items-center gap-3 rounded-2xl bg-primary/5 border border-primary/20 px-5 py-4">
               <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
                 <Sparkles className="w-4 h-4 text-primary" />
               </div>
               <div>
-                <div className="text-xs text-slate-500">Next step</div>
+                <div className="text-xs text-slate-500">Onboarding</div>
                 <div className="text-sm font-semibold text-slate-800">
-                  Our onboarding team will email you shortly
+                  Our team will contact you within 24 hours
                 </div>
               </div>
             </div>
