@@ -50,7 +50,7 @@ export async function createRazorpayOrder(
 // POST /v1/public-checkout/razorpay/verify
 // Backend verifies HMAC-SHA256 signature, marks payment SUCCESS,
 // creates tbl_user_plans record via _activateUserPlan().
-// Returns { user_plan_id, expires_at, plan_name }.
+// Returns { user_plan_id, expired_at, plan_name }.
 
 export async function verifyRazorpayPayment(
   payload: VerifyRazorpayPayload,
@@ -62,6 +62,24 @@ export async function verifyRazorpayPayment(
   return { data: data?.data ?? null, error };
 }
 
+// ── Razorpay: Fetch activation summary on success page ────────────────────────
+//
+// NEW: Previously the success page read plan_name & expired_at from URL params —
+// those are tamper-able by anyone who manually edits the URL.
+// Now the success page calls this endpoint which reads from the database.
+//
+// Requires a new backend endpoint:
+//   GET /v1/public-checkout/activation-summary/:leadId
+//   Returns: { seller_id, email, plan_name, expired_at }
+
+export async function verifyRazorpayActivation(
+  leadId: string,
+): Promise<{ data: ActivationData | null; error: string | null }> {
+  const { data, error } = await apiFetch<ActivationResponse>(
+    `/v1/public-checkout/activation-summary/${encodeURIComponent(leadId)}`,
+  );
+  return { data: data?.data ?? null, error };
+}
 // ── STEP 2b: Stripe — Create Checkout Session ─────────────────────────────────
 //
 // POST /v1/public-checkout/stripe/create-session
@@ -71,11 +89,10 @@ export async function verifyRazorpayPayment(
 export async function createStripeSession(
   leadId: string,
 ): Promise<{ data: CreateStripeSessionData | null; error: string | null }> {
-  console.log('Creating Stripe session for lead_id:', leadId);
   // Stripe redirects back with session_id appended by Stripe itself.
   // We pass lead_id in success_url so the success page can verify.
-  const successUrl = `${window.location.origin}/checkout/success?lead_id=${leadId}`;
-  const cancelUrl = `${window.location.origin}/checkout/cancel?lead_id=${leadId}`;
+  const successUrl = `${window.location.origin}/checkout/success?gateway=stripe&lead_id=${encodeURIComponent(leadId)}`;
+  const cancelUrl = `${window.location.origin}/checkout/cancel?lead_id=${encodeURIComponent(leadId)}`;
 
   const { data, error } = await apiFetch<CreateStripeSessionResponse>(
     '/v1/public-checkout/stripe/create-session',
@@ -97,7 +114,7 @@ export async function createStripeSession(
 // Body: { lead_id, session_id }   ← MUST be "session_id", not "stripe_session_id"
 // Backend calls Stripe API, confirms payment_status === 'paid',
 // then creates tbl_user_plans via _activateUserPlan().
-// Returns { user_plan_id, expires_at, plan_name }.
+// Returns { user_plan_id, expired_at, plan_name }.
 
 export async function verifyStripeSession(
   payload: VerifyStripePayload,

@@ -19,7 +19,6 @@ import type {
 } from '@/types';
 
 const EMPTY_FORM: CheckoutFormState = {
-  // full_name: '',
   first_name: '',
   last_name: '',
   email: '',
@@ -47,8 +46,6 @@ export interface UseCheckoutResult {
   reset: () => void;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-
 export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutResult {
   const router = useRouter();
   const { openCheckout } = useRazorpay();
@@ -75,7 +72,7 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
   // On success → moves to 'summary' step and holds lead_id for next steps.
 
   const submitForm = useCallback(async (plan: Plan) => {
-    const { first_name, last_name, email, company_name, contact_number, currency_id, country_name } = form;
+    const { first_name, last_name, email, company_name, contact_number, currency_id } = form;
 
     if (!first_name.trim())
       return setError('Please enter your first name.');
@@ -94,14 +91,13 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
     setError(null);
 
     const { data, error: apiErr } = await createGuestLead({
-      // full_name: full_name.trim(),
       first_name: first_name.trim(),
       last_name: last_name.trim(),
       email: email.trim().toLowerCase(),
       company_name: company_name.trim(),
       contact_number: contact_number.trim(),
       currency_id: currency_id.trim(),
-      country_name: country_name.trim(),
+      country_name: form.country_name.trim(),
       plan_id: plan._id,
       billing_cycle: billingCycle,
     });
@@ -111,6 +107,12 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
     if (apiErr || !data)
       return setError(apiErr || 'Could not save your details. Please try again.');
 
+    // CHANGED: handle payment_allowed: false (existing active subscription)
+    if (data.payment_allowed === false) {
+      return setError(
+        'You already have an active subscription. Please log in to manage your plan.',
+      );
+    }
     setLeadData(data);
     setStep('summary');
   }, [form, billingCycle]);
@@ -189,9 +191,9 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
           setStep('success');
           setLoading(false);
 
-          // Pass expires_at so success page can display it without an extra API call
+          // Pass expired_at so success page can display it without an extra API call
           router.push(
-            `/checkout/success?gateway=razorpay&lead_id=${leadData!.lead_id}&expires_at=${encodeURIComponent(activation.expires_at)}&plan_name=${encodeURIComponent(activation.plan_name)}`,
+            `/checkout/success?gateway=razorpay&lead_id=${encodeURIComponent(leadData!.lead_id)}`,
           );
         } catch (e: any) {
           setError(e?.message || 'Payment verification failed. Please contact support.');
@@ -216,6 +218,7 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
   // 3. Stripe redirects to /checkout/success?session_id=cs_xxx&lead_id=xxx
   // 4. Success page calls verifyStripeSession() with { lead_id, session_id }
   // 5. Backend verifies with Stripe API + creates tbl_user_plans
+
 
   async function _handleStripe() {
     const { data: session, error: sessionErr } = await createStripeSession(leadData!.lead_id);

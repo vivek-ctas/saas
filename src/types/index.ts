@@ -87,6 +87,8 @@ export interface CreateLeadPayload {
 // Backend returns: createResponse(200, 'Details saved', { lead_id: lead._id })
 export interface CreateLeadData {
   lead_id: string;
+  payment_allowed?: boolean; // false = existing active subscription
+  seller_id?: string;  // populated when payment_allowed === false
 }
 
 export interface CreateLeadResponse {
@@ -118,7 +120,7 @@ export interface CreateRazorpayOrderResponse {
 // ── Step 3a: Razorpay — verify & activate ────────────────────────────────────
 //
 // Backend: POST /v1/public-checkout/razorpay/verify
-// Returns: { user_plan_id, expires_at, plan_name }
+// Returns: { user_plan_id, expired_at, plan_name }
 
 export interface VerifyRazorpayPayload {
   lead_id: string;
@@ -157,12 +159,13 @@ export interface VerifyStripePayload {
 // ── Shared activation result ──────────────────────────────────────────────────
 //
 // Backend _activateUserPlan() returns the UserPlan document.
-// Controller wraps with createResponse: { user_plan_id, expires_at, plan_name }
+// Controller wraps with createResponse: { user_plan_id, expired_at, plan_name }
 
 export interface ActivationData {
-  user_plan_id: string;
-  expires_at: string;   // ISO 8601
+  seller_id: string;
+  email: string;
   plan_name: string;
+  expired_at: string; // ISO 8601
 }
 
 export interface ActivationResponse {
