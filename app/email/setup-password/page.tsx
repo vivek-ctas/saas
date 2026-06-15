@@ -1,4 +1,4 @@
-import SetupPasswordPage from '@/screens/auth/setup-password/page';
+import SetupPasswordPage from '@/screens/email/setup-password/page';
 export default function Page() {
     return (
         <SetupPasswordPage />
