@@ -1,4 +1,4 @@
-import { Suspense }     from 'react';
+import { Suspense } from 'react';
 import CheckoutSuccessPage from '@/screens/checkout/success/page';
 
 export const metadata = {
@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
       <CheckoutSuccessPage />
     </Suspense>
   );

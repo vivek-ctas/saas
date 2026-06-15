@@ -19,16 +19,16 @@ import type {
 } from '@/types';
 
 const EMPTY_FORM: CheckoutFormState = {
-  full_name: '',
+  first_name: '',
+  last_name: '',
   email: '',
   company_name: '',
   contact_number: '',
+  currency_id: '',
   country_name: '',
-  country_code: '',
 };
 
 export interface UseCheckoutResult {
-  // State
   step: CheckoutStep;
   form: CheckoutFormState;
   gateway: Gateway;
@@ -38,7 +38,6 @@ export interface UseCheckoutResult {
   error: string | null;
   loading: boolean;
 
-  // Actions
   setForm: (field: keyof CheckoutFormState, value: string) => void;
   setGateway: (g: Gateway) => void;
   setBillingCycle: (c: BillingCycle) => void;
@@ -60,40 +59,47 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
+  // ── Form field setter ───────────────────────────────────────────────────────
+
   const setForm = useCallback((field: keyof CheckoutFormState, value: string) => {
     setFormState(prev => ({ ...prev, [field]: value }));
     setError(null);
   }, []);
 
-  // ── STEP 1: Validate + create lead ─────────────────────────────────────
+  // ── STEP 1: Validate form + create GuestLead ───────────────────────────────
+  //
+  // POST /v1/public-checkout/lead
+  // On success → moves to 'summary' step and holds lead_id for next steps.
 
   const submitForm = useCallback(async (plan: Plan) => {
-    const { full_name, email, company_name, contact_number, country_name, country_code } = form;
+    const { first_name, last_name, email, company_name, contact_number, currency_id } = form;
 
-    if (!full_name.trim())
-      return setError('Please enter your full name.');
+    if (!first_name.trim())
+      return setError('Please enter your first name.');
+    if (!last_name.trim())
+      return setError('Please enter your last name.');
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
       return setError('Please enter a valid email address.');
     if (!company_name.trim())
       return setError('Please enter your company name.');
     if (!contact_number.trim())
       return setError('Please enter your contact number.');
-    if (!country_code?.trim())
+    if (!currency_id.trim())
       return setError('Please select your country.');
 
     setLoading(true);
     setError(null);
 
     const { data, error: apiErr } = await createGuestLead({
-      full_name: full_name.trim(),
+      first_name: first_name.trim(),
+      last_name: last_name.trim(),
       email: email.trim().toLowerCase(),
       company_name: company_name.trim(),
       contact_number: contact_number.trim(),
-      country_name: country_name.trim(),
-      country_code: (country_code || '').trim().toLowerCase(),
+      currency_id: currency_id.trim(),
+      country_name: form.country_name.trim(),
       plan_id: plan._id,
       billing_cycle: billingCycle,
-      gateway,
     });
 
     setLoading(false);
@@ -101,11 +107,17 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
     if (apiErr || !data)
       return setError(apiErr || 'Could not save your details. Please try again.');
 
+    // CHANGED: handle payment_allowed: false (existing active subscription)
+    if (data.payment_allowed === false) {
+      return setError(
+        'You already have an active subscription. Please log in to manage your plan.',
+      );
+    }
     setLeadData(data);
     setStep('summary');
-  }, [form, gateway, billingCycle]);
+  }, [form, billingCycle]);
 
-  // ── STEP 2: Open payment gateway ────────────────────────────────────────
+  // ── STEP 2: Open payment gateway ────────────────────────────────────────────
 
   const startPayment = useCallback(async (plan: Plan) => {
     if (!leadData) return setError('Lead data missing. Please go back and re-submit.');
@@ -125,42 +137,46 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
       setStep('summary');
       setLoading(false);
     }
-  }, [leadData, gateway]);
+  }, [leadData, gateway, form]);
 
-  // ── Razorpay flow ───────────────────────────────────────────────────────
+  // ── Razorpay flow ────────────────────────────────────────────────────────────
+  //
+  // 1. Create Razorpay order on backend (gets amount in paise + order_id)
+  // 2. Open Razorpay checkout SDK
+  // 3. On payment success → send razorpay_signature to backend for HMAC verify
+  // 4. Backend marks payment SUCCESS + creates tbl_user_plans
+  // 5. Redirect to /checkout/success
 
   async function _handleRazorpay(plan: Plan) {
     const { data: order, error: orderErr } = await createRazorpayOrder(leadData!.lead_id);
     if (orderErr || !order)
-      throw new Error(orderErr || 'Could not create order. Please try again.');
-
+      throw new Error(orderErr || 'Could not create Razorpay order. Please try again.');
     const razorpayKeyId = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || '';
 
     await openCheckout({
       key: razorpayKeyId,
-      amount: order.amount,
-      currency: order.currency,
+      amount: order.amount,          // paise — Razorpay SDK expects paise
+      currency: order.currency,        // "INR"
       name: 'Ctasis',
       description: `${plan.name} Plan${order.trial_days > 0 ? ` — ${order.trial_days}-day trial` : ''}`,
       order_id: order.razorpay_order_id,
       prefill: {
-        name: form.full_name,
+        name: `${form.first_name} ${form.last_name}`,
         email: form.email,
         contact: form.contact_number,
       },
-      // Enable ALL Razorpay payment methods (UPI, Cards, Netbanking, Wallets)
+      // Show ALL payment methods: UPI, Cards, Net Banking, Wallets, EMI
       config: {
         display: {
-          hide: [],           // hide nothing
-          preferences: {
-            show_default_blocks: true,  // show all default blocks
-          },
+          hide: [],
+          preferences: { show_default_blocks: true },
         },
       },
       theme: { color: '#6366f1' },
 
       handler: async (response) => {
         try {
+          // HMAC verification on backend — never trust frontend for this
           const { data: activation, error: verifyErr } = await verifyRazorpayPayment({
             lead_id: leadData!.lead_id,
             razorpay_order_id: response.razorpay_order_id,
@@ -175,8 +191,9 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
           setStep('success');
           setLoading(false);
 
+          // Pass expired_at so success page can display it without an extra API call
           router.push(
-            `/checkout/success?gateway=razorpay&lead_id=${leadData!.lead_id}&expires_at=${encodeURIComponent(activation.expires_at)}`,
+            `/checkout/success?gateway=razorpay&lead_id=${encodeURIComponent(leadData!.lead_id)}`,
           );
         } catch (e: any) {
           setError(e?.message || 'Payment verification failed. Please contact support.');
@@ -194,17 +211,25 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
     });
   }
 
-  // ── Stripe flow ─────────────────────────────────────────────────────────
+  // ── Stripe flow ──────────────────────────────────────────────────────────────
+  //
+  // 1. Create Stripe Checkout Session on backend
+  // 2. Redirect user to Stripe hosted page (checkout_url)
+  // 3. Stripe redirects to /checkout/success?session_id=cs_xxx&lead_id=xxx
+  // 4. Success page calls verifyStripeSession() with { lead_id, session_id }
+  // 5. Backend verifies with Stripe API + creates tbl_user_plans
+
 
   async function _handleStripe() {
     const { data: session, error: sessionErr } = await createStripeSession(leadData!.lead_id);
     if (sessionErr || !session)
       throw new Error(sessionErr || 'Could not create payment session.');
 
-    // Redirect to Stripe hosted checkout page.
-    // Stripe redirects back to: /checkout/success?session_id=cs_xxx&lead_id=xxx
+    // Hard redirect — Stripe will append ?session_id=cs_xxx to our success_url
     window.location.href = session.checkout_url;
   }
+
+  // ── Reset ────────────────────────────────────────────────────────────────────
 
   const reset = useCallback(() => {
     setStep('form');

@@ -40,17 +40,24 @@ const GATEWAYS: {
 
 function displayPrice(plan: Plan): string {
   if (plan.is_custom_plan) return 'Custom';
-  const amount = plan.price_cents / 100;
+  const amount = plan.price / 100;
   if (plan.currency === 'inr') return `₹${Math.round(amount).toLocaleString('en-IN')}`;
   return `$${amount.toFixed(2)}`;
 }
 
 function periodLabel(plan: Plan): string {
   if (plan.is_custom_plan) return '';
-  const count = plan.interval_count || 1;
-  if (plan.interval === 'month') return count === 1 ? '/mo' : `/${count}mo`;
-  if (plan.interval === 'year') return count === 1 ? '/yr' : `/${count}yr`;
-  return `/${plan.interval}`;
+
+  switch (plan.interval) {
+    case 'month':
+      return '/mo';
+
+    case 'year':
+      return '/yr';
+
+    default:
+      return plan.interval ? `/${plan.interval}` : '';
+  }
 }
 
 // ── Props ──────────────────────────────────────────────────────────────────────
@@ -108,7 +115,7 @@ export default function CheckoutModal({
   const price = displayPrice(plan);
   const period = periodLabel(plan);
 
-  const humanAmount = plan.price_cents / 100;
+  const humanAmount = plan.price / 100;
   const currencySymbol = plan.currency === 'inr' ? '₹' : '$';
 
   // Use the display name provided by backend (or fallback)
@@ -219,7 +226,7 @@ export default function CheckoutModal({
               {/* Form fields */}
               <div className="space-y-3.5">
 
-                <div>
+                {/* <div>
                   <Label htmlFor="full_name" className="text-sm font-medium text-slate-700">Full Name *</Label>
                   <Input
                     id="full_name"
@@ -228,6 +235,28 @@ export default function CheckoutModal({
                     onChange={(e) => onFormChange('full_name', e.target.value)}
                     className="mt-1.5 rounded-xl border-slate-200 focus:border-primary"
                   />
+                </div> */}
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <Label htmlFor="first_name">First Name *</Label>
+                    <Input
+                      id="first_name"
+                      placeholder="John"
+                      value={form.first_name}
+                      onChange={(e) => onFormChange('first_name', e.target.value)}
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="last_name">Last Name *</Label>
+                    <Input
+                      id="last_name"
+                      placeholder="Smith"
+                      value={form.last_name}
+                      onChange={(e) => onFormChange('last_name', e.target.value)}
+                    />
+                  </div>
                 </div>
 
                 <div>
@@ -271,14 +300,13 @@ export default function CheckoutModal({
                   <div className="relative mt-1.5">
                     <select
                       id="country"
-                      value={form.country_code}
+                      value={form.currency_id}
                       disabled={countriesLoading}
                       onChange={(e) => {
                         const selected = countries.find(
-                          (c) => c.code === e.target.value
+                          (c) => c.id === e.target.value
                         );
-
-                        onFormChange('country_code', e.target.value);
+                        onFormChange('currency_id', e.target.value);
                         onFormChange('country_name', selected?.country ?? '');
                       }}
                       className="w-full appearance-none rounded-xl border border-slate-200 bg-white pl-3 pr-9 py-2.5 text-sm text-slate-900 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-60"
@@ -287,7 +315,7 @@ export default function CheckoutModal({
                         {countriesLoading ? 'Loading countries…' : 'Select your country'}
                       </option>
                       {countries.map((c) => (
-                        <option key={c.id} value={c.code}>
+                        <option key={c.id} value={c.id}>
                           {c.country}
                         </option>
                       ))}
@@ -374,8 +402,7 @@ export default function CheckoutModal({
               <div>
                 <p className="text-xs font-semibold text-slate-500 tracking-widest uppercase mb-3">What's included</p>
                 <ul className="space-y-2">
-                  {(plan.marketing_features.length > 0 ? plan.marketing_features : plan.features)
-                    .slice(0, 5)
+                  {plan.marketing_features.slice(0, 5)
                     .map((f, i) => (
                       <li key={i} className="flex items-center gap-2.5 text-sm text-slate-700">
                         <div className="w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
