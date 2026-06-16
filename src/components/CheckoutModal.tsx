@@ -62,6 +62,8 @@ function validateField(field: keyof CheckoutFormState, value: string): string | 
       if (!isValidPhoneNumber(value))
         return 'Please enter a valid phone number.';
 
+      return null;
+
     case 'currency_id':
       return value.trim() ? null : 'Please select your country.';
     default:
