@@ -43,6 +43,7 @@ export interface UseCheckoutResult {
   setBillingCycle: (c: BillingCycle) => void;
   submitForm: (plan: Plan) => Promise<void>;
   startPayment: (plan: Plan) => Promise<void>;
+  clearError: () => void;
   reset: () => void;
 }
 
@@ -63,30 +64,18 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
 
   const setForm = useCallback((field: keyof CheckoutFormState, value: string) => {
     setFormState(prev => ({ ...prev, [field]: value }));
-    setError(null);
-  }, []);
 
-  // ── STEP 1: Validate form + create GuestLead ───────────────────────────────
+  }, []);
+  // ── Clear API error (called from modal dismiss button) ──────────────────────
+
+  const clearError = useCallback(() => setError(null), []);
+  // ── STEP 1: Create GuestLead ───────────────────────────────
   //
   // POST /v1/public-checkout/lead
   // On success → moves to 'summary' step and holds lead_id for next steps.
 
   const submitForm = useCallback(async (plan: Plan) => {
     const { first_name, last_name, email, company_name, contact_number, currency_id } = form;
-
-    if (!first_name.trim())
-      return setError('Please enter your first name.');
-    if (!last_name.trim())
-      return setError('Please enter your last name.');
-    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
-      return setError('Please enter a valid email address.');
-    if (!company_name.trim())
-      return setError('Please enter your company name.');
-    if (!contact_number.trim())
-      return setError('Please enter your contact number.');
-    if (!currency_id.trim())
-      return setError('Please select your country.');
-
     setLoading(true);
     setError(null);
 
@@ -242,6 +231,6 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
 
   return {
     step, form, gateway, billingCycle, leadData, activationData, error, loading,
-    setForm, setGateway, setBillingCycle, submitForm, startPayment, reset,
+    setForm, setGateway, setBillingCycle, submitForm, startPayment, clearError, reset,
   };
 }

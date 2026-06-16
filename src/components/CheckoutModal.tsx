@@ -1,8 +1,8 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import {
   ArrowLeft, ArrowRight, Check, CreditCard,
-  Globe, Loader2, Lock, Shield, Smartphone, X, Zap, ChevronDown,
+  Globe, Loader2, Lock, Shield, Smartphone, X, Zap, ChevronDown, AlertCircle,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,6 +13,8 @@ import type {
   Plan, Gateway, BillingCycle, CheckoutFormState, CheckoutStep,
   CreateLeadData, CurrencyOption,
 } from '@/types';
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 
 // ── Gateway config ─────────────────────────────────────────────────────────────
 
@@ -36,6 +38,37 @@ const GATEWAYS: {
     },
   ];
 
+// ── Field validators ──────────────────────────────────────────────────────────
+
+type FormErrors = Partial<Record<keyof CheckoutFormState, string>>;
+
+function validateField(field: keyof CheckoutFormState, value: string): string | null {
+  switch (field) {
+    case 'first_name':
+      return value.trim() ? null : 'First name is required.';
+    case 'last_name':
+      return value.trim() ? null : 'Last name is required.';
+    case 'email':
+      if (!value.trim()) return 'Email is required.';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Enter a valid email address.';
+      return null;
+    case 'company_name':
+      return value.trim() ? null : 'Company name is required.';
+    case 'contact_number':
+
+      if (!value)
+        return 'Contact number is required.';
+
+      if (!isValidPhoneNumber(value))
+        return 'Please enter a valid phone number.';
+
+    case 'currency_id':
+      return value.trim() ? null : 'Please select your country.';
+    default:
+      return null;
+  }
+}
+
 // ── Price helpers ──────────────────────────────────────────────────────────────
 
 function displayPrice(plan: Plan): string {
@@ -47,17 +80,106 @@ function displayPrice(plan: Plan): string {
 
 function periodLabel(plan: Plan): string {
   if (plan.is_custom_plan) return '';
-
   switch (plan.interval) {
-    case 'month':
-      return '/mo';
-
-    case 'year':
-      return '/yr';
-
-    default:
-      return plan.interval ? `/${plan.interval}` : '';
+    case 'month': return '/mo';
+    case 'year': return '/yr';
+    default: return plan.interval ? `/${plan.interval}` : '';
   }
+}
+
+// ── Inline API error banner ───────────────────────────────────────────────────
+
+function ApiErrorBanner({ message, onDismiss }: { message: string; onDismiss: () => void }) {
+  return (
+    <div
+      role="alert"
+      className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 animate-in fade-in slide-in-from-top-1 duration-200"
+    >
+      <AlertCircle className="w-4 h-4 mt-0.5 flex-shrink-0 text-red-500" />
+      <span className="flex-1">{message}</span>
+      <button
+        onClick={onDismiss}
+        className="text-red-400 hover:text-red-600 transition-colors flex-shrink-0"
+        aria-label="Dismiss error"
+      >
+        <X className="w-4 h-4" />
+      </button>
+    </div>
+  );
+}
+
+// ── Field error message ───────────────────────────────────────────────────────
+
+function FieldError({ message }: { message: string }) {
+  return (
+    <p
+      role="alert"
+      className="flex items-center gap-1.5 mt-1 text-xs text-red-600 animate-in fade-in slide-in-from-top-1 duration-150"
+    >
+      <AlertCircle className="w-3 h-3 flex-shrink-0" />
+      {message}
+    </p>
+  );
+}
+
+// ── Styled input with error state ─────────────────────────────────────────────
+
+function ValidatedInput({
+  id,
+  type = 'text',
+  placeholder,
+  value,
+  onChange,
+  onBlur,
+  error,
+  label,
+  required,
+}: {
+  id: string;
+  type?: string;
+  placeholder?: string;
+  value: string;
+  onChange: (v: string) => void;
+  onBlur?: () => void;
+  error?: string;
+  label: string;
+  required?: boolean;
+}) {
+  const hasError = Boolean(error);
+  return (
+    <div>
+      <Label
+        htmlFor={id}
+        className="text-sm font-medium text-slate-700"
+      >
+        {label}{required && ' *'}
+      </Label>
+      <div className="relative mt-1.5">
+        <Input
+          id={id}
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          onBlur={onBlur}
+          aria-invalid={hasError}
+          aria-describedby={hasError ? `${id}-error` : undefined}
+          className={[
+            'rounded-xl border transition-colors duration-150',
+            hasError
+              ? 'border-red-400 bg-red-50/40 focus-visible:ring-red-400/30 focus-visible:border-red-500'
+              : 'border-slate-200 focus:border-primary',
+          ].join(' ')}
+        />
+        {hasError && (
+          <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+            <AlertCircle className="w-4 h-4 text-red-400" />
+          </div>
+        )}
+      </div>
+      {hasError && <FieldError message={error!} />}
+    </div>
+  );
 }
 
 // ── Props ──────────────────────────────────────────────────────────────────────
@@ -79,18 +201,22 @@ interface CheckoutModalProps {
   onSubmitForm: () => void;
   onStartPayment: () => void;
   onBack: () => void;
+  onClearError: () => void;
 }
 
 // ── Component ──────────────────────────────────────────────────────────────────
 
 export default function CheckoutModal({
   plan, step, form, gateway, billingCycle, leadData, loading, error,
-  onClose, onFormChange, onGateway, onBilling, onSubmitForm, onStartPayment, onBack,
+  onClose, onFormChange, onGateway, onBilling, onSubmitForm, onStartPayment, onBack, onClearError,
 }: CheckoutModalProps) {
 
-  // Countries from /manage-plan/get-currencies
   const [countries, setCountries] = useState<CurrencyOption[]>([]);
   const [countriesLoading, setCountriesLoading] = useState(true);
+
+  // Per-field validation errors & touched tracking
+  const [fieldErrors, setFieldErrors] = useState<FormErrors>({});
+  const [touched, setTouched] = useState<Partial<Record<keyof CheckoutFormState, boolean>>>({});
 
   useEffect(() => {
     fetchCurrencies().then(({ currencies }) => {
@@ -112,14 +238,58 @@ export default function CheckoutModal({
     return () => { document.body.style.overflow = ''; };
   }, []);
 
+  // Clear field errors when step changes
+  useEffect(() => {
+    setFieldErrors({});
+    setTouched({});
+  }, [step]);
+
   const price = displayPrice(plan);
   const period = periodLabel(plan);
-
   const humanAmount = plan.price / 100;
   const currencySymbol = plan.currency === 'inr' ? '₹' : '$';
-
-  // Use the display name provided by backend (or fallback)
   const selectedCountryLabel = form.country_name || '';
+
+  // ── Validate a single field on blur ─────────────────────────────────────────
+
+  function handleBlur(field: keyof CheckoutFormState) {
+    setTouched(prev => ({ ...prev, [field]: true }));
+    const err = validateField(field, form[field]);
+    setFieldErrors(prev => ({ ...prev, [field]: err ?? undefined }));
+  }
+
+  // ── onChange: update form + re-validate if already touched ──────────────────
+
+  function handleChange(field: keyof CheckoutFormState, value: string) {
+    onFormChange(field, value);
+    if (touched[field]) {
+      const err = validateField(field, value);
+      setFieldErrors(prev => ({ ...prev, [field]: err ?? undefined }));
+    }
+  }
+
+  // ── Validate all fields before submission ────────────────────────────────────
+
+  const FORM_FIELDS: (keyof CheckoutFormState)[] = [
+    'first_name', 'last_name', 'email', 'company_name', 'contact_number', 'currency_id',
+  ];
+
+  function handleSubmit() {
+    // Touch + validate all fields
+    const errors: FormErrors = {};
+    const allTouched: Partial<Record<keyof CheckoutFormState, boolean>> = {};
+    for (const f of FORM_FIELDS) {
+      allTouched[f] = true;
+      const err = validateField(f, form[f]);
+      if (err) errors[f] = err;
+    }
+    setTouched(allTouched);
+    setFieldErrors(errors);
+
+    if (Object.keys(errors).length > 0) return; // stop here — show field errors inline
+
+    onSubmitForm(); // delegate to hook (which may set error for API failures)
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -226,116 +396,136 @@ export default function CheckoutModal({
               {/* Form fields */}
               <div className="space-y-3.5">
 
-                {/* <div>
-                  <Label htmlFor="full_name" className="text-sm font-medium text-slate-700">Full Name *</Label>
-                  <Input
-                    id="full_name"
-                    placeholder="John Smith"
-                    value={form.full_name}
-                    onChange={(e) => onFormChange('full_name', e.target.value)}
-                    className="mt-1.5 rounded-xl border-slate-200 focus:border-primary"
-                  />
-                </div> */}
-
                 <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <Label htmlFor="first_name">First Name *</Label>
-                    <Input
-                      id="first_name"
-                      placeholder="John"
-                      value={form.first_name}
-                      onChange={(e) => onFormChange('first_name', e.target.value)}
+                  <ValidatedInput
+                    id="first_name"
+                    label="First Name"
+                    required
+                    placeholder="John"
+                    value={form.first_name}
+                    onChange={(v) => handleChange('first_name', v)}
+                    onBlur={() => handleBlur('first_name')}
+                    error={fieldErrors.first_name}
+                  />
+                  <ValidatedInput
+                    id="last_name"
+                    label="Last Name"
+                    required
+                    placeholder="Smith"
+                    value={form.last_name}
+                    onChange={(v) => handleChange('last_name', v)}
+                    onBlur={() => handleBlur('last_name')}
+                    error={fieldErrors.last_name}
+                  />
+                </div>
+
+                <ValidatedInput
+                  id="email"
+                  type="email"
+                  label="Work Email"
+                  required
+                  placeholder="john@company.com"
+                  value={form.email}
+                  onChange={(v) => handleChange('email', v)}
+                  onBlur={() => handleBlur('email')}
+                  error={fieldErrors.email}
+                />
+
+                <ValidatedInput
+                  id="company_name"
+                  label="Company Name"
+                  required
+                  placeholder="Acme Inc."
+                  value={form.company_name}
+                  onChange={(v) => handleChange('company_name', v)}
+                  onBlur={() => handleBlur('company_name')}
+                  error={fieldErrors.company_name}
+                />
+
+                <div className="space-y-1.5">
+                  <Label htmlFor="contact_number" className="text-sm font-medium text-slate-700">
+                    Contact Number *
+                  </Label>
+                  <div className="relative">
+                    <PhoneInput
+                      id="contact_number"
+                      international
+                      defaultCountry="IN"
+                      value={form.contact_number}
+                      onChange={(v) => handleChange('contact_number', v || '')}
+                      onBlur={() => handleBlur('contact_number')}
+                      className={[
+                        'flex h-11 w-full rounded-xl border bg-white px-3 transition-all duration-150',
+                        fieldErrors.contact_number
+                          ? 'border-red-400 bg-red-50/40'
+                          : 'border-slate-200 focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/10',
+                      ].join(' ')}
+                      numberInputProps={{
+                        className: 'w-full focus:outline-none bg-transparent h-full px-2 text-sm',
+                      }}
                     />
+                    {fieldErrors.contact_number && (
+                      <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                        <AlertCircle className="w-4 h-4 text-red-400" />
+                      </div>
+                    )}
                   </div>
-
-                  <div>
-                    <Label htmlFor="last_name">Last Name *</Label>
-                    <Input
-                      id="last_name"
-                      placeholder="Smith"
-                      value={form.last_name}
-                      onChange={(e) => onFormChange('last_name', e.target.value)}
-                    />
-                  </div>
+                  {fieldErrors.contact_number && <FieldError message={fieldErrors.contact_number} />}
                 </div>
 
+                {/* Country dropdown */}
                 <div>
-                  <Label htmlFor="email" className="text-sm font-medium text-slate-700">Work Email *</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="john@company.com"
-                    value={form.email}
-                    onChange={(e) => onFormChange('email', e.target.value)}
-                    className="mt-1.5 rounded-xl border-slate-200 focus:border-primary"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="company_name" className="text-sm font-medium text-slate-700">Company Name *</Label>
-                  <Input
-                    id="company_name"
-                    placeholder="Acme Inc."
-                    value={form.company_name}
-                    onChange={(e) => onFormChange('company_name', e.target.value)}
-                    className="mt-1.5 rounded-xl border-slate-200 focus:border-primary"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="contact_number" className="text-sm font-medium text-slate-700">Contact Number *</Label>
-                  <Input
-                    id="contact_number"
-                    type="tel"
-                    placeholder="+91 98765 43210"
-                    value={form.contact_number}
-                    onChange={(e) => onFormChange('contact_number', e.target.value)}
-                    className="mt-1.5 rounded-xl border-slate-200 focus:border-primary"
-                  />
-                </div>
-
-                {/* Country dropdown — from /manage-plan/get-currencies API */}
-                <div>
-                  <Label htmlFor="country" className="text-sm font-medium text-slate-700">Country *</Label>
+                  <Label htmlFor="country" className="text-sm font-medium text-slate-700">
+                    Country *
+                  </Label>
                   <div className="relative mt-1.5">
                     <select
                       id="country"
                       value={form.currency_id}
                       disabled={countriesLoading}
+                      onBlur={() => handleBlur('currency_id')}
                       onChange={(e) => {
-                        const selected = countries.find(
-                          (c) => c.id === e.target.value
-                        );
-                        onFormChange('currency_id', e.target.value);
+                        const selected = countries.find((c) => c.id === e.target.value);
+                        handleChange('currency_id', e.target.value);
                         onFormChange('country_name', selected?.country ?? '');
+                        if (touched.currency_id) {
+                          const err = validateField('currency_id', e.target.value);
+                          setFieldErrors(prev => ({ ...prev, currency_id: err ?? undefined }));
+                        }
                       }}
-                      className="w-full appearance-none rounded-xl border border-slate-200 bg-white pl-3 pr-9 py-2.5 text-sm text-slate-900 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-60"
+                      aria-invalid={Boolean(fieldErrors.currency_id)}
+                      aria-describedby={fieldErrors.currency_id ? 'country-error' : undefined}
+                      className={[
+                        'w-full appearance-none rounded-xl border bg-white pl-3 pr-9 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 disabled:opacity-60 transition-colors duration-150',
+                        fieldErrors.currency_id
+                          ? 'border-red-400 bg-red-50/40 focus:ring-red-400/30 focus:border-red-500'
+                          : 'border-slate-200 focus:border-primary focus:ring-primary/20',
+                      ].join(' ')}
                     >
                       <option value="">
                         {countriesLoading ? 'Loading countries…' : 'Select your country'}
                       </option>
                       {countries.map((c) => (
-                        <option key={c.id} value={c.id}>
-                          {c.country}
-                        </option>
+                        <option key={c.id} value={c.id}>{c.country}</option>
                       ))}
                     </select>
                     <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
                       {countriesLoading
                         ? <Loader2 className="w-4 h-4 text-slate-400 animate-spin" />
-                        : <ChevronDown className="w-4 h-4 text-slate-400" />
+                        : fieldErrors.currency_id
+                          ? <AlertCircle className="w-4 h-4 text-red-400" />
+                          : <ChevronDown className="w-4 h-4 text-slate-400" />
                       }
                     </div>
                   </div>
+                  {fieldErrors.currency_id && <FieldError message={fieldErrors.currency_id} />}
                 </div>
 
               </div>
 
-              {/* Error */}
+              {/* API error banner (only for non-field errors) */}
               {error && (
-                <div className="rounded-xl bg-red-50 border border-red-100 px-4 py-3 text-sm text-red-600">
-                  {error}
-                </div>
+                <ApiErrorBanner message={error} onDismiss={onClearError} />
               )}
 
               {/* Trust badges */}
@@ -402,19 +592,18 @@ export default function CheckoutModal({
               <div>
                 <p className="text-xs font-semibold text-slate-500 tracking-widest uppercase mb-3">What's included</p>
                 <ul className="space-y-2">
-                  {plan.marketing_features.slice(0, 5)
-                    .map((f, i) => (
-                      <li key={i} className="flex items-center gap-2.5 text-sm text-slate-700">
-                        <div className="w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                          <Check className="w-2.5 h-2.5 text-emerald-600" />
-                        </div>
-                        {f}
-                      </li>
-                    ))}
+                  {plan.marketing_features.slice(0, 5).map((f, i) => (
+                    <li key={i} className="flex items-center gap-2.5 text-sm text-slate-700">
+                      <div className="w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                        <Check className="w-2.5 h-2.5 text-emerald-600" />
+                      </div>
+                      {f}
+                    </li>
+                  ))}
                 </ul>
               </div>
 
-              {/* ── Gateway Selector — user must pick manually ── */}
+              {/* Gateway Selector */}
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <p className="text-xs font-semibold text-slate-500 tracking-widest uppercase">
@@ -440,8 +629,7 @@ export default function CheckoutModal({
                           : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'
                           }`}
                       >
-                        <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${isSelected ? 'bg-primary text-white' : 'bg-slate-100 text-slate-500'
-                          }`}>
+                        <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${isSelected ? 'bg-primary text-white' : 'bg-slate-100 text-slate-500'}`}>
                           {gw.icon}
                         </div>
                         <div className="flex-1 min-w-0">
@@ -449,18 +637,14 @@ export default function CheckoutModal({
                             <span className="font-semibold text-slate-900 text-sm">{gw.label}</span>
                             <Badge
                               variant="secondary"
-                              className={`text-[10px] font-bold px-1.5 py-0 ${isSelected
-                                ? 'bg-primary/15 text-primary'
-                                : 'bg-slate-100 text-slate-500'
-                                }`}
+                              className={`text-[10px] font-bold px-1.5 py-0 ${isSelected ? 'bg-primary/15 text-primary' : 'bg-slate-100 text-slate-500'}`}
                             >
                               {gw.badge}
                             </Badge>
                           </div>
                           <p className="text-xs text-slate-500 mt-0.5">{gw.desc}</p>
                         </div>
-                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors ${isSelected ? 'border-primary bg-primary' : 'border-slate-300'
-                          }`}>
+                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors ${isSelected ? 'border-primary bg-primary' : 'border-slate-300'}`}>
                           {isSelected && <span className="w-2 h-2 rounded-full bg-white block" />}
                         </div>
                       </button>
@@ -473,11 +657,9 @@ export default function CheckoutModal({
                 </p>
               </div>
 
-              {/* Error */}
+              {/* API error banner */}
               {error && (
-                <div className="rounded-xl bg-red-50 border border-red-100 px-4 py-3 text-sm text-red-600">
-                  {error}
-                </div>
+                <ApiErrorBanner message={error} onDismiss={onClearError} />
               )}
 
               {/* Security note */}
@@ -511,7 +693,7 @@ export default function CheckoutModal({
             {step === 'form' && (
               <Button
                 className="w-full h-12 rounded-2xl text-base font-semibold shadow-lg group"
-                onClick={onSubmitForm}
+                onClick={handleSubmit}
                 disabled={loading || countriesLoading}
               >
                 {loading ? (
