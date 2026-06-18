@@ -6,7 +6,7 @@
 // ── Gateway / Billing ─────────────────────────────────────────────────────────
 
 export type Gateway = 'razorpay' | 'stripe';
-export type BillingCycle = 'monthly' | 'yearly';
+export type BillingCycle = 'monthly' | 'quarterly' | 'yearly';
 
 // ── Currency (matches GET /manage-plan/get-currencies) ────────────────────────
 
@@ -32,9 +32,10 @@ export interface Plan {
   name: string;
   desc: string;
   price: number;
+  price_quarterly?: number;
   is_popular: boolean;
   currency: string;   // lowercase: "inr" | "usd"
-  interval: 'day' | 'week' | 'month' | 'year';
+  interval: 'day' | 'week' | 'month' | 'quarterly' | 'year' | 'both';
   trial_days: number;
   marketing_features: string[];
   is_custom_plan: boolean;
