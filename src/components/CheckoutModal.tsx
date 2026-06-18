@@ -15,6 +15,7 @@ import type {
 } from '@/types';
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import { fetchExchangeRates, formatConvertedPrice } from '@/services/currency.service';
 
 // ── Gateway config ─────────────────────────────────────────────────────────────
 
@@ -73,19 +74,24 @@ function validateField(field: keyof CheckoutFormState, value: string): string | 
 
 // ── Price helpers ──────────────────────────────────────────────────────────────
 
-function displayPrice(plan: Plan): string {
+function displayPrice(plan: Plan, cycle?: BillingCycle): string {
   if (plan.is_custom_plan) return 'Custom';
-  const amount = plan.price / 100;
-  if (plan.currency === 'inr') return `₹${Math.round(amount).toLocaleString('en-IN')}`;
+  let price = plan.price;
+  if (cycle === 'quarterly' && plan.price_quarterly) {
+    price = plan.price_quarterly;
+  }
+  const amount = price / 100;
   return `$${amount.toFixed(2)}`;
 }
 
-function periodLabel(plan: Plan): string {
+function periodLabel(plan: Plan, cycle?: BillingCycle): string {
   if (plan.is_custom_plan) return '';
-  switch (plan.interval) {
+  const interval = cycle === 'monthly' ? 'month' : cycle === 'quarterly' ? 'quarterly' : cycle === 'yearly' ? 'year' : plan.interval;
+  switch (interval) {
     case 'month': return '/mo';
+    case 'quarterly': return '/qtr';
     case 'year': return '/yr';
-    default: return plan.interval ? `/${plan.interval}` : '';
+    default: return interval ? `/${interval}` : '';
   }
 }
 
@@ -216,6 +222,11 @@ export default function CheckoutModal({
   const [countries, setCountries] = useState<CurrencyOption[]>([]);
   const [countriesLoading, setCountriesLoading] = useState(true);
 
+  // Exchange rate state
+  const [exchangeRates, setExchangeRates] = useState<Record<string, number>>({});
+  const [loadingRate, setLoadingRate] = useState(false);
+  const [rateError, setRateError] = useState<string | null>(null);
+
   // Per-field validation errors & touched tracking
   const [fieldErrors, setFieldErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<Partial<Record<keyof CheckoutFormState, boolean>>>({});
@@ -234,6 +245,37 @@ export default function CheckoutModal({
     return () => window.removeEventListener('keydown', handler);
   }, [onClose]);
 
+  // Fetch exchange rates when country changes
+  useEffect(() => {
+    async function getRates() {
+      if (!form.currency_id || countries.length === 0) return;
+
+      const selected = countries.find(c => c.id === form.currency_id);
+      if (!selected) return;
+
+      const currencyCode = selected.code.toLowerCase();
+
+      // If it's already USD, no need to fetch (though API base is USD anyway)
+      if (currencyCode === 'usd') {
+        setRateError(null);
+        return;
+      }
+
+      setLoadingRate(true);
+      setRateError(null);
+      try {
+        const data = await fetchExchangeRates();
+        setExchangeRates(data.rates);
+      } catch (err) {
+        console.error('Exchange rate fetch error:', err);
+        setRateError('Could not update exchange rate.');
+      } finally {
+        setLoadingRate(false);
+      }
+    }
+    getRates();
+  }, [form.currency_id, countries]);
+
   // Lock body scroll
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -246,11 +288,20 @@ export default function CheckoutModal({
     setTouched({});
   }, [step]);
 
-  const price = displayPrice(plan);
-  const period = periodLabel(plan);
-  const humanAmount = plan.price / 100;
+  const price = displayPrice(plan, billingCycle);
+  const period = periodLabel(plan, billingCycle);
+  const humanAmount = (billingCycle === 'quarterly' && plan.price_quarterly ? plan.price_quarterly : plan.price) / 100;
   const currencySymbol = plan.currency === 'inr' ? '₹' : '$';
   const selectedCountryLabel = form.country_name || '';
+
+  // Calculate converted price
+  const selectedCountry = countries.find(c => c.id === form.currency_id);
+  const targetCurrency = selectedCountry?.code.toUpperCase() || 'USD';
+  const rate = exchangeRates[targetCurrency];
+  const convertedAmount = rate ? humanAmount * rate : null;
+  const displayConvertedPrice = convertedAmount !== null
+    ? formatConvertedPrice(convertedAmount, targetCurrency)
+    : null;
 
   // ── Validate a single field on blur ─────────────────────────────────────────
 
@@ -321,7 +372,7 @@ export default function CheckoutModal({
               </h2>
               <p className="text-xs text-slate-500 mt-0.5">
                 {step === 'form' && `${plan.name} plan selected`}
-                {step === 'summary' && `${plan.name} · ${billingCycle}`}
+                {step === 'summary' && `${plan.name} · ${billingCycle === 'monthly' ? 'Monthly' : billingCycle === 'quarterly' ? 'Quarterly' : billingCycle === 'yearly' ? 'Annual' : billingCycle}`}
               </p>
             </div>
           </div>
@@ -369,31 +420,7 @@ export default function CheckoutModal({
                 </div>
               </div>
 
-              {/* Billing toggle */}
-              <div>
-                <Label className="text-xs font-semibold text-slate-500 tracking-wide uppercase mb-2 block">
-                  Billing Cycle
-                </Label>
-                <div className="flex gap-2">
-                  {(['monthly', 'yearly'] as BillingCycle[]).map((c) => (
-                    <button
-                      key={c}
-                      onClick={() => onBilling(c)}
-                      className={`flex-1 py-2.5 rounded-xl border text-sm font-semibold capitalize transition-all ${billingCycle === c
-                        ? 'border-primary bg-primary text-white shadow-sm'
-                        : 'border-slate-200 text-slate-600 hover:border-slate-300'
-                        }`}
-                    >
-                      {c}
-                      {c === 'yearly' && (
-                        <span className={`ml-1.5 text-[10px] font-bold ${billingCycle === 'yearly' ? 'text-white/80' : 'text-emerald-600'}`}>
-                          SAVE 17%
-                        </span>
-                      )}
-                    </button>
-                  ))}
-                </div>
-              </div>
+              {/* Billing cycle is chosen on the pricing page; removed toggle here. */}
 
               {/* Form fields */}
               <div className="space-y-3.5">
@@ -563,7 +590,7 @@ export default function CheckoutModal({
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-slate-600">Billing</span>
-                    <span className="font-semibold text-slate-900 capitalize">{billingCycle}</span>
+                    <span className="font-semibold text-slate-900">{billingCycle === 'monthly' ? 'Monthly' : billingCycle === 'quarterly' ? 'Quarterly' : billingCycle === 'yearly' ? 'Annual' : billingCycle}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-slate-600">Currency</span>
@@ -583,9 +610,26 @@ export default function CheckoutModal({
                   )}
                   <div className="border-t border-slate-100 pt-3 flex justify-between items-baseline">
                     <span className="text-slate-700 font-semibold">Total due today</span>
-                    <span className="text-2xl font-bold text-slate-900">
-                      {currencySymbol}{humanAmount.toLocaleString()}
-                    </span>
+                    <div className="text-right">
+                      <div className="text-2xl font-bold text-slate-900">
+                        {displayConvertedPrice || `$${humanAmount.toFixed(2)}`}
+                      </div>
+                      {targetCurrency !== 'USD' && (
+                        <div className="text-xs text-slate-400">
+                          Approx. ${humanAmount.toFixed(2)} USD
+                        </div>
+                      )}
+                      {loadingRate && (
+                        <div className="text-[10px] text-primary animate-pulse">
+                          Updating exchange rate…
+                        </div>
+                      )}
+                      {rateError && (
+                        <div className="text-[10px] text-red-400">
+                          {rateError}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -713,13 +757,13 @@ export default function CheckoutModal({
               <Button
                 className="w-full h-12 rounded-2xl text-base font-semibold shadow-lg group"
                 onClick={onStartPayment}
-                disabled={loading}
+                disabled={loading || loadingRate}
               >
                 {loading ? (
                   <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Connecting…</>
                 ) : (
                   <>
-                    Pay {currencySymbol}{humanAmount.toLocaleString()} with{' '}
+                    Pay {displayConvertedPrice || `$${humanAmount.toFixed(2)}`} with{' '}
                     {gateway === 'razorpay' ? 'Razorpay' : 'Stripe'}
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </>

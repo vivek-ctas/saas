@@ -70,26 +70,33 @@ const ADDONS = [
 
 // ── Display helpers ────────────────────────────────────────────────────────────
 
-/** price_cents → human readable (₹999 or $9.99) */
-function formatPrice(plan: Plan): string {
+function formatPrice(plan: Plan, selectedInterval?: 'month' | 'quarterly'): string {
   if (plan.is_custom_plan) return 'Custom';
-  const amount = plan.price / 100;
-  if (plan.currency === 'inr') return `₹${Math.round(amount).toLocaleString('en-IN')}`;
+  let price = plan.price;
+  if (selectedInterval === 'quarterly' && plan.price_quarterly) {
+    price = plan.price_quarterly;
+  }
+  const amount = price / 100;
   return `$${amount.toFixed(2)}`;
 }
 
-function getPeriod(plan: Plan): string {
+function getPeriod(plan: Plan, selectedInterval?: 'month' | 'quarterly'): string {
   if (plan.is_custom_plan) return '';
 
-  switch (plan.interval) {
+  const interval = selectedInterval || plan.interval;
+
+  switch (interval) {
     case 'month':
       return '/mo';
+
+    case 'quarterly':
+      return '/qtr';
 
     case 'year':
       return '/yr';
 
     default:
-      return plan.interval ? `/${plan.interval}` : '';
+      return interval ? `/${interval}` : '';
   }
 }
 
@@ -105,13 +112,17 @@ const Pricing = () => {
   const ref = useReveal<HTMLDivElement>();
 
   const { plans, loading: plansLoading, error: plansError } = usePlans();
+  console.log(plans, 'plans');
   const [activePlan, setActivePlan] = useState<Plan | null>(null);
+  const [selectedInterval, setSelectedInterval] = useState<'month' | 'quarterly'>('month');
   const checkout = useCheckout('stripe'); // default; user will manually select on summary step
   function handlePlanClick(plan: Plan) {
     if (plan.is_custom_plan) {
       window.location.href = '/contact';
       return;
     }
+    // Ensure checkout uses the plan's interval (monthly/quarterly) automatically
+    checkout.setBillingCycle(selectedInterval === 'month' ? 'monthly' : 'quarterly');
     setActivePlan(plan);
   }
 
@@ -179,70 +190,95 @@ const Pricing = () => {
 
             {/* Plan cards */}
             {!plansLoading && !plansError && plans.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-                {plans.map((plan, i) => (
-                  <Card
-                    key={plan._id}
-                    className={`relative overflow-hidden p-2 transition-all ${plan.is_popular
-                      ? 'border-2 border-primary shadow-stripe-2xl lg:scale-105 bg-gradient-to-br from-white via-accent/40 to-pink-50'
-                      : 'border border-slate-200 hover-lift'
-                      }`}
-                    style={{ transitionDelay: `${i * 120}ms` }}
+              <div>
+                <div className="mb-6 flex items-center justify-center gap-3">
+                  <button
+                    onClick={() => setSelectedInterval('month')}
+                    className={`px-4 py-2 rounded-full text-sm font-semibold transition ${selectedInterval === 'month' ? 'bg-primary text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'}`}
                   >
-                    {plan.is_popular && (
-                      <>
-                        <div className="absolute -top-px left-0 right-0 h-1 gradient-primary" />
-                        <div className="absolute top-4 right-4">
-                          <Badge className="bg-gradient-to-r from-primary to-secondary text-white border-0 shadow-stripe">
-                            Most Popular
-                          </Badge>
-                        </div>
-                      </>
-                    )}
+                    Monthly
+                  </button>
+                  <button
+                    onClick={() => setSelectedInterval('quarterly')}
+                    className={`px-4 py-2 rounded-full text-sm font-semibold transition ${selectedInterval === 'quarterly' ? 'bg-primary text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'}`}
+                  >
+                    Quarterly
+                  </button>
+                </div>
 
-                    <CardHeader className="pb-4 pt-8">
-                      <CardTitle className="text-2xl font-bold text-slate-900">{plan.name}</CardTitle>
-                      <p className="text-slate-600 text-sm">{plan.desc}</p>
-                      <div className="mt-6 flex items-baseline gap-1">
-                        <span className="text-5xl font-bold text-slate-900 tracking-tight">
-                          {formatPrice(plan)}
-                        </span>
-                        <span className="text-slate-500">{getPeriod(plan)}</span>
-                      </div>
-                      {plan.trial_days > 0 && !plan.is_custom_plan && (
-                        <p className="text-xs text-emerald-600 font-medium mt-1">
-                          ✓ {plan.trial_days}-day free trial included
-                        </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                  {plans.filter(p => {
+                    if (selectedInterval === 'month') {
+                      return p.interval === 'month' || p.interval === 'both';
+                    }
+                    if (selectedInterval === 'quarterly') {
+                      return p.interval === 'quarterly' || p.interval === 'both';
+                    }
+                    return false;
+                  }).map((plan, i) => (
+                    <Card
+                      key={plan._id}
+                      className={`relative overflow-hidden p-2 transition-all ${plan.is_popular
+                        ? 'border-2 border-primary shadow-stripe-2xl lg:scale-105 bg-gradient-to-br from-white via-accent/40 to-pink-50'
+                        : 'border border-slate-200 hover-lift'
+                        }`}
+                      style={{ transitionDelay: `${i * 120}ms` }}
+                    >
+                      {plan.is_popular && (
+                        <>
+                          <div className="absolute -top-px left-0 right-0 h-1 gradient-primary" />
+                          <div className="absolute top-4 right-4">
+                            <Badge className="bg-gradient-to-r from-primary to-secondary text-white border-0 shadow-stripe">
+                              Most Popular
+                            </Badge>
+                          </div>
+                        </>
                       )}
-                    </CardHeader>
 
-                    <CardContent className="space-y-5">
-                      <button
-                        onClick={() => handlePlanClick(plan)}
-                        className={`w-full py-3 rounded-2xl text-sm font-semibold transition-all ${plan.is_popular
-                          ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-stripe hover:opacity-90'
-                          : plan.is_custom_plan
-                            ? 'bg-slate-900 text-white hover:bg-slate-700'
-                            : 'border-2 border-primary text-primary hover:bg-primary hover:text-white'
-                          } disabled:opacity-60 disabled:cursor-not-allowed`}
-                      >
-                        {getCtaLabel(plan)}
-                      </button>
+                      <CardHeader className="pb-4 pt-8">
+                        <CardTitle className="text-2xl font-bold text-slate-900">{plan.name}</CardTitle>
+                        <p className="text-slate-600 text-sm">{plan.desc}</p>
+                        <div className="mt-6 flex items-baseline gap-1">
+                          <span className="text-5xl font-bold text-slate-900 tracking-tight">
+                            {formatPrice(plan, selectedInterval)}
+                          </span>
+                          <span className="text-slate-500">{getPeriod(plan, selectedInterval)}</span>
+                        </div>
+                        {plan.trial_days > 0 && !plan.is_custom_plan && (
+                          <p className="text-xs text-emerald-600 font-medium mt-1">
+                            ✓ {plan.trial_days}-day free trial included
+                          </p>
+                        )}
+                      </CardHeader>
 
-                      <ul className="space-y-3 pt-2">
-                        {plan.marketing_features.map((f, j) => (
-                          <li key={j} className="flex items-start gap-3 text-sm">
-                            <span className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${plan.is_popular ? 'bg-primary text-white' : 'bg-accent text-primary'
-                              }`}>
-                              <Check className="w-3 h-3" />
-                            </span>
-                            <span className="text-slate-700">{f}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                ))}
+                      <CardContent className="space-y-5">
+                        <button
+                          onClick={() => handlePlanClick(plan)}
+                          className={`w-full py-3 rounded-2xl text-sm font-semibold transition-all ${plan.is_popular
+                            ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-stripe hover:opacity-90'
+                            : plan.is_custom_plan
+                              ? 'bg-slate-900 text-white hover:bg-slate-700'
+                              : 'border-2 border-primary text-primary hover:bg-primary hover:text-white'
+                            } disabled:opacity-60 disabled:cursor-not-allowed`}
+                        >
+                          {getCtaLabel(plan)}
+                        </button>
+
+                        <ul className="space-y-3 pt-2">
+                          {plan.marketing_features.map((f, j) => (
+                            <li key={j} className="flex items-start gap-3 text-sm">
+                              <span className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${plan.is_popular ? 'bg-primary text-white' : 'bg-accent text-primary'
+                                }`}>
+                                <Check className="w-3 h-3" />
+                              </span>
+                              <span className="text-slate-700">{f}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
               </div>
             )}
 
@@ -431,6 +467,7 @@ const Pricing = () => {
           onFormChange={checkout.setForm}
           onGateway={checkout.setGateway}
           onBilling={checkout.setBillingCycle}
+          onClearError={checkout.clearError}
           onSubmitForm={() => checkout.submitForm(activePlan)}
           onStartPayment={() => checkout.startPayment(activePlan)}
           onBack={checkout.reset}
