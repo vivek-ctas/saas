@@ -1,0 +1,51 @@
+name: saas-website
+
+x-website-base: &website-base
+  build:
+    context: .
+    args:
+      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL}
+      NEXT_PUBLIC_RAZORPAY_KEY_ID: ${NEXT_PUBLIC_RAZORPAY_KEY_ID}
+      NEXT_PUBLIC_ADMIN_PANEL_URL: ${NEXT_PUBLIC_ADMIN_PANEL_URL}
+  image: saas-website:${IMAGE_TAG:-latest}
+  env_file:
+    - .env
+  restart: unless-stopped
+  networks:
+    - saas-shared
+  deploy:
+    resources:
+      limits:
+        memory: ${MEMORY_LIMIT:-4G}
+      reservations:
+        memory: ${MEMORY_RESERVATION:-512M}
+  healthcheck:
+    test:
+      [
+        "CMD",
+        "wget",
+        "-qO-",
+        "http://127.0.0.1:${CONTAINER_PORT:-7011}/api/health",
+      ]
+    interval: 30s
+    timeout: 5s
+    retries: 3
+    start_period: 40s
+
+services:
+  website:
+    <<: *website-base
+    ports:
+      - "${HOST_PORT:-7011}:${CONTAINER_PORT:-7011}"
+
+  website-replica:
+    <<: *website-base
+    profiles:
+      - replica
+    ports:
+      - "${REPLICA_PORT:-7015}:${CONTAINER_PORT:-7011}"
+
+networks:
+  saas-shared:
+    external: true
+    name: saas-shared-network

@@ -6,6 +6,8 @@ const __dirname = path.dirname(__filename);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "standalone",
+
   // ─── Modern JS — eliminates legacy polyfills (13.4 KiB saved) ──────────────
   // Target evergreen browsers; no Array.at, Object.fromEntries, etc. polyfills needed
   experimental: {
