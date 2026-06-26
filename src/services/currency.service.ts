@@ -24,6 +24,16 @@ export async function fetchExchangeRates(): Promise<ExchangeRateResponse> {
 }
 
 /**
+ * Converts INR amount to USD based on provided exchange rates.
+ * Since base is USD, we divide by the INR rate.
+ */
+export function convertInrToUsd(amount: number, rates: Record<string, number>): number {
+    const inrRate = rates['INR'];
+    if (!inrRate) return amount;
+    return amount / inrRate;
+}
+
+/**
  * Formats a currency amount based on the currency code.
  */
 export function formatConvertedPrice(amount: number, currencyCode: string): string {

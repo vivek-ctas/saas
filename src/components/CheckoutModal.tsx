@@ -15,7 +15,7 @@ import type {
 } from '@/types';
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import { fetchExchangeRates, formatConvertedPrice } from '@/services/currency.service';
+import { fetchExchangeRates, convertInrToUsd, formatConvertedPrice } from '@/services/currency.service';
 
 // ── Gateway config ─────────────────────────────────────────────────────────────
 
@@ -74,14 +74,25 @@ function validateField(field: keyof CheckoutFormState, value: string): string | 
 
 // ── Price helpers ──────────────────────────────────────────────────────────────
 
-function displayPrice(plan: Plan, cycle?: BillingCycle): string {
+function displayPrice(plan: Plan, cycle?: BillingCycle, rates?: Record<string, number>): string {
   if (plan.is_custom_plan) return 'Custom';
   let price = plan.price;
   if (cycle === 'quarterly' && plan.price_quarterly) {
     price = plan.price_quarterly;
   }
-  const amount = price / 100;
-  return `$${amount.toFixed(2)}`;
+
+  // Prices are stored in the smallest unit (cents). Convert to dollars first.
+  price = price / 100;
+
+  // If stored in INR, convert that dollar-equivalent to USD via exchange rates.
+  if (plan.currency.toLowerCase() === 'inr') {
+    if (!rates || Object.keys(rates).length === 0) {
+      return 'Loading price...';
+    }
+    price = convertInrToUsd(price, rates);
+  }
+
+  return formatConvertedPrice(price, 'USD');
 }
 
 function periodLabel(plan: Plan, cycle?: BillingCycle): string {
@@ -245,21 +256,16 @@ export default function CheckoutModal({
     return () => window.removeEventListener('keydown', handler);
   }, [onClose]);
 
-  // Fetch exchange rates when country changes
+  // Fetch exchange rates when country changes OR on mount if plan is INR
   useEffect(() => {
     async function getRates() {
-      if (!form.currency_id || countries.length === 0) return;
+      const isINR = plan.currency.toLowerCase() === 'inr';
+      const hasRates = Object.keys(exchangeRates).length > 0;
 
-      const selected = countries.find(c => c.id === form.currency_id);
-      if (!selected) return;
-
-      const currencyCode = selected.code.toLowerCase();
-
-      // If it's already USD, no need to fetch (though API base is USD anyway)
-      if (currencyCode === 'usd') {
-        setRateError(null);
-        return;
-      }
+      // Fetch if we don't have rates and plan is INR (needed for base price display)
+      // OR if a country is selected (needed for user currency conversion)
+      if (!isINR && !form.currency_id) return;
+      if (isINR && hasRates && !form.currency_id) return;
 
       setLoadingRate(true);
       setRateError(null);
@@ -274,7 +280,7 @@ export default function CheckoutModal({
       }
     }
     getRates();
-  }, [form.currency_id, countries]);
+  }, [form.currency_id, plan.currency]);
 
   // Lock body scroll
   useEffect(() => {
@@ -288,10 +294,15 @@ export default function CheckoutModal({
     setTouched({});
   }, [step]);
 
-  const price = displayPrice(plan, billingCycle);
+  const price = displayPrice(plan, billingCycle, exchangeRates);
   const period = periodLabel(plan, billingCycle);
-  const humanAmount = (billingCycle === 'quarterly' && plan.price_quarterly ? plan.price_quarterly : plan.price) / 100;
-  const currencySymbol = plan.currency === 'inr' ? '₹' : '$';
+
+  // Prices are stored in cents — divide by 100 first, then convert INR→USD if needed.
+  let humanAmount = (billingCycle === 'quarterly' && plan.price_quarterly ? plan.price_quarterly : plan.price) / 100;
+  if (plan.currency.toLowerCase() === 'inr' && Object.keys(exchangeRates).length > 0) {
+    humanAmount = convertInrToUsd(humanAmount, exchangeRates);
+  }
+
   const selectedCountryLabel = form.country_name || '';
 
   // Calculate converted price
@@ -611,21 +622,24 @@ export default function CheckoutModal({
                   <div className="border-t border-slate-100 pt-3 flex justify-between items-baseline">
                     <span className="text-slate-700 font-semibold">Total due today</span>
                     <div className="text-right">
+                      {/* Primary price: always USD */}
                       <div className="text-2xl font-bold text-slate-900">
-                        {displayConvertedPrice || `$${humanAmount.toFixed(2)}`}
+                        ${humanAmount.toFixed(2)} <span className="text-base font-semibold text-slate-500">USD</span>
                       </div>
+                      {/* Secondary: approx. local currency for reference */}
                       {targetCurrency !== 'USD' && (
-                        <div className="text-xs text-slate-400">
-                          Approx. ${humanAmount.toFixed(2)} USD
-                        </div>
-                      )}
-                      {loadingRate && (
-                        <div className="text-[10px] text-primary animate-pulse">
-                          Updating exchange rate…
-                        </div>
+                        loadingRate ? (
+                          <div className="text-[10px] text-primary animate-pulse mt-0.5">
+                            Loading {targetCurrency} estimate…
+                          </div>
+                        ) : displayConvertedPrice ? (
+                          <div className="text-xs text-slate-400 mt-0.5">
+                            Approx. {displayConvertedPrice} {targetCurrency} (estimated)
+                          </div>
+                        ) : null
                       )}
                       {rateError && (
-                        <div className="text-[10px] text-red-400">
+                        <div className="text-[10px] text-red-400 mt-0.5">
                           {rateError}
                         </div>
                       )}
@@ -633,6 +647,13 @@ export default function CheckoutModal({
                   </div>
                 </div>
               </div>
+
+              {/* Currency disclaimer */}
+              {targetCurrency !== 'USD' && (
+                <p className="text-[11px] text-slate-400 leading-relaxed -mt-1">
+                  ⓘ Approximate local currency value. Final charged amount may vary based on exchange rates, taxes, and payment gateway fees.
+                </p>
+              )}
 
               {/* Features */}
               <div>
@@ -763,7 +784,7 @@ export default function CheckoutModal({
                   <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Connecting…</>
                 ) : (
                   <>
-                    Pay {displayConvertedPrice || `$${humanAmount.toFixed(2)}`} with{' '}
+                    Pay ${humanAmount.toFixed(2)} USD with{' '}
                     {gateway === 'razorpay' ? 'Razorpay' : 'Stripe'}
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </>

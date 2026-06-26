@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Check, X, Sparkles, ArrowRight, Quote, Star, Loader2, AlertCircle,
@@ -18,6 +18,7 @@ import { usePlans } from '@/hooks/use-plans';
 import { useCheckout } from '@/hooks/use-checkout';
 import CheckoutModal from '@/components/CheckoutModal';
 import type { Plan } from '@/types';
+import { formatConvertedPrice } from '@/services/currency.service';
 
 // ── Static content ─────────────────────────────────────────────────────────────
 
@@ -76,8 +77,9 @@ function formatPrice(plan: Plan, selectedInterval?: 'month' | 'quarterly'): stri
   if (selectedInterval === 'quarterly' && plan.price_quarterly) {
     price = plan.price_quarterly;
   }
-  const amount = price / 100;
-  return `$${amount.toFixed(2)}`;
+
+  // Prices are stored in the smallest unit (cents). Convert to dollars first.
+  return formatConvertedPrice(price / 100, 'USD');
 }
 
 function getPeriod(plan: Plan, selectedInterval?: 'month' | 'quarterly'): string {
@@ -112,7 +114,6 @@ const Pricing = () => {
   const ref = useReveal<HTMLDivElement>();
 
   const { plans, loading: plansLoading, error: plansError } = usePlans();
-  console.log(plans, 'plans');
   const [activePlan, setActivePlan] = useState<Plan | null>(null);
   const [selectedInterval, setSelectedInterval] = useState<'month' | 'quarterly'>('month');
   const checkout = useCheckout('stripe'); // default; user will manually select on summary step
@@ -215,69 +216,71 @@ const Pricing = () => {
                       return p.interval === 'quarterly' || p.interval === 'both';
                     }
                     return false;
-                  }).map((plan, i) => (
-                    <Card
-                      key={plan._id}
-                      className={`relative overflow-hidden p-2 transition-all ${plan.is_popular
-                        ? 'border-2 border-primary shadow-stripe-2xl lg:scale-105 bg-gradient-to-br from-white via-accent/40 to-pink-50'
-                        : 'border border-slate-200 hover-lift'
-                        }`}
-                      style={{ transitionDelay: `${i * 120}ms` }}
-                    >
-                      {plan.is_popular && (
-                        <>
-                          <div className="absolute -top-px left-0 right-0 h-1 gradient-primary" />
-                          <div className="absolute top-4 right-4">
-                            <Badge className="bg-gradient-to-r from-primary to-secondary text-white border-0 shadow-stripe">
-                              Most Popular
-                            </Badge>
-                          </div>
-                        </>
-                      )}
-
-                      <CardHeader className="pb-4 pt-8">
-                        <CardTitle className="text-2xl font-bold text-slate-900">{plan.name}</CardTitle>
-                        <p className="text-slate-600 text-sm">{plan.desc}</p>
-                        <div className="mt-6 flex items-baseline gap-1">
-                          <span className="text-5xl font-bold text-slate-900 tracking-tight">
-                            {formatPrice(plan, selectedInterval)}
-                          </span>
-                          <span className="text-slate-500">{getPeriod(plan, selectedInterval)}</span>
-                        </div>
-                        {plan.trial_days > 0 && !plan.is_custom_plan && (
-                          <p className="text-xs text-emerald-600 font-medium mt-1">
-                            ✓ {plan.trial_days}-day free trial included
-                          </p>
+                  })
+                    .sort((a, b) => (a.is_custom_plan === b.is_custom_plan ? 0 : a.is_custom_plan ? 1 : -1))
+                    .map((plan, i) => (
+                      <Card
+                        key={plan._id}
+                        className={`relative overflow-hidden p-2 transition-all ${plan.is_popular
+                          ? 'border-2 border-primary shadow-stripe-2xl lg:scale-105 bg-gradient-to-br from-white via-accent/40 to-pink-50'
+                          : 'border border-slate-200 hover-lift'
+                          }`}
+                        style={{ transitionDelay: `${i * 120}ms` }}
+                      >
+                        {plan.is_popular && (
+                          <>
+                            <div className="absolute -top-px left-0 right-0 h-1 gradient-primary" />
+                            <div className="absolute top-4 right-4">
+                              <Badge className="bg-gradient-to-r from-primary to-secondary text-white border-0 shadow-stripe">
+                                Most Popular
+                              </Badge>
+                            </div>
+                          </>
                         )}
-                      </CardHeader>
 
-                      <CardContent className="space-y-5">
-                        <button
-                          onClick={() => handlePlanClick(plan)}
-                          className={`w-full py-3 rounded-2xl text-sm font-semibold transition-all ${plan.is_popular
-                            ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-stripe hover:opacity-90'
-                            : plan.is_custom_plan
-                              ? 'bg-slate-900 text-white hover:bg-slate-700'
-                              : 'border-2 border-primary text-primary hover:bg-primary hover:text-white'
-                            } disabled:opacity-60 disabled:cursor-not-allowed`}
-                        >
-                          {getCtaLabel(plan)}
-                        </button>
+                        <CardHeader className="pb-4 pt-8">
+                          <CardTitle className="text-2xl font-bold text-slate-900">{plan.name}</CardTitle>
+                          <p className="text-slate-600 text-sm">{plan.desc}</p>
+                          <div className="mt-6 flex items-baseline gap-1">
+                            <span className="text-5xl font-bold text-slate-900 tracking-tight">
+                              {formatPrice(plan, selectedInterval)}
+                            </span>
+                            <span className="text-slate-500">{getPeriod(plan, selectedInterval)}</span>
+                          </div>
+                          {plan.trial_days > 0 && !plan.is_custom_plan && (
+                            <p className="text-xs text-emerald-600 font-medium mt-1">
+                              ✓ {plan.trial_days}-day free trial included
+                            </p>
+                          )}
+                        </CardHeader>
 
-                        <ul className="space-y-3 pt-2">
-                          {plan.marketing_features.map((f, j) => (
-                            <li key={j} className="flex items-start gap-3 text-sm">
-                              <span className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${plan.is_popular ? 'bg-primary text-white' : 'bg-accent text-primary'
-                                }`}>
-                                <Check className="w-3 h-3" />
-                              </span>
-                              <span className="text-slate-700">{f}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </CardContent>
-                    </Card>
-                  ))}
+                        <CardContent className="space-y-5">
+                          <button
+                            onClick={() => handlePlanClick(plan)}
+                            className={`w-full py-3 rounded-2xl text-sm font-semibold transition-all ${plan.is_popular
+                              ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-stripe hover:opacity-90'
+                              : plan.is_custom_plan
+                                ? 'bg-slate-900 text-white hover:bg-slate-700'
+                                : 'border-2 border-primary text-primary hover:bg-primary hover:text-white'
+                              } disabled:opacity-60 disabled:cursor-not-allowed`}
+                          >
+                            {getCtaLabel(plan)}
+                          </button>
+
+                          <ul className="space-y-3 pt-2">
+                            {plan.marketing_features.map((f, j) => (
+                              <li key={j} className="flex items-start gap-3 text-sm">
+                                <span className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${plan.is_popular ? 'bg-primary text-white' : 'bg-accent text-primary'
+                                  }`}>
+                                  <Check className="w-3 h-3" />
+                                </span>
+                                <span className="text-slate-700">{f}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </CardContent>
+                      </Card>
+                    ))}
                 </div>
               </div>
             )}
