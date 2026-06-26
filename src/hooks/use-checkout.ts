@@ -98,8 +98,16 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
 
     // CHANGED: handle payment_allowed: false (existing active subscription)
     if (data.payment_allowed === false) {
+      setLeadData(data);
+
+      const expiry = data.active_subscription?.expired_at
+        ? new Date(data.active_subscription.expired_at).toLocaleDateString()
+        : '';
+
       return setError(
-        'You already have an active subscription. Please log in to manage your plan.',
+        expiry
+          ? `You already have an active subscription. Your current plan is active until ${expiry}. Please wait until your subscription expires before purchasing a new plan, or log in to manage your subscription.`
+          : 'You already have an active subscription. Please log in to manage your subscription.',
       );
     }
     setLeadData(data);

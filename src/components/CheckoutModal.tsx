@@ -229,7 +229,6 @@ export default function CheckoutModal({
   plan, step, form, gateway, billingCycle, leadData, loading, error,
   onClose, onFormChange, onGateway, onBilling, onSubmitForm, onStartPayment, onBack, onClearError,
 }: CheckoutModalProps) {
-
   const [countries, setCountries] = useState<CurrencyOption[]>([]);
   const [countriesLoading, setCountriesLoading] = useState(true);
 
@@ -564,10 +563,36 @@ export default function CheckoutModal({
               </div>
 
               {/* API error banner (only for non-field errors) */}
-              {error && (
-                <ApiErrorBanner message={error} onDismiss={onClearError} />
-              )}
+              {leadData?.active_subscription ? (
+                <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 mt-3">
+                  <p className="font-semibold text-amber-800">
+                    Current Subscription
+                  </p>
 
+                  <div className="mt-2 text-sm text-amber-700">
+                    <p>
+                      <strong>Plan:</strong>{' '}
+                      {leadData.active_subscription.plan_name}
+                    </p>
+
+                    <p>
+                      <strong>Expires On:</strong>{' '}
+                      {new Date(
+                        leadData.active_subscription.expired_at
+                      ).toLocaleDateString()}
+                    </p>
+
+                    <p className="mt-2">
+                      Your subscription is active until the above date.
+                      Please wait until it expires before purchasing a new plan.
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                error && (
+                  <ApiErrorBanner message={error} onDismiss={onClearError} />
+                )
+              )}
               {/* Trust badges */}
               <div className="flex items-center gap-4 pt-1">
                 <div className="flex items-center gap-1.5 text-xs text-slate-500">
