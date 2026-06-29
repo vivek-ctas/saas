@@ -290,7 +290,7 @@ const Pricing = () => {
               <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-slate-500">
                 {[
                   '🔒 No account needed',
-                  '🇮🇳 Razorpay · UPI · Cards for India',
+                  // '🇮🇳 Razorpay · UPI · Cards for India',
                   '🌍 Stripe for international',
                   '✅ Instant activation',
                   '↩️ Cancel anytime',
@@ -473,7 +473,7 @@ const Pricing = () => {
           onClearError={checkout.clearError}
           onSubmitForm={() => checkout.submitForm(activePlan)}
           onStartPayment={() => checkout.startPayment(activePlan)}
-          onBack={checkout.reset}
+        // onBack={checkout.reset}
         />
       )}
     </Layout>

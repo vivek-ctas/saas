@@ -50,9 +50,11 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Button variant="default" className="ml-2 shadow-stripe">
-              Get Started
-            </Button>
+            <Link href="/pricing">
+              <Button variant="default" className="ml-2 shadow-stripe">
+                Get Started
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -87,9 +89,11 @@ const Navigation = () => {
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Button variant="default" className="w-full">
-                  Get Started
-                </Button>
+                <Link href="/pricing" className="block">
+                  <Button variant="default" className="w-full">
+                    Get Started
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
