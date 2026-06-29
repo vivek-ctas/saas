@@ -23,13 +23,15 @@ const GATEWAYS: {
   id: Gateway; label: string; desc: string; badge: string;
   icon: React.ReactNode;
 }[] = [
-    {
-      id: 'razorpay',
-      label: 'Razorpay',
-      badge: 'India — UPI / Cards',
-      desc: 'UPI · PhonePe · Google Pay · Net Banking · Cards',
-      icon: <Smartphone className="w-5 h-5" />,
-    },
+    // Razorpay is temporarily disabled in the UI while backend support is unavailable.
+    // Re-enable by restoring the Razorpay gateway option below.
+    // {
+    //   id: 'razorpay',
+    //   label: 'Razorpay',
+    //   badge: 'India — UPI / Cards',
+    //   desc: 'UPI · PhonePe · Google Pay · Net Banking · Cards',
+    //   icon: <Smartphone className="w-5 h-5" />,
+    // },
     {
       id: 'stripe',
       label: 'Stripe',
@@ -743,10 +745,10 @@ export default function CheckoutModal({
                     );
                   })}
                 </div>
-
+                {/* 
                 <p className="mt-2.5 text-xs text-slate-400 text-center">
                   🇮🇳 Use Razorpay for Indian UPI/cards &nbsp;·&nbsp; 🌍 Use Stripe for international cards
-                </p>
+                </p> */}
               </div>
 
               {/* API error banner */}
