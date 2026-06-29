@@ -221,7 +221,7 @@ interface CheckoutModalProps {
   onBilling: (c: BillingCycle) => void;
   onSubmitForm: () => void;
   onStartPayment: () => void;
-  onBack: () => void;
+  // onBack: () => void;
   onClearError: () => void;
 }
 
@@ -229,7 +229,8 @@ interface CheckoutModalProps {
 
 export default function CheckoutModal({
   plan, step, form, gateway, billingCycle, leadData, loading, error,
-  onClose, onFormChange, onGateway, onBilling, onSubmitForm, onStartPayment, onBack, onClearError,
+  onClose, onFormChange, onGateway, onBilling, onSubmitForm, onStartPayment, onClearError,
+  // onBack,
 }: CheckoutModalProps) {
   const [countries, setCountries] = useState<CurrencyOption[]>([]);
   const [countriesLoading, setCountriesLoading] = useState(true);
@@ -367,7 +368,7 @@ export default function CheckoutModal({
         {/* ── Header ── */}
         <div className="flex items-center justify-between px-7 pt-6 pb-4 border-b border-slate-100 flex-shrink-0">
           <div className="flex items-center gap-3">
-            {step === 'summary' && (
+            {/* {step === 'summary' && (
               <button
                 onClick={onBack}
                 className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-slate-100 transition-colors"
@@ -375,7 +376,7 @@ export default function CheckoutModal({
               >
                 <ArrowLeft className="w-4 h-4 text-slate-600" />
               </button>
-            )}
+            )} */}
             <div>
               <h2 className="text-lg font-bold text-slate-900 leading-tight">
                 {step === 'form' && 'Get Started'}
