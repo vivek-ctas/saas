@@ -90,6 +90,11 @@ export interface CreateLeadData {
   lead_id: string;
   payment_allowed?: boolean; // false = existing active subscription
   seller_id?: string;  // populated when payment_allowed === false
+  active_subscription?: {
+    plan_name: string;
+    billing_cycle: string;
+    expired_at: string;
+  };
 }
 
 export interface CreateLeadResponse {
