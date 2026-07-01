@@ -50,11 +50,11 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Link href="/pricing">
-              <Button variant="default" className="ml-2 shadow-stripe">
+            <Button asChild variant="default" className="ml-2 shadow-stripe">
+              <Link href="/pricing">
                 Get Started
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
 
           {/* Mobile menu button */}
