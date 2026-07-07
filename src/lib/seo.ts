@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const SITE_NAME = "Ctasis";
 export const SITE_URL = "https://ctasis.com";
 export const SITE_DESCRIPTION =
-  "Manage all your marketplace accounts from one dashboard. Sync inventory, route orders, and analyze performance across Amazon, eBay, Walmart, Shopify and more";
+  "Manage all your Sellerbuz accounts from one dashboard. Sync inventory, route orders, and analyze performance across Amazon, eBay, Walmart, Shopify and more";
 
 // export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-default.png`; 
 export const DEFAULT_OG_IMAGE = `/ctas-logo.png`;

@@ -19,7 +19,7 @@ const Footer = () => {
   const footerLinks = {
     product: [
       { name: "Services", href: "/services" },
-      { name: "Marketplaces", href: "/marketplaces" },
+      { name: "Sellerbuz", href: "/marketplaces" },
       { name: "Infrastructure", href: "/infrastructure" },
       { name: "Pricing", href: "/pricing" },
     ],
@@ -44,10 +44,10 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Facebook, href: "https://www.linkedin.com/in/ctas-info-services-llp", label: "Facebook" },
+    // { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Linkedin, href: "https://www.facebook.com/people/Ctas-Info-Service/61566714244013/", label: "LinkedIn" },
+    { icon: Instagram, href: "https://www.instagram.com/ctasinfoservice/", label: "Instagram" },
   ];
 
   return (
@@ -71,21 +71,10 @@ const Footer = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div>
-                <h3 className="text-2xl font-bold mb-2">Stay Updated</h3>
+                <h3 className="text-2xl font-bold mb-2">Let's Build Your eCommerce Success Together</h3>
                 <p className="text-slate-300">
-                  Get the latest multichannel selling tips, product updates, and industry insights.
+                  Whether you're starting out or scaling your Sellerbuz business, CTAS Sellerbuz provides the tools and expertise to help you grow faster.
                 </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 bg-slate-800 border-slate-600 text-white placeholder:text-slate-400"
-                />
-                <Button variant="default" className="gradient-primary shadow-stripe">
-                  Subscribe
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
               </div>
             </div>
           </div>
@@ -100,7 +89,7 @@ const Footer = () => {
                 <div className="w-10 h-10 gradient-primary rounded-xl flex items-center justify-center shadow-stripe">
                   <span className="text-white font-bold">C</span>
                 </div>
-                <span className="text-2xl font-bold text-white">Ctasis <span className="text-pink-400">Marketplace</span></span>
+                <span className="text-2xl font-bold text-white">Ctasis <span className="text-pink-400">Sellerbuz</span></span>
               </Link>
               <p className="text-slate-300 mb-6 max-w-sm">
                 The complete multichannel selling platform trusted by 50,000+ sellers worldwide.
@@ -110,16 +99,16 @@ const Footer = () => {
               {/* Contact Info */}
               <div className="space-y-3">
                 <div className="flex items-center text-slate-300">
-                  <Mail className="w-4 h-4 mr-3 text-emerald-400" />
-                  <span>support@ctasis.com</span>
+                  <Mail className="w-4 h-4 mr-3 text-emerald-400 flex-shrink-0" />
+                  <span>info@ctasis.com</span>
                 </div>
                 <div className="flex items-center text-slate-300">
-                  <Phone className="w-4 h-4 mr-3 text-emerald-400" />
-                  <span>+1 (555) 123-4567</span>
+                  <Phone className="w-4 h-4 mr-3 text-emerald-400 flex-shrink-0" />
+                  <span>+91 7948993409</span>
                 </div>
                 <div className="flex items-center text-slate-300">
-                  <MapPin className="w-4 h-4 mr-3 text-emerald-400" />
-                  <span>San Francisco, CA</span>
+                  <MapPin className="w-4 h-4 mr-3 mt-1 text-emerald-400 flex-shrink-0" />
+                  <span>A-865/866, Money Plant High Street, Jagatpur Road, Sarkhej - Gandhinagar Hwy, near BSNL Office, Gota, Ahmedabad, Gujarat 382470</span>
                 </div>
               </div>
             </div>
@@ -199,13 +188,14 @@ const Footer = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="text-slate-400 text-sm mb-4 md:mb-0">
-                © 2024 Ctasis Marketplace. All rights reserved.
+                © 2024 Ctasis Sellerbuz. All rights reserved.
               </div>
 
               {/* Social Links */}
               <div className="flex space-x-4">
                 {socialLinks.map((social) => (
                   <a
+                    target="_blank"
                     key={social.label}
                     href={social.href}
                     className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:bg-slate-700 transition-colors"

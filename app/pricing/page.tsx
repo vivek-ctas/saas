@@ -25,7 +25,7 @@ const pricingJsonLd = {
       price: "29",
       priceCurrency: "USD",
       priceSpecification: { "@type": "UnitPriceSpecification", price: "29", priceCurrency: "USD", unitCode: "MON" },
-      description: "For new sellers getting started. 3 marketplace connections, 5,000 listings, basic sync.",
+      description: "For new sellers getting started. 3 Sellerbuz connections, 5,000 listings, basic sync.",
       url: `${SITE_URL}/pricing`,
     },
     {
@@ -63,7 +63,7 @@ const faqJsonLd = {
     },
     {
       "@type": "Question",
-      name: "What marketplaces are supported?",
+      name: "What Sellerbuz are supported?",
       acceptedAnswer: { "@type": "Answer", text: "Amazon, eBay, Walmart, Shopify, Etsy, TikTok Shop and 50+ more — and we'll build any missing integration." },
     },
     {

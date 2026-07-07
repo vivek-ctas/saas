@@ -4,9 +4,9 @@ import { buildMetadata, SITE_URL } from "@/lib/seo";
 
 // ─── Page metadata ───────────────────────────────────────────────────────────
 export const metadata: Metadata = buildMetadata({
-  title: "Blog — Multichannel Selling, Repricing & Marketplace Strategy",
+  title: "Blog — Multichannel Selling, Repricing & Sellerbuz Strategy",
   description:
-    "Insights, playbooks and deep-dives for Amazon, Walmart and multichannel sellers. Topics include AI repricing, inventory management, analytics, FBA vs FBM, and marketplace strategy.",
+    "Insights, playbooks and deep-dives for Amazon, Walmart and multichannel sellers. Topics include AI repricing, inventory management, analytics, FBA vs FBM, and Sellerbuz strategy.",
   path: "/blog",
 });
 
@@ -17,7 +17,7 @@ const blogJsonLd = {
   name: "Ctasis Blog",
   url: `${SITE_URL}/blog`,
   description:
-    "Insights for multichannel sellers on repricing, inventory management, Amazon, Walmart and marketplace strategy.",
+    "Insights for multichannel sellers on repricing, inventory management, Amazon, Walmart and Sellerbuz strategy.",
   publisher: {
     "@type": "Organization",
     name: "Ctasis",

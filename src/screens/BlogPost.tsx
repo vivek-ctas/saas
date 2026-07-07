@@ -58,12 +58,12 @@ const posts: Post[] = [
     date: "Apr 18, 2026",
     author: "Priya Mehta · Strategy",
     excerpt: "Most sellers start with rules and outgrow them in a quarter. Here's the honest breakdown.",
-    intro: "If you've ever caught yourself opening a spreadsheet at midnight to tweak a competitor rule, this one's for you. Rule-based repricing is comforting — until you have 500 SKUs, 6 marketplaces and a competitor who changes price every 90 seconds.",
+    intro: "If you've ever caught yourself opening a spreadsheet at midnight to tweak a competitor rule, this one's for you. Rule-based repricing is comforting — until you have 500 SKUs, 6 Sellerbuz and a competitor who changes price every 90 seconds.",
     Visual: AIPipelineDiagram,
     sections: [
       { h: "Rule-based: simple, predictable, slow", p: ["Rules are great for small catalogues. 'Match the lowest FBA seller, never go below £19.99' fits in your head and is easy to audit.", "It breaks the moment your competitors start playing the same game — every rule becomes a counter-rule and you're playing whack-a-mole at 3am."] },
-      { h: "Algorithmic: signals, not rules", p: ["An algorithmic engine doesn't follow a recipe — it learns from outcomes. Did this price win the Buy Box? For how long? At what margin? Did it move stock too fast?", "Over a few weeks, the model figures out the highest profitable price for each SKU on each marketplace, in each region, at each time of day. You stop writing rules and start writing guard rails."] },
-      { h: "When to switch", p: ["A rough rule: if you have more than 200 SKUs, more than 3 marketplaces, or your competitors are also using software to reprice — you've already outgrown rules. Move."], bullets: ["More than 200 SKUs", "More than 3 active channels", "Competitors clearly using software", "Margins already feeling 'mysteriously' compressed"] },
+      { h: "Algorithmic: signals, not rules", p: ["An algorithmic engine doesn't follow a recipe — it learns from outcomes. Did this price win the Buy Box? For how long? At what margin? Did it move stock too fast?", "Over a few weeks, the model figures out the highest profitable price for each SKU on each Sellerbuz, in each region, at each time of day. You stop writing rules and start writing guard rails."] },
+      { h: "When to switch", p: ["A rough rule: if you have more than 200 SKUs, more than 3 Sellerbuz, or your competitors are also using software to reprice — you've already outgrown rules. Move."], bullets: ["More than 200 SKUs", "More than 3 active channels", "Competitors clearly using software", "Margins already feeling 'mysteriously' compressed"] },
     ],
   },
   {
@@ -106,7 +106,7 @@ const posts: Post[] = [
     category: "Walmart",
     readTime: "9 min read",
     date: "Mar 28, 2026",
-    author: "Jordan Reyes · Marketplaces",
+    author: "Jordan Reyes · Sellerbuz",
     excerpt: "Walmart's Buy Box plays by its own rules. Here's how to think about it.",
     intro: "If you treat Walmart like Amazon Junior, you'll lose. The Buy Box (sorry — 'Featured Offer') weighs different signals, the buyer behaves differently, and the penalties for getting it wrong are quieter but just as expensive.",
     Visual: ChannelSyncFlow,
@@ -124,10 +124,10 @@ const posts: Post[] = [
     date: "Mar 20, 2026",
     author: "Aman Shah · Product",
     excerpt: "How our AI listing generator turns raw product data into channel-perfect listings.",
-    intro: "The slowest part of expanding to a new marketplace isn't integration — it's writing 800 listings that don't sound like a robot wrote them. Our AI listing generator does the boring 80% so your team can focus on the 20% that actually sells.",
+    intro: "The slowest part of expanding to a new Sellerbuz isn't integration — it's writing 800 listings that don't sound like a robot wrote them. Our AI listing generator does the boring 80% so your team can focus on the 20% that actually sells.",
     Visual: AIPipelineDiagram,
     sections: [
-      { h: "It starts with whatever you have", p: ["A CSV. A photo. A supplier brief. A messy Google Doc. We embed the inputs, classify the product against each marketplace's category tree, and pick the writing template that matches."] },
+      { h: "It starts with whatever you have", p: ["A CSV. A photo. A supplier brief. A messy Google Doc. We embed the inputs, classify the product against each Sellerbuz's category tree, and pick the writing template that matches."] },
       { h: "Channel-perfect, not generic", p: ["Amazon wants benefit-led bullets and rich backend keywords. eBay wants long-form descriptions with HTML. Flipkart wants short, punchy attributes. The model writes once, then re-shapes for each channel."] },
       { h: "Human in the loop, not human in the way", p: ["Anything below a confidence threshold goes to a reviewer; anything above is auto-published. The result: 92% of listings ship without a human touching them — and the 8% that do are exactly the ones worth a human's time."] },
     ],
@@ -154,7 +154,7 @@ const posts: Post[] = [
     category: "Operations",
     readTime: "8 min read",
     date: "Apr 28, 2026",
-    author: "Jordan Reyes · Marketplaces",
+    author: "Jordan Reyes · Sellerbuz",
     excerpt: "Fulfilment By Amazon vs Merchant. Not a religious war — a maths problem with three variables.",
     intro: "Every seller eventually has the FBA-vs-FBM conversation. Most do it badly: gut feel, founder bias, or whatever a YouTube influencer said last week. The honest answer is that it's a maths problem with three variables — margin, velocity and control — and it's worth doing properly.",
     Visual: OrderFlowDiagram,
@@ -188,7 +188,7 @@ const BlogPost = () => {
   const ref = useReveal<HTMLDivElement>();
   const params = useParams();
   const slug = params.slug as string;
-   const post = posts.find((p) => p.slug === slug);
+  const post = posts.find((p) => p.slug === slug);
 
   const router = useRouter();
 

@@ -6,11 +6,11 @@ import { Badge } from "@/components/ui/badge";
 import {
   RefreshCw, ShoppingCart, BarChart3, TrendingUp, Zap, Globe, Shield,
   Truck, Calculator, Warehouse, Layers, Package2, Brain, Users,
-  ArrowRight, CheckCircle, Search, Settings, Rocket, LineChart, Sparkles
+  ArrowRight, CheckCircle, Search, Settings, Rocket, LineChart, Sparkles,
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
-
+import Link from "next/link";
 // ─── Above-fold components: loaded immediately ───────────────────────────────
 import { BlobBackdrop, ServicesHeroMockup } from "@/components/illustrations";
 
@@ -52,7 +52,7 @@ const Services = () => {
 
   const services = [
     { icon: RefreshCw, title: "Inventory Sync", desc: "Real-time stock levels across every channel.", tone: "from-blue-500 to-indigo-600", bg: "bg-blue-50" },
-    { icon: ShoppingCart, title: "Order Management", desc: "One inbox for orders from all marketplaces.", tone: "from-secondary to-orange-500", bg: "bg-pink-50" },
+    { icon: ShoppingCart, title: "Order Management", desc: "One inbox for orders from all Sellerbuz.", tone: "from-secondary to-orange-500", bg: "bg-pink-50" },
     { icon: BarChart3, title: "Analytics & Reporting", desc: "Dashboards that surface profit, not noise.", tone: "from-indigo-500 to-secondary", bg: "bg-indigo-50" },
     { icon: TrendingUp, title: "Performance Optimization", desc: "AI-driven repricing and listing tweaks.", tone: "from-orange-500 to-red-500", bg: "bg-orange-50" },
     { icon: Truck, title: "Logistics & Fulfillment", desc: "Multi-carrier shipping with smart routing.", tone: "from-indigo-500 to-blue-600", bg: "bg-indigo-50" },
@@ -83,13 +83,18 @@ const Services = () => {
           visual={<ServicesHeroMockup className="w-full h-auto" />}
           actions={
             <>
-              <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
-                Watch Demo
-              </Button>
-              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
-                Start Free Trial
-                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link href="/services#all-services">
+                <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
+                  Explore Services
+                </Button>
+              </Link>
+              <Link href="/pricing">
+                <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
+                  Quick Start
+                  <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+
             </>
           }
         />
@@ -99,7 +104,7 @@ const Services = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 max-w-3xl mx-auto reveal">
               <Badge className="mb-4 bg-accent text-accent-foreground border-0">End-to-end automation</Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">From marketplace ping to doorstep — automatically.</h2>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">From Sellerbuz ping to doorstep — automatically.</h2>
               <p className="text-lg text-slate-600">Every step in the order lifecycle is event-driven and measurable.</p>
             </div>
             <div className="reveal delay-100 rounded-3xl bg-gradient-to-br from-slate-50 to-white p-6 sm:p-10 border border-slate-100 shadow-stripe">
@@ -109,7 +114,7 @@ const Services = () => {
         </section>
 
         {/* PROCESS TIMELINE */}
-        <section className="py-24 section-bg">
+        <section className="py-24 section-bg" id="how-it-works">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal">
               <Badge className="mb-4 bg-accent text-accent-foreground border-0">How it works</Badge>
@@ -138,7 +143,7 @@ const Services = () => {
         </section>
 
         {/* AUTO-REPRICER FLOW */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-white" id="auto-repricer">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 max-w-3xl mx-auto reveal">
               <Badge className="mb-4 bg-accent text-accent-foreground border-0">
@@ -243,16 +248,16 @@ const Services = () => {
                   </li>
                 ))}
               </ul>
-              <Button size="lg" className="shadow-stripe-xl group">
+              {/* <Button size="lg" className="shadow-stripe-xl group">
                 Explore analytics
                 <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              </Button> */}
             </div>
           </div>
         </section>
 
         {/* SERVICES GRID */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-white" id="all-services">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal">
               <Badge className="mb-4 bg-accent text-accent-foreground border-0">All services</Badge>
@@ -271,12 +276,6 @@ const Services = () => {
                     </div>
                     <CardTitle className="text-xl font-bold text-slate-900">{s.title}</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-slate-600 leading-relaxed mb-4">{s.desc}</p>
-                    <a className="story-link text-sm font-semibold text-primary inline-flex items-center gap-1">
-                      Learn more <ArrowRight className="w-3.5 h-3.5" />
-                    </a>
-                  </CardContent>
                 </Card>
               ))}
             </div>
@@ -359,8 +358,17 @@ const Services = () => {
               Join thousands of sellers who trust Ctasis to power their multichannel operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl">Start Free Trial</Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/20 shadow-stripe">Schedule Demo</Button>
+              <Link href="/pricing">
+                <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl">
+                  Get started
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button size="lg" variant="outline"
+                  className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/80 shadow-stripe">
+                  Talk to our team
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
