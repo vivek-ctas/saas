@@ -44,9 +44,9 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: Facebook, href: "https://www.linkedin.com/in/ctas-info-services-llp", label: "Facebook" },
+    { icon: Facebook, href: "https://www.facebook.com/people/Ctas-Info-Service/61566714244013/", label: "Facebook" },
     // { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "https://www.facebook.com/people/Ctas-Info-Service/61566714244013/", label: "LinkedIn" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/ctas-info-services-llp", label: "LinkedIn" },
     { icon: Instagram, href: "https://www.instagram.com/ctasinfoservice/", label: "Instagram" },
   ];
 
