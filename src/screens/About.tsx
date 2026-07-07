@@ -5,12 +5,13 @@ import { Button } from "@/components/ui/button";
 import {
   Sparkles, Heart, Shield, Lightbulb, Eye, Users, Globe,
   Rocket, Trophy, Building2, Brain, ArrowRight, Award, Lock,
-  Zap, Truck, Megaphone, Store, CheckCircle, Cpu
+  Zap, Truck, Megaphone, Store, CheckCircle, Cpu,
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import { BlobBackdrop, WorkflowIllustration, GlobeIllustration, NeuralIllustration, AboutJourneyMockup, LogoChip } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
+import Link from "next/link";
 
 const About = () => {
   const ref = useReveal<HTMLDivElement>();
@@ -42,13 +43,18 @@ const About = () => {
           visual={<AboutJourneyMockup className="w-full h-auto" />}
           actions={
             <>
-              <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
-                Read our manifesto
-              </Button>
-              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
-                Join the team
-                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link href="/blog">
+                <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
+                  Read our blog
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
+                  Join the team
+                  <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+
             </>
           }
         />
@@ -200,7 +206,7 @@ const About = () => {
             <div className="text-center mb-14 reveal">
               <Badge className="mb-4 bg-accent text-accent-foreground border-0">Partnership ecosystem</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Powered by world-class partners</h2>
-              <p className="text-xl text-slate-600">Logistics across India, Europe and the USA · marketplaces · ad networks · offline retail.</p>
+              <p className="text-xl text-slate-600">Logistics across India, Europe and the USA · Sellerbuz · ad networks · offline retail.</p>
             </div>
 
             <div className="space-y-8">
@@ -219,7 +225,7 @@ const About = () => {
               <div className="reveal delay-100">
                 <div className="flex items-center gap-2 mb-4">
                   <Store className="w-5 h-5 text-secondary" />
-                  <h3 className="font-bold text-slate-900">Marketplaces & offline chains</h3>
+                  <h3 className="font-bold text-slate-900">Sellerbuz & offline chains</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">
                   {["Amazon", "Walmart", "Lazada", "Shopee", "Rakuten", "Flipkart", "Meesho", "eBay", "Allegro", "Reliance Smart", "Croma", "Faire"].map((n, i) => (
@@ -315,12 +321,21 @@ const About = () => {
               We're hiring engineers, designers and seller-success folks across India and remote.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button size="lg" className="rounded-full px-8 shadow-stripe-xl bg-gradient-to-r from-primary to-secondary border-0">
-                See open roles <ArrowRight className="w-4 h-4 ml-1" />
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-full px-8 border-slate-300 bg-white">
-                Read our blog
-              </Button>
+              <Link href="/pricing">
+                <Button size="lg" className="rounded-full px-8 shadow-stripe-xl bg-gradient-to-r from-primary to-secondary border-0">
+                  Get started<ArrowRight className="w-4 h-4 ml-1" />
+                </Button>
+              </Link>
+              <Link href="/blog">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full px-8 border-slate-300 bg-white"
+                >
+                  Read our blog
+                </Button>
+              </Link>
+
             </div>
           </div>
         </section>

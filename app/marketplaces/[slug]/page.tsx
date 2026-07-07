@@ -47,7 +47,7 @@ function buildIntegrationJsonLd(slug: string) {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-        { "@type": "ListItem", position: 2, name: "Marketplaces", item: `${SITE_URL}/marketplaces` },
+        { "@type": "ListItem", position: 2, name: "Sellerbuz", item: `${SITE_URL}/marketplaces` },
         { "@type": "ListItem", position: 3, name: integration.name, item: `${SITE_URL}/marketplaces/${slug}` },
       ],
     },

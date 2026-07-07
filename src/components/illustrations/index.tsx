@@ -391,7 +391,7 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => (
 );
 
 /* ------------------------------------------------------------------ */
-/* GlobeIllustration – globe with arc connections to marketplaces      */
+/* GlobeIllustration – globe with arc connections to Sellerbuz      */
 /* ------------------------------------------------------------------ */
 export const GlobeIllustration = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -704,7 +704,7 @@ export const MarketplaceConnectorIllustration = (props: SVGProps<SVGSVGElement>)
     {[
       { x: 50, label1: "Our", label2: "Platform", fill: "white", stroke: "#3b82f6", text: "#1e40af" },
       { x: 220, label1: "SP-API", label2: "connector", fill: "url(#g-blue)", stroke: "#1e3a8a", text: "white" },
-      { x: 390, label1: "Amazon", label2: "Marketplace", fill: "#fef3c7", stroke: "#f59e0b", text: "#92400e" },
+      { x: 390, label1: "Amazon", label2: "Sellerbuz", fill: "#fef3c7", stroke: "#f59e0b", text: "#92400e" },
     ].map((n, i) => (
       <g key={i}>
         <rect x={n.x} y="80" width="120" height="80" rx="12" fill={n.fill} stroke={n.stroke} strokeWidth="2" />
@@ -809,7 +809,7 @@ export const RepricerIllustration = (props: SVGProps<SVGSVGElement>) => (
     </circle>
     <text x="290" y="172" textAnchor="middle" fontSize="13" fontWeight="800" fill="#0f172a">$24.90 · winning Buy Box</text>
     <text x="290" y="190" textAnchor="middle" fontSize="11" fill="#64748b">Adjusts every 60s based on margin &amp; competitor signals</text>
-    {/* Marketplace pills */}
+    {/* Sellerbuz pills */}
     {["Amazon", "Flipkart", "eBay", "Walmart"].map((m, i) => (
       <g key={m}>
         <rect x={40 + i * 130} y="220" width="110" height="28" rx="14" fill="#f8fafc" stroke="#e2e8f0" />
@@ -913,7 +913,7 @@ export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
           fontFamily="'DM Sans',sans-serif"
           fontSize="11.5" fill="#6b7280"
         >
-          From marketplace ping to doorstep delivery — zero clicks.
+          From Sellerbuz ping to doorstep delivery — zero clicks.
         </text>
       </g>
 
@@ -1059,7 +1059,7 @@ export const PricingCalculatorMockup = (props: SVGProps<SVGSVGElement>) => (
     {/* Inputs panel */}
     <rect x="44" y="100" width="220" height="240" rx="14" fill="#f8fafc" stroke="#e2e8f0" />
     {[
-      { y: 124, label: "Marketplaces", value: "5" },
+      { y: 124, label: "Sellerbuz", value: "5" },
       { y: 168, label: "Monthly orders", value: "12,400" },
       { y: 212, label: "Avg. order value", value: "$48.20" },
       { y: 256, label: "Current margin", value: "18%" },
@@ -1322,7 +1322,7 @@ export const AnalyticsFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
     <text x="40" y="46" fontSize="11" fontWeight="800" fill="#64748b" letterSpacing="1">SOURCES</text>
     {[
       { y: 60, l: "Amazon SP-API", c: "#f59e0b" },
-      { y: 110, l: "Walmart Marketplace", c: "#1d4ed8" },
+      { y: 110, l: "Walmart Sellerbuz", c: "#1d4ed8" },
       { y: 160, l: "Shopify Plus", c: "#10b981" },
       { y: 210, l: "Meta · Google Ads", c: "#ec4899" },
       { y: 260, l: "Customer reviews", c: "#8b5cf6" },
@@ -2199,7 +2199,7 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
           fontFamily="'DM Sans',sans-serif"
           fontSize="11" fill="#6b7280"
         >
-          Vector embeddings, marketplace rules and a human-in-the-loop QA gate.
+          Vector embeddings, Sellerbuz rules and a human-in-the-loop QA gate.
         </text>
       </g>
 
@@ -2288,7 +2288,7 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
               </>
             )}
             {i === 3 && (
-              /* PUBLISH: marketplace circles */
+              /* PUBLISH: Sellerbuz circles */
               <>
                 {[["A", "#f59e0b"], ["W", "#1d4ed8"], ["F", "#ef4444"]].map(([label, col], j) => (
                   <g key={j} className="ap-mkt-anim" style={{ animationDelay: `${j * 0.35}s`, transformOrigin: `${sx + 22 + j * 38}px ${STAGE_Y + 108}px` }}>
@@ -2376,7 +2376,7 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
   );
 }
 /* ------------------------------------------------------------------ */
-/* ChannelSyncFlow — distinct sync flow for marketplaces page          */
+/* ChannelSyncFlow — distinct sync flow for Sellerbuz page          */
 /* ------------------------------------------------------------------ */
 export const ChannelSyncFlow = (
   props: SVGProps<SVGSVGElement>
@@ -3059,7 +3059,7 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
       />
 
       <text x="120" y="80" textAnchor="middle" fontSize="16" fontWeight="800" fill="#193745">
-        Marketplace event
+        Sellerbuz event
       </text>
       <text x="25" y="120" fontSize="14" fontWeight="800" fill="white">
         Buy Box %, price, stock…

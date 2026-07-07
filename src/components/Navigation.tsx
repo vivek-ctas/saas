@@ -12,7 +12,7 @@ const Navigation = () => {
   const navigation = [
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
-    { name: "Marketplaces", href: "/marketplaces" },
+    { name: "Sellerbuz", href: "/marketplaces" },
     { name: "Infrastructure", href: "/infrastructure" },
     { name: "Pricing", href: "/pricing" },
     { name: "Blog", href: "/blog" },
@@ -33,7 +33,7 @@ const Navigation = () => {
               alt="Ctasis Logo"
               className="w-12 h-9 sm:w-16 md:w-20 transition-all"
             />
-            <span className="text-black text-sm sm:text-base font-semibold">Marketplace</span>
+            <span className="text-black text-sm sm:text-base font-semibold">Sellerbuz</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -50,11 +50,11 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Link href="/pricing">
-              <Button variant="default" className="ml-2 shadow-stripe">
+            <Button asChild variant="default" className="ml-2 shadow-stripe">
+              <Link href="/pricing">
                 Get Started
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
 
           {/* Mobile menu button */}

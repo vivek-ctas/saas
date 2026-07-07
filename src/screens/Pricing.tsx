@@ -23,7 +23,7 @@ import { formatConvertedPrice } from '@/services/currency.service';
 // ── Static content ─────────────────────────────────────────────────────────────
 
 const COMPARE = [
-  ['Marketplace connections', '3', '10', 'Unlimited'],
+  ['Sellerbuz connections', '3', '10', 'Unlimited'],
   ['Product listings', '5,000', '25,000', 'Unlimited'],
   ['Real-time inventory sync', false, true, true],
   ['Automated repricing', false, true, true],
@@ -36,7 +36,7 @@ const COMPARE = [
 const FAQS = [
   { q: 'Is there a free trial?', a: 'Yes — every plan includes a 14-day trial with no credit card required.' },
   { q: 'Can I change plans anytime?', a: 'Absolutely. Upgrade or downgrade at any time from your billing settings.' },
-  { q: 'What marketplaces are supported?', a: "Amazon, eBay, Walmart, Shopify, Etsy, TikTok Shop and 50+ more — and we'll build any missing one." },
+  { q: 'What Sellerbuz are supported?', a: "Amazon, eBay, Walmart, Shopify, Etsy, TikTok Shop and 50+ more — and we'll build any missing one." },
   { q: 'How is my data secured?', a: 'SOC 2 Type II certified, end-to-end encryption, regular pen-tests, and GDPR compliant.' },
   { q: 'Do you offer migration help?', a: 'Yes, our white-glove onboarding team will migrate your listings, orders and history for free on Pro & Enterprise.' },
   { q: 'What happens if I exceed limits?', a: "We'll notify you well before you hit a cap — no surprise charges, ever." },
@@ -49,7 +49,7 @@ const ADDONS = [
   },
   {
     title: 'AI listing generator',
-    desc: "Got a spreadsheet of products? Paste it in. Our AI writes complete Amazon, eBay and Flipkart listings — titles, bullets, search terms, even translations — formatted exactly to each marketplace's rules so you stop getting suppressed listings.",
+    desc: "Got a spreadsheet of products? Paste it in. Our AI writes complete Amazon, eBay and Flipkart listings — titles, bullets, search terms, even translations — formatted exactly to each Sellerbuz's rules so you stop getting suppressed listings.",
   },
   {
     title: 'A+ content managed in S3',
@@ -150,13 +150,16 @@ const Pricing = () => {
           visual={<PricingCalculatorMockup className="w-full h-auto" />}
           actions={
             <>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm"
-              >
-                Compare plans
-              </Button>
+              <Link href="#comparison">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm"
+                >
+                  Compare plans
+                </Button>
+              </Link>
+
               <Link
                 href="#plans"
                 className="inline-flex items-center justify-center rounded-full text-base px-8 h-12 shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0 text-white"
@@ -303,7 +306,7 @@ const Pricing = () => {
         </section>
 
         {/* ── COMPARISON TABLE ────────────────────────────────────────────────── */}
-        <section className="py-24 section-bg">
+        <section className="py-24 section-bg" id='comparison'>
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 reveal">
               <Badge className="mb-4 bg-accent text-accent-foreground border-0">Plan comparison</Badge>
@@ -439,16 +442,17 @@ const Pricing = () => {
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">Still have questions?</h2>
             <p className="text-xl text-white/90 mb-8">Talk to our team — we'll help you pick the right plan.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl">
-                Start free trial
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/20 shadow-stripe"
-              >
-                Talk to sales
-              </Button>
+              <Link href="/pricing">
+                <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl">
+                  Get started
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button size="lg" variant="outline"
+                  className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/80 shadow-stripe">
+                  Talk to our team
+                </Button>
+              </Link>
             </div>
           </div>
         </section>

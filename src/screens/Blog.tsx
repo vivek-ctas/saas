@@ -63,7 +63,7 @@ const posts = [
   {
     slug: "ai-listing-generator-from-raw-data",
     title: "From a messy CSV to a Flipkart listing in four minutes — with AI",
-    excerpt: "How our AI listing generator turns raw product data into channel-perfect listings, and how we keep marketplace ranking algorithms happy in the process.",
+    excerpt: "How our AI listing generator turns raw product data into channel-perfect listings, and how we keep Sellerbuz ranking algorithms happy in the process.",
     category: "AI",
     icon: Sparkles,
     readTime: "5 min read",
@@ -113,13 +113,15 @@ const Blog = () => {
           badgeIcon={BookOpen}
           badgeText="Ctasis · Blog"
           title={<>Stories from <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">the seller front line.</span></>}
-          subtitle="Repricer deep-dives, marketplace playbooks and honest takes on what actually grows a multichannel business — written by the engineers and sellers who build Ctasis."
+          subtitle="Repricer deep-dives, Sellerbuz playbooks and honest takes on what actually grows a multichannel business — written by the engineers and sellers who build Ctasis."
           visual={<BlogEditorialMockup className="w-full h-auto" />}
           actions={
-            <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
-              Subscribe to updates
-              <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <Link href="/contact">
+              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
+                Contact Our Team
+                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           }
         />
 
@@ -162,13 +164,7 @@ const Blog = () => {
                 <Badge className="mb-3 bg-accent text-accent-foreground border-0">Latest articles</Badge>
                 <h2 className="text-4xl font-bold text-slate-900">All posts</h2>
               </div>
-              <div className="hidden md:flex gap-2">
-                {["All", "Repricing", "Analytics", "AI", "Playbooks"].map((c, i) => (
-                  <button key={i} className={`px-4 py-2 rounded-full text-sm font-semibold border ${i === 0 ? "bg-primary text-white border-primary" : "bg-white text-slate-700 border-slate-200 hover:border-primary"}`}>
-                    {c}
-                  </button>
-                ))}
-              </div>
+
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {rest.map((p, i) => (
@@ -204,8 +200,17 @@ const Blog = () => {
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">Get the playbooks in your inbox.</h2>
             <p className="text-xl text-white/90 mb-10">One short, useful email a week — no fluff, no spam, unsubscribe anytime.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-              <input type="email" placeholder="you@brand.com" className="flex-1 px-5 py-3 rounded-full bg-white/10 border border-white/30 text-white placeholder:text-white/60 focus:outline-none focus:bg-white/20" />
-              <Button size="lg" variant="secondary" className="shadow-stripe-xl rounded-full">Subscribe</Button>
+              <Link href="/pricing">
+                <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl">
+                  Get started
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button size="lg" variant="outline"
+                  className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/80 shadow-stripe">
+                  Talk to our team
+                </Button>
+              </Link>
             </div>
           </div>
         </section>

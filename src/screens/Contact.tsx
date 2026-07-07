@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -14,12 +15,83 @@ import { useReveal } from "@/hooks/use-reveal";
 // ── Contact-specific hooks ───────────────────────────────────────────────
 import { useCompanyContact } from "@/hooks/use-company-contact";
 import { useContactForm } from "@/hooks/use-contact-form";
+import Link from "next/link";
+
+type FieldName = "first_name" | "last_name" | "email" | "inquiry_type" | "message";
+
+const validateField = (field: FieldName, value: string): string => {
+  switch (field) {
+    case "first_name":
+      return value.trim() ? "" : "First name is required";
+    case "last_name":
+      return value.trim() ? "" : "Last name is required";
+    case "email":
+      if (!value.trim()) return "Email is required";
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())) return "Enter a valid email address";
+      return "";
+    case "inquiry_type":
+      return value ? "" : "Please select an inquiry type";
+    case "message":
+      if (!value.trim()) return "Message is required";
+      if (value.trim().length < 10) return "Message must be at least 10 characters";
+      return "";
+    default:
+      return "";
+  }
+};
 
 const Contact = () => {
   const ref = useReveal<HTMLDivElement>();
 
   const { companyData } = useCompanyContact();
   const { form, loading, success, error, handleChange, handleSubmit, resetForm } = useContactForm();
+
+  const [errors, setErrors] = useState<Partial<Record<FieldName, string>>>({});
+  const [touched, setTouched] = useState<Partial<Record<FieldName, boolean>>>({});
+
+  const handleFieldChange = (field: FieldName, value: string) => {
+    handleChange(field, value);
+    if (touched[field]) {
+      setErrors((prev) => ({ ...prev, [field]: validateField(field, value) }));
+    }
+  };
+
+  const handleFieldBlur = (field: FieldName, value: string) => {
+    setTouched((prev) => ({ ...prev, [field]: true }));
+    setErrors((prev) => ({ ...prev, [field]: validateField(field, value) }));
+  };
+
+  const handleInquiryChange = (value: string) => {
+    handleChange("inquiry_type", value);
+    setTouched((prev) => ({ ...prev, inquiry_type: true }));
+    setErrors((prev) => ({ ...prev, inquiry_type: validateField("inquiry_type", value) }));
+  };
+
+  const validateAll = (): boolean => {
+    const fields: FieldName[] = ["first_name", "last_name", "email", "inquiry_type", "message"];
+    const newErrors: Partial<Record<FieldName, string>> = {};
+    fields.forEach((f) => {
+      const err = validateField(f, form[f] || "");
+      if (err) newErrors[f] = err;
+    });
+    setErrors(newErrors);
+    setTouched(fields.reduce((acc, f) => ({ ...acc, [f]: true }), {} as Partial<Record<FieldName, boolean>>));
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const onSubmit = () => {
+    if (validateAll()) {
+      handleSubmit();
+    }
+  };
+
+  const errorClass = (field: FieldName) =>
+    touched[field] && errors[field] ? "border-red-500 focus-visible:ring-red-500" : "";
+
+  const FieldError = ({ field }: { field: FieldName }) =>
+    touched[field] && errors[field] ? (
+      <p className="text-red-500 text-xs mt-1">{errors[field]}</p>
+    ) : null;
 
   return (
     <Layout>
@@ -32,13 +104,17 @@ const Contact = () => {
           visual={<ContactMapIllustration className="w-full h-auto" />}
           actions={
             <>
-              <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
-                Browse docs
-              </Button>
-              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
-                Book a demo
-                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link href="#contact-form">
+                <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
+                  Contact us
+                </Button>
+              </Link>
+              <Link href="/pricing">
+                <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
+                  View Pricing
+                  <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </>
           }
         />
@@ -70,7 +146,7 @@ const Contact = () => {
         </section>
 
         {/* FORM + INFO */}
-        <section className="py-24 section-bg">
+        <section className="py-24 section-bg" id="contact-form">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
               {/* Form */}
@@ -88,7 +164,15 @@ const Contact = () => {
                       <p className="text-slate-600 max-w-sm">
                         Thank you for reaching out. Our team will get back to you within 24 hours.
                       </p>
-                      <Button variant="outline" onClick={resetForm} className="mt-2">
+                      <Button
+                        variant="outline"
+                        onClick={() => {
+                          resetForm();
+                          setErrors({});
+                          setTouched({});
+                        }}
+                        className="mt-2"
+                      >
                         Send another message
                       </Button>
                     </div>
@@ -101,8 +185,11 @@ const Contact = () => {
                             id="firstName"
                             placeholder="John"
                             value={form.first_name}
-                            onChange={(e) => handleChange("first_name", e.target.value)}
+                            onChange={(e) => handleFieldChange("first_name", e.target.value)}
+                            onBlur={(e) => handleFieldBlur("first_name", e.target.value)}
+                            className={errorClass("first_name")}
                           />
+                          <FieldError field="first_name" />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="lastName">Last name</Label>
@@ -110,8 +197,11 @@ const Contact = () => {
                             id="lastName"
                             placeholder="Doe"
                             value={form.last_name}
-                            onChange={(e) => handleChange("last_name", e.target.value)}
+                            onChange={(e) => handleFieldChange("last_name", e.target.value)}
+                            onBlur={(e) => handleFieldBlur("last_name", e.target.value)}
+                            className={errorClass("last_name")}
                           />
+                          <FieldError field="last_name" />
                         </div>
                       </div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -122,8 +212,11 @@ const Contact = () => {
                             type="email"
                             placeholder="john@example.com"
                             value={form.email}
-                            onChange={(e) => handleChange("email", e.target.value)}
+                            onChange={(e) => handleFieldChange("email", e.target.value)}
+                            onBlur={(e) => handleFieldBlur("email", e.target.value)}
+                            className={errorClass("email")}
                           />
+                          <FieldError field="email" />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="company">Company</Label>
@@ -139,9 +232,11 @@ const Contact = () => {
                         <Label htmlFor="inquiry">Inquiry type</Label>
                         <Select
                           value={form.inquiry_type}
-                          onValueChange={(val) => handleChange("inquiry_type", val)}
+                          onValueChange={handleInquiryChange}
                         >
-                          <SelectTrigger><SelectValue placeholder="Select inquiry type" /></SelectTrigger>
+                          <SelectTrigger className={errorClass("inquiry_type")}>
+                            <SelectValue placeholder="Select inquiry type" />
+                          </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="sales">Sales Inquiry</SelectItem>
                             <SelectItem value="support">Technical Support</SelectItem>
@@ -149,16 +244,19 @@ const Contact = () => {
                             <SelectItem value="general">General Question</SelectItem>
                           </SelectContent>
                         </Select>
+                        <FieldError field="inquiry_type" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="message">Message</Label>
                         <Textarea
                           id="message"
                           placeholder="Tell us how we can help…"
-                          className="min-h-[140px]"
+                          className={`min-h-[140px] ${errorClass("message")}`}
                           value={form.message}
-                          onChange={(e) => handleChange("message", e.target.value)}
+                          onChange={(e) => handleFieldChange("message", e.target.value)}
+                          onBlur={(e) => handleFieldBlur("message", e.target.value)}
                         />
+                        <FieldError field="message" />
                       </div>
 
                       {error && (
@@ -170,7 +268,7 @@ const Contact = () => {
                       <Button
                         className="w-full shadow-stripe-xl group"
                         size="lg"
-                        onClick={handleSubmit}
+                        onClick={onSubmit}
                         disabled={loading}
                       >
                         {loading ? (

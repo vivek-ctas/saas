@@ -6,7 +6,7 @@ import {
   ShoppingBag, Globe, Star, ShoppingCart, Sparkles, Package,
   Smartphone, Truck, Megaphone, Store, ArrowRight, CheckCircle, Zap, Plug
 } from "lucide-react";
-import  Link  from "next/link";
+import Link from "next/link";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import { BlobBackdrop, ContactMapIllustration, MarketplaceMeshDiagram, ChannelSyncFlow, LogoChip } from "@/components/illustrations";
@@ -18,7 +18,7 @@ const Marketplaces = () => {
 
   const groups = [
     {
-      title: "Global marketplaces",
+      title: "Global Sellerbuz",
       icon: ShoppingBag,
       tone: "from-primary to-secondary",
       items: ["Amazon (FBA + FBM)", "eBay", "Walmart", "Etsy", "Target Plus", "Best Buy", "Newegg", "Wayfair"]
@@ -45,7 +45,7 @@ const Marketplaces = () => {
       title: "Social commerce",
       icon: Smartphone,
       tone: "from-rose-500 to-pink-600",
-      items: ["TikTok Shop", "Instagram Shopping", "Facebook Marketplace", "Pinterest", "YouTube Shopping", "WhatsApp Catalog"]
+      items: ["TikTok Shop", "Instagram Shopping", "Facebook Sellerbuz", "Pinterest", "YouTube Shopping", "WhatsApp Catalog"]
     },
     {
       title: "Offline chains & B2B",
@@ -73,7 +73,7 @@ const Marketplaces = () => {
           badgeIcon={Zap}
           badgeText="80+ live integrations"
           title={<>Sell on every channel <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">that matters.</span></>}
-          subtitle="From Amazon FBA to Lazada, TikTok Shop to Reliance Smart — Ctasis connects every marketplace, storefront, courier and ad network you need to scale globally."
+          subtitle="From Amazon FBA to Lazada, TikTok Shop to Reliance Smart — Ctasis connects every Sellerbuz, storefront, courier and ad network you need to scale globally."
           // visual={<MarketplaceMeshDiagram className="w-full h-auto" />}
           visual={
             <div className="scale-110 origin-center">
@@ -82,13 +82,15 @@ const Marketplaces = () => {
           }
           actions={
             <>
-              <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
-                See all integrations
-              </Button>
-              <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
-                Connect a channel
-                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link href="#featured-integrations">
+                <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
+                  See all integrations
+                </Button></Link>
+              <Link href="/contact">
+                <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
+                  Connect a channel
+                  <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+                </Button></Link>
             </>
           }
         >
@@ -102,7 +104,7 @@ const Marketplaces = () => {
         </PageHero>
 
         {/* FEATURED INTEGRATIONS — deep-dive subpages */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-white" id="featured-integrations">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal">
               <Badge className="mb-4 bg-accent text-accent-foreground border-0">
@@ -113,22 +115,33 @@ const Marketplaces = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {INTEGRATIONS.map((it, i) => (
-                <Link key={it.slug} href={`/marketplaces/${it.slug}`} className="reveal block" style={{ transitionDelay: `${i * 60}ms` }}>
-                  <Card className="hover-lift overflow-hidden border border-slate-100 h-full">
-                    <div className={`h-2 bg-gradient-to-r ${it.tone}`} />
-                    <CardContent className="p-6">
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${it.tone} flex items-center justify-center mb-4 shadow-stripe`}>
-                        <it.icon className="w-6 h-6 text-white" />
-                      </div>
-                      <div className="text-xs uppercase tracking-wide text-slate-500 mb-1">{it.region}</div>
-                      <h3 className="text-xl font-bold text-slate-900 mb-2">{it.name}</h3>
-                      <p className="text-slate-600 text-sm mb-4 line-clamp-2">{it.tagline}</p>
-                      <span className="text-primary text-sm font-semibold inline-flex items-center gap-1">
-                        Explore <ArrowRight className="w-4 h-4" />
-                      </span>
-                    </CardContent>
-                  </Card>
-                </Link>
+                <Card
+                  key={it.slug}
+                  className="reveal hover-lift overflow-hidden border border-slate-100 h-full"
+                  style={{ transitionDelay: `${i * 60}ms` }}
+                >
+                  <div className={`h-2 bg-gradient-to-r ${it.tone}`} />
+
+                  <CardContent className="p-6">
+                    <div
+                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${it.tone} flex items-center justify-center mb-4 shadow-stripe`}
+                    >
+                      <it.icon className="w-6 h-6 text-white" />
+                    </div>
+
+                    <div className="text-xs uppercase tracking-wide text-slate-500 mb-1">
+                      {it.region}
+                    </div>
+
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">
+                      {it.name}
+                    </h3>
+
+                    <p className="text-slate-600 text-sm line-clamp-2">
+                      {it.tagline}
+                    </p>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
@@ -138,7 +151,7 @@ const Marketplaces = () => {
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Marketplaces</Badge>
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Sellerbuz</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Reach buyers everywhere</h2>
               <p className="text-xl text-slate-600">From global giants to regional champions and offline retail chains.</p>
             </div>
@@ -175,7 +188,7 @@ const Marketplaces = () => {
               </Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Connect once. Sync forever.</h2>
               <p className="text-lg text-slate-600">
-                Every marketplace integration looks the same under the hood — a visual flow you can audit, replay and tweak without writing a line of code.
+                Every Sellerbuz integration looks the same under the hood — a visual flow you can audit, replay and tweak without writing a line of code.
               </p>
             </div>
             <div className="reveal rounded-3xl bg-white p-4 sm:p-8 border border-slate-100 shadow-stripe">
@@ -224,9 +237,6 @@ const Marketplaces = () => {
                   </li>
                 ))}
               </ul>
-              <Button size="lg" className="shadow-stripe-xl group">
-                See sample dashboard <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-              </Button>
             </div>
             <div className="reveal delay-200">
               <ContactMapIllustration className="w-full h-auto" />
@@ -266,9 +276,6 @@ const Marketplaces = () => {
                 Pull ad spend, ROAS and attribution from every major network into one dashboard.
                 Optimize Amazon Ads, Google Shopping and Meta side-by-side without switching tabs.
               </p>
-              <Button size="lg" className="shadow-stripe-xl group">
-                See ads dashboard <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-              </Button>
             </div>
             <div className="reveal delay-200 grid grid-cols-2 gap-3">
               {ads.map((a, i) => (
@@ -286,10 +293,17 @@ const Marketplaces = () => {
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">Don't see your channel?</h2>
             <p className="text-xl text-white/90 mb-10">We ship 2-3 new integrations every month. Tell us what you need.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="shadow-stripe-xl">Request integration</Button>
-              <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20">
-                Talk to sales
-              </Button>
+              <Link href="/pricing">
+                <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl">
+                  Get started
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button size="lg" variant="outline"
+                  className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/80 shadow-stripe">
+                  Talk to our team
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
