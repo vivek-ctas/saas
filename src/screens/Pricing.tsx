@@ -23,7 +23,7 @@ import { formatConvertedPrice } from '@/services/currency.service';
 // ── Static content ─────────────────────────────────────────────────────────────
 
 const COMPARE = [
-  ['Sellerbuz connections', '3', '10', 'Unlimited'],
+  ['Marketplace connections', '3', '10', 'Unlimited'],
   ['Product listings', '5,000', '25,000', 'Unlimited'],
   ['Real-time inventory sync', false, true, true],
   ['Automated repricing', false, true, true],
@@ -36,7 +36,7 @@ const COMPARE = [
 const FAQS = [
   { q: 'Is there a free trial?', a: 'Yes — every plan includes a 14-day trial with no credit card required.' },
   { q: 'Can I change plans anytime?', a: 'Absolutely. Upgrade or downgrade at any time from your billing settings.' },
-  { q: 'What Sellerbuz are supported?', a: "Amazon, eBay, Walmart, Shopify, Etsy, TikTok Shop and 50+ more — and we'll build any missing one." },
+  { q: 'What Marketplace are supported?', a: "Amazon, eBay, Walmart, Shopify, Etsy, TikTok Shop and 50+ more — and we'll build any missing one." },
   { q: 'How is my data secured?', a: 'SOC 2 Type II certified, end-to-end encryption, regular pen-tests, and GDPR compliant.' },
   { q: 'Do you offer migration help?', a: 'Yes, our white-glove onboarding team will migrate your listings, orders and history for free on Pro & Enterprise.' },
   { q: 'What happens if I exceed limits?', a: "We'll notify you well before you hit a cap — no surprise charges, ever." },
@@ -49,7 +49,7 @@ const ADDONS = [
   },
   {
     title: 'AI listing generator',
-    desc: "Got a spreadsheet of products? Paste it in. Our AI writes complete Amazon, eBay and Flipkart listings — titles, bullets, search terms, even translations — formatted exactly to each Sellerbuz's rules so you stop getting suppressed listings.",
+    desc: "Got a spreadsheet of products? Paste it in. Our AI writes complete Amazon, eBay and Flipkart listings — titles, bullets, search terms, even translations — formatted exactly to each Marketplace's rules so you stop getting suppressed listings.",
   },
   {
     title: 'A+ content managed in S3',

@@ -20,7 +20,7 @@ const servicesJsonLd = {
     "12 services built for multichannel sellers: inventory sync, order management, repricing, analytics, logistics, tax, warehouse management and more.",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Inventory Sync", description: "Real-time stock levels across every channel." },
-    { "@type": "ListItem", position: 2, name: "Order Management", description: "One inbox for orders from all Sellerbuz." },
+    { "@type": "ListItem", position: 2, name: "Order Management", description: "One inbox for orders from all Marketplaces." },
     { "@type": "ListItem", position: 3, name: "Analytics & Reporting", description: "Dashboards that surface profit, not noise." },
     { "@type": "ListItem", position: 4, name: "Performance Optimization", description: "AI-driven repricing and listing tweaks." },
     { "@type": "ListItem", position: 5, name: "Logistics & Fulfillment", description: "Multi-carrier shipping with smart routing." },

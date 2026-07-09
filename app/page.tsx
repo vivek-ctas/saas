@@ -5,9 +5,9 @@ import Home from "@/screens/Home";
 
 // ─── Page metadata ───────────────────────────────────────────────────────────
 export const metadata: Metadata = buildMetadata({
-  title: "Ctasis Sellerbuz - Multichannel Seller Management Platform",
+  title: "Ctasis Marketplace - Multichannel Seller Management Platform",
   description:
-    "Manage all your Sellerbuz accounts from one dashboard. Sync inventory, route orders, and analyze performance across Amazon, eBay, Walmart, Shopify and more.",
+    "Manage all your Marketplace accounts from one dashboard. Sync inventory, route orders, and analyze performance across Amazon, eBay, Walmart, Shopify and more.",
   path: "/",
 });
 
@@ -34,15 +34,15 @@ const faqJsonLd = {
       name: "What is Ctasis?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ctasis is an AI-powered Sellerbuz OS that helps multichannel sellers sync inventory, manage orders, and automate repricing across Amazon, Walmart, eBay, Shopify and 50+ channels from one dashboard.",
+        text: "Ctasis is an AI-powered Marketplace OS that helps multichannel sellers sync inventory, manage orders, and automate repricing across Amazon, Walmart, eBay, Shopify and 50+ channels from one dashboard.",
       },
     },
     {
       "@type": "Question",
-      name: "How many Sellerbuz does Ctasis support?",
+      name: "How many Marketplace does Ctasis support?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ctasis supports 50+ channels including Amazon (all regions), Walmart, eBay, Shopify, Etsy, TikTok Shop, and many more global and regional Sellerbuz.",
+        text: "Ctasis supports 50+ channels including Amazon (all regions), Walmart, eBay, Shopify, Etsy, TikTok Shop, and many more global and regional Marketplaces.",
       },
     },
     {

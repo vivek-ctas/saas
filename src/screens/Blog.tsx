@@ -63,7 +63,7 @@ const posts = [
   {
     slug: "ai-listing-generator-from-raw-data",
     title: "From a messy CSV to a Flipkart listing in four minutes — with AI",
-    excerpt: "How our AI listing generator turns raw product data into channel-perfect listings, and how we keep Sellerbuz ranking algorithms happy in the process.",
+    excerpt: "How our AI listing generator turns raw product data into channel-perfect listings, and how we keep Marketplace ranking algorithms happy in the process.",
     category: "AI",
     icon: Sparkles,
     readTime: "5 min read",
@@ -113,7 +113,7 @@ const Blog = () => {
           badgeIcon={BookOpen}
           badgeText="Ctasis · Blog"
           title={<>Stories from <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">the seller front line.</span></>}
-          subtitle="Repricer deep-dives, Sellerbuz playbooks and honest takes on what actually grows a multichannel business — written by the engineers and sellers who build Ctasis."
+          subtitle="Repricer deep-dives, Marketplace playbooks and honest takes on what actually grows a multichannel business — written by the engineers and sellers who build Ctasis."
           visual={<BlogEditorialMockup className="w-full h-auto" />}
           actions={
             <Link href="/contact">

@@ -19,7 +19,7 @@ const inter = Inter({
 
 // ─── Global / fallback metadata ────────────────────────────────────────────
 export const metadata: Metadata = {
-  title: `${SITE_NAME} — AI Sellerbuz OS for Multichannel Sellers`,
+  title: `${SITE_NAME} — AI Marketplace OS for Multichannel Sellers`,
   description: SITE_DESCRIPTION,
   metadataBase: new URL(SITE_URL),
 
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} — AI Sellerbuz OS for Multichannel Sellers`,
+    title: `${SITE_NAME} — AI Marketplace OS for Multichannel Sellers`,
     description: SITE_DESCRIPTION,
     images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: SITE_NAME }],
   },
