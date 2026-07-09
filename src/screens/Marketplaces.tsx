@@ -18,7 +18,7 @@ const Marketplaces = () => {
 
   const groups = [
     {
-      title: "Global Sellerbuz",
+      title: "Global Marketplace",
       icon: ShoppingBag,
       tone: "from-primary to-secondary",
       items: ["Amazon (FBA + FBM)", "eBay", "Walmart", "Etsy", "Target Plus", "Best Buy", "Newegg", "Wayfair"]
@@ -45,7 +45,7 @@ const Marketplaces = () => {
       title: "Social commerce",
       icon: Smartphone,
       tone: "from-rose-500 to-pink-600",
-      items: ["TikTok Shop", "Instagram Shopping", "Facebook Sellerbuz", "Pinterest", "YouTube Shopping", "WhatsApp Catalog"]
+      items: ["TikTok Shop", "Instagram Shopping", "Facebook Marketplace", "Pinterest", "YouTube Shopping", "WhatsApp Catalog"]
     },
     {
       title: "Offline chains & B2B",
@@ -73,7 +73,7 @@ const Marketplaces = () => {
           badgeIcon={Zap}
           badgeText="80+ live integrations"
           title={<>Sell on every channel <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">that matters.</span></>}
-          subtitle="From Amazon FBA to Lazada, TikTok Shop to Reliance Smart — Ctasis connects every Sellerbuz, storefront, courier and ad network you need to scale globally."
+          subtitle="From Amazon FBA to Lazada, TikTok Shop to Reliance Smart — Ctasis connects every Marketplace, storefront, courier and ad network you need to scale globally."
           // visual={<MarketplaceMeshDiagram className="w-full h-auto" />}
           visual={
             <div className="scale-110 origin-center">
@@ -151,7 +151,7 @@ const Marketplaces = () => {
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Sellerbuz</Badge>
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Marketplace</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Reach buyers everywhere</h2>
               <p className="text-xl text-slate-600">From global giants to regional champions and offline retail chains.</p>
             </div>
@@ -188,7 +188,7 @@ const Marketplaces = () => {
               </Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Connect once. Sync forever.</h2>
               <p className="text-lg text-slate-600">
-                Every Sellerbuz integration looks the same under the hood — a visual flow you can audit, replay and tweak without writing a line of code.
+                Every Marketplace integration looks the same under the hood — a visual flow you can audit, replay and tweak without writing a line of code.
               </p>
             </div>
             <div className="reveal rounded-3xl bg-white p-4 sm:p-8 border border-slate-100 shadow-stripe">

@@ -206,7 +206,7 @@ const About = () => {
             <div className="text-center mb-14 reveal">
               <Badge className="mb-4 bg-accent text-accent-foreground border-0">Partnership ecosystem</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Powered by world-class partners</h2>
-              <p className="text-xl text-slate-600">Logistics across India, Europe and the USA · Sellerbuz · ad networks · offline retail.</p>
+              <p className="text-xl text-slate-600">Logistics across India, Europe and the USA · Marketplace · ad networks · offline retail.</p>
             </div>
 
             <div className="space-y-8">
@@ -225,7 +225,7 @@ const About = () => {
               <div className="reveal delay-100">
                 <div className="flex items-center gap-2 mb-4">
                   <Store className="w-5 h-5 text-secondary" />
-                  <h3 className="font-bold text-slate-900">Sellerbuz & offline chains</h3>
+                  <h3 className="font-bold text-slate-900">Marketplace & offline chains</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">
                   {["Amazon", "Walmart", "Lazada", "Shopee", "Rakuten", "Flipkart", "Meesho", "eBay", "Allegro", "Reliance Smart", "Croma", "Faire"].map((n, i) => (

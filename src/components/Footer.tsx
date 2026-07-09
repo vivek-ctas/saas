@@ -19,7 +19,7 @@ const Footer = () => {
   const footerLinks = {
     product: [
       { name: "Services", href: "/services" },
-      { name: "Sellerbuz", href: "/marketplaces" },
+      { name: "Marketplace", href: "/marketplaces" },
       { name: "Infrastructure", href: "/infrastructure" },
       { name: "Pricing", href: "/pricing" },
     ],
@@ -73,7 +73,7 @@ const Footer = () => {
               <div>
                 <h3 className="text-2xl font-bold mb-2">Let's Build Your eCommerce Success Together</h3>
                 <p className="text-slate-300">
-                  Whether you're starting out or scaling your Sellerbuz business, CTAS Sellerbuz provides the tools and expertise to help you grow faster.
+                  Whether you're starting out or scaling your Marketplace business, CTAS Sellerbuz provides the tools and expertise to help you grow faster.
                 </p>
               </div>
             </div>

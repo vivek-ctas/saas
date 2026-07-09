@@ -4,20 +4,20 @@ import Marketplaces from "@/screens/Marketplaces";
 
 // ─── Page metadata ───────────────────────────────────────────────────────────
 export const metadata: Metadata = buildMetadata({
-  title: "Sellerbuz Integrations — Amazon, Walmart, eBay, Shopify & 50+ Channels",
+  title: "Marketplace Integrations — Amazon, Walmart, eBay, Shopify & 50+ Channels",
   description:
-    "Connect every channel in one click. Ctasis integrates with Amazon, Walmart, eBay, Shopify, Etsy, TikTok Shop, Lazada, Flipkart, Shopee and 50+ global Sellerbuz. One platform, zero manual syncing.",
+    "Connect every channel in one click. Ctasis integrates with Amazon, Walmart, eBay, Shopify, Etsy, TikTok Shop, Lazada, Flipkart, Shopee and 50+ global Marketplaces. One platform, zero manual syncing.",
   path: "/marketplaces",
 });
 
-// ─── JSON-LD: ItemList of Sellerbuz groups ─────────────────────────────────
+// ─── JSON-LD: ItemList of Marketplace groups ─────────────────────────────────
 const marketplacesJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Ctasis Sellerbuz Integrations",
+  name: "Ctasis Marketplace Integrations",
   url: "https://ctasis.com/marketplaces",
   description:
-    "Ctasis supports 50+ global Sellerbuz integrations including Amazon FBA/FBM, Walmart, eBay, Shopify, Etsy, TikTok Shop, Lazada, Shopee, Flipkart and more.",
+    "Ctasis supports 50+ global Marketplace integrations including Amazon FBA/FBM, Walmart, eBay, Shopify, Etsy, TikTok Shop, Lazada, Shopee, Flipkart and more.",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Amazon (FBA + FBM)", url: "https://ctasis.com/marketplaces/amazon-integration" },
     { "@type": "ListItem", position: 2, name: "Walmart", url: "https://ctasis.com/marketplaces/walmart-integration" },
@@ -33,7 +33,7 @@ const breadcrumbJsonLd = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://ctasis.com" },
-    { "@type": "ListItem", position: 2, name: "Sellerbuz", item: "https://ctasis.com/marketplaces" },
+    { "@type": "ListItem", position: 2, name: "Marketplace", item: "https://ctasis.com/marketplaces" },
   ],
 };
 

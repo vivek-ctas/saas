@@ -52,7 +52,7 @@ const Services = () => {
 
   const services = [
     { icon: RefreshCw, title: "Inventory Sync", desc: "Real-time stock levels across every channel.", tone: "from-blue-500 to-indigo-600", bg: "bg-blue-50" },
-    { icon: ShoppingCart, title: "Order Management", desc: "One inbox for orders from all Sellerbuz.", tone: "from-secondary to-orange-500", bg: "bg-pink-50" },
+    { icon: ShoppingCart, title: "Order Management", desc: "One inbox for orders from all Marketplace.", tone: "from-secondary to-orange-500", bg: "bg-pink-50" },
     { icon: BarChart3, title: "Analytics & Reporting", desc: "Dashboards that surface profit, not noise.", tone: "from-indigo-500 to-secondary", bg: "bg-indigo-50" },
     { icon: TrendingUp, title: "Performance Optimization", desc: "AI-driven repricing and listing tweaks.", tone: "from-orange-500 to-red-500", bg: "bg-orange-50" },
     { icon: Truck, title: "Logistics & Fulfillment", desc: "Multi-carrier shipping with smart routing.", tone: "from-indigo-500 to-blue-600", bg: "bg-indigo-50" },
@@ -104,7 +104,7 @@ const Services = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 max-w-3xl mx-auto reveal">
               <Badge className="mb-4 bg-accent text-accent-foreground border-0">End-to-end automation</Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">From Sellerbuz ping to doorstep — automatically.</h2>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">From Marketplace ping to doorstep — automatically.</h2>
               <p className="text-lg text-slate-600">Every step in the order lifecycle is event-driven and measurable.</p>
             </div>
             <div className="reveal delay-100 rounded-3xl bg-gradient-to-br from-slate-50 to-white p-6 sm:p-10 border border-slate-100 shadow-stripe">

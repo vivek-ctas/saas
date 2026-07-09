@@ -45,7 +45,7 @@ const IntegrationDetail = () => {
           actions={
             <>
               <Button asChild size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
-                <Link href="/marketplaces"><ArrowLeft className="w-4 h-4 mr-1.5" /> All Sellerbuz</Link>
+                <Link href="/marketplaces"><ArrowLeft className="w-4 h-4 mr-1.5" /> All Marketplace</Link>
               </Button>
               <Button size="lg" className={`text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r ${tone} hover:opacity-95 border-0`}>
                 Connect {name}

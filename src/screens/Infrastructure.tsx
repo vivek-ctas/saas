@@ -24,7 +24,7 @@ const Infrastructure = () => {
     { icon: Container, title: "Isolated Docker pods", desc: "Each tenant gets isolated compute pods — noisy neighbors can't touch your throughput.", tone: "from-secondary to-orange-500" },
     { icon: Network, title: "Kubernetes load balancing", desc: "Auto-scaling K8s clusters route traffic intelligently across thousands of pods.", tone: "from-secondary to-pink-600" },
     { icon: Database, title: "Per-tenant PostgreSQL + MongoDB", desc: "Each seller gets isolated PostgreSQL for transactional data and MongoDB for catalog & event documents — no shared schemas, no leak risk.", tone: "from-indigo-600 to-primary" },
-    { icon: Workflow, title: "Event-driven (Kafka)", desc: "Kafka + RabbitMQ pipelines handle 10M+ Sellerbuz events daily with sub-second latency.", tone: "from-rose-500 to-pink-600" },
+    { icon: Workflow, title: "Event-driven (Kafka)", desc: "Kafka + RabbitMQ pipelines handle 10M+ Marketplace events daily with sub-second latency.", tone: "from-rose-500 to-pink-600" },
     { icon: Bell, title: "Realtime notifications", desc: "Webhooks, push, email and Slack alerts powered by our message bus — never miss an order.", tone: "from-primary to-secondary" },
   ];
 
@@ -154,7 +154,7 @@ const Infrastructure = () => {
             <div className="text-center mb-12 max-w-3xl mx-auto reveal">
               <Badge className="mb-4 bg-accent text-accent-foreground border-0">Event pipeline</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">10M+ events. Sub-second latency.</h2>
-              <p className="text-lg text-slate-600">Every Sellerbuz ping flows through the same battle-tested pipeline — observable end-to-end.</p>
+              <p className="text-lg text-slate-600">Every Marketplace ping flows through the same battle-tested pipeline — observable end-to-end.</p>
             </div>
             <div className="reveal delay-100 rounded-3xl bg-gradient-to-br from-slate-50 to-white p-6 sm:p-10 border border-slate-100 shadow-stripe">
               <ChannelSyncFlow className="w-full h-auto" />
@@ -252,7 +252,7 @@ const Infrastructure = () => {
               {[
                 {
                   icon: Workflow, title: "AI listing generator",
-                  desc: "Drop your raw product data — a CSV, a brief, even a phone photo — and our AI writes channel-perfect listings for Amazon, eBay and Flipkart. Titles, bullets, search terms and backend keywords are tuned to each Sellerbuz's ranking rules so listings actually surface to buyers, not just sit in your catalog.",
+                  desc: "Drop your raw product data — a CSV, a brief, even a phone photo — and our AI writes channel-perfect listings for Amazon, eBay and Flipkart. Titles, bullets, search terms and backend keywords are tuned to each Marketplace's ranking rules so listings actually surface to buyers, not just sit in your catalog.",
                   tone: "from-primary to-indigo-600",
                 },
                 {

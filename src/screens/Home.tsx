@@ -38,7 +38,7 @@ const Home = () => {
   ];
 
   const journey = [
-    { step: "01", title: "Connect", desc: "Link your Sellerbuz in minutes with one-click integrations.", icon: Zap },
+    { step: "01", title: "Connect", desc: "Link your Marketplace in minutes with one-click integrations.", icon: Zap },
     { step: "02", title: "Sync", desc: "Inventory, orders & pricing flow automatically across every channel.", icon: RefreshCw },
     { step: "03", title: "Grow", desc: "AI insights surface what to ship next, what to reprice, what to scale.", icon: TrendingUp }
   ];
@@ -63,7 +63,7 @@ const Home = () => {
                 <h1 className="text-5xl sm:text-6xl lg:text-[4.25rem] font-bold text-slate-900 mb-6 leading-[1.05] tracking-tight">
                   The most advanced
                   <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    AI Sellerbuz OS
+                    AI Marketplace OS
                   </span>
                   with built-in seller analytics
                 </h1>
@@ -132,7 +132,7 @@ const Home = () => {
             <div className="mt-20 flex flex-wrap items-center justify-center gap-4 sm:gap-6 reveal">
               {[
                 { name: "Amazon SP-API Partner", sub: "Selling Partner Appstore" },
-                { name: "Walmart Solution Provider", sub: "Sellerbuz Connect" },
+                { name: "Walmart Solution Provider", sub: "Marketplace Connect" },
                 { name: "Shopify Plus Partner", sub: "Certified App" },
                 { name: "AWS Advanced Tier", sub: "Technology Partner" },
               ].map((p, i) => (
@@ -170,7 +170,7 @@ const Home = () => {
         {/* TRUSTED BY (marquee) */}
         <section className="py-16 pt-24 bg-white overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 mb-8 text-center text-sm text-slate-500 uppercase tracking-widest font-semibold">
-            Powering 50,000+ sellers across 50+ Sellerbuz
+            Powering 50,000+ sellers across 50+ Marketplace
           </div>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10" />
@@ -202,14 +202,14 @@ const Home = () => {
                 you'll ever need.
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed">
-                Sellerbuz, couriers, ad networks, ERPs, payment rails — Ctasis stitches it all into one source of truth.
+                Marketplace, couriers, ad networks, ERPs, payment rails — Ctasis stitches it all into one source of truth.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
               {[
                 {
-                  icon: Store, title: "Sellerbuz", count: "20+",
+                  icon: Store, title: "Marketplace", count: "20+",
                   items: ["Amazon FBA/FBM", "Walmart", "eBay", "Lazada", "Shopee", "Rakuten", "Flipkart", "Allegro"]
                 },
                 {
@@ -324,7 +324,7 @@ const Home = () => {
               <div className="order-2 lg:order-1 reveal">
                 <Badge className="mb-4 bg-pink-100 text-pink-700 border-0">The problem</Badge>
                 <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
-                  Selling on 5 Sellerbuz shouldn't feel like running 5 businesses.
+                  Selling on 5 Marketplace shouldn't feel like running 5 businesses.
                 </h2>
                 <p className="text-lg text-slate-600 leading-relaxed mb-6">
                   Most sellers juggle a dozen tabs, broken CSV exports and 2 a.m. inventory mismatches.
@@ -354,7 +354,7 @@ const Home = () => {
                   One source of truth. Synced everywhere in milliseconds.
                 </h2>
                 <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                  Update a product once and watch it propagate to every connected Sellerbuz
+                  Update a product once and watch it propagate to every connected Marketplace
                   instantly. Our event-driven sync engine processes 10M+ updates daily without breaking a sweat.
                 </p>
                 <Link href="/services#how-it-works">
@@ -423,7 +423,7 @@ const Home = () => {
                 </h3>
 
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                  Real-time stock sync across Sellerbuz and warehouses.
+                  Real-time stock sync across Marketplace and warehouses.
                 </p>
 
                 <div className="flex items-center gap-2 text-xs font-medium text-primary">
@@ -540,7 +540,7 @@ const Home = () => {
                   </div>
                   <div>
                     <div className="font-bold">Priya Ramaswamy</div>
-                    <div className="text-white/70 text-sm">Founder, Avenue Goods · Sells on 7 Sellerbuz</div>
+                    <div className="text-white/70 text-sm">Founder, Avenue Goods · Sells on 7 Marketplace</div>
                   </div>
                 </div>
               </div>
