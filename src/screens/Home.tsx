@@ -12,9 +12,52 @@ import Layout from "@/components/Layout";
 import {
   BlobBackdrop, DashboardMockup, SellerHeroMockup, SyncIllustration,
   AnalyticsIllustration, GlobeIllustration, WorkflowIllustration,
-  NeuralIllustration, InfraIllustration, LogoChip
+  NeuralIllustration, InfraIllustration, LogoChip, MarketplaceMeshDiagram
 } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
+
+const ProblemDiagram = () => (
+  <svg viewBox="0 0 520 320" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="pd-bg" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="#fdf4ff" stopOpacity="0" />
+        <stop offset="100%" stopColor="#eff6ff" />
+      </linearGradient>
+      <filter id="hd-sh" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="6" /><feOffset dy="3" />
+        <feComponentTransfer><feFuncA type="linear" slope="0.14" /></feComponentTransfer>
+        <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+      </filter>
+    </defs>
+    <rect width="520" height="320" rx="18" fill="url(#pd-bg)" />
+    {[
+      { x: 60,  y: 40,  name: "Amazon Seller Central", err: "Oversold ×3", dot: "#f59e0b" },
+      { x: 300, y: 30,  name: "Etsy Shop Manager",    err: "Price mismatch", dot: "#ea580c" },
+      { x: 40,  y: 200, name: "inventory_master.xlsx", err: "12 conflicts", dot: "#10b981" },
+      { x: 300, y: 210, name: "Walmart Seller Center", err: "3 hrs/day, by hand", dot: "#2563eb" },
+    ].map((c, i) => (
+      <g key={i}>
+        <rect x={c.x} y={c.y} width="170" height="70" rx="10" fill="white" stroke="#e2e8f0" filter="url(#hd-sh)" />
+        <circle cx={c.x + 14} cy={c.y + 16} r="3" fill={c.dot} />
+        <circle cx={c.x + 24} cy={c.y + 16} r="3" fill="#e2e8f0" />
+        <circle cx={c.x + 34} cy={c.y + 16} r="3" fill="#e2e8f0" />
+        <text x={c.x + 14} y={c.y + 38} fontFamily="Inter" fontSize="12" fontWeight="700" fill="#0f172a">{c.name}</text>
+        <rect x={c.x + 12} y={c.y + 46} width={c.err.length * 6.4 + 14} height="16" rx="8" fill="#fef2f2" stroke="#fecaca" />
+        <text x={c.x + 20} y={c.y + 57} fontFamily="Inter" fontSize="9.5" fontWeight="700" fill="#dc2626">! {c.err}</text>
+      </g>
+    ))}
+    <circle cx="260" cy="160" r="28" fill="white" stroke="#fecaca" strokeDasharray="4 3" />
+    <path d="M260 148l10 18h-20z" fill="none" stroke="#dc2626" strokeWidth="1.8" strokeLinejoin="round" />
+    <line x1="260" y1="156" x2="260" y2="162" stroke="#dc2626" strokeWidth="1.8" strokeLinecap="round" />
+    <circle cx="260" cy="165" r="1" fill="#dc2626" />
+    {[
+      [145, 110, 240, 145], [385, 100, 280, 145],
+      [125, 210, 240, 175], [385, 220, 280, 175],
+    ].map(([x1, y1, x2, y2], i) => (
+      <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#fca5a5" strokeWidth="1.4" strokeDasharray="5 4" />
+    ))}
+  </svg>
+);
 
 const Home = () => {
   const ref = useReveal<HTMLDivElement>();
@@ -30,11 +73,6 @@ const Home = () => {
     { name: "Amazon", icon: ShoppingBag }, { name: "eBay", icon: Globe },
     { name: "Walmart", icon: Star }, { name: "Shopify", icon: ShoppingCart },
     { name: "Etsy", icon: Sparkles }, { name: "Facebook", icon: Monitor },
-    { name: "Google", icon: Globe }, { name: "WooCommerce", icon: Package },
-    { name: "BigCommerce", icon: ShoppingBag }, { name: "Magento", icon: Package },
-    { name: "Target", icon: Star }, { name: "TikTok", icon: Smartphone },
-    { name: "Pinterest", icon: Sparkles }, { name: "Reverb", icon: Monitor },
-    { name: "Mercari", icon: Smartphone }, { name: "Poshmark", icon: Tablet }
   ];
 
   const journey = [
@@ -95,7 +133,7 @@ const Home = () => {
                       <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <span className="text-sm font-semibold text-slate-700">4.9 Amazon App Store Rating</span>
+                  <span className="text-sm font-semibold text-slate-700">4.9 Amazon Stores Rating</span>
                 </div>
               </div>
 
@@ -167,94 +205,33 @@ const Home = () => {
           </div>
         </section>
 
-        {/* TRUSTED BY (marquee) */}
-        <section className="py-16 pt-24 bg-white overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 mb-8 text-center text-sm text-slate-500 uppercase tracking-widest font-semibold">
-            Powering 50,000+ sellers across 50+ Marketplace
-          </div>
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10" />
-            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10" />
-            <div className="marquee-track gap-12">
-              {[...marketplaces, ...marketplaces].map((m, i) => (
-                <div key={i} className="flex items-center gap-3 px-6 py-3 rounded-xl bg-slate-50 hover:bg-accent transition-stripe">
-                  <m.icon className="w-5 h-5 text-primary" />
-                  <span className="font-semibold text-slate-700 whitespace-nowrap">{m.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* INTEGRATIONS STACK — refined editorial layout */}
-        <section className="py-28 bg-gradient-to-b from-white via-slate-50/60 to-white relative overflow-hidden">
-          <div className="absolute inset-0 hero-cream-grid opacity-40 pointer-events-none" />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16 reveal max-w-3xl mx-auto">
-              <Badge className="mb-5 bg-white text-primary border border-primary/15 shadow-sm">
-                <Boxes className="w-3.5 h-3.5 mr-1.5" /> The integration stack
-              </Badge>
-              <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-5 leading-[1.1] tracking-tight">
-                One platform.{" "}
-                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  Every connection
-                </span>{" "}
-                you'll ever need.
+        {/* PROBLEM */}
+        <section className="py-20 bg-gradient-to-b from-white to-blue-50/40">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="reveal">
+              <Badge className="mb-4 bg-pink-50 text-pink-700 border border-pink-100">The problem</Badge>
+              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight mb-4">
+                Selling on 5 marketplaces shouldn't feel like running 5 businesses.
               </h2>
-              <p className="text-lg text-slate-600 leading-relaxed">
-                Marketplace, couriers, ad networks, ERPs, payment rails — Ctasis stitches it all into one source of truth.
+              <p className="text-slate-600 leading-relaxed mb-6">
+                Most sellers juggle a dozen tabs, broken CSV exports and 2 a.m. inventory mismatches. One oversell on Amazon can cost an account suspension worth months of revenue.
               </p>
+              <ul className="space-y-2.5">
+                {[
+                  "Manual stock updates across platforms",
+                  "Lost orders and angry customers",
+                  "No single source of truth",
+                  "Hours wasted reconciling spreadsheets",
+                ].map((t) => (
+                  <li key={t} className="flex items-center gap-2 text-slate-700">
+                    <span className="w-1.5 h-1.5 rounded-full bg-pink-500" /> {t}
+                  </li>
+                ))}
+              </ul>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-              {[
-                {
-                  icon: Store, title: "Marketplace", count: "20+",
-                  items: ["Amazon FBA/FBM", "Walmart", "eBay", "Lazada", "Shopee", "Rakuten", "Flipkart", "Allegro"]
-                },
-                {
-                  icon: Truck, title: "Logistics & couriers", count: "15+",
-                  items: ["Shiprocket", "Tirupati", "DHL", "USPS", "PostNL", "Rakuten Post", "Delhivery", "Blue Dart"]
-                },
-                {
-                  icon: Megaphone, title: "Ads & growth", count: "10+",
-                  items: ["Amazon Ads", "Google Shopping", "Meta Ads", "TikTok Ads", "Walmart Connect", "Criteo"]
-                },
-                {
-                  icon: Brain, title: "AI & analytics", count: "AI-native",
-                  items: ["Demand forecasting", "Repricing AI", "Sentiment analysis", "Customer behaviour", "Anomaly detection"]
-                },
-              ].map((b, i) => (
-                <div
-                  key={i}
-                  className="reveal group rounded-2xl p-6 bg-white border border-slate-200/80 hover:border-primary/30 hover:shadow-stripe-xl transition-all duration-300"
-                  style={{ transitionDelay: `${i * 80}ms` }}
-                >
-                  <div className="flex items-start justify-between mb-5">
-                    <div className="w-11 h-11 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-secondary transition-all duration-300">
-                      <b.icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
-                    </div>
-                    <span className="text-[11px] font-semibold tracking-wider uppercase text-slate-400">{b.count}</span>
-                  </div>
-                  <h3 className="font-semibold text-slate-900 text-base mb-3 tracking-tight">{b.title}</h3>
-                  <ul className="space-y-2">
-                    {b.items.map((it, j) => (
-                      <li key={j} className="text-[13px] text-slate-600 flex items-center gap-2 leading-relaxed">
-                        <span className="w-1 h-1 rounded-full bg-slate-300 group-hover:bg-primary transition-colors" /> {it}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-12 text-center reveal">
-              <Link href="/marketplaces">
-                <Button size="lg" variant="outline" className="rounded-full px-7 border-slate-300 bg-white hover:bg-slate-50 hover:border-primary/40 group">
-                  Explore all 80+ integrations
-                  <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
+            <div className="reveal delay-200">
+              <ProblemDiagram />
             </div>
           </div>
         </section>
@@ -364,6 +341,57 @@ const Home = () => {
                   </Button>
                 </Link>
 
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* INTEGRATIONS SECTOR — "Sell on every channel that matters" */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+              {/* Left copy */}
+              <div className="lg:col-span-5 reveal">
+                <Badge className="mb-4 bg-accent text-accent-foreground border-0">
+                  <Zap className="w-3.5 h-3.5 mr-1" /> 80+ live integrations
+                </Badge>
+                <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight mb-6">
+                  Sell on every channel <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">that matters.</span>
+                </h2>
+                <p className="text-lg text-slate-600 leading-relaxed mb-8">
+                  From Amazon FBA to Lazada, TikTok Shop to Reliance Smart — Ctasis connects every Marketplace, storefront, courier and ad network you need to scale globally.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                  <Link href="/marketplaces">
+                    <Button size="lg" variant="outline" className="text-base px-6 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
+                      See all integrations
+                    </Button>
+                  </Link>
+                  <Link href="/contact">
+                    <Button size="lg" className="text-base px-6 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
+                      Connect a channel
+                      <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                </div>
+
+                <div className="flex flex-wrap gap-3 text-slate-700 text-sm">
+                  {["FBA & FBM support", "One-click connect", "Real-time sync"].map((t, i) => (
+                    <span key={i} className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200/70 shadow-sm">
+                      <CheckCircle className="w-4 h-4 text-primary" /> {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right Visual card */}
+              <div className="lg:col-span-7 reveal delay-200">
+               
+                   <div className="scale-105 origin-center">
+                    <MarketplaceMeshDiagram className="w-full h-auto" />
+                  </div>
+                 
               </div>
             </div>
           </div>
@@ -522,64 +550,8 @@ const Home = () => {
           </div>
         </section>
 
-        {/* TESTIMONIAL */}
-        <section className="py-24 bg-white">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="reveal relative rounded-3xl bg-gradient-to-br from-slate-900 via-primary to-orange-500 p-12 lg:p-16 text-white overflow-hidden shadow-stripe-2xl">
-              <div className="absolute -top-20 -right-20 w-80 h-80 bg-pink-500/30 rounded-full blur-3xl" />
-              <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-primary/40 rounded-full blur-3xl" />
-              <div className="relative">
-                <Quote className="w-12 h-12 text-pink-300 mb-6" />
-                <p className="text-2xl lg:text-3xl font-medium leading-relaxed mb-8">
-                  "Ctasis cut our order processing time by 80% and we haven't had a single overselling
-                  incident in 9 months. It's the operating system our business was missing."
-                </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-secondary to-orange-500 flex items-center justify-center font-bold text-xl">
-                    PR
-                  </div>
-                  <div>
-                    <div className="font-bold">Priya Ramaswamy</div>
-                    <div className="text-white/70 text-sm">Founder, Avenue Goods · Sells on 7 Marketplace</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
-        {/* GLOBAL REACH */}
-        <section className="py-24 section-bg">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="reveal">
-              <GlobeIllustration className="w-full h-auto" />
-            </div>
-            <div className="reveal delay-200">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Global infrastructure</Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
-                Built for sellers, wherever they sell.
-              </h2>
-              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                Multi-currency, multi-language, multi-warehouse. We handle the complexity of cross-border
-                commerce so you can focus on growth.
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { v: "30+", l: "Currencies" },
-                  { v: "12+", l: "Languages" },
-                  { v: "150+", l: "Countries" },
-                  { v: "24/7", l: "Support" }
-                ].map((s, i) => (
-                  <div key={i} className="rounded-xl bg-white p-4 border border-slate-100 shadow-sm">
-                    <div className="text-2xl font-bold text-primary">{s.v}</div>
-                    <div className="text-sm text-slate-600">{s.l}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
+       
         {/* CTA */}
         <section className="py-24 relative overflow-hidden gradient-animated">
           <BlobBackdrop />

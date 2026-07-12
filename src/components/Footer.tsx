@@ -17,29 +17,10 @@ import footerBackground from "@/assets/footer-background.webp";
 
 const Footer = () => {
   const footerLinks = {
-    product: [
-      { name: "Services", href: "/services" },
-      { name: "Marketplace", href: "/marketplaces" },
-      { name: "Infrastructure", href: "/infrastructure" },
-      { name: "Pricing", href: "/pricing" },
-    ],
     company: [
-      { name: "About Us", href: "/about" },
-      { name: "Careers", href: "/contact" },
-      { name: "Press", href: "/contact" },
-      { name: "Partners", href: "/contact" },
-    ],
-    resources: [
-      { name: "Blog", href: "/blog" },
-      { name: "Help Center", href: "/contact" },
-      { name: "Guides", href: "/contact" },
-      { name: "Webinars", href: "/contact" },
-    ],
-    legal: [
-      { name: "Privacy Policy", href: "/contact" },
-      { name: "Terms of Service", href: "/contact" },
-      { name: "Cookie Policy", href: "/contact" },
-      { name: "GDPR", href: "/contact" },
+      { name: "Services", href: "/services" },
+      { name: "Pricing", href: "/pricing" },
+      { name: "Contact", href: "/contact" },
     ],
   };
 
@@ -68,11 +49,11 @@ const Footer = () => {
       <div className="relative z-10">
         {/* Newsletter Section */}
         <div className="border-b border-slate-700">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div>
-                <h3 className="text-2xl font-bold mb-2">Let's Build Your eCommerce Success Together</h3>
-                <p className="text-slate-300">
+                <h3 className="text-2xl font-bold mb-1">Let's Build Your eCommerce Success Together</h3>
+                <p className="text-slate-300 text-sm">
                   Whether you're starting out or scaling your Marketplace business, CTAS Sellerbuz provides the tools and expertise to help you grow faster.
                 </p>
               </div>
@@ -81,23 +62,37 @@ const Footer = () => {
         </div>
 
         {/* Main Footer Content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <div className="flex flex-col md:flex-row justify-between gap-8">
             {/* Company Info */}
-            <div className="lg:col-span-2">
-              <Link href="/" className="flex items-center space-x-2 mb-6">
-                <div className="w-10 h-10 gradient-primary rounded-xl flex items-center justify-center shadow-stripe">
-                  <span className="text-white font-bold">C</span>
-                </div>
-                <span className="text-2xl font-bold text-white">Ctasis <span className="text-pink-400">Sellerbuz</span></span>
+            <div className="flex-1 min-w-[220px] max-w-[280px] space-y-4">
+              <Link href="/" className="flex items-center space-x-1 sm:space-x-2 mb-4">
+                <img
+                  src="/ctasis-logo copy.svg"
+                  alt="Ctasis Logo"
+                  className="w-auto h-9 sm:w-auto md:w-auto transition-all"
+                />
+                <span className="text-white text-sm sm:text-base font-semibold">Sellerbuz</span>
               </Link>
-              <p className="text-slate-300 mb-6 max-w-sm">
+              <p className="text-slate-300 text-sm max-w-xs leading-relaxed">
                 The complete multichannel selling platform trusted by 50,000+ sellers worldwide.
                 Manage inventory, process orders, and grow your business faster.
               </p>
+            </div>
 
-              {/* Contact Info */}
-              <div className="space-y-3">
+            {/* Reach Us / Address */}
+            <div className="flex-1 min-w-[220px] max-w-[280px] space-y-4">
+              <h4 className="font-semibold text-white mb-4 text-base">Reach Us</h4>
+              <div className="flex items-start text-slate-300 text-sm max-w-xs leading-relaxed">
+                <MapPin className="w-4 h-4 mr-3 mt-1 text-emerald-400 flex-shrink-0" />
+                <span>A-865/866, Money Plant High Street, Jagatpur Road, Sarkhej - Gandhinagar Hwy, near BSNL Office, Gota, Ahmedabad, Gujarat 382470</span>
+              </div>
+            </div>
+
+            {/* Contact Info */}
+            <div className="flex-1 min-w-[220px] max-w-[280px] space-y-4">
+              <h4 className="font-semibold text-white mb-4 text-base">Contact Us</h4>
+              <div className="space-y-2.5 text-sm">
                 <div className="flex items-center text-slate-300">
                   <Mail className="w-4 h-4 mr-3 text-emerald-400 flex-shrink-0" />
                   <span>info@ctasis.com</span>
@@ -106,69 +101,14 @@ const Footer = () => {
                   <Phone className="w-4 h-4 mr-3 text-emerald-400 flex-shrink-0" />
                   <span>+91 7948993409</span>
                 </div>
-                <div className="flex items-center text-slate-300">
-                  <MapPin className="w-4 h-4 mr-3 mt-1 text-emerald-400 flex-shrink-0" />
-                  <span>A-865/866, Money Plant High Street, Jagatpur Road, Sarkhej - Gandhinagar Hwy, near BSNL Office, Gota, Ahmedabad, Gujarat 382470</span>
-                </div>
               </div>
             </div>
 
-            {/* Product Links */}
-            <div>
-              <h4 className="font-semibold text-white mb-6">Product</h4>
-              <ul className="space-y-3">
-                {footerLinks.product.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-slate-300 hover:text-emerald-400 transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
             {/* Company Links */}
-            <div>
-              <h4 className="font-semibold text-white mb-6">Company</h4>
-              <ul className="space-y-3">
+            <div className="flex-1 min-w-[220px] max-w-[280px] space-y-4">
+              <h4 className="font-semibold text-white mb-4 text-base">Company</h4>
+              <ul className="space-y-3 text-sm">
                 {footerLinks.company.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-slate-300 hover:text-emerald-400 transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Resources Links */}
-            <div>
-              <h4 className="font-semibold text-white mb-6">Resources</h4>
-              <ul className="space-y-3">
-                {footerLinks.resources.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-slate-300 hover:text-emerald-400 transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Legal Links */}
-            <div>
-              <h4 className="font-semibold text-white mb-6">Legal</h4>
-              <ul className="space-y-3">
-                {footerLinks.legal.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
@@ -185,7 +125,7 @@ const Footer = () => {
 
         {/* Bottom Footer */}
         <div className="border-t border-slate-700">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="text-slate-400 text-sm mb-4 md:mb-0">
                 © 2024 Ctasis Sellerbuz. All rights reserved.

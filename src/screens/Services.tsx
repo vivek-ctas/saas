@@ -1,372 +1,497 @@
 "use client";
-import dynamic from "next/dynamic";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  RefreshCw, ShoppingCart, BarChart3, TrendingUp, Zap, Globe, Shield,
-  Truck, Calculator, Warehouse, Layers, Package2, Brain, Users,
-  ArrowRight, CheckCircle, Search, Settings, Rocket, LineChart, Sparkles,
-} from "lucide-react";
-import Layout from "@/components/Layout";
-import PageHero from "@/components/PageHero";
 import Link from "next/link";
-// ─── Above-fold components: loaded immediately ───────────────────────────────
-import { BlobBackdrop, ServicesHeroMockup } from "@/components/illustrations";
-
-// ─── Below-fold diagrams: lazy-loaded to reduce initial JS bundle ────────────
-// Each dynamic import creates a separate chunk, loaded only when needed.
-const OrderFlowDiagram = dynamic(
-  () => import("@/components/illustrations").then((m) => ({ default: m.OrderFlowDiagram })),
-  { ssr: false, loading: () => <div className="w-full h-64 animate-pulse bg-slate-100 rounded-2xl" /> }
-);
-const AIPipelineDiagram = dynamic(
-  () => import("@/components/illustrations").then((m) => ({ default: m.AIPipelineDiagram })),
-  { ssr: false, loading: () => <div className="w-full h-64 animate-pulse bg-slate-100 rounded-2xl" /> }
-);
-const RepricerStrategyChart = dynamic(
-  () => import("@/components/illustrations").then((m) => ({ default: m.RepricerStrategyChart })),
-  { ssr: false, loading: () => <div className="w-full h-48 animate-pulse bg-slate-100 rounded-2xl" /> }
-);
-const AnalyticsFlowDiagram = dynamic(
-  () => import("@/components/illustrations").then((m) => ({ default: m.AnalyticsFlowDiagram })),
-  { ssr: false, loading: () => <div className="w-full h-64 animate-pulse bg-slate-100 rounded-2xl" /> }
-);
-const AnalyticsIllustration = dynamic(
-  () => import("@/components/illustrations").then((m) => ({ default: m.AnalyticsIllustration })),
-  { ssr: false, loading: () => <div className="w-full h-64 animate-pulse bg-slate-100 rounded-2xl" /> }
-);
-const WorkflowIllustration = dynamic(
-  () => import("@/components/illustrations").then((m) => ({ default: m.WorkflowIllustration })),
-  { ssr: false, loading: () => <div className="w-full h-64 animate-pulse bg-slate-100 rounded-2xl" /> }
-);
-const AutomationBuilderDiagram = dynamic(
-  () => import("@/components/illustrations").then((m) => ({ default: m.AutomationBuilderDiagram })),
-  { ssr: false, loading: () => <div className="w-full h-64 animate-pulse bg-slate-100 rounded-2xl" /> }
-);
-
+import Layout from "@/components/Layout";
+import {
+  ArrowRight, Boxes, RefreshCw, ShoppingCart, Wand2, LayoutGrid,
+  GitMerge, Image as ImageIcon, ShieldCheck, Upload, DollarSign,
+  BarChart3, Sparkles, CheckCircle2, Layers,
+} from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
+
+/* -------------------- Inline SVG visuals -------------------- */
+
+const InventorySyncSVG = () => (
+  <svg viewBox="0 0 520 320" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="s-grid" width="22" height="22" patternUnits="userSpaceOnUse">
+        <path d="M22 0H0v22" stroke="#dbeafe" strokeWidth="0.6" fill="none" />
+      </pattern>
+      <linearGradient id="s-eng" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="#2563eb" /><stop offset="100%" stopColor="#1e3a8a" />
+      </linearGradient>
+      <filter id="s-sh" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="4" /><feOffset dy="2" />
+        <feComponentTransfer><feFuncA type="linear" slope="0.14" /></feComponentTransfer>
+        <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+      </filter>
+    </defs>
+    <rect width="520" height="320" rx="16" fill="#eff6ff" />
+    <rect width="520" height="320" rx="16" fill="url(#s-grid)" />
+    {/* central sync */}
+    <g filter="url(#s-sh)">
+      <rect x="200" y="115" width="120" height="90" rx="14" fill="url(#s-eng)" />
+      <text x="260" y="150" textAnchor="middle" fontFamily="Inter" fontSize="12" fontWeight="800" fill="#fff">Sync Engine</text>
+      <text x="260" y="168" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#bfdbfe">latency &lt; 2s</text>
+      <circle cx="260" cy="188" r="10" fill="#fff" opacity="0.15" />
+      <circle cx="260" cy="188" r="5" fill="#fff" />
+    </g>
+    {/* left channels */}
+    {[
+      { y: 40, name: "Amazon", stock: "1,240", dot: "#f59e0b" },
+      { y: 130, name: "Walmart", stock: "1,240", dot: "#2563eb" },
+      { y: 220, name: "eBay", stock: "1,240", dot: "#ef4444" },
+    ].map((c) => (
+      <g key={c.name}>
+        <rect x="20" y={c.y} width="160" height="60" rx="10" fill="white" stroke="#e2e8f0" filter="url(#s-sh)" />
+        <circle cx="38" cy={c.y + 30} r="6" fill={c.dot} />
+        <text x="52" y={c.y + 26} fontFamily="Inter" fontSize="12" fontWeight="700" fill="#0f172a">{c.name}</text>
+        <text x="52" y={c.y + 44} fontFamily="Inter" fontSize="10" fill="#64748b">Stock: {c.stock}</text>
+        <line x1="180" y1={c.y + 30} x2="200" y2="160" stroke="#60a5fa" strokeWidth="1.4" strokeDasharray="4 4" />
+      </g>
+    ))}
+    {/* right channels */}
+    {[
+      { y: 40, name: "Etsy", stock: "1,240", dot: "#ea580c" },
+      { y: 130, name: "Flipkart", stock: "1,240", dot: "#1d4ed8" },
+      { y: 220, name: "Warehouse", stock: "1,240", dot: "#10b981" },
+    ].map((c) => (
+      <g key={c.name}>
+        <rect x="340" y={c.y} width="160" height="60" rx="10" fill="white" stroke="#e2e8f0" filter="url(#s-sh)" />
+        <circle cx="358" cy={c.y + 30} r="6" fill={c.dot} />
+        <text x="372" y={c.y + 26} fontFamily="Inter" fontSize="12" fontWeight="700" fill="#0f172a">{c.name}</text>
+        <text x="372" y={c.y + 44} fontFamily="Inter" fontSize="10" fill="#64748b">Stock: {c.stock}</text>
+        <line x1="320" y1="160" x2="340" y2={c.y + 30} stroke="#2563eb" strokeWidth="1.4" strokeDasharray="4 4" />
+      </g>
+    ))}
+  </svg>
+);
+
+const AICatalogSVG = () => (
+  <svg viewBox="0 0 520 320" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="320" rx="16" fill="#f0f9ff" />
+    <rect width="520" height="320" rx="16" fill="url(#s-grid)" />
+    {/* input */}
+    <g filter="url(#s-sh)">
+      <rect x="20" y="90" width="140" height="140" rx="12" fill="white" stroke="#e2e8f0" />
+      <rect x="20" y="90" width="140" height="3" rx="1.5" fill="#94a3b8" />
+      <text x="34" y="112" fontFamily="Inter" fontSize="9" fontWeight="700" fill="#64748b" letterSpacing="1">INPUT</text>
+      <rect x="34" y="122" width="112" height="60" rx="6" fill="#f1f5f9" />
+      <text x="90" y="158" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#64748b">product.jpg</text>
+      <rect x="34" y="190" width="72" height="10" rx="2" fill="#e2e8f0" />
+      <rect x="34" y="206" width="90" height="10" rx="2" fill="#e2e8f0" />
+    </g>
+    {/* AI engine */}
+    <g filter="url(#s-sh)">
+      <rect x="200" y="115" width="120" height="90" rx="14" fill="url(#s-eng)" />
+      <path d="M245 145l7-7 7 7 7-7 7 7v20h-28z" fill="#fff" opacity="0.9" />
+      <text x="260" y="188" textAnchor="middle" fontFamily="Inter" fontSize="12" fontWeight="800" fill="#fff">AI Catalog</text>
+    </g>
+    {/* output */}
+    <g filter="url(#s-sh)">
+      <rect x="360" y="60" width="140" height="200" rx="12" fill="white" stroke="#e2e8f0" />
+      <rect x="360" y="60" width="140" height="3" rx="1.5" fill="#2563eb" />
+      <text x="374" y="82" fontFamily="Inter" fontSize="9" fontWeight="700" fill="#2563eb" letterSpacing="1">GENERATED</text>
+      <text x="374" y="100" fontFamily="Inter" fontSize="10" fontWeight="700" fill="#0f172a">Title</text>
+      <rect x="374" y="106" width="112" height="6" rx="2" fill="#dbeafe" />
+      <rect x="374" y="116" width="90" height="6" rx="2" fill="#dbeafe" />
+      <text x="374" y="140" fontFamily="Inter" fontSize="10" fontWeight="700" fill="#0f172a">Description</text>
+      <rect x="374" y="146" width="112" height="5" rx="2" fill="#e2e8f0" />
+      <rect x="374" y="154" width="106" height="5" rx="2" fill="#e2e8f0" />
+      <rect x="374" y="162" width="98" height="5" rx="2" fill="#e2e8f0" />
+      <text x="374" y="184" fontFamily="Inter" fontSize="10" fontWeight="700" fill="#0f172a">Bullets · Attributes</text>
+      <rect x="374" y="192" width="60" height="18" rx="9" fill="#dbeafe" />
+      <text x="404" y="204" textAnchor="middle" fontFamily="Inter" fontSize="9" fontWeight="700" fill="#1d4ed8">SEO ✓</text>
+      <rect x="440" y="192" width="46" height="18" rx="9" fill="#ecfdf5" />
+      <text x="463" y="204" textAnchor="middle" fontFamily="Inter" fontSize="9" fontWeight="700" fill="#047857">A+ ✓</text>
+    </g>
+    <line x1="160" y1="160" x2="200" y2="160" stroke="#60a5fa" strokeWidth="1.6" strokeDasharray="4 4" markerEnd="url(#hd-arrow2)" />
+    <line x1="320" y1="160" x2="360" y2="160" stroke="#2563eb" strokeWidth="1.6" strokeDasharray="4 4" markerEnd="url(#hd-arrow3)" />
+    <defs>
+      <marker id="hd-arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#60a5fa" /></marker>
+      <marker id="hd-arrow3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb" /></marker>
+    </defs>
+  </svg>
+);
+
+const RepricerSVG = () => (
+  <svg viewBox="0 0 520 320" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="320" rx="16" fill="#eff6ff" />
+    <rect width="520" height="320" rx="16" fill="url(#s-grid)" />
+    <g filter="url(#s-sh)">
+      <rect x="30" y="30" width="460" height="260" rx="14" fill="white" stroke="#e2e8f0" />
+      <rect x="30" y="30" width="460" height="3" rx="1.5" fill="#2563eb" />
+      <text x="50" y="58" fontFamily="Inter" fontSize="12" fontWeight="800" fill="#0f172a">Repricer · SKU-42891</text>
+      <text x="50" y="72" fontFamily="Inter" fontSize="10" fill="#64748b">Buy Box tracking · rule-based · guardrails on</text>
+      {/* axes */}
+      <line x1="60" y1="240" x2="470" y2="240" stroke="#e2e8f0" />
+      <line x1="60" y1="100" x2="60" y2="240" stroke="#e2e8f0" />
+      {/* competitor line */}
+      <polyline fill="none" stroke="#cbd5e1" strokeWidth="1.8" strokeDasharray="4 3"
+        points="60,180 110,175 160,182 210,170 260,178 310,168 360,172 410,160 460,168" />
+      {/* our line */}
+      <polyline fill="none" stroke="#2563eb" strokeWidth="2.4"
+        points="60,190 110,178 160,184 210,168 260,172 310,162 360,166 410,155 460,160" />
+      {/* floor line */}
+      <line x1="60" y1="215" x2="470" y2="215" stroke="#f59e0b" strokeDasharray="4 4" />
+      <text x="470" y="212" textAnchor="end" fontFamily="Inter" fontSize="9" fontWeight="700" fill="#c2410c">Floor $18.50</text>
+      {/* pill */}
+      <rect x="360" y="55" width="120" height="26" rx="13" fill="#dcfce7" />
+      <circle cx="374" cy="68" r="4" fill="#16a34a" />
+      <text x="384" y="72" fontFamily="Inter" fontSize="10" fontWeight="700" fill="#166534">Buy Box · WON</text>
+    </g>
+  </svg>
+);
+
+const RolesSVG = () => (
+  <svg viewBox="0 0 520 320" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="320" rx="16" fill="#f0f9ff" />
+    <rect width="520" height="320" rx="16" fill="url(#s-grid)" />
+    {[
+      { x: 40, label: "Owner",  perms: ["Billing", "Users", "All data"], dot: "#1e3a8a" },
+      { x: 200, label: "Manager", perms: ["Listings", "Orders", "Reports"], dot: "#2563eb" },
+      { x: 360, label: "Staff",   perms: ["Orders", "Ship labels"], dot: "#60a5fa" },
+    ].map((r) => (
+      <g key={r.label} filter="url(#s-sh)">
+        <rect x={r.x} y="50" width="140" height="220" rx="14" fill="white" stroke="#e2e8f0" />
+        <rect x={r.x} y="50" width="140" height="3" rx="1.5" fill={r.dot} />
+        <circle cx={r.x + 70} cy="95" r="20" fill={r.dot + "22"} />
+        <circle cx={r.x + 70} cy="90" r="6" fill={r.dot} />
+        <path d={`M${r.x + 55} 108 a15 15 0 0 1 30 0`} fill={r.dot} />
+        <text x={r.x + 70} y="140" textAnchor="middle" fontFamily="Inter" fontSize="13" fontWeight="800" fill="#0f172a">{r.label}</text>
+        {r.perms.map((p, i) => (
+          <g key={p}>
+            <rect x={r.x + 20} y={155 + i * 26} width="100" height="20" rx="10" fill="#f1f5f9" />
+            <circle cx={r.x + 30} cy={165 + i * 26} r="3" fill="#10b981" />
+            <text x={r.x + 40} y={169 + i * 26} fontFamily="Inter" fontSize="10" fontWeight="700" fill="#334155">{p}</text>
+          </g>
+        ))}
+      </g>
+    ))}
+  </svg>
+);
+
+/* -------------------- Section blocks -------------------- */
+
+type FeatureSection = {
+  eyebrow: string;
+  title: string;
+  desc: string;
+  bullets: string[];
+  icon: any;
+  visual: React.ReactNode;
+  reverse?: boolean;
+};
 
 const Services = () => {
   const ref = useReveal<HTMLDivElement>();
 
-  const services = [
-    { icon: RefreshCw, title: "Inventory Sync", desc: "Real-time stock levels across every channel.", tone: "from-blue-500 to-indigo-600", bg: "bg-blue-50" },
-    { icon: ShoppingCart, title: "Order Management", desc: "One inbox for orders from all Marketplace.", tone: "from-secondary to-orange-500", bg: "bg-pink-50" },
-    { icon: BarChart3, title: "Analytics & Reporting", desc: "Dashboards that surface profit, not noise.", tone: "from-indigo-500 to-secondary", bg: "bg-indigo-50" },
-    { icon: TrendingUp, title: "Performance Optimization", desc: "AI-driven repricing and listing tweaks.", tone: "from-orange-500 to-red-500", bg: "bg-orange-50" },
-    { icon: Truck, title: "Logistics & Fulfillment", desc: "Multi-carrier shipping with smart routing.", tone: "from-indigo-500 to-blue-600", bg: "bg-indigo-50" },
-    { icon: Calculator, title: "Tax & Compliance", desc: "Sales tax, VAT and GST — handled.", tone: "from-rose-500 to-pink-600", bg: "bg-rose-50" },
-    { icon: Warehouse, title: "Warehouse Management", desc: "Multi-location inventory with barcode scanning.", tone: "from-teal-500 to-cyan-600", bg: "bg-teal-50" },
-    { icon: Layers, title: "Cross-Platform Integration", desc: "ERP, CRM and accounting — connected.", tone: "from-cyan-500 to-blue-500", bg: "bg-cyan-50" },
-    { icon: Package2, title: "Product Information Mgmt", desc: "One catalog, infinite channels.", tone: "from-emerald-500 to-teal-500", bg: "bg-emerald-50" },
-    { icon: Brain, title: "AI-Powered Insights", desc: "Forecast demand 90 days out.", tone: "from-indigo-600 to-primary", bg: "bg-indigo-50" },
-    { icon: Users, title: "Team Collaboration", desc: "Role-based access and audit trails.", tone: "from-secondary to-rose-500", bg: "bg-pink-50" },
-    { icon: Shield, title: "Security & Compliance", desc: "SOC 2 Type II with 99.9% uptime SLA.", tone: "from-slate-600 to-slate-800", bg: "bg-slate-50" }
-  ];
-
-  const process = [
-    { icon: Search, title: "Discover", desc: "We map your current stack and identify the gaps." },
-    { icon: Settings, title: "Configure", desc: "Connect channels and tailor workflows to your business." },
-    { icon: Rocket, title: "Launch", desc: "Go live in days — not months — with white-glove support." },
-    { icon: LineChart, title: "Optimize", desc: "Quarterly reviews to push revenue and cut costs." }
+  const sections: FeatureSection[] = [
+    {
+      eyebrow: "Core platform",
+      title: "Centralized inventory & pricing — one source of truth.",
+      desc: "Manage stock levels and pricing from one unified dashboard. Every update reflects instantly across Amazon, Walmart, eBay, Etsy and Flipkart, so you never oversell or misprice a listing again.",
+      bullets: [
+        "Single dashboard for stock and price",
+        "Instant propagation to every connected channel",
+        "Per-channel price rules and rounding",
+        "Real-time low-stock alerts",
+      ],
+      icon: Boxes,
+      visual: <InventorySyncSVG />,
+    },
+    {
+      eyebrow: "Order management",
+      title: "One inbox for every marketplace order.",
+      desc: "Receive and manage orders from every connected marketplace in a single inbox — no more switching tabs between Amazon Seller Central, Etsy, and other platforms to fulfil orders.",
+      bullets: [
+        "Unified order pipeline: capture → route → fulfil → close",
+        "Status writebacks to every channel automatically",
+        "Bulk actions across marketplaces",
+        "Notes, tags and assignment per order",
+      ],
+      icon: ShoppingCart,
+      visual: (
+        <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-4">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-2 h-2 rounded-full bg-blue-600" />
+            <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Order inbox · today</div>
+            <div className="ml-auto text-[11px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full">241 open</div>
+          </div>
+          {[
+            { ch: "Amazon", dot: "#f59e0b", sku: "SKU-42891", qty: 2, price: "$59.90", state: "Ready to ship" },
+            { ch: "Walmart", dot: "#2563eb", sku: "SKU-11024", qty: 1, price: "$24.00", state: "Picked" },
+            { ch: "eBay", dot: "#ef4444", sku: "SKU-98220", qty: 3, price: "$147.00", state: "New" },
+            { ch: "Etsy", dot: "#ea580c", sku: "SKU-33012", qty: 1, price: "$18.50", state: "Ready to ship" },
+            { ch: "Flipkart", dot: "#1d4ed8", sku: "SKU-70001", qty: 4, price: "₹4,120", state: "New" },
+          ].map((o, i) => (
+            <div key={i} className="grid grid-cols-12 items-center py-2.5 border-t border-slate-100 text-sm">
+              <div className="col-span-3 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full" style={{ background: o.dot }} />
+                <span className="font-semibold text-slate-800">{o.ch}</span>
+              </div>
+              <div className="col-span-3 text-slate-500 text-xs">{o.sku}</div>
+              <div className="col-span-2 text-slate-700">×{o.qty}</div>
+              <div className="col-span-2 font-semibold text-slate-900">{o.price}</div>
+              <div className="col-span-2">
+                <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${o.state === "New" ? "bg-blue-50 text-blue-700" : o.state === "Picked" ? "bg-amber-50 text-amber-700" : "bg-emerald-50 text-emerald-700"}`}>
+                  {o.state}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      ),
+      reverse: true,
+    },
+    {
+      eyebrow: "Real-time sync",
+      title: "Stock everywhere. Always accurate.",
+      desc: "Stock changes on one channel automatically sync across all others in real time, keeping quantities accurate everywhere at once — even during flash sales and livestream spikes.",
+      bullets: [
+        "Sub-2-second propagation across channels",
+        "Cross-channel stock reservations",
+        "Automatic conflict resolution",
+        "Full sync audit log",
+      ],
+      icon: RefreshCw,
+      visual: <InventorySyncSVG />,
+    },
+    {
+      eyebrow: "AI catalog",
+      title: "Optimized titles, descriptions and attributes in seconds.",
+      desc: "Generate optimized product titles, descriptions, bullet points and catalog details automatically using AI — cutting listing time from hours to minutes without sacrificing quality or SEO.",
+      bullets: [
+        "Channel-aware title and description generation",
+        "Attribute extraction from images and text",
+        "Tone controls per brand and per marketplace",
+        "One-click bulk regenerate for old listings",
+      ],
+      icon: Wand2,
+      visual: <AICatalogSVG />,
+      reverse: true,
+    },
+    {
+      eyebrow: "Variants & matching",
+      title: "Variants and smart catalog matching.",
+      desc: "Create and manage variants (size, color, style) with consistent data across every channel. When your white-label listing matches an existing retail catalog entry, SellerBuz suggests switching to the matched retail listing — or continuing as a standalone product.",
+      bullets: [
+        "Variation matrices with per-SKU inventory",
+        "White-label vs retail catalog switch",
+        "Related product suggestions",
+        "Bulk variant edits from a single sheet",
+      ],
+      icon: LayoutGrid,
+      visual: (
+        <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5">
+          <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Variant matrix</div>
+          <div className="grid grid-cols-5 gap-1.5 text-xs">
+            <div />
+            {["S", "M", "L", "XL"].map((s) => <div key={s} className="text-center font-bold text-slate-700 py-1">{s}</div>)}
+            {["Navy", "Blue", "Sky"].map((c, ci) => (
+              <React.Fragment key={c}>
+                <div className="font-bold text-slate-700 py-2">{c}</div>
+                {[0,1,2,3].map((si) => (
+                  <div key={c+si} className={`h-8 rounded-md flex items-center justify-center font-semibold ${(ci+si)%3===0 ? "bg-blue-600 text-white" : "bg-blue-50 text-blue-700 border border-blue-100"}`}>
+                    {(ci+si)%3===0 ? "sync" : "12"}
+                  </div>
+                ))}
+              </React.Fragment>
+            ))}
+          </div>
+          <div className="mt-4 flex items-center gap-2 p-3 rounded-lg bg-blue-50 border border-blue-100">
+            <GitMerge className="w-4 h-4 text-blue-700" />
+            <div className="text-xs text-blue-900">
+              <span className="font-bold">Smart match found:</span> retail ASIN B0CX92K1LR — switch, or keep standalone.
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      eyebrow: "Growth",
+      title: "Built-in repricer, beside your inventory.",
+      desc: "Automatically adjust pricing based on competition, rules and market conditions — all managed from the same place as inventory. Buy Box aware for Amazon, competitor aware for the rest, with floor and ceiling guardrails per SKU.",
+      bullets: [
+        "Buy Box tracking on Amazon",
+        "Competitor-aware rules on Walmart, eBay, Flipkart",
+        "Per-SKU floor and ceiling",
+        "Schedule-based promotional pricing",
+      ],
+      icon: DollarSign,
+      visual: <RepricerSVG />,
+      reverse: true,
+    },
+    {
+      eyebrow: "Analytics",
+      title: "Revenue and performance in one dashboard.",
+      desc: "A centralized dashboard surfaces revenue trends, listing performance and key KPIs — giving you a clear view of business health across every channel, side by side.",
+      bullets: [
+        "Cross-channel revenue and margin",
+        "Listing-level performance and conversion",
+        "Cohort views by channel and category",
+        "Exportable reports for finance",
+      ],
+      icon: BarChart3,
+      visual: (
+        <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5">
+          <div className="grid grid-cols-3 gap-3 mb-4">
+            {[
+              { l: "Revenue", v: "$284k", d: "+32%" },
+              { l: "Orders", v: "5,912", d: "+14%" },
+              { l: "AOV", v: "$48.10", d: "+6%" },
+            ].map((k) => (
+              <div key={k.l} className="rounded-lg bg-slate-50 border border-slate-100 p-3">
+                <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">{k.l}</div>
+                <div className="text-lg font-bold text-slate-900">{k.v}</div>
+                <div className="text-[11px] font-semibold text-emerald-600">▲ {k.d}</div>
+              </div>
+            ))}
+          </div>
+          <svg viewBox="0 0 400 120" className="w-full h-auto">
+            <polyline fill="none" stroke="#2563eb" strokeWidth="2.4"
+              points="0,90 40,80 80,84 120,60 160,68 200,50 240,58 280,40 320,44 360,28 400,32" />
+            <polyline fill="none" stroke="#60a5fa" strokeWidth="1.6" strokeDasharray="4 3"
+              points="0,100 40,96 80,98 120,86 160,92 200,80 240,86 280,72 320,78 360,64 400,70" />
+          </svg>
+        </div>
+      ),
+    },
+    {
+      eyebrow: "Content",
+      title: "A+ content asset library.",
+      desc: "A dedicated library for enhanced content assets used in premium listings — hero images, comparison charts, brand modules. Keep creative assets organized and reusable across products and channels.",
+      bullets: [
+        "Reusable A+ modules and templates",
+        "Version history per asset",
+        "Per-brand and per-channel folders",
+        "Direct push to Amazon, Walmart and Flipkart",
+      ],
+      icon: ImageIcon,
+      visual: (
+        <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5">
+          <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Asset library</div>
+          <div className="grid grid-cols-3 gap-3">
+            {[0,1,2,3,4,5].map((i) => (
+              <div key={i} className="aspect-[4/3] rounded-lg bg-gradient-to-br from-blue-100 to-blue-50 border border-blue-100 flex items-center justify-center relative">
+                <ImageIcon className="w-6 h-6 text-blue-600/60" />
+                <span className="absolute bottom-1.5 left-1.5 text-[9px] font-bold text-blue-800 bg-white/80 px-1.5 py-0.5 rounded">A+ · v{i+1}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ),
+      reverse: true,
+    },
+    {
+      eyebrow: "Operations",
+      title: "Role-based access control.",
+      desc: "Enterprise-grade auth guards with configurable role creation. Let store owners, managers and staff access only what they need — with granular permissions for listings, orders, reports and billing.",
+      bullets: [
+        "Custom roles with granular permissions",
+        "Per-channel scoping",
+        "Audit trail for every action",
+        "SSO / SAML on Enterprise",
+      ],
+      icon: ShieldCheck,
+      visual: <RolesSVG />,
+    },
+    {
+      eyebrow: "Bulk work",
+      title: "Bulk operations via file upload.",
+      desc: "Perform bulk updates — inventory, pricing, listings — through simple file uploads. Save hours on large catalog management tasks with template-based imports and clear error reports.",
+      bullets: [
+        "CSV and Excel templates per operation",
+        "Line-level validation and error report",
+        "Dry-run preview before commit",
+        "Scheduled recurring imports",
+      ],
+      icon: Upload,
+      visual: (
+        <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5">
+          <div className="rounded-xl border-2 border-dashed border-blue-200 bg-blue-50/60 p-8 text-center">
+            <Upload className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+            <div className="font-semibold text-slate-900">Drop inventory_master.xlsx</div>
+            <div className="text-xs text-slate-500 mt-1">or browse · up to 250 MB</div>
+          </div>
+          <div className="mt-4 space-y-2">
+            {[
+              { l: "Validate rows", v: "12,480 / 12,480", ok: true },
+              { l: "Detect conflicts", v: "0 blocking, 3 warnings", ok: true },
+              { l: "Publish to channels", v: "Amazon · Walmart · eBay · Etsy · Flipkart", ok: true },
+            ].map((s) => (
+              <div key={s.l} className="flex items-center gap-3 p-2.5 rounded-lg bg-slate-50 border border-slate-100">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                <div className="text-sm text-slate-700"><span className="font-semibold text-slate-900">{s.l}:</span> {s.v}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ),
+      reverse: true,
+    },
   ];
 
   return (
     <Layout>
       <div ref={ref}>
-        <PageHero
-          badgeIcon={Sparkles}
-          badgeText="12 services · 1 platform"
-          title={<>Services that <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">do the heavy lifting.</span></>}
-          subtitle="From inventory sync to AI-powered demand forecasting — every service is designed to remove a manual task and add a measurable result."
-          visual={<ServicesHeroMockup className="w-full h-auto" />}
-          actions={
-            <>
-              <Link href="/services#all-services">
-                <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
-                  Explore Services
-                </Button>
-              </Link>
-              <Link href="/pricing">
-                <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
-                  Quick Start
-                  <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-
-            </>
-          }
-        />
-
-        {/* ORDER LIFECYCLE diagram */}
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 max-w-3xl mx-auto reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">End-to-end automation</Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">From Marketplace ping to doorstep — automatically.</h2>
-              <p className="text-lg text-slate-600">Every step in the order lifecycle is event-driven and measurable.</p>
-            </div>
-            <div className="reveal delay-100 rounded-3xl bg-gradient-to-br from-slate-50 to-white p-6 sm:p-10 border border-slate-100 shadow-stripe">
-              <OrderFlowDiagram className="w-full h-auto" />
-            </div>
+        {/* HERO */}
+        <section className="relative bg-gradient-to-b from-blue-50/60 to-white py-16 lg:py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <Badge className="mb-4 bg-white text-blue-700 border border-blue-100">
+              <Layers className="w-3.5 h-3.5 mr-1.5" /> Platform capabilities
+            </Badge>
+            <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 leading-[1.05] tracking-tight max-w-3xl mx-auto mb-4">
+              Every capability a multi-channel seller needs — in one platform.
+            </h1>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Inventory, orders, pricing, catalog, content and access — SellerBuz replaces the stack of spreadsheets and tabs with one clean workspace.
+            </p>
           </div>
         </section>
 
-        {/* PROCESS TIMELINE */}
-        <section className="py-24 section-bg" id="how-it-works">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16 reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">How it works</Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">A proven 4-step playbook</h2>
-              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-                Same process that took 50,000 sellers from spreadsheet chaos to clean operations.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-              <div className="hidden lg:block absolute top-10 left-[12%] right-[12%] h-px border-t-2 border-dashed border-primary/30" />
-              {process.map((p, i) => (
-                <div key={i} className="reveal relative bg-white rounded-2xl p-6 border border-slate-100 hover-lift" style={{ transitionDelay: `${i * 120}ms` }}>
-                  <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4">
-                    <span className="absolute inset-0 rounded-full bg-primary/10 animate-pulse-ring" />
-                    <span className="relative w-16 h-16 rounded-full gradient-primary flex items-center justify-center shadow-stripe">
-                      <p.icon className="w-7 h-7 text-white" />
-                    </span>
-                  </div>
-                  <div className="text-xs font-bold text-secondary tracking-widest mb-1">STEP {String(i + 1).padStart(2, "0")}</div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">{p.title}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">{p.desc}</p>
+        {/* Zig-zag sections */}
+        {sections.map((s, i) => (
+          <section key={s.title} className={`py-16 ${i % 2 === 0 ? "bg-white" : "bg-blue-50/40"}`}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <div className={`reveal ${s.reverse ? "lg:order-2" : ""}`}>
+                  <Badge className="mb-3 bg-blue-50 text-blue-700 border border-blue-100 text-xs">{s.eyebrow}</Badge>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight mb-3">{s.title}</h2>
+                  <p className="text-slate-600 leading-relaxed mb-5">{s.desc}</p>
+                  <ul className="space-y-2">
+                    {s.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-2 text-sm text-slate-700">
+                        <CheckCircle2 className="w-4 h-4 text-blue-600 mt-0.5 shrink-0" /> {b}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* AUTO-REPRICER FLOW */}
-        <section className="py-24 bg-white" id="auto-repricer">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 max-w-3xl mx-auto reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
-                <Brain className="w-3.5 h-3.5 mr-1" /> Premium · AI Auto-Repricer
-              </Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">
-                A repricer that protects your margin while it wins the Buy Box.
-              </h2>
-              <p className="text-lg text-slate-600">
-                Built like a flow you can read, not a black box that drains your profit. Set min and max margins once — the rest runs itself, around the clock.
-              </p>
-            </div>
-            <div className="reveal rounded-3xl bg-gradient-to-br from-slate-50 to-white p-4 sm:p-8 border border-slate-100 shadow-stripe">
-              <AIPipelineDiagram className="w-full h-auto" />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12 items-center">
-              <div className="reveal">
-                <RepricerStrategyChart className="w-full h-auto" />
-              </div>
-              <div className="reveal delay-200">
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">Custom strategies, per SKU.</h3>
-                <p className="text-slate-600 leading-relaxed mb-6">
-                  Maybe your hero product needs to win the Buy Box at any cost above a 12% floor.
-                  Maybe your seasonal stock just needs to clear above breakeven. Maybe your premium
-                  brand should never undercut MAP. Build a strategy for each scenario in plain English
-                  — drag, drop, done.
-                </p>
-                <ul className="space-y-3">
-                  {[
-                    "Min / max margin rails — never sell below your floor",
-                    "Buy Box, MAP and inventory-velocity strategies built in",
-                    "Per-SKU, per-brand, per-category overrides",
-                    "Slack and email alerts when a competitor moves",
-                  ].map((t, i) => (
-                    <li key={i} className="flex items-center gap-3 text-slate-700">
-                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" /> {t}
-                    </li>
-                  ))}
-                </ul>
+                <div className={`reveal delay-100 ${s.reverse ? "lg:order-1" : ""}`}>
+                  {s.visual}
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* SELLER ANALYTICS */}
-        <section className="py-24 section-bg relative overflow-hidden">
-          <div className="absolute inset-0 grid-bg opacity-30" />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
-                <BarChart3 className="w-3.5 h-3.5 mr-1" /> Seller analytics
-              </Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
-                Every order, ad and review — in one warehouse.
-              </h2>
-              <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                Your sales data shouldn't live in fifteen places. We stream it all into a single
-                BigQuery warehouse the moment it happens, then plug into Power BI, Looker Studio or
-                your own BI tool. Suddenly the questions that used to take a week — "which campaign
-                actually drove repeat buyers?" — take a click.
-              </p>
-              <ul className="space-y-3">
-                {[
-                  "Petabyte-scale BigQuery warehouse, included",
-                  "Power BI & Looker Studio connectors out of the box",
-                  "Pre-built dashboards: profit by SKU, channel, region",
-                  "Cohort, retention and lifetime-value reports",
-                  "Raw data export — it's always yours",
-                ].map((t, i) => (
-                  <li key={i} className="flex items-center gap-3 text-slate-700">
-                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" /> {t}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="reveal delay-200">
-              <AnalyticsFlowDiagram className="w-full h-auto" />
-            </div>
-          </div>
-        </section>
-
-        {/* FEATURED STORY 1 */}
-        <section className="py-24 section-bg">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="reveal">
-              <AnalyticsIllustration className="w-full h-auto" />
-            </div>
-            <div className="reveal delay-200">
-              <Badge className="mb-4 bg-pink-100 text-pink-700 border-0">Featured</Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
-                Analytics that show you<br />where the money is.
-              </h2>
-              <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                Stop guessing which SKU drives margin. Our analytics suite blends data from every
-                channel into one profit-first view — with AI recommendations on what to scale next.
-              </p>
-              <ul className="space-y-3 mb-8">
-                {["Channel-by-channel profit margin", "SKU-level performance & velocity", "AI-suggested repricing actions", "Custom dashboards & exports"].map((b, i) => (
-                  <li key={i} className="flex items-center gap-3 text-slate-700">
-                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-              {/* <Button size="lg" className="shadow-stripe-xl group">
-                Explore analytics
-                <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-              </Button> */}
-            </div>
-          </div>
-        </section>
-
-        {/* SERVICES GRID */}
-        <section className="py-24 bg-white" id="all-services">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16 reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">All services</Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">A complete commerce toolkit</h2>
-              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-                Pick the services that matter today. Add the rest when you're ready.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {services.map((s, i) => (
-                <Card key={i} className="reveal group relative overflow-hidden border border-slate-100 hover-lift bg-white" style={{ transitionDelay: `${(i % 6) * 60}ms` }}>
-                  <div className={`absolute -top-12 -right-12 w-40 h-40 rounded-full bg-gradient-to-br ${s.tone} opacity-10 group-hover:opacity-25 transition-opacity blur-2xl`} />
-                  <CardHeader>
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${s.tone} flex items-center justify-center shadow-stripe mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                      <s.icon className="w-7 h-7 text-white" />
-                    </div>
-                    <CardTitle className="text-xl font-bold text-slate-900">{s.title}</CardTitle>
-                  </CardHeader>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* FEATURED STORY 2 */}
-        <section className="py-24 section-bg">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="reveal order-2 lg:order-1">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Logistics</Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
-                Ship from anywhere,<br />to everywhere.
-              </h2>
-              <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                Smart order routing picks the optimal warehouse and carrier in real time —
-                shaving days off delivery and 25% off shipping spend.
-              </p>
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                {[{ v: "-25%", l: "Shipping cost" }, { v: "-2 days", l: "Delivery time" }, { v: "40+", l: "Carriers" }, { v: "99.8%", l: "Tracking accuracy" }].map((s, i) => (
-                  <div key={i} className="rounded-xl bg-white p-4 border border-slate-100">
-                    <div className="text-2xl font-bold text-secondary">{s.v}</div>
-                    <div className="text-sm text-slate-600">{s.l}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="reveal delay-200 order-1 lg:order-2">
-              <WorkflowIllustration className="w-full h-auto" />
-            </div>
-          </div>
-        </section>
-
-        {/* AUTOMATION + NOTIFICATIONS + REPORTS */}
-        <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 max-w-3xl mx-auto reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
-                <Zap className="w-3.5 h-3.5 mr-1" /> Notifications &amp; reports
-              </Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">
-                Build the alerts and reports your team actually opens.
-              </h2>
-              <p className="text-lg text-slate-600">
-                Drag a trigger, drop an action, pick a channel. Wire Slack, email, SMS, Zapier or n8n
-                in minutes — no engineer required. Every flow is versioned, testable and replayable.
-              </p>
-            </div>
-            <div className="reveal rounded-3xl bg-gradient-to-br from-slate-50 to-white p-4 sm:p-6 border border-slate-100 shadow-stripe">
-              <AutomationBuilderDiagram className="w-full h-auto" />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-              {[
-                { icon: Zap, title: "Trigger on anything", desc: "Buy Box drops, stockouts, refund spikes, margin floors, competitor moves — every event in Ctasis is a trigger you can subscribe to.", tone: "from-primary to-indigo-600" },
-                { icon: Settings, title: "Customisable per role", desc: "Ops gets stockouts in Slack. Finance gets P&L PDFs by email. On-call gets SMS. Each user picks their channel, frequency and quiet hours.", tone: "from-secondary to-orange-500" },
-                { icon: Layers, title: "Zapier & n8n native", desc: "Fan out to 5,000+ Zapier apps or your self-hosted n8n. Signed webhooks, automatic retries, replay on failure — production-grade out of the box.", tone: "from-secondary to-pink-600" },
-              ].map((b, i) => (
-                <Card key={i} className="reveal hover-lift relative overflow-hidden border border-slate-100 bg-white" style={{ transitionDelay: `${i * 90}ms` }}>
-                  <div className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br ${b.tone} opacity-10 blur-2xl`} />
-                  <CardContent className="relative p-7">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${b.tone} flex items-center justify-center mb-4 shadow-stripe`}>
-                      <b.icon className="w-7 h-7 text-white" />
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">{b.title}</h3>
-                    <p className="text-slate-600 leading-relaxed">{b.desc}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+          </section>
+        ))}
 
         {/* CTA */}
-        <section className="py-24 relative overflow-hidden gradient-animated">
-          <BlobBackdrop />
-          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-            <Zap className="w-12 h-12 text-pink-200 mx-auto mb-6 animate-float" />
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">Ready to transform your business?</h2>
-            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-              Join thousands of sellers who trust Ctasis to power their multichannel operations.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <section className="py-16 bg-slate-900 text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(37,99,235,0.35),transparent_45%),radial-gradient(circle_at_80%_70%,rgba(96,165,250,0.25),transparent_45%)]" />
+          <div className="relative max-w-4xl mx-auto text-center px-4">
+            <Sparkles className="w-8 h-8 mx-auto text-blue-300 mb-3" />
+            <h2 className="text-3xl font-bold mb-3">Ready to see it running on your channels?</h2>
+            <p className="text-slate-300 mb-6">Connect Amazon, Walmart, eBay, Etsy and Flipkart in minutes.</p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-500 rounded-full px-7 h-12">
+                Start free trial <ArrowRight className="w-4 h-4 ml-1.5" />
+              </Button>
               <Link href="/pricing">
-                <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl">
-                  Get started
-                </Button>
-              </Link>
-              <Link href="/contact">
-                <Button size="lg" variant="outline"
-                  className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/80 shadow-stripe">
-                  Talk to our team
+                <Button size="lg" variant="outline" className="rounded-full px-7 h-12 bg-transparent border-slate-500 text-white hover:bg-white/10">
+                  See pricing
                 </Button>
               </Link>
             </div>
