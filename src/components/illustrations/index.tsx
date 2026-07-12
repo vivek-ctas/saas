@@ -216,66 +216,81 @@ export const DashboardMockup = (props: SVGProps<SVGSVGElement>) => (
    Styled after the dark "How Ctasis connects your channels" reference  */
 /* ------------------------------------------------------------------ */
 export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <DiagramDefs />
-    {/* Card */}
-    <rect x="10" y="10" width="700" height="500" rx="22" fill="#0f172a" />
-    {/* Title */}
-    <g transform="translate(40,40)">
-      <rect width="92" height="22" rx="11" fill="#312e81" />
-      <text x="46" y="15" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight="700" fill="#c7d2fe" letterSpacing="1.5">LOGISTICS</text>
-    </g>
-    <text x="40" y="100" fontFamily="Inter,system-ui" fontSize="22" fontWeight="700" fill="#f8fafc">How Ctasis connects your channels</text>
-    <text x="40" y="124" fontFamily="Inter,system-ui" fontSize="12" fill="#94a3b8">Real-time sync between Listings, Orders &amp; Shipping — one engine.</text>
+  <svg viewBox="0 0 560 420" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="hd-bg" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="#f8fafc" />
+        <stop offset="100%" stopColor="#eff6ff" />
+      </linearGradient>
+      <linearGradient id="hd-core" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="#2563eb" />
+        <stop offset="100%" stopColor="#1e3a8a" />
+      </linearGradient>
+      <pattern id="hd-grid" width="22" height="22" patternUnits="userSpaceOnUse">
+        <path d="M22 0H0v22" stroke="#dbeafe" strokeWidth="0.6" fill="none" />
+      </pattern>
+      <filter id="hd-sh" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="6" /><feOffset dy="3" />
+        <feComponentTransfer><feFuncA type="linear" slope="0.14" /></feComponentTransfer>
+        <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+      </filter>
+    </defs>
+    <rect width="560" height="420" rx="22" fill="url(#hd-bg)" />
+    <rect width="560" height="420" rx="22" fill="url(#hd-grid)" />
 
-    {/* Listings node */}
-    <g>
-      <rect x="50" y="220" width="180" height="92" rx="14" fill="url(#g-blue)" stroke="#3b82f6" />
-      <circle cx="68" cy="238" r="4" fill="#60a5fa" />
-      <text x="140" y="262" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="16" fontWeight="700" fill="white">Listings</text>
-      <text x="140" y="284" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="11" fill="#bfdbfe">Product catalogue</text>
-    </g>
-    {/* Ctasis hub */}
-    <g>
-      <rect x="280" y="220" width="180" height="92" rx="14" fill="url(#g-purple)" stroke="#8b5cf6" />
-      <text x="370" y="262" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="16" fontWeight="700" fill="white">Ctasis</text>
-      <text x="370" y="284" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="11" fill="#ddd6fe">Central sync engine</text>
-    </g>
-    {/* Orders */}
-    <g>
-      <rect x="510" y="220" width="180" height="92" rx="14" fill="url(#g-emerald)" stroke="#10b981" />
-      <circle cx="528" cy="238" r="4" fill="#34d399" />
-      <text x="600" y="262" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="16" fontWeight="700" fill="white">Orders</text>
-      <text x="600" y="284" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="11" fill="#a7f3d0">Purchase records</text>
-    </g>
-    {/* Shipping */}
-    <g>
-      <rect x="280" y="380" width="180" height="92" rx="14" fill="url(#g-orange)" stroke="#fb923c" />
-      <circle cx="298" cy="398" r="4" fill="#fb923c" />
-      <text x="370" y="422" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="16" fontWeight="700" fill="white">Shipping</text>
-      <text x="370" y="444" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="11" fill="#fed7aa">Fulfilment &amp; tracking</text>
+    {/* channel cards left */}
+    {[
+      { y: 60,  name: "Amazon",  dot: "#f59e0b" },
+      { y: 130, name: "Walmart", dot: "#2563eb" },
+      { y: 200, name: "eBay",    dot: "#ef4444" },
+      { y: 270, name: "Etsy",    dot: "#ea580c" },
+      { y: 340, name: "Flipkart",dot: "#1d4ed8" },
+    ].map((c) => (
+      <g key={c.name} filter="url(#hd-sh)">
+        <rect x="28" y={c.y} width="150" height="50" rx="10" fill="white" stroke="#e2e8f0" />
+        <circle cx="50" cy={c.y + 25} r="6" fill={c.dot} />
+        <text x="66" y={c.y + 22} fontFamily="Inter" fontSize="12" fontWeight="700" fill="#0f172a">{c.name}</text>
+        <text x="66" y={c.y + 37} fontFamily="Inter" fontSize="9.5" fill="#64748b">Synced · live</text>
+        <circle cx="163" cy={c.y + 25} r="3.5" fill="#10b981" />
+      </g>
+    ))}
+
+    {/* core engine */}
+    <g filter="url(#hd-sh)">
+      <rect x="220" y="140" width="150" height="150" rx="18" fill="url(#hd-core)" />
+      <circle cx="295" cy="200" r="26" fill="#fff" opacity="0.14" />
+      <circle cx="295" cy="200" r="16" fill="#fff" />
+      <path d="M289 200l4 4 8-8" stroke="#1e3a8a" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      <text x="295" y="240" textAnchor="middle" fontFamily="Inter" fontSize="13" fontWeight="800" fill="#fff">Ctasis Core</text>
+      <text x="295" y="256" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#bfdbfe">Inventory · Pricing · Orders</text>
+      <text x="295" y="272" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#bfdbfe">Real-time · 2-way sync</text>
     </g>
 
-    {/* Arrows */}
-    <line x1="230" y1="255" x2="278" y2="255" stroke="#3b82f6" strokeWidth="2" markerEnd="url(#arrow-blue)" />
-    <text x="254" y="245" textAnchor="middle" fontSize="10" fill="#94a3b8">Stock in</text>
-    <line x1="278" y1="280" x2="232" y2="280" stroke="#8b5cf6" strokeWidth="2" strokeDasharray="4 4" markerEnd="url(#arrow-purple)" />
-    <text x="254" y="298" textAnchor="middle" fontSize="10" fill="#94a3b8">← Updates</text>
+    {/* right output cards */}
+    {[
+      { y: 60,  title: "Inventory",  val: "12,480 SKUs" },
+      { y: 130, title: "Pricing",    val: "Rules active" },
+      { y: 200, title: "Orders",     val: "241 / today" },
+      { y: 270, title: "Catalog",    val: "AI generated" },
+      { y: 340, title: "Revenue",    val: "▲ 32% MoM" },
+    ].map((c) => (
+      <g key={c.title} filter="url(#hd-sh)">
+        <rect x="392" y={c.y} width="140" height="50" rx="10" fill="white" stroke="#e2e8f0" />
+        <rect x="392" y={c.y} width="3" height="50" rx="1.5" fill="#2563eb" />
+        <text x="405" y={c.y + 20} fontFamily="Inter" fontSize="10" fontWeight="700" fill="#64748b" letterSpacing="1">
+          {c.title.toUpperCase()}
+        </text>
+        <text x="405" y={c.y + 38} fontFamily="Inter" fontSize="12" fontWeight="700" fill="#0f172a">{c.val}</text>
+      </g>
+    ))}
 
-    <line x1="510" y1="255" x2="462" y2="255" stroke="#10b981" strokeWidth="2" markerEnd="url(#arrow-emerald)" />
-    <text x="486" y="245" textAnchor="middle" fontSize="10" fill="#94a3b8">Orders in</text>
-    <line x1="462" y1="280" x2="508" y2="280" stroke="#8b5cf6" strokeWidth="2" strokeDasharray="4 4" markerEnd="url(#arrow-purple)" />
-    <text x="486" y="298" textAnchor="middle" fontSize="10" fill="#94a3b8">→ Status</text>
-
-    <line x1="370" y1="312" x2="370" y2="378" stroke="#fb923c" strokeWidth="2" markerEnd="url(#arrow-blue)" />
-    <line x1="386" y1="378" x2="386" y2="312" stroke="#8b5cf6" strokeWidth="2" strokeDasharray="4 4" />
-    <text x="430" y="345" fontSize="10" fill="#94a3b8">→ Dispatch</text>
-    <text x="430" y="360" fontSize="10" fill="#94a3b8">← Tracking</text>
-
-    {/* live activity dot */}
-    <circle cx="370" cy="220" r="5" fill="#a78bfa">
-      <animate attributeName="opacity" values="1;0.3;1" dur="1.6s" repeatCount="indefinite" />
-    </circle>
+    {/* arrows */}
+    {[85, 155, 225, 295, 365].map((y) => (
+      <line key={"l" + y} x1="180" y1={y} x2="218" y2="215" stroke="#60a5fa" strokeWidth="1.4" strokeDasharray="4 4" />
+    ))}
+    {[85, 155, 225, 295, 365].map((y) => (
+      <line key={"r" + y} x1="372" y1="215" x2="390" y2={y} stroke="#2563eb" strokeWidth="1.4" strokeDasharray="4 4" />
+    ))}
   </svg>
 );
 

@@ -12,12 +12,12 @@ const Navigation = () => {
   const navigation = [
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
-    { name: "Marketplace", href: "/marketplaces" },
-    { name: "Infrastructure", href: "/infrastructure" },
+    // { name: "Marketplace", href: "/marketplaces" },
+    // { name: "Infrastructure", href: "/infrastructure" },
     { name: "Pricing", href: "/pricing" },
-    { name: "Blog", href: "/blog" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    // { name: "Blog", href: "/blog" },
+    // { name: "About", href: "/about" },
+    // { name: "Contact", href: "/contact" },
   ];
 
   const isActive = (href: string) => pathname === href;
@@ -29,9 +29,9 @@ const Navigation = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-1 sm:space-x-2 flex-shrink-0">
             <img
-              src="/ctasis-logo.svg"
+              src="/ctasis-logo copy.svg"
               alt="Ctasis Logo"
-              className="w-12 h-9 sm:w-16 md:w-20 transition-all"
+              className="w-auto h-9 sm:w-auto md:w-auto transition-all"
             />
             <span className="text-black text-sm sm:text-base font-semibold">Sellerbuz
             </span>
