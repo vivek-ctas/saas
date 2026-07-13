@@ -124,10 +124,10 @@ export default function SetupPasswordPage() {
   if (tokenStatus === 'checking') {
     return (
       <StatusScreen
-        icon={<Loader2 className="w-10 h-10 text-primary animate-spin" />}
+        icon={<Loader2 className="w-10 h-10 text-blue-600 animate-spin" />}
         title="Checking your link…"
         subtitle="Please wait a moment."
-        bg="bg-primary/10"
+        bg="bg-blue-100"
       />
     );
   }
@@ -158,7 +158,7 @@ export default function SetupPasswordPage() {
         cta={
           <Link
             href={ADMIN_LOGIN_URL}
-            className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-2.5 text-sm font-semibold hover:opacity-90"
+            className="mt-4 inline-flex items-center gap-2 rounded-full bg-blue-600 text-white px-6 py-2.5 text-sm font-semibold hover:opacity-90"
           >
             Log In to Admin Panel
           </Link>
@@ -191,7 +191,7 @@ export default function SetupPasswordPage() {
             <button
               onClick={handleResend}
               disabled={resending}
-              className="w-full h-12 rounded-2xl bg-gradient-to-r from-primary to-secondary text-white
+              className="w-full h-12 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-900 text-white
                          text-sm font-semibold shadow-lg hover:opacity-90 transition-opacity
                          disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
@@ -224,7 +224,7 @@ export default function SetupPasswordPage() {
         cta={
           <Link
             href={ADMIN_LOGIN_URL}
-            className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary text-white px-6 py-2.5 text-sm font-semibold hover:opacity-90"
+            className="mt-4 inline-flex items-center gap-2 rounded-full bg-blue-600 text-white px-6 py-2.5 text-sm font-semibold hover:opacity-90"
           >
             Log In to Admin Panel
           </Link>
@@ -238,8 +238,8 @@ export default function SetupPasswordPage() {
     <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
       <div className="bg-white rounded-3xl border border-slate-200 shadow-sm px-10 py-12 max-w-md w-full">
 
-        <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 mx-auto mb-6">
-          <Lock className="w-7 h-7 text-primary" />
+        <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-blue-100 mx-auto mb-6">
+          <Lock className="w-7 h-7 text-blue-600" />
         </div>
 
         <h1 className="text-2xl font-bold text-slate-900 text-center mb-1">
@@ -265,7 +265,7 @@ export default function SetupPasswordPage() {
               onChange={e => setPassword(e.target.value)}
               placeholder="Min. 8 characters"
               className="w-full rounded-xl border border-slate-200 px-4 py-2.5 pr-11 text-sm
-                         text-slate-900 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                         text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600/20"
             />
             <button
               type="button"
@@ -295,7 +295,7 @@ export default function SetupPasswordPage() {
               onChange={e => setConfirmPassword(e.target.value)}
               placeholder="Re-enter your password"
               className="w-full rounded-xl border border-slate-200 px-4 py-2.5 pr-11 text-sm
-                         text-slate-900 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                         text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600/20"
             />
             <button
               type="button"
@@ -315,7 +315,7 @@ export default function SetupPasswordPage() {
         <button
           onClick={handleSubmit}
           disabled={submitting}
-          className="w-full h-12 rounded-2xl bg-gradient-to-r from-primary to-secondary text-white
+          className="w-full h-12 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-900 text-white
                      text-sm font-semibold shadow-lg hover:opacity-90 transition-opacity
                      disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >

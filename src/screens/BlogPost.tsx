@@ -203,13 +203,13 @@ const BlogPost = () => {
     <Layout>
       <div ref={ref}>
         {/* HERO */}
-        <section className="relative pt-28 pb-16 overflow-hidden bg-gradient-to-br from-amber-50 via-white to-indigo-50">
+        <section className="relative pt-28 pb-16 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Link href="/blog" className="reveal inline-flex items-center gap-2 text-sm text-slate-600 hover:text-primary mb-6">
+            <Link href="/blog" className="reveal inline-flex items-center gap-2 text-sm text-slate-600 hover:text-blue-600 mb-6">
               <ArrowLeft className="w-4 h-4" /> Back to all articles
             </Link>
             <div className="reveal flex items-center gap-3 text-sm text-slate-500 mb-4">
-              <Badge className="bg-accent text-accent-foreground border-0">{post.category}</Badge>
+              <Badge className="bg-blue-50 text-blue-700 border border-blue-100">{post.category}</Badge>
               <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {post.readTime}</span>
               <span>·</span>
               <span>{post.date}</span>
@@ -219,7 +219,7 @@ const BlogPost = () => {
             </h1>
             <p className="reveal text-xl text-slate-600 leading-relaxed mb-6 max-w-3xl">{post.excerpt}</p>
             <div className="reveal flex items-center gap-3 mb-10">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary" />
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-blue-900" />
               <div>
                 <div className="text-sm font-bold text-slate-900">{post.author}</div>
                 <div className="text-xs text-slate-500">Ctasis team</div>
@@ -237,7 +237,7 @@ const BlogPost = () => {
         {/* BODY */}
         <section className="py-20 bg-white">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="reveal text-lg text-slate-700 leading-relaxed mb-10 first-letter:text-5xl first-letter:font-bold first-letter:text-primary first-letter:mr-2 first-letter:float-left first-letter:leading-none">
+            <p className="reveal text-lg text-slate-700 leading-relaxed mb-10 first-letter:text-5xl first-letter:font-bold first-letter:text-blue-600 first-letter:mr-2 first-letter:float-left first-letter:leading-none">
               {post.intro}
             </p>
 
@@ -251,7 +251,7 @@ const BlogPost = () => {
                   <ul className="mt-4 space-y-2 bg-slate-50 rounded-2xl p-6 border border-slate-100">
                     {s.bullets.map((b, k) => (
                       <li key={k} className="flex items-start gap-3 text-slate-700">
-                        <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" /> {b}
+                        <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" /> {b}
                       </li>
                     ))}
                   </ul>
@@ -267,10 +267,10 @@ const BlogPost = () => {
             ))}
 
             {/* TL;DR */}
-            <div className="reveal rounded-3xl bg-gradient-to-br from-primary to-secondary p-8 text-white">
+            <div className="reveal rounded-3xl bg-gradient-to-br from-blue-600 to-blue-900 p-8 text-white">
               <div className="text-xs font-bold uppercase tracking-widest opacity-80 mb-2">TL;DR</div>
               <p className="text-lg leading-relaxed">{post.excerpt}</p>
-              <Button variant="secondary" className="mt-6 rounded-full" asChild>
+              <Button className="mt-6 rounded-full bg-white text-blue-900 hover:bg-blue-50 border-0" asChild>
                 <Link href="/contact">Talk to our team <ArrowRight className="w-4 h-4 ml-1" /></Link>
               </Button>
             </div>
@@ -282,10 +282,10 @@ const BlogPost = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="reveal flex items-end justify-between mb-10">
               <div>
-                <Badge className="mb-3 bg-accent text-accent-foreground border-0">Keep reading</Badge>
+                <Badge className="mb-3 bg-blue-50 text-blue-700 border border-blue-100">Keep reading</Badge>
                 <h2 className="text-3xl font-bold text-slate-900">More from the blog</h2>
               </div>
-              <Link href="/blog" className="text-primary text-sm font-semibold inline-flex items-center gap-1 story-link">
+              <Link href="/blog" className="text-blue-600 text-sm font-semibold inline-flex items-center gap-1 story-link">
                 <BookOpen className="w-4 h-4" /> All articles
               </Link>
             </div>
@@ -293,14 +293,14 @@ const BlogPost = () => {
               {others.map((o, i) => (
                 <Link key={o.slug} href={`/blog/${o.slug}`} className="reveal block group" style={{ transitionDelay: `${i * 80}ms` }}>
                   <Card className="h-full border border-slate-100 hover-lift overflow-hidden bg-white">
-                    <div className="relative h-40 bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                    <div className="relative h-40 bg-gradient-to-br from-blue-600 to-blue-900 flex items-center justify-center">
                       <div className="absolute inset-0 grid-bg opacity-20" />
                       <BookOpen className="relative w-12 h-12 text-white/90" />
                     </div>
                     <CardContent className="p-5">
                       <Badge variant="secondary" className="text-xs mb-2">{o.category}</Badge>
-                      <h3 className="text-base font-bold text-slate-900 leading-snug group-hover:text-primary transition-colors mb-2">{o.title}</h3>
-                      <span className="text-primary text-sm font-semibold inline-flex items-center gap-1">
+                      <h3 className="text-base font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors mb-2">{o.title}</h3>
+                      <span className="text-blue-600 text-sm font-semibold inline-flex items-center gap-1">
                         Read <ArrowRight className="w-3.5 h-3.5" />
                       </span>
                     </CardContent>

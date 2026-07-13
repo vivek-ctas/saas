@@ -52,107 +52,222 @@ const DiagramDefs = () => (
 /* SellerHeroMockup – SellerSnap-inspired product table dashboard      */
 /* Light, airy, with KPI row over a "listings" table behind it         */
 /* ------------------------------------------------------------------ */
-export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 760 520" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <defs>
-      <linearGradient id="shm-card" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0%" stopColor="#ffffff" />
-        <stop offset="100%" stopColor="#fbfaff" />
-      </linearGradient>
-      <linearGradient id="shm-accent" x1="0" x2="1" y1="0" y2="0">
-        <stop offset="0%" stopColor="hsl(226 71% 50%)" />
-        <stop offset="100%" stopColor="hsl(330 81% 60%)" />
-      </linearGradient>
-      <filter id="shm-shadow" x="-10%" y="-10%" width="120%" height="130%">
-        <feGaussianBlur stdDeviation="14" />
-        <feOffset dy="10" />
-        <feComponentTransfer><feFuncA type="linear" slope="0.18" /></feComponentTransfer>
-        <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
-      </filter>
-    </defs>
+export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => {
+  const skeletonRowsAbove = [165, 195];
+  const skeletonRowsBelow = [360, 390, 420, 450];
 
-    {/* Back browser frame – the "listings table" */}
-    <g filter="url(#shm-shadow)">
-      <rect x="40" y="40" width="680" height="440" rx="20" fill="url(#shm-card)" stroke="hsl(220 20% 92%)" />
-      {/* top bar */}
-      <circle cx="64" cy="64" r="4.5" fill="#ef4444" />
-      <circle cx="80" cy="64" r="4.5" fill="#f59e0b" />
-      <circle cx="96" cy="64" r="4.5" fill="#10b981" />
-      <rect x="120" y="56" width="140" height="16" rx="8" fill="hsl(226 71% 96%)" />
-      <text x="190" y="68" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="9" fontWeight="700" fill="hsl(226 71% 40%)">CTASIS · Listings</text>
-      {/* tabs */}
-      <text x="290" y="68" fontFamily="Inter,system-ui" fontSize="11" fontWeight="600" fill="hsl(226 71% 40%)">Overview</text>
-      <text x="360" y="68" fontFamily="Inter,system-ui" fontSize="11" fill="#64748b">Listings</text>
-      <text x="420" y="68" fontFamily="Inter,system-ui" fontSize="11" fill="#64748b">Settings</text>
-      <rect x="284" y="76" width="56" height="2" rx="1" fill="hsl(226 71% 40%)" />
-      {/* status pill */}
-      <rect x="630" y="50" width="68" height="22" rx="11" fill="hsl(150 70% 92%)" />
-      <circle cx="644" cy="61" r="3" fill="hsl(150 70% 40%)" />
-      <text x="685" y="65" textAnchor="end" fontFamily="Inter,system-ui" fontSize="10" fontWeight="700" fill="hsl(150 70% 30%)">In stock</text>
+  const features = [
+    { label: "Live performance", desc: "Real-time updates", color: "hsl(226 71% 50%)", bg: "hsl(226 71% 95%)", icon: "trend" as const },
+    { label: "Smart repricing", desc: "Maximize Buy Box", color: "hsl(217 91% 50%)", bg: "hsl(217 91% 95%)", icon: "pulse" as const },
+    { label: "Higher profit", desc: "Automated insights", color: "hsl(224 76% 40%)", bg: "hsl(224 76% 95%)", icon: "target" as const },
+    { label: "Healthy margin", desc: "Sustainable growth", color: "hsl(226 71% 40%)", bg: "hsl(226 71% 95%)", icon: "shield" as const },
+    { label: "Scale faster", desc: "Grow your business", color: "hsl(226 71% 55%)", bg: "hsl(226 71% 95%)", icon: "trend" as const },
+  ];
 
-      {/* Filter chips */}
-      <rect x="64" y="100" width="100" height="24" rx="12" fill="hsl(220 20% 96%)" />
-      <text x="114" y="116" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fill="#475569">This month ▾</text>
-      <rect x="172" y="100" width="120" height="24" rx="12" fill="hsl(220 20% 96%)" />
-      <text x="232" y="116" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fill="#475569">Compared to ▾</text>
+  const featureX = [60, 230, 390, 550, 710];
 
-      {/* Skeleton table rows behind */}
-      {[170, 200, 230, 260, 290, 320, 350, 380, 410, 440].map((y, i) => (
-        <g key={i} opacity={0.6 - i * 0.04}>
-          <rect x="64" y={y} width="640" height="14" rx="7" fill={i % 2 ? "hsl(220 20% 97%)" : "hsl(220 20% 94%)"} />
+  return (
+    <svg viewBox="0 0 760 600" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <defs>
+        <linearGradient id="shm-card" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="100%" stopColor="#fbfaff" />
+        </linearGradient>
+        <linearGradient id="shm-accent" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="hsl(226 71% 50%)" />
+          <stop offset="100%" stopColor="hsl(226 71% 40%)" />
+        </linearGradient>
+        <rect
+          width="760"
+          height="600"
+          fill="#F8FAFC"
+        />
+        <linearGradient id="shm-shine" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
+          <stop offset="50%" stopColor="#ffffff" stopOpacity="0.65" />
+          <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+        </linearGradient>
+        <filter
+          id="shm-shadow"
+          x="-20%"
+          y="-20%"
+          width="140%"
+          height="160%">
+
+          <feOffset dy="4" />
+
+          <feGaussianBlur stdDeviation="4" />
+
+          <feColorMatrix
+            type="matrix"
+            values="
+        0 0 0 0 0
+        0 0 0 0 0
+        0 0 0 0 0
+        0 0 0 .12 0"/>
+
+          <feBlend in="SourceGraphic" />
+        </filter>
+        <clipPath id="shm-card-clip">
+          <rect x="45" y="180" width="700" height="165" rx="16" />
+        </clipPath>
+      </defs>
+
+
+
+      {/* Back browser frame – the "listings table" */}
+      <g >
+        <rect x="20" y="20" width="720" height="470" rx="20" fill="#F8FAFC"
+          stroke="#DCE5F0" strokeWidth="1.25" />
+        {/* top bar */}
+        <circle cx="64" cy="64" r="4.5" fill="#ef4444" />
+        <circle cx="80" cy="64" r="4.5" fill="#f59e0b" />
+        <circle cx="96" cy="64" r="4.5" fill="#10b981" />
+        <rect x="120" y="56" width="140" height="16" rx="8" fill="hsl(226 71% 96%)" />
+        <text x="190" y="68" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="9" fontWeight={700} fill="hsl(226 71% 40%)">CTASIS · Listings</text>
+        {/* tabs */}
+        <text x="290" y="68" fontFamily="Inter,system-ui" fontSize="11" fontWeight={600} fill="hsl(226 71% 40%)">Overview</text>
+        <text x="360" y="68" fontFamily="Inter,system-ui" fontSize="11" fill="#64748b">Listings</text>
+        <text x="420" y="68" fontFamily="Inter,system-ui" fontSize="11" fill="#64748b">Settings</text>
+        <rect x="284" y="76" width="56" height="2" rx="1" fill="hsl(226 71% 40%)" />
+        {/* status pill */}
+        <rect x="630" y="50" width="68" height="22" rx="11" fill="hsl(226 71% 95%)" />
+        <circle cx="644" cy="61" r="3" fill="hsl(226 71% 50%)" />
+        <text x="685" y="65" textAnchor="end" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill="hsl(226 71% 40%)">In stock</text>
+
+        {/* Filter chips */}
+        <rect x="64" y="100" width="100" height="24" rx="12" fill="hsl(220 20% 96%)" />
+        <text x="114" y="116" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fill="#475569">This month ▾</text>
+        <rect x="172" y="100" width="120" height="24" rx="12" fill="hsl(220 20% 96%)" />
+        <text x="232" y="116" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fill="#475569">Compared to ▾</text>
+
+        {/* Skeleton rows with left avatar dots */}
+        {[...skeletonRowsAbove, ...skeletonRowsBelow].map((y, i) => (
+          <g key={y} opacity={0.55 - (i % 4) * 0.06}>
+            <circle cx="76" cy={y + 7} r="4.5" fill="hsl(220 20% 88%)" />
+            <rect x="100" y={y} width="604" height="14" rx="7" fill={i % 2 ? "hsl(220 20% 97%)" : "hsl(220 20% 94%)"} />
+          </g>
+        ))}
+      </g>
+
+      {/* Floating product KPI card – the hero element */}
+      <g>
+        <animateTransform attributeName="transform" type="translate" values="0 0; 0 -1; 0 0" dur="6s" repeatCount="indefinite" />
+        <rect x="45" y="180" width="700" height="165" rx="16" fill="#F8FAFC"
+          stroke="#DCE5F0" />
+
+        {/* Product thumb */}
+        <rect x="100" y="220" width="70" height="70" rx="12" fill="hsl(226 71% 95%)" />
+        <circle cx="135" cy="255" r="22" fill="hsl(226 71% 60%)" />
+        <circle cx="135" cy="255" r="14" fill="hsl(226 71% 80%)" />
+        <text x="100" y="305" fontFamily="Inter,system-ui" fontSize="8" fill="#94a3b8">SKU: 8632010</text>
+
+        {/* Column headers */}
+        <text x="195" y="225" fontFamily="Inter,system-ui" fontSize="9" fontWeight={600} fill="#94a3b8" letterSpacing="0.5">PRODUCT</text>
+        <text x="195" y="248" fontFamily="Inter,system-ui" fontSize="17" fontWeight={700} fill="#0f172a">Wireless Speaker</text>
+        <rect x="195" y="258" width="58" height="16" rx="8" fill="hsl(226 71% 95%)" />
+        <text x="224" y="269" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="9" fontWeight={700} fill="hsl(226 71% 40%)">Repricer ON</text>
+
+        {/* Platform pills */}
+        <text x="290" y="225" fontFamily="Inter,system-ui" fontSize="9" fontWeight={600} fill="#94a3b8" letterSpacing="0.5">PLATFORM</text>
+        <rect x="290" y="234" width="56" height="22" rx="6" fill="#0f172a" />
+        <text x="318" y="249" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="9" fontWeight={700} fill="white">amazon</text>
+        <rect x="290" y="262" width="56" height="22" rx="6" fill="hsl(210 100% 50%)" />
+        <text x="318" y="277" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="9" fontWeight={700} fill="white">walmart</text>
+
+        {/* KPI columns */}
+        {[
+          { x: 365, label: "ORDERS", value: "850", delta: "+10%" },
+          { x: 445, label: "BUY BOX", value: "82%", delta: "+9%" },
+          { x: 525, label: "REVENUE", value: "$21.5k", delta: "+19.4%" },
+          { x: 605, label: "PROFIT", value: "$6.8k", delta: "+23.6%" },
+        ].map((k) => (
+          <g key={k.label}>
+            <text x={k.x} y="225" fontFamily="Inter,system-ui" fontSize="9" fontWeight={600} fill="#94a3b8" letterSpacing="0.5">{k.label}</text>
+            <text x={k.x} y="252" fontFamily="Inter,system-ui" fontSize="18" fontWeight={800} fill="#0f172a">{k.value}</text>
+            <text x={k.x} y="275" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill="hsl(226 71% 40%)">▲ {k.delta}</text>
+          </g>
+        ))}
+
+        {/* Margin column */}
+        <text x="685" y="225" fontFamily="Inter,system-ui" fontSize="9" fontWeight={600} fill="#94a3b8" letterSpacing="0.5">MARGIN</text>
+        <text x="685" y="252" fontFamily="Inter,system-ui" fontSize="18" fontWeight={800} fill="url(#shm-accent)">31.6%</text>
+        <text x="685" y="275" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill="hsl(226 71% 40%)">▲ +3.6%</text>
+
+        {/* Subtle pulse ring on Repricer ON */}
+        <circle cx="200" cy="266" r="3" fill="hsl(226 71% 50%)">
+          <animate attributeName="r" values="3;7;3" dur="2.4s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="1;0;1" dur="2.4s" repeatCount="indefinite" />
+        </circle>
+
+        {/* Continuous diagonal shine sweep */}
+        <g >
+          <g transform="rotate(-20 420 270)">
+            <rect x="-320" y="140" width="140" height="260" fill="url(#shm-shine)" style={{ mixBlendMode: "screen" }}>
+              <animateTransform attributeName="transform" type="translate" values="0 0; 1150 0; 1150 0" keyTimes="0; 0.55; 1" dur="4.2s" repeatCount="indefinite" />
+            </rect>
+          </g>
         </g>
-      ))}
-    </g>
+      </g>
 
-    {/* Floating product KPI card – the hero element */}
-    <g filter="url(#shm-shadow)" style={{ transformOrigin: "380px 260px" }} >
-      <rect x="80" y="200" width="680" height="140" rx="16" fill="white" stroke="hsl(220 20% 92%)" />
-      {/* Product thumb */}
-      <rect x="100" y="220" width="70" height="70" rx="12" fill="hsl(226 71% 95%)" />
-      <circle cx="135" cy="255" r="22" fill="hsl(226 71% 60%)" />
-      <circle cx="135" cy="255" r="14" fill="hsl(226 71% 80%)" />
-      <text x="100" y="305" fontFamily="Inter,system-ui" fontSize="8" fill="#94a3b8">SKU: 8632010</text>
+      {/* Sparkles */}
+      <g fill="#ffffff" stroke="hsl(226 71% 70%)" strokeWidth={0.6}>
+        <path d="M540 150 q4 14 18 18 q-14 4 -18 18 q-4 -14 -18 -18 q14 -4 18 -18 z">
+          <animate attributeName="opacity" values="0.3;1;0.3" dur="2.2s" repeatCount="indefinite" />
+        </path>
+        <path d="M612 178 q3 9 12 12 q-9 3 -12 12 q-3 -9 -12 -12 q9 -3 12 -12 z">
+          <animate attributeName="opacity" values="1;0.3;1" dur="2.6s" repeatCount="indefinite" />
+        </path>
+        <path d="M92 66 q2 6 8 8 q-6 2 -8 8 q-2 -6 -8 -8 q6 -2 8 -8 z">
+          <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" repeatCount="indefinite" />
+        </path>
+      </g>
 
-      {/* Column headers */}
-      <text x="195" y="225" fontFamily="Inter,system-ui" fontSize="9" fontWeight="600" fill="#94a3b8" letterSpacing="0.5">PRODUCT</text>
-      <text x="195" y="248" fontFamily="Inter,system-ui" fontSize="14" fontWeight="700" fill="#0f172a">Wireless Speaker</text>
-      <rect x="195" y="258" width="58" height="16" rx="8" fill="hsl(330 81% 95%)" />
-      <text x="224" y="269" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="9" fontWeight="700" fill="hsl(330 81% 45%)">Repricer ON</text>
+      {/* Feature row */}
+      <g>
+        {features.map((f, i) => {
+          const x = featureX[i];
+          const cy = 545;
+          const iconCx = x - 20;
+          const textX = x + 8;
+          return (
+            <g key={f.label}>
+              <circle cx={iconCx} cy={cy} r="20" fill={f.bg} />
+              <g transform={`translate(${iconCx},${cy}) scale(1.25)`} stroke={f.color} strokeWidth={2.2} fill="none" strokeLinecap="round" strokeLinejoin="round">
+                {f.icon === "trend" && (
+                  <>
+                    <path d="M-6 4 L-1.5 -1.5 L1.5 1.5 L6.5 -5" />
+                    <path d="M2.5 -5.5 L6.5 -5 L6 -1" />
+                  </>
+                )}
+                {f.icon === "pulse" && (
+                  <path d="M-8 0 H-4 L-1.5 -5.5 L1.5 6 L4 -3 L6 0 H8" />
+                )}
+                {f.icon === "target" && (
+                  <>
+                    <circle cx="0" cy="0" r="7" />
+                    <circle cx="0" cy="0" r="3" />
+                    <circle cx="0" cy="0" r="0.8" fill={f.color} />
+                  </>
+                )}
+                {f.icon === "shield" && (
+                  <>
+                    <path d="M0 -8 L7 -5 V1 C7 6 3.5 8.5 0 10 C-3.5 8.5 -7 6 -7 1 V-5 Z" />
+                    <path d="M-3.5 0 L-0.5 3 L4 -3" />
+                  </>
+                )}
+              </g>
+              <text x={textX} y={cy - 8} fontFamily="Inter,system-ui" fontSize="13" fontWeight={800} fill="#0f172a">{f.label}</text>
+              <text x={textX} y={cy + 10} fontFamily="Inter,system-ui" fontSize="10.5" fill="#64748b">{f.desc}</text>
+            </g>
+          );
+        })}
+      </g>
+    </svg>
+  )
+};
 
-      {/* Platform pills */}
-      <text x="290" y="225" fontFamily="Inter,system-ui" fontSize="9" fontWeight="600" fill="#94a3b8" letterSpacing="0.5">PLATFORM</text>
-      <rect x="290" y="234" width="56" height="22" rx="6" fill="#0f172a" />
-      <text x="318" y="249" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="9" fontWeight="700" fill="white">amazon</text>
-      <rect x="290" y="262" width="56" height="22" rx="6" fill="hsl(210 100% 50%)" />
-      <text x="318" y="277" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="9" fontWeight="700" fill="white">walmart</text>
 
-      {/* KPI columns */}
-      {[
-        { x: 365, label: "ORDERS", value: "850", delta: "+10%" },
-        { x: 445, label: "BUY BOX", value: "82%", delta: "+9%" },
-        { x: 525, label: "REVENUE", value: "$21.5k", delta: "+19.4%" },
-        { x: 605, label: "PROFIT", value: "$6.8k", delta: "+23.6%" },
-      ].map((k, i) => (
-        <g key={i}>
-          <text x={k.x} y="225" fontFamily="Inter,system-ui" fontSize="9" fontWeight="600" fill="#94a3b8" letterSpacing="0.5">{k.label}</text>
-          <text x={k.x} y="252" fontFamily="Inter,system-ui" fontSize="18" fontWeight="800" fill="#0f172a">{k.value}</text>
-          <text x={k.x} y="275" fontFamily="Inter,system-ui" fontSize="10" fontWeight="700" fill="hsl(150 70% 40%)">▲ {k.delta}</text>
-        </g>
-      ))}
-
-      {/* Margin column */}
-      <text x="685" y="225" fontFamily="Inter,system-ui" fontSize="9" fontWeight="600" fill="#94a3b8" letterSpacing="0.5">MARGIN</text>
-      <text x="685" y="252" fontFamily="Inter,system-ui" fontSize="18" fontWeight="800" fill="url(#shm-accent)">31.6%</text>
-      <text x="685" y="275" fontFamily="Inter,system-ui" fontSize="10" fontWeight="700" fill="hsl(150 70% 40%)">▲ +3.6%</text>
-
-      {/* Subtle pulse ring on Repricer ON */}
-      <circle cx="200" cy="266" r="3" fill="hsl(330 81% 60%)">
-        <animate attributeName="r" values="3;7;3" dur="2.4s" repeatCount="indefinite" />
-        <animate attributeName="opacity" values="1;0;1" dur="2.4s" repeatCount="indefinite" />
-      </circle>
-    </g>
-  </svg>
-);
 
 /* ------------------------------------------------------------------ */
 /* Hero dashboard – kept                                               */
@@ -240,11 +355,11 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
 
     {/* channel cards left */}
     {[
-      { y: 60,  name: "Amazon",  dot: "#f59e0b" },
+      { y: 60, name: "Amazon", dot: "#f59e0b" },
       { y: 130, name: "Walmart", dot: "#2563eb" },
-      { y: 200, name: "eBay",    dot: "#ef4444" },
-      { y: 270, name: "Etsy",    dot: "#ea580c" },
-      { y: 340, name: "Flipkart",dot: "#1d4ed8" },
+      { y: 200, name: "eBay", dot: "#ef4444" },
+      { y: 270, name: "Etsy", dot: "#ea580c" },
+      { y: 340, name: "Flipkart", dot: "#1d4ed8" },
     ].map((c) => (
       <g key={c.name} filter="url(#hd-sh)">
         <rect x="28" y={c.y} width="150" height="50" rx="10" fill="white" stroke="#e2e8f0" />
@@ -268,11 +383,11 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
 
     {/* right output cards */}
     {[
-      { y: 60,  title: "Inventory",  val: "12,480 SKUs" },
-      { y: 130, title: "Pricing",    val: "Rules active" },
-      { y: 200, title: "Orders",     val: "241 / today" },
-      { y: 270, title: "Catalog",    val: "AI generated" },
-      { y: 340, title: "Revenue",    val: "▲ 32% MoM" },
+      { y: 60, title: "Inventory", val: "12,480 SKUs" },
+      { y: 130, title: "Pricing", val: "Rules active" },
+      { y: 200, title: "Orders", val: "241 / today" },
+      { y: 270, title: "Catalog", val: "AI generated" },
+      { y: 340, title: "Revenue", val: "▲ 32% MoM" },
     ].map((c) => (
       <g key={c.title} filter="url(#hd-sh)">
         <rect x="392" y={c.y} width="140" height="50" rx="10" fill="white" stroke="#e2e8f0" />
@@ -307,12 +422,19 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => (
   >
     <DiagramDefs /> {/*Keep your defs */}
 
+    <defs>
+      <linearGradient id="analytics-bar2" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="#60a5fa" />
+        <stop offset="100%" stopColor="#3b82f6" />
+      </linearGradient>
+    </defs>
+
     {/* Main Card */}
     <rect x="10" y="10" width="540" height="480" rx="20" fill="white" stroke="#e2e8f0" strokeWidth="8" />
 
     {/* Header Chip */}
-    <rect x="32" y="42" width="148" height="26" rx="13" fill="#f3e8ff" />
-    <text x="106" y="59" textAnchor="middle" fontSize="11.5" fontWeight="700" fill="#6d28d9" letterSpacing="1.2">
+    <rect x="32" y="42" width="148" height="26" rx="13" fill="#dbeafe" />
+    <text x="106" y="59" textAnchor="middle" fontSize="11.5" fontWeight="700" fill="#1e40af" letterSpacing="1.2">
       AI & ANALYTICS
     </text>
 
@@ -321,8 +443,8 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => (
     {/* KPI Cards - Improved Spacing */}
     {[
       { x: 32, label: "GMV", val: "$12.4M", color: "#1e40af" },
-      { x: 198, label: "Orders", val: "84,210", color: "#6d28d9" },
-      { x: 364, label: "ROAS", val: "4.8×", color: "#db2777" },
+      { x: 198, label: "Orders", val: "84,210", color: "#2563eb" },
+      { x: 364, label: "ROAS", val: "4.8×", color: "#1d4ed8" },
     ].map((k, i) => (
       <g key={i}>
         <rect x={k.x} y="130" width="158" height="78" rx="14" fill="#f8fafc" stroke="#e2e8f0" />
@@ -343,14 +465,14 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => (
 
       return (
         <g key={i}>
-          {/* Purple Bar */}
+          {/* Blue Bar */}
           <rect
             x={52 + i * 45}
             y={440 - purpleH}
             width="19"
             height={purpleH}
             rx="5"
-            fill="url(#g-purple)"
+            fill="url(#g-blue)"
           >
             <animate
               attributeName="height"
@@ -368,14 +490,14 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => (
             />
           </rect>
 
-          {/* Pink Bar */}
+          {/* Light Blue Bar */}
           <rect
             x={76 + i * 45}
             y={440 - pinkH}
             width="19"
             height={pinkH}
             rx="5"
-            fill="url(#g-pink)"
+            fill="url(#analytics-bar2)"
             opacity="0.9"
           >
             <animate
@@ -397,10 +519,10 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => (
       );
     })}
     {/* Legend */}
-    <circle cx="52" cy="236" r="4.5" fill="#6d28d9" />
+    <circle cx="52" cy="236" r="4.5" fill="#1e40af" />
     <text x="64" y="240" fontSize="11" fill="#475569" fontWeight="500">BigQuery</text>
 
-    <circle cx="138" cy="236" r="4.5" fill="#db2777" />
+    <circle cx="138" cy="236" r="4.5" fill="#60a5fa" />
     <text x="150" y="240" fontSize="11" fill="#475569" fontWeight="500">Power BI</text>
   </svg>
 );
@@ -635,39 +757,39 @@ export const WaveDivider = ({ flip = false, className = "" }: { flip?: boolean; 
 export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 560 320" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <DiagramDefs />
-    <rect x="10" y="10" width="540" height="300" rx="16" fill="#faf5ff" stroke="#e9d5ff" />
+    <rect x="10" y="10" width="540" height="300" rx="16" fill="#f0f7ff" stroke="#bfdbfe" />
     {/* Inputs */}
     {["Data", "Price", "Stock", "Trend"].map((l, i) => (
       <g key={l}>
-        <rect x="40" y={50 + i * 56} width="80" height="36" rx="8" fill="white" stroke="#a78bfa" />
-        <text x="80" y={73 + i * 56} textAnchor="middle" fontSize="12" fontWeight="700" fill="#6d28d9">{l}</text>
+        <rect x="40" y={50 + i * 56} width="80" height="36" rx="8" fill="white" stroke="#93c5fd" />
+        <text x="80" y={73 + i * 56} textAnchor="middle" fontSize="12" fontWeight="700" fill="#1e40af">{l}</text>
         {[0, 1, 2].map((j) => (
-          <line key={j} x1="120" y1={68 + i * 56} x2="240" y2={90 + j * 70} stroke="#c4b5fd" strokeWidth="1" />
+          <line key={j} x1="120" y1={68 + i * 56} x2="240" y2={90 + j * 70} stroke="#93c5fd" strokeWidth="1" />
         ))}
       </g>
     ))}
     {/* Hidden layer */}
     {[0, 1, 2].map((j) => (
       <g key={j}>
-        <rect x="240" y={70 + j * 70} width="60" height="40" rx="10" fill="url(#g-purple)">
+        <rect x="240" y={70 + j * 70} width="60" height="40" rx="10" fill="url(#g-blue)">
           <animate attributeName="opacity" values="0.7;1;0.7" dur={`${1.5 + j * 0.3}s`} repeatCount="indefinite" />
         </rect>
         {[0, 1, 2].map((k) => (
-          <line key={k} x1="300" y1={90 + j * 70} x2="400" y2={80 + k * 70} stroke="#c4b5fd" strokeWidth="1" />
+          <line key={k} x1="300" y1={90 + j * 70} x2="400" y2={80 + k * 70} stroke="#93c5fd" strokeWidth="1" />
         ))}
       </g>
     ))}
     {/* Outputs */}
     {["Price opt.", "Forecast", "Restock"].map((l, i) => (
       <g key={l}>
-        <rect x="400" y={60 + i * 70} width="120" height="40" rx="10" fill="white" stroke="#db2777" />
-        <text x="460" y={85 + i * 70} textAnchor="middle" fontSize="12" fontWeight="700" fill="#9d174d">{l}</text>
+        <rect x="400" y={60 + i * 70} width="120" height="40" rx="10" fill="white" stroke="#3b82f6" />
+        <text x="460" y={85 + i * 70} textAnchor="middle" fontSize="12" fontWeight="700" fill="#1e40af">{l}</text>
       </g>
     ))}
     {/* Footer bar */}
-    <rect x="40" y="270" width="380" height="8" rx="4" fill="#ede9fe" />
-    <rect x="40" y="270" width="340" height="8" rx="4" fill="url(#g-purple)" />
-    <text x="430" y="278" fontSize="11" fontWeight="700" fill="#6d28d9">90%+ automation</text>
+    <rect x="40" y="270" width="380" height="8" rx="4" fill="#dbeafe" />
+    <rect x="40" y="270" width="340" height="8" rx="4" fill="url(#g-blue)" />
+    <text x="430" y="278" fontSize="11" fontWeight="700" fill="#1e40af">90%+ automation</text>
   </svg>
 );
 
@@ -678,15 +800,15 @@ export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => (
 export const InfraIllustration = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 560 380" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <DiagramDefs />
-    <rect x="10" y="10" width="540" height="360" rx="16" fill="#ecfdf5" stroke="#a7f3d0" />
-    <text x="30" y="40" fontSize="11" fontWeight="700" fill="#047857" letterSpacing="2">AWS · CLOUD &amp; HOSTING</text>
+    <rect x="10" y="10" width="540" height="360" rx="16" fill="#eff6ff" stroke="#bfdbfe" />
+    <text x="30" y="40" fontSize="11" fontWeight="700" fill="#1e40af" letterSpacing="2">AWS · CLOUD &amp; HOSTING</text>
 
     {[
-      { y: 60, label: "CDN / Load balancer", tone: "#10b981" },
-      { y: 110, label: "Auto-scaling compute (EC2 + Lambda)", tone: "#059669" },
-      { y: 160, label: "Managed database (RDS + DynamoDB)", tone: "#047857" },
-      { y: 210, label: "PostgreSQL + MongoDB · isolated pods", tone: "#065f46" },
-      { y: 260, label: "Object storage (S3) · A+ content", tone: "#064e3b" },
+      { y: 60, label: "CDN / Load balancer", tone: "#2563eb" },
+      { y: 110, label: "Auto-scaling compute (EC2 + Lambda)", tone: "#1d4ed8" },
+      { y: 160, label: "Managed database (RDS + DynamoDB)", tone: "#1e40af" },
+      { y: 210, label: "PostgreSQL + MongoDB · isolated pods", tone: "#1e3a8a" },
+      { y: 260, label: "Object storage (S3) · A+ content", tone: "#172554" },
     ].map((row, i) => (
       <g key={i}>
         <rect x="60" y={row.y} width="440" height="38" rx="10" fill={row.tone} />
@@ -695,12 +817,12 @@ export const InfraIllustration = (props: SVGProps<SVGSVGElement>) => (
     ))}
 
     {/* Region pills */}
-    <rect x="60" y="312" width="120" height="32" rx="16" fill="white" stroke="#10b981" />
-    <text x="120" y="332" textAnchor="middle" fontSize="12" fontWeight="700" fill="#047857">India</text>
-    <rect x="220" y="312" width="120" height="32" rx="16" fill="url(#g-emerald)" />
+    <rect x="60" y="312" width="120" height="32" rx="16" fill="white" stroke="#2563eb" />
+    <text x="120" y="332" textAnchor="middle" fontSize="12" fontWeight="700" fill="#1e40af">India</text>
+    <rect x="220" y="312" width="120" height="32" rx="16" fill="url(#g-blue)" />
     <text x="280" y="332" textAnchor="middle" fontSize="12" fontWeight="700" fill="white">99.99% Uptime SLA</text>
-    <rect x="380" y="312" width="120" height="32" rx="16" fill="white" stroke="#10b981" />
-    <text x="440" y="332" textAnchor="middle" fontSize="12" fontWeight="700" fill="#047857">USA · EU</text>
+    <rect x="380" y="312" width="120" height="32" rx="16" fill="white" stroke="#2563eb" />
+    <text x="440" y="332" textAnchor="middle" fontSize="12" fontWeight="700" fill="#1e40af">USA · EU</text>
   </svg>
 );
 
@@ -839,10 +961,10 @@ export const RepricerIllustration = (props: SVGProps<SVGSVGElement>) => (
 /* ------------------------------------------------------------------ */
 export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
   const STAGES = [
-    { n: 1, title: "Order received", sub: "Amazon SP-API", from: "#4338ca", to: "#6366f1" },
-    { n: 2, title: "Inventory check", sub: "Multi-WH route", from: "#6d28d9", to: "#8b5cf6" },
-    { n: 3, title: "Pick & pack", sub: "WMS barcode", from: "#be185d", to: "#db2777" },
-    { n: 4, title: "Label + ship", sub: "Best courier rate", from: "#c2410c", to: "#ea580c" },
+    { n: 1, title: "Order received", sub: "Amazon SP-API", from: "#1e40af", to: "#2563eb" },
+    { n: 2, title: "Inventory check", sub: "Multi-WH route", from: "#1d4ed8", to: "#3b82f6" },
+    { n: 3, title: "Pick & pack", sub: "WMS barcode", from: "#1e3a8a", to: "#1e40af" },
+    { n: 4, title: "Label + ship", sub: "Best courier rate", from: "#2563eb", to: "#60a5fa" },
     { n: 5, title: "Tracked delivery", sub: "Customer notified", from: "#1d4ed8", to: "#3b82f6" },
   ];
 
@@ -871,9 +993,9 @@ export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
       <defs>
         {/* Outer card gradient */}
         <linearGradient id="of-bg" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0%" stopColor="#f5f3ff" />
+          <stop offset="0%" stopColor="#f0f4ff" />
           <stop offset="55%" stopColor="#eff6ff" />
-          <stop offset="100%" stopColor="#fff7ed" />
+          <stop offset="100%" stopColor="#f0f7ff" />
         </linearGradient>
 
         {/* Timeline gradient */}
@@ -885,8 +1007,8 @@ export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
           y2={TL_Y}
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0%" stopColor="#6366f1" />
-          <stop offset="100%" stopColor="#f59e0b" />
+          <stop offset="0%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#1e40af" />
         </linearGradient>
 
         {/* Per-stage card gradients */}
@@ -899,10 +1021,10 @@ export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
 
         {/* Card shadow */}
         <filter id="of-card-shadow" x="-5%" y="-5%" width="110%" height="115%">
-          <feDropShadow dx="0" dy="3" stdDeviation="7" floodColor="#c4b5fd" floodOpacity="0.18" />
+          <feDropShadow dx="0" dy="3" stdDeviation="7" floodColor="#93c5fd" floodOpacity="0.18" />
         </filter>
         <filter id="of-outer-shadow" x="-3%" y="-3%" width="106%" height="110%">
-          <feDropShadow dx="0" dy="2" stdDeviation="8" floodColor="#c4b5fd" floodOpacity="0.15" />
+          <feDropShadow dx="0" dy="2" stdDeviation="8" floodColor="#93c5fd" floodOpacity="0.15" />
         </filter>
       </defs>
 
@@ -910,7 +1032,7 @@ export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
       <rect
         x="8" y="8" width="744" height="324" rx="22"
         fill="url(#of-bg)"
-        stroke="#e0d9f7" strokeWidth="1.2"
+        stroke="#bfdbfe" strokeWidth="1.2"
         filter="url(#of-outer-shadow)"
       />
 
@@ -996,13 +1118,13 @@ export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
                 <line
                   x1={sx + CARD_W + 2} y1={CARD_Y + CARD_H / 2}
                   x2={sx + CARD_W + ARROW_W - 2} y2={CARD_Y + CARD_H / 2}
-                  stroke="#a5b4fc" strokeWidth="1.5"
+                  stroke="#93c5fd" strokeWidth="1.5"
                   className="of-arrow-flow"
                   style={{ animationDelay: `${i * 0.15}s` }}
                 />
                 <path
                   d={`M${sx + CARD_W + ARROW_W - 7} ${CARD_Y + CARD_H / 2 - 5} L${sx + CARD_W + ARROW_W - 1} ${CARD_Y + CARD_H / 2} L${sx + CARD_W + ARROW_W - 7} ${CARD_Y + CARD_H / 2 + 5}`}
-                  stroke="#a5b4fc" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                  stroke="#93c5fd" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
                 />
               </g>
             )}
@@ -1011,7 +1133,7 @@ export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
             <circle
               cx={midX} cy={DOT_YS}
               r="5"
-              fill="white" stroke="#6366f1" strokeWidth="2"
+              fill="white"               stroke="#2563eb" strokeWidth="2"
               className={`of-dot-${i}`}
             />
 
@@ -1064,7 +1186,7 @@ export const PricingCalculatorMockup = (props: SVGProps<SVGSVGElement>) => (
     <defs>
       <linearGradient id="pc-grad" x1="0" x2="1" y1="0" y2="1">
         <stop offset="0%" stopColor="hsl(226 71% 50%)" />
-        <stop offset="100%" stopColor="hsl(330 81% 60%)" />
+        <stop offset="100%" stopColor="hsl(224 76% 32%)" />
       </linearGradient>
     </defs>
     <rect x="20" y="20" width="520" height="360" rx="20" fill="white" stroke="#e2e8f0" />
@@ -1095,13 +1217,13 @@ export const PricingCalculatorMockup = (props: SVGProps<SVGSVGElement>) => (
       <text x={300} y={156} fontSize={28} fontWeight={800} fill="hsl(226 71% 35%)">+9.4%</text>
       <text x={420} y={156} fontSize={11} fill="#475569">in 90 days</text>
 
-      <rect x={284} y={185} width={232} height={75} rx={14} fill="hsl(330 81% 97%)" stroke="hsl(330 81% 90%)" />
-      <text x={300} y={207} fontSize={10} fontWeight={700} fill="hsl(330 81% 45%)" letterSpacing="0.5">EXTRA REVENUE</text>
-      <text x={300} y={241} fontSize={28} fontWeight={800} fill="hsl(330 81% 40%)">$54.8k</text>
+      <rect x={284} y={185} width={232} height={75} rx={14} fill="hsl(217 91% 96%)" stroke="hsl(217 91% 88%)" />
+      <text x={300} y={207} fontSize={10} fontWeight={700} fill="hsl(217 91% 40%)" letterSpacing="0.5">EXTRA REVENUE</text>
+      <text x={300} y={241} fontSize={28} fontWeight={800} fill="hsl(217 91% 35%)">$54.8k</text>
       <text x={430} y={241} fontSize={11} fill="#475569">/ month</text>
 
       <rect x={284} y={270} width={232} height={70} rx={14} fill="#0f172a" />
-      <text x={300} y={292} fontSize={10} fontWeight={700} fill="#a78bfa" letterSpacing="0.5">PAYBACK PERIOD</text>
+      <text x={300} y={292} fontSize={10} fontWeight={700} fill="#60a5fa" letterSpacing="0.5">PAYBACK PERIOD</text>
       <text x={300} y={324} fontSize={24} fontWeight={800} fill="white">18 days</text>
       <text x={420} y={324} fontSize={11} fill="#94a3b8">to break even</text>
     </g>
@@ -1115,8 +1237,8 @@ export const ContactMapIllustration = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 600 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <defs>
       <linearGradient id="cm-bg" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0%" stopColor="#fdf2f8" />
-        <stop offset="100%" stopColor="#eff6ff" />
+        <stop offset="0%" stopColor="#eff6ff" />
+        <stop offset="100%" stopColor="#f0f4ff" />
       </linearGradient>
     </defs>
     <rect x="10" y="10" width="580" height="340" rx="20" fill="url(#cm-bg)" stroke="#e2e8f0" />
@@ -1133,7 +1255,7 @@ export const ContactMapIllustration = (props: SVGProps<SVGSVGElement>) => (
           (c > 23 && c < 28 && r > 11 && r < 15);  // oceania
         return (
           <circle key={`${r}-${c}`} cx={cx} cy={cy} r={1.6}
-            fill={land ? "#6366f1" : "#cbd5e1"} opacity={land ? 0.7 : 0.35} />
+            fill={land ? "#3b82f6" : "#cbd5e1"} opacity={land ? 0.7 : 0.35} />
         );
       })
     )}
@@ -1146,18 +1268,18 @@ export const ContactMapIllustration = (props: SVGProps<SVGSVGElement>) => (
       { x: 500, y: 270, label: "Sydney" },
     ].map((h) => (
       <g key={h.label}>
-        <circle cx={h.x} cy={h.y} r={14} fill="hsl(330 81% 60%)" opacity={0.2}>
+        <circle cx={h.x} cy={h.y} r={14} fill="hsl(226 71% 50%)" opacity={0.2}>
           <animate attributeName="r" values="10;22;10" dur="2.6s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="0.4;0;0.4" dur="2.6s" repeatCount="indefinite" />
         </circle>
-        <circle cx={h.x} cy={h.y} r={6} fill="hsl(330 81% 55%)" stroke="white" strokeWidth={2} />
+        <circle cx={h.x} cy={h.y} r={6} fill="hsl(226 71% 50%)" stroke="white" strokeWidth={2} />
         <rect x={h.x + 10} y={h.y - 18} width={h.label.length * 6.5 + 12} height={20} rx={10} fill="white" stroke="#e2e8f0" />
         <text x={h.x + 16} y={h.y - 4} fontSize={10} fontWeight={700} fill="#0f172a">{h.label}</text>
       </g>
     ))}
     {/* Arc connections */}
     <path d="M130 180 Q 220 60, 360 175" stroke="hsl(226 71% 50%)" strokeWidth={1.5} fill="none" strokeDasharray="4 4" opacity={0.6} />
-    <path d="M360 175 Q 420 90, 460 200" stroke="hsl(330 81% 55%)" strokeWidth={1.5} fill="none" strokeDasharray="4 4" opacity={0.6} />
+    <path d="M360 175 Q 420 90, 460 200" stroke="hsl(217 91% 50%)" strokeWidth={1.5} fill="none" strokeDasharray="4 4" opacity={0.6} />
     <path d="M460 200 Q 510 240, 500 270" stroke="hsl(226 71% 50%)" strokeWidth={1.5} fill="none" strokeDasharray="4 4" opacity={0.6} />
     <text x={300} y={336} textAnchor="middle" fontSize={11} fill="#64748b">Sales · Support · Engineering — across 5 hubs, 24/7 coverage</text>
   </svg>
@@ -1170,8 +1292,8 @@ export const LogoChip = ({ name, tone = "primary" }: { name: string; tone?: "pri
   void tone;
   const initials = name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
   return (
-    <div className="group inline-flex items-center gap-2.5 pl-2 pr-4 py-2 rounded-full bg-white border border-slate-200 hover:border-primary/40 hover:shadow-sm transition-all duration-200">
-      <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary/10 to-orange-50 text-primary flex items-center justify-center text-[11px] font-bold tracking-tight">
+    <div className="group inline-flex items-center gap-2.5 pl-2 pr-4 py-2 rounded-full bg-white border border-slate-200 hover:border-blue-300 hover:shadow-sm transition-all duration-200">
+      <div className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-50 to-blue-100 text-blue-700 flex items-center justify-center text-[11px] font-bold tracking-tight">
         {initials}
       </div>
       <span className="text-sm font-medium text-slate-700 whitespace-nowrap group-hover:text-slate-900">{name}</span>
@@ -1431,9 +1553,9 @@ export const MarketplaceMeshDiagram = (
   const R = 175;
 
   return (
-    <div className="relative w-full overflow-hidden rounded-[28px] bg-gradient-to-br from-[#eef2ff] via-[#f8f5ff] to-[#fdf2fb] p-6 shadow-[0_20px_60px_rgba(91,61,232,.12)]">
+    <div className="relative w-full overflow-hidden rounded-[28px] bg-gradient-to-br from-blue-50 via-white to-blue-50/60 p-6 shadow-[0_20px_60px_rgba(37,99,235,.10)]">
       {/* ambient glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,80,255,.08),transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,.06),transparent_70%)] pointer-events-none" />
 
       <div className="relative z-10 mb-4">
         <h3 className="text-[18px] font-bold tracking-tight text-slate-900">
@@ -1455,13 +1577,13 @@ export const MarketplaceMeshDiagram = (
       >
         <defs>
           <radialGradient id="mm-bg" cx="50%" cy="50%" r="60%">
-            <stop offset="0%" stopColor="#fdf4ff" />
-            <stop offset="100%" stopColor="#eff6ff" />
+            <stop offset="0%" stopColor="#eff6ff" />
+            <stop offset="100%" stopColor="#dbeafe" />
           </radialGradient>
 
           <linearGradient id="mm-core" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0%" stopColor="#7c5ef7" />
-            <stop offset="100%" stopColor="#c23b8e" />
+            <stop offset="0%" stopColor="#2563eb" />
+            <stop offset="100%" stopColor="#1e3a8a" />
           </linearGradient>
 
           <radialGradient id="mm-shine" cx="35%" cy="30%" r="60%">
@@ -1491,7 +1613,7 @@ export const MarketplaceMeshDiagram = (
             cx={cx}
             cy={cy}
             r={r}
-            stroke="#c7c5e8"
+            stroke="#93c5fd"
             strokeWidth="1"
             strokeDasharray="4 5"
             opacity={0.4}
@@ -1537,7 +1659,7 @@ export const MarketplaceMeshDiagram = (
         })}
 
         {/* pulse rings */}
-        <circle cx={cx} cy={cy} r="56" fill="#7c5ef7" opacity="0.18">
+        <circle cx={cx} cy={cy} r="56" fill="#2563eb" opacity="0.18">
           <animate
             attributeName="r"
             values="56;90"
@@ -1552,7 +1674,7 @@ export const MarketplaceMeshDiagram = (
           />
         </circle>
 
-        <circle cx={cx} cy={cy} r="56" fill="#c23b8e" opacity="0.12">
+        <circle cx={cx} cy={cy} r="56" fill="#1e40af" opacity="0.12">
           <animate
             attributeName="r"
             values="56;110"
@@ -1697,9 +1819,9 @@ export const MarketplaceMeshDiagram = (
         {/* legend */}
         <g transform="translate(70,455)">
           {[
-            { c: "#10b981", l: "Live sync" },
-            { c: "#f59e0b", l: "Auto-repricer" },
-            { c: "#ec4899", l: "AI listing" },
+            { c: "#2563eb", l: "Live sync" },
+            { c: "#1d4ed8", l: "Auto-repricer" },
+            { c: "#3b82f6", l: "AI listing" },
           ].map((p, i) => (
             <g key={i} transform={`translate(${i * 180},0)`}>
               <rect
@@ -1745,8 +1867,8 @@ export const RepricerStrategyChart = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 600 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <defs>
       <linearGradient id="rsc-fill" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0%" stopColor="hsl(330 81% 60%)" stopOpacity="0.3" />
-        <stop offset="100%" stopColor="hsl(330 81% 60%)" stopOpacity="0" />
+        <stop offset="0%" stopColor="hsl(226 71% 50%)" stopOpacity="0.3" />
+        <stop offset="100%" stopColor="hsl(226 71% 50%)" stopOpacity="0" />
       </linearGradient>
     </defs>
     <rect x="10" y="10" width="580" height="340" rx="20" fill="white" stroke="#e2e8f0" />
@@ -1773,15 +1895,15 @@ export const RepricerStrategyChart = (props: SVGProps<SVGSVGElement>) => (
 
     {/* Ctasis line (smooth, slightly under ceiling) */}
     <path d="M60 195 C 110 175, 170 200, 230 155 S 350 215, 410 145 S 500 195, 540 165"
-      stroke="hsl(330 81% 55%)" strokeWidth="3" fill="none" />
+      stroke="hsl(226 71% 50%)" strokeWidth="3" fill="none" />
     <path d="M60 195 C 110 175, 170 200, 230 155 S 350 215, 410 145 S 500 195, 540 165 L 540 280 L 60 280 Z"
       fill="url(#rsc-fill)" />
-    <text x="540" y="155" fontSize="10" fontWeight="800" fill="hsl(330 81% 45%)">Ctasis</text>
+    <text x="540" y="155" fontSize="10" fontWeight="800" fill="hsl(226 71% 40%)">Ctasis</text>
 
     {/* Data points */}
     {[[230, 155], [410, 145], [540, 165]].map(([x, y], i) => (
       <g key={i}>
-        <circle cx={x} cy={y} r="5" fill="white" stroke="hsl(330 81% 55%)" strokeWidth="2.5" />
+        <circle cx={x} cy={y} r="5" fill="white" stroke="hsl(226 71% 50%)" strokeWidth="2.5" />
       </g>
     ))}
   </svg>
@@ -1794,13 +1916,13 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 760 520" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <defs>
       <linearGradient id="svh-bg" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stopColor="#ffffff" /><stop offset="100%" stopColor="#fff7ed" />
+        <stop offset="0%" stopColor="#ffffff" /><stop offset="100%" stopColor="#eff6ff" />
       </linearGradient>
       <linearGradient id="svh-tile" x1="0" x2="0" y1="0" y2="1">
         <stop offset="0%" stopColor="hsl(226 71% 50%)" /><stop offset="100%" stopColor="hsl(226 71% 38%)" />
       </linearGradient>
       <linearGradient id="svh-tile2" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0%" stopColor="hsl(14 88% 62%)" /><stop offset="100%" stopColor="hsl(20 90% 50%)" />
+        <stop offset="0%" stopColor="hsl(217 91% 50%)" /><stop offset="100%" stopColor="hsl(224 76% 32%)" />
       </linearGradient>
       <filter id="svh-shadow" x="-20%" y="-20%" width="140%" height="140%">
         <feGaussianBlur stdDeviation="10" /><feOffset dy="6" />
@@ -1811,7 +1933,7 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
     <rect x="20" y="20" width="720" height="480" rx="24" fill="url(#svh-bg)" stroke="#e2e8f0" />
     <text x="48" y="60" fontSize="13" fontWeight="800" fill="#0f172a">Service Console</text>
     <text x="48" y="80" fontSize="11" fill="#64748b">12 services, one operator view — every action is auditable.</text>
-    <rect x="600" y="44" width="118" height="26" rx="13" fill="#10b981" />
+    <rect x="600" y="44" width="118" height="26" rx="13" fill="#2563eb" />
     <text x="659" y="61" textAnchor="middle" fontSize="10" fontWeight="800" fill="white">● ALL HEALTHY</text>
 
     {/* Service tiles grid */}
@@ -1828,8 +1950,8 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
         <rect x={tile.x} y={tile.y} width={168} height={6} rx={3} fill={tile.c} />
         <text x={tile.x + 16} y={tile.y + 36} fontSize={11} fontWeight={800} fill="#0f172a">{tile.t}</text>
         <text x={tile.x + 16} y={tile.y + 64} fontSize={18} fontWeight={800} fill="#0f172a">{tile.v}</text>
-        <rect x={tile.x + 16} y={tile.y + 76} width={56} height={18} rx={9} fill="hsl(150 70% 92%)" />
-        <text x={tile.x + 44} y={tile.y + 89} textAnchor="middle" fontSize={9} fontWeight={800} fill="hsl(150 70% 30%)">{tile.k}</text>
+        <rect x={tile.x + 16} y={tile.y + 76} width={56} height={18} rx={9} fill="hsl(217 91% 95%)" />
+        <text x={tile.x + 44} y={tile.y + 89} textAnchor="middle" fontSize={9} fontWeight={800} fill="hsl(217 91% 40%)">{tile.k}</text>
       </g>
     ))}
 
@@ -1838,10 +1960,10 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
       <rect x="48" y="358" width="664" height="124" rx="16" fill="white" stroke="#e2e8f0" />
       <text x="64" y="382" fontSize="11" fontWeight="800" fill="#64748b" letterSpacing="1">LIVE ACTIVITY</text>
       {[
-        { y: 402, t: "Repricer raised SKU-8632 to $24.49", c: "hsl(14 88% 62%)" },
-        { y: 424, t: "Inventory synced from Shopify → Amazon (FBM)", c: "hsl(226 71% 50%)" },
-        { y: 446, t: "Order #14829 routed to USA-East warehouse", c: "hsl(150 70% 40%)" },
-        { y: 468, t: "AI listing generator drafted 18 new bullets", c: "hsl(20 90% 55%)" },
+        { y: 402, t: "Repricer raised SKU-8632 to $24.49", c: "hsl(226 71% 50%)" },
+        { y: 424, t: "Inventory synced from Shopify → Amazon (FBM)", c: "hsl(217 91% 50%)" },
+        { y: 446, t: "Order #14829 routed to USA-East warehouse", c: "hsl(226 71% 40%)" },
+        { y: 468, t: "AI listing generator drafted 18 new bullets", c: "hsl(226 71% 55%)" },
       ].map((a, i) => (
         <g key={i}>
           <circle cx="74" cy={a.y - 4} r="4" fill={a.c} />
@@ -1879,14 +2001,14 @@ export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => {
         {/* Card background — soft lavender-to-sky light gradient */}
         <linearGradient id="it-bg" x1="0" x2="1" y1="0" y2="1">
           <stop offset="0%" stopColor="#f0f4ff" />
-          <stop offset="55%" stopColor="#f8f6ff" />
-          <stop offset="100%" stopColor="#fff0f9" />
+          <stop offset="55%" stopColor="#eff6ff" />
+          <stop offset="100%" stopColor="#f0f7ff" />
         </linearGradient>
 
         {/* Region card bg */}
         <linearGradient id="it-region-bg" x1="0" x2="0" y1="0" y2="1">
           <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="100%" stopColor="#f5f3ff" />
+          <stop offset="100%" stopColor="#f0f7ff" />
         </linearGradient>
 
         {/* Pod gradient — blue pill */}
@@ -1897,14 +2019,14 @@ export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => {
 
         {/* Spoke gradient */}
         <linearGradient id="it-spoke-grad" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="0%" stopColor="#f97316" />
-          <stop offset="100%" stopColor="#6366f1" />
+          <stop offset="0%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#1e40af" />
         </linearGradient>
 
-        {/* Core card gradient — warm orange */}
+        {/* Core card gradient — deep blue */}
         <linearGradient id="it-core-grad" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0%" stopColor="#f97316" />
-          <stop offset="100%" stopColor="#ea580c" />
+          <stop offset="0%" stopColor="#1e40af" />
+          <stop offset="100%" stopColor="#1e3a8a" />
         </linearGradient>
 
         {/* Core shine */}
@@ -1915,13 +2037,13 @@ export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => {
 
         {/* Drop shadow */}
         <filter id="it-card-shadow" x="-6%" y="-6%" width="112%" height="118%">
-          <feDropShadow dx="0" dy="3" stdDeviation="7" floodColor="#c4b5fd" floodOpacity="0.18" />
+          <feDropShadow dx="0" dy="3" stdDeviation="7" floodColor="#93c5fd" floodOpacity="0.18" />
         </filter>
         <filter id="it-region-shadow" x="-8%" y="-8%" width="116%" height="120%">
-          <feDropShadow dx="0" dy="2" stdDeviation="5" floodColor="#818cf8" floodOpacity="0.14" />
+          <feDropShadow dx="0" dy="2" stdDeviation="5" floodColor="#60a5fa" floodOpacity="0.14" />
         </filter>
         <filter id="it-core-shadow" x="-12%" y="-12%" width="124%" height="130%">
-          <feDropShadow dx="0" dy="4" stdDeviation="10" floodColor="#f97316" floodOpacity="0.30" />
+          <feDropShadow dx="0" dy="4" stdDeviation="10" floodColor="#2563eb" floodOpacity="0.30" />
         </filter>
       </defs>
 
@@ -1929,7 +2051,7 @@ export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => {
       <rect
         x="8" y="8" width="784" height="484" rx="24"
         fill="url(#it-bg)"
-        stroke="#e0d9f7" strokeWidth="1.2"
+        stroke="#bfdbfe" strokeWidth="1.2"
         filter="url(#it-card-shadow)"
       />
 
@@ -1937,7 +2059,7 @@ export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => {
       <text
         x="36" y="44"
         fontFamily="'Space Grotesk','DM Sans',sans-serif"
-        fontSize="10.5" fontWeight="700" fill="#818cf8"
+        fontSize="10.5" fontWeight="700" fill="#2563eb"
         letterSpacing="2.5"
       >
         MULTI-REGION TOPOLOGY
@@ -1954,14 +2076,14 @@ export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => {
       {/* ── Orbit ellipse (CDN edge ring) ── */}
       <ellipse
         cx="380" cy="290" rx="310" ry="145"
-        stroke="#c7d2fe" strokeWidth="1"
+        stroke="#93c5fd" strokeWidth="1"
         className="it-orbit"
         fill="none" opacity="0.6"
       />
       <text
         x="52" y="290"
         fontFamily="'DM Sans',sans-serif"
-        fontSize="10" fontWeight="700" fill="#a5b4fc"
+        fontSize="10" fontWeight="700" fill="#60a5fa"
         className="it-fade"
       >
         CDN / Edge
@@ -2001,18 +2123,18 @@ export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => {
             <rect
               x={x0} y={y0} width={W} height={H} rx="16"
               fill="url(#it-region-bg)"
-              stroke="#818cf8" strokeWidth="1.2" strokeOpacity="0.5"
+              stroke="#60a5fa" strokeWidth="1.2" strokeOpacity="0.5"
               filter="url(#it-region-shadow)"
             />
             {/* Top colored accent bar */}
-            <rect x={x0} y={y0} width={W} height={H - 120} rx="16" fill="#818cf8" opacity="0.5" />
+            <rect x={x0} y={y0} width={W} height={H - 120} rx="16" fill="#3b82f6" opacity="0.5" />
 
             {/* Label */}
             <text
               x={r.cx} y={y0 + 18}
               textAnchor="middle"
               fontFamily="'DM Sans',sans-serif"
-              fontSize="11" fontWeight="700" fill="#4338ca"
+              fontSize="11" fontWeight="700" fill="#1e40af"
             >
               {r.label}
             </text>
@@ -2045,7 +2167,7 @@ export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => {
               x={r.cx} y={y0 + H - 10}
               textAnchor="middle"
               fontFamily="'DM Sans',sans-serif"
-              fontSize="10" fill="#818cf8"
+              fontSize="10" fill="#60a5fa"
             >
               {r.pods} pods · K8s
             </text>
@@ -2056,8 +2178,8 @@ export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => {
       {/* ── Control Plane ── */}
       <g className="it-core-pop">
         {/* Pulse rings */}
-        <circle cx="380" cy="400" r="6" fill="#f97316" opacity="0" className="it-pulse-a" />
-        <circle cx="380" cy="400" r="6" fill="#ea580c" opacity="0" className="it-pulse-b" />
+        <circle cx="380" cy="400" r="6" fill="#2563eb" opacity="0" className="it-pulse-a" />
+        <circle cx="380" cy="400" r="6" fill="#1e40af" opacity="0" className="it-pulse-b" />
 
         <rect
           x="290" y="368" width="180" height="88" rx="16"
@@ -2098,8 +2220,8 @@ export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => {
       <g className="it-fade">
         {[
           { c: "#2563eb", l: "Tenant pod (Docker + K8s)" },
-          { c: "#f97316", l: "Control plane" },
-          { c: "#10b981", l: "Live · auto-failover" },
+          { c: "#1e40af", l: "Control plane" },
+          { c: "#60a5fa", l: "Live · auto-failover" },
         ].map((p, i) => (
           <g key={i} transform={`translate(${36 + i * 228}, 472)`}>
             <circle cx="6" cy="0" r="5" fill={p.c} className="it-glow" style={{ animationDelay: `${i * 0.3}s` }} />
@@ -2130,10 +2252,10 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
   const STAGE_XS = [32, 32 + STAGE_W + STAGE_GAP, 32 + (STAGE_W + STAGE_GAP) * 2, 32 + (STAGE_W + STAGE_GAP) * 3];
 
   const STAGES = [
-    { label: "INGEST", title: "Raw product CSV", sub: "Photos · brief · specs", hdr: "#6366f1", border: "#c7d2fe", cls: "ap-stage-0" },
-    { label: "EMBED", title: "Vector + tags", sub: "OpenAI · category model", hdr: "#3b82f6", border: "#bfdbfe", cls: "ap-stage-1" },
-    { label: "GENERATE", title: "Per-channel listing", sub: "Title · bullets · keywords", hdr: "#4f46e5", border: "#c7d2fe", cls: "ap-stage-2" },
-    { label: "PUBLISH", title: "Push to live", sub: "Amazon · eBay · Flipkart", hdr: "#f97316", border: "#fed7aa", cls: "ap-stage-3" },
+    { label: "INGEST", title: "Raw product CSV", sub: "Photos · brief · specs", hdr: "#2563eb", border: "#bfdbfe", cls: "ap-stage-0" },
+    { label: "EMBED", title: "Vector + tags", sub: "OpenAI · category model", hdr: "#1d4ed8", border: "#bfdbfe", cls: "ap-stage-1" },
+    { label: "GENERATE", title: "Per-channel listing", sub: "Title · bullets · keywords", hdr: "#1e40af", border: "#bfdbfe", cls: "ap-stage-2" },
+    { label: "PUBLISH", title: "Push to live", sub: "Amazon · eBay · Flipkart", hdr: "#1e3a8a", border: "#bfdbfe", cls: "ap-stage-3" },
   ];
 
   return (
@@ -2146,49 +2268,49 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
       <defs>
         {/* Outer bg */}
         <linearGradient id="ap-bg" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0%" stopColor="#fdf8ff" />
-          <stop offset="50%" stopColor="#f0f5ff" />
-          <stop offset="100%" stopColor="#fff9f0" />
+          <stop offset="0%" stopColor="#f0f7ff" />
+          <stop offset="50%" stopColor="#eff6ff" />
+          <stop offset="100%" stopColor="#f0f4ff" />
         </linearGradient>
 
         {/* Stage header gradients */}
         <linearGradient id="ap-hdr-ingest" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="0%" stopColor="#6366f1" />
-          <stop offset="100%" stopColor="#818cf8" />
+          <stop offset="0%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#3b82f6" />
         </linearGradient>
         <linearGradient id="ap-hdr-embed" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="0%" stopColor="#2563eb" />
+          <stop offset="0%" stopColor="#1d4ed8" />
           <stop offset="100%" stopColor="#60a5fa" />
         </linearGradient>
         <linearGradient id="ap-hdr-gen" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="0%" stopColor="#4338ca" />
-          <stop offset="100%" stopColor="#6366f1" />
+          <stop offset="0%" stopColor="#1e40af" />
+          <stop offset="100%" stopColor="#3b82f6" />
         </linearGradient>
         <linearGradient id="ap-hdr-pub" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="0%" stopColor="#f97316" />
-          <stop offset="100%" stopColor="#fb923c" />
+          <stop offset="0%" stopColor="#1e3a8a" />
+          <stop offset="100%" stopColor="#2563eb" />
         </linearGradient>
 
         {/* Bar fill gradient */}
         <linearGradient id="ap-bar" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="0%" stopColor="#4f46e5" />
-          <stop offset="100%" stopColor="#818cf8" />
+          <stop offset="0%" stopColor="#1e40af" />
+          <stop offset="100%" stopColor="#3b82f6" />
         </linearGradient>
 
         {/* Card shadow */}
         <filter id="ap-card-shadow" x="-6%" y="-6%" width="112%" height="120%">
-          <feDropShadow dx="0" dy="2" stdDeviation="5" floodColor="#c4b5fd" floodOpacity="0.14" />
+          <feDropShadow dx="0" dy="2" stdDeviation="5" floodColor="#93c5fd" floodOpacity="0.14" />
         </filter>
         <filter id="ap-outer-shadow" x="-4%" y="-4%" width="108%" height="112%">
-          <feDropShadow dx="0" dy="3" stdDeviation="8" floodColor="#c4b5fd" floodOpacity="0.16" />
+          <feDropShadow dx="0" dy="3" stdDeviation="8" floodColor="#93c5fd" floodOpacity="0.16" />
         </filter>
 
         {/* Arrow marker */}
         <marker id="ap-arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto">
           <path d="M1 1L7 4L1 7" fill="none" stroke="#94a3b8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </marker>
-        <marker id="ap-arr-orange" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto">
-          <path d="M1 1L7 4L1 7" fill="none" stroke="#f97316" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <marker id="ap-arr-blue" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M1 1L7 4L1 7" fill="none" stroke="#2563eb" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </marker>
       </defs>
 
@@ -2196,7 +2318,7 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
       <rect
         x="8" y="8" width="744" height="414" rx="22"
         fill="url(#ap-bg)"
-        stroke="#e0d9f7" strokeWidth="1.2"
+        stroke="#bfdbfe" strokeWidth="1.2"
         filter="url(#ap-outer-shadow)"
       />
 
@@ -2339,16 +2461,16 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
       <line
         x1={STAGE_XS[2] + STAGE_W / 2} y1={STAGE_Y + STAGE_H + 2}
         x2={STAGE_XS[2] + STAGE_W / 2} y2={280}
-        stroke="#f97316" strokeWidth="1.5"
-        markerEnd="url(#ap-arr-orange)"
+        stroke="#2563eb" strokeWidth="1.5"
+        markerEnd="url(#ap-arr-blue)"
         className="ap-conn-pulse"
         style={{ animationDelay: "0.5s" }}
       />
 
       <g className="ap-qa-anim">
         <rect x={186} y={280} width={372} height={90} rx="16"
-          fill="#fff9f5"
-          stroke="#f97316" strokeWidth="1.5"
+          fill="#f0f7ff"
+          stroke="#2563eb" strokeWidth="1.5"
           strokeDasharray="8 5"
           filter="url(#ap-card-shadow)"
           className="ap-qa-dash"
@@ -2833,10 +2955,10 @@ export const BlogEditorialMockup = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 720 500" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <defs>
       <linearGradient id="be-cover" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stopColor="hsl(226 71% 32%)" /><stop offset="100%" stopColor="hsl(14 88% 55%)" />
+        <stop offset="0%" stopColor="hsl(226 71% 32%)" /><stop offset="100%" stopColor="hsl(224 76% 26%)" />
       </linearGradient>
       <linearGradient id="be-bg" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0%" stopColor="#ffffff" /><stop offset="100%" stopColor="#fff7ed" />
+        <stop offset="0%" stopColor="#ffffff" /><stop offset="100%" stopColor="#eff6ff" />
       </linearGradient>
       <filter id="be-shadow" x="-10%" y="-10%" width="120%" height="130%">
         <feGaussianBlur stdDeviation="12" /><feOffset dy="8" />
@@ -2872,8 +2994,8 @@ export const BlogEditorialMockup = (props: SVGProps<SVGSVGElement>) => (
     ].map((p, i) => (
       <g key={i} filter="url(#be-shadow)">
         <rect x="350" y={p.y} width="320" height="92" rx="14" fill="white" stroke="#e2e8f0" />
-        <rect x="366" y={p.y + 18} width="60" height="18" rx="9" fill="hsl(14 88% 92%)" />
-        <text x="396" y={p.y + 31} textAnchor="middle" fontSize="9" fontWeight="800" fill="hsl(14 88% 40%)">{p.c}</text>
+        <rect x="366" y={p.y + 18} width="60" height="18" rx="9" fill="hsl(226 71% 95%)" />
+        <text x="396" y={p.y + 31} textAnchor="middle" fontSize="9" fontWeight="800" fill="hsl(226 71% 40%)">{p.c}</text>
         <text x="436" y={p.y + 31} fontSize="10" fill="#94a3b8">· {p.k}</text>
         <text x="366" y={p.y + 58} fontSize="13" fontWeight="800" fill="#0f172a">{p.t}</text>
         <text x="366" y={p.y + 78} fontSize="10" fill="#64748b">Read the full article →</text>
@@ -2889,13 +3011,13 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <defs>
       <linearGradient id="aj-bg" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stopColor="#fff7ed" /><stop offset="100%" stopColor="#eff6ff" />
+        <stop offset="0%" stopColor="#eff6ff" /><stop offset="100%" stopColor="#f0f4ff" />
       </linearGradient>
       <linearGradient id="aj-card" x1="0" x2="0" y1="0" y2="1">
         <stop offset="0%" stopColor="hsl(226 71% 38%)" /><stop offset="100%" stopColor="hsl(232 60% 18%)" />
       </linearGradient>
       <linearGradient id="aj-accent" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0%" stopColor="hsl(14 88% 62%)" /><stop offset="100%" stopColor="hsl(20 90% 50%)" />
+        <stop offset="0%" stopColor="hsl(226 71% 50%)" /><stop offset="100%" stopColor="hsl(224 76% 32%)" />
       </linearGradient>
       <filter id="aj-shadow" x="-10%" y="-10%" width="120%" height="130%">
         <feGaussianBlur stdDeviation="12" /><feOffset dy="8" />
@@ -2913,7 +3035,7 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
 
       {/* Founders avatars */}
       <g transform="translate(60, 120)">
-        <circle cx="28" cy="28" r="28" fill="hsl(14 88% 62%)" />
+        <circle cx="28" cy="28" r="28" fill="hsl(226 71% 50%)" />
         <text x="28" y="33" textAnchor="middle" fontSize="14" fontWeight="800" fill="white">RS</text>
         <circle cx="76" cy="28" r="28" fill="hsl(226 71% 60%)" />
         <text x="76" y="33" textAnchor="middle" fontSize="14" fontWeight="800" fill="white">AP</text>
@@ -2921,7 +3043,7 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
 
       <text x="60" y="220" fontSize="20" fontWeight="800" fill="white">Two engineers,</text>
       <text x="60" y="246" fontSize="20" fontWeight="800" fill="white">one mission.</text>
-      <line x1="60" y1="266" x2="160" y2="266" stroke="hsl(14 88% 62%)" strokeWidth="3" />
+      <line x1="60" y1="266" x2="160" y2="266" stroke="hsl(226 71% 50%)" strokeWidth="3" />
       <text x="60" y="296" fontSize="11" fill="white" opacity="0.85">We started Ctasis in an Ahmedabad</text>
       <text x="60" y="312" fontSize="11" fill="white" opacity="0.85">garage to end the spreadsheet hell</text>
       <text x="60" y="328" fontSize="11" fill="white" opacity="0.85">of multichannel sellers.</text>
@@ -2949,10 +3071,10 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
       <text x="400" y="74" fontSize="11" fontWeight="800" fill="#64748b" letterSpacing="2">MILESTONES</text>
       {[
         { y: 100, year: "2019", t: "Founded in Ahmedabad", c: "hsl(226 71% 50%)" },
-        { y: 170, year: "2021", t: "Series A · $12M raised", c: "hsl(14 88% 60%)" },
+        { y: 170, year: "2021", t: "Series A · $12M raised", c: "hsl(217 91% 50%)" },
         { y: 240, year: "2023", t: "Crossed 50 countries", c: "hsl(226 71% 50%)" },
-        { y: 310, year: "2024", t: "AI Repricer launched", c: "hsl(14 88% 60%)" },
-        { y: 380, year: "2026", t: "100K-seller goal", c: "hsl(150 70% 40%)" },
+        { y: 310, year: "2024", t: "AI Repricer launched", c: "hsl(217 91% 50%)" },
+        { y: 380, year: "2026", t: "100K-seller goal", c: "hsl(226 71% 40%)" },
       ].map((m, i, arr) => (
         <g key={i}>
           {i < arr.length - 1 && (
@@ -4196,7 +4318,7 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
     {[100, 80, 60, 40].map((val, i) => (
       <text
         key={val}
-        x="444"
+        x="450"
         y={115 + i * 32}
         fontSize="7"
         fill="#64748b"
@@ -4392,5 +4514,516 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
     >
       Apr 18, 2026
     </text>
+  </svg>
+);
+
+
+/* ------------------------------------------------------------------ */
+/* Assetlibrarymockup  — visual for services pages                  */
+/* ------------------------------------------------------------------ */
+export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
+  const products = [
+    { name: "Headphones", price: "$129", rating: "★★★★★" },
+    { name: "Smart Watch", price: "$199", rating: "★★★★☆" },
+    { name: "Earbuds Pro", price: "$99", rating: "★★★★☆" },
+    { name: "Speaker", price: "$79", rating: "★★★★★" },
+    { name: "Backpack", price: "$59", rating: "★★★★☆" },
+    { name: "Phone Case", price: "$19", rating: "★★★★☆" },
+  ];
+
+  const features = [
+    { label: "Long Battery", desc: "Up to 40hrs playtime" },
+    { label: "AI Powered", desc: "Adapts to you" },
+    { label: "Fast Shipping", desc: "Free & fast delivery" },
+    { label: "2 Yr Warranty", desc: "Complete peace" },
+  ];
+
+  const timeline = [
+    { year: "2018", label: "Founded" },
+    { year: "2020", label: "Product Launch" },
+    { year: "2022", label: "Global Expansion" },
+    { year: "2024", label: "1M+ Customers" },
+  ];
+
+  const comparisonRows = [
+    { feature: "High Quality Sound", ours: true, a: true, b: false },
+    { feature: "Active Noise Cancellation", ours: true, a: true, b: false },
+    { feature: "Long Battery Life", ours: true, a: false, b: true },
+    { feature: "Fast Charging", ours: true, a: true, b: false },
+    { feature: "Premium Warranty", ours: true, a: false, b: false },
+  ];
+  return (
+    <svg viewBox="0 0 900 650" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <defs>
+        <linearGradient id="alm-hero" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="#DBEAFE" />
+          <stop offset="60%" stopColor="#BFDBFE" />
+          <stop offset="100%" stopColor="#93C5FD" />
+        </linearGradient>
+        <linearGradient id="alm-living" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="#EFF6FF" />
+          <stop offset="100%" stopColor="#DBEAFE" />
+        </linearGradient>
+        <linearGradient id="alm-accent" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="hsl(221 83% 53%)" />
+          <stop offset="100%" stopColor="hsl(213 94% 68%)" />
+        </linearGradient>
+        <filter id="alm-shadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="8" />
+          <feOffset dy="3" />
+          <feComponentTransfer>
+            <feFuncA type="linear" slope="0.1" />
+          </feComponentTransfer>
+          <feMerge>
+            <feMergeNode />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <filter id="alm-shadow-lg" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="12" />
+          <feOffset dy="4" />
+          <feComponentTransfer>
+            <feFuncA type="linear" slope="0.12" />
+          </feComponentTransfer>
+          <feMerge>
+            <feMergeNode />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+
+      <rect width="900" height="650" fill="#F8FAFC" />
+
+      {/* Outer dashboard frame */}
+      <rect x="10" y="10" width="880" height="630" rx="20" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#alm-shadow-lg)" />
+
+      {/* Header */}
+      <text x="40" y="58" fontFamily="Inter,system-ui" fontSize="24" fontWeight={700} fill="#0F172A" letterSpacing="0.3">
+        ASSET LIBRARY
+      </text>
+
+      {/* Toolbar */}
+      <g>
+        <rect x="620" y="34" width="120" height="34" rx="10" fill="#FFFFFF" stroke="hsl(221 83% 53%)" strokeWidth={1.4} />
+        <g transform="translate(636,44)">
+          <rect x="0" y="0" width="6" height="6" rx="1.5" fill="hsl(221 83% 53%)" />
+          <rect x="9" y="0" width="6" height="6" rx="1.5" fill="hsl(221 83% 53%)" />
+          <rect x="0" y="9" width="6" height="6" rx="1.5" fill="hsl(221 83% 53%)" />
+          <rect x="9" y="9" width="6" height="6" rx="1.5" fill="hsl(221 83% 53%)" />
+        </g>
+        <text x="660" y="56" fontFamily="Inter,system-ui" fontSize="13" fontWeight={600} fill="hsl(221 83% 53%)">
+          Grid View
+        </text>
+
+        <rect x="750" y="34" width="110" height="34" rx="10" fill="hsl(221 83% 53%)" />
+        <g transform="translate(766,44)" stroke="#FFFFFF" strokeWidth={1.6} fill="none" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 9 V4 M3 4 L0.5 6.5 M3 4 L5.5 6.5" />
+          <path d="M-1 10 v1.5 a1 1 0 0 0 1 1 h6 a1 1 0 0 0 1 -1 V10" />
+        </g>
+        <text x="786" y="56" fontFamily="Inter,system-ui" fontSize="13" fontWeight={600} fill="#FFFFFF">
+          Upload
+        </text>
+      </g>
+
+      {/* ===================== ROW 1 ===================== */}
+
+      {/* Hero banner */}
+      <g filter="url(#alm-shadow)">
+        <rect x="40" y="100" width="400" height="150" rx="14" fill="#FFFFFF" stroke="#E2E8F0" />
+        <clipPath id="alm-hero-clip">
+          <rect x="56" y="114" width="368" height="96" rx="10" />
+        </clipPath>
+        <g clipPath="url(#alm-hero-clip)">
+          <rect x="56" y="114" width="368" height="96" fill="url(#alm-hero)" />
+          <rect x="72" y="128" width="18" height="3" rx="1.5" fill="hsl(221 83% 53%)" />
+          <text x="72" y="150" fontFamily="Inter,system-ui" fontSize="14" fontWeight={700} fill="#0F172A">
+            Elevate Your
+          </text>
+          <text x="72" y="166" fontFamily="Inter,system-ui" fontSize="14" fontWeight={700} fill="#0F172A">
+            Sound Experience
+          </text>
+          <text x="72" y="180" fontFamily="Inter,system-ui" fontSize="8" fill="#64748B">
+            Premium quality. Pure performance.
+          </text>
+          <rect x="72" y="188" width="62" height="16" rx="8" fill="hsl(221 83% 53%)" />
+          <text x="103" y="199" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="8" fontWeight={600} fill="#FFFFFF">
+            Shop Now
+          </text>
+
+          <ellipse cx="360" cy="196" rx="34" ry="6" fill="#FFFFFF" opacity={0.7} />
+          <rect x="332" y="188" width="56" height="10" rx="5" fill="#FFFFFF" />
+
+          <g transform="translate(328,132)">
+            <path d="M8 30 A24 24 0 0 1 56 30" fill="none" stroke="#1E293B" strokeWidth={6} strokeLinecap="round" />
+            <rect x="0" y="26" width="14" height="20" rx="7" fill="#334155" />
+            <rect x="50" y="26" width="14" height="20" rx="7" fill="#334155" />
+            <circle cx="7" cy="36" r="4" fill="#1E3A8A" />
+            <circle cx="57" cy="36" r="4" fill="#1E3A8A" />
+          </g>
+
+          <circle cx="404" cy="130" r="16" fill="hsl(221 83% 53%)" />
+          <text x="404" y="127" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="6.5" fontWeight={700} fill="#FFFFFF">
+            New
+          </text>
+          <text x="404" y="135" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="6.5" fontWeight={700} fill="#FFFFFF">
+            Arrival
+          </text>
+        </g>
+
+        <rect x="56" y="216" width="20" height="20" rx="6" fill="hsl(221 83% 53%)" />
+        <text x="66" y="230" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill="#FFFFFF">
+          1
+        </text>
+        <text x="84" y="230" fontFamily="Inter,system-ui" fontSize="11" fontWeight={600} fill="#0F172A">
+          Hero Banner
+        </text>
+      </g>
+
+      {/* Comparison table */}
+      <g filter="url(#alm-shadow)">
+        <rect x="460" y="100" width="400" height="150" rx="14" fill="#FFFFFF" stroke="#E2E8F0" />
+        <rect x="626" y="114" width="90" height="94" fill="#EFF6FF" />
+
+        <text x="474" y="128" fontFamily="Inter,system-ui" fontSize="8.5" fontWeight={700} fill="#0F172A">
+          Features
+        </text>
+        <text x="671" y="124" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="7.5" fontWeight={700} fill="#0F172A">
+          Our Product
+        </text>
+        <text x="748" y="124" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="7.5" fontWeight={700} fill="#0F172A">
+          Competitor A
+        </text>
+        <text x="822" y="124" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="7.5" fontWeight={700} fill="#0F172A">
+          Competitor B
+        </text>
+        <line x1="474" y1="132" x2="846" y2="132" stroke="#E2E8F0" />
+
+        {comparisonRows.map((row, i) => {
+          const y = 146 + i * 14;
+          const dotY = y - 3;
+          return (
+            <g key={row.feature}>
+              <text x="474" y={y} fontFamily="Inter,system-ui" fontSize="7.5" fill="#334155">
+                {row.feature}
+              </text>
+
+              {row.ours ? (
+                <>
+                  <circle cx="671" cy={dotY} r="6" fill="hsl(221 83% 53%)" />
+                  <path d={`M668 ${dotY} l2 2 l4 -4`} stroke="#FFFFFF" strokeWidth={1.3} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                </>
+              ) : (
+                <line x1="667" y1={dotY} x2="675" y2={dotY} stroke="#94A3B8" strokeWidth={1.4} strokeLinecap="round" />
+              )}
+
+              {row.a ? (
+                <>
+                  <circle cx="748" cy={dotY} r="6" fill="#CBD5E1" />
+                  <path d={`M745 ${dotY} l2 2 l4 -4`} stroke="#475569" strokeWidth={1.3} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                </>
+              ) : (
+                <line x1="744" y1={dotY} x2="752" y2={dotY} stroke="#94A3B8" strokeWidth={1.4} strokeLinecap="round" />
+              )}
+
+              {row.b ? (
+                <>
+                  <circle cx="822" cy={dotY} r="6" fill="#CBD5E1" />
+                  <path d={`M819 ${dotY} l2 2 l4 -4`} stroke="#475569" strokeWidth={1.3} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                </>
+              ) : (
+                <line x1="818" y1={dotY} x2="826" y2={dotY} stroke="#94A3B8" strokeWidth={1.4} strokeLinecap="round" />
+              )}
+            </g>
+          );
+        })}
+
+        <rect x="474" y="216" width="20" height="20" rx="6" fill="hsl(221 83% 53%)" />
+        <text x="484" y="230" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill="#FFFFFF">
+          2
+        </text>
+        <text x="502" y="230" fontFamily="Inter,system-ui" fontSize="11" fontWeight={600} fill="#0F172A">
+          Comparison
+        </text>
+      </g>
+
+      {/* ===================== ROW 2 ===================== */}
+
+      {/* Brand story */}
+      <g filter="url(#alm-shadow)">
+        <rect x="40" y="270" width="400" height="150" rx="14" fill="#FFFFFF" stroke="#E2E8F0" />
+
+        <polygon points="66,286 76,291 76,301 66,306 56,301 56,291" fill="hsl(221 83% 53%)" />
+        <text x="82" y="296" fontFamily="Inter,system-ui" fontSize="12" fontWeight={800} fill="#0F172A">
+          A+ <tspan fill="hsl(221 83% 53%)">BRAND</tspan>
+        </text>
+        <text x="82" y="307" fontFamily="Inter,system-ui" fontSize="7" fill="#64748B">
+          Built for Better Living
+        </text>
+        <line x1="56" y1="344" x2="410" y2="344" stroke="#CBD5E1" strokeWidth={1.4} strokeDasharray="2 3" />
+        {timeline.map((t, i) => {
+          const x = 80 + i * 100;
+          return (
+            <g key={t.year} textAnchor="middle">
+              <circle cx={x} cy="344" r="4" fill="hsl(221 83% 53%)" />
+              <circle cx={x} cy="366" r="12" fill="#DBEAFE" />
+              <text x={x} y="338" fontFamily="Inter,system-ui" fontSize="7" fontWeight={700} fill="#0F172A" textAnchor="middle">
+                {t.year}
+              </text>
+              <text x={x} y="384" fontFamily="Inter,system-ui" fontSize="6" fill="#64748B" textAnchor="middle">
+                {t.label}
+              </text>
+            </g>
+          );
+        })}
+
+        <rect x="56" y="396" width="20" height="20" rx="6" fill="hsl(221 83% 53%)" />
+        <text x="66" y="410" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill="#FFFFFF">
+          3
+        </text>
+        <text x="84" y="410" fontFamily="Inter,system-ui" fontSize="11" fontWeight={600} fill="#0F172A">
+          Brand Story
+        </text>
+      </g>
+
+      {/* Feature icons */}
+      <g filter="url(#alm-shadow)">
+        <rect x="460" y="270" width="400" height="150" rx="14" fill="#FFFFFF" stroke="#E2E8F0" />
+
+        {features.map((f, i) => {
+          const cx = 500 + i * 90;
+          const cy = 300;
+          return (
+            <g key={f.label} transform={`translate(${cx},${cy})`} textAnchor="middle">
+              <circle cx="0" cy="0" r="20" fill="#EFF6FF" />
+              {i === 0 && (
+                <>
+                  <rect x="-9" y="-8" width="16" height="16" rx="2" fill="none" stroke="hsl(221 83% 53%)" strokeWidth={1.6} />
+                  <rect x="7" y="-4" width="3" height="8" rx="1" fill="hsl(221 83% 53%)" />
+                  <path d="M-3 -8 l-2 6 h4 l-2 6" fill="none" stroke="hsl(221 83% 53%)" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" />
+                </>
+              )}
+              {i === 1 && (
+                <>
+                  <path
+                    d="M-8 -8 q-4 4 0 8 q-2 4 2 6 q4 2 6 -2 q4 -1 3 -6 q3 -4 -1 -7 q-4 -3 -7 0 q-2 0 -3 1"
+                    fill="none"
+                    stroke="hsl(221 83% 53%)"
+                    strokeWidth={1.4}
+                    strokeLinejoin="round"
+                  />
+                  <circle cx="-4" cy="-2" r="1" fill="hsl(221 83% 53%)" />
+                  <circle cx="2" cy="2" r="1" fill="hsl(221 83% 53%)" />
+                  <circle cx="-2" cy="5" r="1" fill="hsl(221 83% 53%)" />
+                </>
+              )}
+              {i === 2 && (
+                <>
+                  <rect x="-10" y="-5" width="13" height="10" rx="1.5" fill="none" stroke="hsl(221 83% 53%)" strokeWidth={1.5} />
+                  <path d="M3 -2 h6 l3 4 v3 h-9 z" fill="none" stroke="hsl(221 83% 53%)" strokeWidth={1.5} strokeLinejoin="round" />
+                  <circle cx="-5" cy="7" r="2.2" fill="none" stroke="hsl(221 83% 53%)" strokeWidth={1.3} />
+                  <circle cx="6" cy="7" r="2.2" fill="none" stroke="hsl(221 83% 53%)" strokeWidth={1.3} />
+                </>
+              )}
+              {i === 3 && (
+                <>
+                  <path
+                    d="M0 -10 l9 3 v6 c0 6 -4 9 -9 11 c-5 -2 -9 -5 -9 -11 v-6 z"
+                    fill="none"
+                    stroke="hsl(221 83% 53%)"
+                    strokeWidth={1.5}
+                    strokeLinejoin="round"
+                  />
+                  <path d="M-4 0 l3 3 l6 -6" fill="none" stroke="hsl(221 83% 53%)" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
+                </>
+              )}
+              <text x="0" y="34" fontFamily="Inter,system-ui" fontSize="8" fontWeight={700} fill="#0F172A">
+                {f.label}
+              </text>
+              <text x="0" y="44" fontFamily="Inter,system-ui" fontSize="6" fill="#64748B">
+                {f.desc}
+              </text>
+            </g>
+          );
+        })}
+
+        <rect x="474" y="386" width="20" height="20" rx="6" fill="hsl(221 83% 53%)" />
+        <text x="484" y="400" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill="#FFFFFF">
+          4
+        </text>
+        <text x="502" y="400" fontFamily="Inter,system-ui" fontSize="11" fontWeight={600} fill="#0F172A">
+          Features
+        </text>
+      </g>
+
+      {/* ===================== ROW 3 ===================== */}
+
+      {/* Product grid */}
+      <g filter="url(#alm-shadow)">
+        <rect x="40" y="440" width="400" height="150" rx="14" fill="#FFFFFF" stroke="#E2E8F0" />
+
+        {products.map((p, i) => {
+          const x = 52 + i * 64;
+          const y = 456;
+          return (
+            <g key={p.name} transform={`translate(${x},${y})`}>
+              <rect x="0" y="0" width="58" height="80" rx="8" fill="#F8FAFC" stroke="#E2E8F0" />
+              <rect x="16" y="12" width="26" height="26" rx="6" fill="hsl(221 83% 95%)" />
+              <circle cx="29" cy="25" r="8" fill="hsl(221 83% 60%)" />
+              <text x="29" y="58" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="5.6" fill="#0F172A">
+                {p.name}
+              </text>
+              <text x="29" y="66" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="5.8" fontWeight={700} fill="hsl(221 83% 53%)">
+                {p.price}
+              </text>
+              <text x="29" y="75" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="6" fill="#F59E0B">
+                {p.rating}
+              </text>
+            </g>
+          );
+        })}
+
+        <rect x="54" y="556" width="20" height="20" rx="6" fill="hsl(221 83% 53%)" />
+        <text x="64" y="570" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill="#FFFFFF">
+          5
+        </text>
+        <text x="82" y="570" fontFamily="Inter,system-ui" fontSize="11" fontWeight={600} fill="#0F172A">
+          Product Grid
+        </text>
+      </g>
+
+      {/* Lifestyle banner */}
+      <g filter="url(#alm-shadow)">
+        <rect x="460" y="440" width="400" height="150" rx="14" fill="#FFFFFF" stroke="#E2E8F0" />
+        <clipPath id="alm-life-clip">
+          <rect x="476" y="454" width="368" height="96" rx="10" />
+        </clipPath>
+        <g clipPath="url(#alm-life-clip)">
+          <rect x="476" y="454" width="368" height="96" fill="url(#alm-living)" />
+
+          <rect x="490" y="468" width="16" height="3" rx="1.5" fill="hsl(221 83% 53%)" />
+          <text x="490" y="488" fontFamily="Inter,system-ui" fontSize="13" fontWeight={700} fill="#0F172A">
+            Designed for
+          </text>
+          <text x="490" y="502" fontFamily="Inter,system-ui" fontSize="13" fontWeight={700} fill="#0F172A">
+            Modern Living
+          </text>
+          <text x="490" y="514" fontFamily="Inter,system-ui" fontSize="7" fill="#64748B">
+            Fits your lifestyle with elegance.
+          </text>
+          <rect x="490" y="522" width="58" height="15" rx="7.5" fill="hsl(221 83% 53%)" />
+          <text x="519" y="532" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="7.5" fontWeight={600} fill="#FFFFFF">
+            Explore
+          </text>
+
+          <g transform="translate(800,470)">
+            <rect x="0" y="0" width="26" height="40" fill="none" stroke="#94A3B8" strokeWidth={1.4} />
+            <line x1="0" y1="14" x2="26" y2="14" stroke="#94A3B8" strokeWidth={1.2} />
+            <line x1="0" y1="27" x2="26" y2="27" stroke="#94A3B8" strokeWidth={1.2} />
+            <rect x="3" y="3" width="4" height="9" fill="#93C5FD" />
+            <rect x="9" y="3" width="4" height="9" fill="hsl(221 83% 53%)" />
+            <circle cx="20" cy="7" r="4" fill="none" stroke="#60A5FA" strokeWidth={1.2} />
+          </g>
+
+          <g transform="translate(772,466)">
+            <line x1="0" y1="10" x2="0" y2="46" stroke="#334155" strokeWidth={1.6} />
+            <path d="M-7 10 l14 0 l-4 -8 l-6 0 z" fill="#60A5FA" />
+          </g>
+
+          <g transform="translate(626,510)">
+            <rect x="-8" y="18" width="16" height="16" rx="2" fill="#93C5FD" />
+            <path d="M0 18 q-2 -14 -10 -16" fill="none" stroke="#16A34A" strokeWidth={2.2} strokeLinecap="round" />
+            <path d="M0 18 q2 -18 12 -20" fill="none" stroke="#16A34A" strokeWidth={2.2} strokeLinecap="round" />
+            <path d="M0 18 q0 -20 0 -22" fill="none" stroke="#16A34A" strokeWidth={2.2} strokeLinecap="round" />
+          </g>
+
+          <g transform="translate(650,510)">
+            <rect x="-4" y="8" width="120" height="22" rx="8" fill="#93C5FD" />
+            <rect x="-4" y="-2" width="20" height="18" rx="6" fill="#60A5FA" />
+            <rect x="96" y="-2" width="20" height="18" rx="6" fill="#60A5FA" />
+            <rect x="16" y="0" width="76" height="14" rx="6" fill="#BFDBFE" />
+            <rect x="0" y="28" width="8" height="8" fill="#60A5FA" />
+            <rect x="104" y="28" width="8" height="8" fill="#60A5FA" />
+          </g>
+
+          <g transform="translate(696,538)">
+            <ellipse cx="0" cy="8" rx="20" ry="4" fill="#E2E8F0" />
+            <rect x="-2" y="8" width="4" height="8" fill="#94A3B8" />
+            <rect x="12" y="8" width="4" height="8" fill="#94A3B8" />
+            <rect x="-8" y="-8" width="16" height="16" rx="6" fill="#1E293B" />
+            <circle cx="0" cy="0" r="4" fill="#334155" />
+          </g>
+
+          <rect x="606" y="464" width="16" height="20" rx="2" fill="none" stroke="#94A3B8" strokeWidth={1.3} />
+        </g>
+
+        <rect x="474" y="556" width="20" height="20" rx="6" fill="hsl(221 83% 53%)" />
+        <text x="484" y="570" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill="#FFFFFF">
+          6
+        </text>
+        <text x="502" y="570" fontFamily="Inter,system-ui" fontSize="11" fontWeight={600} fill="#0F172A">
+          Lifestyle
+        </text>
+      </g>
+
+      {/* Footer */}
+      <line x1="40" y1="608" x2="860" y2="608" stroke="#E2E8F0" />
+      <g transform="translate(40,616)">
+        <path d="M0 4 h6 l2 2 h10 v10 h-18 z" fill="none" stroke="#64748B" strokeWidth={1.4} strokeLinejoin="round" />
+        <text x="26" y="14" fontFamily="Inter,system-ui" fontSize="10" fill="#334155">
+          12 Assets
+        </text>
+      </g>
+      <g transform="translate(770,624)">
+        <circle cx="0" cy="0" r="8" fill="none" stroke="#64748B" strokeWidth={1.4} />
+        <path d="M0 -4 v4 l3 3" fill="none" stroke="#64748B" strokeWidth={1.4} strokeLinecap="round" />
+        <text x="14" y="4" fontFamily="Inter,system-ui" fontSize="10" fill="#334155">
+          Last Updated Today
+        </text>
+      </g>
+    </svg>
+  )
+};
+
+
+export const ProblemDiagram = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 520 320" className="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <defs>
+      <linearGradient id="pd-bg" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stopColor="#eff6ff" stopOpacity="0" />
+        <stop offset="100%" stopColor="#eff6ff" />
+      </linearGradient>
+      <filter id="hd-sh" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="6" /><feOffset dy="3" />
+        <feComponentTransfer><feFuncA type="linear" slope="0.14" /></feComponentTransfer>
+        <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+      </filter>
+    </defs>
+    <rect width="520" height="320" rx="18" fill="url(#pd-bg)" />
+    {[
+      { x: 60, y: 40, name: "Amazon Seller Central", err: "Oversold ×3", dot: "#f59e0b" },
+      { x: 300, y: 30, name: "Etsy Shop Manager", err: "Price mismatch", dot: "#ea580c" },
+      { x: 40, y: 200, name: "inventory_master.xlsx", err: "12 conflicts", dot: "#2563eb" },
+      { x: 300, y: 210, name: "Walmart Seller Center", err: "3 hrs/day, by hand", dot: "#2563eb" },
+    ].map((c, i) => (
+      <g key={i}>
+        <rect x={c.x} y={c.y} width="170" height="70" rx="10" fill="white" stroke="#e2e8f0" filter="url(#hd-sh)" />
+        <circle cx={c.x + 14} cy={c.y + 16} r="3" fill={c.dot} />
+        <circle cx={c.x + 24} cy={c.y + 16} r="3" fill="#e2e8f0" />
+        <circle cx={c.x + 34} cy={c.y + 16} r="3" fill="#e2e8f0" />
+        <text x={c.x + 14} y={c.y + 38} fontFamily="Inter" fontSize="12" fontWeight="700" fill="#0f172a">{c.name}</text>
+        <rect x={c.x + 12} y={c.y + 46} width={c.err.length * 6.4 + 14} height="16" rx="8" fill="#fef2f2" stroke="#fecaca" />
+        <text x={c.x + 20} y={c.y + 57} fontFamily="Inter" fontSize="9.5" fontWeight="700" fill="#dc2626">! {c.err}</text>
+      </g>
+    ))}
+    <circle cx="260" cy="160" r="28" fill="white" stroke="#fecaca" strokeDasharray="4 3" />
+    <path d="M260 148l10 18h-20z" fill="none" stroke="#dc2626" strokeWidth="1.8" strokeLinejoin="round" />
+    <line x1="260" y1="156" x2="260" y2="162" stroke="#dc2626" strokeWidth="1.8" strokeLinecap="round" />
+    <circle cx="260" cy="165" r="1" fill="#dc2626" />
+    {[
+      [145, 110, 240, 145], [385, 100, 280, 145],
+      [125, 210, 240, 175], [385, 220, 280, 175],
+    ].map(([x1, y1, x2, y2], i) => (
+      <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#fca5a5" strokeWidth="1.4" strokeDasharray="5 4" />
+    ))}
   </svg>
 );

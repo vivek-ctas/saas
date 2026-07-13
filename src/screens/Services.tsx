@@ -11,6 +11,9 @@ import {
   BarChart3, Sparkles, CheckCircle2, Layers,
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
+import Image from "next/image";
+import { AssetLibraryMockup, ServicesHeroMockup } from "@/components/illustrations";
+import PageHero from "@/components/PageHero";
 
 /* -------------------- Inline SVG visuals -------------------- */
 
@@ -151,9 +154,9 @@ const RolesSVG = () => (
     <rect width="520" height="320" rx="16" fill="#f0f9ff" />
     <rect width="520" height="320" rx="16" fill="url(#s-grid)" />
     {[
-      { x: 40, label: "Owner",  perms: ["Billing", "Users", "All data"], dot: "#1e3a8a" },
+      { x: 40, label: "Owner", perms: ["Billing", "Users", "All data"], dot: "#1e3a8a" },
       { x: 200, label: "Manager", perms: ["Listings", "Orders", "Reports"], dot: "#2563eb" },
-      { x: 360, label: "Staff",   perms: ["Orders", "Ship labels"], dot: "#60a5fa" },
+      { x: 360, label: "Staff", perms: ["Orders", "Ship labels"], dot: "#60a5fa" },
     ].map((r) => (
       <g key={r.label} filter="url(#s-sh)">
         <rect x={r.x} y="50" width="140" height="220" rx="14" fill="white" stroke="#e2e8f0" />
@@ -294,9 +297,9 @@ const Services = () => {
             {["Navy", "Blue", "Sky"].map((c, ci) => (
               <React.Fragment key={c}>
                 <div className="font-bold text-slate-700 py-2">{c}</div>
-                {[0,1,2,3].map((si) => (
-                  <div key={c+si} className={`h-8 rounded-md flex items-center justify-center font-semibold ${(ci+si)%3===0 ? "bg-blue-600 text-white" : "bg-blue-50 text-blue-700 border border-blue-100"}`}>
-                    {(ci+si)%3===0 ? "sync" : "12"}
+                {[0, 1, 2, 3].map((si) => (
+                  <div key={c + si} className={`h-8 rounded-md flex items-center justify-center font-semibold ${(ci + si) % 3 === 0 ? "bg-blue-600 text-white" : "bg-blue-50 text-blue-700 border border-blue-100"}`}>
+                    {(ci + si) % 3 === 0 ? "sync" : "12"}
                   </div>
                 ))}
               </React.Fragment>
@@ -371,19 +374,7 @@ const Services = () => {
         "Direct push to Amazon, Walmart and Flipkart",
       ],
       icon: ImageIcon,
-      visual: (
-        <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5">
-          <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Asset library</div>
-          <div className="grid grid-cols-3 gap-3">
-            {[0,1,2,3,4,5].map((i) => (
-              <div key={i} className="aspect-[4/3] rounded-lg bg-gradient-to-br from-blue-100 to-blue-50 border border-blue-100 flex items-center justify-center relative">
-                <ImageIcon className="w-6 h-6 text-blue-600/60" />
-                <span className="absolute bottom-1.5 left-1.5 text-[9px] font-bold text-blue-800 bg-white/80 px-1.5 py-0.5 rounded">A+ · v{i+1}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      ),
+      visual: <AssetLibraryMockup className="w-full h-auto" />,
       reverse: true,
     },
     {
@@ -438,6 +429,29 @@ const Services = () => {
   return (
     <Layout>
       <div ref={ref}>
+        <PageHero
+          badgeIcon={Sparkles}
+          badgeText="12 services · 1 platform"
+          title={<>Services that <span className="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">do the heavy lifting.</span></>}
+          subtitle="From inventory sync to AI-powered demand forecasting — every service is designed to remove a manual task and add a measurable result."
+          visual={<ServicesHeroMockup className="w-full h-auto" />}
+          actions={
+            <>
+              <Link href="/services#all-services">
+                <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-200 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm">
+                  Explore Services
+                </Button>
+              </Link>
+              <Link href="/pricing">
+                <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
+                  Quick Start
+                  <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+
+            </>
+          }
+        />
         {/* HERO */}
         <section className="relative bg-gradient-to-b from-blue-50/60 to-white py-16 lg:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -479,18 +493,19 @@ const Services = () => {
         ))}
 
         {/* CTA */}
-        <section className="py-16 bg-slate-900 text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(37,99,235,0.35),transparent_45%),radial-gradient(circle_at_80%_70%,rgba(96,165,250,0.25),transparent_45%)]" />
+        <section className="py-24 relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-900">
+          <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
           <div className="relative max-w-4xl mx-auto text-center px-4">
-            <Sparkles className="w-8 h-8 mx-auto text-blue-300 mb-3" />
-            <h2 className="text-3xl font-bold mb-3">Ready to see it running on your channels?</h2>
-            <p className="text-slate-300 mb-6">Connect Amazon, Walmart, eBay, Etsy and Flipkart in minutes.</p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-500 rounded-full px-7 h-12">
+            <Sparkles className="w-12 h-12 mx-auto text-blue-200 mb-6 animate-float" />
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">Ready to see it running on your channels?</h2>
+            <p className="ext-xl text-white/90 mb-10 max-w-2xl mx-auto">Connect Amazon, Walmart, eBay, Etsy and Flipkart in minutes.</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 rounded-full px-8 h-12 border-0 shadow-lg">
                 Start free trial <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
               <Link href="/pricing">
-                <Button size="lg" variant="outline" className="rounded-full px-7 h-12 bg-transparent border-slate-500 text-white hover:bg-white/10">
+                <Button size="lg" variant="outline" className="rounded-full px-8 h-12 bg-white/10 border-white/30 text-white hover:bg-white/20 shadow-lg">
                   See pricing
                 </Button>
               </Link>

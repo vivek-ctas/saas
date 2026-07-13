@@ -15,9 +15,9 @@ const Navigation = () => {
     // { name: "Marketplace", href: "/marketplaces" },
     // { name: "Infrastructure", href: "/infrastructure" },
     { name: "Pricing", href: "/pricing" },
-    // { name: "Blog", href: "/blog" },
-    // { name: "About", href: "/about" },
-    // { name: "Contact", href: "/contact" },
+    { name: "Blog", href: "/blog" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const isActive = (href: string) => pathname === href;

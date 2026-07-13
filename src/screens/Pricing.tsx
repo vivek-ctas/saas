@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Check, X, Sparkles, ArrowRight, Quote, Star, Loader2, AlertCircle,
+  Clock,
+  CheckCircle2,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,9 +12,9 @@ import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Layout from '@/components/Layout';
 import PageHero from '@/components/PageHero';
-import { BlobBackdrop, AnalyticsIllustration, PricingCalculatorMockup } from '@/components/illustrations';
+import { AnalyticsIllustration, PricingCalculatorMockup } from '@/components/illustrations';
 import { useReveal } from '@/hooks/use-reveal';
-
+import { MaintenanceState } from '@/components/maintenancestate';
 import { usePlans } from '@/hooks/use-plans';
 
 import { useCheckout } from '@/hooks/use-checkout';
@@ -141,7 +143,7 @@ const Pricing = () => {
           title={
             <>
               Pricing that scales{' '}
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">
                 with your business.
               </span>
             </>
@@ -154,7 +156,7 @@ const Pricing = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm"
+                  className="text-base px-8 h-12 border-slate-200 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm"
                 >
                   Compare plans
                 </Button>
@@ -162,7 +164,7 @@ const Pricing = () => {
 
               <Link
                 href="#plans"
-                className="inline-flex items-center justify-center rounded-full text-base px-8 h-12 shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0 text-white"
+                className="inline-flex items-center justify-center rounded-full text-base px-8 h-12 shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0 text-white"
               >
                 See Plans
                 <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
@@ -185,11 +187,12 @@ const Pricing = () => {
 
             {/* Error */}
             {!plansLoading && plansError && (
-              <div className="flex flex-col items-center justify-center py-24 gap-3 text-center">
-                <AlertCircle className="w-10 h-10 text-red-400" />
-                <p className="text-slate-700 font-medium">Could not load pricing plans.</p>
-                <p className="text-sm text-slate-400">{plansError}</p>
-              </div>
+              // <div className="flex flex-col items-center justify-center py-24 gap-3 text-center">
+              //   <AlertCircle className="w-10 h-10 text-red-400" />
+              //   <p className="text-slate-700 font-medium">Could not load pricing plans.</p>
+              //   <p className="text-sm text-slate-400">{plansError}</p>
+              // </div>
+              <MaintenanceState onRetry={() => window.location.reload()} />
             )}
 
             {/* Plan cards */}
@@ -198,13 +201,13 @@ const Pricing = () => {
                 <div className="mb-6 flex items-center justify-center gap-3">
                   <button
                     onClick={() => setSelectedInterval('month')}
-                    className={`px-4 py-2 rounded-full text-sm font-semibold transition ${selectedInterval === 'month' ? 'bg-primary text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'}`}
+                    className={`px-4 py-2 rounded-full text-sm font-semibold transition ${selectedInterval === 'month' ? 'bg-blue-600 text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-700 hover:bg-blue-50'}`}
                   >
                     Monthly
                   </button>
                   <button
                     onClick={() => setSelectedInterval('quarterly')}
-                    className={`px-4 py-2 rounded-full text-sm font-semibold transition ${selectedInterval === 'quarterly' ? 'bg-primary text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'}`}
+                    className={`px-4 py-2 rounded-full text-sm font-semibold transition ${selectedInterval === 'quarterly' ? 'bg-blue-600 text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-700 hover:bg-blue-50'}`}
                   >
                     Quarterly
                   </button>
@@ -225,16 +228,16 @@ const Pricing = () => {
                       <Card
                         key={plan._id}
                         className={`relative overflow-hidden p-2 transition-all ${plan.is_popular
-                          ? 'border-2 border-primary shadow-stripe-2xl lg:scale-105 bg-gradient-to-br from-white via-accent/40 to-pink-50'
-                          : 'border border-slate-200 hover-lift'
+                          ? 'border-2 border-blue-600 shadow-lg lg:scale-105 bg-gradient-to-br from-white via-blue-50/40 to-blue-50'
+                          : 'border border-slate-200 hover:border-blue-200 hover:shadow-lg'
                           }`}
                         style={{ transitionDelay: `${i * 120}ms` }}
                       >
                         {plan.is_popular && (
                           <>
-                            <div className="absolute -top-px left-0 right-0 h-1 gradient-primary" />
+                            <div className="absolute -top-px left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-blue-900" />
                             <div className="absolute top-4 right-4">
-                              <Badge className="bg-gradient-to-r from-primary to-secondary text-white border-0 shadow-stripe">
+                              <Badge className="bg-gradient-to-r from-blue-600 to-blue-900 text-white border-0 shadow-md">
                                 Most Popular
                               </Badge>
                             </div>
@@ -261,10 +264,10 @@ const Pricing = () => {
                           <button
                             onClick={() => handlePlanClick(plan)}
                             className={`w-full py-3 rounded-2xl text-sm font-semibold transition-all ${plan.is_popular
-                              ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-stripe hover:opacity-90'
+                              ? 'bg-gradient-to-r from-blue-600 to-blue-900 text-white shadow-md hover:opacity-90'
                               : plan.is_custom_plan
                                 ? 'bg-slate-900 text-white hover:bg-slate-700'
-                                : 'border-2 border-primary text-primary hover:bg-primary hover:text-white'
+                                : 'border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white'
                               } disabled:opacity-60 disabled:cursor-not-allowed`}
                           >
                             {getCtaLabel(plan)}
@@ -273,7 +276,7 @@ const Pricing = () => {
                           <ul className="space-y-3 pt-2">
                             {plan.marketing_features.map((f, j) => (
                               <li key={j} className="flex items-start gap-3 text-sm">
-                                <span className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${plan.is_popular ? 'bg-primary text-white' : 'bg-accent text-primary'
+                                <span className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${plan.is_popular ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-600'
                                   }`}>
                                   <Check className="w-3 h-3" />
                                 </span>
@@ -309,17 +312,17 @@ const Pricing = () => {
         <section className="py-24 section-bg" id='comparison'>
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Plan comparison</Badge>
+              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Plan comparison</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Compare every feature</h2>
               <p className="text-xl text-slate-600">All the details, side by side.</p>
             </div>
-            <div className="reveal rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-stripe">
+            <div className="reveal rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-md">
               <table className="w-full text-left">
                 <thead className="bg-slate-50">
                   <tr>
                     <th className="p-5 text-sm font-semibold text-slate-600">Feature</th>
                     <th className="p-5 text-center text-sm font-semibold text-slate-600">Starter</th>
-                    <th className="p-5 text-center text-sm font-semibold text-primary bg-accent/40">Pro</th>
+                    <th className="p-5 text-center text-sm font-semibold text-blue-600 bg-blue-50/60">Pro</th>
                     <th className="p-5 text-center text-sm font-semibold text-slate-600">Enterprise</th>
                   </tr>
                 </thead>
@@ -328,10 +331,10 @@ const Pricing = () => {
                     <tr key={i} className="border-t border-slate-100">
                       <td className="p-5 font-medium text-slate-800">{feat as string}</td>
                       {vals.map((v, j) => (
-                        <td key={j} className={`p-5 text-center ${j === 1 ? 'bg-accent/20' : ''}`}>
+                        <td key={j} className={`p-5 text-center ${j === 1 ? 'bg-blue-50/40' : ''}`}>
                           {typeof v === 'boolean' ? (
                             v
-                              ? <Check className="w-5 h-5 text-primary mx-auto" />
+                              ? <Check className="w-5 h-5 text-blue-600 mx-auto" />
                               : <X className="w-5 h-5 text-slate-300 mx-auto" />
                           ) : (
                             <span className="font-semibold text-slate-700">{v}</span>
@@ -355,16 +358,16 @@ const Pricing = () => {
             <div className="reveal delay-200">
               <div className="flex gap-1 mb-6">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-secondary text-secondary" />
+                  <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
                 ))}
               </div>
-              <Quote className="w-10 h-10 text-primary mb-4" />
+              <Quote className="w-10 h-10 text-blue-600 mb-4" />
               <p className="text-2xl font-medium text-slate-900 leading-relaxed mb-6">
                 "We tried 3 other platforms before Ctasis. The Pro plan paid for itself in week one
                 from saved labor alone."
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full gradient-accent flex items-center justify-center text-white font-bold">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-blue-900 flex items-center justify-center text-white font-bold">
                   MK
                 </div>
                 <div>
@@ -381,7 +384,7 @@ const Pricing = () => {
           <div className="absolute inset-0 grid-bg opacity-30" />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14 reveal max-w-3xl mx-auto">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Inside Pro & Enterprise</Badge>
+              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Inside Pro & Enterprise</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">
                 The premium services that pay for the plan
               </h2>
@@ -398,7 +401,7 @@ const Pricing = () => {
                 >
                   <CardContent className="p-7">
                     <div className="flex items-center gap-2 mb-3">
-                      <Sparkles className="w-5 h-5 text-primary" />
+                      <Sparkles className="w-5 h-5 text-blue-600" />
                       <h3 className="font-bold text-slate-900 text-lg">{b.title}</h3>
                     </div>
                     <p className="text-slate-600 leading-relaxed">{b.desc}</p>
@@ -413,7 +416,7 @@ const Pricing = () => {
         <section className="py-24 section-bg">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">FAQ</Badge>
+              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">FAQ</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Frequently asked questions</h2>
             </div>
             <Accordion type="single" collapsible className="reveal space-y-3">
@@ -421,7 +424,7 @@ const Pricing = () => {
                 <AccordionItem
                   key={i}
                   value={`item-${i}`}
-                  className="bg-white rounded-2xl border border-slate-100 px-6 shadow-sm hover:shadow-stripe transition-stripe"
+                  className="bg-white rounded-2xl border border-slate-200/70 px-6 shadow-sm hover:shadow-lg hover:border-blue-200 transition-all"
                 >
                   <AccordionTrigger className="text-left font-semibold text-slate-900 hover:no-underline py-5">
                     {f.q}
@@ -436,23 +439,29 @@ const Pricing = () => {
         </section>
 
         {/* ── BOTTOM CTA ─────────────────────────────────────────────────────── */}
-        <section className="py-24 relative overflow-hidden gradient-animated">
-          <BlobBackdrop />
-          <div className="relative max-w-4xl mx-auto px-4 text-center reveal">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">Still have questions?</h2>
-            <p className="text-xl text-white/90 mb-8">Talk to our team — we'll help you pick the right plan.</p>
+        <section className="py-24 relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-900">
+          <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
+          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <Sparkles className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">Still have questions?</h2>
+            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">Talk to our team — we'll help you pick the right plan.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing">
-                <Button size="lg" variant="secondary" className="text-lg px-8 shadow-stripe-xl">
+                <Button size="lg" className="text-lg px-8 rounded-full bg-white text-blue-600 hover:bg-blue-50 border-0 shadow-lg">
                   Get started
                 </Button>
               </Link>
               <Link href="/contact">
                 <Button size="lg" variant="outline"
-                  className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/80 shadow-stripe">
+                  className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/20 rounded-full shadow-lg">
                   Talk to our team
                 </Button>
               </Link>
+            </div>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-white/80 text-sm">
+              <span className="flex items-center"><Clock className="w-4 h-4 mr-2" />Setup in 15 min</span>
+              <span className="flex items-center"><CheckCircle2 className="w-4 h-4 mr-2" />Cancel anytime</span>
             </div>
           </div>
         </section>

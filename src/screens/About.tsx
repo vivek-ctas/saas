@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
-import { BlobBackdrop, WorkflowIllustration, GlobeIllustration, NeuralIllustration, AboutJourneyMockup, LogoChip } from "@/components/illustrations";
+import { WorkflowIllustration, GlobeIllustration, NeuralIllustration, AboutJourneyMockup, LogoChip } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 import Link from "next/link";
 
@@ -26,10 +26,10 @@ const About = () => {
   ];
 
   const values = [
-    { icon: Lightbulb, title: "Simplicity", desc: "Complex problems deserve simple, beautiful solutions.", tone: "from-secondary to-rose-500" },
-    { icon: Shield, title: "Reliability", desc: "Your business depends on us. We don't take that lightly.", tone: "from-primary to-indigo-600" },
-    { icon: Sparkles, title: "Innovation", desc: "We ship the next thing — not the obvious thing.", tone: "from-secondary to-orange-500" },
-    { icon: Heart, title: "Transparency", desc: "Honest pricing. Honest roadmap. Honest support.", tone: "from-secondary to-pink-600" }
+    { icon: Lightbulb, title: "Simplicity", desc: "Complex problems deserve simple, beautiful solutions.", tone: "from-blue-500 to-cyan-500" },
+    { icon: Shield, title: "Reliability", desc: "Your business depends on us. We don't take that lightly.", tone: "from-blue-700 to-indigo-600" },
+    { icon: Sparkles, title: "Innovation", desc: "We ship the next thing — not the obvious thing.", tone: "from-blue-400 to-blue-600" },
+    { icon: Heart, title: "Transparency", desc: "Honest pricing. Honest roadmap. Honest support.", tone: "from-blue-600 to-blue-900" }
   ];
 
   return (
@@ -38,18 +38,18 @@ const About = () => {
         <PageHero
           badgeIcon={Sparkles}
           badgeText="Our story"
-          title={<>We're building the <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">operating system</span> for modern commerce.</>}
+          title={<>We're building the <span className="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">operating system</span> for modern commerce.</>}
           subtitle="50,000+ sellers in 150+ countries trust Ctasis to power their multichannel operations. This is how we got here — and where we're going."
           visual={<AboutJourneyMockup className="w-full h-auto" />}
           actions={
             <>
               <Link href="/blog">
-                <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-full shadow-sm">
+                <Button size="lg" variant="outline" className="text-base px-8 h-12 border-blue-200 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm">
                   Read our blog
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-primary to-secondary hover:opacity-95 border-0">
+                <Button size="lg" className="text-base px-8 h-12 rounded-full group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
                   Join the team
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -63,7 +63,7 @@ const About = () => {
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Our mission</Badge>
+              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Our mission</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
                 Level the playing field<br />for every seller.
               </h2>
@@ -77,8 +77,8 @@ const About = () => {
               </p>
             </div>
             <div className="reveal delay-200 relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-orange-200/20 blur-3xl rounded-3xl" />
-              <div className="relative rounded-3xl bg-gradient-to-br from-primary to-secondary p-10 text-white shadow-stripe-2xl overflow-hidden">
+              <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 to-blue-300/20 blur-3xl rounded-3xl" />
+              <div className="relative rounded-3xl bg-gradient-to-br from-blue-600 to-blue-900 p-10 text-white shadow-stripe-2xl overflow-hidden">
                 <div className="absolute -top-12 -right-12 w-40 h-40 bg-white/10 rounded-full blur-2xl" />
                 <Eye className="w-10 h-10 mb-6" />
                 <h3 className="text-3xl font-bold mb-4">Our vision</h3>
@@ -96,14 +96,14 @@ const About = () => {
           <div className="absolute inset-0 grid-bg opacity-30" />
           <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Our journey</Badge>
+              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Our journey</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">5 years. 50,000 sellers.</h2>
               <p className="text-xl text-slate-600">From garage idea to global platform.</p>
             </div>
 
             <div className="relative">
               {/* Center line */}
-              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-secondary to-orange-200 md:-translate-x-1/2" />
+              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500 via-blue-300 to-blue-100 md:-translate-x-1/2" />
 
               <div className="space-y-12">
                 {milestones.map((m, i) => {
@@ -111,16 +111,16 @@ const About = () => {
                   return (
                     <div key={i} className={`reveal relative flex md:items-center ${isLeft ? "md:flex-row" : "md:flex-row-reverse"}`} style={{ transitionDelay: `${i * 100}ms` }}>
                       {/* Dot */}
-                      <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-5 h-5 rounded-full gradient-primary shadow-stripe ring-4 ring-white z-10" />
+                      <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-blue-600 to-blue-900 shadow-stripe ring-4 ring-white z-10" />
                       {/* Card */}
                       <div className={`pl-20 md:pl-0 md:w-1/2 ${isLeft ? "md:pr-12" : "md:pl-12"}`}>
                         <Card className="hover-lift overflow-hidden border border-slate-100">
                           <CardContent className="p-6">
                             <div className="flex items-center gap-3 mb-3">
-                              <div className="w-10 h-10 rounded-lg gradient-primary flex items-center justify-center shadow-stripe">
+                              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-blue-900 flex items-center justify-center shadow-stripe">
                                 <m.icon className="w-5 h-5 text-white" />
                               </div>
-                              <div className="text-3xl font-bold text-primary tracking-tight">{m.year}</div>
+                              <div className="text-3xl font-bold text-blue-600 tracking-tight">{m.year}</div>
                             </div>
                             <h3 className="text-xl font-bold text-slate-900 mb-2">{m.title}</h3>
                             <p className="text-slate-600 leading-relaxed">{m.desc}</p>
@@ -142,7 +142,7 @@ const About = () => {
               <WorkflowIllustration className="w-full h-auto" />
             </div>
             <div className="reveal delay-200">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Impact</Badge>
+              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Impact</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-8 leading-tight">
                 Numbers that mean<br />real businesses, growing.
               </h2>
@@ -155,8 +155,8 @@ const About = () => {
                   { v: "45%", l: "Avg. revenue lift" },
                   { v: "99.9%", l: "Uptime SLA" }
                 ].map((s, i) => (
-                  <div key={i} className="rounded-2xl p-5 bg-gradient-to-br from-slate-50 to-accent/40 border border-slate-100 hover-lift">
-                    <div className="text-3xl font-bold text-primary tracking-tight">{s.v}</div>
+                  <div key={i} className="rounded-2xl p-5 bg-gradient-to-br from-slate-50 to-blue-50/40 border border-slate-100 hover-lift">
+                    <div className="text-3xl font-bold text-blue-600 tracking-tight">{s.v}</div>
                     <div className="text-sm text-slate-600 mt-1">{s.l}</div>
                   </div>
                 ))}
@@ -169,7 +169,7 @@ const About = () => {
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14 reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
+              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
                 <Award className="w-3.5 h-3.5 mr-1" /> Why sellers trust us
               </Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Trust isn't claimed. It's earned.</h2>
@@ -177,12 +177,12 @@ const About = () => {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { icon: Lock, title: "SOC 2 Type II", desc: "Independently audited every year. Your data, encrypted at rest and in transit.", tone: "from-primary to-indigo-600" },
-                { icon: Brain, title: "AI for customer favour", desc: "ML models surface what your buyers want next — purchase-behaviour analytics built in.", tone: "from-secondary to-orange-500" },
-                { icon: Zap, title: "Innovation cadence", desc: "2-3 new integrations every month, shipped without breaking your workflows.", tone: "from-secondary to-pink-600" },
-                { icon: Shield, title: "99.99% uptime SLA", desc: "Multi-region failover means your store stays open even when AWS regions don't.", tone: "from-indigo-600 to-primary" },
-                { icon: Cpu, title: "Built-in compliance", desc: "GDPR, ISO 27001, PCI DSS L1 and HIPAA-ready out of the box.", tone: "from-rose-500 to-pink-600" },
-                { icon: Heart, title: "Transparent pricing", desc: "No hidden fees, no per-order surcharges. What you see is what you pay.", tone: "from-primary to-secondary" },
+                { icon: Lock, title: "SOC 2 Type II", desc: "Independently audited every year. Your data, encrypted at rest and in transit.", tone: "from-blue-600 to-indigo-600" },
+                { icon: Brain, title: "AI for customer favour", desc: "ML models surface what your buyers want next — purchase-behaviour analytics built in.", tone: "from-blue-500 to-blue-700" },
+                { icon: Zap, title: "Innovation cadence", desc: "2-3 new integrations every month, shipped without breaking your workflows.", tone: "from-blue-400 to-blue-600" },
+                { icon: Shield, title: "99.99% uptime SLA", desc: "Multi-region failover means your store stays open even when AWS regions don't.", tone: "from-blue-700 to-blue-900" },
+                { icon: Cpu, title: "Built-in compliance", desc: "GDPR, ISO 27001, PCI DSS L1 and HIPAA-ready out of the box.", tone: "from-blue-500 to-cyan-500" },
+                { icon: Heart, title: "Transparent pricing", desc: "No hidden fees, no per-order surcharges. What you see is what you pay.", tone: "from-blue-600 to-blue-900" },
               ].map((t, i) => (
                 <Card key={i} className="reveal hover-lift relative overflow-hidden border border-slate-100" style={{ transitionDelay: `${i * 70}ms` }}>
                   <div className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br ${t.tone} opacity-10 blur-2xl`} />
@@ -204,7 +204,7 @@ const About = () => {
           <div className="absolute inset-0 grid-bg opacity-30" />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14 reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Partnership ecosystem</Badge>
+              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Partnership ecosystem</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Powered by world-class partners</h2>
               <p className="text-xl text-slate-600">Logistics across India, Europe and the USA · Marketplace · ad networks · offline retail.</p>
             </div>
@@ -212,7 +212,7 @@ const About = () => {
             <div className="space-y-8">
               <div className="reveal">
                 <div className="flex items-center gap-2 mb-4">
-                  <Truck className="w-5 h-5 text-primary" />
+                  <Truck className="w-5 h-5 text-blue-600" />
                   <h3 className="font-bold text-slate-900">Logistics & shipping APIs</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">
@@ -224,7 +224,7 @@ const About = () => {
 
               <div className="reveal delay-100">
                 <div className="flex items-center gap-2 mb-4">
-                  <Store className="w-5 h-5 text-secondary" />
+                  <Store className="w-5 h-5 text-blue-500" />
                   <h3 className="font-bold text-slate-900">Marketplace & offline chains</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">
@@ -236,7 +236,7 @@ const About = () => {
 
               <div className="reveal delay-200">
                 <div className="flex items-center gap-2 mb-4">
-                  <Megaphone className="w-5 h-5 text-primary" />
+                  <Megaphone className="w-5 h-5 text-blue-600" />
                   <h3 className="font-bold text-slate-900">Ads & infrastructure</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">
@@ -253,7 +253,7 @@ const About = () => {
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">
+              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
                 <Brain className="w-3.5 h-3.5 mr-1" /> AI for customer favour
               </Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
@@ -274,7 +274,7 @@ const About = () => {
                   "Sentiment analysis from reviews & support tickets",
                 ].map((it, i) => (
                   <li key={i} className="flex items-start gap-3 text-slate-700">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" /> {it}
+                    <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" /> {it}
                   </li>
                 ))}
               </ul>
@@ -289,7 +289,7 @@ const About = () => {
         <section className="py-24 section-bg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">What we believe</Badge>
+              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">What we believe</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Our values</h2>
               <p className="text-xl text-slate-600">The principles behind every decision we make.</p>
             </div>
@@ -313,7 +313,7 @@ const About = () => {
         {/* CAREERS CTA — clean, minimal */}
         <section className="py-24 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-            <Trophy className="w-10 h-10 text-primary mx-auto mb-5" />
+            <Trophy className="w-10 h-10 text-blue-600 mx-auto mb-5" />
             <h2 className="text-4xl font-bold text-slate-900 mb-4 leading-tight">
               Want to build the future of commerce with us?
             </h2>
@@ -322,7 +322,7 @@ const About = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/pricing">
-                <Button size="lg" className="rounded-full px-8 shadow-stripe-xl bg-gradient-to-r from-primary to-secondary border-0">
+                <Button size="lg" className="rounded-full px-8 bg-gradient-to-r from-blue-600 to-blue-900 border-0">
                   Get started<ArrowRight className="w-4 h-4 ml-1" />
                 </Button>
               </Link>
@@ -330,7 +330,7 @@ const About = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full px-8 border-slate-300 bg-white"
+                  className="rounded-full px-8 border-blue-200 bg-white"
                 >
                   Read our blog
                 </Button>

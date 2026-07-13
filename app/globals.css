@@ -21,8 +21,8 @@ All colors MUST be HSL.
     --primary: 226 71% 40%;
     --primary-foreground: 0 0% 100%;
 
-    /* Ctasis accent: warm coral (replaces violet/magenta dominance) */
-    --secondary: 14 88% 62%;
+    /* Ctasis secondary: blue */
+    --secondary: 217 91% 50%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 220 20% 96%;
@@ -53,12 +53,12 @@ All colors MUST be HSL.
     --slate-700: 222 25% 30%;
     --slate-900: 232 60% 12%;
 
-    /* Ctasis-inspired Gradients (deep indigo → coral accent, no violet) */
+    /* Ctasis-inspired Gradients (blue palette, no warm tones) */
     --gradient-primary: linear-gradient(135deg, hsl(226 71% 40%) 0%, hsl(232 60% 22%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(232 60% 16%) 0%, hsl(226 71% 32%) 60%, hsl(14 88% 50%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(14 88% 62%) 0%, hsl(20 90% 55%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(40 40% 99%) 100%);
-    --gradient-section: linear-gradient(180deg, hsl(40 40% 98%) 0%, hsl(0 0% 100%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(232 60% 16%) 0%, hsl(226 71% 32%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(226 71% 50%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(217 40% 99%) 100%);
+    --gradient-section: linear-gradient(180deg, hsl(217 40% 98%) 0%, hsl(0 0% 100%) 100%);
 
     /* Brand-tinted shadows */
     --shadow-xs: 0 1px 2px 0 hsl(232 60% 18% / 0.05);
@@ -246,23 +246,23 @@ All colors MUST be HSL.
   }
 
   .gradient-animated {
-    background: linear-gradient(120deg, hsl(232 60% 16%), hsl(226 71% 32%), hsl(226 71% 40%), hsl(14 88% 52%));
+    background: linear-gradient(120deg, hsl(226 71% 32%), hsl(232 60% 22%), hsl(217 91% 40%), hsl(226 71% 32%));
     background-size: 300% 300%;
     animation: gradient-shift 14s ease infinite;
   }
 
-  /* Warm cream hero canvas — coral + indigo, no violet */
+  /* Cool blue hero canvas — blue + white, no warm tones */
   .hero-cream {
     background:
-      radial-gradient(1200px 500px at 80% 0%, hsl(20 90% 92% / 0.7), transparent 60%),
+      radial-gradient(1200px 500px at 80% 0%, hsl(217 90% 92% / 0.7), transparent 60%),
       radial-gradient(900px 400px at 0% 30%, hsl(226 90% 95% / 0.7), transparent 60%),
-      linear-gradient(180deg, hsl(40 50% 97%) 0%, hsl(35 60% 95%) 100%);
+      linear-gradient(180deg, hsl(217 50% 97%) 0%, hsl(0 0% 100%) 100%);
   }
 
   .hero-cream-grid {
     background-image:
-      linear-gradient(hsl(30 20% 88% / 0.5) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(30 20% 88% / 0.5) 1px, transparent 1px);
+      linear-gradient(hsl(217 20% 88% / 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(217 20% 88% / 0.5) 1px, transparent 1px);
     background-size: 56px 56px;
     mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
   }

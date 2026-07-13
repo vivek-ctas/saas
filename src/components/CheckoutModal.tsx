@@ -189,7 +189,7 @@ function ValidatedInput({
             'rounded-xl border transition-colors duration-150',
             hasError
               ? 'border-red-400 bg-red-50/40 focus-visible:ring-red-400/30 focus-visible:border-red-500'
-              : 'border-slate-200 focus:border-primary',
+              : 'border-slate-200 focus:border-blue-600',
           ].join(' ')}
         />
         {hasError && (
@@ -396,9 +396,9 @@ export default function CheckoutModal({
                 <div
                   key={s}
                   className={`rounded-full transition-all ${step === s
-                    ? 'w-6 h-2 bg-primary'
+                    ? 'w-6 h-2 bg-blue-600'
                     : step === 'summary' && i === 0
-                      ? 'w-2 h-2 bg-primary/40'
+                      ? 'w-2 h-2 bg-blue-600/40'
                       : 'w-2 h-2 bg-slate-200'
                     }`}
                 />
@@ -422,13 +422,13 @@ export default function CheckoutModal({
             <div className="space-y-4">
 
               {/* Plan mini-card */}
-              <div className="rounded-2xl bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20 px-5 py-4 flex items-center justify-between">
+              <div className="rounded-2xl bg-blue-50/60 border border-blue-100 px-5 py-4 flex items-center justify-between">
                 <div>
                   <div className="font-semibold text-slate-900">{plan.name} Plan</div>
                   <div className="text-xs text-slate-500 mt-0.5">{plan.desc}</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-xl font-bold text-primary">{price}</div>
+                  <div className="text-xl font-bold text-blue-600">{price}</div>
                   <div className="text-xs text-slate-500">{period}</div>
                 </div>
               </div>
@@ -500,7 +500,7 @@ export default function CheckoutModal({
                         'flex h-11 w-full rounded-xl border bg-white px-3 transition-all duration-150',
                         fieldErrors.contact_number
                           ? 'border-red-400 bg-red-50/40'
-                          : 'border-slate-200 focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/10',
+                          : 'border-slate-200 focus-within:border-blue-600 focus-within:ring-4 focus-within:ring-blue-600/10',
                       ].join(' ')}
                       numberInputProps={{
                         className: 'w-full focus:outline-none bg-transparent h-full px-2 text-sm',
@@ -541,7 +541,7 @@ export default function CheckoutModal({
                         'w-full appearance-none rounded-xl border bg-white pl-3 pr-9 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 disabled:opacity-60 transition-colors duration-150',
                         fieldErrors.currency_id
                           ? 'border-red-400 bg-red-50/40 focus:ring-red-400/30 focus:border-red-500'
-                          : 'border-slate-200 focus:border-primary focus:ring-primary/20',
+                          : 'border-slate-200 focus:border-blue-600 focus:ring-blue-600/20',
                       ].join(' ')}
                     >
                       <option value="">
@@ -657,7 +657,7 @@ export default function CheckoutModal({
                       {/* Secondary: approx. local currency for reference */}
                       {targetCurrency !== 'USD' && (
                         loadingRate ? (
-                          <div className="text-[10px] text-primary animate-pulse mt-0.5">
+                          <div className="text-[10px] text-blue-600 animate-pulse mt-0.5">
                             Loading {targetCurrency} estimate…
                           </div>
                         ) : displayConvertedPrice ? (
@@ -720,11 +720,11 @@ export default function CheckoutModal({
                         key={gw.id}
                         onClick={() => onGateway(gw.id)}
                         className={`w-full flex items-center gap-3.5 rounded-2xl border px-4 py-3.5 text-left transition-all ${isSelected
-                          ? 'border-primary bg-primary/5 shadow-sm ring-1 ring-primary'
+                          ? 'border-blue-600 bg-blue-50/60 shadow-sm ring-1 ring-blue-600'
                           : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'
                           }`}
                       >
-                        <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${isSelected ? 'bg-primary text-white' : 'bg-slate-100 text-slate-500'}`}>
+                        <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${isSelected ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
                           {gw.icon}
                         </div>
                         <div className="flex-1 min-w-0">
@@ -732,14 +732,14 @@ export default function CheckoutModal({
                             <span className="font-semibold text-slate-900 text-sm">{gw.label}</span>
                             <Badge
                               variant="secondary"
-                              className={`text-[10px] font-bold px-1.5 py-0 ${isSelected ? 'bg-primary/15 text-primary' : 'bg-slate-100 text-slate-500'}`}
+                              className={`text-[10px] font-bold px-1.5 py-0 ${isSelected ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-500'}`}
                             >
                               {gw.badge}
                             </Badge>
                           </div>
                           <p className="text-xs text-slate-500 mt-0.5">{gw.desc}</p>
                         </div>
-                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors ${isSelected ? 'border-primary bg-primary' : 'border-slate-300'}`}>
+                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors ${isSelected ? 'border-blue-600 bg-blue-600' : 'border-slate-300'}`}>
                           {isSelected && <span className="w-2 h-2 rounded-full bg-white block" />}
                         </div>
                       </button>
@@ -770,8 +770,8 @@ export default function CheckoutModal({
           {/* ══ PROCESSING ══ */}
           {step === 'processing' && (
             <div className="flex flex-col items-center justify-center py-14 gap-4">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                <Loader2 className="w-8 h-8 text-primary animate-spin" />
+              <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center">
+                <Loader2 className="w-8 h-8 text-blue-600 animate-spin" />
               </div>
               <p className="font-semibold text-slate-800">Opening payment gateway…</p>
               <p className="text-sm text-slate-500 text-center">
@@ -787,7 +787,7 @@ export default function CheckoutModal({
           <div className="flex-shrink-0 px-7 pb-6 pt-4 border-t border-slate-100 bg-white">
             {step === 'form' && (
               <Button
-                className="w-full h-12 rounded-2xl text-base font-semibold shadow-lg group"
+                className="w-full h-12 rounded-2xl text-base font-semibold shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0"
                 onClick={handleSubmit}
                 disabled={loading || countriesLoading}
               >
@@ -804,7 +804,7 @@ export default function CheckoutModal({
 
             {step === 'summary' && (
               <Button
-                className="w-full h-12 rounded-2xl text-base font-semibold shadow-lg group"
+                className="w-full h-12 rounded-2xl text-base font-semibold shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0"
                 onClick={onStartPayment}
                 disabled={loading || loadingRate}
               >
