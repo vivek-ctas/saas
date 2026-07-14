@@ -49,7 +49,7 @@ const Footer = () => {
       <div className="relative z-10">
         {/* Newsletter Section */}
         <div className="border-b border-slate-700">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10 py-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div>
                 <h3 className="text-2xl font-bold mb-1">Let's Build Your eCommerce Success Together</h3>
@@ -62,7 +62,7 @@ const Footer = () => {
         </div>
 
         {/* Main Footer Content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="max-w-[1500px] mx-auto px-6 lg:px-10 py-10">
           <div className="flex flex-col md:flex-row justify-between gap-8">
             {/* Company Info */}
             <div className="flex-1 min-w-[220px] max-w-[280px] space-y-4">
@@ -125,7 +125,7 @@ const Footer = () => {
 
         {/* Bottom Footer */}
         <div className="border-t border-slate-700">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10 py-5">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="text-slate-400 text-sm mb-4 md:mb-0">
                 © 2024 Ctasis Sellerbuz. All rights reserved.

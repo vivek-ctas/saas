@@ -121,7 +121,7 @@ const Contact = () => {
 
         {/* QUICK CHANNELS */}
         <section className="py-16 bg-white -mt-8 relative z-10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
                 { icon: Mail, title: "Email us", value: companyData?.email || "", note: "General & sales" },
@@ -147,7 +147,7 @@ const Contact = () => {
 
         {/* FORM + INFO */}
         <section className="py-24 section-bg" id="contact-form">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
               {/* Form */}
               <Card className="reveal lg:col-span-3 border-0 shadow-xl bg-white relative overflow-hidden">

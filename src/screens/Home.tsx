@@ -15,6 +15,7 @@ import {
   NeuralIllustration, InfraIllustration, LogoChip, MarketplaceMeshDiagram, ProblemDiagram
 } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
+import { useState } from "react";
 
 
 
@@ -49,7 +50,7 @@ const Home = () => {
           <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-500/10 blur-3xl pointer-events-none" />
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32 sm:pt-28 sm:pb-40">
+          <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10 pt-20 pb-32 sm:pt-28 sm:pb-40">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Copy */}
               <div className="lg:col-span-6 reveal">
@@ -104,7 +105,7 @@ const Home = () => {
                 </div>
 
                 {/* Floating chips */}
-                <div className="absolute top-4 -left-4 sm:-left-8 bg-white rounded-2xl shadow-stripe-xl px-4 py-3 flex items-center gap-3 animate-float">
+                <div className="absolute -top-12 -left-4 sm:-left-8 bg-white rounded-2xl shadow-stripe-xl px-4 py-3 flex items-center gap-3 animate-float">
                   <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-900 flex items-center justify-center">
                     <RefreshCw className="w-5 h-5 text-white" />
                   </div>
@@ -113,7 +114,7 @@ const Home = () => {
                     <div className="text-slate-500">2 sec ago</div>
                   </div>
                 </div>
-                <div className="absolute -bottom-2 right-2 sm:-right-4 bg-white rounded-2xl shadow-stripe-xl px-4 py-3 flex items-center gap-3 animate-float" style={{ animationDelay: "1.5s" }}>
+                <div className="absolute -bottom-12 right-2 sm:-right-4 bg-white rounded-2xl shadow-stripe-xl px-4 py-3 flex items-center gap-3 animate-float" style={{ animationDelay: "1.5s" }}>
                   <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                     <TrendingUp className="w-5 h-5 text-white" />
                   </div>
@@ -125,28 +126,57 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Partner badges row */}
-            <div className="mt-20 flex flex-wrap items-center justify-center gap-4 sm:gap-6 reveal">
-              {[
-                { name: "Amazon SP-API Partner", sub: "Selling Partner Appstore", logo: "/amazon-color-svgrepo-com.svg" },
-                { name: "Walmart Solution Provider", sub: "Marketplace Connect", logo: "/walmart.png" },
-                { name: "Shopify Plus Partner", sub: "Certified App", logo: "/shopify-svgrepo-com.svg" },
-                { name: "AWS Advanced Tier", sub: "Technology Partner", logo: "/aws-svgrepo-com.svg" },
-              ].map((p, i) => (
-                <div key={i} className="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/90 backdrop-blur border border-slate-200/70 shadow-sm hover:shadow-lg hover:border-blue-200 transition-stripe">
-                  <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center p-1">
-                    <img
-                      src={p.logo}
-                      alt={p.name}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-slate-900 leading-tight">{p.name}</div>
-                    <div className="text-[10px] text-slate-500">{p.sub}</div>
-                  </div>
+            {/* Partner badges marquee */}
+            <style>{`
+              @keyframes marquee-scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+            `}</style>
+            <div className="mt-20 reveal">
+              <div
+                className="group relative overflow-hidden"
+                onMouseEnter={(e) => {
+                  (e.currentTarget.querySelector('.marquee-track') as HTMLElement).style.animationPlayState = 'paused';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget.querySelector('.marquee-track') as HTMLElement).style.animationPlayState = 'running';
+                }}
+              >
+                {/* Fade edges */}
+                <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-24 bg-gradient-to-r from-blue-50/60 via-blue-50/60 to-transparent z-10" />
+                <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-24 bg-gradient-to-l from-blue-50/60 via-blue-50/60 to-transparent z-10" />
+
+                <div className="marquee-track flex w-max gap-4 sm:gap-6" style={{ animation: 'marquee-scroll 30s linear infinite' }}>
+                  {[0, 1].map((set) => (
+                    <div key={set} className="flex items-center gap-4 sm:gap-6 shrink-0">
+                      {[
+                        { name: "Amazon SP-API Partner", sub: "Selling Partner Appstore", logo: "/amazon-color-svgrepo-com.svg" },
+                        { name: "Walmart Solution Provider", sub: "Marketplace Connect", logo: "/walmart.png" },
+                        { name: "Shopify Plus Partner", sub: "Certified App", logo: "/shopify-svgrepo-com.svg" },
+                        { name: "AWS Advanced Tier", sub: "Technology Partner", logo: "/aws-svgrepo-com.svg" },
+                        { name: "eBay Developer Program", sub: "Marketplace Integration", logo: "/ebay-svgrepo-com.svg" },
+                        { name: "Etsy Developer Platform", sub: "Seller API Partner", logo: "/etsy-logo-svgrepo-com.svg" },
+                        { name: "Flipkart Marketplace", sub: "Seller Integration", logo: "/flipkart-icon.svg" },
+                      ].map((p, i) => (
+                        <div key={`${set}-${i}`} className="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/90 backdrop-blur border border-slate-200/70 shadow-sm hover:shadow-lg hover:border-blue-200 transition-stripe">
+                          <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center p-1">
+                            <img
+                              src={p.logo}
+                              alt={p.name}
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-slate-900 leading-tight">{p.name}</div>
+                            <div className="text-[10px] text-slate-500">{p.sub}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </section>
@@ -171,7 +201,7 @@ const Home = () => {
 
         {/* PROBLEM */}
         <section className="py-20 bg-gradient-to-b from-white to-blue-50/40">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The problem</Badge>
               <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight mb-4">
@@ -202,7 +232,7 @@ const Home = () => {
         {/* INFRASTRUCTURE TEASER */}
         <section className="py-24 section-bg relative overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-30" />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
                 <Server className="w-3.5 h-3.5 mr-1" /> Built like a hyperscaler
@@ -241,7 +271,7 @@ const Home = () => {
 
         {/* STATS */}
         <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
               {platformStats.map((stat, i) => (
                 <div key={i} className="reveal text-center" style={{ transitionDelay: `${i * 100}ms` }}>
@@ -259,7 +289,7 @@ const Home = () => {
         {/* STORY: PROBLEM → SOLUTION */}
         <section className="py-24 section-bg relative overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-30" />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
               <div className="order-2 lg:order-1 reveal">
                 <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The problem</Badge>
@@ -311,7 +341,7 @@ const Home = () => {
 
         {/* INTEGRATIONS SECTOR — "Sell on every channel that matters" */}
         <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
               {/* Left copy */}
               <div className="lg:col-span-5 reveal">
@@ -362,51 +392,49 @@ const Home = () => {
 
         {/* BENTO FEATURES */}
         <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
             <div className="text-center mb-16 max-w-2xl mx-auto reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Platform</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Everything you need to scale</h2>
               <p className="text-xl text-slate-600">A complete operating system for multichannel commerce.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[200px]">
-              {/* Big tile */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Big tile — spans 2 cols and 2 rows on lg */}
               <div
-                className="reveal lg:col-span-2 lg:row-span-2 rounded-3xl p-0 bg-gradient-to-br from-blue-600 to-blue-800 text-white relative overflow-hidden hover-lift"
+                className="reveal lg:col-span-2 lg:row-span-2 rounded-3xl bg-gradient-to-br from-blue-50 via-white to-indigo-50 border border-slate-200/70 relative overflow-hidden hover-lift min-h-[420px] lg:min-h-0"
               >
-                <div className="grid grid-cols-1 lg:grid-cols-2 items-start  h-full">
+                <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] items-center gap-2 h-full">
 
                   {/* LEFT SIDE */}
-                  <div className="relative z-10 flex flex-col justify-start pt-8 pb-8 pl-8 pr-6 lg:pl-10 lg:pr-8">
+                  <div className="relative z-10 flex flex-col justify-center py-8 pl-8 pr-2 lg:pl-10 lg:pr-3">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center backdrop-blur-md">
-                        <BarChart3 className="w-6 h-6" />
+                      <div className="w-10 h-10 rounded-2xl bg-blue-100 flex items-center justify-center">
+                        <BarChart3 className="w-6 h-6 text-blue-600" />
                       </div>
                     </div>
 
-                    <h3 className="text-3xl lg:text-[34px] font-bold leading-tight tracking-tight mb-3">
+                    <h3 className="text-3xl lg:text-[34px] font-bold leading-tight tracking-tight mb-3 text-slate-900">
                       Real-time analytics
                     </h3>
 
-                    <p className="text-white/85 text-[15px] leading-relaxed max-w-[280px]">
+                    <p className="text-slate-600 text-[15px] leading-relaxed max-w-[280px]">
                       Profit margins, channel performance and AI-powered recommendations
-                      updated <span className="font-medium text-white">every second</span>.
+                      updated <span className="font-medium text-blue-600">every second</span>.
                     </p>
                   </div>
                   {/* RIGHT SIDE */}
-                  <div className="relative flex items-center justify-center pr-4 lg:pr-6 h-full
-                  ">
-                    <div className="absolute inset-0 bg-white/10 rounded-[22px] blur-3xl scale-90 opacity-60" />
-
-                    {/* Main Illustration */}
-                    <div className="relative z-10 w-full max-w-[420px]  drop-shadow-2xl">
-                      <AnalyticsIllustration className="w-full h-auto block" />
+                  <div className="relative flex items-center justify-center pr-4 lg:pr-6 h-full">
+                    <div className="relative z-10 w-full max-w-[500px]">
+                      <AnalyticsIllustration className="w-full h-auto" />
                     </div>
                   </div>
 
                 </div>
               </div>
-              <div className="reveal delay-100 rounded-3xl p-6 bg-white border border-slate-200/70 shadow-sm hover:shadow-lg hover:border-blue-200 transition-all">
+
+              {/* Inventory sync */}
+              <div className="reveal delay-100 rounded-3xl p-6 bg-white border border-slate-200/70 hover:border-blue-200 transition-all">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-900 flex items-center justify-center mb-4">
                   <RefreshCw className="w-5 h-5 text-white" />
                 </div>
@@ -425,7 +453,8 @@ const Home = () => {
                 </div>
               </div>
 
-              <div className="reveal delay-200 rounded-3xl p-6 bg-white border border-slate-200/70 shadow-sm hover:shadow-lg hover:border-blue-200 transition-all">
+              {/* Smart routing */}
+              <div className="reveal delay-200 rounded-3xl p-6 bg-white border border-slate-200/70 hover:border-blue-200 transition-all">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-4">
                   <ShoppingCart className="w-5 h-5 text-white" />
                 </div>
@@ -443,6 +472,7 @@ const Home = () => {
                 </div>
               </div>
 
+              {/* Enterprise security — spans 2 cols */}
               <div className="reveal delay-300 lg:col-span-2 rounded-3xl p-6 bg-slate-900 text-white hover-lift relative overflow-hidden">
                 <Shield className="w-8 h-8 text-blue-400 mb-4" />
 
@@ -467,11 +497,10 @@ const Home = () => {
                     Encrypted
                   </div>
                 </div>
-
-                <div className="absolute -right-10 -bottom-10 w-48 h-48 bg-blue-500/30 rounded-full blur-3xl" />
               </div>
 
-              <div className="reveal delay-400 rounded-3xl p-6 bg-white border border-slate-200/70 shadow-sm hover:shadow-lg hover:border-blue-200 transition-all hover-lift">
+              {/* Global reach */}
+              <div className="reveal delay-400 rounded-3xl p-6 bg-white border border-slate-200/70 hover:border-blue-200 transition-all hover-lift">
                 <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center mb-4">
                   <Globe className="w-5 h-5 text-blue-600" />
                 </div>
@@ -494,7 +523,7 @@ const Home = () => {
 
         {/* JOURNEY / 3-STEP */}
         <section className="py-24 section-bg">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
             <div className="text-center mb-16 reveal">
               <h2 className="text-4xl font-bold text-slate-900 mb-4">From signup to scale in 3 steps</h2>
               <p className="text-xl text-slate-600">Set up in 15 minutes. See results within a week.</p>
@@ -522,9 +551,7 @@ const Home = () => {
 
 
         {/* CTA */}
-        <section className="py-24 relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-900">
-          <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
+        <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
             <Sparkles className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">

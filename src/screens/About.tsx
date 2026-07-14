@@ -61,7 +61,7 @@ const About = () => {
 
         {/* MISSION + VISION */}
         <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Our mission</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
@@ -94,7 +94,7 @@ const About = () => {
         {/* TIMELINE */}
         <section className="py-24 section-bg relative overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-30" />
-          <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10">
             <div className="text-center mb-16 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Our journey</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">5 years. 50,000 sellers.</h2>
@@ -137,7 +137,7 @@ const About = () => {
 
         {/* IMPACT NUMBERS */}
         <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
               <WorkflowIllustration className="w-full h-auto" />
             </div>
@@ -167,7 +167,7 @@ const About = () => {
 
         {/* TRUST FLAGS */}
         <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
             <div className="text-center mb-14 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
                 <Award className="w-3.5 h-3.5 mr-1" /> Why sellers trust us
@@ -202,7 +202,7 @@ const About = () => {
         {/* PARTNERSHIP FLAGS */}
         <section className="py-24 section-bg relative overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-30" />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10">
             <div className="text-center mb-14 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Partnership ecosystem</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Powered by world-class partners</h2>
@@ -251,7 +251,7 @@ const About = () => {
 
         {/* AI for customer favour — illustration block */}
         <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
                 <Brain className="w-3.5 h-3.5 mr-1" /> AI for customer favour
@@ -287,7 +287,7 @@ const About = () => {
 
         {/* VALUES */}
         <section className="py-24 section-bg">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
             <div className="text-center mb-16 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">What we believe</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Our values</h2>
@@ -311,31 +311,58 @@ const About = () => {
         </section>
 
         {/* CAREERS CTA — clean, minimal */}
-        <section className="py-24 bg-white">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-            <Trophy className="w-10 h-10 text-blue-600 mx-auto mb-5" />
-            <h2 className="text-4xl font-bold text-slate-900 mb-4 leading-tight">
+        {/* CAREERS CTA */}
+        <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
+          <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10 text-center reveal">
+            <Trophy className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
+
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
               Want to build the future of commerce with us?
             </h2>
-            <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
-              We're hiring engineers, designers and seller-success folks across India and remote.
+
+            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+              We're hiring engineers, designers, and seller-success specialists across
+              India and remote. Join our team and help shape the future of multichannel
+              commerce.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing">
-                <Button size="lg" className="rounded-full px-8 bg-gradient-to-r from-blue-600 to-blue-900 border-0">
-                  Get started<ArrowRight className="w-4 h-4 ml-1" />
+                <Button
+                  size="lg"
+                  className="text-lg px-8 rounded-full bg-white text-blue-600 hover:bg-blue-50 border-0 shadow-lg"
+                >
+                  Get Started
+                  <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
+
               <Link href="/blog">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full px-8 border-blue-200 bg-white"
+                  className="text-lg px-8 rounded-full bg-white/10 border-white/30 text-white hover:bg-white/20 shadow-lg"
                 >
-                  Read our blog
+                  Read Our Blog
                 </Button>
               </Link>
+            </div>
 
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-white/80 text-sm">
+              <span className="flex items-center">
+                <Trophy className="w-4 h-4 mr-2" />
+                Growth Opportunities
+              </span>
+
+              <span className="flex items-center">
+                <Shield className="w-4 h-4 mr-2" />
+                Remote Friendly
+              </span>
+
+              <span className="flex items-center">
+                <CheckCircle className="w-4 h-4 mr-2" />
+                Competitive Benefits
+              </span>
             </div>
           </div>
         </section>

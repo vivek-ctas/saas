@@ -204,7 +204,7 @@ const BlogPost = () => {
       <div ref={ref}>
         {/* HERO */}
         <section className="relative pt-28 pb-16 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
             <Link href="/blog" className="reveal inline-flex items-center gap-2 text-sm text-slate-600 hover:text-blue-600 mb-6">
               <ArrowLeft className="w-4 h-4" /> Back to all articles
             </Link>
@@ -236,7 +236,7 @@ const BlogPost = () => {
 
         {/* BODY */}
         <section className="py-20 bg-white">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto px-6 lg:px-10">
             <p className="reveal text-lg text-slate-700 leading-relaxed mb-10 first-letter:text-5xl first-letter:font-bold first-letter:text-blue-600 first-letter:mr-2 first-letter:float-left first-letter:leading-none">
               {post.intro}
             </p>
@@ -279,7 +279,7 @@ const BlogPost = () => {
 
         {/* RELATED */}
         <section className="py-20 section-bg">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
             <div className="reveal flex items-end justify-between mb-10">
               <div>
                 <Badge className="mb-3 bg-blue-50 text-blue-700 border border-blue-100">Keep reading</Badge>

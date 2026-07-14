@@ -175,7 +175,7 @@ const Pricing = () => {
 
         {/* ── PLANS SECTION ──────────────────────────────────────────────────── */}
         <section id="plans" className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
 
             {/* Loading */}
             {plansLoading && (
@@ -310,7 +310,7 @@ const Pricing = () => {
 
         {/* ── COMPARISON TABLE ────────────────────────────────────────────────── */}
         <section className="py-24 section-bg" id='comparison'>
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
             <div className="text-center mb-12 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Plan comparison</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Compare every feature</h2>
@@ -351,7 +351,7 @@ const Pricing = () => {
 
         {/* ── TESTIMONIAL ────────────────────────────────────────────────────── */}
         <section className="py-24 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
               <AnalyticsIllustration className="w-full h-auto" />
             </div>
@@ -382,7 +382,7 @@ const Pricing = () => {
         {/* ── AI ADD-ONS ──────────────────────────────────────────────────────── */}
         <section className="py-24 section-bg relative overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-30" />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10">
             <div className="text-center mb-14 reveal max-w-3xl mx-auto">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Inside Pro & Enterprise</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">
@@ -414,7 +414,7 @@ const Pricing = () => {
 
         {/* ── FAQ ────────────────────────────────────────────────────────────── */}
         <section className="py-24 section-bg">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto px-6 lg:px-10">
             <div className="text-center mb-12 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">FAQ</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Frequently asked questions</h2>
@@ -442,7 +442,7 @@ const Pricing = () => {
         <section className="py-24 relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-900">
           <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
-          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+          <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10 text-center reveal">
             <Sparkles className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">Still have questions?</h2>
             <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">Talk to our team — we'll help you pick the right plan.</p>

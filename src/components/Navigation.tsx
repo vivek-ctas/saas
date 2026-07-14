@@ -14,9 +14,9 @@ const Navigation = () => {
     { name: "Services", href: "/services" },
     // { name: "Marketplace", href: "/marketplaces" },
     // { name: "Infrastructure", href: "/infrastructure" },
-    { name: "Pricing", href: "/pricing" },
     { name: "Blog", href: "/blog" },
     { name: "About", href: "/about" },
+    { name: "Pricing", href: "/pricing" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -24,21 +24,26 @@ const Navigation = () => {
 
   return (
     <nav className="bg-white/95 backdrop-blur-sm border-b border-slate-100 sticky top-0 z-50 shadow-stripe">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-1 sm:space-x-2 flex-shrink-0">
+          <Link
+            href="/"
+            className="flex items-center gap-1.5 flex-shrink-0"
+          >
             <img
               src="/ctasis-logo copy.svg"
-              alt="Ctasis Logo"
-              className="w-auto h-9 sm:w-auto md:w-auto transition-all"
+              alt="Sellerbuz Logo"
+              className="w-7 h-7 shrink-0 object-contain"
             />
-            <span className="text-black text-sm sm:text-base font-semibold">Sellerbuz
+
+            <span className="text-xl font-medium text-slate-900">
+              Sellerbuz
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-6">
+          <div className="hidden lg:flex items-center space-x-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -51,7 +56,7 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Button asChild variant="default" className="ml-2 shadow-stripe">
+            <Button asChild variant="default" className="ml-4 shadow-stripe">
               <Link href="/pricing">
                 Get Started
               </Link>

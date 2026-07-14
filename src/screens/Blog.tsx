@@ -127,7 +127,7 @@ const Blog = () => {
 
         {/* FEATURED POST */}
         <section className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
             <Link href={`/blog/${featured.slug}`} className="reveal block group">
               <Card className="overflow-hidden border border-slate-100 hover-lift">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -158,7 +158,7 @@ const Blog = () => {
 
         {/* GRID */}
         <section className="py-20 section-bg">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
             <div className="flex items-end justify-between mb-12 reveal">
               <div>
                 <Badge className="mb-3 bg-blue-50 text-blue-700 border border-blue-100">Latest articles</Badge>
@@ -194,7 +194,7 @@ const Blog = () => {
 
         {/* CTA */}
         <section className="py-24 relative overflow-hidden bg-gradient-to-br from-blue-600 to-blue-900">
-          <div className="relative max-w-4xl mx-auto px-4 text-center reveal">
+          <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10 text-center reveal">
             <BookOpen className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">Get the playbooks in your inbox.</h2>
             <p className="text-xl text-white/90 mb-10">One short, useful email a week — no fluff, no spam, unsubscribe anytime.</p>

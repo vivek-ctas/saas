@@ -32,7 +32,7 @@ export function MaintenanceState({
     className = '',
 }: MaintenanceStateProps) {
     return (
-        <div className={`relative flex items-center justify-center px-4 py-20 ${className}`}>
+        <div className={`relative flex items-center justify-center px-6 lg:px-10 py-20 ${className}`}>
             {/* subtle grid background, faded toward the edges */}
             <div
                 className="pointer-events-none absolute inset-0 -z-10"

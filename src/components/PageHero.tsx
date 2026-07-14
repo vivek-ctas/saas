@@ -33,7 +33,7 @@ const PageHero = ({
       <div className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 -left-32 w-[440px] h-[440px] rounded-full bg-blue-500/10 blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32 sm:pt-24 sm:pb-36">
+      <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10 pt-20 pb-32 sm:pt-28 sm:pb-406">
         {centered ? (
           <div className="max-w-4xl mx-auto text-center reveal">
             <Badge className="mb-6 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">
