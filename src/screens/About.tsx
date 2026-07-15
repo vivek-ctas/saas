@@ -92,8 +92,7 @@ const About = () => {
         </section>
 
         {/* TIMELINE */}
-        <section className="py-24 section-bg relative overflow-hidden">
-          <div className="absolute inset-0 grid-bg opacity-30" />
+        <section className="py-24 bg-blue-50/40">
           <div className="relative px-[50px] lg:px-[70px]">
             <div className="text-center mb-16 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Our journey</Badge>
@@ -166,7 +165,7 @@ const About = () => {
         </section>
 
         {/* TRUST FLAGS */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-blue-50/40">
           <div className="px-[50px] lg:px-[70px]">
             <div className="text-center mb-14 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
@@ -200,8 +199,7 @@ const About = () => {
         </section>
 
         {/* PARTNERSHIP FLAGS */}
-        <section className="py-24 section-bg relative overflow-hidden">
-          <div className="absolute inset-0 grid-bg opacity-30" />
+        <section className="py-24 bg-white">
           <div className="relative px-[50px] lg:px-[70px]">
             <div className="text-center mb-14 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Partnership ecosystem</Badge>
@@ -250,7 +248,7 @@ const About = () => {
         </section>
 
         {/* AI for customer favour — illustration block */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-blue-50/40">
           <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
@@ -286,7 +284,7 @@ const About = () => {
         </section>
 
         {/* VALUES */}
-        <section className="py-24 section-bg">
+        <section className="py-24 bg-white">
           <div className="px-[50px] lg:px-[70px]">
             <div className="text-center mb-16 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">What we believe</Badge>

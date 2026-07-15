@@ -230,8 +230,7 @@ const Home = () => {
         </section>
 
         {/* INFRASTRUCTURE TEASER */}
-        <section className="py-24 bg-blue-50/40 relative overflow-hidden">
-          <div className="absolute inset-0 grid-bg opacity-30" />
+        <section className="py-24 bg-blue-50/40">
           <div className="relative px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
@@ -287,8 +286,7 @@ const Home = () => {
         </section>
 
         {/* STORY: PROBLEM → SOLUTION */}
-        <section className="py-24 bg-blue-50/40 relative overflow-hidden">
-          <div className="absolute inset-0 grid-bg opacity-30" />
+        <section className="py-24 bg-blue-50/40">
           <div className="relative px-[50px] lg:px-[70px]">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
               <div className="order-2 lg:order-1 reveal">

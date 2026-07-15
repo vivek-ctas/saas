@@ -309,7 +309,7 @@ const Pricing = () => {
         </section>
 
         {/* ── COMPARISON TABLE ────────────────────────────────────────────────── */}
-        <section className="py-24 section-bg" id='comparison'>
+        <section className="py-24 bg-blue-50/40" id='comparison'>
           <div className="px-[50px] lg:px-[70px]">
             <div className="text-center mb-12 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Plan comparison</Badge>
@@ -380,8 +380,7 @@ const Pricing = () => {
         </section>
 
         {/* ── AI ADD-ONS ──────────────────────────────────────────────────────── */}
-        <section className="py-24 section-bg relative overflow-hidden">
-          <div className="absolute inset-0 grid-bg opacity-30" />
+        <section className="py-24 bg-blue-50/40">
           <div className="relative px-[50px] lg:px-[70px]">
             <div className="text-center mb-14 reveal max-w-3xl mx-auto">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Inside Pro & Enterprise</Badge>
@@ -413,7 +412,7 @@ const Pricing = () => {
         </section>
 
         {/* ── FAQ ────────────────────────────────────────────────────────────── */}
-        <section className="py-24 section-bg">
+        <section className="py-24 bg-white">
           <div className="max-w-3xl mx-auto px-[50px] lg:px-[70px]">
             <div className="text-center mb-12 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">FAQ</Badge>
