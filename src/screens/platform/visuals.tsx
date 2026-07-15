@@ -47,10 +47,10 @@ export const DashListVisual = ({
             const badgeTone = r.badge?.tone === "amber"
               ? { bg: "#fef3c7", fg: "#92400e" }
               : r.badge?.tone === "emerald"
-              ? { bg: "#d1fae5", fg: "#065f46" }
-              : r.badge?.tone === "muted"
-              ? { bg: "#f1f5f9", fg: "#475569" }
-              : { bg: ILL.tint, fg: ILL.blueDeep };
+                ? { bg: "#d1fae5", fg: "#065f46" }
+                : r.badge?.tone === "muted"
+                  ? { bg: "#f1f5f9", fg: "#475569" }
+                  : { bg: ILL.tint, fg: ILL.blueDeep };
             return (
               <g key={ri}>
                 {ri > 0 && <line x1={32} y1={y - 17} x2={W - 32} y2={y - 17} stroke="#f1f5f9" />}

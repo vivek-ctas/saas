@@ -1,7 +1,8 @@
 import PlatformPage, { PlatformConfig } from "./PlatformPage";
-import { FlowVisual, DashListVisual, KpiChartVisual } from "./visuals";
+import { KpiChartVisual } from "./visuals";
 import { Boxes, RefreshCw, ShieldCheck, BarChart3, Layers, Upload } from "lucide-react";
-
+import { FlowVisual } from "@/components/illustrations/flowchart"
+import { DashListVisual } from "@/components/illustrations/DashListVisual";
 const cfg: PlatformConfig = {
   slug: "inventory",
   eyebrow: "Inventory sync",
@@ -88,7 +89,7 @@ const cfg: PlatformConfig = {
           id="inv-wh"
           title="Multi-warehouse ledger · SKU-42891"
           chip={{ label: "Net available: 1,668", tone: "blue" }}
-          columns=  {["Location", "On hand", "Reserved", "Available"]}
+          columns={["Location", "On hand", "Reserved", "Available"]}
           rows={[
             { cells: [{ dot: "#10b981", text: "US · Ohio WH" }, "820", "42", "778"], badge: { text: "OK", tone: "emerald" } },
             { cells: [{ dot: "#f59e0b", text: "Amazon FBA" }, "512", "18", "494"], badge: { text: "OK", tone: "emerald" } },
@@ -126,12 +127,12 @@ const cfg: PlatformConfig = {
     },
   ],
   featureGrid: [
-    { icon: Boxes,       t: "Master catalog",   d: "Single SKU per product with per-channel mappings and identifiers." },
-    { icon: RefreshCw,   t: "Real-time sync",   d: "Push and pull inventory via native APIs — no polling delays." },
-    { icon: Layers,      t: "Multi-warehouse",  d: "Split inventory across warehouses and 3PLs with allocation rules." },
-    { icon: Upload,      t: "Bulk adjustments", d: "Cycle counts, receiving and adjustments via CSV or Excel." },
-    { icon: ShieldCheck, t: "Guardrails",       d: "Buffer stock, safety thresholds and low-stock alerts per channel." },
-    { icon: BarChart3,   t: "Movement analytics", d: "Sell-through, days-of-cover and reorder recommendations." },
+    { icon: Boxes, t: "Master catalog", d: "Single SKU per product with per-channel mappings and identifiers." },
+    { icon: RefreshCw, t: "Real-time sync", d: "Push and pull inventory via native APIs — no polling delays." },
+    { icon: Layers, t: "Multi-warehouse", d: "Split inventory across warehouses and 3PLs with allocation rules." },
+    { icon: Upload, t: "Bulk adjustments", d: "Cycle counts, receiving and adjustments via CSV or Excel." },
+    { icon: ShieldCheck, t: "Guardrails", d: "Buffer stock, safety thresholds and low-stock alerts per channel." },
+    { icon: BarChart3, t: "Movement analytics", d: "Sell-through, days-of-cover and reorder recommendations." },
   ],
   channels: ["Amazon", "Walmart", "eBay", "Etsy", "Flipkart"],
   faq: [

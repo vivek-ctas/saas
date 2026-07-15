@@ -248,6 +248,7 @@ const Services = () => {
   return (
     <Layout>
       <div ref={ref}>
+        {/* HERO */}
         <PageHero
           badgeIcon={Sparkles}
           badgeText="12 services · 1 platform"
@@ -271,7 +272,7 @@ const Services = () => {
             </>
           }
         />
-        {/* HERO */}
+
         <section className="relative bg-gradient-to-b from-blue-50/60 to-white py-16 lg:py-20">
           <div className="relative px-[50px] lg:px-[70px] text-center">
             <Badge className="mb-4 bg-white text-blue-700 border border-blue-100">

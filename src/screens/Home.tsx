@@ -45,7 +45,7 @@ const Home = () => {
     <Layout>
       <div ref={ref}>
         {/* HERO – Clean blue & white canvas, light, polished */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-blue-50/60 via-white to-white slope-divider-bottom">
+        <section className="relative overflow-hidden hero-cream slope-divider-bottom">
           <div className="absolute inset-0 hero-cream-grid pointer-events-none" />
           <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-500/10 blur-3xl pointer-events-none" />
@@ -200,7 +200,7 @@ const Home = () => {
 
 
         {/* PROBLEM */}
-        <section className="py-20 bg-gradient-to-b from-white to-blue-50/40">
+        <section className="py-20 bg-white">
           <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The problem</Badge>
@@ -230,7 +230,7 @@ const Home = () => {
         </section>
 
         {/* INFRASTRUCTURE TEASER */}
-        <section className="py-24 section-bg relative overflow-hidden">
+        <section className="py-24 bg-blue-50/40 relative overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-30" />
           <div className="relative px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
@@ -287,7 +287,7 @@ const Home = () => {
         </section>
 
         {/* STORY: PROBLEM → SOLUTION */}
-        <section className="py-24 section-bg relative overflow-hidden">
+        <section className="py-24 bg-blue-50/40 relative overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-30" />
           <div className="relative px-[50px] lg:px-[70px]">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
@@ -391,7 +391,7 @@ const Home = () => {
         </section>
 
         {/* BENTO FEATURES */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-blue-50/40">
           <div className="px-[50px] lg:px-[70px]">
             <div className="text-center mb-16 max-w-2xl mx-auto reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Platform</Badge>
@@ -522,7 +522,7 @@ const Home = () => {
         </section>
 
         {/* JOURNEY / 3-STEP */}
-        <section className="py-24 section-bg">
+        <section className="py-24 bg-white">
           <div className="px-[50px] lg:px-[70px]">
             <div className="text-center mb-16 reveal">
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">From signup to scale in 3 steps</h2>

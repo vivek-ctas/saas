@@ -1,8 +1,8 @@
 import PlatformPage, { PlatformConfig } from "./PlatformPage";
-import { KpiChartVisual, MatrixVisual, DashListVisual } from "./visuals";
+import { KpiChartVisual, MatrixVisual } from "./visuals";
 import { ILL } from "@/components/illustrations/primitives";
 import { DollarSign, ShieldCheck, BarChart3, RefreshCw, Layers, Sparkles } from "lucide-react";
-
+import { DashListVisual } from "@/components/illustrations/DashListVisual";
 const cfg: PlatformConfig = {
   slug: "repricer",
   eyebrow: "Repricer",
@@ -123,12 +123,12 @@ const cfg: PlatformConfig = {
     },
   ],
   featureGrid: [
-    { icon: DollarSign,  t: "Buy Box repricer",   d: "Real-time reaction to Buy Box changes with margin guardrails." },
-    { icon: ShieldCheck, t: "Floor & ceiling",    d: "Per-SKU hard limits. Repricer never crosses them." },
-    { icon: RefreshCw,   t: "Cross-channel sync", d: "Keep pricing consistent across every marketplace." },
-    { icon: Layers,      t: "Strategy library",   d: "Match-Buy-Box, beat-by-cents, hold-margin and more." },
-    { icon: Sparkles,    t: "Promo scheduler",    d: "Time-boxed sale prices with automatic revert." },
-    { icon: BarChart3,   t: "Buy Box analytics",  d: "Win rate, price velocity and margin trend per SKU." },
+    { icon: DollarSign, t: "Buy Box repricer", d: "Real-time reaction to Buy Box changes with margin guardrails." },
+    { icon: ShieldCheck, t: "Floor & ceiling", d: "Per-SKU hard limits. Repricer never crosses them." },
+    { icon: RefreshCw, t: "Cross-channel sync", d: "Keep pricing consistent across every marketplace." },
+    { icon: Layers, t: "Strategy library", d: "Match-Buy-Box, beat-by-cents, hold-margin and more." },
+    { icon: Sparkles, t: "Promo scheduler", d: "Time-boxed sale prices with automatic revert." },
+    { icon: BarChart3, t: "Buy Box analytics", d: "Win rate, price velocity and margin trend per SKU." },
   ],
   channels: ["Amazon", "Walmart", "eBay", "Etsy", "Flipkart"],
   faq: [

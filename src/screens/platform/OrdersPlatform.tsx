@@ -1,7 +1,8 @@
 import PlatformPage, { PlatformConfig } from "./PlatformPage";
-import { DashListVisual, FlowVisual, ProgressListVisual } from "./visuals";
+import { ProgressListVisual } from "./visuals";
 import { ShoppingCart, RefreshCw, Layers, ShieldCheck, BarChart3, Upload } from "lucide-react";
-
+import { FlowVisual } from "@/components/illustrations/flowchart"
+import { DashListVisual } from "@/components/illustrations/DashListVisual";
 const cfg: PlatformConfig = {
   slug: "orders",
   eyebrow: "Order hub",
@@ -122,12 +123,12 @@ const cfg: PlatformConfig = {
     },
   ],
   featureGrid: [
-    { icon: ShoppingCart, t: "Unified inbox",   d: "Every order, every marketplace, one view." },
-    { icon: Layers,       t: "Routing rules",   d: "Route orders by SKU, region or channel to the right warehouse or 3PL." },
-    { icon: Upload,       t: "Bulk actions",    d: "Print labels, mark shipped, refund — in bulk, across channels." },
-    { icon: RefreshCw,    t: "Status writeback", d: "Tracking numbers and shipped status propagate back to each marketplace." },
-    { icon: ShieldCheck,  t: "SLA guardrails",  d: "Countdowns and priority flags so nothing slips past dispatch." },
-    { icon: BarChart3,    t: "Fulfilment analytics", d: "On-time rate, cancellation rate and return rate by channel." },
+    { icon: ShoppingCart, t: "Unified inbox", d: "Every order, every marketplace, one view." },
+    { icon: Layers, t: "Routing rules", d: "Route orders by SKU, region or channel to the right warehouse or 3PL." },
+    { icon: Upload, t: "Bulk actions", d: "Print labels, mark shipped, refund — in bulk, across channels." },
+    { icon: RefreshCw, t: "Status writeback", d: "Tracking numbers and shipped status propagate back to each marketplace." },
+    { icon: ShieldCheck, t: "SLA guardrails", d: "Countdowns and priority flags so nothing slips past dispatch." },
+    { icon: BarChart3, t: "Fulfilment analytics", d: "On-time rate, cancellation rate and return rate by channel." },
   ],
   channels: ["Amazon", "Walmart", "eBay", "Etsy", "Flipkart"],
   faq: [

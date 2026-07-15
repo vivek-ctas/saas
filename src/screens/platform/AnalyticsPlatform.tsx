@@ -1,7 +1,7 @@
 import PlatformPage, { PlatformConfig } from "./PlatformPage";
-import { KpiChartVisual, DashListVisual, ProgressListVisual } from "./visuals";
+import { KpiChartVisual, ProgressListVisual } from "./visuals";
 import { BarChart3, Layers, DollarSign, Upload, RefreshCw, Sparkles } from "lucide-react";
-
+import { DashListVisual } from "@/components/illustrations/DashListVisual";
 const cfg: PlatformConfig = {
   slug: "analytics",
   eyebrow: "Analytics",
@@ -118,12 +118,12 @@ const cfg: PlatformConfig = {
     },
   ],
   featureGrid: [
-    { icon: BarChart3, t: "Revenue dashboard",  d: "Daily, weekly, monthly revenue across every channel." },
-    { icon: Layers,    t: "Channel breakdown",  d: "Compare channels by margin, AOV and repeat rate." },
-    { icon: DollarSign, t: "True profit",       d: "Fees, ads, shipping and returns factored into margin." },
-    { icon: RefreshCw,  t: "Listing quality",   d: "Content score, image score and conversion per SKU." },
-    { icon: Upload,     t: "Exports",           d: "CSV and Excel exports built for finance workflows." },
-    { icon: Sparkles,   t: "Alerts",            d: "Anomaly alerts on revenue, returns and Buy Box loss." },
+    { icon: BarChart3, t: "Revenue dashboard", d: "Daily, weekly, monthly revenue across every channel." },
+    { icon: Layers, t: "Channel breakdown", d: "Compare channels by margin, AOV and repeat rate." },
+    { icon: DollarSign, t: "True profit", d: "Fees, ads, shipping and returns factored into margin." },
+    { icon: RefreshCw, t: "Listing quality", d: "Content score, image score and conversion per SKU." },
+    { icon: Upload, t: "Exports", d: "CSV and Excel exports built for finance workflows." },
+    { icon: Sparkles, t: "Alerts", d: "Anomaly alerts on revenue, returns and Buy Box loss." },
   ],
   channels: ["Amazon", "Walmart", "eBay", "Etsy", "Flipkart"],
   faq: [

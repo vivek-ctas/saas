@@ -49,11 +49,11 @@ const Navigation = () => {
             className="flex items-center gap-2.5 group"
           >
             <img
-              src="/ctasis-logo copy.svg"
+              src="/sellerBuz.svg"
               alt="Sellerbuz Logo"
-              className="w-10 h-10 object-contain transition-all duration-300 group-hover:scale-105"
+              className="w-auto h-14 object-contain transition-all duration-300 group-hover:scale-105"
             />
-            <span
+            {/* <span
               className="text-[32px] font-black tracking-[-0.06em] leading-none"
               style={{
                 fontFamily:
@@ -70,7 +70,7 @@ const Navigation = () => {
               >
                 buz
               </span>
-            </span>
+            </span> */}
           </Link>
 
           {/* Desktop Navigation */}

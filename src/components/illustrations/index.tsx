@@ -6242,41 +6242,163 @@ export const AICatalogSVG = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export const RepricerSVG = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 520 320" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <g filter="url(#s-sh)">
-      <rect x="30" y="30" width="460" height="260" rx="14" fill="white" stroke="#e2e8f0" />
-      <rect x="30" y="30" width="460" height="3" rx="1.5" fill="#2563eb" />
-      <text x="50" y="58" fontFamily="Inter" fontSize="12" fontWeight="800" fill="#0f172a">Repricer · SKU-42891</text>
-      <text x="50" y="72" fontFamily="Inter" fontSize="10" fill="#64748b">Buy Box tracking · rule-based · guardrails on</text>
-      {/* axes */}
-      <line x1="60" y1="240" x2="470" y2="240" stroke="#e2e8f0" />
-      <line x1="60" y1="100" x2="60" y2="240" stroke="#e2e8f0" />
-      {/* competitor line */}
-      <polyline fill="none" stroke="#cbd5e1" strokeWidth="1.8" strokeDasharray="4 3"
-        points="60,180 110,175 160,182 210,170 260,178 310,168 360,172 410,160 460,168">
-        <animate attributeName="stroke-dashoffset" values="0;-14" dur="2s" repeatCount="indefinite" />
-      </polyline>
-      {/* our line */}
-      <polyline fill="none" stroke="#2563eb" strokeWidth="2.4"
-        points="60,190 110,178 160,184 210,168 260,172 310,162 360,166 410,155 460,160" />
-      <circle r="3.5" fill="#2563eb" opacity="0.9">
-        <animateMotion dur="3s" repeatCount="indefinite"
-          path="M60 190 L110 178 L160 184 L210 168 L260 172 L310 162 L360 166 L410 155 L460 160" />
+export const RepricerSVG = (props: SVGProps<SVGSVGElement>) => {
+  const ICONS: Record<string, JSX.Element> = {
+    tag: (
+      <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12.5 3.5H19a1.5 1.5 0 011.5 1.5v6.5a1.5 1.5 0 01-.44 1.06l-8 8a1.5 1.5 0 01-2.12 0l-6.5-6.5a1.5 1.5 0 010-2.12l8-8a1.5 1.5 0 011.06-.44z" />
+        <circle cx="16.5" cy="7.5" r="1.4" fill="currentColor" stroke="none" />
+      </g>
+    ),
+    trophy: (
+      <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M7 4h10v6a5 5 0 01-10 0V4z" />
+        <path d="M7 5.5H4a3 3 0 003 4.3M17 5.5h3a3 3 0 01-3 4.3" />
+        <path d="M12 15v3M8.5 21h7M9.5 18h5v3h-5z" />
+      </g>
+    ),
+    trendUp: (
+      <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 16l6-6 4 4 8-9" />
+        <path d="M15 2h6v6" />
+      </g>
+    ),
+  };
+
+  const Icon = ({ name, size = 22 }: { name: string; size?: number }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24">
+      {ICONS[name]}
+    </svg>
+  );
+
+  const KPIS = [
+    { x: 50, icon: "tag", iconBg: "#EDE9FE", iconColor: "#5B21B6", label: "PRICE", value: "$21.40", delta: "+$0.30" },
+    { x: 355, icon: "trophy", iconBg: "#DBEAFE", iconColor: "#2563EB", label: "BUY BOX WINNER", value: "82%", delta: "+9%" },
+    { x: 660, icon: "trendUp", iconBg: "#D1FAE5", iconColor: "#059669", label: "MARGIN", value: "31.6%", delta: "+3.6%" },
+  ];
+  const KPI_W = 290;
+  const KPI_Y = 160;
+  const KPI_H = 130;
+
+  const DATES = ["May 12", "May 16", "May 20", "May 24", "May 28", "Jun 01", "Jun 05", "Jun 09"];
+  const YOUR_PRICE = [0.34, 0.31, 0.38, 0.44, 0.35, 0.5, 0.47, 0.56, 0.53, 0.58];
+  const COMP_PRICE = [0.24, 0.22, 0.28, 0.33, 0.26, 0.38, 0.36, 0.42, 0.4, 0.46];
+
+  const CHART_X0 = 90;
+  const CHART_X1 = 890;
+  const CHART_TOP = 380;
+  const CHART_BOTTOM = 500;
+  const FLOOR_Y = 470;
+
+  function pointsFor(values: number[]) {
+    const n = values.length;
+    return values
+      .map((v, i) => {
+        const x = CHART_X0 + (i / (n - 1)) * (CHART_X1 - CHART_X0);
+        const y = CHART_BOTTOM - v * (CHART_BOTTOM - CHART_TOP);
+        return `${x},${y}`;
+      })
+      .join(" ");
+  }
+  const yourPts = pointsFor(YOUR_PRICE);
+  const compPts = pointsFor(COMP_PRICE);
+  const highlightIdx = 6;
+  const hx = CHART_X0 + (highlightIdx / (YOUR_PRICE.length - 1)) * (CHART_X1 - CHART_X0);
+  const hy = CHART_BOTTOM - YOUR_PRICE[highlightIdx] * (CHART_BOTTOM - CHART_TOP);
+
+  return (
+    <svg viewBox="0 0 1000 570" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      {/* Main card */}
+      <rect x="30" y="30" width="940" height="510" rx="20" fill="white" stroke="#E7E9F3" />
+
+      {/* Title + subtitle */}
+      <text x="50" y="100" fontSize="24" fontWeight="800" fill="#0F172A">Repricer · SKU-42891</text>
+      <text x="50" y="130" fontSize="15" fill="#64748B">Buy Box tracking · rule-based · guardrails on</text>
+
+      {/* Buy Box WON pill */}
+      <rect x="800" y="80" width="150" height="38" rx="19" fill="#D1FAE5" />
+      <circle cx="820" cy="100" r="5" fill="#16A34A">
+        <animate attributeName="r" values="5;6.5;5" dur="2s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite" />
       </circle>
-      <line x1="60" y1="215" x2="470" y2="215" stroke="#f59e0b" strokeDasharray="4 4">
-        <animate attributeName="stroke-dashoffset" values="0;-16" dur="2.5s" repeatCount="indefinite" />
-      </line>
+      <text x="834" y="105" fontSize="14" fontWeight="700" fill="#166534">Buy Box · WON</text>
 
-      <text x="470" y="212" textAnchor="end" fontFamily="Inter" fontSize="9" fontWeight="700" fill="#c2410c">Floor $18.50</text>
-      {/* pill */}
-      <rect x="360" y="55" width="120" height="26" rx="13" fill="#dcfce7" />
-      <circle cx="374" cy="68" r="4" fill="#16a34a" />
-      <text x="384" y="72" fontFamily="Inter" fontSize="10" fontWeight="700" fill="#166534">Buy Box · WON</text>
-    </g>
-  </svg>
-);
+      {/* KPI cards */}
+      {KPIS.map((k) => (
+        <g key={k.label}>
+          <rect x={k.x} y={KPI_Y} width={KPI_W} height={KPI_H} rx="16" fill="white" stroke="#ECEFF7" />
+          <circle cx={k.x + 48} cy={KPI_Y + 55} r="26" fill={k.iconBg} />
+          <g transform={`translate(${k.x + 37},${KPI_Y + 44})`} color={k.iconColor}>
+            <Icon name={k.icon} size="22" />
+          </g>
+          <text x={k.x + 92} y={KPI_Y + 44} fontSize="13" fontWeight="700" fill="#64748B" letterSpacing="0.6">
+            {k.label}
+          </text>
+          <text x={k.x + 92} y={KPI_Y + 82} fontSize="30" fontWeight="800" fill="#0F172A">
+            {k.value}
+          </text>
+          <path d={`M${k.x + 33} ${KPI_Y + 107} l5 -8 l5 8 z`} fill="#16A34A" />
+          <text x={k.x + 46} y={KPI_Y + 108} fontSize="14" fontWeight="700" fill="#16A34A">{k.delta}</text>
+        </g>
+      ))}
 
+      {/* Chart card */}
+      <rect x="50" y="310" width="900" height="210" rx="16" fill="white" stroke="#ECEFF7" />
+
+      {/* Legend */}
+      <line x1="80" y1="346" x2="115" y2="346" stroke="#3B4CD8" strokeWidth="3" strokeLinecap="round" />
+      <text x="124" y="351" fontSize="14" fill="#0F172A">Your Price</text>
+      <line x1="242" y1="346" x2="277" y2="346" stroke="#93C5FD" strokeWidth="2.4" strokeDasharray="5 4" strokeLinecap="round" />
+      <text x="286" y="351" fontSize="14" fill="#0F172A">Competitor Price</text>
+
+      {/* Gridlines under each date */}
+      {DATES.map((_, i) => {
+        const x = CHART_X0 + (i / (DATES.length - 1)) * (CHART_X1 - CHART_X0);
+        return <line key={i} x1={x} y1={CHART_TOP - 10} x2={x} y2={CHART_BOTTOM + 10} stroke="#F1F5F9" strokeWidth="1" />;
+      })}
+
+      {/* Competitor line — animated dashes */}
+      <polyline fill="none" stroke="#93C5FD" strokeWidth="2.4" strokeDasharray="6 5" points={compPts}>
+        <animate attributeName="stroke-dashoffset" values="0;-22" dur="2.4s" repeatCount="indefinite" />
+      </polyline>
+
+      {/* Your price line */}
+      <polyline fill="none" stroke="#3B4CD8" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" points={yourPts} />
+
+      {/* Moving dot along your price line */}
+      <circle r="3.5" fill="#3B4CD8" opacity="0.9">
+        <animateMotion dur="4s" repeatCount="indefinite"
+          path={YOUR_PRICE.map((v, i) => {
+            const n = YOUR_PRICE.length;
+            const x = CHART_X0 + (i / (n - 1)) * (CHART_X1 - CHART_X0);
+            const y = CHART_BOTTOM - v * (CHART_BOTTOM - CHART_TOP);
+            return `${i === 0 ? 'M' : 'L'}${x.toFixed(1)} ${y.toFixed(1)}`;
+          }).join(' ')} />
+      </circle>
+
+      {/* Highlighted point — pulse ring */}
+      <circle cx={hx} cy={hy} r="9" fill="#C7D2FE" opacity="0.6">
+        <animate attributeName="r" values="9;13;9" dur="2.4s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.6;0.15;0.6" dur="2.4s" repeatCount="indefinite" />
+      </circle>
+      <circle cx={hx} cy={hy} r="5" fill="#3B4CD8" stroke="white" strokeWidth="1.5" />
+
+      {/* Floor line */}
+      <line x1={CHART_X0 - 10} y1={FLOOR_Y} x2={CHART_X1 + 10} y2={FLOOR_Y} stroke="#F59E0B" strokeWidth="1.6" strokeDasharray="6 5" />
+      <text x={CHART_X1 + 10} y={FLOOR_Y - 8} textAnchor="end" fontSize="13" fontWeight="700" fill="#C2410C">Floor $18.50</text>
+
+      {/* X axis labels */}
+      {DATES.map((d, i) => {
+        const x = CHART_X0 + (i / (DATES.length - 1)) * (CHART_X1 - CHART_X0);
+        return (
+          <text key={d} x={x} y={FLOOR_Y + 40} textAnchor="middle" fontSize="14" fill="#94A3B8">
+            {d}
+          </text>
+        );
+      })}
+    </svg>
+  );
+};
 
 export const AnalyticsDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
   return (<div className="rounded-2xl border border-slate-200 shadow-sm p-5">

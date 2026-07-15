@@ -1,8 +1,8 @@
 import PlatformPage, { PlatformConfig } from "./PlatformPage";
-import { GenVisual, DashListVisual, MatrixVisual } from "./visuals";
+import { GenVisual, MatrixVisual } from "./visuals";
 import { ILL } from "@/components/illustrations/primitives";
 import { Wand2, LayoutGrid, GitMerge, Image as ImageIcon, Upload, BarChart3 } from "lucide-react";
-
+import { DashListVisual } from "@/components/illustrations/DashListVisual";
 const cfg: PlatformConfig = {
   slug: "catalog-ai",
   eyebrow: "AI catalog",
@@ -113,12 +113,12 @@ const cfg: PlatformConfig = {
     },
   ],
   featureGrid: [
-    { icon: Wand2,      t: "Titles & bullets",  d: "Channel-specific title, bullets and description generation." },
-    { icon: ImageIcon,  t: "Image → attributes", d: "Auto-fill category attributes from product photos." },
+    { icon: Wand2, t: "Titles & bullets", d: "Channel-specific title, bullets and description generation." },
+    { icon: ImageIcon, t: "Image → attributes", d: "Auto-fill category attributes from product photos." },
     { icon: LayoutGrid, t: "Variant scaffolding", d: "Generate parent-child variation trees automatically." },
-    { icon: GitMerge,   t: "Smart matching",    d: "Detect existing retail catalog matches to save listing effort." },
-    { icon: Upload,     t: "Bulk regenerate",   d: "Refresh entire categories with new tone or SEO focus." },
-    { icon: BarChart3,  t: "Content scoring",   d: "Track listing quality score per SKU and per channel." },
+    { icon: GitMerge, t: "Smart matching", d: "Detect existing retail catalog matches to save listing effort." },
+    { icon: Upload, t: "Bulk regenerate", d: "Refresh entire categories with new tone or SEO focus." },
+    { icon: BarChart3, t: "Content scoring", d: "Track listing quality score per SKU and per channel." },
   ],
   channels: ["Amazon", "Walmart", "eBay", "Etsy", "Flipkart"],
   faq: [
