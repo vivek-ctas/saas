@@ -204,7 +204,7 @@ const BlogPost = () => {
       <div ref={ref}>
         {/* HERO */}
         <section className="relative pt-28 pb-16 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
+          <div className="px-[50px] lg:px-[70px]">
             <Link href="/blog" className="reveal inline-flex items-center gap-2 text-sm text-slate-600 hover:text-blue-600 mb-6">
               <ArrowLeft className="w-4 h-4" /> Back to all articles
             </Link>
@@ -214,10 +214,10 @@ const BlogPost = () => {
               <span>·</span>
               <span>{post.date}</span>
             </div>
-            <h1 className="reveal text-4xl sm:text-5xl font-bold text-slate-900 leading-tight mb-5">
+            <h1 className="reveal text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-5">
               {post.title}
             </h1>
-            <p className="reveal text-xl text-slate-600 leading-relaxed mb-6 max-w-3xl">{post.excerpt}</p>
+            <p className="reveal text-xl lg:text-2xl text-slate-600 leading-relaxed mb-6 max-w-3xl">{post.excerpt}</p>
             <div className="reveal flex items-center gap-3 mb-10">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-blue-900" />
               <div>
@@ -228,7 +228,7 @@ const BlogPost = () => {
                 <Share2 className="w-3.5 h-3.5" /> Share
               </Button>
             </div>
-            <div className="reveal rounded-3xl overflow-hidden border border-slate-100 shadow-stripe-xl">
+            <div className="reveal rounded-3xl overflow-hidden border border-slate-100 shadow-stripe-xl max-w-[700px] mx-auto">
               <ArticleHeroMockup className="w-full h-auto" />
             </div>
           </div>
@@ -236,16 +236,16 @@ const BlogPost = () => {
 
         {/* BODY */}
         <section className="py-20 bg-white">
-          <div className="max-w-3xl mx-auto px-6 lg:px-10">
+          <div className="max-w-3xl mx-auto px-[50px] lg:px-[70px]">
             <p className="reveal text-lg text-slate-700 leading-relaxed mb-10 first-letter:text-5xl first-letter:font-bold first-letter:text-blue-600 first-letter:mr-2 first-letter:float-left first-letter:leading-none">
               {post.intro}
             </p>
 
             {post.sections.map((s, i) => (
               <div key={i} className="reveal mb-12" style={{ transitionDelay: `${i * 60}ms` }}>
-                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">{s.h}</h2>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4">{s.h}</h2>
                 {s.p.map((para, j) => (
-                  <p key={j} className="text-slate-700 leading-relaxed mb-4 text-[17px]">{para}</p>
+                  <p key={j} className="text-slate-700 leading-relaxed mb-4 text-[17px] lg:text-lg">{para}</p>
                 ))}
                 {s.bullets && (
                   <ul className="mt-4 space-y-2 bg-slate-50 rounded-2xl p-6 border border-slate-100">
@@ -259,7 +259,7 @@ const BlogPost = () => {
                 {/* Visual midway */}
                 {i === Math.floor(post.sections.length / 2) - 1 && (
                   <div className="reveal mt-10 rounded-3xl bg-gradient-to-br from-slate-50 to-white p-4 sm:p-6 border border-slate-100 shadow-stripe">
-                    <Visual className="w-full h-auto" />
+                    <Visual className="w-full h-auto max-w-[650px] mx-auto" />
                     <p className="text-center text-sm text-slate-500 mt-3">A simplified view of what the system actually does behind the scenes.</p>
                   </div>
                 )}
@@ -269,7 +269,7 @@ const BlogPost = () => {
             {/* TL;DR */}
             <div className="reveal rounded-3xl bg-gradient-to-br from-blue-600 to-blue-900 p-8 text-white">
               <div className="text-xs font-bold uppercase tracking-widest opacity-80 mb-2">TL;DR</div>
-              <p className="text-lg leading-relaxed">{post.excerpt}</p>
+              <p className="text-lg lg:text-xl leading-relaxed">{post.excerpt}</p>
               <Button className="mt-6 rounded-full bg-white text-blue-900 hover:bg-blue-50 border-0" asChild>
                 <Link href="/contact">Talk to our team <ArrowRight className="w-4 h-4 ml-1" /></Link>
               </Button>
@@ -279,11 +279,11 @@ const BlogPost = () => {
 
         {/* RELATED */}
         <section className="py-20 section-bg">
-          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
+          <div className="px-[50px] lg:px-[70px]">
             <div className="reveal flex items-end justify-between mb-10">
               <div>
                 <Badge className="mb-3 bg-blue-50 text-blue-700 border border-blue-100">Keep reading</Badge>
-                <h2 className="text-3xl font-bold text-slate-900">More from the blog</h2>
+                <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">More from the blog</h2>
               </div>
               <Link href="/blog" className="text-blue-600 text-sm font-semibold inline-flex items-center gap-1 story-link">
                 <BookOpen className="w-4 h-4" /> All articles
@@ -299,7 +299,7 @@ const BlogPost = () => {
                     </div>
                     <CardContent className="p-5">
                       <Badge variant="secondary" className="text-xs mb-2">{o.category}</Badge>
-                      <h3 className="text-base font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors mb-2">{o.title}</h3>
+                      <h3 className="text-base lg:text-lg font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors mb-2">{o.title}</h3>
                       <span className="text-blue-600 text-sm font-semibold inline-flex items-center gap-1">
                         Read <ArrowRight className="w-3.5 h-3.5" />
                       </span>

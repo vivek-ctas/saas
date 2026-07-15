@@ -33,17 +33,17 @@ const PageHero = ({
       <div className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 -left-32 w-[440px] h-[440px] rounded-full bg-blue-500/10 blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10 pt-20 pb-32 sm:pt-28 sm:pb-406">
+      <div className="relative px-[50px] lg:px-[70px] pt-20 pb-32 sm:pt-28 sm:pb-406">
         {centered ? (
           <div className="max-w-4xl mx-auto text-center reveal">
             <Badge className="mb-6 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">
               {BadgeIcon && <BadgeIcon className="w-3.5 h-3.5 mr-1.5" />}
               {badgeText}
             </Badge>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 leading-[1.05] tracking-tight">
+            <h1 className="text-5xl sm:text-6xl lg:text-[5rem] font-bold text-slate-900 mb-6 leading-[1.05] tracking-tight">
               {title}
             </h1>
-            <p className="text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-xl lg:text-2xl text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto">
               {subtitle}
             </p>
             {actions && <div className="flex flex-col sm:flex-row gap-4 justify-center">{actions}</div>}
@@ -56,10 +56,10 @@ const PageHero = ({
                 {BadgeIcon && <BadgeIcon className="w-3.5 h-3.5 mr-1.5" />}
                 {badgeText}
               </Badge>
-              <h1 className="text-5xl sm:text-6xl lg:text-[4rem] font-bold text-slate-900 mb-6 leading-[1.05] tracking-tight">
+              <h1 className="text-5xl sm:text-6xl lg:text-[5rem] font-bold text-slate-900 mb-6 leading-[1.05] tracking-tight">
                 {title}
               </h1>
-              <p className="text-xl text-slate-600 mb-8 leading-relaxed max-w-xl">
+              <p className="text-xl lg:text-2xl text-slate-600 mb-8 leading-relaxed max-w-xl">
                 {subtitle}
               </p>
               {actions && <div className="flex flex-col sm:flex-row gap-4">{actions}</div>}
@@ -67,7 +67,7 @@ const PageHero = ({
             </div>
             <div className="lg:col-span-6 relative reveal delay-200">
               <div className="absolute -inset-8 bg-gradient-to-br from-blue-400/20 via-blue-200/20 to-blue-600/15 blur-3xl rounded-[40px]" />
-              <div className="relative animate-float-slow">{visual}</div>
+              <div className="relative animate-float-slow max-w-[600px] mx-auto">{visual}</div>
             </div>
           </div>
         )}

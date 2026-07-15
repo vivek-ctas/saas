@@ -61,17 +61,17 @@ const About = () => {
 
         {/* MISSION + VISION */}
         <section className="py-24 bg-white">
-          <div className="max-w-[1500px] mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Our mission</Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                 Level the playing field<br />for every seller.
               </h2>
-              <p className="text-lg text-slate-600 leading-relaxed mb-4">
+              <p className="text-lg lg:text-xl text-slate-600 leading-relaxed mb-4">
                 Enterprise sellers have armies of engineers. Independent sellers have you, your laptop,
                 and a hope-it-works spreadsheet. We close that gap.
               </p>
-              <p className="text-lg text-slate-600 leading-relaxed">
+              <p className="text-lg lg:text-xl text-slate-600 leading-relaxed">
                 Ctasis gives every entrepreneur access to enterprise-grade tooling without enterprise complexity
                 or enterprise pricing. That's the whole game.
               </p>
@@ -81,8 +81,8 @@ const About = () => {
               <div className="relative rounded-3xl bg-gradient-to-br from-blue-600 to-blue-900 p-10 text-white shadow-stripe-2xl overflow-hidden">
                 <div className="absolute -top-12 -right-12 w-40 h-40 bg-white/10 rounded-full blur-2xl" />
                 <Eye className="w-10 h-10 mb-6" />
-                <h3 className="text-3xl font-bold mb-4">Our vision</h3>
-                <p className="text-lg text-white/90 leading-relaxed">
+                <h3 className="text-3xl lg:text-4xl font-bold mb-4">Our vision</h3>
+                <p className="text-lg lg:text-xl text-white/90 leading-relaxed">
                   To be the global standard for multichannel commerce — enabling millions of sellers
                   to focus on craft, customers and growth. Not data-entry.
                 </p>
@@ -94,11 +94,11 @@ const About = () => {
         {/* TIMELINE */}
         <section className="py-24 section-bg relative overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-30" />
-          <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10">
+          <div className="relative px-[50px] lg:px-[70px]">
             <div className="text-center mb-16 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Our journey</Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">5 years. 50,000 sellers.</h2>
-              <p className="text-xl text-slate-600">From garage idea to global platform.</p>
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">5 years. 50,000 sellers.</h2>
+              <p className="text-xl lg:text-2xl text-slate-600">From garage idea to global platform.</p>
             </div>
 
             <div className="relative">
@@ -120,10 +120,10 @@ const About = () => {
                               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-blue-900 flex items-center justify-center shadow-stripe">
                                 <m.icon className="w-5 h-5 text-white" />
                               </div>
-                              <div className="text-3xl font-bold text-blue-600 tracking-tight">{m.year}</div>
+                              <div className="text-3xl lg:text-4xl font-bold text-blue-600 tracking-tight">{m.year}</div>
                             </div>
-                            <h3 className="text-xl font-bold text-slate-900 mb-2">{m.title}</h3>
-                            <p className="text-slate-600 leading-relaxed">{m.desc}</p>
+                            <h3 className="text-xl lg:text-2xl font-bold text-slate-900 mb-2">{m.title}</h3>
+                            <p className="text-slate-600 leading-relaxed lg:text-lg">{m.desc}</p>
                           </CardContent>
                         </Card>
                       </div>
@@ -137,13 +137,13 @@ const About = () => {
 
         {/* IMPACT NUMBERS */}
         <section className="py-24 bg-white">
-          <div className="max-w-[1500px] mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
-              <WorkflowIllustration className="w-full h-auto" />
+              <WorkflowIllustration className="w-full h-auto max-w-[550px] mx-auto" />
             </div>
             <div className="reveal delay-200">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Impact</Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-8 leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-8 leading-tight">
                 Numbers that mean<br />real businesses, growing.
               </h2>
               <div className="grid grid-cols-2 gap-4">
@@ -156,8 +156,8 @@ const About = () => {
                   { v: "99.9%", l: "Uptime SLA" }
                 ].map((s, i) => (
                   <div key={i} className="rounded-2xl p-5 bg-gradient-to-br from-slate-50 to-blue-50/40 border border-slate-100 hover-lift">
-                    <div className="text-3xl font-bold text-blue-600 tracking-tight">{s.v}</div>
-                    <div className="text-sm text-slate-600 mt-1">{s.l}</div>
+                    <div className="text-3xl lg:text-4xl font-bold text-blue-600 tracking-tight">{s.v}</div>
+                    <div className="text-sm lg:text-base text-slate-600 mt-1">{s.l}</div>
                   </div>
                 ))}
               </div>
@@ -167,13 +167,13 @@ const About = () => {
 
         {/* TRUST FLAGS */}
         <section className="py-24 bg-white">
-          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
+          <div className="px-[50px] lg:px-[70px]">
             <div className="text-center mb-14 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
                 <Award className="w-3.5 h-3.5 mr-1" /> Why sellers trust us
               </Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">Trust isn't claimed. It's earned.</h2>
-              <p className="text-xl text-slate-600">Six commitments we ship against — every release, every day.</p>
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Trust isn't claimed. It's earned.</h2>
+              <p className="text-xl lg:text-2xl text-slate-600">Six commitments we ship against — every release, every day.</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
@@ -190,8 +190,8 @@ const About = () => {
                     <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${t.tone} flex items-center justify-center mb-4 shadow-stripe`}>
                       <t.icon className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">{t.title}</h3>
-                    <p className="text-slate-600 leading-relaxed">{t.desc}</p>
+                    <h3 className="text-xl lg:text-2xl font-bold text-slate-900 mb-2">{t.title}</h3>
+                    <p className="text-slate-600 leading-relaxed lg:text-lg">{t.desc}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -202,11 +202,11 @@ const About = () => {
         {/* PARTNERSHIP FLAGS */}
         <section className="py-24 section-bg relative overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-30" />
-          <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10">
+          <div className="relative px-[50px] lg:px-[70px]">
             <div className="text-center mb-14 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Partnership ecosystem</Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">Powered by world-class partners</h2>
-              <p className="text-xl text-slate-600">Logistics across India, Europe and the USA · Marketplace · ad networks · offline retail.</p>
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Powered by world-class partners</h2>
+              <p className="text-xl lg:text-2xl text-slate-600">Logistics across India, Europe and the USA · Marketplace · ad networks · offline retail.</p>
             </div>
 
             <div className="space-y-8">
@@ -251,15 +251,15 @@ const About = () => {
 
         {/* AI for customer favour — illustration block */}
         <section className="py-24 bg-white">
-          <div className="max-w-[1500px] mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
                 <Brain className="w-3.5 h-3.5 mr-1" /> AI for customer favour
               </Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                 Predict what your buyers want — before they search for it.
               </h2>
-              <p className="text-lg text-slate-600 leading-relaxed mb-6">
+              <p className="text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
                 Our ML engine learns from millions of orders to forecast demand, detect repricing
                 opportunities and segment customers by purchase behaviour — so every campaign lands
                 with the right buyer at the right moment.
@@ -273,25 +273,25 @@ const About = () => {
                   "Demand forecasting per SKU per channel",
                   "Sentiment analysis from reviews & support tickets",
                 ].map((it, i) => (
-                  <li key={i} className="flex items-start gap-3 text-slate-700">
+                  <li key={i} className="flex items-start gap-3 text-slate-700 lg:text-lg">
                     <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" /> {it}
                   </li>
                 ))}
               </ul>
             </div>
             <div className="reveal delay-200">
-              <NeuralIllustration className="w-full h-auto" />
+              <NeuralIllustration className="w-full h-auto max-w-[550px] mx-auto" />
             </div>
           </div>
         </section>
 
         {/* VALUES */}
         <section className="py-24 section-bg">
-          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
+          <div className="px-[50px] lg:px-[70px]">
             <div className="text-center mb-16 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">What we believe</Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">Our values</h2>
-              <p className="text-xl text-slate-600">The principles behind every decision we make.</p>
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Our values</h2>
+              <p className="text-xl lg:text-2xl text-slate-600">The principles behind every decision we make.</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((v, i) => (
@@ -301,8 +301,8 @@ const About = () => {
                     <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${v.tone} flex items-center justify-center mx-auto mb-4 shadow-stripe`}>
                       <v.icon className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">{v.title}</h3>
-                    <p className="text-slate-600 leading-relaxed">{v.desc}</p>
+                    <h3 className="text-xl lg:text-2xl font-bold text-slate-900 mb-2">{v.title}</h3>
+                    <p className="text-slate-600 leading-relaxed lg:text-lg">{v.desc}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -313,14 +313,14 @@ const About = () => {
         {/* CAREERS CTA — clean, minimal */}
         {/* CAREERS CTA */}
         <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
-          <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10 text-center reveal">
+          <div className="relative px-[50px] lg:px-[70px] text-center reveal">
             <Trophy className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
 
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Want to build the future of commerce with us?
             </h2>
 
-            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+            <p className="text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">
               We're hiring engineers, designers, and seller-success specialists across
               India and remote. Join our team and help shape the future of multichannel
               commerce.

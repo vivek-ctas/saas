@@ -127,7 +127,7 @@ const Blog = () => {
 
         {/* FEATURED POST */}
         <section className="py-20 bg-white">
-          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
+          <div className="px-[50px] lg:px-[70px]">
             <Link href={`/blog/${featured.slug}`} className="reveal block group">
               <Card className="overflow-hidden border border-slate-100 hover-lift">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -142,10 +142,10 @@ const Blog = () => {
                       <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {featured.readTime}</span>
                       <span>·</span><span>{featured.date}</span>
                     </div>
-                    <h2 className="text-3xl font-bold text-slate-900 mb-4 leading-tight group-hover:text-blue-600 transition-colors">
+                    <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 leading-tight group-hover:text-blue-600 transition-colors">
                       {featured.title}
                     </h2>
-                    <p className="text-slate-600 leading-relaxed mb-6">{featured.excerpt}</p>
+                    <p className="text-slate-600 leading-relaxed mb-6 lg:text-lg">{featured.excerpt}</p>
                     <span className="text-blue-600 font-semibold inline-flex items-center gap-1 story-link">
                       Read article <ArrowRight className="w-4 h-4" />
                     </span>
@@ -158,11 +158,11 @@ const Blog = () => {
 
         {/* GRID */}
         <section className="py-20 section-bg">
-          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
+          <div className="px-[50px] lg:px-[70px]">
             <div className="flex items-end justify-between mb-12 reveal">
               <div>
                 <Badge className="mb-3 bg-blue-50 text-blue-700 border border-blue-100">Latest articles</Badge>
-                <h2 className="text-4xl font-bold text-slate-900">All posts</h2>
+                <h2 className="text-4xl lg:text-5xl font-bold text-slate-900">All posts</h2>
               </div>
 
             </div>
@@ -179,8 +179,8 @@ const Blog = () => {
                         <Badge variant="secondary" className="text-xs">{p.category}</Badge>
                         <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {p.readTime}</span>
                       </div>
-                      <h3 className="text-lg font-bold text-slate-900 mb-2 leading-snug group-hover:text-blue-600 transition-colors">{p.title}</h3>
-                      <p className="text-slate-600 text-sm leading-relaxed mb-3">{p.excerpt}</p>
+                      <h3 className="text-lg lg:text-xl font-bold text-slate-900 mb-2 leading-snug group-hover:text-blue-600 transition-colors">{p.title}</h3>
+                      <p className="text-slate-600 text-sm lg:text-base leading-relaxed mb-3">{p.excerpt}</p>
                       <span className="text-blue-600 text-sm font-semibold inline-flex items-center gap-1">
                         Read more <ArrowRight className="w-3.5 h-3.5" />
                       </span>
@@ -194,10 +194,10 @@ const Blog = () => {
 
         {/* CTA */}
         <section className="py-24 relative overflow-hidden bg-gradient-to-br from-blue-600 to-blue-900">
-          <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10 text-center reveal">
+          <div className="relative px-[50px] lg:px-[70px] text-center reveal">
             <BookOpen className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">Get the playbooks in your inbox.</h2>
-            <p className="text-xl text-white/90 mb-10">One short, useful email a week — no fluff, no spam, unsubscribe anytime.</p>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">Get the playbooks in your inbox.</h2>
+            <p className="text-xl lg:text-2xl text-white/90 mb-10">One short, useful email a week — no fluff, no spam, unsubscribe anytime.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
               <Link href="/pricing">
                 <Button size="lg" className="text-lg px-8 bg-white text-blue-900 hover:bg-blue-50 shadow-stripe-xl border-0">

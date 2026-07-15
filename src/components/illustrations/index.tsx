@@ -6307,3 +6307,193 @@ export const AnalyticsDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
     </svg>
   </div>)
 }
+
+
+export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
+
+  const STEP_ICONS: Record<string, JSX.Element> = {
+    connect: (
+      <g>
+        <rect x="-58" y="-46" width="116" height="92" rx="10" fill="url(#ob-window)" />
+        <rect x="-58" y="-46" width="116" height="20" rx="10" fill="#C7D2FE" />
+        <circle cx="-46" cy="-36" r="2.6" fill="white" />
+        <circle cx="-38" cy="-36" r="2.6" fill="white" />
+        <circle cx="-30" cy="-36" r="2.6" fill="white" />
+        <g transform="translate(-22,-14)">
+          <path
+            d="M0 20a14 14 0 0114-14h4a10 10 0 010 20h-2M28 20a14 14 0 00-14-14h-4a10 10 0 000 20h2"
+            transform="scale(0.9)"
+            fill="none"
+            stroke="white"
+            strokeWidth="3.6"
+            strokeLinecap="round"
+          />
+          <circle cx="14" cy="18" r="4.5" fill="none" stroke="white" strokeWidth="3" />
+        </g>
+      </g>
+    ),
+    import: (
+      <g>
+        <path
+          d="M-34 -46h48l20 20v72a4 4 0 01-4 4h-64a4 4 0 01-4-4v-88a4 4 0 014-4z"
+          fill="url(#ob-doc)"
+        />
+        <path d="M14 -46l20 20h-16a4 4 0 01-4-4z" fill="#C7D2FE" />
+        <rect x="-24" y="-18" width="36" height="4" rx="2" fill="#93A4F5" />
+        <rect x="-24" y="-8" width="50" height="4" rx="2" fill="#C7D2FE" />
+        <circle cx="0" cy="26" r="20" fill="#6D5DF2" />
+        <path
+          d="M0 34v-16M-7 25l7-7 7 7"
+          fill="none"
+          stroke="white"
+          strokeWidth="3.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+    ),
+    set: (
+      <g>
+        <rect x="-58" y="-46" width="116" height="92" rx="10" fill="url(#ob-window)" />
+        <rect x="-58" y="-46" width="116" height="20" rx="10" fill="#C7D2FE" />
+        <circle cx="-46" cy="-36" r="2.6" fill="white" />
+        <circle cx="-38" cy="-36" r="2.6" fill="white" />
+        <circle cx="-30" cy="-36" r="2.6" fill="white" />
+        {[0, 1, 2].map((i) => (
+          <g key={i} transform={`translate(-42,${-10 + i * 16})`}>
+            <circle cx="0" cy="0" r="3" fill="#7C86F0" />
+            <rect x="10" y="-2.5" width="52" height="5" rx="2.5" fill="#C7D2FE" />
+          </g>
+        ))}
+        <circle cx="42" cy="30" r="18" fill="#5847EB" />
+        <g stroke="white" strokeWidth="2.6" fill="none" strokeLinecap="round">
+          <circle cx="42" cy="30" r="7" />
+          <path d="M42 19v-4M42 45v-4M31 30h-4M57 30h-4M34 22l-3-3M53 38l3 3M50 22l3-3M34 38l-3 3" />
+        </g>
+      </g>
+    ),
+    go: (
+      <g>
+        <circle cx="0" cy="0" r="58" fill="#EEF1FE" />
+        <path d="M8 40l8 6M-30 -10l-8 -4" stroke="#C7D2FE" strokeWidth="2" strokeLinecap="round" />
+        <g transform="rotate(35)">
+          <path
+            d="M0 -46c14 4 22 16 22 32 0 8-3 16-8 22l-14-6-14 6c-5-6-8-14-8-22 0-16 8-28 22-32z"
+            fill="url(#ob-rocket)"
+          />
+          <circle cx="0" cy="-24" r="7" fill="#EEF1FE" stroke="#3730A3" strokeWidth="1.5" />
+          <path d="M-14 8l-10 18 16-8z" fill="#F59E0B" />
+          <path d="M14 8l10 18-16-8z" fill="#F59E0B" />
+          <path d="M-6 30q6 14 6 22q6-8 6-22z" fill="#FBBF24" />
+        </g>
+        <path d="M-46 -30l4 4M46 -34l-4 4M-40 40l4-4M42 36l-4-4" stroke="#FBBF24" strokeWidth="2.4" strokeLinecap="round" />
+      </g>
+    ),
+  };
+
+  const STEPS = [
+    { title: "Connect", subtitle: "SP-API", icon: "connect", badge: "#3730A3", bar: "#3B4CD8" },
+    { title: "Import", subtitle: "catalog", icon: "import", badge: "#3730A3", bar: "#3B4CD8" },
+    { title: "Set", subtitle: "rules", icon: "set", badge: "#3730A3", bar: "#3B4CD8" },
+    { title: "Go", subtitle: "live", icon: "go", badge: "#F59E0B", bar: "#F59E0B" },
+  ];
+
+  const CARD_W = 190;
+  const GAP = 60;
+  const START_X = 90;
+  const CARD_TOP = 145;
+  const CARD_H = 310;
+  const ICON_CY = 245;
+
+  return (
+    <svg viewBox="0 0 1000 560" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <defs>
+        <linearGradient id="ob-window" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#7C86F0" />
+          <stop offset="100%" stopColor="#5847EB" />
+        </linearGradient>
+        <linearGradient id="ob-doc" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#F5F6FE" />
+          <stop offset="100%" stopColor="#E4E7FB" />
+        </linearGradient>
+        <linearGradient id="ob-rocket" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#7C86F0" />
+          <stop offset="100%" stopColor="#3730A3" />
+        </linearGradient>
+        <pattern id="ob-dots" width="18" height="18" patternUnits="userSpaceOnUse">
+          <circle cx="1.6" cy="1.6" r="1.6" fill="#C7D2FE" />
+        </pattern>
+      </defs>
+
+      {/* Background */}
+      {/* <rect x="20" y="20" width="960" height="520" rx="28" fill="#F6F8FE" /> */}
+      <rect x="60" y="55" width="90" height="60" fill="url(#ob-dots)" opacity="0.8" />
+      <circle cx="300" cy="90" r="5" fill="#93A4F5" opacity="0.7" />
+      <circle cx="790" cy="95" r="4" fill="#C7D2FE" />
+      <circle cx="890" cy="100" r="10" fill="none" stroke="#C7D2FE" strokeWidth="1.5" opacity="0.6" />
+      <path d="M170 100 Q 260 60 400 105" stroke="#DDE3FB" strokeWidth="1.5" fill="none" strokeDasharray="4 5" />
+      <path d="M60 460 Q 300 410 540 465 T 960 450" stroke="#E3E7FB" strokeWidth="2" fill="none" />
+      <circle cx="180" cy="470" r="4" fill="#C7D2FE" />
+      <circle cx="470" cy="475" r="4" fill="#C7D2FE" />
+      <circle cx="690" cy="465" r="4" fill="#C7D2FE" />
+
+      {STEPS.map((s, i) => {
+        const x = START_X + i * (CARD_W + GAP);
+        const cx = x + CARD_W / 2;
+        return (
+          <g key={s.title}>
+            <rect x={x} y={CARD_TOP} width={CARD_W} height={CARD_H} rx="18" fill="white" stroke="#ECEFF9" />
+            <rect x={x + 8} y={CARD_TOP - 2} width={CARD_W - 16} height="5" rx="2.5" fill={s.bar} />
+
+            <circle cx={cx} cy={CARD_TOP - 20} r="30" fill={s.badge} />
+            <text x={cx} y={CARD_TOP - 12} textAnchor="middle" fontSize="20" fontWeight="800" fill="white">
+              {i + 1}
+            </text>
+
+            <g transform={`translate(${cx},${ICON_CY})`}>{STEP_ICONS[s.icon]}</g>
+
+            <text x={cx} y={CARD_TOP + 205} textAnchor="middle" fontSize="24" fontWeight="800" fill="#0F172A">
+              {s.title}
+            </text>
+            <text x={cx} y={CARD_TOP + 235} textAnchor="middle" fontSize="16" fill="#64748B">
+              {s.subtitle}
+            </text>
+            <rect x={cx - 18} y={CARD_TOP + 253} width="36" height="3" rx="1.5" fill={i === STEPS.length - 1 ? "#F59E0B" : "#93A4F5"} />
+
+            {i < STEPS.length - 1 && (
+              <g>
+                <line
+                  x1={x + CARD_W}
+                  y1={ICON_CY}
+                  x2={x + CARD_W + GAP / 2 - 16}
+                  y2={ICON_CY}
+                  stroke="#93A4F5"
+                  strokeWidth="1.8"
+                  strokeDasharray="4 4"
+                />
+                <line
+                  x1={x + CARD_W + GAP / 2 + 16}
+                  y1={ICON_CY}
+                  x2={x + CARD_W + GAP}
+                  y2={ICON_CY}
+                  stroke="#93A4F5"
+                  strokeWidth="1.8"
+                  strokeDasharray="4 4"
+                />
+                <circle cx={x + CARD_W + GAP / 2} cy={ICON_CY} r="17" fill="white" stroke="#93A4F5" strokeWidth="1.6" />
+                <path
+                  d={`M${x + CARD_W + GAP / 2 - 5} ${ICON_CY - 5} l6 5 -6 5`}
+                  fill="none"
+                  stroke="#3B4CD8"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </g>
+            )}
+          </g>
+        );
+      })}
+    </svg>
+  )
+};

@@ -43,7 +43,7 @@ const Services = () => {
         "Real-time low-stock alerts",
       ],
       icon: Boxes,
-      visual: <InventorySyncSVG className="w-full h-auto" />,
+      visual: <InventorySyncSVG className="w-full h-auto max-w-[550px] mx-auto" />,
     },
     {
       eyebrow: "Order management",
@@ -100,7 +100,7 @@ const Services = () => {
         "Full sync audit log",
       ],
       icon: RefreshCw,
-      visual: <InventorySyncSVG className="w-full h-auto" />,
+      visual: <InventorySyncSVG className="w-full h-auto max-w-[550px] mx-auto" />,
     },
     {
       eyebrow: "AI catalog",
@@ -113,7 +113,7 @@ const Services = () => {
         "One-click bulk regenerate for old listings",
       ],
       icon: Wand2,
-      visual: <AICatalogSVG className="w-full h-auto" />,
+      visual: <AICatalogSVG className="w-full h-auto max-w-[550px] mx-auto" />,
       reverse: true,
     },
     {
@@ -164,7 +164,7 @@ const Services = () => {
         "Schedule-based promotional pricing",
       ],
       icon: DollarSign,
-      visual: <RepricerSVG className="w-full h-auto" />,
+      visual: <RepricerSVG className="w-full h-auto max-w-[550px] mx-auto" />,
       reverse: true,
     },
     {
@@ -179,7 +179,7 @@ const Services = () => {
       ],
       icon: BarChart3,
       visual: (
-        <AnalyticsDashboardSVG className="w-full h-auto" />
+        <AnalyticsDashboardSVG className="w-full h-auto max-w-[550px] mx-auto" />
       ),
     },
     {
@@ -193,7 +193,7 @@ const Services = () => {
         "Direct push to Amazon, Walmart and Flipkart",
       ],
       icon: ImageIcon,
-      visual: <AssetLibraryMockup className="w-full h-auto" />,
+      visual: <AssetLibraryMockup className="w-full h-auto max-w-[550px] mx-auto" />,
       reverse: true,
     },
     {
@@ -207,7 +207,7 @@ const Services = () => {
         "SSO / SAML on Enterprise",
       ],
       icon: ShieldCheck,
-      visual: <RolesIllustration className="w-full h-auto" />,
+      visual: <RolesIllustration className="w-full h-auto max-w-[550px] mx-auto" />,
     },
     {
       eyebrow: "Bulk work",
@@ -273,14 +273,14 @@ const Services = () => {
         />
         {/* HERO */}
         <section className="relative bg-gradient-to-b from-blue-50/60 to-white py-16 lg:py-20">
-          <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10 text-center">
+          <div className="relative px-[50px] lg:px-[70px] text-center">
             <Badge className="mb-4 bg-white text-blue-700 border border-blue-100">
               <Layers className="w-3.5 h-3.5 mr-1.5" /> Platform capabilities
             </Badge>
-            <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 leading-[1.05] tracking-tight max-w-3xl mx-auto mb-4">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.05] tracking-tight max-w-3xl mx-auto mb-4">
               Every capability a multi-channel seller needs — in one platform.
             </h1>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            <p className="text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto">
               Inventory, orders, pricing, catalog, content and access — SellerBuz replaces the stack of spreadsheets and tabs with one clean workspace.
             </p>
           </div>
@@ -289,15 +289,15 @@ const Services = () => {
         {/* Zig-zag sections */}
         {sections.map((s, i) => (
           <section key={s.title} className={`py-16 ${i % 2 === 0 ? "bg-white" : "bg-blue-50/40"}`}>
-            <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
+            <div className="px-[50px] lg:px-[70px]">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 <div className={`reveal ${s.reverse ? "lg:order-2" : ""}`}>
                   <Badge className="mb-3 bg-blue-50 text-blue-700 border border-blue-100 text-xs">{s.eyebrow}</Badge>
-                  <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight mb-3">{s.title}</h2>
-                  <p className="text-slate-600 leading-relaxed mb-5">{s.desc}</p>
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 leading-tight mb-3">{s.title}</h2>
+                  <p className="text-slate-600 leading-relaxed mb-5 lg:text-lg">{s.desc}</p>
                   <ul className="space-y-2">
                     {s.bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-2 text-sm text-slate-700">
+                      <li key={b} className="flex items-start gap-2 text-sm lg:text-base text-slate-700">
                         <CheckCircle2 className="w-4 h-4 text-blue-600 mt-0.5 shrink-0" /> {b}
                       </li>
                     ))}
@@ -315,10 +315,10 @@ const Services = () => {
         <section className="py-24 relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-900">
           <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
-          <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10 text-center">
+          <div className="relative px-[50px] lg:px-[70px] text-center">
             <Sparkles className="w-12 h-12 mx-auto text-blue-200 mb-6 animate-float" />
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">Ready to see it running on your channels?</h2>
-            <p className="ext-xl text-white/90 mb-10 max-w-2xl mx-auto">Connect Amazon, Walmart, eBay, Etsy and Flipkart in minutes.</p>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Ready to see it running on your channels?</h2>
+            <p className="text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">Connect Amazon, Walmart, eBay, Etsy and Flipkart in minutes.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 rounded-full px-8 h-12 border-0 shadow-lg">
                 Start free trial <ArrowRight className="w-4 h-4 ml-1.5" />

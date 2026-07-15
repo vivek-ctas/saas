@@ -175,7 +175,7 @@ const Pricing = () => {
 
         {/* ── PLANS SECTION ──────────────────────────────────────────────────── */}
         <section id="plans" className="py-24 bg-white">
-          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
+          <div className="px-[50px] lg:px-[70px]">
 
             {/* Loading */}
             {plansLoading && (
@@ -245,7 +245,7 @@ const Pricing = () => {
                         )}
 
                         <CardHeader className="pb-4 pt-8">
-                          <CardTitle className="text-2xl font-bold text-slate-900">{plan.name}</CardTitle>
+                          <CardTitle className="text-2xl lg:text-3xl font-bold text-slate-900">{plan.name}</CardTitle>
                           <p className="text-slate-600 text-sm">{plan.desc}</p>
                           <div className="mt-6 flex items-baseline gap-1">
                             <span className="text-5xl font-bold text-slate-900 tracking-tight">
@@ -275,7 +275,7 @@ const Pricing = () => {
 
                           <ul className="space-y-3 pt-2">
                             {plan.marketing_features.map((f, j) => (
-                              <li key={j} className="flex items-start gap-3 text-sm">
+                              <li key={j} className="flex items-start gap-3 text-sm lg:text-base">
                                 <span className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${plan.is_popular ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-600'
                                   }`}>
                                   <Check className="w-3 h-3" />
@@ -310,11 +310,11 @@ const Pricing = () => {
 
         {/* ── COMPARISON TABLE ────────────────────────────────────────────────── */}
         <section className="py-24 section-bg" id='comparison'>
-          <div className="max-w-[1500px] mx-auto px-6 lg:px-10">
+          <div className="px-[50px] lg:px-[70px]">
             <div className="text-center mb-12 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Plan comparison</Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">Compare every feature</h2>
-              <p className="text-xl text-slate-600">All the details, side by side.</p>
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Compare every feature</h2>
+              <p className="text-xl lg:text-2xl text-slate-600">All the details, side by side.</p>
             </div>
             <div className="reveal rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-md">
               <table className="w-full text-left">
@@ -351,9 +351,9 @@ const Pricing = () => {
 
         {/* ── TESTIMONIAL ────────────────────────────────────────────────────── */}
         <section className="py-24 bg-white">
-          <div className="max-w-[1500px] mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
-              <AnalyticsIllustration className="w-full h-auto" />
+              <AnalyticsIllustration className="w-full h-auto max-w-[550px] mx-auto" />
             </div>
             <div className="reveal delay-200">
               <div className="flex gap-1 mb-6">
@@ -362,7 +362,7 @@ const Pricing = () => {
                 ))}
               </div>
               <Quote className="w-10 h-10 text-blue-600 mb-4" />
-              <p className="text-2xl font-medium text-slate-900 leading-relaxed mb-6">
+              <p className="text-2xl lg:text-3xl font-medium text-slate-900 leading-relaxed mb-6">
                 "We tried 3 other platforms before Ctasis. The Pro plan paid for itself in week one
                 from saved labor alone."
               </p>
@@ -382,13 +382,13 @@ const Pricing = () => {
         {/* ── AI ADD-ONS ──────────────────────────────────────────────────────── */}
         <section className="py-24 section-bg relative overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-30" />
-          <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10">
+          <div className="relative px-[50px] lg:px-[70px]">
             <div className="text-center mb-14 reveal max-w-3xl mx-auto">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Inside Pro & Enterprise</Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
                 The premium services that pay for the plan
               </h2>
-              <p className="text-xl text-slate-600">
+              <p className="text-xl lg:text-2xl text-slate-600">
                 These aren't buzzwords — they're the daily chores Ctasis does for you while you sleep.
               </p>
             </div>
@@ -402,9 +402,9 @@ const Pricing = () => {
                   <CardContent className="p-7">
                     <div className="flex items-center gap-2 mb-3">
                       <Sparkles className="w-5 h-5 text-blue-600" />
-                      <h3 className="font-bold text-slate-900 text-lg">{b.title}</h3>
+                      <h3 className="font-bold text-slate-900 text-lg lg:text-xl">{b.title}</h3>
                     </div>
-                    <p className="text-slate-600 leading-relaxed">{b.desc}</p>
+                    <p className="text-slate-600 leading-relaxed lg:text-lg">{b.desc}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -414,10 +414,10 @@ const Pricing = () => {
 
         {/* ── FAQ ────────────────────────────────────────────────────────────── */}
         <section className="py-24 section-bg">
-          <div className="max-w-3xl mx-auto px-6 lg:px-10">
+          <div className="max-w-3xl mx-auto px-[50px] lg:px-[70px]">
             <div className="text-center mb-12 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">FAQ</Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">Frequently asked questions</h2>
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Frequently asked questions</h2>
             </div>
             <Accordion type="single" collapsible className="reveal space-y-3">
               {FAQS.map((f, i) => (
@@ -442,10 +442,10 @@ const Pricing = () => {
         <section className="py-24 relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-900">
           <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
-          <div className="relative max-w-[1500px] mx-auto px-6 lg:px-10 text-center reveal">
+          <div className="relative px-[50px] lg:px-[70px] text-center reveal">
             <Sparkles className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">Still have questions?</h2>
-            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">Talk to our team — we'll help you pick the right plan.</p>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Still have questions?</h2>
+            <p className="text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">Talk to our team — we'll help you pick the right plan.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing">
                 <Button size="lg" className="text-lg px-8 rounded-full bg-white text-blue-600 hover:bg-blue-50 border-0 shadow-lg">
