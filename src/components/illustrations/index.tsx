@@ -6265,7 +6265,7 @@ export const RepricerSVG = (props: SVGProps<SVGSVGElement>) => {
     ),
   };
 
-  const Icon = ({ name, size = 22 }: { name: string; size?: number }) => (
+  const Icon = ({ name, size = 22 }: { name: string; size?: number | string }) => (
     <svg width={size} height={size} viewBox="0 0 24 24">
       {ICONS[name]}
     </svg>
