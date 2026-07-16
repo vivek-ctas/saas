@@ -1,21 +1,21 @@
-import Blog from "@/screens/Blog";
+import Guide from "@/screens/Guide";
 import type { Metadata } from "next";
 import { buildMetadata, SITE_URL } from "@/lib/seo";
 
 // ─── Page metadata ───────────────────────────────────────────────────────────
 export const metadata: Metadata = buildMetadata({
-  title: "Blog — Multichannel Selling, Repricing & Marketplace Strategy",
+  title: "Guide — Multichannel Selling, Repricing & Marketplace Strategy",
   description:
     "Insights, playbooks and deep-dives for Amazon, Walmart and multichannel sellers. Topics include AI repricing, inventory management, analytics, FBA vs FBM, and Marketplace strategy.",
-  path: "/blog",
+  path: "/guide",
 });
 
-// ─── JSON-LD: Blog ───────────────────────────────────────────────────────────
-const blogJsonLd = {
+// ─── JSON-LD: guide ───────────────────────────────────────────────────────────
+const guideJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Blog",
-  name: "Ctasis Blog",
-  url: `${SITE_URL}/blog`,
+  "@type": "Guide",
+  name: "Ctasis Guide",
+  url: `${SITE_URL}/guide`,
   description:
     "Insights for multichannel sellers on repricing, inventory management, Amazon, Walmart and Marketplace strategy.",
   publisher: {
@@ -28,7 +28,7 @@ const blogJsonLd = {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+      { "@type": "ListItem", position: 2, name: "Guide", item: `${SITE_URL}/guide` },
     ],
   },
 };
@@ -38,9 +38,9 @@ export default function Page() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(guideJsonLd) }}
       />
-      <Blog />
+      <Guide />
     </>
   );
 }

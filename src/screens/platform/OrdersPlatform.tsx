@@ -1,8 +1,8 @@
 import PlatformPage, { PlatformConfig } from "./PlatformPage";
-import { ProgressListVisual } from "./visuals";
 import { ShoppingCart, RefreshCw, Layers, ShieldCheck, BarChart3, Upload } from "lucide-react";
 import { FlowVisual } from "@/components/illustrations/flowchart"
 import { DashListVisual } from "@/components/illustrations/DashListVisual";
+import { ProgressListVisual } from "@/components/illustrations/ProgressListVisual";
 const cfg: PlatformConfig = {
   slug: "orders",
   eyebrow: "Order hub",

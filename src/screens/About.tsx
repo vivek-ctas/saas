@@ -43,9 +43,9 @@ const About = () => {
           visual={<AboutJourneyMockup className="w-full h-auto" />}
           actions={
             <>
-              <Link href="/blog">
+              <Link href="/guide">
                 <Button size="lg" variant="outline" className="text-base px-8 h-12 border-blue-200 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm">
-                  Read our blog
+                  Read our guide
                 </Button>
               </Link>
               <Link href="/contact">
@@ -137,8 +137,8 @@ const About = () => {
         {/* IMPACT NUMBERS */}
         <section className="py-24 bg-white">
           <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="reveal">
-              <WorkflowIllustration className="w-full h-auto max-w-[550px] mx-auto" />
+            <div className="reveal scale-[1.12] lg:scale-[1.18] origin-center  ">
+              <WorkflowIllustration className="w-full h-auto " />
             </div>
             <div className="reveal delay-200">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Impact</Badge>
@@ -277,8 +277,8 @@ const About = () => {
                 ))}
               </ul>
             </div>
-            <div className="reveal delay-200">
-              <NeuralIllustration className="w-full h-auto max-w-[550px] mx-auto" />
+            <div className="reveal delay-200 scale-[1.12] lg:scale-[1.18] origin-center">
+              <NeuralIllustration className="w-full h-auto" />
             </div>
           </div>
         </section>
@@ -335,13 +335,13 @@ const About = () => {
                 </Button>
               </Link>
 
-              <Link href="/blog">
+              <Link href="/guide">
                 <Button
                   size="lg"
                   variant="outline"
                   className="text-lg px-8 rounded-full bg-white/10 border-white/30 text-white hover:bg-white/20 shadow-lg"
                 >
-                  Read Our Blog
+                  Read Our Guide
                 </Button>
               </Link>
             </div>

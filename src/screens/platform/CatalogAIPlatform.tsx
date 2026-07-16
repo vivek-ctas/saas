@@ -1,8 +1,9 @@
 import PlatformPage, { PlatformConfig } from "./PlatformPage";
-import { GenVisual, MatrixVisual } from "./visuals";
+import { MatrixVisual } from "@/components/illustrations/MatrixVisual";
 import { ILL } from "@/components/illustrations/primitives";
 import { Wand2, LayoutGrid, GitMerge, Image as ImageIcon, Upload, BarChart3 } from "lucide-react";
 import { DashListVisual } from "@/components/illustrations/DashListVisual";
+import { GenVisual } from "@/components/illustrations/GenVisual";
 const cfg: PlatformConfig = {
   slug: "catalog-ai",
   eyebrow: "AI catalog",
@@ -14,9 +15,60 @@ const cfg: PlatformConfig = {
       id="cat-hero"
       title="AI CATALOG · GENERATOR"
       engineLabel="AI Catalog"
-      inputLabel="product.jpg + specs"
-      outputLines={["Title", "Description", "Bullets"]}
-      outputChips={[{ text: "SEO ✓", tone: "blue" }, { text: "A+ ✓", tone: "emerald" }]}
+      inputLabel="product.jpg"
+      inputMeta={[
+        { icon: "tag", label: "Category", value: "Electronics" },
+        { icon: "box", label: "Brand", value: "Sellerbuz" },
+        { icon: "image", label: "Images", value: "4 uploaded" },
+      ]}
+      outputLines={[
+        {
+          icon: "text",
+          title: "SEO Title",
+          body: "Wireless ANC Headphones",
+        },
+        {
+          icon: "document",
+          title: "Description",
+          body: "SEO-ready AI description.",
+        },
+        {
+          icon: "list",
+          title: "Features",
+          body: "ANC • BT 5.3 • 40h",
+        },
+      ]}
+      outputChips={[]}
+      stats={[
+        { label: "SEO", value: "96", tone: "blue" },
+        { label: "Grade", value: "A+", tone: "emerald" },
+      ]}
+      features={[
+        {
+          icon: "shield",
+          tone: "blue",
+          title: "Marketplace",
+          sub: "Ready",
+        },
+        {
+          icon: "target",
+          tone: "violet",
+          title: "SEO",
+          sub: "Optimized",
+        },
+        {
+          icon: "rocket",
+          tone: "violet",
+          title: "Fast",
+          sub: "In seconds",
+        },
+        {
+          icon: "check",
+          tone: "emerald",
+          title: "AI Quality",
+          sub: "Natural copy",
+        },
+      ]}
     />
   ),
   problem: {
@@ -52,10 +104,61 @@ const cfg: PlatformConfig = {
         <GenVisual
           id="cat-gen"
           title="GENERATE · PER CHANNEL"
-          engineLabel="Channel-native writer"
-          inputLabel="1 product · 4 photos"
-          outputLines={["Amazon title", "eBay 80-char", "Etsy story"]}
-          outputChips={[{ text: "SEO ✓", tone: "blue" }, { text: "brand ✓", tone: "emerald" }]}
+          engineLabel="Channel Writer"
+          inputLabel="1 product"
+          inputMeta={[
+            { icon: "image", label: "Photos", value: "4" },
+            { icon: "tag", label: "Category", value: "Home" },
+            { icon: "box", label: "Variants", value: "3 SKUs" },
+          ]}
+          outputLines={[
+            {
+              icon: "text",
+              title: "Amazon",
+              body: "SEO title",
+            },
+            {
+              icon: "document",
+              title: "eBay",
+              body: "Ready listing",
+            },
+            {
+              icon: "list",
+              title: "Etsy",
+              body: "Brand copy",
+            },
+          ]}
+          outputChips={[]}
+          stats={[
+            { label: "Channels", value: "12+", tone: "blue" },
+            { label: "Quality", value: "AI+", tone: "emerald" },
+          ]}
+          features={[
+            {
+              icon: "wand",
+              tone: "blue",
+              title: "Channel",
+              sub: "Ready",
+            },
+            {
+              icon: "target",
+              tone: "violet",
+              title: "SEO",
+              sub: "Optimized",
+            },
+            {
+              icon: "rocket",
+              tone: "violet",
+              title: "Bulk AI",
+              sub: "Fast",
+            },
+            {
+              icon: "check",
+              tone: "emerald",
+              title: "Brand",
+              sub: "Consistent",
+            },
+          ]}
         />
       ),
     },
@@ -103,11 +206,27 @@ const cfg: PlatformConfig = {
           rows={["Home", "Kitchen", "Outdoor"]}
           cellFor={(r, c) => {
             const done = (r + c) % 3 !== 0;
+
             return done
-              ? { fill: "#d1fae5", text: "✓ 98%", textFill: "#065f46" }
-              : { fill: ILL.tint, text: "queued", textFill: ILL.blueDeep };
+              ? {
+                fill: "#d1fae5",
+                text: "98%",
+                textFill: "#065f46",
+                icon: "check",
+              }
+              : {
+                fill: ILL.tint,
+                text: "Queued",
+                textFill: ILL.blueDeep,
+                icon: "clock",
+              };
           }}
-          note="1,482 SKUs · avg content score +18 pts vs pre-refresh"
+          stats={{
+            skuValue: "1,482 SKUs",
+            skuLabel: "Content refreshed",
+            deltaValue: "+18 pts",
+            deltaLabel: "Avg SEO score",
+          }}
         />
       ),
     },

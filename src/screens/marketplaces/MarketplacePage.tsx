@@ -6,6 +6,7 @@ import { ArrowRight, CheckCircle2, Sparkles, Boxes, ShoppingCart, DollarSign, Ba
 import { useReveal } from "@/hooks/use-reveal";
 import { ReactNode } from "react";
 import { OnboardingDiagram } from "@/components/illustrations";
+import { ChannelHeroDiagram } from "@/components/illustrations";
 
 export type MarketplaceConfig = {
   slug: string;
@@ -14,81 +15,12 @@ export type MarketplaceConfig = {
   tagline: string;             // hero H1
   intro: string;               // hero paragraph
   stats: { l: string; v: string; d?: string }[]; // 4 stat tiles
-  capabilities: { icon: any; t: string; d: string }[]; // 6 cards
+  capabilities: { icon: any; t: string; d: string; stat: string }[]; // 6 cards
   gotchas: { t: string; d: string }[]; // 4 rows
   onboarding: string[];        // 4 steps
   faq: { q: string; a: string }[]; // 5 items
   otherChannels: string[];     // for cross-link strip
 };
-
-const ChannelHeroDiagram = ({ name, dot }: { name: string; dot: string }) => (
-  <svg viewBox="0 0 560 360" className="w-full h-auto">
-    <defs>
-      <linearGradient id="mp-wash" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stopColor="#f8fafc" /><stop offset="100%" stopColor="#eff6ff" />
-      </linearGradient>
-      <pattern id="mp-grid" width="24" height="24" patternUnits="userSpaceOnUse">
-        <path d="M24 0H0V24" stroke="#dbeafe" strokeWidth="0.6" fill="none" />
-      </pattern>
-      <linearGradient id="mp-core" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0%" stopColor="#2563eb" /><stop offset="100%" stopColor="#0b1e3f" />
-      </linearGradient>
-      <filter id="mp-sh" x="-10%" y="-10%" width="120%" height="130%">
-        <feGaussianBlur stdDeviation="5" /><feOffset dy="2" />
-        <feComponentTransfer><feFuncA type="linear" slope="0.14" /></feComponentTransfer>
-        <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
-      </filter>
-    </defs>
-    <rect width="560" height="360" rx="22" fill="url(#mp-wash)" />
-    <rect width="560" height="360" rx="22" fill="url(#mp-grid)" />
-    {/* channel card */}
-    <g filter="url(#mp-sh)">
-      <rect x="30" y="130" width="170" height="100" rx="14" fill="white" stroke="#e2e8f0" />
-      <rect x="30" y="130" width="170" height="3" rx="1.5" fill={dot} />
-      <circle cx="52" cy="162" r="10" fill={dot + "22"} />
-      <circle cx="52" cy="162" r="5" fill={dot} />
-      <text x="70" y="160" fontFamily="Inter" fontSize="13" fontWeight="800" fill="#0f172a">{name}</text>
-      <text x="70" y="176" fontFamily="Inter" fontSize="10" fill="#64748b">Native integration</text>
-      <rect x="46" y="192" width="138" height="26" rx="13" fill="#eff6ff" stroke="#bfdbfe" />
-      <circle cx="60" cy="205" r="3.5" fill="#10b981" />
-      <text x="72" y="209" fontFamily="Inter" fontSize="10" fontWeight="700" fill="#1d4ed8">Connected · live</text>
-    </g>
-    {/* engine */}
-    <g filter="url(#mp-sh)">
-      <rect x="230" y="120" width="150" height="120" rx="16" fill="url(#mp-core)" />
-      <circle cx="305" cy="165" r="24" fill="#fff" opacity="0.14" />
-      <circle cx="305" cy="165" r="14" fill="#fff" />
-      <path d="M299 165l4 4 8-8" stroke="#0b1e3f" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      <text x="305" y="205" textAnchor="middle" fontFamily="Inter" fontSize="12" fontWeight="800" fill="#fff">SellerBuz Sync</text>
-      <text x="305" y="221" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#bfdbfe">2-way · &lt; 2s latency</text>
-    </g>
-    {/* right ops cards */}
-    {[
-      { y: 40, t: "Inventory", v: "12,480 SKUs" },
-      { y: 108, t: "Orders", v: "241 / today" },
-      { y: 176, t: "Pricing", v: "Rules active" },
-      { y: 244, t: "Catalog", v: "AI ready" },
-    ].map((c) => (
-      <g key={c.t} filter="url(#mp-sh)">
-        <rect x="410" y={c.y} width="130" height="52" rx="10" fill="white" stroke="#e2e8f0" />
-        <rect x="410" y={c.y} width="3" height="52" rx="1.5" fill="#2563eb" />
-        <text x="424" y={c.y + 20} fontFamily="Inter" fontSize="9.5" fontWeight="700" fill="#64748b" letterSpacing="1">{c.t.toUpperCase()}</text>
-        <text x="424" y={c.y + 40} fontFamily="Inter" fontSize="12" fontWeight="800" fill="#0f172a">{c.v}</text>
-      </g>
-    ))}
-    {/* arrows */}
-    <line x1="200" y1="180" x2="230" y2="180" stroke="#60a5fa" strokeWidth="1.8" strokeDasharray="5 4" markerEnd="url(#mp-arrow)" />
-    <line x1="230" y1="185" x2="200" y2="185" stroke="#60a5fa" strokeWidth="1.8" strokeDasharray="5 4" />
-    {[66, 134, 202, 270].map((y, i) => (
-      <line key={i} x1="380" y1="180" x2="410" y2={y} stroke="#2563eb" strokeWidth="1.4" strokeDasharray="4 4" />
-    ))}
-    <defs>
-      <marker id="mp-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-        <path d="M0,0 L10,5 L0,10 z" fill="#60a5fa" />
-      </marker>
-    </defs>
-  </svg>
-);
 
 const OnboardingDiagram1 = ({ steps, dot }: { steps: string[]; dot: string }) => (
   <svg viewBox="0 0 640 180" className="w-full h-auto">
@@ -149,7 +81,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
             <div className="reveal delay-100 relative">
               <div className="absolute -inset-6 bg-gradient-to-br from-blue-400/15 via-blue-200/15 to-blue-600/10 blur-3xl rounded-[40px] pointer-events-none" />
               <div className="relative rounded-3xl bg-white shadow-xl border border-slate-200/70 p-4">
-                <ChannelHeroDiagram name={cfg.name} dot={cfg.dot} />
+                <ChannelHeroDiagram cfg={cfg} className="w-full h-auto" />
               </div>
             </div>
           </div>

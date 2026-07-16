@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, BookOpen, Clock, Sparkles, Cpu, BarChart3, Workflow, Brain, Layers, Plug, Boxes, Truck } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
-import { BlogEditorialMockup } from "@/components/illustrations";
+import { GuideEditorialMockup } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
 const posts = [
@@ -102,7 +102,7 @@ const posts = [
   },
 ];
 
-const Blog = () => {
+const Guide = () => {
   const ref = useReveal<HTMLDivElement>();
   const [featured, ...rest] = posts;
 
@@ -111,10 +111,10 @@ const Blog = () => {
       <div ref={ref}>
         <PageHero
           badgeIcon={BookOpen}
-          badgeText="Ctasis · Blog"
+          badgeText="Ctasis · Guide"
           title={<>Stories from <span className="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">the seller front line.</span></>}
           subtitle="Repricer deep-dives, Marketplace playbooks and honest takes on what actually grows a multichannel business — written by the engineers and sellers who build Ctasis."
-          visual={<BlogEditorialMockup className="w-full h-auto" />}
+          visual={<GuideEditorialMockup className="w-full h-auto" />}
           actions={
             <Link href="/contact">
               <Button size="lg" className="text-base px-8 h-12 rounded-full group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
@@ -128,7 +128,7 @@ const Blog = () => {
         {/* FEATURED POST */}
         <section className="py-20 bg-white">
           <div className="px-[50px] lg:px-[70px]">
-            <Link href={`/blog/${featured.slug}`} className="reveal block group">
+            <Link href={`/guide/${featured.slug}`} className="reveal block group">
               <Card className="overflow-hidden border border-slate-100 hover-lift">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   <div className={`relative bg-gradient-to-br ${featured.tone} p-12 flex items-center justify-center min-h-[280px]`}>
@@ -168,7 +168,7 @@ const Blog = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {rest.map((p, i) => (
-                <Link href={`/blog/${p.slug}`} key={p.slug} className="reveal block group" style={{ transitionDelay: `${i * 70}ms` }}>
+                <Link href={`/guide/${p.slug}`} key={p.slug} className="reveal block group" style={{ transitionDelay: `${i * 70}ms` }}>
                   <Card className="h-full border border-slate-100 hover-lift overflow-hidden">
                     <div className={`relative h-44 bg-gradient-to-br ${p.tone} flex items-center justify-center`}>
                       <div className="absolute inset-0 grid-bg opacity-20" />
@@ -218,4 +218,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default Guide;

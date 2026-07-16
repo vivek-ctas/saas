@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { buildMetadata, SITE_URL } from "@/lib/seo";
-import BlogPost from "@/screens/BlogPost";
+import GuidePost from "@/screens/GuidePost";
 import { notFound } from "next/navigation";
 
 type PageProps = { params: { slug: string } };
 
-// ─── Shared post data (mirrors BlogPost.tsx) ─────────────────────────────────
-// NOTE: Ideally extract this into a shared /lib/blog-data.ts — avoid duplication.
+// ─── Shared post data (mirrors GuidePost.tsx) ─────────────────────────────────
+// NOTE: Ideally extract this into a shared /lib/guide-data.ts — avoid duplication.
 const posts = [
   {
     slug: "ai-amazon-business-repricer",
@@ -89,14 +89,14 @@ export async function generateStaticParams() {
 
 // ─── Per-post metadata ───────────────────────────────────────────────────────
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const param=await params;
+  const param = await params;
   const post = posts.find((p) => p.slug === param.slug);
   if (!post) return {};
 
   return buildMetadata({
     title: post.title,
     description: post.excerpt,
-    path: `/blog/${param.slug}`,
+    path: `/guide/${param.slug}`,
     type: "article",
   });
 }
@@ -108,10 +108,10 @@ function buildArticleJsonLd(slug: string) {
 
   return {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    "@type": "GuidePosting",
     headline: post.title,
     description: post.excerpt,
-    url: `${SITE_URL}/blog/${slug}`,
+    url: `${SITE_URL}/guide/${slug}`,
     datePublished: post.date,
     author: {
       "@type": "Person",
@@ -127,15 +127,15 @@ function buildArticleJsonLd(slug: string) {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-        { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
-        { "@type": "ListItem", position: 3, name: post.title, item: `${SITE_URL}/blog/${slug}` },
+        { "@type": "ListItem", position: 2, name: "Guide", item: `${SITE_URL}/guide` },
+        { "@type": "ListItem", position: 3, name: post.title, item: `${SITE_URL}/guide/${slug}` },
       ],
     },
   };
 }
 
 export default async function Page({ params }: PageProps) {
-  const param=await params
+  const param = await params
   const post = posts.find((p) => p.slug === param.slug);
   if (!post) notFound();
 
@@ -149,7 +149,7 @@ export default async function Page({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       )}
-      <BlogPost />
+      <GuidePost />
     </>
   );
 }

@@ -184,7 +184,7 @@ const posts: Post[] = [
   },
 ];
 
-const BlogPost = () => {
+const GuidePost = () => {
   const ref = useReveal<HTMLDivElement>();
   const params = useParams();
   const slug = params.slug as string;
@@ -193,7 +193,7 @@ const BlogPost = () => {
   const router = useRouter();
 
   if (!post) {
-    router.push("/blog");
+    router.push("/guide");
     return null;
   }
   const others = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
@@ -205,7 +205,7 @@ const BlogPost = () => {
         {/* HERO */}
         <section className="relative pt-28 pb-16 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50">
           <div className="px-[50px] lg:px-[70px]">
-            <Link href="/blog" className="reveal inline-flex items-center gap-2 text-sm text-slate-600 hover:text-blue-600 mb-6">
+            <Link href="/guide" className="reveal inline-flex items-center gap-2 text-sm text-slate-600 hover:text-blue-600 mb-6">
               <ArrowLeft className="w-4 h-4" /> Back to all articles
             </Link>
             <div className="reveal flex items-center gap-3 text-sm text-slate-500 mb-4">
@@ -283,15 +283,15 @@ const BlogPost = () => {
             <div className="reveal flex items-end justify-between mb-10">
               <div>
                 <Badge className="mb-3 bg-blue-50 text-blue-700 border border-blue-100">Keep reading</Badge>
-                <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">More from the blog</h2>
+                <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">More from the guide</h2>
               </div>
-              <Link href="/blog" className="text-blue-600 text-sm font-semibold inline-flex items-center gap-1 story-link">
+              <Link href="/guide" className="text-blue-600 text-sm font-semibold inline-flex items-center gap-1 story-link">
                 <BookOpen className="w-4 h-4" /> All articles
               </Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {others.map((o, i) => (
-                <Link key={o.slug} href={`/blog/${o.slug}`} className="reveal block group" style={{ transitionDelay: `${i * 80}ms` }}>
+                <Link key={o.slug} href={`/guide/${o.slug}`} className="reveal block group" style={{ transitionDelay: `${i * 80}ms` }}>
                   <Card className="h-full border border-slate-100 hover-lift overflow-hidden bg-white">
                     <div className="relative h-40 bg-gradient-to-br from-blue-600 to-blue-900 flex items-center justify-center">
                       <div className="absolute inset-0 grid-bg opacity-20" />
@@ -315,4 +315,4 @@ const BlogPost = () => {
   );
 };
 
-export default BlogPost;
+export default GuidePost;

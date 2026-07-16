@@ -5,7 +5,8 @@ import {
   BarChart3, RefreshCw, ShoppingCart, TrendingUp, Zap, Shield,
   Users, DollarSign, Package, Globe, Clock, CheckCircle, Sparkles,
   Star, ShoppingBag, Smartphone, Monitor, Tablet, ArrowRight, Quote,
-  Truck, Megaphone, Brain, Server, Workflow, Boxes, Store
+  Truck, Megaphone, Brain, Server, Workflow, Boxes, Store,
+  RefreshCcw
 } from "lucide-react";
 import Link from "next/link";
 import Layout from "@/components/Layout";
@@ -100,7 +101,7 @@ const Home = () => {
               {/* Mockup */}
               <div className="lg:col-span-6 relative reveal delay-200">
                 <div className="absolute -inset-8 bg-gradient-to-br from-blue-400/20 via-blue-200/20 to-blue-600/15 blur-3xl rounded-[40px]" />
-                <div className="relative animate-float-slow max-w-[600px] mx-auto">
+                <div className="relative animate-float-slow scale-[1.12] lg:scale-[1.18] origin-center">
                   <SellerHeroMockup className="w-full h-auto" />
                 </div>
 
@@ -223,8 +224,8 @@ const Home = () => {
                 ))}
               </ul>
             </div>
-            <div className="reveal delay-200">
-              <ProblemDiagram className="w-full h-auto max-w-[550px] mx-auto" />
+            <div className=" relative reveal scale-[1.12] lg:scale-[1.18] origin-center">
+              <ProblemDiagram className="w-full h-auto " />
             </div>
           </div>
         </section>
@@ -234,25 +235,33 @@ const Home = () => {
           <div className="relative px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
-                <Server className="w-3.5 h-3.5 mr-1" /> Built like a hyperscaler
+                <Workflow className="w-3.5 h-3.5 mr-1" />
+                Marketplace workflow
               </Badge>
+
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                Isolated pods. Kubernetes scaling. Kafka-driven events.
+                Every marketplace order follows one intelligent workflow.
               </h2>
+
               <p className="text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
-                Each tenant runs in its own Docker pod with dedicated PostgreSQL + MongoDB databases. Kubernetes load
-                balancers handle 10M+ daily events through Kafka and RabbitMQ — so your store never blinks
-                during a flash sale.
+                From order capture to inventory synchronization, shipping, and analytics,
+                every step is automated inside one centralized workflow—eliminating manual
+                operations while keeping every marketplace perfectly synchronized.
               </p>
+
               <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  { icon: Server, label: "AWS multi-region" },
-                  { icon: Workflow, label: "Kafka + RabbitMQ" },
-                  { icon: Shield, label: "SOC 2 Type II" },
-                  { icon: Boxes, label: "Centralized catalog" },
+                  { icon: ShoppingCart, label: "Real-time order capture" },
+                  { icon: RefreshCcw, label: "Inventory synchronization" },
+                  { icon: Truck, label: "Shipping & tracking" },
+                  { icon: BarChart3, label: "Live analytics & insights" },
                 ].map((f, i) => (
-                  <div key={i} className="flex items-center gap-2 text-sm text-slate-700 font-medium">
-                    <f.icon className="w-4 h-4 text-blue-600" /> {f.label}
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 text-sm text-slate-700 font-medium"
+                  >
+                    <f.icon className="w-4 h-4 text-blue-600" />
+                    {f.label}
                   </div>
                 ))}
               </div>
@@ -307,14 +316,14 @@ const Home = () => {
                   ))}
                 </ul>
               </div>
-              <div className="order-1 lg:order-2 reveal delay-200">
-                <WorkflowIllustration className="w-full h-auto max-w-[550px] mx-auto" />
+              <div className="order-1 lg:order-2 reveal  scale-[1.12] lg:scale-[1.18] origin-center">
+                <WorkflowIllustration className="w-full h-auto " />
               </div>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div className="reveal">
-                <SyncIllustration className="w-full h-auto max-w-[550px] mx-auto" />
+              <div className="reveal  scale-[1.12] lg:scale-[1.18] origin-center">
+                <SyncIllustration className="w-full h-auto" />
               </div>
               <div className="reveal delay-200">
                 <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The Ctasis way</Badge>
@@ -379,7 +388,7 @@ const Home = () => {
               {/* Right Visual card */}
               <div className="lg:col-span-7 reveal delay-200">
 
-                <div className="scale-105 origin-center max-w-[650px] mx-auto">
+                <div className="reveal scale-[1.12] lg:scale-[1.18] origin-center">
                   <MarketplaceMeshDiagram className="w-full h-auto" />
                 </div>
 

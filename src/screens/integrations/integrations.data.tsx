@@ -4,7 +4,7 @@ import {
 import {
   MarketplaceMeshDiagram, ChannelSyncFlow, InfraTopologyDiagram, OrderFlowDiagram,
   NodeFlowDiagram, RepricerStrategyChart, AutomationBuilderDiagram, DashboardMockup,
-  BlogEditorialMockup, AnalyticsFlowDiagram, AIPipelineDiagram, ReportingConsoleMockup,
+  GuideEditorialMockup, AnalyticsFlowDiagram, AIPipelineDiagram, ReportingConsoleMockup,
   MarketplaceConnectorIllustration, InventoryIllustration, ServicesHeroMockup,
   AlertTriageDiagram, RepricerIllustration, SyncIllustration, AnalyticsIllustration,
   GlobeIllustration, NeuralIllustration, WorkflowIllustration,
@@ -144,7 +144,7 @@ export const INTEGRATIONS: Integration[] = [
     tagline: "Etsy, but operated like a real business.",
     description:
       "Listings, sections, production partners and personalization fields kept perfectly in sync. Etsy Ads + Offsite Ads tracked alongside the rest.",
-    hero: BlogEditorialMockup,
+    hero: GuideEditorialMockup,
     flow: AnalyticsFlowDiagram,
     detail: InventoryIllustration,
     features: [

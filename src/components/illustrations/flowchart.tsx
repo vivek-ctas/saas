@@ -1,4 +1,4 @@
-import { ILL, IllDefs, IllCanvas, IllHeader, IllCard, IllArrow, IllIconBadge, IconKind } from "./commanIllustrastrations";
+import { ILL, IllDefs, IllHeader, IllCard, IllIconBadge, IconKind } from "./commanIllustrastrations";
 
 export type FlowNode = {
     label: string;
@@ -43,88 +43,102 @@ export const FlowVisual = ({
     return (
         <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
             <IllDefs id={id} />
-            <IllCanvas id={id} w={W} h={H}>
-                <IllHeader label={title} />
+            <IllHeader label={title} />
 
-                {/* Hub */}
-                <g filter={`url(#${id}-shadow)`}>
-                    <rect x={hubX} y={hubY} width={hubW} height={hubH} rx="24" fill={`url(#${id}-hub)`} />
-                    <g transform={`translate(${W / 2},${hubY + 48})`} stroke="#93c5fd" strokeWidth="2.4" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M-12 -1 A12 12 0 0 1 8 -10" />
-                        <polygon points="8,-10 2,-11 7,-16" fill="#93c5fd" />
-                        <path d="M12 1 A12 12 0 0 1 -8 10" />
-                        <polygon points="-8,10 -2,11 -7,16" fill="#93c5fd" />
-                    </g>
-                    <text x={W / 2} y={hubY + 102} textAnchor="middle" fontFamily={ILL.font} fontSize="17" fontWeight="800" fill="white">
-                        {hub}
-                    </text>
-                    {hubLatency && (
-                        <text x={W / 2} y={hubY + 124} textAnchor="middle" fontFamily={ILL.font} fontSize="11.5" fill="#bfdbfe">
-                            {hubLatency}
-                        </text>
-                    )}
-                    <circle cx={W / 2} cy={hubY + hubH - 26} r="9" fill="#60a5fa" opacity="0.35" />
-                    <circle cx={W / 2} cy={hubY + hubH - 26} r="4.5" fill="#60a5fa" />
+            {/* Hub */}
+            <g filter={`url(#${id}-shadow)`}>
+                <rect x={hubX} y={hubY} width={hubW} height={hubH} rx="24" fill={`url(#${id}-hub)`} />
+                <g transform={`translate(${W / 2},${hubY + 48})`} stroke="#93c5fd" strokeWidth="2.4" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M-12 -1 A12 12 0 0 1 8 -10" />
+                    <polygon points="8,-10 2,-11 7,-16" fill="#93c5fd" />
+                    <path d="M12 1 A12 12 0 0 1 -8 10" />
+                    <polygon points="-8,10 -2,11 -7,16" fill="#93c5fd" />
                 </g>
+                <text x={W / 2} y={hubY + 102} textAnchor="middle" fontFamily={ILL.font} fontSize="17" fontWeight="800" fill="white">
+                    {hub}
+                </text>
+                {hubLatency && (
+                    <text x={W / 2} y={hubY + 124} textAnchor="middle" fontFamily={ILL.font} fontSize="11.5" fill="#bfdbfe">
+                        {hubLatency}
+                    </text>
+                )}
+                <circle cx={W / 2} cy={hubY + hubH - 26} r="9" fill="#60a5fa" opacity="0.35" />
+                <circle cx={W / 2} cy={hubY + hubH - 26} r="4.5" fill="#60a5fa" />
+            </g>
 
-                {/* Left (source) nodes → hub */}
-                {leftNodes.map((n) => {
-                    const idx = leftNodes.indexOf(n);
-                    const y = lStart + idx * stepL;
-                    const cy = y + cardH / 2;
-                    return (
-                        <g key={n.label}>
-                            <IllCard x={leftX} y={y} w={cardW} h={cardH} accent={n.dot} id={id}>
-                                <IllIconBadge x={leftX + 38} y={cy} color={n.dot} kind={n.icon} />
-                                <text x={leftX + 70} y={cy - 4} fontFamily={ILL.font} fontSize="14" fontWeight="800" fill={ILL.ink}>
-                                    {n.label}
+            {/* Left (source) nodes → hub */}
+            {leftNodes.map((n) => {
+                const idx = leftNodes.indexOf(n);
+                const y = lStart + idx * stepL;
+                const cy = y + cardH / 2;
+                const x1 = leftX + cardW;
+                const y1 = cy;
+                const x2 = hubX;
+                const y2 = H / 2;
+                return (
+                    <g key={n.label}>
+                        <IllCard x={leftX} y={y} w={cardW} h={cardH} accent={n.dot} id={id}>
+                            <IllIconBadge x={leftX + 38} y={cy} color={n.dot} kind={n.icon} />
+                            <text x={leftX + 70} y={cy - 4} fontFamily={ILL.font} fontSize="14" fontWeight="800" fill={ILL.ink}>
+                                {n.label}
+                            </text>
+                            {n.sub && (
+                                <text x={leftX + 70} y={cy + 16} fontFamily={ILL.font} fontSize="11.5" fill={ILL.muted}>
+                                    {n.sub}
                                 </text>
-                                {n.sub && (
-                                    <text x={leftX + 70} y={cy + 16} fontFamily={ILL.font} fontSize="11.5" fill={ILL.muted}>
-                                        {n.sub}
-                                    </text>
-                                )}
-                            </IllCard>
-                            <IllArrow
-                                x1={leftX + cardW} y1={cy}
-                                x2={hubX} y2={H / 2}
-                                color={n.dot}
-                                arrow
-                                dotStart
-                            />
-                        </g>
-                    );
-                })}
+                            )}
+                        </IllCard>
+                        {/* Animated dashed line */}
+                        <line x1={x1} y1={y1} x2={x2} y2={y2}
+                            stroke={n.dot} strokeWidth="1.6" strokeDasharray="5 4">
+                            <animate attributeName="stroke-dashoffset" values="0;-18"
+                                dur={`${1.2 + idx * 0.15}s`} repeatCount="indefinite" />
+                        </line>
+                        {/* Flowing data dot */}
+                        <circle r="3" fill={n.dot} opacity="0.8">
+                            <animateMotion dur={`${1.8 + idx * 0.2}s`} repeatCount="indefinite"
+                                path={`M${x1} ${y1} L${x2} ${y2}`} />
+                        </circle>
+                    </g>
+                );
+            })}
 
-                {/* Hub → right (destination) nodes */}
-                {rightNodes.map((n) => {
-                    const idx = rightNodes.indexOf(n);
-                    const y = rStart + idx * stepR;
-                    const cy = y + cardH / 2;
-                    return (
-                        <g key={n.label}>
-                            <IllArrow
-                                x1={hubX + hubW} y1={H / 2}
-                                x2={rightX} y2={cy}
-                                color={n.dot}
-                                dotStart
-                                dotEnd
-                            />
-                            <IllCard x={rightX} y={y} w={cardW} h={cardH} accent={n.dot} id={id}>
-                                <IllIconBadge x={rightX + 38} y={cy} color={n.dot} kind={n.icon} />
-                                <text x={rightX + 70} y={cy - 4} fontFamily={ILL.font} fontSize="14" fontWeight="800" fill={ILL.ink}>
-                                    {n.label}
+            {/* Hub → right (destination) nodes */}
+            {rightNodes.map((n) => {
+                const idx = rightNodes.indexOf(n);
+                const y = rStart + idx * stepR;
+                const cy = y + cardH / 2;
+                const x1 = hubX + hubW;
+                const y1 = H / 2;
+                const x2 = rightX;
+                const y2 = cy;
+                return (
+                    <g key={n.label}>
+                        {/* Animated dashed line */}
+                        <line x1={x1} y1={y1} x2={x2} y2={y2}
+                            stroke={n.dot} strokeWidth="1.6" strokeDasharray="5 4">
+                            <animate attributeName="stroke-dashoffset" values="0;-18"
+                                dur={`${1.2 + idx * 0.15}s`} repeatCount="indefinite" />
+                        </line>
+                        {/* Flowing data dot */}
+                        <circle r="3" fill={n.dot} opacity="0.8">
+                            <animateMotion dur={`${1.8 + idx * 0.2}s`} repeatCount="indefinite"
+                                path={`M${x1} ${y1} L${x2} ${y2}`} />
+                        </circle>
+                        <IllCard x={rightX} y={y} w={cardW} h={cardH} accent={n.dot} id={id}>
+                            <IllIconBadge x={rightX + 38} y={cy} color={n.dot} kind={n.icon} />
+                            <text x={rightX + 70} y={cy - 4} fontFamily={ILL.font} fontSize="14" fontWeight="800" fill={ILL.ink}>
+                                {n.label}
+                            </text>
+                            {n.sub && (
+                                <text x={rightX + 70} y={cy + 16} fontFamily={ILL.font} fontSize="11.5" fill={ILL.muted}>
+                                    {n.sub}
                                 </text>
-                                {n.sub && (
-                                    <text x={rightX + 70} y={cy + 16} fontFamily={ILL.font} fontSize="11.5" fill={ILL.muted}>
-                                        {n.sub}
-                                    </text>
-                                )}
-                            </IllCard>
-                        </g>
-                    );
-                })}
-            </IllCanvas>
+                            )}
+                        </IllCard>
+                    </g>
+                );
+            })}
         </svg>
     );
 };

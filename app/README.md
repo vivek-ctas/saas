@@ -10,8 +10,8 @@ Routes:
 - `/infrastructure` -> src/pages/Infrastructure.tsx
 - `/pricing` -> src/pages/Pricing.tsx
 - `/about` -> src/pages/About.tsx
-- `/blog` -> src/pages/Blog.tsx
-- `/blog/:slug` -> src/pages/BlogPost.tsx
+- `/guide` -> src/pages/Guide.tsx
+- `/guide/:slug` -> src/pages/GuidePost.tsx
 - `/contact` -> src/pages/Contact.tsx
 
 Next steps to actually run as Next.js:

@@ -1,8 +1,9 @@
 import PlatformPage, { PlatformConfig } from "./PlatformPage";
-import { KpiChartVisual, MatrixVisual } from "./visuals";
+import { MatrixVisual } from "@/components/illustrations/MatrixVisual";
 import { ILL } from "@/components/illustrations/primitives";
 import { DollarSign, ShieldCheck, BarChart3, RefreshCw, Layers, Sparkles } from "lucide-react";
 import { DashListVisual } from "@/components/illustrations/DashListVisual";
+import { KpiChartVisual } from "@/components/illustrations/KpiChartVisual";
 const cfg: PlatformConfig = {
   slug: "repricer",
   eyebrow: "Repricer",
@@ -14,9 +15,9 @@ const cfg: PlatformConfig = {
       id="rep-hero"
       title="Repricer · SKU-42891"
       kpis={[
-        { label: "Price", value: "$21.40", delta: "+$0.30" },
-        { label: "Buy Box", value: "82%", delta: "+9%" },
-        { label: "Margin", value: "31.6%", delta: "+3.6%" },
+        { label: "Price", value: "$21.40", delta: "+$0.30", icon: "box" },
+        { label: "Buy Box", value: "82%", delta: "+9%", icon: "cart" },
+        { label: "Margin", value: "31.6%", delta: "+3.6%", icon: "calendar" },
       ]}
       series={[70, 72, 68, 74, 71, 76, 78, 74, 80, 84, 82, 86]}
       compareSeries={[60, 62, 60, 64, 62, 66, 68, 66, 70, 72, 70, 74]}
@@ -58,9 +59,9 @@ const cfg: PlatformConfig = {
           id="rep-bb"
           title="Buy Box · last 24h · SKU-42891"
           kpis={[
-            { label: "Win rate", value: "82%", delta: "+9%" },
-            { label: "Price moves", value: "37", delta: "auto" },
-            { label: "Avg margin", value: "31.6%", delta: "+3.6%" },
+            { label: "Win rate", value: "82%", delta: "+9%", icon: "cart" },
+            { label: "Price moves", value: "37", delta: "auto", icon: "box" },
+            { label: "Avg margin", value: "31.6%", delta: "+3.6%", icon: "calendar" },
           ]}
           series={[60, 68, 62, 72, 68, 78, 74, 82, 78, 86, 82, 90]}
           compareSeries={[55, 60, 58, 64, 60, 68, 64, 72, 68, 74, 70, 78]}
@@ -86,13 +87,25 @@ const cfg: PlatformConfig = {
           cols={["Amazon", "Walmart", "eBay", "Etsy"]}
           rows={["Home", "Kitchen", "Outdoor"]}
           cellFor={(r, c) => {
-            const strats = ["Buy Box", "Match", "Hold margin", "Beat 1¢"];
+            const strats = ["Buy Box", "Match", "Hold Margin", "Beat 1¢"];
             const tones = ["#dbeafe", "#d1fae5", "#fef3c7", "#e0e7ff"];
             const fgs = ["#1d4ed8", "#065f46", "#92400e", "#4338ca"];
+
             const idx = (r * 4 + c) % 4;
-            return { fill: tones[idx], text: strats[idx], textFill: fgs[idx] };
+
+            return {
+              fill: tones[idx],
+              text: strats[idx],
+              textFill: fgs[idx],
+              icon: idx === 2 ? "clock" : "check",
+            };
           }}
-          note="Guardrails: hard floor + ceiling per SKU — repricer never crosses them"
+          stats={{
+            skuValue: "4 Strategies",
+            skuLabel: "Across channels",
+            deltaValue: "100%",
+            deltaLabel: "Guardrails enabled",
+          }}
         />
       ),
     },

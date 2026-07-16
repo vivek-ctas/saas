@@ -352,8 +352,8 @@ const Pricing = () => {
         {/* ── TESTIMONIAL ────────────────────────────────────────────────────── */}
         <section className="py-24 bg-white">
           <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="reveal">
-              <AnalyticsIllustration className="w-full h-auto max-w-[550px] mx-auto" />
+            <div className="reveal scale-[1.12] lg:scale-[1.18] origin-center">
+              <AnalyticsIllustration className="w-full h-auto " />
             </div>
             <div className="reveal delay-200">
               <div className="flex gap-1 mb-6">

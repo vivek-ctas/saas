@@ -43,7 +43,7 @@ const Services = () => {
         "Real-time low-stock alerts",
       ],
       icon: Boxes,
-      visual: <InventorySyncSVG className="w-full h-auto max-w-[550px] mx-auto" />,
+      visual: <InventorySyncSVG className="w-full h-auto" />,
     },
     {
       eyebrow: "Order management",
@@ -100,7 +100,7 @@ const Services = () => {
         "Full sync audit log",
       ],
       icon: RefreshCw,
-      visual: <InventorySyncSVG className="w-full h-auto max-w-[550px] mx-auto" />,
+      visual: <InventorySyncSVG className="w-full h-auto " />,
     },
     {
       eyebrow: "AI catalog",
@@ -113,7 +113,7 @@ const Services = () => {
         "One-click bulk regenerate for old listings",
       ],
       icon: Wand2,
-      visual: <AICatalogSVG className="w-full h-auto max-w-[550px] mx-auto" />,
+      visual: <AICatalogSVG className="w-full h-auto" />,
       reverse: true,
     },
     {
@@ -164,7 +164,7 @@ const Services = () => {
         "Schedule-based promotional pricing",
       ],
       icon: DollarSign,
-      visual: <RepricerSVG className="w-full h-auto max-w-[550px] mx-auto" />,
+      visual: <RepricerSVG className="w-full h-auto " />,
       reverse: true,
     },
     {
@@ -179,7 +179,7 @@ const Services = () => {
       ],
       icon: BarChart3,
       visual: (
-        <AnalyticsDashboardSVG className="w-full h-auto max-w-[550px] mx-auto" />
+        <AnalyticsDashboardSVG className="w-full h-auto" />
       ),
     },
     {
@@ -193,7 +193,7 @@ const Services = () => {
         "Direct push to Amazon, Walmart and Flipkart",
       ],
       icon: ImageIcon,
-      visual: <AssetLibraryMockup className="w-full h-auto max-w-[550px] mx-auto" />,
+      visual: <AssetLibraryMockup className="w-full h-auto" />,
       reverse: true,
     },
     {
@@ -207,7 +207,7 @@ const Services = () => {
         "SSO / SAML on Enterprise",
       ],
       icon: ShieldCheck,
-      visual: <RolesIllustration className="w-full h-auto max-w-[550px] mx-auto" />,
+      visual: <RolesIllustration className="w-full h-auto " />,
     },
     {
       eyebrow: "Bulk work",
@@ -272,21 +272,6 @@ const Services = () => {
             </>
           }
         />
-
-        <section className="relative bg-gradient-to-b from-blue-50/60 to-white py-16 lg:py-20">
-          <div className="relative px-[50px] lg:px-[70px] text-center">
-            <Badge className="mb-4 bg-white text-blue-700 border border-blue-100">
-              <Layers className="w-3.5 h-3.5 mr-1.5" /> Platform capabilities
-            </Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.05] tracking-tight max-w-3xl mx-auto mb-4">
-              Every capability a multi-channel seller needs — in one platform.
-            </h1>
-            <p className="text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto">
-              Inventory, orders, pricing, catalog, content and access — SellerBuz replaces the stack of spreadsheets and tabs with one clean workspace.
-            </p>
-          </div>
-        </section>
-
         {/* Zig-zag sections */}
         {sections.map((s, i) => (
           <section key={s.title} className={`py-16 ${i % 2 === 0 ? "bg-white" : "bg-blue-50/40"}`}>
@@ -304,7 +289,7 @@ const Services = () => {
                     ))}
                   </ul>
                 </div>
-                <div className={`reveal delay-100 ${s.reverse ? "lg:order-1" : ""}`}>
+                <div className={`reveal delay-100 ${s.reverse ? "lg:order-1" : ""} scale-[1.12] lg:scale-[1.18] origin-center`}>
                   {s.visual}
                 </div>
               </div>

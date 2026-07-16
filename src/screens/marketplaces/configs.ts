@@ -2,7 +2,7 @@ import { Boxes, ShoppingCart, DollarSign, BarChart3, Wand2, RefreshCw, LayoutGri
 import type { MarketplaceConfig } from "./MarketplacePage";
 
 const others = (name: string) =>
-  ["Amazon", "Walmart", "eBay", "Etsy", "Flipkart"].filter((n) => n !== name);
+  ["Amazon", "Walmart", "eBay", "Etsy"].filter((n) => n !== name);
 
 export const amazonConfig: MarketplaceConfig = {
   slug: "amazon",
@@ -18,18 +18,18 @@ export const amazonConfig: MarketplaceConfig = {
     { l: "Oversells", v: "0" },
   ],
   capabilities: [
-    { icon: DollarSign, t: "Buy Box repricer", d: "Rule + Buy Box aware repricing with per-SKU floor and ceiling. React to competitor moves in under 2 seconds." },
-    { icon: Boxes,      t: "FBA + FBM inventory", d: "Track FBA inventory alongside your own warehouse — reserve, allocate and split shipments from one screen." },
-    { icon: Wand2,      t: "A+ ready listings",  d: "Generate Amazon-style titles, bullets, backend keywords and A+ content in seconds with the AI catalog." },
-    { icon: ShoppingCart, t: "Order sync + labels", d: "Every Amazon order lands in your unified inbox with buyer details, shipping method and label generation." },
-    { icon: ImageIcon,  t: "Image + variant hygiene", d: "Enforce Amazon image standards and variation rules across parent-child listings automatically." },
-    { icon: BarChart3,  t: "Amazon-specific analytics", d: "Session-to-order conversion, Buy Box share, IPI health and returns — beside every other channel." },
+    { icon: DollarSign, t: "Buy Box repricer", d: "Rule + Buy Box aware repricing with per-SKU floor and ceiling. React to competitor moves in under 2 seconds.", stat: "Rules active" },
+    { icon: Boxes, t: "FBA + FBM inventory", d: "Track FBA inventory alongside your own warehouse — reserve, allocate and split shipments from one screen.", stat: "12,480 SKUs" },
+    { icon: Wand2, t: "A+ ready listings", d: "Generate Amazon-style titles, bullets, backend keywords and A+ content in seconds with the AI catalog.", stat: "AI ready" },
+    { icon: ShoppingCart, t: "Order sync + labels", d: "Every Amazon order lands in your unified inbox with buyer details, shipping method and label generation.", stat: "241 / today" },
+    { icon: ImageIcon, t: "Image + variant hygiene", d: "Enforce Amazon image standards and variation rules across parent-child listings automatically.", stat: "Auto enforced" },
+    { icon: BarChart3, t: "Amazon analytics", d: "Session-to-order conversion, Buy Box share, IPI health and returns — beside every other channel.", stat: "Live dashboard" },
   ],
   gotchas: [
-    { t: "Buy Box loss detection", d: "Real-time alerts when you lose the Buy Box on a high-margin ASIN, with one-click reprice." },
-    { t: "Suppressed listing recovery", d: "Detects suppression triggers (missing attributes, image issues) and surfaces exactly what to fix." },
-    { t: "IPI & storage limits", d: "Tracks Inventory Performance Index and warns before storage cost overages hit." },
-    { t: "Variation parent-child rules", d: "Keeps parent/child variation trees valid across bulk edits so nothing goes dark." },
+    { t: "Buy Box alerts", d: "Real-time loss detection on high-margin ASINs with one-click reprice." },
+    { t: "Listing recovery", d: "Auto-detects suppression triggers and surfaces exactly what to fix." },
+    { t: "IPI tracking", d: "Monitors Inventory Performance Index and warns before cost overages." },
+    { t: "Variation rules", d: "Keeps parent-child trees valid across bulk edits so nothing goes dark." },
   ],
   onboarding: ["Connect SP-API", "Import catalog", "Set rules", "Go live"],
   faq: [
@@ -56,18 +56,18 @@ export const walmartConfig: MarketplaceConfig = {
     { l: "Order sync latency", v: "< 2s" },
   ],
   capabilities: [
-    { icon: LayoutGrid, t: "Item Spec builder",   d: "Guided attribute completion for every Walmart category, so listings clear the first review." },
-    { icon: RefreshCw,  t: "2-way inventory sync", d: "Every Walmart Seller Center stock change reflects across Amazon, eBay, Etsy and Flipkart in seconds." },
-    { icon: DollarSign, t: "Competitor repricer",  d: "Match or beat the Walmart winning offer with rule-based repricing and margin guardrails." },
-    { icon: ShoppingCart, t: "Order routing",     d: "Route Walmart orders to your warehouse, 3PL or drop-shipper with automatic status writebacks." },
-    { icon: Wand2,      t: "AI content for Walmart", d: "Long descriptions, key features and rich media — generated in Walmart's preferred format." },
-    { icon: BarChart3,  t: "Listing Quality Score", d: "Track Walmart's LQS per SKU and see exactly which fields to improve." },
+    { icon: LayoutGrid, t: "Item Spec builder", d: "Guided attribute completion for every Walmart category, so listings clear the first review.", stat: "100% coverage" },
+    { icon: RefreshCw, t: "2-way inventory sync", d: "Every Walmart Seller Center stock change reflects across Amazon, eBay, Etsy and Flipkart in seconds.", stat: "< 2s latency" },
+    { icon: DollarSign, t: "Competitor repricer", d: "Match or beat the Walmart winning offer with rule-based repricing and margin guardrails.", stat: "Rule-based" },
+    { icon: ShoppingCart, t: "Order routing", d: "Route Walmart orders to your warehouse, 3PL or drop-shipper with automatic status writebacks.", stat: "Auto routed" },
+    { icon: Wand2, t: "AI content for Walmart", d: "Long descriptions, key features and rich media — generated in Walmart's preferred format.", stat: "AI generated" },
+    { icon: BarChart3, t: "Listing Quality Score", d: "Track Walmart's LQS per SKU and see exactly which fields to improve.", stat: "LQS tracked" },
   ],
   gotchas: [
-    { t: "Set-up + spec split", d: "Item Setup and Item Spec are two different files at Walmart — we handle both, correctly, in one flow." },
-    { t: "Category-specific attributes", d: "Required attributes vary per category. SellerBuz warns before submission, not after." },
-    { t: "Shipping templates", d: "Ship-node aware — regional shipping templates map correctly to your warehouses." },
-    { t: "Buy Box on Walmart", d: "Walmart's winning offer logic differs from Amazon — our repricer knows the difference." },
+    { t: "Setup + spec split", d: "Item Setup and Item Spec are two different files — we handle both in one flow." },
+    { t: "Category attributes", d: "Required attributes vary per category. Warns before submission, not after." },
+    { t: "Shipping templates", d: "Ship-node aware — regional templates map correctly to your warehouses." },
+    { t: "Walmart Buy Box", d: "Winning offer logic differs from Amazon — our repricer knows the difference." },
   ],
   onboarding: ["Connect Walmart API", "Map categories", "Import & validate", "Publish live"],
   faq: [
@@ -94,17 +94,17 @@ export const ebayConfig: MarketplaceConfig = {
     { l: "Promoted Listings", v: "Rule-based" },
   ],
   capabilities: [
-    { icon: LayoutGrid, t: "Variations manager",   d: "Manage size, color and style variations at scale with per-variant SKU, price and stock." },
-    { icon: DollarSign, t: "eBay repricer",        d: "Compete on eBay best-match with rule-based repricing that respects your margin floor." },
-    { icon: RefreshCw,  t: "GTC-first sync",       d: "Good-Til-Cancelled listings stay live and accurate — no relist babysitting." },
-    { icon: ShoppingCart, t: "Order + label flow", d: "Orders sync with shipping preferences, buyer notes and one-click label generation." },
-    { icon: Wand2,      t: "eBay-optimized titles", d: "80-char titles crafted for eBay search + item specifics filled from a single image." },
-    { icon: BarChart3,  t: "Promoted Listings ROAS", d: "Track promoted listings spend and return alongside organic sales." },
+    { icon: LayoutGrid, t: "Variations manager", d: "Manage size, color and style variations at scale with per-variant SKU, price and stock.", stat: "Up to 250" },
+    { icon: DollarSign, t: "eBay repricer", d: "Compete on eBay best-match with rule-based repricing that respects your margin floor.", stat: "Best-match" },
+    { icon: RefreshCw, t: "GTC-first sync", d: "Good-Til-Cancelled listings stay live and accurate — no relist babysitting.", stat: "Always live" },
+    { icon: ShoppingCart, t: "Order + label flow", d: "Orders sync with shipping preferences, buyer notes and one-click label generation.", stat: "1-click labels" },
+    { icon: Wand2, t: "eBay-optimized titles", d: "80-char titles crafted for eBay search + item specifics filled from a single image.", stat: "SEO tuned" },
+    { icon: BarChart3, t: "Promoted Listings ROAS", d: "Track promoted listings spend and return alongside organic sales.", stat: "ROAS tracked" },
   ],
   gotchas: [
-    { t: "Item specifics", d: "Category-required item specifics are surfaced during listing so you never publish incomplete." },
-    { t: "GTC vs auction", d: "Choose GTC, Auction or Fixed Price per SKU — the sync handles both flows correctly." },
-    { t: "International shipping", d: "Global Shipping Program and eBay International Shipping both supported." },
+    { t: "Item specifics", d: "Category-required fields surfaced during listing so you never publish incomplete." },
+    { t: "GTC vs auction", d: "Choose GTC, Auction or Fixed Price per SKU — sync handles both flows." },
+    { t: "International ship", d: "Global Shipping Program and eBay International Shipping both supported." },
     { t: "eBay policies", d: "Payment, shipping and return policies map to your saved business policies." },
   ],
   onboarding: ["Connect eBay account", "Import active listings", "Set repricer rules", "Enable 2-way sync"],
@@ -132,16 +132,16 @@ export const etsyConfig: MarketplaceConfig = {
     { l: "Inventory conflicts", v: "0" },
   ],
   capabilities: [
-    { icon: Boxes,      t: "Shop inventory sync",  d: "Etsy stock stays in lockstep with Amazon, Walmart, eBay and Flipkart in real time." },
-    { icon: LayoutGrid, t: "Variations + sections", d: "Build shop sections, tags and variation matrices from one catalog view." },
-    { icon: Wand2,      t: "Etsy-voice AI catalog", d: "Warm, brand-consistent titles and descriptions — tuned for Etsy search, not sterile marketplace copy." },
-    { icon: ShoppingCart, t: "Order + note handling", d: "Buyer messages, personalization notes and gift options all land in the unified inbox." },
-    { icon: DollarSign, t: "Smart pricing",         d: "Rule-based pricing across channels while keeping Etsy's fee structure intact." },
-    { icon: ImageIcon,  t: "Photo + video assets", d: "Manage listing photos and videos in the shared asset library — reuse across marketplaces." },
+    { icon: Boxes, t: "Shop inventory sync", d: "Etsy stock stays in lockstep with Amazon, Walmart, eBay and Flipkart in real time.", stat: "Real-time" },
+    { icon: LayoutGrid, t: "Variations + sections", d: "Build shop sections, tags and variation matrices from one catalog view.", stat: "Full support" },
+    { icon: Wand2, t: "Etsy-voice AI catalog", d: "Warm, brand-consistent titles and descriptions — tuned for Etsy search, not sterile marketplace copy.", stat: "Brand tuned" },
+    { icon: ShoppingCart, t: "Order + note handling", d: "Buyer messages, personalization notes and gift options all land in the unified inbox.", stat: "Unified inbox" },
+    { icon: DollarSign, t: "Smart pricing", d: "Rule-based pricing across channels while keeping Etsy's fee structure intact.", stat: "Fee-aware" },
+    { icon: ImageIcon, t: "Photo + video assets", d: "Manage listing photos and videos in the shared asset library — reuse across marketplaces.", stat: "Shared assets" },
   ],
   gotchas: [
-    { t: "Etsy fee-aware pricing", d: "Repricer accounts for Etsy transaction, payment and offsite ads fees when setting floors." },
-    { t: "Personalization requests", d: "Personalization instructions attach to the order line, not hidden in a notes field." },
+    { t: "Fee-aware pricing", d: "Repricer accounts for transaction, payment and offsite ads fees when setting floors." },
+    { t: "Personalization", d: "Personalization instructions attach to the order line, not hidden in notes." },
     { t: "Sections & tags", d: "Bulk assign shop sections, tags and materials to keep discovery consistent." },
     { t: "Digital + physical", d: "Digital downloads and physical goods both fully supported." },
   ],
@@ -154,42 +154,4 @@ export const etsyConfig: MarketplaceConfig = {
     { q: "How are digital products handled?", a: "Digital listings, delivery files and instant download orders are all supported." },
   ],
   otherChannels: others("Etsy"),
-};
-
-export const flipkartConfig: MarketplaceConfig = {
-  slug: "flipkart",
-  name: "Flipkart",
-  dot: "#1d4ed8",
-  tagline: "Flipkart — India-ready listings, real-time sync, zero drama.",
-  intro:
-    "Flipkart is a different beast: catalog-driven listings, Smart Fulfil, F-Assured and daily competitor swings. SellerBuz gives Indian sellers a single dashboard to run Flipkart alongside global channels, in one place.",
-  stats: [
-    { l: "Smart Fulfil ready", v: "Yes" },
-    { l: "F-Assured tracking", v: "Native" },
-    { l: "Category coverage", v: "All" },
-    { l: "GST-aware reports", v: "✓" },
-  ],
-  capabilities: [
-    { icon: GitMerge,   t: "Catalog matching",    d: "Match against Flipkart's shared catalog automatically or list as a fresh product — your choice per SKU." },
-    { icon: Boxes,      t: "Smart Fulfil inventory", d: "Track Smart Fulfil, seller-fulfilled and F-Assured stock separately, all in one view." },
-    { icon: DollarSign, t: "Competitor repricer", d: "React to Flipkart's fast-moving competitor prices with rule-based, margin-safe repricing." },
-    { icon: Wand2,      t: "Flipkart-format AI",  d: "Highlights, key features and product specs in the exact structure Flipkart wants." },
-    { icon: ShoppingCart, t: "Order + return sync", d: "Orders, cancellations and returns land in the unified inbox with SLA countdowns." },
-    { icon: BarChart3,  t: "GST-friendly reports", d: "Cross-channel revenue with GST-ready exports for your accountant." },
-  ],
-  gotchas: [
-    { t: "Shared catalog matching", d: "Suggests the best matching Flipkart catalog entry vs listing as new — with confidence score." },
-    { t: "F-Assured badging", d: "Tracks fulfilment performance metrics that drive F-Assured eligibility." },
-    { t: "SLA-driven orders", d: "Every Flipkart order shows dispatch SLA countdown so nothing slips." },
-    { t: "Category-specific attributes", d: "Required attributes per Flipkart category are enforced up front." },
-  ],
-  onboarding: ["Connect Flipkart Seller", "Match or list", "Set Smart Fulfil", "Go live"],
-  faq: [
-    { q: "Does SellerBuz work with Flipkart Smart Fulfil?", a: "Yes. Smart Fulfil, seller-fulfilled and F-Assured inventory are all tracked separately." },
-    { q: "Is GST invoicing handled?", a: "SellerBuz exports GST-ready sales reports; invoices are still generated by Flipkart or your billing tool." },
-    { q: "Can I sell only on Flipkart to start?", a: "Absolutely — start with just Flipkart and add other channels later on any plan." },
-    { q: "Does it support Myntra or 2GUD?", a: "Currently we focus on the core Flipkart Seller Hub." },
-    { q: "How fast do orders sync?", a: "New Flipkart orders reach the unified inbox in under 30 seconds." },
-  ],
-  otherChannels: others("Flipkart"),
 };

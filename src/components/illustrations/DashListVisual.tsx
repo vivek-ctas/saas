@@ -1,5 +1,5 @@
 // Small icon glyphs used in the ledger-style column headers.
-import { ILL, IllCanvas, IllCard, IllDefs, IllHeader } from "./commanIllustrastrations";
+import { ILL, IllCard, IllDefs, IllHeader } from "./commanIllustrastrations";
 const ColIcon = ({
     kind, cx, cy,
 }: { kind: "pin" | "box" | "bookmark" | "check" | "shield"; cx: number; cy: number }) => (
@@ -100,116 +100,120 @@ export const DashListVisual = ({
     return (
         <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
             <IllDefs id={id} />
-            <IllCanvas id={id} w={W} h={H}>
-                <IllCard id={id} x={24} y={64} w={W - 48} h={H - 88} accent={ILL.blue}>
-                    <text x={40} y={94} fontFamily={ILL.font} fontSize="15" fontWeight="800" fill={ILL.ink}>{title}</text>
+            <IllCard id={id} x={24} y={64} w={W - 48} h={H - 88} accent={ILL.blue}>
+                <text x={40} y={94} fontFamily={ILL.font} fontSize="15" fontWeight="800" fill={ILL.ink}>{title}</text>
 
-                    {chip && (
-                        <g>
-                            <rect x={W - 148} y={80} width={108} height={22} rx={11} fill={chip.tone === "navy" ? ILL.navy : ILL.tint} />
-                            <text x={W - 94} y={95} textAnchor="middle" fontFamily={ILL.font} fontSize="10" fontWeight="800" fill={chip.tone === "navy" ? "white" : ILL.blueDeep}>
-                                {chip.label}
-                            </text>
-                        </g>
-                    )}
-
-                    {kpi && (() => {
-                        const kw = (kpi.label.length + kpi.value.length + 3) * 6.2 + 40;
-                        const kx = W - 32 - kw;
-                        return (
-                            <g>
-                                <rect x={kx} y={78} width={kw} height={28} rx={14} fill={ILL.tint} stroke="#bfdbfe" />
-                                <text x={kx + 16} y={97} fontFamily={ILL.font} fontSize="11.5" fontWeight="700" fill={ILL.blueDeep}>
-                                    {kpi.label}: <tspan fontWeight="800" fill={ILL.blue}>{kpi.value}</tspan>
-                                </text>
-                            </g>
-                        );
-                    })()}
-
-                    {columns.map((c, i) => {
-                        const icon = iconForColumn(c);
-                        const textX = icon ? colX[i] + 16 : colX[i];
-                        return (
-                            <g key={c}>
-                                {icon && <ColIcon kind={icon} cx={colX[i] + 5} cy={129} />}
-                                <text x={textX} y={132} fontFamily={ILL.font} fontSize="9" fontWeight="800" fill={ILL.muted} letterSpacing="1">
-                                    {c.toUpperCase()}
-                                </text>
-                            </g>
-                        );
-                    })}
-                    <line x1={32} y1={142} x2={W - 32} y2={142} stroke={ILL.softStroke} />
-
-                    {rows.map((r, ri) => {
-                        const y = 170 + ri * 42;
-                        const badgeTone = r.badge?.tone === "amber"
-                            ? { bg: "#fef3c7", fg: "#92400e" }
-                            : r.badge?.tone === "emerald"
-                                ? { bg: "#d1fae5", fg: "#065f46" }
-                                : r.badge?.tone === "muted"
-                                    ? { bg: "#f1f5f9", fg: "#475569" }
-                                    : { bg: ILL.tint, fg: ILL.blueDeep };
-                        const badgeIcon = r.badge?.tone === "emerald" ? "check" : r.badge?.tone === "amber" ? "warn" : null;
-                        const badgeW = badgeIcon ? 84 : 78;
-
-                        return (
-                            <g key={ri}>
-                                {ri > 0 && <line x1={32} y1={y - 21} x2={W - 32} y2={y - 21} stroke="#f1f5f9" />}
-                                {r.cells.map((cell, ci) => (
-                                    typeof cell === "string" ? (
-                                        <text key={ci} x={colX[ci]} y={y} fontFamily={ILL.font} fontSize="11" fontWeight={ci === 0 ? "700" : "600"} fill={ci === 0 ? ILL.ink : ILL.muted}>
-                                            {cell}
-                                        </text>
-                                    ) : (
-                                        <g key={ci}>
-                                            <circle cx={colX[ci] + 5} cy={y - 4} r="4" fill={cell.dot} />
-                                            <text x={colX[ci] + 16} y={y} fontFamily={ILL.font} fontSize="11" fontWeight="700" fill={ILL.ink}>{cell.text}</text>
-                                            {cell.tag && (() => {
-                                                const tagX = colX[ci] + 20 + cell.text.length * 6.4;
-                                                const tagW = cell.tag.length * 5.8 + 18;
-                                                return (
-                                                    <g>
-                                                        <rect x={tagX} y={y - 14} width={tagW} height={16} rx={8} fill={ILL.tint} stroke="#bfdbfe" />
-                                                        <text x={tagX + tagW / 2} y={y - 3} textAnchor="middle" fontFamily={ILL.font} fontSize="8.5" fontWeight="700" fill={ILL.blueDeep}>
-                                                            {cell.tag}
-                                                        </text>
-                                                    </g>
-                                                );
-                                            })()}
-                                        </g>
-                                    )
-                                ))}
-                                {r.badge && (
-                                    <g>
-                                        <rect x={colX[colX.length - 1]} y={y - 15} width={badgeW} height={22} rx={11} fill={badgeTone.bg} />
-                                        {badgeIcon && <StatusIcon kind={badgeIcon} cx={colX[colX.length - 1] + 14} cy={y - 4} />}
-                                        <text x={colX[colX.length - 1] + (badgeIcon ? 26 : badgeW / 2)} y={y - 1} textAnchor={badgeIcon ? "start" : "middle"} fontFamily={ILL.font} fontSize="9.5" fontWeight="800" fill={badgeTone.fg}>
-                                            {r.badge.text}
-                                        </text>
-                                    </g>
-                                )}
-                            </g>
-                        );
-                    })}
-                </IllCard>
-                <IllHeader x={headerX} y={headerY} label={title.split("·")[0].trim()} />
-                {headerIcon && (
-                    <g stroke="white" strokeWidth="1.3" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                        {headerIcon === "warehouse" && (
-                            <>
-                                <path d={`M${headerDotCx - 5} ${headerDotCy + 3} V${headerDotCy - 2.5} L${headerDotCx} ${headerDotCy - 6.5} L${headerDotCx + 5} ${headerDotCy - 2.5} V${headerDotCy + 3} Z`} />
-                                <path d={`M${headerDotCx - 2} ${headerDotCy + 3} V${headerDotCy} H${headerDotCx + 2} V${headerDotCy + 3}`} />
-                            </>
-                        )}
-                        {headerIcon === "box" && (
-                            <path d={`M${headerDotCx - 5} ${headerDotCy - 2} L${headerDotCx} ${headerDotCy - 5} L${headerDotCx + 5} ${headerDotCy - 2} V${headerDotCy + 3} L${headerDotCx} ${headerDotCy + 6} L${headerDotCx - 5} ${headerDotCy + 3} Z`} />
-                        )}
-                        {(headerIcon === "bag" || headerIcon === "cart" || headerIcon === "tag") && (
-                            <circle cx={headerDotCx} cy={headerDotCy} r="4.5" />
-                        )}
+                {chip && (
+                    <g>
+                        <rect x={W - 148} y={80} width={108} height={22} rx={11} fill={chip.tone === "navy" ? ILL.navy : ILL.tint} />
+                        <text x={W - 94} y={95} textAnchor="middle" fontFamily={ILL.font} fontSize="10" fontWeight="800" fill={chip.tone === "navy" ? "white" : ILL.blueDeep}>
+                            {chip.label}
+                        </text>
                     </g>
                 )}
-            </IllCanvas>
+
+                {kpi && (() => {
+                    const kw = (kpi.label.length + kpi.value.length + 3) * 6.2 + 40;
+                    const kx = W - 32 - kw;
+                    return (
+                        <g>
+                            <rect x={kx} y={78} width={kw} height={28} rx={14} fill={ILL.tint} stroke="#bfdbfe" />
+                            <text x={kx + 16} y={97} fontFamily={ILL.font} fontSize="11.5" fontWeight="700" fill={ILL.blueDeep}>
+                                {kpi.label}: <tspan fontWeight="800" fill={ILL.blue}>{kpi.value}</tspan>
+                            </text>
+                        </g>
+                    );
+                })()}
+
+                {columns.map((c, i) => {
+                    const icon = iconForColumn(c);
+                    const textX = icon ? colX[i] + 16 : colX[i];
+                    return (
+                        <g key={c}>
+                            {icon && <ColIcon kind={icon} cx={colX[i] + 5} cy={129} />}
+                            <text x={textX} y={132} fontFamily={ILL.font} fontSize="9" fontWeight="800" fill={ILL.muted} letterSpacing="1">
+                                {c.toUpperCase()}
+                            </text>
+                        </g>
+                    );
+                })}
+                <line x1={32} y1={142} x2={W - 32} y2={142} stroke={ILL.softStroke} strokeWidth="1" strokeDasharray="2 6" strokeLinecap="round">
+                    <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.6s" repeatCount="indefinite" />
+                </line>
+                <circle r="2" fill={ILL.blue} opacity={0.55}>
+                    <animateMotion dur="2s" repeatCount="indefinite"
+                        path={`M32 142 L${W - 32} 142`} />
+                </circle>
+
+                {rows.map((r, ri) => {
+                    const y = 170 + ri * 42;
+                    const badgeTone = r.badge?.tone === "amber"
+                        ? { bg: "#fef3c7", fg: "#92400e" }
+                        : r.badge?.tone === "emerald"
+                            ? { bg: "#d1fae5", fg: "#065f46" }
+                            : r.badge?.tone === "muted"
+                                ? { bg: "#f1f5f9", fg: "#475569" }
+                                : { bg: ILL.tint, fg: ILL.blueDeep };
+                    const badgeIcon = r.badge?.tone === "emerald" ? "check" : r.badge?.tone === "amber" ? "warn" : null;
+                    const badgeW = badgeIcon ? 84 : 78;
+
+                    return (
+                        <g key={ri}>
+                            {ri > 0 && <line x1={32} y1={y - 21} x2={W - 32} y2={y - 21} stroke="#f1f5f9" />}
+                            {r.cells.map((cell, ci) => (
+                                typeof cell === "string" ? (
+                                    <text key={ci} x={colX[ci]} y={y} fontFamily={ILL.font} fontSize="11" fontWeight={ci === 0 ? "700" : "600"} fill={ci === 0 ? ILL.ink : ILL.muted}>
+                                        {cell}
+                                    </text>
+                                ) : (
+                                    <g key={ci}>
+                                        <circle cx={colX[ci] + 5} cy={y - 4} r="4" fill={cell.dot} />
+                                        <text x={colX[ci] + 16} y={y} fontFamily={ILL.font} fontSize="11" fontWeight="700" fill={ILL.ink}>{cell.text}</text>
+                                        {cell.tag && (() => {
+                                            const tagX = colX[ci] + 20 + cell.text.length * 6.4;
+                                            const tagW = cell.tag.length * 5.8 + 18;
+                                            return (
+                                                <g>
+                                                    <rect x={tagX} y={y - 14} width={tagW} height={16} rx={8} fill={ILL.tint} stroke="#bfdbfe" />
+                                                    <text x={tagX + tagW / 2} y={y - 3} textAnchor="middle" fontFamily={ILL.font} fontSize="8.5" fontWeight="700" fill={ILL.blueDeep}>
+                                                        {cell.tag}
+                                                    </text>
+                                                </g>
+                                            );
+                                        })()}
+                                    </g>
+                                )
+                            ))}
+                            {r.badge && (
+                                <g>
+                                    <rect x={colX[colX.length - 1]} y={y - 15} width={badgeW} height={22} rx={11} fill={badgeTone.bg} />
+                                    {badgeIcon && <StatusIcon kind={badgeIcon} cx={colX[colX.length - 1] + 14} cy={y - 4} />}
+                                    <text x={colX[colX.length - 1] + (badgeIcon ? 26 : badgeW / 2)} y={y - 1} textAnchor={badgeIcon ? "start" : "middle"} fontFamily={ILL.font} fontSize="9.5" fontWeight="800" fill={badgeTone.fg}>
+                                        {r.badge.text}
+                                    </text>
+                                </g>
+                            )}
+                        </g>
+                    );
+                })}
+            </IllCard>
+            <IllHeader x={headerX} y={headerY} label={title.split("·")[0].trim()} />
+            {headerIcon && (
+                <g stroke="white" strokeWidth="1.3" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    {headerIcon === "warehouse" && (
+                        <>
+                            <path d={`M${headerDotCx - 5} ${headerDotCy + 3} V${headerDotCy - 2.5} L${headerDotCx} ${headerDotCy - 6.5} L${headerDotCx + 5} ${headerDotCy - 2.5} V${headerDotCy + 3} Z`} />
+                            <path d={`M${headerDotCx - 2} ${headerDotCy + 3} V${headerDotCy} H${headerDotCx + 2} V${headerDotCy + 3}`} />
+                        </>
+                    )}
+                    {headerIcon === "box" && (
+                        <path d={`M${headerDotCx - 5} ${headerDotCy - 2} L${headerDotCx} ${headerDotCy - 5} L${headerDotCx + 5} ${headerDotCy - 2} V${headerDotCy + 3} L${headerDotCx} ${headerDotCy + 6} L${headerDotCx - 5} ${headerDotCy + 3} Z`} />
+                    )}
+                    {(headerIcon === "bag" || headerIcon === "cart" || headerIcon === "tag") && (
+                        <circle cx={headerDotCx} cy={headerDotCy} r="4.5" />
+                    )}
+                </g>
+            )}
         </svg>
     );
 };

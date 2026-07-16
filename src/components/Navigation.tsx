@@ -10,7 +10,6 @@ const platformLinks = [
   { name: "Order hub", href: "/platform/orders", icon: ShoppingCart, desc: "Every marketplace order in one inbox." },
   { name: "AI catalog", href: "/platform/catalog-ai", icon: Wand2, desc: "Listings that ship in minutes." },
   { name: "Repricer", href: "/platform/repricer", icon: DollarSign, desc: "Buy Box aware, margin safe." },
-  { name: "Analytics", href: "/platform/analytics", icon: BarChart3, desc: "Every metric, one dashboard." },
 ];
 
 const marketplaceLinks = [
@@ -18,7 +17,6 @@ const marketplaceLinks = [
   { name: "Walmart", href: "/marketplaces/walmart", dot: "#2563eb", logo: "/walmart.png" },
   { name: "eBay", href: "/marketplaces/ebay", dot: "#0ea5e9", logo: "/ebay-svgrepo-com.svg" },
   { name: "Etsy", href: "/marketplaces/etsy", dot: "#ea580c", logo: "/etsy-logo-svgrepo-com.svg" },
-  { name: "Flipkart", href: "/marketplaces/flipkart", dot: "#1d4ed8", logo: "/flipkart-icon.svg" },
 ];
 
 const Navigation = () => {
@@ -33,7 +31,7 @@ const Navigation = () => {
     { name: "Services", href: "/services" },
     // { name: "Marketplace", href: "/marketplaces" },
     // { name: "Infrastructure", href: "/infrastructure" },
-    { name: "Blog", href: "/blog" },
+    { name: "Guides", href: "/guide" },
     { name: "About", href: "/about" },
     { name: "Pricing", href: "/pricing" },
     { name: "Contact", href: "/contact" },
@@ -49,7 +47,7 @@ const Navigation = () => {
             className="flex items-center gap-2.5 group"
           >
             <img
-              src="/sellerBuz.svg"
+              src="/sellerbuz.png"
               alt="Sellerbuz Logo"
               className="w-auto h-14 object-contain transition-all duration-300 group-hover:scale-105"
             />

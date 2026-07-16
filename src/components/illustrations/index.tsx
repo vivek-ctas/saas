@@ -1,4 +1,5 @@
 import { SVGProps } from "react";
+import { Boxes, ShoppingCart, DollarSign, BarChart3, Wand2, RefreshCw, LayoutGrid, ShieldCheck, Image as ImageIcon, Sparkles } from "lucide-react";
 
 /* ------------------------------------------------------------------ */
 /* Decorative background blobs – soft brand gradient orbs              */
@@ -99,7 +100,15 @@ export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => {
           <stop offset="50%" stopColor="#ffffff" stopOpacity="0.65" />
           <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
         </linearGradient>
-
+        <clipPath id="shm-card-clip">
+          <rect
+            x="45"
+            y="180"
+            width="750"
+            height="165"
+            rx="16"
+          />
+        </clipPath>
       </defs>
       {/* Back browser frame – the "listings table" */}
       <g>
@@ -365,26 +374,16 @@ export const DashboardMockup = (props: SVGProps<SVGSVGElement>) => (
 export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 560 420" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg" {...props}>
     <defs>
-      <linearGradient id="hd-bg" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stopColor="#f8fafc" />
-        <stop offset="100%" stopColor="#eff6ff" />
-      </linearGradient>
       <linearGradient id="hd-core" x1="0" x2="0" y1="0" y2="1">
         <stop offset="0%" stopColor="#2563eb" />
         <stop offset="100%" stopColor="#1e3a8a" />
       </linearGradient>
-      <pattern id="hd-grid" width="22" height="22" patternUnits="userSpaceOnUse">
-        <path d="M22 0H0v22" stroke="#dbeafe" strokeWidth="0.6" fill="none" />
-      </pattern>
       <filter id="hd-sh" x="-20%" y="-20%" width="140%" height="140%">
         <feGaussianBlur stdDeviation="6" /><feOffset dy="3" />
         <feComponentTransfer><feFuncA type="linear" slope="0.14" /></feComponentTransfer>
         <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
       </filter>
     </defs>
-    <rect width="560" height="420" rx="22" fill="url(#hd-bg)" />
-    <rect width="560" height="420" rx="22" fill="url(#hd-grid)" />
-
     {/* channel cards left */}
     {[
       { y: 60, name: "Amazon", dot: "#f59e0b" },
@@ -738,21 +737,6 @@ export const WorkflowIllustration = (props: SVGProps<SVGSVGElement>) => (
   >
     <DiagramDefs />
 
-    {/* Background */}
-    <rect
-      x="10"
-      y="20"
-      width="580"
-      height="190"
-      rx="24"
-      fill="#ffffff"
-      stroke="#e2e8f0"
-    />
-
-    {/* Glow */}
-    <circle cx="120" cy="40" r="90" fill="#dbeafe" opacity="0.35" />
-    <circle cx="520" cy="190" r="90" fill="#f5d0fe" opacity="0.35" />
-
     {[
       {
         x: 25,
@@ -924,116 +908,346 @@ export const WaveDivider = ({ flip = false, className = "" }: { flip?: boolean; 
 /* NeuralIllustration – ML pipeline (inputs → layers → outputs)        */
 /* Styled after the AI Automation Engine reference card                */
 /* ------------------------------------------------------------------ */
-export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 560 320" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-    <DiagramDefs />
-    <rect x="10" y="10" width="540" height="300" rx="16" fill="#f0f7ff" stroke="#bfdbfe" />
-    {/* Inputs */}
-    {["Data", "Price", "Stock", "Trend"].map((l, i) => (
-      <g key={l}>
-        <rect x="40" y={50 + i * 56} width="80" height="36" rx="8" fill="white" stroke="#93c5fd" />
-        <text x="80" y={73 + i * 56} textAnchor="middle" fontSize="12" fontWeight="700" fill="#1e40af">{l}</text>
-        {[0, 1, 2].map((j) => (
-          <line key={j} x1="120" y1={68 + i * 56} x2="240" y2={90 + j * 70} stroke="#93c5fd" strokeWidth="1" />
-        ))}
+export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => {
+
+  const DiagramDefs = () => (
+    <defs>
+      <linearGradient id="ai-tile" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stopColor="#A855F7" />
+        <stop offset="100%" stopColor="#7C3AED" />
+      </linearGradient>
+    </defs>
+  );
+
+  const ICONS: Record<string, JSX.Element> = {
+    pieChart: (
+      <g fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 3.5v8.5h8.5A8.5 8.5 0 1112 3.5z" />
       </g>
-    ))}
-    {/* Hidden layer */}
-    {[0, 1, 2].map((j) => (
-      <g key={j}>
-        <rect x="240" y={70 + j * 70} width="60" height="40" rx="10" fill="url(#g-blue)">
-          <animate attributeName="opacity" values="0.7;1;0.7" dur={`${1.5 + j * 0.3}s`} repeatCount="indefinite" />
-        </rect>
-        {[0, 1, 2].map((k) => (
-          <line key={k} x1="300" y1={90 + j * 70} x2="400" y2={80 + k * 70} stroke="#93c5fd" strokeWidth="1" />
-        ))}
+    ),
+    tag: (
+      <g fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12.5 3.5H19a1.5 1.5 0 011.5 1.5v6.5a1.5 1.5 0 01-.44 1.06l-8 8a1.5 1.5 0 01-2.12 0l-6.5-6.5a1.5 1.5 0 010-2.12l8-8a1.5 1.5 0 011.06-.44z" />
+        <circle cx="16.5" cy="7.5" r="1.3" fill="currentColor" stroke="none" />
       </g>
-    ))}
-    {/* Outputs */}
-    {["Price opt.", "Forecast", "Restock"].map((l, i) => (
-      <g key={l}>
-        <rect x="400" y={60 + i * 70} width="120" height="40" rx="10" fill="white" stroke="#3b82f6" />
-        <text x="460" y={85 + i * 70} textAnchor="middle" fontSize="12" fontWeight="700" fill="#1e40af">{l}</text>
+    ),
+    cube: (
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 3.5l7.5 4.3v8.4L12 20.5l-7.5-4.3V7.8L12 3.5zM4.5 7.8L12 12l7.5-4.2M12 12v8.5"
+      />
+    ),
+    users: (
+      <g fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="9" cy="8.5" r="3" />
+        <path d="M3.5 19c0-3 2.5-5.3 5.5-5.3s5.5 2.3 5.5 5.3" />
+        <circle cx="17" cy="9" r="2.3" />
+        <path d="M15.5 13.9c2.4.3 4 2.3 4 5.1" />
       </g>
-    ))}
-    {/* Footer bar */}
-    <rect x="40" y="270" width="380" height="8" rx="4" fill="#dbeafe" />
-    <rect x="40" y="270" width="340" height="8" rx="4" fill="url(#g-blue)" />
-    <text x="430" y="278" fontSize="11" fontWeight="700" fill="#1e40af">90%+ automation</text>
-  </svg>
-);
+    ),
+    network: (
+      <g fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="4.5" r="1.6" fill="currentColor" stroke="none" />
+        <circle cx="5" cy="10.5" r="1.6" fill="currentColor" stroke="none" />
+        <circle cx="19" cy="10.5" r="1.6" fill="currentColor" stroke="none" />
+        <circle cx="8" cy="19" r="1.6" fill="currentColor" stroke="none" />
+        <circle cx="16" cy="19" r="1.6" fill="currentColor" stroke="none" />
+        <path d="M12 4.5L5 10.5M12 4.5l7 6M5 10.5l3 8.5M19 10.5l-3 8.5M8 19h8" />
+      </g>
+    ),
+    brain: (
+      <g fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9.5 4.5a3 3 0 00-3 3v.3A3.2 3.2 0 004 10.8a3.3 3.3 0 001.7 5.9 3 3 0 003 3.3h.8V4.5z" />
+        <path d="M14.5 4.5a3 3 0 013 3v.3a3.2 3.2 0 012.5 3 3.3 3.3 0 01-1.7 5.9 3 3 0 01-3 3.3h-.8V4.5z" />
+        <path d="M9.5 9.5h1.5M9.5 13h1.5M13 9.5h1.5M13 13h1.5" />
+      </g>
+    ),
+    target: (
+      <g fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="8.5" />
+        <circle cx="12" cy="12" r="4.5" />
+        <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none" />
+      </g>
+    ),
+    trendUp: (
+      <g fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 16l6-6 4 4 8-9" />
+        <path d="M15 2h6v6" />
+      </g>
+    ),
+    barChart: (
+      <g fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round">
+        <path d="M5 19v-6M11 19V6M17 19v-9" />
+      </g>
+    ),
+  };
+
+  const Icon = ({ name, size = 20 }: { name: string; size?: number | string }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24">
+      {ICONS[name]}
+    </svg>
+  );
+
+  const INPUTS = [
+    { icon: "pieChart", label: ["Marketplace", "Data"] },
+    { icon: "tag", label: ["Product", "Pricing"] },
+    { icon: "cube", label: ["Inventory", "Levels"] },
+    { icon: "users", label: ["Customer", "Behaviour"] },
+  ];
+
+  const NODES = [
+    { icon: "network", label: ["Feature", "Processing"] },
+    { icon: "brain", label: ["ML", "Prediction"] },
+    { icon: "target", label: ["Decision", "Engine"] },
+  ];
+
+  const OUTPUTS = [
+    { icon: "trendUp", label: ["Smart", "Pricing"] },
+    { icon: "barChart", label: ["Demand", "Forecast"] },
+    { icon: "cube", label: ["Inventory", "Planning"] },
+  ];
+
+  const IN_X = 30;
+  const IN_W = 170;
+  const IN_H = 70;
+  const IN_YS = [70, 160, 250, 340];
+
+  const AI_X = 270;
+  const AI_W = 140;
+  const AI_TOP = 60;
+  const AI_H = 400;
+  const TILE_YS = [90, 220, 350];
+  const TILE_SIZE = 64;
+
+  const OUT_X = 430;
+  const OUT_W = 170;
+  const OUT_H = 70;
+  const OUT_YS = [100, 220, 340];
+
+
+  const tileCx = AI_X + AI_W / 2;
+
+  return (
+    <svg viewBox="0 0 640 540" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <DiagramDefs />
+      <rect x="10" y="10" width="620" height="520" rx="20" fill="#FAFAFD" />
+
+      {/* Column labels */}
+      <text x={IN_X + IN_W / 2} y="35" textAnchor="middle" fontSize="12" fontWeight="800" fill="#7C3AED" letterSpacing="1.5">
+        INPUT LAYER
+      </text>
+      <text x={tileCx} y="35" textAnchor="middle" fontSize="12" fontWeight="800" fill="#7C3AED" letterSpacing="1.5">
+        AI ENGINE
+      </text>
+      <text x={OUT_X + OUT_W / 2} y="35" textAnchor="middle" fontSize="12" fontWeight="800" fill="#7C3AED" letterSpacing="1.5">
+        OUTPUT LAYER
+      </text>
+
+      {/* Connections: inputs -> AI nodes (bundle of curves) */}
+      {IN_YS.map((iy, i) => {
+        const y0 = iy + IN_H / 2;
+        return TILE_YS.map((ty, j) => {
+          const y1 = ty + TILE_SIZE / 2;
+          const d = `M${IN_X + IN_W} ${y0} C ${IN_X + IN_W + 90} ${y0}, ${AI_X - 60} ${y1}, ${AI_X - 6} ${y1}`;
+          return (
+            <g key={`in-${i}-${j}`}>
+              <path
+                d={d}
+                fill="none"
+                stroke="#C4B5FD"
+                strokeWidth="1"
+                opacity="0.7"
+                strokeDasharray="4 4"
+              >
+                <animate attributeName="stroke-dashoffset" values="0;-16" dur={`${1.4 + (i + j) * 0.1}s`} repeatCount="indefinite" />
+              </path>
+              <circle r="2" fill="#7C3AED" opacity={0.6}>
+                <animateMotion dur={`${1.8 + (i + j) * 0.1}s`} repeatCount="indefinite" path={d} />
+              </circle>
+            </g>
+          );
+        });
+      })}
+
+      {/* dots at input card edges */}
+      {IN_YS.map((iy, i) => (
+        <circle key={`ind-${i}`} cx={IN_X + IN_W} cy={iy + IN_H / 2} r="4" fill="#7C3AED" />
+      ))}
+      {/* dots where bundles enter the AI engine */}
+      {TILE_YS.map((ty, j) => (
+        <circle key={`aid-${j}`} cx={AI_X - 6} cy={ty + TILE_SIZE / 2} r="4" fill="#3B82F6" />
+      ))}
+
+      {/* Connections: AI nodes -> outputs */}
+      {TILE_YS.map((ty, j) => {
+        const y0 = ty + TILE_SIZE / 2;
+        const y1 = OUT_YS[j] + OUT_H / 2;
+        const d = `M${AI_X + AI_W + 6} ${y0} C ${AI_X + AI_W + 60} ${y0}, ${OUT_X - 60} ${y1}, ${OUT_X} ${y1}`;
+        return (
+          <g key={`out-${j}`}>
+            <path
+              d={d}
+              fill="none"
+              stroke="#5EEAD4"
+              strokeWidth="1.4"
+              opacity="0.8"
+              strokeDasharray="4 4"
+            >
+              <animate attributeName="stroke-dashoffset" values="0;-16" dur={`${1.4 + j * 0.15}s`} repeatCount="indefinite" />
+            </path>
+            <circle r="2" fill="#14B8A6" opacity={0.6}>
+              <animateMotion dur={`${1.6 + j * 0.15}s`} repeatCount="indefinite" path={d} />
+            </circle>
+          </g>
+        );
+      })}
+      {TILE_YS.map((ty, j) => (
+        <circle key={`aido-${j}`} cx={AI_X + AI_W + 6} cy={ty + TILE_SIZE / 2} r="4" fill="#3B82F6" />
+      ))}
+      {OUT_YS.map((oy, i) => (
+        <circle key={`outd-${i}`} cx={OUT_X} cy={oy + OUT_H / 2} r="4" fill="#14B8A6" />
+      ))}
+
+      {/* Input cards */}
+      {INPUTS.map((inp, i) => {
+        const y = IN_YS[i];
+        return (
+          <g key={inp.label.join(" ")}>
+            <rect x={IN_X} y={y} width={IN_W} height={IN_H} rx="14" fill="white" stroke="#ECE9F7" />
+            <circle cx={IN_X + 36} cy={y + IN_H / 2} r="22" fill="#F1EBFC" />
+            <g transform={`translate(${IN_X + 24},${y + IN_H / 2 - 12})`} color="#7C3AED">
+              <Icon name={inp.icon} size="24" />
+            </g>
+            <text x={IN_X + 70} y={y + IN_H / 2 - 2} fontSize="14" fontWeight="700" fill="#0F172A">
+              {inp.label[0]}
+            </text>
+            <text x={IN_X + 70} y={y + IN_H / 2 + 16} fontSize="14" fontWeight="700" fill="#0F172A">
+              {inp.label[1]}
+            </text>
+          </g>
+        );
+      })}
+
+      {/* AI engine container */}
+      <rect x={AI_X} y={AI_TOP} width={AI_W} height={AI_H} rx="20" fill="white" stroke="#E4DBFB" />
+
+      {NODES.map((node, j) => {
+        const ty = TILE_YS[j];
+        const tx = tileCx - TILE_SIZE / 2;
+        return (
+          <g key={node.label.join(" ")}>
+            <rect x={tx} y={ty} width={TILE_SIZE} height={TILE_SIZE} rx="18" fill="url(#ai-tile)" />
+            <g transform={`translate(${tileCx - 16},${ty + TILE_SIZE / 2 - 16})`} color="white">
+              <Icon name={node.icon} size="32" />
+            </g>
+            <text x={tileCx} y={ty + TILE_SIZE + 22} textAnchor="middle" fontSize="13" fontWeight="700" fill="#334155">
+              {node.label[0]}
+            </text>
+            <text x={tileCx} y={ty + TILE_SIZE + 38} textAnchor="middle" fontSize="13" fontWeight="700" fill="#334155">
+              {node.label[1]}
+            </text>
+            {j < NODES.length - 1 && (
+              <g fill="#C4B5FD">
+                <circle cx={tileCx} cy={ty + TILE_SIZE + 52} r="1.6" />
+                <circle cx={tileCx} cy={ty + TILE_SIZE + 60} r="1.6" />
+                <circle cx={tileCx} cy={ty + TILE_SIZE + 68} r="1.6" />
+              </g>
+            )}
+          </g>
+        );
+      })}
+
+      {/* Output cards */}
+      {OUTPUTS.map((out, i) => {
+        const y = OUT_YS[i];
+        return (
+          <g key={out.label.join(" ")}>
+            <rect x={OUT_X} y={y} width={OUT_W} height={OUT_H} rx="14" fill="white" stroke="#E3F6F0" />
+            <circle cx={OUT_X + 36} cy={y + OUT_H / 2} r="22" fill="#E7FBF3" />
+            <g transform={`translate(${OUT_X + 24},${y + OUT_H / 2 - 12})`} color="#14B8A6">
+              <Icon name={out.icon} size="24" />
+            </g>
+            <text x={OUT_X + 70} y={y + OUT_H / 2 - 2} fontSize="14" fontWeight="700" fill="#0F172A">
+              {out.label[0]}
+            </text>
+            <text x={OUT_X + 70} y={y + OUT_H / 2 + 16} fontSize="14" fontWeight="700" fill="#0F172A">
+              {out.label[1]}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+};
 
 /* ------------------------------------------------------------------ */
 /* InfraIllustration – Stacked cloud architecture (CDN → DB)            */
 /* Styled after the AWS Cloud Infrastructure reference card             */
 /* ------------------------------------------------------------------ */
 export const InfraIllustration = (props: SVGProps<SVGSVGElement>) => {
-
   const DiagramDefs = () => (
     <defs>
-      <linearGradient id="g-purple" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#8B5CF6" />
-        <stop offset="100%" stopColor="#6D28D9" />
+      <linearGradient id="mo-purple" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stopColor="#C026D3" />
+        <stop offset="100%" stopColor="#7E22CE" />
       </linearGradient>
-      <linearGradient id="g-blue" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#3B82F6" />
-        <stop offset="100%" stopColor="#1D4ED8" />
-      </linearGradient>
-      <linearGradient id="g-teal" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#2DD4BF" />
-        <stop offset="100%" stopColor="#0D9488" />
-      </linearGradient>
-      <linearGradient id="g-orange" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#FB923C" />
-        <stop offset="100%" stopColor="#EA580C" />
-      </linearGradient>
-      <linearGradient id="g-pill" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stopColor="#7C3AED" />
-        <stop offset="100%" stopColor="#4C1D95" />
+      <linearGradient id="mo-pill" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stopColor="#C026D3" />
+        <stop offset="100%" stopColor="#7E22CE" />
       </linearGradient>
     </defs>
   );
 
-  // Simple, recognizable line icons drawn in a 24x24 box, recolored via `stroke`/`fill` = currentColor
   const ICONS: Record<string, JSX.Element> = {
-    globe: (
-      <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="8.5" />
-        <path d="M3.5 12h17" />
-        <path d="M12 3.5c2.6 2.3 4 5.2 4 8.5s-1.4 6.2-4 8.5c-2.6-2.3-4-5.2-4-8.5s1.4-6.2 4-8.5z" />
-      </g>
+    cloud: (
+      <path fill="currentColor" d="M17.6 10.1a5 5 0 00-9.5-1.4A4.3 4.3 0 006 17h11.2a3.9 3.9 0 00.4-6.9z" />
     ),
-    cpu: (
-      <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="7" y="7" width="10" height="10" rx="1.5" />
-        <rect x="10" y="10" width="4" height="4" rx="0.5" />
-        <path d="M9 3v3M12 3v3M15 3v3M9 18v3M12 18v3M15 18v3M3 9h3M3 12h3M3 15h3M18 9h3M18 12h3M18 15h3" />
-      </g>
-    ),
-    database: (
-      <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <ellipse cx="12" cy="6" rx="7" ry="2.6" />
-        <path d="M5 6v12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6" />
-        <path d="M5 12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6" />
+    cart: (
+      <g fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="9" cy="20" r="1.3" />
+        <circle cx="17" cy="20" r="1.3" />
+        <path d="M2.5 3.5h2.4l2.5 12.2a2 2 0 002 1.6h8a2 2 0 002-1.6l1.5-8H6" />
       </g>
     ),
     cube: (
-      <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 3.5l7.5 4.3v8.4L12 20.5l-7.5-4.3V7.8L12 3.5z" />
-        <path d="M4.5 7.8L12 12l7.5-4.2M12 12v8.5" />
-      </g>
-    ),
-    bucket: (
-      <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M5.5 8h13l-1.4 11.2a2 2 0 01-2 1.8H8.9a2 2 0 01-2-1.8L5.5 8z" />
-        <path d="M4 8h16M9 8V6a3 3 0 016 0v2" />
-      </g>
-    ),
-    cloud: (
       <path
-        fill="currentColor"
-        d="M17.6 10.1a5 5 0 00-9.5-1.4A4.3 4.3 0 006 17h11.2a3.9 3.9 0 00.4-6.9z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.9"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 3.5l7.5 4.3v8.4L12 20.5l-7.5-4.3V7.8L12 3.5zM4.5 7.8L12 12l7.5-4.2M12 12v8.5"
       />
+    ),
+    refresh: (
+      <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 12a8 8 0 0113.6-5.7M20 12a8 8 0 01-13.6 5.7" />
+        <path d="M17 3v4h-4M7 21v-4h4" />
+      </g>
+    ),
+    clipboard: (
+      <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="5" y="4.5" width="14" height="16" rx="2" />
+        <rect x="9" y="3" width="6" height="3.5" rx="1" fill="currentColor" stroke="none" />
+        <path d="M8.5 11h7M8.5 14.5h7" />
+      </g>
+    ),
+    truck: (
+      <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="7" width="12" height="9" rx="1.5" />
+        <path d="M14 10h4l3.5 3.5V16h-7.5z" />
+        <circle cx="7" cy="18.5" r="1.7" />
+        <circle cx="17" cy="18.5" r="1.7" />
+      </g>
+    ),
+    barChart: (
+      <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+        <path d="M5 19v-6M11 19V6M17 19v-9" />
+      </g>
     ),
     pin: (
       <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -1042,14 +1256,23 @@ export const InfraIllustration = (props: SVGProps<SVGSVGElement>) => {
       </g>
     ),
     shield: (
-      <path
-        fill="currentColor"
-        d="M12 3l7 3v5.2c0 4.7-3 8.7-7 9.8-4-1.1-7-5.1-7-9.8V6l7-3z"
-      />
+      <path fill="currentColor" d="M12 3l7 3v5.2c0 4.7-3 8.7-7 9.8-4-1.1-7-5.1-7-9.8V6l7-3z" />
+    ),
+    globe: (
+      <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="8.5" />
+        <path d="M3.5 12h17" />
+        <path d="M12 3.5c2.6 2.3 4 5.2 4 8.5s-1.4 6.2-4 8.5c-2.6-2.3-4-5.2-4-8.5s1.4-6.2 4-8.5z" />
+      </g>
+    ),
+    menu: (
+      <g stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+        <path d="M4 7h16M4 12h16M4 17h11" />
+      </g>
     ),
   };
 
-  const Icon = ({ name, size = 26 }: { name: string; size?: number | string }) => (
+  const Icon = ({ name, size = 22 }: { name: string; size?: number | string }) => (
     <svg width={size} height={size} viewBox="0 0 24 24">
       {ICONS[name]}
     </svg>
@@ -1057,204 +1280,219 @@ export const InfraIllustration = (props: SVGProps<SVGSVGElement>) => {
 
   const ROWS = [
     {
-      icon: "globe",
-      fill: "url(#g-purple)",
-      tint: "#F3EEFE",
-      accent: "#7C3AED",
-      title: "CDN / Load balancer",
-      subtitle: "Global delivery with ultra-low latency and high availability.",
-    },
-    {
-      icon: "cpu",
-      fill: "url(#g-purple)",
-      tint: "#F0EBFD",
-      accent: "#6D28D9",
-      title: "Auto-scaling compute (EC2 + Lambda)",
-      subtitle: "Automatically scales with traffic. Pay only for what you use.",
-    },
-    {
-      icon: "database",
-      fill: "url(#g-blue)",
-      tint: "#EAF1FE",
-      accent: "#1D4ED8",
-      title: "Managed database (RDS + DynamoDB)",
-      subtitle: "Highly available, secure, and fully managed databases.",
+      icon: "cart",
+      tile: "#9333EA",
+      tint: "#F6EEFC",
+      accent: "#9333EA",
+      num: "01",
+      title: "Order Received",
+      subtitle: "Orders captured from multiple marketplaces in real-time.",
     },
     {
       icon: "cube",
-      fill: "url(#g-teal)",
-      tint: "#E4FBF6",
-      accent: "#0D9488",
-      title: "PostgreSQL + MongoDB · isolated pods",
-      subtitle: "Isolated environments for maximum performance and security.",
+      tile: "#9333EA",
+      tint: "#F5EEFC",
+      accent: "#9333EA",
+      num: "02",
+      title: "Validation & Deduplication",
+      subtitle: "Validate order data and remove duplicates to ensure accuracy.",
     },
     {
-      icon: "bucket",
-      fill: "url(#g-orange)",
-      tint: "#FEF1E4",
-      accent: "#EA580C",
-      title: "Object storage (S3) + A+ content",
-      subtitle: "Durable storage for assets with fast and secure access.",
+      icon: "refresh",
+      tile: "#4338CA",
+      tint: "#EEF0FE",
+      accent: "#4338CA",
+      num: "03",
+      title: "Inventory Sync",
+      subtitle: "Update and sync inventory across all sales channels.",
+    },
+    {
+      icon: "clipboard",
+      tile: "#10B981",
+      tint: "#E7FBF3",
+      accent: "#10B981",
+      num: "04",
+      title: "Order Processing",
+      subtitle: "Pick, pack, label, and prepare order for shipment.",
+    },
+    {
+      icon: "truck",
+      tile: "#DC2626",
+      tint: "#FDEEEC",
+      accent: "#DC2626",
+      num: "05",
+      title: "Shipping & Tracking",
+      subtitle: "Ship the order and share tracking details with the marketplace.",
+    },
+    {
+      icon: "barChart",
+      tile: "#9333EA",
+      tint: "#F6EEFC",
+      accent: "#9333EA",
+      num: "06",
+      title: "Analytics & Insights",
+      subtitle: "Track performance, revenue, and operational metrics in real-time.",
     },
   ];
 
-  const ROW_H = 78;
-  const ROW_GAP = 18;
-  const ROW_START_Y = 165;
-  const ROW_X = 50;
-  const ROW_W = 800;
+  const ROW_X = 20;
+  const ROW_W = 570;
+  const ROW_H = 68;
+  const ROW_GAP = 14;
+  const ROW_START_Y = 92;
+  const LINE_X = ROW_X + 36;
+
+  const lastRowBottom = ROW_START_Y + (ROWS.length - 1) * (ROW_H + ROW_GAP) + ROW_H;
+  const footY = lastRowBottom + 40;
+  const pillY = footY + 20;
+  const midX = ROW_X + ROW_W / 2;
+  const leftPillCx = ROW_X + 55;
+  const rightPillCx = ROW_X + ROW_W - 55;
 
   return (
-    <svg viewBox="0 0 900 715" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg viewBox="0 0 610 700" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <DiagramDefs />
 
-      {/* Animated vertical connecting lines between rows */}
-      {ROWS.map((row, i) => {
+      {/* Header */}
+      <rect x="20" y="18" width="46" height="46" rx="14" fill="url(#mo-purple)" />
+      <g transform="translate(33,31)" color="white">
+        <Icon name="cloud" size="20" />
+      </g>
+      <text x="78" y="42" fontSize="19" fontWeight="800" fill="#7E22CE">Marketplace</text>
+      <rect x="78" y="50" width="86" height="3" rx="1.5" fill="#7E22CE" />
+      <text x="200" y="42" fontSize="12" fontWeight="700" fill="#9CA3AF" letterSpacing="1.5">ORDER FLOW</text>
+
+      <g transform="translate(500,20)" color="#E9B8F0" opacity="0.9">
+        <Icon name="cloud" size="26" />
+      </g>
+      <rect x="538" y="18" width="36" height="36" rx="11" fill="url(#mo-purple)" />
+      <g transform="translate(547,27)" color="white">
+        <Icon name="menu" size="18" />
+      </g>
+
+      {/* Header -> row1 connector */}
+      <line x1={LINE_X} y1="66" x2={LINE_X} y2={ROW_START_Y} stroke="#C026D3" strokeWidth="1.5" strokeDasharray="3 4" opacity="0.6">
+        <animate attributeName="stroke-dashoffset" values="0;-14" dur="1.4s" repeatCount="indefinite" />
+      </line>
+      <circle r="2.5" fill="#C026D3" opacity={0.6}>
+        <animateMotion dur="1.6s" repeatCount="indefinite"
+          path={`M${LINE_X} 66 L${LINE_X} ${ROW_START_Y}`} />
+      </circle>
+
+      {/* Row -> row connectors */}
+      {ROWS.slice(0, -1).map((row, i) => {
         const y1 = ROW_START_Y + i * (ROW_H + ROW_GAP) + ROW_H;
         const y2 = ROW_START_Y + (i + 1) * (ROW_H + ROW_GAP);
-        const lineX = ROW_X + 42;
         return (
-          <g key={"conn" + i}>
-            <line x1={lineX} y1={y1} x2={lineX} y2={y2}
-              stroke={row.accent} strokeWidth="1.4" strokeDasharray="5 5" opacity={0.45}>
-              <animate attributeName="stroke-dashoffset" values="0;-20" dur={`${1.4 + i * 0.2}s`} repeatCount="indefinite" />
+          <g key={`c${i}`}>
+            <line
+              x1={LINE_X}
+              y1={y1}
+              x2={LINE_X}
+              y2={y2}
+              stroke="#C026D3"
+              strokeWidth="1.5"
+              strokeDasharray="3 4"
+              opacity="0.6"
+            >
+              <animate attributeName="stroke-dashoffset" values="0;-14" dur={`${1.4 + i * 0.15}s`} repeatCount="indefinite" />
             </line>
-            <circle r="3" fill={row.accent} opacity={0.65}>
-              <animateMotion dur={`${1.6 + i * 0.2}s`} repeatCount="indefinite"
-                path={`M${lineX} ${y1} L${lineX} ${y2}`} />
+            <circle r="2.5" fill="#C026D3" opacity={0.6}>
+              <animateMotion dur={`${1.6 + i * 0.15}s`} repeatCount="indefinite"
+                path={`M${LINE_X} ${y1} L${LINE_X} ${y2}`} />
             </circle>
           </g>
         );
       })}
 
-      {/* Animated line from header to first row */}
-      <line x1={ROW_X + 42} y1={118} x2={ROW_X + 42} y2={ROW_START_Y}
-        stroke="#7C3AED" strokeWidth="1.4" strokeDasharray="5 5" opacity={0.45}>
-        <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.6s" repeatCount="indefinite" />
-      </line>
-      <circle r="3" fill="#7C3AED" opacity={0.65}>
-        <animateMotion dur="1.8s" repeatCount="indefinite"
-          path={`M${ROW_X + 42} 118 L${ROW_X + 42} ${ROW_START_Y}`} />
-      </circle>
-
-      {/* Animated line from last row to footer */}
-      {(() => {
-        const lastRowBottom = ROW_START_Y + (ROWS.length - 1) * (ROW_H + ROW_GAP) + ROW_H;
-        const footY = ROW_START_Y + ROWS.length * (ROW_H + ROW_GAP) + 20;
-        return (
-          <>
-            <line x1={ROW_X + 42} y1={lastRowBottom} x2={ROW_X + 42} y2={footY + 24}
-              stroke="#EA580C" strokeWidth="1.4" strokeDasharray="5 5" opacity={0.45}>
-              <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.5s" repeatCount="indefinite" />
-            </line>
-            <circle r="3" fill="#EA580C" opacity={0.65}>
-              <animateMotion dur="1.7s" repeatCount="indefinite"
-                path={`M${ROW_X + 42} ${lastRowBottom} L${ROW_X + 42} ${footY + 24}`} />
-            </circle>
-          </>
-        );
-      })()}
-
-      {/* Animated horizontal lines between footer pills */}
-      {(() => {
-        const footY = ROW_START_Y + ROWS.length * (ROW_H + ROW_GAP) + 20;
-        return (
-          <>
-            <line x1="220" y1={footY + 24} x2="330" y2={footY + 24} stroke="#C4B5FD" strokeWidth="2" strokeDasharray="2 6" strokeLinecap="round">
-              <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.4s" repeatCount="indefinite" />
-            </line>
-            <circle r="2.5" fill="#C4B5FD" opacity={0.7}>
-              <animateMotion dur="1.6s" repeatCount="indefinite"
-                path={`M220 ${footY + 24} L330 ${footY + 24}`} />
-            </circle>
-            <line x1="570" y1={footY + 24} x2="680" y2={footY + 24} stroke="#C4B5FD" strokeWidth="2" strokeDasharray="2 6" strokeLinecap="round">
-              <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.4s" repeatCount="indefinite" />
-            </line>
-            <circle r="2.5" fill="#C4B5FD" opacity={0.7}>
-              <animateMotion dur="1.6s" repeatCount="indefinite"
-                path={`M570 ${footY + 24} L680 ${footY + 24}`} />
-            </circle>
-          </>
-        );
-      })()}
-
-      {/* Header lockup */}
-      <rect x="50" y="46" width="72" height="72" rx="20" fill="url(#g-purple)" />
-      <g transform="translate(63,60)" color="white">
-        <Icon name="cloud" size="46" />
-      </g>
-      <text x="140" y="80" fontSize="24" fontWeight="800" fill="#4C1D95">AWS</text>
-      <text x="196" y="80" fontSize="18" fontWeight="700" fill="#8B84A8" letterSpacing="2">·  CLOUD &amp; HOSTING</text>
-      <rect x="140" y="94" width="70" height="4" rx="2" fill="url(#g-purple)" />
-
-      {/* Decorative cloud/server glyph, top right */}
-      <g opacity="0.35" color="#8B5CF6">
-        <g transform="translate(700,40)">
-          <Icon name="cloud" size="90" />
-        </g>
-        <rect x="792" y="66" width="34" height="46" rx="6" fill="#C4B5FD" />
-        <rect x="798" y="74" width="22" height="4" rx="2" fill="#7C3AED" />
-        <rect x="798" y="84" width="22" height="4" rx="2" fill="#7C3AED" />
-        <rect x="798" y="94" width="22" height="4" rx="2" fill="#7C3AED" />
-      </g>
-
-      {/* Feature rows */}
+      {/* Rows */}
       {ROWS.map((row, i) => {
         const y = ROW_START_Y + i * (ROW_H + ROW_GAP);
         return (
           <g key={row.title}>
-            <rect x={ROW_X} y={y} width={ROW_W} height={ROW_H} rx="18" fill={row.tint} />
-            {/* right accent tab */}
-            <rect x={ROW_X + ROW_W - 6} y={y + 10} width="6" height={ROW_H - 20} rx="3" fill={row.accent} />
-            {/* icon tile */}
-            <rect x={ROW_X + 16} y={y + 13} width="52" height="52" rx="16" fill={row.fill} />
-            <g transform={`translate(${ROW_X + 29},${y + 26})`} color="white">
+            <rect x={ROW_X} y={y} width={ROW_W} height={ROW_H} rx="16" fill={row.tint} />
+            <rect x={ROW_X + ROW_W - 5} y={y + 8} width="5" height={ROW_H - 16} rx="2.5" fill={row.accent} />
+
+            <rect x={ROW_X + 10} y={y + 8} width="52" height="52" rx="15" fill={row.tile} />
+            <g transform={`translate(${ROW_X + 23},${y + 21})`} color="white">
               <Icon name={row.icon} size="26" />
             </g>
-            {/* copy */}
-            <text x={ROW_X + 88} y={y + 34} fontSize="19" fontWeight="800" fill="#1E1B33">
+
+            <text x={ROW_X + 78} y={y + 30} fontSize="16" fontWeight="800" fill="#1E1B33">
               {row.title}
             </text>
-            <text x={ROW_X + 88} y={y + 58} fontSize="14" fill="#6B7280">
+            <text x={ROW_X + 78} y={y + 49} fontSize="12.5" fill="#6B7280">
               {row.subtitle}
+            </text>
+
+            <rect x={ROW_X + ROW_W - 78} y={y + 17} width="52" height="34" rx="17" fill={row.tile} fillOpacity="0.14" />
+            <text x={ROW_X + ROW_W - 52} y={y + 39} textAnchor="middle" fontSize="15" fontWeight="800" fill={row.accent}>
+              {row.num}
             </text>
           </g>
         );
       })}
 
+      {/* Footer connector routing */}
+      <line x1={LINE_X} y1={lastRowBottom} x2={LINE_X} y2={footY} stroke="#C026D3" strokeWidth="1.5" strokeDasharray="3 4" opacity="0.6">
+        <animate attributeName="stroke-dashoffset" values="0;-14" dur="1.4s" repeatCount="indefinite" />
+      </line>
+      <circle r="2.5" fill="#C026D3" opacity={0.6}>
+        <animateMotion dur="1.6s" repeatCount="indefinite"
+          path={`M${LINE_X} ${lastRowBottom} L${LINE_X} ${footY}`} />
+      </circle>
+      <line x1={leftPillCx} y1={footY} x2={rightPillCx} y2={footY} stroke="#C026D3" strokeWidth="1.5" strokeDasharray="3 4" opacity="0.6">
+        <animate attributeName="stroke-dashoffset" values="0;-14" dur="1.6s" repeatCount="indefinite" />
+      </line>
+      <circle r="2.5" fill="#C026D3" opacity={0.6}>
+        <animateMotion dur="1.8s" repeatCount="indefinite"
+          path={`M${leftPillCx} ${footY} L${rightPillCx} ${footY}`} />
+      </circle>
+      <line x1={leftPillCx} y1={footY} x2={leftPillCx} y2={pillY} stroke="#C026D3" strokeWidth="1.5" strokeDasharray="3 4" opacity="0.6">
+        <animate attributeName="stroke-dashoffset" values="0;-14" dur="1.2s" repeatCount="indefinite" />
+      </line>
+      <circle r="2.5" fill="#C026D3" opacity={0.6}>
+        <animateMotion dur="1.4s" repeatCount="indefinite"
+          path={`M${leftPillCx} ${footY} L${leftPillCx} ${pillY}`} />
+      </circle>
+      <line x1={midX} y1={footY} x2={midX} y2={pillY - 6} stroke="#C026D3" strokeWidth="1.5" strokeDasharray="3 4" opacity="0.6">
+        <animate attributeName="stroke-dashoffset" values="0;-14" dur="1.2s" repeatCount="indefinite" />
+      </line>
+      <circle r="2.5" fill="#C026D3" opacity={0.6}>
+        <animateMotion dur="1.4s" repeatCount="indefinite"
+          path={`M${midX} ${footY} L${midX} ${pillY - 6}`} />
+      </circle>
+      <line x1={rightPillCx} y1={footY} x2={rightPillCx} y2={pillY} stroke="#C026D3" strokeWidth="1.5" strokeDasharray="3 4" opacity="0.6">
+        <animate attributeName="stroke-dashoffset" values="0;-14" dur="1.2s" repeatCount="indefinite" />
+      </line>
+      <circle r="2.5" fill="#C026D3" opacity={0.6}>
+        <animateMotion dur="1.4s" repeatCount="indefinite"
+          path={`M${rightPillCx} ${footY} L${rightPillCx} ${pillY}`} />
+      </circle>
+
       {/* Footer pills */}
-      {(() => {
-        const footY = ROW_START_Y + ROWS.length * (ROW_H + ROW_GAP) + 20;
-        return (
-          <g>
-            {/* India */}
-            <rect x="50" y={footY} width="170" height="48" rx="24" fill="white" stroke="#E7E3F7" />
-            <g transform={`translate(70,${footY + 12})`} color="#6D28D9">
-              <Icon name="pin" size="24" />
-            </g>
-            <text x="102" y={footY + 22} fontSize="14" fontWeight="800" fill="#1E1B33">India</text>
-            <text x="102" y={footY + 38} fontSize="12" fill="#9CA3AF">Region</text>
+      <rect x={leftPillCx - 62} y={pillY} width="124" height="52" rx="26" fill="white" stroke="#EDEBF3" />
+      <g transform={`translate(${leftPillCx - 44},${pillY + 13})`} color="#7E22CE">
+        <Icon name="pin" size="22" />
+      </g>
+      <text x={leftPillCx - 8} y={pillY + 21} fontSize="11" fontWeight="600" fill="#9CA3AF">Region</text>
+      <text x={leftPillCx - 8} y={pillY + 38} fontSize="15" fontWeight="800" fill="#1E1B33">India</text>
 
-            {/* SLA pill */}
-            <rect x="330" y={footY - 6} width="240" height="60" rx="30" fill="url(#g-pill)" />
-            <g transform={`translate(352,${footY + 12})`} color="white">
-              <Icon name="shield" size="26" />
-            </g>
-            <text x="392" y={footY + 20} fontSize="15" fontWeight="800" fill="white">99.99%</text>
-            <text x="392" y={footY + 38} fontSize="12" fill="#DDD6FE">Uptime SLA</text>
+      <rect x={midX - 88} y={pillY - 8} width="176" height="64" rx="32" fill="url(#mo-pill)" />
+      <g transform={`translate(${midX - 65},${pillY + 10})`} color="white">
+        <Icon name="shield" size="24" />
+      </g>
+      <text x={midX - 32} y={pillY + 22} fontSize="15" fontWeight="800" fill="white">99.99%</text>
+      <text x={midX - 32} y={pillY + 40} fontSize="12" fill="#EAD6F5">Uptime SLA</text>
 
-            {/* USA / EU */}
-            <rect x="680" y={footY} width="170" height="48" rx="24" fill="white" stroke="#E7E3F7" />
-            <g transform={`translate(700,${footY + 12})`} color="#6D28D9">
-              <Icon name="globe" size="24" />
-            </g>
-            <text x="732" y={footY + 22} fontSize="14" fontWeight="800" fill="#1E1B33">USA · EU</text>
-            <text x="732" y={footY + 38} fontSize="12" fill="#9CA3AF">Global Reach</text>
-          </g>
-        );
-      })()}
+      <rect x={rightPillCx - 62} y={pillY} width="135" height="52" rx="26" fill="white" stroke="#EDEBF3" />
+      <g transform={`translate(${rightPillCx - 44},${pillY + 13})`} color="#7E22CE">
+        <Icon name="globe" size="22" />
+      </g>
+      <text x={rightPillCx - 8} y={pillY + 21} fontSize="11" fontWeight="600" fill="#9CA3AF">Global reach</text>
+      <text x={rightPillCx - 8} y={pillY + 38} fontSize="15" fontWeight="800" fill="#1E1B33">USA · EU</text>
     </svg>
-  )
+  );
 };
 /* ------------------------------------------------------------------ */
 /* MarketplaceConnectorIllustration – Our Platform <-> SP-API <-> AMZ  */
@@ -1707,6 +1945,15 @@ export const PricingCalculatorMockup = (props: SVGProps<SVGSVGElement>) => {
           <stop offset="50%" stopColor="#ffffff" stopOpacity="0.6" />
           <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
         </linearGradient>
+        <clipPath id="pc-card-clip">
+          <rect
+            x="20"
+            y="20"
+            width="820"
+            height="520"
+            rx="24"
+          />
+        </clipPath>
       </defs>
 
       {/* Card background */}
@@ -2145,300 +2392,285 @@ export const MarketplaceMeshDiagram = (
   const R = 175;
 
   return (
-    <div className="relative w-full overflow-hidden rounded-[28px] bg-gradient-to-br from-blue-50 via-white to-blue-50/60 p-6 shadow-[0_20px_60px_rgba(37,99,235,.10)]">
-      {/* ambient glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,.06),transparent_70%)] pointer-events-none" />
 
-      <div className="relative z-10 mb-4">
-        <h3 className="text-[18px] font-bold tracking-tight text-slate-900">
-          One platform · every channel
-        </h3>
+    <svg
+      viewBox="0 0 760 500"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-full h-auto"
+      {...props}
+    >
+      <defs>
+        <radialGradient id="mm-bg" cx="50%" cy="50%" r="60%">
+          <stop offset="0%" stopColor="#eff6ff" />
+          <stop offset="100%" stopColor="#dbeafe" />
+        </radialGradient>
 
-        <p className="mt-1 text-sm text-slate-500">
-          Inventory, pricing and orders sync bi-directionally in
-          real time.
-        </p>
-      </div>
+        <linearGradient id="mm-core" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stopColor="#2563eb" />
+          <stop offset="100%" stopColor="#1e3a8a" />
+        </linearGradient>
 
-      <svg
-        viewBox="0 0 760 500"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-auto"
-        {...props}
-      >
-        <defs>
-          <radialGradient id="mm-bg" cx="50%" cy="50%" r="60%">
-            <stop offset="0%" stopColor="#eff6ff" />
-            <stop offset="100%" stopColor="#dbeafe" />
-          </radialGradient>
+        <radialGradient id="mm-shine" cx="35%" cy="30%" r="60%">
+          <stop offset="0%" stopColor="rgba(255,255,255,.28)" />
+          <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+        </radialGradient>
 
-          <linearGradient id="mm-core" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0%" stopColor="#2563eb" />
-            <stop offset="100%" stopColor="#1e3a8a" />
-          </linearGradient>
+        <filter
+          id="glow"
+          x="-40%"
+          y="-40%"
+          width="180%"
+          height="180%"
+        >
+          <feGaussianBlur stdDeviation="8" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
 
-          <radialGradient id="mm-shine" cx="35%" cy="30%" r="60%">
-            <stop offset="0%" stopColor="rgba(255,255,255,.28)" />
-            <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-          </radialGradient>
+      {/* orbit rings */}
+      {[70, 120, 175].map((r, i) => (
+        <circle
+          key={i}
+          cx={cx}
+          cy={cy}
+          r={r}
+          stroke="#93c5fd"
+          strokeWidth="1"
+          strokeDasharray="4 5"
+          opacity={0.4}
+          fill="none"
+        >
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            from={`0 ${cx} ${cy}`}
+            to={`360 ${cx} ${cy}`}
+            dur={`${28 + i * 8}s`}
+            repeatCount="indefinite"
+          />
+        </circle>
+      ))}
 
-          <filter
-            id="glow"
-            x="-40%"
-            y="-40%"
-            width="180%"
-            height="180%"
-          >
-            <feGaussianBlur stdDeviation="8" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
+      {/* edge lines */}
+      {channels.map((ch, i) => {
+        const rad = (ch.a * Math.PI) / 180;
+        const x = cx + R * Math.cos(rad);
+        const y = cy + R * Math.sin(rad);
 
-        {/* orbit rings */}
-        {[70, 120, 175].map((r, i) => (
-          <circle
+        return (
+          <line
             key={i}
-            cx={cx}
-            cy={cy}
-            r={r}
-            stroke="#93c5fd"
-            strokeWidth="1"
+            x1={cx}
+            y1={cy}
+            x2={x}
+            y2={y}
+            stroke={ch.c}
+            strokeWidth={1.4}
+            opacity={0.38}
             strokeDasharray="4 5"
-            opacity={0.4}
-            fill="none"
           >
-            <animateTransform
-              attributeName="transform"
-              type="rotate"
-              from={`0 ${cx} ${cy}`}
-              to={`360 ${cx} ${cy}`}
-              dur={`${28 + i * 8}s`}
+            <animate
+              attributeName="stroke-dashoffset"
+              values="0;-40"
+              dur={`${2 + (i % 4) * 0.4}s`}
               repeatCount="indefinite"
             />
-          </circle>
-        ))}
+          </line>
+        );
+      })}
 
-        {/* edge lines */}
-        {channels.map((ch, i) => {
-          const rad = (ch.a * Math.PI) / 180;
-          const x = cx + R * Math.cos(rad);
-          const y = cy + R * Math.sin(rad);
+      {/* pulse rings */}
+      <circle cx={cx} cy={cy} r="56" fill="#2563eb" opacity="0.18">
+        <animate
+          attributeName="r"
+          values="56;90"
+          dur="2.8s"
+          repeatCount="indefinite"
+        />
+        <animate
+          attributeName="opacity"
+          values="0.22;0"
+          dur="2.8s"
+          repeatCount="indefinite"
+        />
+      </circle>
 
-          return (
-            <line
-              key={i}
-              x1={cx}
-              y1={cy}
-              x2={x}
-              y2={y}
+      <circle cx={cx} cy={cy} r="56" fill="#1e40af" opacity="0.12">
+        <animate
+          attributeName="r"
+          values="56;110"
+          dur="3.4s"
+          repeatCount="indefinite"
+        />
+        <animate
+          attributeName="opacity"
+          values="0.18;0"
+          dur="3.4s"
+          repeatCount="indefinite"
+        />
+      </circle>
+
+      {/* nodes */}
+      {channels.map((ch, i) => {
+        const rad = (ch.a * Math.PI) / 180;
+        const x = cx + R * Math.cos(rad);
+        const y = cy + R * Math.sin(rad);
+
+        return (
+          <g key={i}>
+            {/* shimmer halo */}
+            <circle
+              cx={x}
+              cy={y}
+              r="34"
+              fill="none"
               stroke={ch.c}
-              strokeWidth={1.4}
-              opacity={0.38}
-              strokeDasharray="4 5"
+              strokeWidth="1"
+              opacity="0.22"
             >
               <animate
-                attributeName="stroke-dashoffset"
-                values="0;-40"
-                dur={`${2 + (i % 4) * 0.4}s`}
+                attributeName="opacity"
+                values="0.15;0.5;0.15"
+                dur={`${2.2 + (i % 5) * 0.3}s`}
                 repeatCount="indefinite"
               />
-            </line>
-          );
-        })}
+            </circle>
 
-        {/* pulse rings */}
-        <circle cx={cx} cy={cy} r="56" fill="#2563eb" opacity="0.18">
-          <animate
-            attributeName="r"
-            values="56;90"
-            dur="2.8s"
-            repeatCount="indefinite"
-          />
-          <animate
-            attributeName="opacity"
-            values="0.22;0"
-            dur="2.8s"
-            repeatCount="indefinite"
-          />
-        </circle>
-
-        <circle cx={cx} cy={cy} r="56" fill="#1e40af" opacity="0.12">
-          <animate
-            attributeName="r"
-            values="56;110"
-            dur="3.4s"
-            repeatCount="indefinite"
-          />
-          <animate
-            attributeName="opacity"
-            values="0.18;0"
-            dur="3.4s"
-            repeatCount="indefinite"
-          />
-        </circle>
-
-        {/* nodes */}
-        {channels.map((ch, i) => {
-          const rad = (ch.a * Math.PI) / 180;
-          const x = cx + R * Math.cos(rad);
-          const y = cy + R * Math.sin(rad);
-
-          return (
-            <g key={i}>
-              {/* shimmer halo */}
-              <circle
-                cx={x}
-                cy={y}
-                r="34"
-                fill="none"
-                stroke={ch.c}
-                strokeWidth="1"
-                opacity="0.22"
-              >
-                <animate
-                  attributeName="opacity"
-                  values="0.15;0.5;0.15"
-                  dur={`${2.2 + (i % 5) * 0.3}s`}
-                  repeatCount="indefinite"
-                />
-              </circle>
-
-              {/* soft halo */}
-              <circle
-                cx={x}
-                cy={y}
-                r="30"
-                fill={ch.c}
-                opacity="0.12"
-              >
-                <animate
-                  attributeName="r"
-                  values="28;36;28"
-                  dur={`${2.5 + (i % 5) * 0.3}s`}
-                  repeatCount="indefinite"
-                />
-              </circle>
-
-              {/* node bg */}
-              <circle
-                cx={x}
-                cy={y}
-                r="26"
-                fill={ch.bg}
-                stroke={ch.c}
-                strokeWidth="2"
+            {/* soft halo */}
+            <circle
+              cx={x}
+              cy={y}
+              r="30"
+              fill={ch.c}
+              opacity="0.12"
+            >
+              <animate
+                attributeName="r"
+                values="28;36;28"
+                dur={`${2.5 + (i % 5) * 0.3}s`}
+                repeatCount="indefinite"
               />
+            </circle>
 
-              {/* label */}
-              <text
-                x={x}
-                y={y + 4}
-                textAnchor="middle"
-                fontSize="10"
-                fontWeight="700"
-                fill={ch.c}
-                style={{
-                  fontFamily: "DM Sans, sans-serif",
-                }}
-              >
-                {ch.l}
-              </text>
-            </g>
-          );
-        })}
+            {/* node bg */}
+            <circle
+              cx={x}
+              cy={y}
+              r="26"
+              fill={ch.bg}
+              stroke={ch.c}
+              strokeWidth="2"
+            />
 
-        {/* core */}
-        <g filter="url(#glow)">
-          <circle
-            cx={cx}
-            cy={cy}
-            r="58"
-            fill="url(#mm-core)"
-          />
+            {/* label */}
+            <text
+              x={x}
+              y={y + 4}
+              textAnchor="middle"
+              fontSize="10"
+              fontWeight="700"
+              fill={ch.c}
+              style={{
+                fontFamily: "DM Sans, sans-serif",
+              }}
+            >
+              {ch.l}
+            </text>
+          </g>
+        );
+      })}
 
-          <circle
-            cx={cx}
-            cy={cy}
-            r="58"
-            fill="url(#mm-shine)"
-          />
-        </g>
+      {/* core */}
+      <g filter="url(#glow)">
+        <circle
+          cx={cx}
+          cy={cy}
+          r="58"
+          fill="url(#mm-core)"
+        />
 
-        <text
-          x={cx}
-          y={cy - 4}
-          textAnchor="middle"
-          fontSize="16"
-          fontWeight="800"
-          fill="white"
-          style={{
-            fontFamily: "Space Grotesk, sans-serif",
-          }}
-        >
-          Ctasis
-        </text>
+        <circle
+          cx={cx}
+          cy={cy}
+          r="58"
+          fill="url(#mm-shine)"
+        />
+      </g>
 
-        <text
-          x={cx}
-          y={cy + 16}
-          textAnchor="middle"
-          fontSize="10"
-          fontWeight="600"
-          fill="rgba(255,255,255,.82)"
-          letterSpacing=".5"
-          style={{
-            fontFamily: "DM Sans, sans-serif",
-          }}
-        >
-          Sync engine
-        </text>
+      <text
+        x={cx}
+        y={cy - 4}
+        textAnchor="middle"
+        fontSize="16"
+        fontWeight="800"
+        fill="white"
+        style={{
+          fontFamily: "Space Grotesk, sans-serif",
+        }}
+      >
+        Ctasis
+      </text>
 
-        {/* legend */}
-        <g transform="translate(70,455)">
-          {[
-            { c: "#2563eb", l: "Live sync" },
-            { c: "#1d4ed8", l: "Auto-repricer" },
-            { c: "#3b82f6", l: "AI listing" },
-          ].map((p, i) => (
-            <g key={i} transform={`translate(${i * 180},0)`}>
-              <rect
-                x="0"
-                y="-16"
-                width="160"
-                height="28"
-                rx="14"
-                fill="white"
-                stroke="#e2e8f0"
-              />
+      <text
+        x={cx}
+        y={cy + 16}
+        textAnchor="middle"
+        fontSize="10"
+        fontWeight="600"
+        fill="rgba(255,255,255,.82)"
+        letterSpacing=".5"
+        style={{
+          fontFamily: "DM Sans, sans-serif",
+        }}
+      >
+        Sync engine
+      </text>
 
-              <circle
-                cx="16"
-                cy="-2"
-                r="5"
-                fill={p.c}
-              />
+      {/* legend */}
+      <g transform="translate(70,455)">
+        {[
+          { c: "#2563eb", l: "Live sync" },
+          { c: "#1d4ed8", l: "Auto-repricer" },
+          { c: "#3b82f6", l: "AI listing" },
+        ].map((p, i) => (
+          <g key={i} transform={`translate(${i * 180},0)`}>
+            <rect
+              x="50"
+              y="-16"
+              width="160"
+              height="28"
+              rx="14"
+              fill="white"
+              stroke="#e2e8f0"
+            />
 
-              <text
-                x="30"
-                y="1"
-                fontSize="11"
-                fontWeight="700"
-                fill="#334155"
-                style={{
-                  fontFamily: "DM Sans, sans-serif",
-                }}
-              >
-                {p.l}
-              </text>
-            </g>
-          ))}
-        </g>
-      </svg>
-    </div>
+            <circle
+              cx="66"
+              cy="-2"
+              r="5"
+              fill={p.c}
+            />
+
+            <text
+              x="80"
+              y="1"
+              fontSize="11"
+              fontWeight="700"
+              fill="#334155"
+              style={{
+                fontFamily: "DM Sans, sans-serif",
+              }}
+            >
+              {p.l}
+            </text>
+          </g>
+        ))}
+      </g>
+    </svg>
   );
 };
 /* ------------------------------------------------------------------ */
@@ -3561,9 +3793,9 @@ export const ChannelSyncFlow = (
 
 
 /* ------------------------------------------------------------------ */
-/* BlogEditorialMockup — magazine-style hero for blog                  */
+/* guideEditorialMockup — magazine-style hero for guide                  */
 /* ------------------------------------------------------------------ */
-export const BlogEditorialMockup = (props: SVGProps<SVGSVGElement>) => (
+export const GuideEditorialMockup = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 720 500" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <defs>
       <linearGradient id="be-cover" x1="0" x2="1" y1="0" y2="1">
@@ -3582,6 +3814,15 @@ export const BlogEditorialMockup = (props: SVGProps<SVGSVGElement>) => (
         <feComponentTransfer><feFuncA type="linear" slope="0.18" /></feComponentTransfer>
         <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
       </filter>
+      <clipPath id="be-cover-clip">
+        <rect
+          x="40"
+          y="50"
+          width="280"
+          height="400"
+          rx="16"
+        />
+      </clipPath>
     </defs>
     <rect x="10" y="10" width="700" height="480" rx="22" fill="url(#be-bg)" stroke="#e2e8f0" />
 
@@ -4727,7 +4968,7 @@ export const AlertTriageDiagram = (props: SVGProps<SVGSVGElement>) => {
 };
 
 /* ------------------------------------------------------------------ */
-/* ArticleHeroMockup — visual for blog detail pages                    */
+/* ArticleHeroMockup — visual for guide detail pages                    */
 /* ------------------------------------------------------------------ */
 export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -6613,6 +6854,255 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
                 />
               </g>
             )}
+          </g>
+        );
+      })}
+    </svg>
+  )
+};
+
+import type { MarketplaceConfig } from "@/screens/marketplaces/MarketplacePage";
+type Props = SVGProps<SVGSVGElement> & {
+  cfg: MarketplaceConfig;
+};
+
+const mapIcon = (icon: any): string => {
+  if (icon === Boxes) return "cube";
+  if (icon === ShoppingCart) return "docCheck";
+  if (icon === DollarSign) return "tag";
+  if (icon === Wand2) return "sparkle";
+  if (icon === RefreshCw) return "refresh";
+  if (icon === BarChart3) return "barChart";
+  if (icon === LayoutGrid) return "cube";
+  if (icon === ShieldCheck) return "shield";
+  if (icon === ImageIcon) return "docCheck";
+  if (icon === Sparkles) return "sparkle";
+  return "cube";
+};
+
+const tint = (hex: string, f = 0.85) => {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  const nr = Math.round(r + (255 - r) * f);
+  const ng = Math.round(g + (255 - g) * f);
+  const nb = Math.round(b + (255 - b) * f);
+  return `#${nr.toString(16).padStart(2, "0")}${ng.toString(16).padStart(2, "0")}${nb.toString(16).padStart(2, "0")}`;
+};
+
+export const ChannelHeroDiagram = ({ cfg, ...props }: Props) => {
+
+  const ICONS: Record<string, JSX.Element> = {
+    check: (
+      <path fill="none" stroke="#0B1E4F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" d="M5 12.5l4.5 4.5L19 7" />
+    ),
+    cube: (
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 3.5l7.5 4.3v8.4L12 20.5l-7.5-4.3V7.8L12 3.5zM4.5 7.8L12 12l7.5-4.2M12 12v8.5"
+      />
+    ),
+    docCheck: (
+      <g fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6.5 3.5h7l4 4v13a1 1 0 01-1 1h-10a1 1 0 01-1-1v-16a1 1 0 011-1z" />
+        <path d="M13 3.5V8h4M9 12.5h5" />
+        <path d="M8.5 16l1.6 1.6L13.5 14" />
+      </g>
+    ),
+    tag: (
+      <g fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12.5 3.5H19a1.5 1.5 0 011.5 1.5v6.5a1.5 1.5 0 01-.44 1.06l-8 8a1.5 1.5 0 01-2.12 0l-6.5-6.5a1.5 1.5 0 010-2.12l8-8a1.5 1.5 0 011.06-.44z" />
+        <circle cx="16.5" cy="7.5" r="1.3" fill="currentColor" stroke="none" />
+      </g>
+    ),
+    sparkle: (
+      <g fill="currentColor">
+        <path d="M12 2.5l1.8 5.7 5.7 1.8-5.7 1.8-1.8 5.7-1.8-5.7-5.7-1.8 5.7-1.8z" />
+        <path d="M19.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z" />
+      </g>
+    ),
+    shield: (
+      <path fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M12 3l7 3v5.2c0 4.7-3 8.7-7 9.8-4-1.1-7-5.1-7-9.8V6l7-3z" />
+    ),
+    bolt: (
+      <path fill="currentColor" d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" />
+    ),
+    refresh: (
+      <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 12a8 8 0 0113.6-5.7M20 12a8 8 0 01-13.6 5.7" />
+        <path d="M17 3v4h-4M7 21v-4h4" />
+      </g>
+    ),
+    barChart: (
+      <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+        <path d="M5 19v-6M11 19V6M17 19v-9" />
+      </g>
+    ),
+  };
+
+  const Icon = ({ name, size = 20 }: { name: string; size?: number | string }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24">
+      {ICONS[name]}
+    </svg>
+  );
+
+  const GOTCHA_ICONS = ["shield", "bolt", "refresh", "barChart"];
+  const GOTCHA_ACCENTS = [
+    { accent: "#2563EB", tint: "#E4ECFD" },
+    { accent: "#7C3AED", tint: "#EFEAFC" },
+    { accent: "#10B981", tint: "#E4FAF0" },
+    { accent: "#7C3AED", tint: "#EFEAFC" },
+  ];
+
+  const OP_ACCENTS = [
+    { accent: "#4F46E5", tint: "#EEF0FE" },
+    { accent: "#2563EB", tint: "#EAF1FE" },
+    { accent: "#10B981", tint: "#E7FBF3" },
+    { accent: "#7C3AED", tint: "#F3EEFE" },
+  ];
+
+  const OPS = cfg.capabilities.slice(0, 4).map((c, i) => ({
+    icon: mapIcon(c.icon),
+    accent: OP_ACCENTS[i].accent,
+    tint: OP_ACCENTS[i].tint,
+    label: c.t.toUpperCase(),
+    value: c.stat,
+  }));
+
+  const FEATURES = cfg.gotchas.slice(0, 4).map((g, i) => ({
+    icon: GOTCHA_ICONS[i],
+    accent: GOTCHA_ACCENTS[i].accent,
+    tint: GOTCHA_ACCENTS[i].tint,
+    title: g.t,
+    subtitle: g.d,
+  }));
+
+  const OP_X = 760;
+  const OP_W = 230;
+  const OP_H = 80;
+  const OP_YS = [130, 230, 330, 430];
+
+  const DotCluster = ({ x, y, color }: { x: number; y: number; color: string }) => (
+    <g fill={color}>
+      {Array.from({ length: 4 }).map((_, row) =>
+        Array.from({ length: 4 }).map((_, col) => (
+          <circle key={`${row}-${col}`} cx={x + col * 14} cy={y + row * 14} r="2.2" opacity={0.35} />
+        ))
+      )}
+    </g>
+  );
+
+  const logoLetter = cfg.name.charAt(0).toLowerCase();
+
+  return (
+    <svg viewBox="0 0 1000 667" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <defs>
+        <linearGradient id="ch-engine" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#2F5FF0" />
+          <stop offset="100%" stopColor="#0B1E4F" />
+        </linearGradient>
+        <pattern id="ch-grid" width="28" height="28" patternUnits="userSpaceOnUse">
+          <path d="M28 0H0V28" stroke="#E7EBF7" strokeWidth="0.6" fill="none" />
+        </pattern>
+      </defs>
+
+      {/* Background */}
+      <rect x="20" y="20" width="960" height="627" rx="28" fill="#FAFBFE" />
+      <rect x="20" y="20" width="960" height="627" rx="28" fill="url(#ch-grid)" opacity="0.6" />
+      <DotCluster x={60} y={60} color="#93A4F5" />
+      <DotCluster x={880} y={560} color="#93A4F5" />
+
+      {/* Marketplace card */}
+      <rect x="80" y="222" width="270" height="180" rx="16" fill="white" stroke="#ECEFF7" />
+      <rect x="80" y="220" width="270" height="5" rx="2.5" fill={cfg.dot} />
+      <circle cx="122" cy="272" r="28" fill={tint(cfg.dot)} />
+      <text x="122" y="281" textAnchor="middle" fontSize="24" fontWeight="800" fill="#111827">{logoLetter}</text>
+      <path d="M108 286q14 8 28 0" fill="none" stroke={cfg.dot} strokeWidth="2" strokeLinecap="round" />
+      <text x="162" y="268" fontSize="21" fontWeight="800" fill="#0F172A">{cfg.name}</text>
+      <text x="162" y="292" fontSize="14" fill="#64748B">Native integration</text>
+      <rect x="100" y="324" width="230" height="44" rx="22" fill="#E7F7EF" />
+      <circle cx="120" cy="346" r="6" fill="#16A34A" />
+      <text x="136" y="351" fontSize="14" fontWeight="700" fill="#4338CA">Connected · live</text>
+
+      {/* Arrow: marketplace -> Engine */}
+      <line x1="350" y1="312" x2="382" y2="312" stroke="#3B82F6" strokeWidth="2.4" strokeDasharray="6 5">
+        <animate attributeName="stroke-dashoffset" values="0;-22" dur="1.4s" repeatCount="indefinite" />
+      </line>
+      <circle r="3" fill="#3B82F6" opacity="0.8">
+        <animateMotion dur="1.8s" repeatCount="indefinite" path="M350 312 L382 312" />
+      </circle>
+      <path d="M382 303l14 9-14 9z" fill="#3B82F6" />
+
+      {/* Engine */}
+      <rect x="400" y="200" width="220" height="220" rx="24" fill="url(#ch-engine)" />
+      <circle cx="510" cy="278" r="55" fill="white" opacity="0.08" />
+      <circle cx="470" cy="230" r="2" fill="#93C5FD" opacity="0.7" />
+      <circle cx="555" cy="235" r="2.4" fill="#93C5FD" opacity="0.6" />
+      <circle cx="545" cy="215" r="1.8" fill="#93C5FD" opacity="0.6" />
+      <circle cx="510" cy="278" r="45" fill="white" />
+      <g transform="translate(490,258)">
+        <Icon name="check" size="40" />
+      </g>
+      <text x="510" y="365" textAnchor="middle" fontSize="22" fontWeight="800" fill="white">SellerBuz Sync</text>
+      <text x="510" y="390" textAnchor="middle" fontSize="15" fill="#BFDBFE">2-way · &lt; 2s latency</text>
+
+      {/* Connector lines: engine -> ops cards */}
+      {OP_YS.map((y, i) => (
+        <g key={`conn-${i}`}>
+          <path
+            d={`M622 305 C 670 305, 700 ${y + OP_H / 2}, ${OP_X} ${y + OP_H / 2}`}
+            fill="none"
+            stroke="#3B82F6"
+            strokeWidth="1.8"
+            strokeDasharray="5 5"
+          >
+            <animate attributeName="stroke-dashoffset" values="0;-20" dur={`${1.2 + i * 0.15}s`} repeatCount="indefinite" />
+          </path>
+          <circle r="3" fill="#3B82F6" opacity="0.8">
+            <animateMotion dur={`${1.8 + i * 0.2}s`} repeatCount="indefinite"
+              path={`M622 305 C 670 305, 700 ${y + OP_H / 2}, ${OP_X} ${y + OP_H / 2}`} />
+          </circle>
+          <circle cx={OP_X} cy={y + OP_H / 2} r="5" fill="#2563EB" />
+        </g>
+      ))}
+
+      {/* Ops cards */}
+      {OPS.map((op, i) => {
+        const y = OP_YS[i];
+        return (
+          <g key={op.label}>
+            <rect x={OP_X} y={y} width={OP_W} height={OP_H} rx="14" fill="white" stroke="#ECEFF7" />
+            <rect x={OP_X} y={y} width="4" height={OP_H} rx="2" fill={op.accent} />
+            <circle cx={OP_X + 46} cy={y + OP_H / 2} r="26" fill={op.tint} />
+            <g transform={`translate(${OP_X + 34},${y + OP_H / 2 - 12})`} color={op.accent}>
+              <Icon name={op.icon} size="24" />
+            </g>
+            <text x={OP_X + 86} y={y + 33} fontSize="12" fontWeight="700" fill="#64748B" letterSpacing="0.8">
+              {op.label}
+            </text>
+            <text x={OP_X + 86} y={y + 58} fontSize="20" fontWeight="800" fill="#0F172A">
+              {op.value}
+            </text>
+          </g>
+        );
+      })}
+
+      {/* Footer feature row */}
+      <rect x="60" y="512" width="880" height="100" rx="18" fill="white" stroke="#ECEFF7" />
+      {FEATURES.map((f, i) => {
+        const x = 90 + i * 216;
+        return (
+          <g key={f.title}>
+            <rect x={x} y="540" width="48" height="48" rx="14" fill={f.tint} />
+            <g transform={`translate(${x + 12},552)`} color={f.accent}>
+              <Icon name={f.icon} size="24" />
+            </g>
+            <text x={x + 62} y="558" fontSize="15" fontWeight="800" fill="#0F172A">{f.title}</text>
+            <text x={x + 62} y="578" fontSize="13" fill="#64748B">{f.subtitle}</text>
           </g>
         );
       })}

@@ -26,16 +26,16 @@ const APP_DIR = resolve(ROOT, "app");
 // Mirror of src/App.tsx <Routes>
 // path -> { component file under src/pages (no extension), dynamic? }
 const ROUTES = [
-  { route: "/",               page: "Home" },
-  { route: "/services",       page: "Services" },
-  { route: "/marketplaces",   page: "Marketplaces" },
+  { route: "/", page: "Home" },
+  { route: "/services", page: "Services" },
+  { route: "/marketplaces", page: "Marketplaces" },
   { route: "/marketplaces/:slug", page: "integrations/IntegrationDetail" },
   { route: "/infrastructure", page: "Infrastructure" },
-  { route: "/pricing",        page: "Pricing" },
-  { route: "/about",          page: "About" },
-  { route: "/blog",           page: "Blog" },
-  { route: "/blog/:slug",     page: "BlogPost" },
-  { route: "/contact",        page: "Contact" },
+  { route: "/pricing", page: "Pricing" },
+  { route: "/about", page: "About" },
+  { route: "/guide", page: "Guide" },
+  { route: "/guide/:slug", page: "GuidePost" },
+  { route: "/contact", page: "Contact" },
 ];
 
 const NOT_FOUND_PAGE = "NotFound";
@@ -50,7 +50,7 @@ function write(file, contents) {
   console.log(`  + ${file.replace(ROOT + "/", "")}`);
 }
 
-// Convert "/blog/:slug" -> "app/blog/[slug]"
+// Convert "/guide/:slug" -> "app/guide/[slug]"
 function routeToFsPath(route) {
   if (route === "/") return APP_DIR;
   const segments = route

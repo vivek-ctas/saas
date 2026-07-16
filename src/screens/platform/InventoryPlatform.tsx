@@ -1,8 +1,8 @@
 import PlatformPage, { PlatformConfig } from "./PlatformPage";
-import { KpiChartVisual } from "./visuals";
 import { Boxes, RefreshCw, ShieldCheck, BarChart3, Layers, Upload } from "lucide-react";
 import { FlowVisual } from "@/components/illustrations/flowchart"
 import { DashListVisual } from "@/components/illustrations/DashListVisual";
+import { KpiChartVisual } from "@/components/illustrations/KpiChartVisual";
 const cfg: PlatformConfig = {
   slug: "inventory",
   eyebrow: "Inventory sync",
@@ -114,9 +114,9 @@ const cfg: PlatformConfig = {
           id="inv-guard"
           title="Days of cover · SKU-42891"
           kpis={[
-            { label: "On hand", value: "1,668", delta: "stable" },
-            { label: "Sell / day", value: "84", delta: "+6%" },
-            { label: "Days cover", value: "19.8", delta: "healthy" },
+            { label: "On hand", value: "1,668", delta: "stable", icon: "box" },
+            { label: "Sell / day", value: "84", delta: "+6%", icon: "cart" },
+            { label: "Days cover", value: "19.8", delta: "healthy", icon: "calendar" },
           ]}
           series={[85, 82, 78, 74, 70, 66, 60, 55, 50, 46, 42, 40]}
           compareSeries={[80, 78, 74, 70, 66, 62, 58, 54, 50, 47, 44, 42]}

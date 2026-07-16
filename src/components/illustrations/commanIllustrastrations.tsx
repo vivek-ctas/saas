@@ -98,7 +98,7 @@ export const IllCard = ({
 /** Navy header chip used at top-left of every illustration. */
 export const IllHeader = ({ x = 28, y = 26, label }: { x?: number; y?: number; label: string }) => (
     <g>
-        <rect x={x} y={y} width={(label.length * 6.6) + 28} height="24" rx="12" fill={ILL.navy} />
+        <rect x={x} y={y} width={(label.length * 7.7) + 28} height="24" rx="12" fill={ILL.navy} />
         <circle cx={x + 14} cy={y + 12} r="3.5" fill="#60a5fa" />
         <text x={x + 24} y={y + 16} fontFamily={ILL.font} fontSize="10.5" fontWeight="800" fill="white" letterSpacing="1.2">
             {label.toUpperCase()}
