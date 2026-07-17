@@ -70,18 +70,6 @@ export const IllDefs = ({ id = "ill" }: { id?: string }) => (
     </defs>
 );
 
-/** Outer rounded canvas + faint blue grid. */
-export const IllCanvas = ({
-    id = "ill", w, h, children,
-}: { id?: string; w: number; h: number; children: ReactNode }) => (
-    <>
-        <rect x="0" y="0" width={w} height={h} rx="22" fill={`url(#${id}-wash)`} />
-        <rect x="0" y="0" width={w} height={h} rx="22" fill={`url(#${id}-grid)`} />
-        <rect x="0.5" y="0.5" width={w - 1} height={h - 1} rx="22" fill="none" stroke={ILL.softStroke} />
-        {children}
-    </>
-);
-
 /** White inner card with hairline border. */
 export const IllCard = ({
     x, y, w, h, accent = ILL.blue, id = "ill", children,
@@ -96,9 +84,9 @@ export const IllCard = ({
 );
 
 /** Navy header chip used at top-left of every illustration. */
-export const IllHeader = ({ x = 28, y = 26, label }: { x?: number; y?: number; label: string }) => (
+export const IllHeader = ({ x = 10, y = 10, label }: { x?: number; y?: number; label: string }) => (
     <g>
-        <rect x={x} y={y} width={(label.length * 7.7) + 28} height="24" rx="12" fill={ILL.navy} />
+        <rect x={x} y={y} width={(label.length * 8) + 28} height="24" rx="12" fill={ILL.navy} />
         <circle cx={x + 14} cy={y + 12} r="3.5" fill="#60a5fa" />
         <text x={x + 24} y={y + 16} fontFamily={ILL.font} fontSize="10.5" fontWeight="800" fill="white" letterSpacing="1.2">
             {label.toUpperCase()}

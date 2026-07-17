@@ -236,7 +236,7 @@ const GuidePost = () => {
 
         {/* BODY */}
         <section className="py-20 bg-white">
-          <div className="max-w-3xl mx-auto px-[50px] lg:px-[70px]">
+          <div className="px-[50px] lg:px-[70px]">
             <p className="reveal text-lg text-slate-700 leading-relaxed mb-10 first-letter:text-5xl first-letter:font-bold first-letter:text-blue-600 first-letter:mr-2 first-letter:float-left first-letter:leading-none">
               {post.intro}
             </p>

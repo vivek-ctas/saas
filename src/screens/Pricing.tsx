@@ -413,7 +413,7 @@ const Pricing = () => {
 
         {/* ── FAQ ────────────────────────────────────────────────────────────── */}
         <section className="py-24 bg-white">
-          <div className="max-w-3xl mx-auto px-[50px] lg:px-[70px]">
+          <div className="px-[50px] lg:px-[70px]">
             <div className="text-center mb-12 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">FAQ</Badge>
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Frequently asked questions</h2>

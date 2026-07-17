@@ -13,10 +13,10 @@ const platformLinks = [
 ];
 
 const marketplaceLinks = [
-  { name: "Amazon", href: "/marketplaces/amazon", dot: "#f59e0b", logo: "/amazon-color-svgrepo-com.svg" },
-  { name: "Walmart", href: "/marketplaces/walmart", dot: "#2563eb", logo: "/walmart.png" },
-  { name: "eBay", href: "/marketplaces/ebay", dot: "#0ea5e9", logo: "/ebay-svgrepo-com.svg" },
-  { name: "Etsy", href: "/marketplaces/etsy", dot: "#ea580c", logo: "/etsy-logo-svgrepo-com.svg" },
+  { name: "Amazon", href: "/marketplaces/amazon", dot: "#f59e0b", logo: "/logos/amazon-color-svgrepo-com.svg" },
+  { name: "Walmart", href: "/marketplaces/walmart", dot: "#2563eb", logo: "/logos/walmart.png" },
+  { name: "eBay", href: "/marketplaces/ebay", dot: "#0ea5e9", logo: "/logos/ebay-svgrepo-com.svg" },
+  { name: "Etsy", href: "/marketplaces/etsy", dot: "#ea580c", logo: "/logos/etsy-svgrepo-com.svg" },
 ];
 
 const Navigation = () => {

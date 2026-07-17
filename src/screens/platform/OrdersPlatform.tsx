@@ -63,7 +63,6 @@ const cfg: PlatformConfig = {
             { cells: [{ dot: "#2563eb", text: "Walmart" }, "WM-88301", "×1", "SLA 2h"], badge: { text: "Picked", tone: "amber" } },
             { cells: [{ dot: "#ef4444", text: "eBay" }, "EB-4402A", "×3", "SLA 24h"], badge: { text: "New", tone: "blue" } },
             { cells: [{ dot: "#ea580c", text: "Etsy" }, "ET-77120", "×1", "SLA 48h"], badge: { text: "Ready", tone: "emerald" } },
-            { cells: [{ dot: "#1d4ed8", text: "Flipkart" }, "FK-6001", "×4", "SLA 6h"], badge: { text: "New", tone: "blue" } },
           ]}
         />
       ),
@@ -85,15 +84,17 @@ const cfg: PlatformConfig = {
           hub="Routing"
           hubLatency="rules · overrides"
           leftNodes={[
-            { label: "Amazon order", sub: "US · East", dot: "#f59e0b" },
-            { label: "Flipkart order", sub: "IN · Blr", dot: "#1d4ed8" },
-            { label: "eBay order", sub: "EU · NL", dot: "#ef4444" },
-          ]}
-          rightNodes={[
-            { label: "Ohio WH", sub: "US East orders", dot: "#10b981" },
-            { label: "Delhivery 3PL", sub: "IN orders", dot: "#6366f1" },
-            { label: "Rotterdam 3PL", sub: "EU orders", dot: "#0ea5e9" },
-          ]}
+            { label: "Amazon order", sub: "US · East", dot: "#f59e0b", logo: "/logos/amazon-color-svgrepo-com.svg" },
+            { label: "Walmart order", sub: "IN · Blr", dot: "#1d4ed8", logo: "/logos/walmart.png" },
+            { label: "eBay order", sub: "EU · NL", dot: "#ef4444", logo: "/logos/ebay-svgrepo-com.svg" },
+          ]
+          }
+          rightNodes={
+            [
+              { label: "Ohio WH", sub: "US East orders", dot: "#10b981" },
+              { label: "Delhivery 3PL", sub: "IN orders", dot: "#6366f1" },
+              { label: "Rotterdam 3PL", sub: "EU orders", dot: "#0ea5e9" },
+            ]}
         />
       ),
     },

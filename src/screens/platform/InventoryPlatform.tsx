@@ -16,13 +16,15 @@ const cfg: PlatformConfig = {
       hub="SellerBuz Sync"
       hubLatency="latency < 2s"
       leftNodes={[
-        { label: "Warehouse", sub: "1,240 on hand", dot: "#0ea5e9" },
-        { label: "3PL / FBA", sub: "428 units", dot: "#6366f1" },
+        { label: "Warehouse", sub: "1,240 on hand", dot: "#0ea5e9", logo: "/logos/warehouse-svgrepo-com.svg" },
+        { label: "3PL / FBA", sub: "428 units", dot: "#6366f1", logo: "/logos/fba.svg" },
       ]}
       rightNodes={[
-        { label: "Amazon", sub: "Stock: 1,240", dot: "#f59e0b" },
-        { label: "Walmart", sub: "Stock: 1,240", dot: "#2563eb" },
-        { label: "eBay", sub: "Stock: 1,240", dot: "#ef4444" },
+        { label: "Amazon", sub: "Stock: 1,240", dot: "#f59e0b", logo: "/logos/amazon-color-svgrepo-com.svg" },
+        {
+          label: "Walmart", sub: "Stock: 1,240", dot: "#2563eb", logo: "/logos/walmart.png"
+        },
+        { label: "eBay", sub: "Stock: 1,240", dot: "#ef4444", logo: "/logos/ebay-svgrepo-com.svg" },
       ]}
     />
   ),
@@ -62,14 +64,16 @@ const cfg: PlatformConfig = {
           hub="Sync Engine"
           hubLatency="< 2s propagation"
           leftNodes={[
-            { label: "Warehouse", sub: "master stock", dot: "#10b981" },
-            { label: "Receiving", sub: "+420 units", dot: "#0ea5e9" },
+            { label: "Warehouse", sub: "master stock", dot: "#10b981", logo: "/logos/warehouse-svgrepo-com.svg" },
+            {
+              label: "Receiving", sub: "+420 units", dot: "#0ea5e9", logo: "/logos/receive-square-2-svgrepo-com.svg"
+            },
           ]}
           rightNodes={[
-            { label: "Amazon", sub: "1,240 units", dot: "#f59e0b" },
-            { label: "Walmart", sub: "1,240 units", dot: "#2563eb" },
-            { label: "eBay", sub: "1,240 units", dot: "#ef4444" },
-            { label: "Etsy · Flipkart", sub: "1,240 units", dot: "#ea580c" },
+            { label: "Amazon", sub: "1,240 units", dot: "#f59e0b", logo: '/logos/amazon-color-svgrepo-com.svg' },
+            { label: "Walmart", sub: "1,240 units", dot: "#2563eb", logo: "/logos/walmart.png" },
+            { label: "eBay", sub: "1,240 units", dot: "#ef4444", logo: "/logos/ebay-svgrepo-com.svg" },
+            { label: "Etsy · Flipkart", sub: "1,240 units", dot: "#ea580c", logo: "/logos/etsy-svgrepo-com.svg" },
           ]}
         />
       ),

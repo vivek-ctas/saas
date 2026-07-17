@@ -148,17 +148,16 @@ const Home = () => {
                 <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-24 bg-gradient-to-r from-blue-50/60 via-blue-50/60 to-transparent z-10" />
                 <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-24 bg-gradient-to-l from-blue-50/60 via-blue-50/60 to-transparent z-10" />
 
-                <div className="marquee-track flex w-max gap-4 sm:gap-6" style={{ animation: 'marquee-scroll 30s linear infinite' }}>
+                <div className="marquee-track flex w-max" style={{ animation: 'marquee-scroll 30s linear infinite' }}>
                   {[0, 1].map((set) => (
-                    <div key={set} className="flex items-center gap-4 sm:gap-6 shrink-0">
+                    <div key={set} className="flex items-center gap-4 sm:gap-6 pr-4 sm:pr-6 shrink-0">
                       {[
-                        { name: "Amazon SP-API Partner", sub: "Selling Partner Appstore", logo: "/amazon-color-svgrepo-com.svg" },
-                        { name: "Walmart Solution Provider", sub: "Marketplace Connect", logo: "/walmart.png" },
-                        { name: "Shopify Plus Partner", sub: "Certified App", logo: "/shopify-svgrepo-com.svg" },
-                        { name: "AWS Advanced Tier", sub: "Technology Partner", logo: "/aws-svgrepo-com.svg" },
-                        { name: "eBay Developer Program", sub: "Marketplace Integration", logo: "/ebay-svgrepo-com.svg" },
-                        { name: "Etsy Developer Platform", sub: "Seller API Partner", logo: "/etsy-logo-svgrepo-com.svg" },
-                        { name: "Flipkart Marketplace", sub: "Seller Integration", logo: "/flipkart-icon.svg" },
+                        { name: "Amazon SP-API Partner", sub: "Selling Partner Appstore", logo: "/logos/amazon-color-svgrepo-com.svg" },
+                        { name: "Walmart Solution Provider", sub: "Marketplace Connect", logo: "/logos/walmart.png" },
+                        { name: "Shopify Plus Partner", sub: "Certified App", logo: "/logos/shopify-color-svgrepo-com.svg" },
+                        { name: "AWS Advanced Tier", sub: "Technology Partner", logo: "logos/aws-svgrepo-com.svg" },
+                        { name: "eBay Developer Program", sub: "Marketplace Integration", logo: "/logos/ebay-svgrepo-com.svg" },
+                        { name: "Etsy Developer Platform", sub: "Seller API Partner", logo: "/logos/etsy-svgrepo-com.svg" },
                       ].map((p, i) => (
                         <div key={`${set}-${i}`} className="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/90 backdrop-blur border border-slate-200/70 shadow-sm hover:shadow-lg hover:border-blue-200 transition-stripe">
                           <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center p-1">

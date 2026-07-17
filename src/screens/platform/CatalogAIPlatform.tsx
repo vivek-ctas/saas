@@ -183,7 +183,6 @@ const cfg: PlatformConfig = {
             { cells: ["Material", "Recycled PET", "specs"], badge: { text: "97%", tone: "emerald" } },
             { cells: ["Size", "Medium (US 9)", "image + specs"], badge: { text: "92%", tone: "emerald" } },
             { cells: ["Care", "Machine wash cold", "specs"], badge: { text: "88%", tone: "amber" } },
-            { cells: ["Gender", "Unisex adult", "image"], badge: { text: "74%", tone: "amber" } },
           ]}
         />
       ),
@@ -204,6 +203,7 @@ const cfg: PlatformConfig = {
           title="Bulk regenerate · Q3 refresh"
           cols={["Amazon", "Walmart", "eBay", "Etsy"]}
           rows={["Home", "Kitchen", "Outdoor"]}
+          colLogos={{ Amazon: "/logos/amazon-color-svgrepo-com.svg", Walmart: "/logos/walmart.png", eBay: "/logos/ebay-svgrepo-com.svg", Etsy: "/logos/etsy-svgrepo-com.svg" }}
           cellFor={(r, c) => {
             const done = (r + c) % 3 !== 0;
 

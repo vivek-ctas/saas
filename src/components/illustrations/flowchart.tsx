@@ -3,8 +3,11 @@ import { ILL, IllDefs, IllHeader, IllCard, IllIconBadge, IconKind } from "./comm
 export type FlowNode = {
     label: string;
     sub?: string;
-    dot: string;
-    /** Icon shown in the node's badge — defaults to a plain dot if omitted. */
+    /** Accent colour used for the card top-bar, line stroke and flowing dot. */
+    dot?: string;
+    /** SVG logo path rendered as an <image> badge — overrides the default icon badge. */
+    logo?: string;
+    /** Icon shown in the node's badge — defaults to a plain dot if omitted. Ignored when `logo` is set. */
     icon?: IconKind;
 };
 
@@ -39,6 +42,9 @@ export const FlowVisual = ({
     const hubW = 190, hubH = 210;
     const hubX = W / 2 - hubW / 2;
     const hubY = H / 2 - hubH / 2;
+
+    /** Resolve a node's accent colour — falls back to the hub blue. */
+    const accent = (n: FlowNode) => n.dot ?? ILL.blue;
 
     return (
         <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
@@ -75,10 +81,15 @@ export const FlowVisual = ({
                 const y1 = cy;
                 const x2 = hubX;
                 const y2 = H / 2;
+                const color = accent(n);
                 return (
                     <g key={n.label}>
-                        <IllCard x={leftX} y={y} w={cardW} h={cardH} accent={n.dot} id={id}>
-                            <IllIconBadge x={leftX + 38} y={cy} color={n.dot} kind={n.icon} />
+                        <IllCard x={leftX} y={y} w={cardW} h={cardH} accent={color} id={id}>
+                            {n.logo ? (
+                                <image href={n.logo} x={leftX + 18} y={cy - 20} width="40" height="40" preserveAspectRatio="xMidYMid meet" />
+                            ) : (
+                                <IllIconBadge x={leftX + 38} y={cy} color={color} kind={n.icon} />
+                            )}
                             <text x={leftX + 70} y={cy - 4} fontFamily={ILL.font} fontSize="14" fontWeight="800" fill={ILL.ink}>
                                 {n.label}
                             </text>
@@ -90,12 +101,12 @@ export const FlowVisual = ({
                         </IllCard>
                         {/* Animated dashed line */}
                         <line x1={x1} y1={y1} x2={x2} y2={y2}
-                            stroke={n.dot} strokeWidth="1.6" strokeDasharray="5 4">
+                            stroke={color} strokeWidth="1.6" strokeDasharray="5 4">
                             <animate attributeName="stroke-dashoffset" values="0;-18"
                                 dur={`${1.2 + idx * 0.15}s`} repeatCount="indefinite" />
                         </line>
                         {/* Flowing data dot */}
-                        <circle r="3" fill={n.dot} opacity="0.8">
+                        <circle r="3" fill={color} opacity="0.8">
                             <animateMotion dur={`${1.8 + idx * 0.2}s`} repeatCount="indefinite"
                                 path={`M${x1} ${y1} L${x2} ${y2}`} />
                         </circle>
@@ -112,21 +123,26 @@ export const FlowVisual = ({
                 const y1 = H / 2;
                 const x2 = rightX;
                 const y2 = cy;
+                const color = accent(n);
                 return (
                     <g key={n.label}>
                         {/* Animated dashed line */}
                         <line x1={x1} y1={y1} x2={x2} y2={y2}
-                            stroke={n.dot} strokeWidth="1.6" strokeDasharray="5 4">
+                            stroke={color} strokeWidth="1.6" strokeDasharray="5 4">
                             <animate attributeName="stroke-dashoffset" values="0;-18"
                                 dur={`${1.2 + idx * 0.15}s`} repeatCount="indefinite" />
                         </line>
                         {/* Flowing data dot */}
-                        <circle r="3" fill={n.dot} opacity="0.8">
+                        <circle r="3" fill={color} opacity="0.8">
                             <animateMotion dur={`${1.8 + idx * 0.2}s`} repeatCount="indefinite"
                                 path={`M${x1} ${y1} L${x2} ${y2}`} />
                         </circle>
-                        <IllCard x={rightX} y={y} w={cardW} h={cardH} accent={n.dot} id={id}>
-                            <IllIconBadge x={rightX + 38} y={cy} color={n.dot} kind={n.icon} />
+                        <IllCard x={rightX} y={y} w={cardW} h={cardH} accent={color} id={id}>
+                            {n.logo ? (
+                                <image href={n.logo} x={rightX + 18} y={cy - 20} width="40" height="40" preserveAspectRatio="xMidYMid meet" />
+                            ) : (
+                                <IllIconBadge x={rightX + 38} y={cy} color={color} kind={n.icon} />
+                            )}
                             <text x={rightX + 70} y={cy - 4} fontFamily={ILL.font} fontSize="14" fontWeight="800" fill={ILL.ink}>
                                 {n.label}
                             </text>

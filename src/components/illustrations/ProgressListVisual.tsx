@@ -181,97 +181,97 @@ export const ProgressListVisual = ({
         <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
             <IllDefs id={id} />
             {/* top-right chrome icons, matching the faint page controls in the reference */}
+            <g>
+                <circle cx={W - 82} cy={38} r={16} fill="#ede9fe" />
+                <path d="M-6,3 a5,5 0 0 1 1,-9.8 a6,6 0 0 1 11.4,2 a4.3,4.3 0 0 1 -1.2,7.8 z" transform={`translate(${W - 82} 38)`} fill="none" stroke="#7c3aed" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                <rect x={W - 56} y={22} width={32} height={32} rx={10} fill="#ede9fe" />
+                <path d={`M${W - 48} 34 h16 M${W - 48} 38 h16 M${W - 48} 42 h16`} stroke="#7c3aed" strokeWidth="1.8" strokeLinecap="round" />
+            </g>
+
+            <IllCard id={id} x={cardX} y={64} w={cardW} h={cardH} accent="#7c3aed">
+                <text x={innerL} y={100} fontFamily={ILL.font} fontSize="15" fontWeight="800" fill={ILL.ink}>{title}</text>
+                <StatusPill x={innerR - 130} y={84} w={130} h={28} label={overallLabel} color="#7c3aed" bg="#f5f3ff" border="#ddd6fe" dashed={overallActive} />
+
+                {/* vertical dotted timeline connecting each node */}
+                {steps.length > 1 && (
+                    <>
+                        <line
+                            x1={innerL + 62} y1={stepsY0 + 18}
+                            x2={innerL + 62} y2={lastRowY + 18}
+                            stroke="#c4b5fd" strokeWidth="1.6" strokeDasharray="1 5" strokeLinecap="round"
+                        >
+                            <animate attributeName="stroke-dashoffset" values="0;-12" dur="2s" repeatCount="indefinite" />
+                        </line>
+                        <circle r="2.5" fill="#c4b5fd" opacity={0.7}>
+                            <animateMotion dur="2.4s" repeatCount="indefinite"
+                                path={`M${innerL + 62} ${stepsY0 + 18} L${innerL + 62} ${lastRowY + 18}`} />
+                        </circle>
+                    </>
+                )}
+
+                {steps.map((st, i) => {
+                    const theme = STEP_THEMES[i % STEP_THEMES.length];
+                    const y = stepsY0 + i * rowGap;
+                    const nodeColor = st.state === "queued" ? "#cbd5e1" : theme.color;
+                    const pillLabel = st.state === "done" ? "Completed" : st.state === "active" ? "In progress" : "Pending";
+                    const pillColor = st.state === "queued" ? "#94a3b8" : theme.color;
+                    const pillBg = st.state === "queued" ? "#f1f5f9" : theme.bg;
+                    const pillBorder = st.state === "queued" ? "#e2e8f0" : theme.border;
+
+                    return (
+                        <g key={i}>
+                            <rect x={innerL + 88} y={y} width={innerR - (innerL + 88)} height={36} rx={8} fill={st.state === "queued" ? "#f8fafc" : theme.bg} opacity={st.state === "queued" ? 1 : 0.7} />
+                            <SquareBadge x={innerL} y={y - 2} color={st.state === "queued" ? "#cbd5e1" : theme.color} kind={theme.icon} />
+                            <TimelineNode x={innerL + 62} y={y + 18} state={st.state} color={nodeColor} />
+                            <text x={innerL + 100} y={y + 15} fontFamily={ILL.font} fontSize="11.5" fontWeight="800" fill={ILL.ink}>{st.label}</text>
+                            <text x={innerL + 100} y={y + 29} fontFamily={ILL.font} fontSize="10" fill={ILL.muted}>{st.detail}</text>
+                            <StatusPill x={innerR - 118} y={y + 4} w={118} h={28} label={pillLabel} color={pillColor} bg={pillBg} border={pillBorder} dashed={st.state === "active"} />
+                        </g>
+                    );
+                })}
+
+                {/* bottom stats strip */}
+                <line x1={leftX + sideW} y1={statsY + sideH / 2} x2={midX} y2={midY + midH / 2} stroke="#c4b5fd" strokeWidth="1.6" strokeDasharray="1 5">
+                    <animate attributeName="stroke-dashoffset" values="0;-12" dur="1.6s" repeatCount="indefinite" />
+                </line>
+                <circle r="2.5" fill="#c4b5fd" opacity={0.7}>
+                    <animateMotion dur="1.8s" repeatCount="indefinite"
+                        path={`M${leftX + sideW} ${statsY + sideH / 2} L${midX} ${midY + midH / 2}`} />
+                </circle>
+                <line x1={midX + midW} y1={midY + midH / 2} x2={rightX} y2={statsY + sideH / 2} stroke="#c4b5fd" strokeWidth="1.6" strokeDasharray="1 5">
+                    <animate attributeName="stroke-dashoffset" values="0;-12" dur="1.6s" repeatCount="indefinite" />
+                </line>
+                <circle r="2.5" fill="#c4b5fd" opacity={0.7}>
+                    <animateMotion dur="1.8s" repeatCount="indefinite"
+                        path={`M${midX + midW} ${midY + midH / 2} L${rightX} ${statsY + sideH / 2}`} />
+                </circle>
+
                 <g>
-                    <circle cx={W - 82} cy={38} r={16} fill="#ede9fe" />
-                    <path d="M-6,3 a5,5 0 0 1 1,-9.8 a6,6 0 0 1 11.4,2 a4.3,4.3 0 0 1 -1.2,7.8 z" transform={`translate(${W - 82} 38)`} fill="none" stroke="#7c3aed" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                    <rect x={W - 56} y={22} width={32} height={32} rx={10} fill="#ede9fe" />
-                    <path d={`M${W - 48} 34 h16 M${W - 48} 38 h16 M${W - 48} 42 h16`} stroke="#7c3aed" strokeWidth="1.8" strokeLinecap="round" />
+                    <rect x={leftX} y={statsY} width={sideW} height={sideH} rx={sideH / 2} fill="white" stroke={ILL.softStroke} />
+                    <circle cx={leftX + 30} cy={statsY + sideH / 2} r={16} fill="#ede9fe" />
+                    <PinGlyph x={leftX + 30} y={statsY + sideH / 2} color="#7c3aed" />
+                    <text x={leftX + 54} y={statsY + sideH / 2 - 4} fontFamily={ILL.font} fontSize="9.5" fontWeight="700" fill={ILL.muted}>{s.left.eyebrow}</text>
+                    <text x={leftX + 54} y={statsY + sideH / 2 + 14} fontFamily={ILL.font} fontSize="13" fontWeight="800" fill={ILL.ink}>{s.left.value}</text>
                 </g>
 
-                <IllCard id={id} x={cardX} y={64} w={cardW} h={cardH} accent="#7c3aed">
-                    <text x={innerL} y={100} fontFamily={ILL.font} fontSize="15" fontWeight="800" fill={ILL.ink}>{title}</text>
-                    <StatusPill x={innerR - 130} y={84} w={130} h={28} label={overallLabel} color="#7c3aed" bg="#f5f3ff" border="#ddd6fe" dashed={overallActive} />
+                <g filter={`url(#${id}-shadow)`}>
+                    <rect x={midX} y={midY} width={midW} height={midH} rx={midH / 2} fill={`url(#${id}-hub)`} />
+                    <circle cx={midX + 38} cy={midY + midH / 2} r={17} fill="white" fillOpacity="0.18" />
+                    <ShieldGlyph x={midX + 38} y={midY + midH / 2} />
+                    <text x={midX + 64} y={midY + midH / 2 - 4} fontFamily={ILL.font} fontSize="16" fontWeight="800" fill="white">{s.uptimeValue}</text>
+                    <text x={midX + 64} y={midY + midH / 2 + 15} fontFamily={ILL.font} fontSize="10.5" fontWeight="600" fill="#e9d5ff">{s.uptimeLabel}</text>
+                </g>
 
-                    {/* vertical dotted timeline connecting each node */}
-                    {steps.length > 1 && (
-                        <>
-                            <line
-                                x1={innerL + 62} y1={stepsY0 + 18}
-                                x2={innerL + 62} y2={lastRowY + 18}
-                                stroke="#c4b5fd" strokeWidth="1.6" strokeDasharray="1 5" strokeLinecap="round"
-                            >
-                                <animate attributeName="stroke-dashoffset" values="0;-12" dur="2s" repeatCount="indefinite" />
-                            </line>
-                            <circle r="2.5" fill="#c4b5fd" opacity={0.7}>
-                                <animateMotion dur="2.4s" repeatCount="indefinite"
-                                    path={`M${innerL + 62} ${stepsY0 + 18} L${innerL + 62} ${lastRowY + 18}`} />
-                            </circle>
-                        </>
-                    )}
+                <g>
+                    <rect x={rightX} y={statsY} width={sideW} height={sideH} rx={sideH / 2} fill="white" stroke={ILL.softStroke} />
+                    <circle cx={rightX + 30} cy={statsY + sideH / 2} r={16} fill="#ede9fe" />
+                    <GlobeGlyph x={rightX + 30} y={statsY + sideH / 2} color="#7c3aed" />
+                    <text x={rightX + 54} y={statsY + sideH / 2 - 4} fontFamily={ILL.font} fontSize="9.5" fontWeight="700" fill={ILL.muted}>{s.right.eyebrow}</text>
+                    <text x={rightX + 54} y={statsY + sideH / 2 + 14} fontFamily={ILL.font} fontSize="13" fontWeight="800" fill={ILL.ink}>{s.right.value}</text>
+                </g>
+            </IllCard>
 
-                    {steps.map((st, i) => {
-                        const theme = STEP_THEMES[i % STEP_THEMES.length];
-                        const y = stepsY0 + i * rowGap;
-                        const nodeColor = st.state === "queued" ? "#cbd5e1" : theme.color;
-                        const pillLabel = st.state === "done" ? "Completed" : st.state === "active" ? "In progress" : "Pending";
-                        const pillColor = st.state === "queued" ? "#94a3b8" : theme.color;
-                        const pillBg = st.state === "queued" ? "#f1f5f9" : theme.bg;
-                        const pillBorder = st.state === "queued" ? "#e2e8f0" : theme.border;
-
-                        return (
-                            <g key={i}>
-                                <rect x={innerL + 88} y={y} width={innerR - (innerL + 88)} height={36} rx={8} fill={st.state === "queued" ? "#f8fafc" : theme.bg} opacity={st.state === "queued" ? 1 : 0.7} />
-                                <SquareBadge x={innerL} y={y - 2} color={st.state === "queued" ? "#cbd5e1" : theme.color} kind={theme.icon} />
-                                <TimelineNode x={innerL + 62} y={y + 18} state={st.state} color={nodeColor} />
-                                <text x={innerL + 100} y={y + 15} fontFamily={ILL.font} fontSize="11.5" fontWeight="800" fill={ILL.ink}>{st.label}</text>
-                                <text x={innerL + 100} y={y + 29} fontFamily={ILL.font} fontSize="10" fill={ILL.muted}>{st.detail}</text>
-                                <StatusPill x={innerR - 118} y={y + 4} w={118} h={28} label={pillLabel} color={pillColor} bg={pillBg} border={pillBorder} dashed={st.state === "active"} />
-                            </g>
-                        );
-                    })}
-
-                    {/* bottom stats strip */}
-                    <line x1={leftX + sideW} y1={statsY + sideH / 2} x2={midX} y2={midY + midH / 2} stroke="#c4b5fd" strokeWidth="1.6" strokeDasharray="1 5">
-                        <animate attributeName="stroke-dashoffset" values="0;-12" dur="1.6s" repeatCount="indefinite" />
-                    </line>
-                    <circle r="2.5" fill="#c4b5fd" opacity={0.7}>
-                        <animateMotion dur="1.8s" repeatCount="indefinite"
-                            path={`M${leftX + sideW} ${statsY + sideH / 2} L${midX} ${midY + midH / 2}`} />
-                    </circle>
-                    <line x1={midX + midW} y1={midY + midH / 2} x2={rightX} y2={statsY + sideH / 2} stroke="#c4b5fd" strokeWidth="1.6" strokeDasharray="1 5">
-                        <animate attributeName="stroke-dashoffset" values="0;-12" dur="1.6s" repeatCount="indefinite" />
-                    </line>
-                    <circle r="2.5" fill="#c4b5fd" opacity={0.7}>
-                        <animateMotion dur="1.8s" repeatCount="indefinite"
-                            path={`M${midX + midW} ${midY + midH / 2} L${rightX} ${statsY + sideH / 2}`} />
-                    </circle>
-
-                    <g>
-                        <rect x={leftX} y={statsY} width={sideW} height={sideH} rx={sideH / 2} fill="white" stroke={ILL.softStroke} />
-                        <circle cx={leftX + 30} cy={statsY + sideH / 2} r={16} fill="#ede9fe" />
-                        <PinGlyph x={leftX + 30} y={statsY + sideH / 2} color="#7c3aed" />
-                        <text x={leftX + 54} y={statsY + sideH / 2 - 4} fontFamily={ILL.font} fontSize="9.5" fontWeight="700" fill={ILL.muted}>{s.left.eyebrow}</text>
-                        <text x={leftX + 54} y={statsY + sideH / 2 + 14} fontFamily={ILL.font} fontSize="13" fontWeight="800" fill={ILL.ink}>{s.left.value}</text>
-                    </g>
-
-                    <g filter={`url(#${id}-shadow)`}>
-                        <rect x={midX} y={midY} width={midW} height={midH} rx={midH / 2} fill={`url(#${id}-hub)`} />
-                        <circle cx={midX + 38} cy={midY + midH / 2} r={17} fill="white" fillOpacity="0.18" />
-                        <ShieldGlyph x={midX + 38} y={midY + midH / 2} />
-                        <text x={midX + 64} y={midY + midH / 2 - 4} fontFamily={ILL.font} fontSize="16" fontWeight="800" fill="white">{s.uptimeValue}</text>
-                        <text x={midX + 64} y={midY + midH / 2 + 15} fontFamily={ILL.font} fontSize="10.5" fontWeight="600" fill="#e9d5ff">{s.uptimeLabel}</text>
-                    </g>
-
-                    <g>
-                        <rect x={rightX} y={statsY} width={sideW} height={sideH} rx={sideH / 2} fill="white" stroke={ILL.softStroke} />
-                        <circle cx={rightX + 30} cy={statsY + sideH / 2} r={16} fill="#ede9fe" />
-                        <GlobeGlyph x={rightX + 30} y={statsY + sideH / 2} color="#7c3aed" />
-                        <text x={rightX + 54} y={statsY + sideH / 2 - 4} fontFamily={ILL.font} fontSize="9.5" fontWeight="700" fill={ILL.muted}>{s.right.eyebrow}</text>
-                        <text x={rightX + 54} y={statsY + sideH / 2 + 14} fontFamily={ILL.font} fontSize="13" fontWeight="800" fill={ILL.ink}>{s.right.value}</text>
-                    </g>
-                </IllCard>
-
-                <IllHeader label={title.split("·")[0].trim()} />
+            <IllHeader label={title.split("·")[0].trim()} />
         </svg>
     );
 };

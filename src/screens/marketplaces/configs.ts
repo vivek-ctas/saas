@@ -8,6 +8,7 @@ export const amazonConfig: MarketplaceConfig = {
   slug: "amazon",
   name: "Amazon",
   dot: "#f59e0b",
+  logo: "/logos/amazon-color-svgrepo-com.svg",
   tagline: "Sell smarter on Amazon — Buy Box first, ops second.",
   intro:
     "Sync your Amazon Seller Central catalog, inventory and orders with SellerBuz in minutes. Automate Buy Box repricing, generate A+ ready listings and manage FBA + FBM together — without leaving the dashboard.",
@@ -46,6 +47,7 @@ export const walmartConfig: MarketplaceConfig = {
   slug: "walmart",
   name: "Walmart",
   dot: "#2563eb",
+  logo: "/logos/walmart.png",
   tagline: "Walmart Marketplace — clean listings, clean sync.",
   intro:
     "Walmart's 2-step listing model punishes sloppy data. SellerBuz gets your setup + spec right the first time, then keeps inventory, price and orders in perfect sync with your other channels.",
@@ -84,6 +86,7 @@ export const ebayConfig: MarketplaceConfig = {
   slug: "ebay",
   name: "eBay",
   dot: "#0ea5e9",
+  logo: "/logos/ebay-svgrepo-com.svg",
   tagline: "eBay — variations, promotions and listings, tamed.",
   intro:
     "eBay's variation model, promoted listings and international rollouts can eat hours a week. SellerBuz gives you a single source of truth for stock, price and content — then pushes changes to eBay in real time.",
@@ -122,6 +125,7 @@ export const etsyConfig: MarketplaceConfig = {
   slug: "etsy",
   name: "Etsy",
   dot: "#ea580c",
+  logo: "/logos/etsy-svgrepo-com.svg",
   tagline: "Etsy — keep your handmade brand, lose the busywork.",
   intro:
     "Etsy rewards personality and consistency. SellerBuz keeps every listing, variation and stock number accurate across your Etsy shop and other marketplaces — while you keep making product, not spreadsheets.",

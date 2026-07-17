@@ -91,6 +91,7 @@ export const MatrixVisual = ({
     rows,
     cellFor,
     stats,
+    colLogos,
 }: {
     id: string;
     title: string;
@@ -98,6 +99,9 @@ export const MatrixVisual = ({
     rows: string[];
     cellFor: (r: number, c: number) => { fill: string; text: string; textFill: string; icon: "clock" | "check" };
     stats?: { skuLabel: string; skuValue: string; deltaLabel: string; deltaValue: string };
+    /** Optional map of column name → SVG logo path. When provided the logo is
+     *  rendered instead of the default `MarketBadge` initial. */
+    colLogos?: Record<string, string>;
 }) => {
     const W = 600, H = 420;
     const gridX = 40, gridLeftW = 130, gridY = 150;
@@ -107,93 +111,123 @@ export const MatrixVisual = ({
     return (
         <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
             <IllDefs id={id} />
-                <IllHeader label="Bulk regenerate" />
-                {/* decorative dot cluster, top right — echoes reference */}
-                <g fill={ILL.sky} fillOpacity="0.55">
-                    {[0, 1, 2, 3].map((c) =>
-                        [0, 1, 2].map((r) => (
-                            <circle key={`${r}-${c}`} cx={W - 96 + c * 15} cy={26 + r * 15} r="2.2" />
-                        ))
-                    )}
-                </g>
+            <IllHeader label="Bulk regenerate" />
+            {/* decorative dot cluster, top right — echoes reference */}
+            <g fill={ILL.sky} fillOpacity="0.55">
+                {[0, 1, 2, 3].map((c) =>
+                    [0, 1, 2].map((r) => (
+                        <circle key={`${r}-${c}`} cx={W - 96 + c * 15} cy={26 + r * 15} r="2.2" />
+                    ))
+                )}
+            </g>
 
-                <IllCard id={id} x={24} y={64} w={W - 48} h={H - 88} accent={ILL.blue}>
-                    <text x={40} y={94} fontFamily={ILL.font} fontSize="15" fontWeight="800" fill={ILL.ink}>{title}</text>
+            <IllCard id={id} x={24} y={50} w={W - 48} h={H - 88} accent={ILL.blue}>
+                <text x={40} y={80} fontFamily={ILL.font} fontSize="15" fontWeight="800" fill={ILL.ink}>{title}</text>
 
-                    {/* column headers: marketplace badge + name */}
-                    {cols.map((c, i) => {
-                        const cx = gridX + gridLeftW + i * cellW + cellW / 2;
-                        return (
-                            <g key={c}>
-                                <MarketBadge x={cx - 42} y={112} channel={c} />
-                                <text x={cx + 6} y={134} fontFamily={ILL.font} fontSize="13" fontWeight="800" fill={ILL.ink}>{c}</text>
-                            </g>
-                        );
-                    })}
-
-                    {rows.map((r, ri) => {
-                        const y = gridY + ri * (cellH + rowGap);
-                        return (
-                            <g key={r}>
-                                {/* row icon tile + label */}
-                                <rect x={gridX} y={y} width={44} height={cellH} rx="12" fill={ILL.tint} />
-                                <MatrixIcon x={gridX + 22} y={y + cellH / 2} kind={rowIcon[r] ?? "home"} color={ILL.blueDeep} size={20} />
-                                <text x={gridX + 56} y={y + cellH / 2 + 4} fontFamily={ILL.font} fontSize="12.5" fontWeight="800" fill={ILL.ink}>{r}</text>
-
-                                {cols.map((_, ci) => {
-                                    const cell = cellFor(ri, ci);
-                                    const cx = gridX + gridLeftW + ci * cellW + 6;
-                                    const cw = cellW - 12;
-                                    return (
-                                        <g key={ci}>
-                                            <rect x={cx} y={y} width={cw} height={cellH} rx="12" fill={cell.fill} />
-                                            <MatrixIcon
-                                                x={cx + cw / 2 - 26}
-                                                y={y + cellH / 2}
-                                                kind={cell.icon}
-                                                color={cell.icon === "check" ? "#059669" : "#4338ca"}
-                                                size={18}
-                                            />
-                                            <text x={cx + cw / 2 + 2} y={y + cellH / 2 + 4} textAnchor="middle" fontFamily={ILL.font} fontSize="12" fontWeight="800" fill={cell.textFill}>
-                                                {cell.text}
-                                            </text>
-                                        </g>
-                                    );
-                                })}
-                            </g>
-                        );
-                    })}
-
-                    {/* bottom stat strip */}
-                    {stats && (() => {
-                        const stripY = gridY + rows.length * (cellH + rowGap) + 14;
-                        const stripH = 88;
-                        const stripW = W - 80;
-                        return (
-                            <g>
-                                <rect x={40} y={stripY} width={stripW} height={stripH} rx="16" fill={ILL.tint} fillOpacity="0.6" />
-                                <rect x={62} y={stripY + 20} width={48} height={48} rx="14" fill={`url(#${id}-blue)`} />
-                                <MatrixIcon x={86} y={stripY + 44} kind="document" color="white" size={22} />
-
-                                <text x={126} y={stripY + 42} fontFamily={ILL.font} fontSize="18" fontWeight="800" fill={ILL.ink}>{stats.skuValue}</text>
-                                <text x={126} y={stripY + 60} fontFamily={ILL.font} fontSize="11" fontWeight="600" fill={ILL.muted}>{stats.skuLabel}</text>
-
-                                <line x1={296} y1={stripY + 20} x2={296} y2={stripY + 68} stroke="#cbd5e1" />
-
-                                <text x={320} y={stripY + 42} fontFamily={ILL.font} fontSize="18" fontWeight="800" fill={ILL.blue}>{stats.deltaValue}</text>
-                                <text x={320} y={stripY + 60} fontFamily={ILL.font} fontSize="11" fontWeight="600" fill={ILL.muted}>{stats.deltaLabel}</text>
-
-                                {/* mini trend glyph, right side */}
+                {/* column headers: centered marketplace badges */}
+                {cols.map((c, i) => {
+                    const cx = gridX + gridLeftW + i * cellW + cellW / 2;
+                    const logo = colLogos?.[c];
+                    const boxSize = 44;
+                    const bx = cx - boxSize / 2;
+                    const by = 92;
+                    return (
+                        <g key={c}>
+                            {logo ? (
                                 <g>
-                                    <rect x={W - 156} y={stripY + 40} width="6" height="16" rx="2" fill={ILL.tint} />
-                                    <rect x={W - 146} y={stripY + 32} width="6" height="24" rx="2" fill={ILL.sky} />
-                                    <rect x={W - 136} y={stripY + 24} width="6" height="32" rx="2" fill={ILL.blue} />
-                                    <MatrixIcon x={W - 120} y={stripY + 34} kind="trend" color={ILL.blueDeep} size={22} />
+                                    {/* Logo Card Base */}
+                                    <rect
+                                        x={bx}
+                                        y={by}
+                                        width={boxSize}
+                                        height={boxSize}
+                                        rx="12"
+                                        fill="white"
+                                        stroke={ILL.softStroke}
+                                        strokeWidth="1.2"
+                                        filter={`url(#${id}-shadow)`}
+                                    />
+                                    <image
+                                        href={logo}
+                                        x={cx - 13}
+                                        y={by + (boxSize - 26) / 2}
+                                        width={26}
+                                        height={26}
+                                        preserveAspectRatio="xMidYMid meet"
+                                    />
                                 </g>
+                            ) : (
+                                <g transform={`translate(${bx + (boxSize - 34) / 2}, ${by + (boxSize - 34) / 2})`}>
+                                    <MarketBadge x={0} y={0} channel={c} />
+                                </g>
+                            )}
+                        </g>
+                    );
+                })}
+
+                {rows.map((r, ri) => {
+                    const y = gridY + ri * (cellH + rowGap);
+                    return (
+                        <g key={r}>
+                            {/* row icon tile + label */}
+                            <rect x={gridX} y={y} width={44} height={cellH} rx="12" fill={ILL.tint} />
+                            <MatrixIcon x={gridX + 22} y={y + cellH / 2} kind={rowIcon[r] ?? "home"} color={ILL.blueDeep} size={20} />
+                            <text x={gridX + 56} y={y + cellH / 2 + 4} fontFamily={ILL.font} fontSize="12.5" fontWeight="800" fill={ILL.ink}>{r}</text>
+
+                            {cols.map((_, ci) => {
+                                const cell = cellFor(ri, ci);
+                                const cx = gridX + gridLeftW + ci * cellW + 6;
+                                const cw = cellW - 12;
+                                return (
+                                    <g key={ci}>
+                                        <rect x={cx} y={y} width={cw} height={cellH} rx="12" fill={cell.fill} />
+                                        <MatrixIcon
+                                            x={cx + cw / 2 - 30}
+                                            y={y + cellH / 2}
+                                            kind={cell.icon}
+                                            color={cell.icon === "check" ? "#059669" : "#4338ca"}
+                                            size={18}
+                                        />
+                                        <text x={cx + cw / 2 + 2} y={y + cellH / 2 + 4} textAnchor="middle" fontFamily={ILL.font} fontSize="12" fontWeight="800" fill={cell.textFill}>
+                                            {cell.text}
+                                        </text>
+                                    </g>
+                                );
+                            })}
+                        </g>
+                    );
+                })}
+
+                {/* bottom stat strip */}
+                {stats && (() => {
+                    const stripY = gridY + rows.length * (cellH + rowGap);
+                    const stripH = 60;
+                    const stripW = W - 80;
+                    return (
+                        <g>
+                            <rect x={40} y={stripY} width={stripW} height={stripH} rx="16" fill={ILL.tint} fillOpacity="0.6" />
+                            <rect x={62} y={stripY + 6} width={48} height={48} rx="14" fill={`url(#${id}-blue)`} />
+                            <MatrixIcon x={86} y={stripY + 30} kind="document" color="white" size={22} />
+
+                            <text x={126} y={stripY + 30} fontFamily={ILL.font} fontSize="18" fontWeight="800" fill={ILL.ink}>{stats.skuValue}</text>
+                            <text x={126} y={stripY + 50} fontFamily={ILL.font} fontSize="11" fontWeight="600" fill={ILL.muted}>{stats.skuLabel}</text>
+
+                            <line x1={296} y1={stripY} x2={296} y2={stripY + 60} stroke="#cbd5e1" />
+
+                            <text x={320} y={stripY + 30} fontFamily={ILL.font} fontSize="18" fontWeight="800" fill={ILL.blue}>{stats.deltaValue}</text>
+                            <text x={320} y={stripY + 50} fontFamily={ILL.font} fontSize="11" fontWeight="600" fill={ILL.muted}>{stats.deltaLabel}</text>
+
+                            {/* mini trend glyph, right side */}
+                            <g>
+                                <rect x={W - 156} y={stripY + 30} width="6" height="16" rx="2" fill={ILL.tint} />
+                                <rect x={W - 146} y={stripY + 22} width="6" height="24" rx="2" fill={ILL.sky} />
+                                <rect x={W - 136} y={stripY + 14} width="6" height="32" rx="2" fill={ILL.blue} />
+                                <MatrixIcon x={W - 120} y={stripY + 24} kind="trend" color={ILL.blueDeep} size={22} />
                             </g>
-                        );
-                    })()}
-                </IllCard>
-        </svg>
+                        </g>
+                    );
+                })()}
+            </IllCard>
+        </svg >
     );
 };

@@ -100,13 +100,13 @@ export const DashListVisual = ({
     return (
         <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
             <IllDefs id={id} />
-            <IllCard id={id} x={24} y={64} w={W - 48} h={H - 88} accent={ILL.blue}>
-                <text x={40} y={94} fontFamily={ILL.font} fontSize="15" fontWeight="800" fill={ILL.ink}>{title}</text>
+            <IllCard id={id} x={24} y={50} w={W - 48} h={H - 88} accent={ILL.blue}>
+                <text x={40} y={80} fontFamily={ILL.font} fontSize="15" fontWeight="800" fill={ILL.ink}>{title}</text>
 
                 {chip && (
                     <g>
-                        <rect x={W - 148} y={80} width={108} height={22} rx={11} fill={chip.tone === "navy" ? ILL.navy : ILL.tint} />
-                        <text x={W - 94} y={95} textAnchor="middle" fontFamily={ILL.font} fontSize="10" fontWeight="800" fill={chip.tone === "navy" ? "white" : ILL.blueDeep}>
+                        <rect x={W - 148} y={64} width={108} height={22} rx={11} fill={chip.tone === "navy" ? ILL.navy : ILL.tint} />
+                        <text x={W - 94} y={79} textAnchor="middle" fontFamily={ILL.font} fontSize="10" fontWeight="800" fill={chip.tone === "navy" ? "white" : ILL.blueDeep}>
                             {chip.label}
                         </text>
                     </g>
@@ -130,23 +130,23 @@ export const DashListVisual = ({
                     const textX = icon ? colX[i] + 16 : colX[i];
                     return (
                         <g key={c}>
-                            {icon && <ColIcon kind={icon} cx={colX[i] + 5} cy={129} />}
-                            <text x={textX} y={132} fontFamily={ILL.font} fontSize="9" fontWeight="800" fill={ILL.muted} letterSpacing="1">
+                            {icon && <ColIcon kind={icon} cx={colX[i] + 5} cy={107} />}
+                            <text x={textX} y={110} fontFamily={ILL.font} fontSize="9" fontWeight="800" fill={ILL.muted} letterSpacing="1">
                                 {c.toUpperCase()}
                             </text>
                         </g>
                     );
                 })}
-                <line x1={32} y1={142} x2={W - 32} y2={142} stroke={ILL.softStroke} strokeWidth="1" strokeDasharray="2 6" strokeLinecap="round">
+                <line x1={32} y1={122} x2={W - 32} y2={122} stroke={ILL.softStroke} strokeWidth="1" strokeDasharray="2 6" strokeLinecap="round">
                     <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.6s" repeatCount="indefinite" />
                 </line>
                 <circle r="2" fill={ILL.blue} opacity={0.55}>
-                    <animateMotion dur="2s" repeatCount="indefinite"
-                        path={`M32 142 L${W - 32} 142`} />
+                    <animateMotion dur="4s" repeatCount="indefinite"
+                        path={`M32 122 L${W - 32} 122`} />
                 </circle>
 
                 {rows.map((r, ri) => {
-                    const y = 170 + ri * 42;
+                    const y = 150 + ri * 42;
                     const badgeTone = r.badge?.tone === "amber"
                         ? { bg: "#fef3c7", fg: "#92400e" }
                         : r.badge?.tone === "emerald"
@@ -197,7 +197,7 @@ export const DashListVisual = ({
                     );
                 })}
             </IllCard>
-            <IllHeader x={headerX} y={headerY} label={title.split("·")[0].trim()} />
+            <IllHeader label={title.split("·")[0].trim()} />
             {headerIcon && (
                 <g stroke="white" strokeWidth="1.3" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     {headerIcon === "warehouse" && (

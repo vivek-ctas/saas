@@ -12,6 +12,7 @@ export type MarketplaceConfig = {
   slug: string;
   name: string;
   dot: string;                 // small accent dot color
+  logo?: string;               // optional SVG logo path (e.g. "/amazon.svg")
   tagline: string;             // hero H1
   intro: string;               // hero paragraph
   stats: { l: string; v: string; d?: string }[]; // 4 stat tiles
@@ -21,33 +22,6 @@ export type MarketplaceConfig = {
   faq: { q: string; a: string }[]; // 5 items
   otherChannels: string[];     // for cross-link strip
 };
-
-const OnboardingDiagram1 = ({ steps, dot }: { steps: string[]; dot: string }) => (
-  <svg viewBox="0 0 640 180" className="w-full h-auto">
-    <rect width="640" height="180" rx="18" fill="#eff6ff" />
-    {steps.map((s, i) => {
-      const x = 20 + i * 155;
-      return (
-        <g key={i}>
-          <rect x={x} y={40} width="140" height="110" rx="14" fill="white" stroke="#e2e8f0" />
-          <rect x={x} y={40} width="140" height="3" rx="1.5" fill={i === steps.length - 1 ? dot : "#2563eb"} />
-          <circle cx={x + 70} cy={78} r="20" fill="#2563eb" />
-          <text x={x + 70} y={83} textAnchor="middle" fontFamily="Inter" fontSize="12" fontWeight="800" fill="#fff">{i + 1}</text>
-          <text x={x + 70} y={118} textAnchor="middle" fontFamily="Inter" fontSize="11" fontWeight="700" fill="#0f172a">
-            {s.split(" ")[0]}
-          </text>
-          <text x={x + 70} y={132} textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#64748b">
-            {s.split(" ").slice(1).join(" ")}
-          </text>
-          {i < steps.length - 1 && (
-            <line x1={x + 142} y1={95} x2={x + 153} y2={95} stroke="#60a5fa" strokeWidth="1.6" strokeDasharray="4 3" />
-          )}
-        </g>
-      );
-    })}
-  </svg>
-);
-
 const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
   const ref = useReveal<HTMLDivElement>();
   return (
@@ -158,9 +132,8 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
               <Badge className="mb-3 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">Live in minutes</Badge>
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900">Four steps to sync your {cfg.name} store.</h2>
             </div>
-            <div className="reveal">
-              <OnboardingDiagram className="w-full h-auto max-w-[700px] mx-auto" />
-
+            <div className="reveal ">
+              <OnboardingDiagram className="w-full h-auto" />
             </div>
           </div>
         </section>

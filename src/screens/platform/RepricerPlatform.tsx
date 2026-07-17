@@ -86,8 +86,9 @@ const cfg: PlatformConfig = {
           title="Strategy matrix · by channel"
           cols={["Amazon", "Walmart", "eBay", "Etsy"]}
           rows={["Home", "Kitchen", "Outdoor"]}
+          colLogos={{ Amazon: "/logos/amazon-color-svgrepo-com.svg", Walmart: "/logos/walmart.png", eBay: "/logos/ebay-svgrepo-com.svg", Etsy: "/logos/etsy-svgrepo-com.svg" }}
           cellFor={(r, c) => {
-            const strats = ["Buy Box", "Match", "Hold Margin", "Beat 1¢"];
+            const strats = ["Buy Box", "Match", "Margin", "Beat 1¢"];
             const tones = ["#dbeafe", "#d1fae5", "#fef3c7", "#e0e7ff"];
             const fgs = ["#1d4ed8", "#065f46", "#92400e", "#4338ca"];
 

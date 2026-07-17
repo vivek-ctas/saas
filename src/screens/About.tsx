@@ -214,7 +214,7 @@ const About = () => {
                   <h3 className="font-bold text-slate-900">Logistics & shipping APIs</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  {["Shiprocket", "Tirupati", "DHL", "USPS", "PostNL", "Rakuten Post", "FedEx", "Delhivery", "Blue Dart", "DPD", "Royal Mail", "Aramex"].map((n, i) => (
+                  {["Shiprocket", "Tirupati", "DHL", "USPS", "PostNL", "Rakuten Post", "FedEx", "Delhivery", "Blue Dart", "ship station"].map((n, i) => (
                     <LogoChip key={n} name={n} tone={i % 3 === 0 ? "primary" : i % 3 === 1 ? "secondary" : "accent"} />
                   ))}
                 </div>
@@ -226,13 +226,13 @@ const About = () => {
                   <h3 className="font-bold text-slate-900">Marketplace & offline chains</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  {["Amazon", "Walmart", "Lazada", "Shopee", "Rakuten", "Flipkart", "Meesho", "eBay", "Allegro", "Reliance Smart", "Croma", "Faire"].map((n, i) => (
+                  {["Amazon", "Walmart", "Lazada", "Rakuten", "eBay", "Allegro", "bol", "abebooks", "wortan", "Kaufland", "fnac", "cdon"].map((n, i) => (
                     <LogoChip key={n} name={n} tone={i % 3 === 0 ? "secondary" : i % 3 === 1 ? "primary" : "accent"} />
                   ))}
                 </div>
               </div>
 
-              <div className="reveal delay-200">
+              {/* <div className="reveal delay-200">
                 <div className="flex items-center gap-2 mb-4">
                   <Megaphone className="w-5 h-5 text-blue-600" />
                   <h3 className="font-bold text-slate-900">Ads & infrastructure</h3>
@@ -242,7 +242,7 @@ const About = () => {
                     <LogoChip key={n} name={n} tone={i % 3 === 0 ? "accent" : i % 3 === 1 ? "primary" : "dark"} />
                   ))}
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>

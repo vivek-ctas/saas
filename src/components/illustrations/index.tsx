@@ -386,17 +386,16 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
     </defs>
     {/* channel cards left */}
     {[
-      { y: 60, name: "Amazon", dot: "#f59e0b" },
-      { y: 130, name: "Walmart", dot: "#2563eb" },
-      { y: 200, name: "eBay", dot: "#ef4444" },
-      { y: 270, name: "Etsy", dot: "#ea580c" },
-      { y: 340, name: "Flipkart", dot: "#1d4ed8" },
+      { y: 70, name: "Amazon", logo: "/logos/amazon-color-svgrepo-com.svg" },
+      { y: 145, name: "Walmart", logo: "/logos/walmart.png" },
+      { y: 220, name: "eBay", logo: "/logos/ebay-svgrepo-com.svg" },
+      { y: 295, name: "Etsy", logo: "/logos/etsy-svgrepo-com.svg" },
     ].map((c) => (
       <g key={c.name} filter="url(#hd-sh)">
         <rect x="28" y={c.y} width="150" height="50" rx="10" fill="white" stroke="#e2e8f0" />
-        <circle cx="50" cy={c.y + 25} r="6" fill={c.dot} />
-        <text x="66" y={c.y + 22} fontFamily="Inter" fontSize="12" fontWeight="700" fill="#0f172a">{c.name}</text>
-        <text x="66" y={c.y + 37} fontFamily="Inter" fontSize="9.5" fill="#64748b">Synced · live</text>
+        <image href={c.logo} x="40" y={c.y + 12} width="20" height="20" preserveAspectRatio="xMidYMid meet" />
+        <text x="68" y={c.y + 22} fontFamily="Inter" fontSize="12" fontWeight="700" fill="#0f172a">{c.name}</text>
+        <text x="68" y={c.y + 37} fontFamily="Inter" fontSize="9.5" fill="#64748b">Synced · live</text>
         <circle cx="163" cy={c.y + 25} r="3.5" fill="#10b981" />
       </g>
     ))}
@@ -414,11 +413,10 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
 
     {/* right output cards */}
     {[
-      { y: 60, title: "Inventory", val: "12,480 SKUs" },
-      { y: 130, title: "Pricing", val: "Rules active" },
-      { y: 200, title: "Orders", val: "241 / today" },
-      { y: 270, title: "Catalog", val: "AI generated" },
-      { y: 340, title: "Revenue", val: "▲ 32% MoM" },
+      { y: 70, title: "Inventory", val: "12,480 SKUs" },
+      { y: 145, title: "Pricing", val: "Rules active" },
+      { y: 220, title: "Orders", val: "241 / today" },
+      { y: 295, title: "Catalog", val: "AI generated" },
     ].map((c) => (
       <g key={c.title} filter="url(#hd-sh)">
         <rect x="392" y={c.y} width="140" height="50" rx="10" fill="white" stroke="#e2e8f0" />
@@ -431,7 +429,7 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
     ))}
 
     {/* ── left arrows (channel → core) with flowing dots ── */}
-    {[85, 155, 225, 295, 365].map((y, i) => (
+    {[95, 170, 245, 320].map((y, i) => (
       <g key={"l" + y}>
         <line x1="180" y1={y} x2="218" y2="215" stroke="#60a5fa" strokeWidth="1.4" strokeDasharray="4 4">
           <animate attributeName="stroke-dashoffset" values="0;-16" dur={`${1.2 + i * 0.15}s`} repeatCount="indefinite" />
@@ -444,7 +442,7 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
     ))}
 
     {/* ── right arrows (core → output) with flowing dots ── */}
-    {[85, 155, 225, 295, 365].map((y, i) => (
+    {[95, 170, 245, 320].map((y, i) => (
       <g key={"r" + y}>
         <line x1="372" y1="215" x2="390" y2={y} stroke="#2563eb" strokeWidth="1.4" strokeDasharray="4 4">
           <animate attributeName="stroke-dashoffset" values="0;-16" dur={`${1.2 + i * 0.15}s`} repeatCount="indefinite" />
@@ -2369,30 +2367,40 @@ export const AnalyticsFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
 /* ------------------------------------------------------------------ */
 /* MarketplaceMeshDiagram — radial channel hub                         */
 /* ------------------------------------------------------------------ */
-export const MarketplaceMeshDiagram = (
-  props: SVGProps<SVGSVGElement>
-) => {
-  const channels = [
-    { a: -90, l: "Amazon", c: "#f59e0b", bg: "#fffbeb" },
-    { a: -54, l: "Walmart", c: "#1d4ed8", bg: "#eff6ff" },
-    { a: -18, l: "eBay", c: "#ef4444", bg: "#fef2f2" },
-    { a: 18, l: "Shopify", c: "#059669", bg: "#ecfdf5" },
-    { a: 54, l: "TikTok", c: "#0f172a", bg: "#f8fafc" },
-    { a: 90, l: "Flipkart", c: "#3b82f6", bg: "#eff6ff" },
-    { a: 126, l: "Etsy", c: "#ea580c", bg: "#fff7ed" },
-    { a: 162, l: "Lazada", c: "#0ea5e9", bg: "#f0f9ff" },
-    { a: 198, l: "Meesho", c: "#db2777", bg: "#fdf2f8" },
-    { a: 234, l: "Allegro", c: "#7c3aed", bg: "#f5f3ff" },
-    { a: 270, l: "Shopee", c: "#f97316", bg: "#fff7ed" },
-    { a: 306, l: "Bol.com", c: "#2563eb", bg: "#eff6ff" },
+
+export const MarketplaceMeshDiagram = (props: SVGProps<SVGSVGElement>) => {
+
+  type Channel = {
+    a: number;
+    l: string;
+    c: string;
+    bg: string;
+    /** Optional override for the logo path. Defaults to `/${slug(l)}.svg`. */
+    logo?: string;
+  };
+
+  /** Turns a marketplace name into a filesystem-friendly slug, e.g. "Bol.com" -> "bolcom". */
+  function slug(name: string): string {
+    return name.toLowerCase().replace(/[^a-z0-9]/g, "");
+  }
+  const channels: Channel[] = [
+    { a: -90, l: "Amazon", c: "#f59e0b", bg: "#fffbeb", logo: "/logos/amazon-color-svgrepo-com.svg" },
+    { a: -45, l: "Walmart", c: "#1d4ed8", bg: "#eff6ff", logo: "/logos/walmart.png" },
+    { a: 0, l: "eBay", c: "#ef4444", bg: "#fef2f2", logo: "/logos/ebay-svgrepo-com.svg" },
+    { a: 45, l: "Shopify", c: "#059669", bg: "#ecfdf5", logo: "/logos/shopify-color-svgrepo-com.svg" },
+    { a: 90, l: "Etsy", c: "#ea580c", bg: "#fff7ed", logo: "/logos/etsy-svgrepo-com.svg" },
+    { a: 135, l: "Lazada", c: "#0ea5e9", bg: "#f0f9ff", logo: "/logos/lazada-svgrepo-com.svg" },
+    { a: 180, l: "Allegro", c: "#7c3aed", bg: "#f5f3ff", logo: "/logos/allegro-svgrepo-com.svg" },
+    { a: 225, l: "Bol.com", c: "#2563eb", bg: "#eff6ff", logo: "/logos/bol-svgrepo-com.svg" },
   ];
 
   const cx = 380;
   const cy = 220;
   const R = 175;
+  const NODE_R = 26;
+  const LOGO_SIZE = 28;
 
   return (
-
     <svg
       viewBox="0 0 760 500"
       fill="none"
@@ -2416,13 +2424,7 @@ export const MarketplaceMeshDiagram = (
           <stop offset="100%" stopColor="rgba(255,255,255,0)" />
         </radialGradient>
 
-        <filter
-          id="glow"
-          x="-40%"
-          y="-40%"
-          width="180%"
-          height="180%"
-        >
+        <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
           <feGaussianBlur stdDeviation="8" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
@@ -2433,17 +2435,7 @@ export const MarketplaceMeshDiagram = (
 
       {/* orbit rings */}
       {[70, 120, 175].map((r, i) => (
-        <circle
-          key={i}
-          cx={cx}
-          cy={cy}
-          r={r}
-          stroke="#93c5fd"
-          strokeWidth="1"
-          strokeDasharray="4 5"
-          opacity={0.4}
-          fill="none"
-        >
+        <circle key={i} cx={cx} cy={cy} r={r} stroke="#93c5fd" strokeWidth="1" strokeDasharray="4 5" opacity={0.4} fill="none">
           <animateTransform
             attributeName="transform"
             type="rotate"
@@ -2462,56 +2454,21 @@ export const MarketplaceMeshDiagram = (
         const y = cy + R * Math.sin(rad);
 
         return (
-          <line
-            key={i}
-            x1={cx}
-            y1={cy}
-            x2={x}
-            y2={y}
-            stroke={ch.c}
-            strokeWidth={1.4}
-            opacity={0.38}
-            strokeDasharray="4 5"
-          >
-            <animate
-              attributeName="stroke-dashoffset"
-              values="0;-40"
-              dur={`${2 + (i % 4) * 0.4}s`}
-              repeatCount="indefinite"
-            />
+          <line key={i} x1={cx} y1={cy} x2={x} y2={y} stroke={ch.c} strokeWidth={1.4} opacity={0.38} strokeDasharray="4 5">
+            <animate attributeName="stroke-dashoffset" values="0;-40" dur={`${2 + (i % 4) * 0.4}s`} repeatCount="indefinite" />
           </line>
         );
       })}
 
       {/* pulse rings */}
       <circle cx={cx} cy={cy} r="56" fill="#2563eb" opacity="0.18">
-        <animate
-          attributeName="r"
-          values="56;90"
-          dur="2.8s"
-          repeatCount="indefinite"
-        />
-        <animate
-          attributeName="opacity"
-          values="0.22;0"
-          dur="2.8s"
-          repeatCount="indefinite"
-        />
+        <animate attributeName="r" values="56;90" dur="2.8s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.22;0" dur="2.8s" repeatCount="indefinite" />
       </circle>
 
       <circle cx={cx} cy={cy} r="56" fill="#1e40af" opacity="0.12">
-        <animate
-          attributeName="r"
-          values="56;110"
-          dur="3.4s"
-          repeatCount="indefinite"
-        />
-        <animate
-          attributeName="opacity"
-          values="0.18;0"
-          dur="3.4s"
-          repeatCount="indefinite"
-        />
+        <animate attributeName="r" values="56;110" dur="3.4s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.18;0" dur="3.4s" repeatCount="indefinite" />
       </circle>
 
       {/* nodes */}
@@ -2519,64 +2476,42 @@ export const MarketplaceMeshDiagram = (
         const rad = (ch.a * Math.PI) / 180;
         const x = cx + R * Math.cos(rad);
         const y = cy + R * Math.sin(rad);
+        const logoHref = ch.logo ?? `/${slug(ch.l)}.svg`;
 
         return (
           <g key={i}>
             {/* shimmer halo */}
-            <circle
-              cx={x}
-              cy={y}
-              r="34"
-              fill="none"
-              stroke={ch.c}
-              strokeWidth="1"
-              opacity="0.22"
-            >
-              <animate
-                attributeName="opacity"
-                values="0.15;0.5;0.15"
-                dur={`${2.2 + (i % 5) * 0.3}s`}
-                repeatCount="indefinite"
-              />
+            <circle cx={x} cy={y} r="34" fill="none" stroke={ch.c} strokeWidth="1" opacity="0.22">
+              <animate attributeName="opacity" values="0.15;0.5;0.15" dur={`${2.2 + (i % 5) * 0.3}s`} repeatCount="indefinite" />
             </circle>
 
             {/* soft halo */}
-            <circle
-              cx={x}
-              cy={y}
-              r="30"
-              fill={ch.c}
-              opacity="0.12"
-            >
-              <animate
-                attributeName="r"
-                values="28;36;28"
-                dur={`${2.5 + (i % 5) * 0.3}s`}
-                repeatCount="indefinite"
-              />
+            <circle cx={x} cy={y} r="30" fill={ch.c} opacity="0.12">
+              <animate attributeName="r" values="28;36;28" dur={`${2.5 + (i % 5) * 0.3}s`} repeatCount="indefinite" />
             </circle>
 
             {/* node bg */}
-            <circle
-              cx={x}
-              cy={y}
-              r="26"
-              fill={ch.bg}
-              stroke={ch.c}
-              strokeWidth="2"
+            <circle cx={x} cy={y} r={NODE_R} fill={ch.bg} stroke={ch.c} strokeWidth="2" />
+
+            {/* marketplace logo */}
+            <image
+              href={logoHref}
+              x={x - LOGO_SIZE / 2}
+              y={y - LOGO_SIZE / 2}
+              width={LOGO_SIZE}
+              height={LOGO_SIZE}
+              preserveAspectRatio="xMidYMid meet"
             />
 
-            {/* label */}
+            {/* marketplace name, below the node */}
             <text
               x={x}
-              y={y + 4}
+              y={y + NODE_R + 18}
               textAnchor="middle"
-              fontSize="10"
+              fontSize="12"
               fontWeight="700"
               fill={ch.c}
-              style={{
-                fontFamily: "DM Sans, sans-serif",
-              }}
+              style={{ fontFamily: "DM Sans, sans-serif" }}
             >
               {ch.l}
             </text>
@@ -2586,32 +2521,11 @@ export const MarketplaceMeshDiagram = (
 
       {/* core */}
       <g filter="url(#glow)">
-        <circle
-          cx={cx}
-          cy={cy}
-          r="58"
-          fill="url(#mm-core)"
-        />
-
-        <circle
-          cx={cx}
-          cy={cy}
-          r="58"
-          fill="url(#mm-shine)"
-        />
+        <circle cx={cx} cy={cy} r="58" fill="url(#mm-core)" />
+        <circle cx={cx} cy={cy} r="58" fill="url(#mm-shine)" />
       </g>
 
-      <text
-        x={cx}
-        y={cy - 4}
-        textAnchor="middle"
-        fontSize="16"
-        fontWeight="800"
-        fill="white"
-        style={{
-          fontFamily: "Space Grotesk, sans-serif",
-        }}
-      >
+      <text x={cx} y={cy - 4} textAnchor="middle" fontSize="16" fontWeight="800" fill="white" style={{ fontFamily: "Space Grotesk, sans-serif" }}>
         Ctasis
       </text>
 
@@ -2623,9 +2537,7 @@ export const MarketplaceMeshDiagram = (
         fontWeight="600"
         fill="rgba(255,255,255,.82)"
         letterSpacing=".5"
-        style={{
-          fontFamily: "DM Sans, sans-serif",
-        }}
+        style={{ fontFamily: "DM Sans, sans-serif" }}
       >
         Sync engine
       </text>
@@ -2638,33 +2550,9 @@ export const MarketplaceMeshDiagram = (
           { c: "#3b82f6", l: "AI listing" },
         ].map((p, i) => (
           <g key={i} transform={`translate(${i * 180},0)`}>
-            <rect
-              x="50"
-              y="-16"
-              width="160"
-              height="28"
-              rx="14"
-              fill="white"
-              stroke="#e2e8f0"
-            />
-
-            <circle
-              cx="66"
-              cy="-2"
-              r="5"
-              fill={p.c}
-            />
-
-            <text
-              x="80"
-              y="1"
-              fontSize="11"
-              fontWeight="700"
-              fill="#334155"
-              style={{
-                fontFamily: "DM Sans, sans-serif",
-              }}
-            >
+            <rect x="50" y="-5" width="160" height="28" rx="14" fill="white" stroke="#e2e8f0" />
+            <circle cx="66" cy="10" r="5" fill={p.c} />
+            <text x="80" y="12" fontSize="11" fontWeight="700" fill="#334155" style={{ fontFamily: "DM Sans, sans-serif" }}>
               {p.l}
             </text>
           </g>
@@ -6363,65 +6251,138 @@ export const RolesIllustration = (props: SVGProps<SVGSVGElement>) => {
 
 
 export const InventorySyncSVG = (props: SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 520 320" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg" {...props}>
+  <svg viewBox="0 0 700 420" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg" {...props}>
     <defs>
+
       <linearGradient id="s-eng" x1="0" x2="0" y1="0" y2="1">
         <stop offset="0%" stopColor="#2563eb" /><stop offset="100%" stopColor="#1e3a8a" />
       </linearGradient>
-      <filter id="s-sh" x="-20%" y="-20%" width="140%" height="140%">
-        <feGaussianBlur stdDeviation="4" /><feOffset dy="2" />
-        <feComponentTransfer><feFuncA type="linear" slope="0.14" /></feComponentTransfer>
-        <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+
+      {/* Purple gradient for center engine */}
+      <linearGradient id="sync-eng-grad" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stopColor="#7C3AED" />
+        <stop offset="100%" stopColor="#4C1D95" />
+      </linearGradient>
+      {/* Soft background glow behind center */}
+      <radialGradient id="sync-glow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#7C3AED" stopOpacity="0.18" />
+        <stop offset="100%" stopColor="#7C3AED" stopOpacity="0" />
+      </radialGradient>
+      {/* Drop shadow filter */}
+      <filter id="sync-shadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="3" stdDeviation="6" floodColor="#00000022" />
       </filter>
     </defs>
-    {/* central sync */}
-    <g filter="url(#s-sh)">
-      <rect x="200" y="115" width="120" height="90" rx="14" fill="url(#s-eng)" />
-      <text x="260" y="150" textAnchor="middle" fontFamily="Inter" fontSize="12" fontWeight="800" fill="#fff">Sync Engine</text>
-      <text x="260" y="168" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#bfdbfe">latency &lt; 2s</text>
-      <circle cx="260" cy="188" r="10" fill="#fff" opacity="0.15" />
-      <circle cx="260" cy="188" r="5" fill="#fff" />
+
+
+    {/* Glow behind center box */}
+    <circle cx="350" cy="210" r="100" fill="url(#sync-glow)" />
+
+    {/* ── Left channel cards ── */}
+    {/* Amazon */}
+    <g filter="url(#sync-shadow)">
+      <rect x="30" y="60" width="185" height="68" rx="14" fill="white" />
+      <image href="/logos/amazon-color-svgrepo-com.svg" x="48" y="76" width="36" height="36" preserveAspectRatio="xMidYMid meet" />
+      <text x="96" y="91" fontFamily="Inter,system-ui" fontSize="14" fontWeight="700" fill="#0f172a">Amazon</text>
+      <text x="96" y="111" fontFamily="Inter,system-ui" fontSize="12" fill="#64748b">Stock: 1,240</text>
     </g>
-    {/* left channels */}
-    {[
-      { y: 40, name: "Amazon", stock: "1,240", dot: "#f59e0b" },
-      { y: 130, name: "Walmart", stock: "1,240", dot: "#2563eb" },
-      { y: 220, name: "eBay", stock: "1,240", dot: "#ef4444" },
-    ].map((c, i) => (
-      <g key={c.name}>
-        <rect x="20" y={c.y} width="160" height="60" rx="10" fill="white" stroke="#e2e8f0" filter="url(#s-sh)" />
-        <circle cx="38" cy={c.y + 30} r="6" fill={c.dot} />
-        <text x="52" y={c.y + 26} fontFamily="Inter" fontSize="12" fontWeight="700" fill="#0f172a">{c.name}</text>
-        <text x="52" y={c.y + 44} fontFamily="Inter" fontSize="10" fill="#64748b">Stock: {c.stock}</text>
-        <line x1="180" y1={c.y + 30} x2="200" y2="160" stroke="#60a5fa" strokeWidth="1.4" strokeDasharray="4 4">
-          <animate attributeName="stroke-dashoffset" values="0;-16" dur={`${1.2 + i * 0.15}s`} repeatCount="indefinite" />
-        </line>
-        <circle r="3" fill="#60a5fa" opacity="0.8">
-          <animateMotion dur={`${1.8 + i * 0.2}s`} repeatCount="indefinite"
-            path={`M180 ${c.y + 30} L200 160`} />
-        </circle>
+    {/* Walmart */}
+    <g filter="url(#sync-shadow)">
+      <rect x="30" y="176" width="185" height="68" rx="14" fill="white" />
+      <image href="/logos/walmart.png" x="48" y="192" width="36" height="36" preserveAspectRatio="xMidYMid meet" />
+      <text x="96" y="207" fontFamily="Inter,system-ui" fontSize="14" fontWeight="700" fill="#0f172a">Walmart</text>
+      <text x="96" y="227" fontFamily="Inter,system-ui" fontSize="12" fill="#64748b">Stock: 1,240</text>
+    </g>
+    {/* eBay */}
+    <g filter="url(#sync-shadow)">
+      <rect x="30" y="292" width="185" height="68" rx="14" fill="white" />
+      <image href="/logos/ebay-svgrepo-com.svg" x="48" y="308" width="36" height="36" preserveAspectRatio="xMidYMid meet" />
+      <text x="96" y="323" fontFamily="Inter,system-ui" fontSize="14" fontWeight="700" fill="#0f172a">eBay</text>
+      <text x="96" y="343" fontFamily="Inter,system-ui" fontSize="12" fill="#64748b">Stock: 1,240</text>
+    </g>
+
+    {/* ── Dashed connecting lines: Left → Center ── */}
+    {/* Amazon → Center */}
+    <path d="M215 94 C 270 94, 285 210, 290 210" stroke="#3B82F6" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
+      <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.4s" repeatCount="indefinite" />
+    </path>
+    <circle cx="215" cy="94" r="5" fill="#3B82F6" />
+    <circle cx="290" cy="210" r="5" fill="white" stroke="#3B82F6" strokeWidth="2" />
+    <circle r="3.5" fill="#3B82F6" opacity="0.85">
+      <animateMotion dur="2s" repeatCount="indefinite" path="M215 94 C 270 94, 285 210, 290 210" />
+    </circle>
+
+    {/* Walmart → Center */}
+    <path d="M215 210 L290 210" stroke="#3B82F6" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
+      <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.2s" repeatCount="indefinite" />
+    </path>
+    <circle cx="215" cy="210" r="5" fill="#1E40AF" />
+    <circle r="3.5" fill="#3B82F6" opacity="0.85">
+      <animateMotion dur="1.6s" repeatCount="indefinite" path="M215 210 L290 210" />
+    </circle>
+
+    {/* eBay → Center */}
+    <path d="M215 326 C 270 326, 285 210, 290 210" stroke="#3B82F6" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
+      <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.6s" repeatCount="indefinite" />
+    </path>
+    <circle cx="215" cy="326" r="5" fill="#1E40AF" />
+    <circle r="3.5" fill="#3B82F6" opacity="0.85">
+      <animateMotion dur="2.2s" repeatCount="indefinite" path="M215 326 C 270 326, 285 210, 290 210" />
+    </circle>
+
+    {/* ── Center Sync Engine box ── */}
+    <g filter="url(#sync-shadow)">
+      <rect x="290" y="148" width="120" height="124" rx="22" fill="url(#sync-eng-grad)" />
+      {/* Refresh / sync arrows icon */}
+      <g transform="translate(350,185)" fill="none" stroke="white" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+        {/* Outer arc top-right */}
+        <path d="M-14 -6 A16 16 0 0 1 14 -6" />
+        <polyline points="14,-6 14,-13 21,-6" fill="white" stroke="none" />
+        {/* Outer arc bottom-left */}
+        <path d="M14 6 A16 16 0 0 1 -14 6" />
+        <polyline points="-14,6 -14,13 -21,6" fill="white" stroke="none" />
       </g>
-    ))}
-    {/* right channels */}
-    {[
-      { y: 40, name: "Etsy", stock: "1,240", dot: "#ea580c" },
-      { y: 130, name: "Flipkart", stock: "1,240", dot: "#1d4ed8" },
-      { y: 220, name: "Warehouse", stock: "1,240", dot: "#10b981" },
-    ].map((c, i) => (
-      <g key={c.name}>
-        <rect x="340" y={c.y} width="160" height="60" rx="10" fill="white" stroke="#e2e8f0" filter="url(#s-sh)" />
-        <circle cx="358" cy={c.y + 30} r="6" fill={c.dot} />
-        <text x="372" y={c.y + 26} fontFamily="Inter" fontSize="12" fontWeight="700" fill="#0f172a">{c.name}</text>
-        <text x="372" y={c.y + 44} fontFamily="Inter" fontSize="10" fill="#64748b">Stock: {c.stock}</text>
-        <line x1="320" y1="160" x2="340" y2={c.y + 30} stroke="#2563eb" strokeWidth="1.4" strokeDasharray="4 4">
-          <animate attributeName="stroke-dashoffset" values="0;-16" dur={`${1.2 + i * 0.15}s`} repeatCount="indefinite" />
-        </line>
-        <circle r="3" fill="#2563eb" opacity="0.8">
-          <animateMotion dur={`${1.8 + i * 0.2}s`} repeatCount="indefinite"
-            path={`M320 160 L340 ${c.y + 30}`} />
-        </circle>
-      </g>
-    ))}
+      <text x="350" y="222" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="13" fontWeight="800" fill="white">Sync Engine</text>
+      <text x="350" y="240" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10.5" fill="#C4B5FD">latency &lt; 2s</text>
+      {/* Small white dot at bottom */}
+      <circle cx="350" cy="258" r="6" fill="white" opacity="0.25" />
+      <circle cx="350" cy="258" r="3" fill="white" />
+    </g>
+
+    {/* ── Dashed connecting lines: Center → Right ── */}
+    {/* Center → Etsy */}
+    <path d="M410 210 C 430 210, 445 94, 485 94" stroke="#3B82F6" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
+      <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.4s" repeatCount="indefinite" />
+    </path>
+    <circle cx="410" cy="210" r="5" fill="white" stroke="#3B82F6" strokeWidth="2" />
+    <circle cx="485" cy="94" r="5" fill="#3B82F6" />
+    <circle r="3.5" fill="#3B82F6" opacity="0.85">
+      <animateMotion dur="2s" repeatCount="indefinite" path="M410 210 C 430 210, 445 94, 485 94" />
+    </circle>
+
+    {/* Center → Warehouse */}
+    <path d="M410 210 C 430 210, 445 326, 485 326" stroke="#3B82F6" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
+      <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.6s" repeatCount="indefinite" />
+    </path>
+    <circle r="3.5" fill="#3B82F6" opacity="0.85">
+      <animateMotion dur="2.2s" repeatCount="indefinite" path="M410 210 C 430 210, 445 326, 485 326" />
+    </circle>
+
+    {/* ── Right channel cards ── */}
+    {/* Etsy */}
+    <g filter="url(#sync-shadow)">
+      <rect x="485" y="60" width="185" height="68" rx="14" fill="white" />
+      <image href="/logos/etsy-svgrepo-com.svg" x="504" y="76" width="36" height="36" preserveAspectRatio="xMidYMid meet" />
+      <text x="552" y="91" fontFamily="Inter,system-ui" fontSize="14" fontWeight="700" fill="#0f172a">Etsy</text>
+      <text x="552" y="111" fontFamily="Inter,system-ui" fontSize="12" fill="#64748b">Stock: 1,240</text>
+    </g>
+    {/* Warehouse */}
+    <g filter="url(#sync-shadow)">
+      <rect x="485" y="292" width="185" height="68" rx="14" fill="white" />
+      <image href="/logos/warehouse-svgrepo-com.svg" x="504" y="308" width="36" height="36" preserveAspectRatio="xMidYMid meet" />
+      <text x="552" y="323" fontFamily="Inter,system-ui" fontSize="14" fontWeight="700" fill="#0f172a">Warehouse</text>
+      <text x="552" y="343" fontFamily="Inter,system-ui" fontSize="12" fill="#64748b">Stock: 1,240</text>
+    </g>
   </svg>
 );
 
@@ -6763,13 +6724,13 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
 
   const CARD_W = 190;
   const GAP = 60;
-  const START_X = 90;
+  const START_X = 30;
   const CARD_TOP = 145;
   const CARD_H = 310;
   const ICON_CY = 245;
 
   return (
-    <svg viewBox="0 0 1000 560" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg viewBox="0 80 1000 390" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <defs>
         <linearGradient id="ob-window" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="#7C86F0" />
@@ -6783,22 +6744,7 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
           <stop offset="0%" stopColor="#7C86F0" />
           <stop offset="100%" stopColor="#3730A3" />
         </linearGradient>
-        <pattern id="ob-dots" width="18" height="18" patternUnits="userSpaceOnUse">
-          <circle cx="1.6" cy="1.6" r="1.6" fill="#C7D2FE" />
-        </pattern>
       </defs>
-
-      {/* Background */}
-      {/* <rect x="20" y="20" width="960" height="520" rx="28" fill="#F6F8FE" /> */}
-      <rect x="60" y="55" width="90" height="60" fill="url(#ob-dots)" opacity="0.8" />
-      <circle cx="300" cy="90" r="5" fill="#93A4F5" opacity="0.7" />
-      <circle cx="790" cy="95" r="4" fill="#C7D2FE" />
-      <circle cx="890" cy="100" r="10" fill="none" stroke="#C7D2FE" strokeWidth="1.5" opacity="0.6" />
-      <path d="M170 100 Q 260 60 400 105" stroke="#DDE3FB" strokeWidth="1.5" fill="none" strokeDasharray="4 5" />
-      <path d="M60 460 Q 300 410 540 465 T 960 450" stroke="#E3E7FB" strokeWidth="2" fill="none" />
-      <circle cx="180" cy="470" r="4" fill="#C7D2FE" />
-      <circle cx="470" cy="475" r="4" fill="#C7D2FE" />
-      <circle cx="690" cy="465" r="4" fill="#C7D2FE" />
 
       {STEPS.map((s, i) => {
         const x = START_X + i * (CARD_W + GAP);
@@ -6828,21 +6774,33 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
                 <line
                   x1={x + CARD_W}
                   y1={ICON_CY}
-                  x2={x + CARD_W + GAP / 2 - 16}
+                  x2={x + CARD_W + GAP / 2 - 17}
                   y2={ICON_CY}
                   stroke="#93A4F5"
                   strokeWidth="1.8"
                   strokeDasharray="4 4"
-                />
+                >
+                  <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.2s" repeatCount="indefinite" />
+                </line>
+                <circle r="3" fill="#3B4CD8" opacity="0.8">
+                  <animateMotion dur="1.2s" repeatCount="indefinite" path={`M ${x + CARD_W} ${ICON_CY} L ${x + CARD_W + GAP / 2 - 17} ${ICON_CY}`} />
+                </circle>
+
                 <line
-                  x1={x + CARD_W + GAP / 2 + 16}
+                  x1={x + CARD_W + GAP / 2 + 17}
                   y1={ICON_CY}
                   x2={x + CARD_W + GAP}
                   y2={ICON_CY}
                   stroke="#93A4F5"
                   strokeWidth="1.8"
                   strokeDasharray="4 4"
-                />
+                >
+                  <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.2s" repeatCount="indefinite" />
+                </line>
+                <circle r="3" fill="#3B4CD8" opacity="0.8">
+                  <animateMotion dur="1.2s" repeatCount="indefinite" path={`M ${x + CARD_W + GAP / 2 + 17} ${ICON_CY} L ${x + CARD_W + GAP} ${ICON_CY}`} />
+                </circle>
+
                 <circle cx={x + CARD_W + GAP / 2} cy={ICON_CY} r="17" fill="white" stroke="#93A4F5" strokeWidth="1.6" />
                 <path
                   d={`M${x + CARD_W + GAP / 2 - 5} ${ICON_CY - 5} l6 5 -6 5`}
@@ -6858,7 +6816,7 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
         );
       })}
     </svg>
-  )
+  );
 };
 
 import type { MarketplaceConfig } from "@/screens/marketplaces/MarketplacePage";
@@ -6999,50 +6957,62 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: Props) => {
   const logoLetter = cfg.name.charAt(0).toLowerCase();
 
   return (
-    <svg viewBox="0 0 1000 667" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg viewBox="10 10 980 645" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <defs>
         <linearGradient id="ch-engine" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="#2F5FF0" />
           <stop offset="100%" stopColor="#0B1E4F" />
         </linearGradient>
-        <pattern id="ch-grid" width="28" height="28" patternUnits="userSpaceOnUse">
-          <path d="M28 0H0V28" stroke="#E7EBF7" strokeWidth="0.6" fill="none" />
-        </pattern>
       </defs>
 
-      {/* Background */}
-      <rect x="20" y="20" width="960" height="627" rx="28" fill="#FAFBFE" />
-      <rect x="20" y="20" width="960" height="627" rx="28" fill="url(#ch-grid)" opacity="0.6" />
-      <DotCluster x={60} y={60} color="#93A4F5" />
-      <DotCluster x={880} y={560} color="#93A4F5" />
+      {/* Subtle dot cluster decorations – transparent bg so they float */}
+      <DotCluster x={24} y={24} color="#93A4F5" />
+      <DotCluster x={870} y={555} color="#93A4F5" />
 
       {/* Marketplace card */}
-      <rect x="80" y="222" width="270" height="180" rx="16" fill="white" stroke="#ECEFF7" />
-      <rect x="80" y="220" width="270" height="5" rx="2.5" fill={cfg.dot} />
-      <circle cx="122" cy="272" r="28" fill={tint(cfg.dot)} />
-      <text x="122" y="281" textAnchor="middle" fontSize="24" fontWeight="800" fill="#111827">{logoLetter}</text>
-      <path d="M108 286q14 8 28 0" fill="none" stroke={cfg.dot} strokeWidth="2" strokeLinecap="round" />
-      <text x="162" y="268" fontSize="21" fontWeight="800" fill="#0F172A">{cfg.name}</text>
-      <text x="162" y="292" fontSize="14" fill="#64748B">Native integration</text>
-      <rect x="100" y="324" width="230" height="44" rx="22" fill="#E7F7EF" />
-      <circle cx="120" cy="346" r="6" fill="#16A34A" />
-      <text x="136" y="351" fontSize="14" fontWeight="700" fill="#4338CA">Connected · live</text>
+      <rect x="30" y="222" width="270" height="180" rx="16" fill="white" stroke="#ECEFF7" strokeWidth="1.2" />
+      <rect x="30" y="220" width="270" height="5" rx="2.5" fill={cfg.dot} />
+      {cfg.logo ? (
+        <image href={cfg.logo} x="44" y="244" width="56" height="56" preserveAspectRatio="xMidYMid meet" />
+      ) : (
+        <>
+          <circle cx="72" cy="272" r="28" fill={tint(cfg.dot)} />
+          <text x="72" y="281" textAnchor="middle" fontSize="24" fontWeight="800" fill="#111827">{logoLetter}</text>
+          <path d="M58 286q14 8 28 0" fill="none" stroke={cfg.dot} strokeWidth="2" strokeLinecap="round" />
+        </>
+      )}
+      <text x="112" y="268" fontSize="21" fontWeight="800" fill="#0F172A">{cfg.name}</text>
+      <text x="112" y="292" fontSize="14" fill="#64748B">Native integration</text>
+      <rect x="50" y="324" width="230" height="44" rx="22" fill="#E7F7EF" />
+      <circle cx="70" cy="346" r="6" fill="#16A34A">
+        {/* Pulse on the "live" dot */}
+        <animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="70" cy="346" r="5" fill="#16A34A" />
+      <text x="86" y="351" fontSize="14" fontWeight="700" fill="#4338CA">Connected · live</text>
 
-      {/* Arrow: marketplace -> Engine */}
-      <line x1="350" y1="312" x2="382" y2="312" stroke="#3B82F6" strokeWidth="2.4" strokeDasharray="6 5">
-        <animate attributeName="stroke-dashoffset" values="0;-22" dur="1.4s" repeatCount="indefinite" />
+      {/* Arrow line: marketplace → Engine */}
+      <line x1="300" y1="312" x2="382" y2="312" stroke="#3B82F6" strokeWidth="2.4" strokeDasharray="6 5">
+        <animate attributeName="stroke-dashoffset" values="0;-22" dur="1.2s" repeatCount="indefinite" />
       </line>
-      <circle r="3" fill="#3B82F6" opacity="0.8">
-        <animateMotion dur="1.8s" repeatCount="indefinite" path="M350 312 L382 312" />
+      {/* flowing dot on the arrow */}
+      <circle r="4" fill="#3B82F6" opacity="0.85">
+        <animateMotion dur="1.6s" repeatCount="indefinite" path="M300 312 L382 312" />
       </circle>
       <path d="M382 303l14 9-14 9z" fill="#3B82F6" />
 
-      {/* Engine */}
+      {/* Engine box */}
       <rect x="400" y="200" width="220" height="220" rx="24" fill="url(#ch-engine)" />
+      {/* Subtle glow ring - animates opacity */}
+      <circle cx="510" cy="278" r="70" fill="white" opacity="0">
+        <animate attributeName="opacity" values="0;0.05;0" dur="3s" repeatCount="indefinite" />
+      </circle>
       <circle cx="510" cy="278" r="55" fill="white" opacity="0.08" />
       <circle cx="470" cy="230" r="2" fill="#93C5FD" opacity="0.7" />
       <circle cx="555" cy="235" r="2.4" fill="#93C5FD" opacity="0.6" />
       <circle cx="545" cy="215" r="1.8" fill="#93C5FD" opacity="0.6" />
+      {/* Engine inner white disc with check */}
       <circle cx="510" cy="278" r="45" fill="white" />
       <g transform="translate(490,258)">
         <Icon name="check" size="40" />
@@ -7050,7 +7020,7 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: Props) => {
       <text x="510" y="365" textAnchor="middle" fontSize="22" fontWeight="800" fill="white">SellerBuz Sync</text>
       <text x="510" y="390" textAnchor="middle" fontSize="15" fill="#BFDBFE">2-way · &lt; 2s latency</text>
 
-      {/* Connector lines: engine -> ops cards */}
+      {/* Connector paths: engine right face → ops cards */}
       {OP_YS.map((y, i) => (
         <g key={`conn-${i}`}>
           <path
@@ -7062,11 +7032,15 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: Props) => {
           >
             <animate attributeName="stroke-dashoffset" values="0;-20" dur={`${1.2 + i * 0.15}s`} repeatCount="indefinite" />
           </path>
-          <circle r="3" fill="#3B82F6" opacity="0.8">
+          {/* Flowing data dot along each path */}
+          <circle r="3.5" fill="#3B82F6" opacity="0.85">
             <animateMotion dur={`${1.8 + i * 0.2}s`} repeatCount="indefinite"
               path={`M622 305 C 670 305, 700 ${y + OP_H / 2}, ${OP_X} ${y + OP_H / 2}`} />
           </circle>
-          <circle cx={OP_X} cy={y + OP_H / 2} r="5" fill="#2563EB" />
+          {/* Junction dot on ops card edge */}
+          <circle cx={OP_X} cy={y + OP_H / 2} r="5" fill="#2563EB">
+            <animate attributeName="opacity" values="1;0.5;1" dur={`${1.6 + i * 0.2}s`} repeatCount="indefinite" />
+          </circle>
         </g>
       ))}
 
@@ -7075,7 +7049,7 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: Props) => {
         const y = OP_YS[i];
         return (
           <g key={op.label}>
-            <rect x={OP_X} y={y} width={OP_W} height={OP_H} rx="14" fill="white" stroke="#ECEFF7" />
+            <rect x={OP_X} y={y} width={OP_W} height={OP_H} rx="14" fill="white" stroke="#ECEFF7" strokeWidth="1.2" />
             <rect x={OP_X} y={y} width="4" height={OP_H} rx="2" fill={op.accent} />
             <circle cx={OP_X + 46} cy={y + OP_H / 2} r="26" fill={op.tint} />
             <g transform={`translate(${OP_X + 34},${y + OP_H / 2 - 12})`} color={op.accent}>
@@ -7092,9 +7066,9 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: Props) => {
       })}
 
       {/* Footer feature row */}
-      <rect x="60" y="512" width="880" height="100" rx="18" fill="white" stroke="#ECEFF7" />
+      <rect x="30" y="512" width="940" height="100" rx="18" fill="white" stroke="#ECEFF7" strokeWidth="1.2" />
       {FEATURES.map((f, i) => {
-        const x = 90 + i * 216;
+        const x = 60 + i * 230;
         return (
           <g key={f.title}>
             <rect x={x} y="540" width="48" height="48" rx="14" fill={f.tint} />
