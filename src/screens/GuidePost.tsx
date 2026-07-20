@@ -118,7 +118,7 @@ const posts: Post[] = [
   },
   {
     slug: "ai-listing-generator-from-raw-data",
-    title: "From a messy CSV to a Flipkart listing in four minutes — with AI",
+    title: "From a messy CSV to a fnac listing in four minutes — with AI",
     category: "AI",
     readTime: "5 min read",
     date: "Mar 20, 2026",
@@ -128,7 +128,7 @@ const posts: Post[] = [
     Visual: AIPipelineDiagram,
     sections: [
       { h: "It starts with whatever you have", p: ["A CSV. A photo. A supplier brief. A messy Google Doc. We embed the inputs, classify the product against each Marketplace's category tree, and pick the writing template that matches."] },
-      { h: "Channel-perfect, not generic", p: ["Amazon wants benefit-led bullets and rich backend keywords. eBay wants long-form descriptions with HTML. Flipkart wants short, punchy attributes. The model writes once, then re-shapes for each channel."] },
+      { h: "Channel-perfect, not generic", p: ["Amazon wants benefit-led bullets and rich backend keywords. eBay wants long-form descriptions with HTML. fnac wants short, punchy attributes. The model writes once, then re-shapes for each channel."] },
       { h: "Human in the loop, not human in the way", p: ["Anything below a confidence threshold goes to a reviewer; anything above is auto-published. The result: 92% of listings ship without a human touching them — and the 8% that do are exactly the ones worth a human's time."] },
     ],
   },

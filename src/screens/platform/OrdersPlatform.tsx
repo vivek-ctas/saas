@@ -8,7 +8,7 @@ const cfg: PlatformConfig = {
   eyebrow: "Order hub",
   title: "Every marketplace order. One inbox. Zero tab-juggling.",
   intro:
-    "Amazon, Walmart, eBay, Etsy and Flipkart orders land in a single, unified inbox — with status writebacks to every channel and bulk actions that just work.",
+    "Amazon, Walmart, eBay, Etsy and more orders land in a single, unified inbox — with status writebacks to every channel and bulk actions that just work.",
   hero: (
     <DashListVisual
       id="orders-hero"
@@ -27,7 +27,7 @@ const cfg: PlatformConfig = {
     title: "Five dashboards. Five workflows. Five ways to miss an order.",
     points: [
       "Ops team switches tabs all day",
-      "Missed SLAs on Flipkart and Walmart",
+      "Missed SLAs on Amazon and Walmart",
       "Cancellations and returns handled differently everywhere",
       "No unified view of what shipped today",
     ],
@@ -86,7 +86,7 @@ const cfg: PlatformConfig = {
           leftNodes={[
             { label: "Amazon order", sub: "US · East", dot: "#f59e0b", logo: "/logos/amazon-color-svgrepo-com.svg" },
             { label: "Walmart order", sub: "IN · Blr", dot: "#1d4ed8", logo: "/logos/walmart.png" },
-            { label: "eBay order", sub: "EU · NL", dot: "#ef4444", logo: "/logos/ebay-svgrepo-com.svg" },
+            { label: "eBay order", sub: "EU · NL", dot: "#ef4444", logo: "/logos/EBay_logo.svg.webp" },
           ]
           }
           rightNodes={
@@ -116,7 +116,7 @@ const cfg: PlatformConfig = {
             { label: "Pick list generated", detail: "128 orders · 4 warehouses", state: "done" },
             { label: "Bulk labels printed", detail: "UPS · USPS · Delhivery · DHL", state: "done" },
             { label: "Marked shipped", detail: "Tracking numbers attached", state: "active" },
-            { label: "Writeback to marketplace", detail: "Amazon · Walmart · eBay · Etsy · Flipkart", state: "queued" },
+            { label: "Writeback to marketplace", detail: "Amazon · Walmart · eBay · Etsy · fnac", state: "queued" },
             { label: "Closed", detail: "Buyer notified via marketplace", state: "queued" },
           ]}
         />
@@ -131,7 +131,7 @@ const cfg: PlatformConfig = {
     { icon: ShieldCheck, t: "SLA guardrails", d: "Countdowns and priority flags so nothing slips past dispatch." },
     { icon: BarChart3, t: "Fulfilment analytics", d: "On-time rate, cancellation rate and return rate by channel." },
   ],
-  channels: ["Amazon", "Walmart", "eBay", "Etsy", "Flipkart"],
+  channels: ["Amazon", "Walmart", "eBay", "Etsy", "fnac"],
   faq: [
     { q: "Does it print shipping labels?", a: "Yes — integrated with major carriers. Bulk-print across marketplaces." },
     { q: "How are returns handled?", a: "Return events sync into the inbox with the original order attached." },

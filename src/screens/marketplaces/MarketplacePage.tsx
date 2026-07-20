@@ -132,7 +132,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
               <Badge className="mb-3 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">Live in minutes</Badge>
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900">Four steps to sync your {cfg.name} store.</h2>
             </div>
-            <div className="reveal ">
+            <div className="reveal max-w-6xl mx-auto">
               <OnboardingDiagram className="w-full h-auto" />
             </div>
           </div>

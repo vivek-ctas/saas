@@ -75,7 +75,7 @@ const cfg: PlatformConfig = {
     title: "Writing 5 versions of the same listing kills throughput.",
     points: [
       "Amazon wants bullet-first, eBay wants 80-char titles",
-      "Etsy needs warmth, Flipkart needs specs",
+      "Etsy needs warmth, fnac needs specs",
       "New SKUs take an afternoon each",
       "Old listings decay without regenerate loops",
     ],
@@ -93,9 +93,9 @@ const cfg: PlatformConfig = {
     {
       eyebrow: "Generate per channel",
       title: "One product in. Five channel-native listings out.",
-      desc: "Give SellerBuz a photo and a few specs. It writes an Amazon bullet-first listing, an eBay 80-char title, an Etsy warm description and a Flipkart spec block — all optimized for that channel's search algorithm.",
+      desc: "Give SellerBuz a photo and a few specs. It writes an Amazon bullet-first listing, an eBay 80-char title, an Etsy warm description and a fnac spec block — all optimized for that channel's search algorithm.",
       bullets: [
-        "Amazon, Walmart, eBay, Etsy and Flipkart tone presets",
+        "Amazon, Walmart, eBay, Etsy and more. Save tone presets",
         "Per-channel title length, keyword density and formatting",
         "Save brand voice presets per storefront",
         "Human review before publish — nothing goes live silently",
@@ -167,7 +167,7 @@ const cfg: PlatformConfig = {
       title: "Vision models read the photo, fill the category attributes.",
       desc: "Category attributes are the tax nobody wants to pay. SellerBuz reads product images plus your uploaded spec sheet and fills the required attributes for each marketplace's category schema.",
       bullets: [
-        "Auto-fill Amazon, Walmart and Flipkart category attributes",
+        "Auto-fill Amazon, Walmart and eBay category attributes",
         "Extract color, size, material, weight from images",
         "Match against existing retail catalog to save effort",
         "Confidence score per attribute — low-confidence flagged for review",
@@ -203,7 +203,7 @@ const cfg: PlatformConfig = {
           title="Bulk regenerate · Q3 refresh"
           cols={["Amazon", "Walmart", "eBay", "Etsy"]}
           rows={["Home", "Kitchen", "Outdoor"]}
-          colLogos={{ Amazon: "/logos/amazon-color-svgrepo-com.svg", Walmart: "/logos/walmart.png", eBay: "/logos/ebay-svgrepo-com.svg", Etsy: "/logos/etsy-svgrepo-com.svg" }}
+          colLogos={{ Amazon: "/logos/amazon-color-svgrepo-com.svg", Walmart: "/logos/walmart.png", eBay: "/logos/EBay_logo.svg.webp", Etsy: "/logos/etsy-svgrepo-com.svg" }}
           cellFor={(r, c) => {
             const done = (r + c) % 3 !== 0;
 
@@ -239,7 +239,7 @@ const cfg: PlatformConfig = {
     { icon: Upload, t: "Bulk regenerate", d: "Refresh entire categories with new tone or SEO focus." },
     { icon: BarChart3, t: "Content scoring", d: "Track listing quality score per SKU and per channel." },
   ],
-  channels: ["Amazon", "Walmart", "eBay", "Etsy", "Flipkart"],
+  channels: ["Amazon", "Walmart", "eBay", "Etsy", "fnac"],
   faq: [
     { q: "Do I have to accept AI drafts as-is?", a: "No. Every generation is a draft — review, edit, then publish." },
     { q: "What LLM powers this?", a: "SellerBuz uses fine-tuned models optimized per marketplace, updated regularly." },

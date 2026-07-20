@@ -38,7 +38,7 @@ const cfg: PlatformConfig = {
     title: "A repricer that respects your margin.",
     points: [
       "Buy Box tracking on Amazon",
-      "Competitor-aware rules on Walmart, eBay, Flipkart",
+      "Competitor-aware rules on Walmart, eBay, fnac",
       "Hard floor and ceiling per SKU — no exceptions",
       "Schedule promo pricing without touching listings",
     ],
@@ -50,7 +50,7 @@ const cfg: PlatformConfig = {
       desc: "SellerBuz watches Buy Box events in real time. When you lose it, we test the smallest price move that gets it back — without ever crossing your floor.",
       bullets: [
         "Sub-2-second reaction to Amazon Buy Box events",
-        "Sub-30-second competitor scan on Walmart, eBay, Flipkart",
+        "Sub-30-second competitor scan on Walmart, eBay, fnac",
         "Smallest-effective-move algorithm to protect margin",
         "Buy Box win rate, price velocity and margin trend per SKU",
       ],
@@ -86,7 +86,7 @@ const cfg: PlatformConfig = {
           title="Strategy matrix · by channel"
           cols={["Amazon", "Walmart", "eBay", "Etsy"]}
           rows={["Home", "Kitchen", "Outdoor"]}
-          colLogos={{ Amazon: "/logos/amazon-color-svgrepo-com.svg", Walmart: "/logos/walmart.png", eBay: "/logos/ebay-svgrepo-com.svg", Etsy: "/logos/etsy-svgrepo-com.svg" }}
+          colLogos={{ Amazon: "/logos/amazon-color-svgrepo-com.svg", Walmart: "/logos/walmart.png", eBay: "/logos/EBay_logo.svg.webp", Etsy: "/logos/etsy-svgrepo-com.svg" }}
           cellFor={(r, c) => {
             const strats = ["Buy Box", "Match", "Margin", "Beat 1¢"];
             const tones = ["#dbeafe", "#d1fae5", "#fef3c7", "#e0e7ff"];
@@ -128,7 +128,7 @@ const cfg: PlatformConfig = {
           columns={["Promo", "Channel", "Window", "Floor"]}
           rows={[
             { cells: ["Prime Day", { dot: "#f59e0b", text: "Amazon" }, "Jul 15 · 48h", "$18.50"], badge: { text: "Armed", tone: "emerald" } },
-            { cells: ["Big Sale", { dot: "#1d4ed8", text: "Flipkart" }, "Aug 3 · 72h", "₹399"], badge: { text: "Armed", tone: "emerald" } },
+            { cells: ["Big Sale", { dot: "#1d4ed8", text: "fnac" }, "Aug 3 · 72h", "₹399"], badge: { text: "Armed", tone: "emerald" } },
             { cells: ["Deals Days", { dot: "#2563eb", text: "Walmart" }, "Aug 12 · 48h", "$18.90"], badge: { text: "Draft", tone: "muted" } },
             { cells: ["BFCM", { dot: "#f59e0b", text: "Amazon" }, "Nov 24 · 96h", "$17.90"], badge: { text: "Draft", tone: "muted" } },
           ]}
@@ -144,7 +144,7 @@ const cfg: PlatformConfig = {
     { icon: Sparkles, t: "Promo scheduler", d: "Time-boxed sale prices with automatic revert." },
     { icon: BarChart3, t: "Buy Box analytics", d: "Win rate, price velocity and margin trend per SKU." },
   ],
-  channels: ["Amazon", "Walmart", "eBay", "Etsy", "Flipkart"],
+  channels: ["Amazon", "Walmart", "eBay", "Etsy", "fnac"],
   faq: [
     { q: "How fast does the repricer react?", a: "Under 2 seconds for Amazon Buy Box events. Sub-30 seconds for competitor scans on other channels." },
     { q: "Will it violate marketplace pricing policies?", a: "No. Guardrails and marketplace rules are respected." },

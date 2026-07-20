@@ -62,7 +62,7 @@ const posts = [
   },
   {
     slug: "ai-listing-generator-from-raw-data",
-    title: "From a messy CSV to a Flipkart listing in four minutes — with AI",
+    title: "From a messy CSV to a fnac listing in four minutes — with AI",
     excerpt: "How our AI listing generator turns raw product data into channel-perfect listings.",
     category: "AI",
     icon: Sparkles,

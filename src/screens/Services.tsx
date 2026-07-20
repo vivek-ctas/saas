@@ -35,7 +35,7 @@ const Services = () => {
     {
       eyebrow: "Core platform",
       title: "Centralized inventory & pricing — one source of truth.",
-      desc: "Manage stock levels and pricing from one unified dashboard. Every update reflects instantly across Amazon, Walmart, eBay, Etsy and Flipkart, so you never oversell or misprice a listing again.",
+      desc: "Manage stock levels and pricing from one unified dashboard. Every update reflects instantly across Amazon, Walmart, eBay, Etsy and fnac, so you never oversell or misprice a listing again.",
       bullets: [
         "Single dashboard for stock and price",
         "Instant propagation to every connected channel",
@@ -68,7 +68,7 @@ const Services = () => {
             { ch: "Walmart", dot: "#2563eb", sku: "SKU-11024", qty: 1, price: "$24.00", state: "Picked" },
             { ch: "eBay", dot: "#ef4444", sku: "SKU-98220", qty: 3, price: "$147.00", state: "New" },
             { ch: "Etsy", dot: "#ea580c", sku: "SKU-33012", qty: 1, price: "$18.50", state: "Ready to ship" },
-            { ch: "Flipkart", dot: "#1d4ed8", sku: "SKU-70001", qty: 4, price: "₹4,120", state: "New" },
+            { ch: "fnac", dot: "#1d4ed8", sku: "SKU-70001", qty: 4, price: "₹4,120", state: "New" },
           ].map((o, i) => (
             <div key={i} className="grid grid-cols-12 items-center py-2.5 border-t border-slate-100 text-sm">
               <div className="col-span-3 flex items-center gap-2">
@@ -159,7 +159,7 @@ const Services = () => {
       desc: "Automatically adjust pricing based on competition, rules and market conditions — all managed from the same place as inventory. Buy Box aware for Amazon, competitor aware for the rest, with floor and ceiling guardrails per SKU.",
       bullets: [
         "Buy Box tracking on Amazon",
-        "Competitor-aware rules on Walmart, eBay, Flipkart",
+        "Competitor-aware rules on Walmart, eBay, fnac",
         "Per-SKU floor and ceiling",
         "Schedule-based promotional pricing",
       ],
@@ -190,7 +190,7 @@ const Services = () => {
         "Reusable A+ modules and templates",
         "Version history per asset",
         "Per-brand and per-channel folders",
-        "Direct push to Amazon, Walmart and Flipkart",
+        "Direct push to Amazon, Walmart and fnac",
       ],
       icon: ImageIcon,
       visual: <AssetLibraryMockup className="w-full h-auto" />,
@@ -231,7 +231,7 @@ const Services = () => {
             {[
               { l: "Validate rows", v: "12,480 / 12,480", ok: true },
               { l: "Detect conflicts", v: "0 blocking, 3 warnings", ok: true },
-              { l: "Publish to channels", v: "Amazon · Walmart · eBay · Etsy · Flipkart", ok: true },
+              { l: "Publish to channels", v: "Amazon · Walmart · eBay · Etsy · fnac", ok: true },
             ].map((s) => (
               <div key={s.l} className="flex items-center gap-3 p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -304,7 +304,7 @@ const Services = () => {
           <div className="relative px-[50px] lg:px-[70px] text-center">
             <Sparkles className="w-12 h-12 mx-auto text-blue-200 mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Ready to see it running on your channels?</h2>
-            <p className="text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">Connect Amazon, Walmart, eBay, Etsy and Flipkart in minutes.</p>
+            <p className="text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">Connect Amazon, Walmart, eBay, Etsy and fnac in minutes.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 rounded-full px-8 h-12 border-0 shadow-lg">
                 Start free trial <ArrowRight className="w-4 h-4 ml-1.5" />

@@ -5,6 +5,12 @@ import {
   Check, X, Sparkles, ArrowRight, Quote, Star, Loader2, AlertCircle,
   Clock,
   CheckCircle2,
+  RefreshCw,
+  BarChart2,
+  ShieldCheck,
+  BookOpen,
+  Headphones,
+  Zap,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -51,7 +57,7 @@ const ADDONS = [
   },
   {
     title: 'AI listing generator',
-    desc: "Got a spreadsheet of products? Paste it in. Our AI writes complete Amazon, eBay and Flipkart listings — titles, bullets, search terms, even translations — formatted exactly to each Marketplace's rules so you stop getting suppressed listings.",
+    desc: "Got a spreadsheet of products? Paste it in. Our AI writes complete Amazon, eBay and fnac listings — titles, bullets, search terms, even translations — formatted exactly to each Marketplace's rules so you stop getting suppressed listings.",
   },
   {
     title: 'A+ content managed in S3',
@@ -68,6 +74,52 @@ const ADDONS = [
   {
     title: 'Centralized catalog + FBA/FBM',
     desc: 'One golden record per SKU, mapped to every channel. Hybrid fulfillment routing decides whether to ship from FBA, your own warehouse or a 3PL — based on cost, speed and stock levels.',
+  },
+];
+
+// Static data: every plan includes these — easy to hydrate from backend later
+const PLAN_PERKS = [
+  {
+    icon: RefreshCw,
+    title: 'Order synchronization',
+    desc: 'Sync orders in real-time across all channels',
+    color: 'text-blue-600',
+    bg: 'bg-blue-50',
+  },
+  {
+    icon: BarChart2,
+    title: 'Analytics dashboard',
+    desc: 'Insightful reports to grow your business',
+    color: 'text-indigo-600',
+    bg: 'bg-indigo-50',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Secure & reliable',
+    desc: 'Bank-level security and 99.9% uptime',
+    color: 'text-emerald-600',
+    bg: 'bg-emerald-50',
+  },
+  {
+    icon: Zap,
+    title: 'AI-powered repricing',
+    desc: 'Auto-adjust prices to win the Buy Box 24/7',
+    color: 'text-amber-600',
+    bg: 'bg-amber-50',
+  },
+  {
+    icon: BookOpen,
+    title: 'Guides & resources',
+    desc: 'Step-by-step guides and best practices',
+    color: 'text-teal-600',
+    bg: 'bg-teal-50',
+  },
+  {
+    icon: Headphones,
+    title: 'Multi-channel support',
+    desc: 'Email, chat and priority support options',
+    color: 'text-violet-600',
+    bg: 'bg-violet-50',
   },
 ];
 
@@ -308,43 +360,33 @@ const Pricing = () => {
           </div>
         </section>
 
-        {/* ── COMPARISON TABLE ────────────────────────────────────────────────── */}
-        <section className="py-24 bg-blue-50/40" id='comparison'>
+        {/* ── PLAN PERKS BANNER ───────────────────────────────────────────────── */}
+        <section className="py-12 bg-slate-50 border-y border-slate-100">
           <div className="px-[50px] lg:px-[70px]">
-            <div className="text-center mb-12 reveal">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Plan comparison</Badge>
-              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Compare every feature</h2>
-              <p className="text-xl lg:text-2xl text-slate-600">All the details, side by side.</p>
-            </div>
-            <div className="reveal rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-md">
-              <table className="w-full text-left">
-                <thead className="bg-slate-50">
-                  <tr>
-                    <th className="p-5 text-sm font-semibold text-slate-600">Feature</th>
-                    <th className="p-5 text-center text-sm font-semibold text-slate-600">Starter</th>
-                    <th className="p-5 text-center text-sm font-semibold text-blue-600 bg-blue-50/60">Pro</th>
-                    <th className="p-5 text-center text-sm font-semibold text-slate-600">Enterprise</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {COMPARE.map(([feat, ...vals], i) => (
-                    <tr key={i} className="border-t border-slate-100">
-                      <td className="p-5 font-medium text-slate-800">{feat as string}</td>
-                      {vals.map((v, j) => (
-                        <td key={j} className={`p-5 text-center ${j === 1 ? 'bg-blue-50/40' : ''}`}>
-                          {typeof v === 'boolean' ? (
-                            v
-                              ? <Check className="w-5 h-5 text-blue-600 mx-auto" />
-                              : <X className="w-5 h-5 text-slate-300 mx-auto" />
-                          ) : (
-                            <span className="font-semibold text-slate-700">{v}</span>
-                          )}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            {/* Heading */}
+            <p className="text-center text-lg font-semibold text-slate-700 mb-8">
+              Everything included in every plan
+            </p>
+
+            {/* Perk cards */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+              {PLAN_PERKS.map((perk, i) => {
+                const Icon = perk.icon;
+                return (
+                  <div
+                    key={i}
+                    className="flex flex-col items-center text-center gap-3 p-4 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-100 transition-all"
+                  >
+                    <span className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${perk.bg}`}>
+                      <Icon className={`w-5 h-5 ${perk.color}`} />
+                    </span>
+                    <div>
+                      <p className="font-semibold text-slate-800 text-sm leading-snug">{perk.title}</p>
+                      <p className="text-xs text-slate-500 mt-1 leading-snug">{perk.desc}</p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>

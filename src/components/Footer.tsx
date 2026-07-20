@@ -62,9 +62,9 @@ const footerLinkGroups: FooterLinkGroup[] = [
       { name: "Guides", href: "/guide" },
       { name: "About Us", href: "/about" },
       { name: "Pricing", href: "/pricing" },
+      { name: "Contact Us", href: "/contact" },
       { name: "Terms & Conditions", href: "/terms" },
       { name: "Privacy Policy", href: "/privacy" },
-      { name: "Contact Us", href: "/contact" },
     ],
   },
   {

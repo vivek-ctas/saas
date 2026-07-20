@@ -252,7 +252,7 @@ const Infrastructure = () => {
               {[
                 {
                   icon: Workflow, title: "AI listing generator",
-                  desc: "Drop your raw product data — a CSV, a brief, even a phone photo — and our AI writes channel-perfect listings for Amazon, eBay and Flipkart. Titles, bullets, search terms and backend keywords are tuned to each Marketplace's ranking rules so listings actually surface to buyers, not just sit in your catalog.",
+                  desc: "Drop your raw product data — a CSV, a brief, even a phone photo — and our AI writes channel-perfect listings for Amazon, eBay and fnac. Titles, bullets, search terms and backend keywords are tuned to each Marketplace's ranking rules so listings actually surface to buyers, not just sit in your catalog.",
                   tone: "from-primary to-indigo-600",
                 },
                 {

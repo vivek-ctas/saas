@@ -15,7 +15,7 @@ const platformLinks = [
 const marketplaceLinks = [
   { name: "Amazon", href: "/marketplaces/amazon", dot: "#f59e0b", logo: "/logos/amazon-color-svgrepo-com.svg" },
   { name: "Walmart", href: "/marketplaces/walmart", dot: "#2563eb", logo: "/logos/walmart.png" },
-  { name: "eBay", href: "/marketplaces/ebay", dot: "#0ea5e9", logo: "/logos/ebay-svgrepo-com.svg" },
+  { name: "eBay", href: "/marketplaces/ebay", dot: "#0ea5e9", logo: "/logos/EBay_logo.svg.webp" },
   { name: "Etsy", href: "/marketplaces/etsy", dot: "#ea580c", logo: "/logos/etsy-svgrepo-com.svg" },
 ];
 

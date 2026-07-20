@@ -264,7 +264,7 @@ const About = () => {
               </p>
               <ul className="space-y-3 mb-6">
                 {[
-                  "AI listing generator — turns raw product data into channel-perfect Amazon, eBay & Flipkart listings",
+                  "AI listing generator — turns raw product data into channel-perfect Amazon, eBay & fnac listings",
                   "Auto-repricer with your own min/max margin rules (Premium)",
                   "A+ content managed as versioned S3 objects, one-click push to Amazon",
                   "Customer purchase-behaviour analytics powered by BigQuery & Power BI",

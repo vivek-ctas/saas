@@ -8,7 +8,7 @@ const cfg: PlatformConfig = {
   eyebrow: "Inventory sync",
   title: "One stock number. Every channel. Always accurate.",
   intro:
-    "Stop reconciling spreadsheets at 2 a.m. SellerBuz keeps stock levels in perfect sync across Amazon, Walmart, eBay, Etsy and Flipkart — with sub-2-second propagation and zero oversells.",
+    "Stop reconciling spreadsheets at 2 a.m. SellerBuz keeps stock levels in perfect sync across Amazon, Walmart, eBay, Etsy and fnac — with sub-2-second propagation and zero oversells.",
   hero: (
     <FlowVisual
       id="inv-hero"
@@ -17,14 +17,14 @@ const cfg: PlatformConfig = {
       hubLatency="latency < 2s"
       leftNodes={[
         { label: "Warehouse", sub: "1,240 on hand", dot: "#0ea5e9", logo: "/logos/warehouse-svgrepo-com.svg" },
-        { label: "3PL / FBA", sub: "428 units", dot: "#6366f1", logo: "/logos/fba.svg" },
+        { label: "3PL / FBA", sub: "428 units", dot: "#6366f1", logo: "/logos/fba.webp" },
       ]}
       rightNodes={[
         { label: "Amazon", sub: "Stock: 1,240", dot: "#f59e0b", logo: "/logos/amazon-color-svgrepo-com.svg" },
         {
           label: "Walmart", sub: "Stock: 1,240", dot: "#2563eb", logo: "/logos/walmart.png"
         },
-        { label: "eBay", sub: "Stock: 1,240", dot: "#ef4444", logo: "/logos/ebay-svgrepo-com.svg" },
+        { label: "eBay", sub: "Stock: 1,240", dot: "#ef4444", logo: "/logos/EBay_logo.svg.webp" },
       ]}
     />
   ),
@@ -50,7 +50,7 @@ const cfg: PlatformConfig = {
     {
       eyebrow: "Real-time sync",
       title: "One stock number. Fanned out to every channel in under 2 seconds.",
-      desc: "SellerBuz sits between your warehouse and every marketplace. When stock moves, we push the new number to Amazon, Walmart, eBay, Etsy and Flipkart in parallel — with automatic retries and full audit history.",
+      desc: "SellerBuz sits between your warehouse and every marketplace. When stock moves, we push the new number to Amazon, Walmart, eBay, Etsy and fnac in parallel — with automatic retries and full audit history.",
       bullets: [
         "Sub-2-second propagation via native marketplace APIs",
         "Parallel writes — one slow channel doesn't block the others",
@@ -72,8 +72,8 @@ const cfg: PlatformConfig = {
           rightNodes={[
             { label: "Amazon", sub: "1,240 units", dot: "#f59e0b", logo: '/logos/amazon-color-svgrepo-com.svg' },
             { label: "Walmart", sub: "1,240 units", dot: "#2563eb", logo: "/logos/walmart.png" },
-            { label: "eBay", sub: "1,240 units", dot: "#ef4444", logo: "/logos/ebay-svgrepo-com.svg" },
-            { label: "Etsy · Flipkart", sub: "1,240 units", dot: "#ea580c", logo: "/logos/etsy-svgrepo-com.svg" },
+            { label: "eBay", sub: "1,240 units", dot: "#ef4444", logo: "/logos/EBay_logo.svg.webp" },
+            { label: "Etsy · fnac", sub: "1,240 units", dot: "#ea580c", logo: "/logos/etsy-svgrepo-com.svg" },
           ]}
         />
       ),
@@ -123,7 +123,7 @@ const cfg: PlatformConfig = {
             { label: "Days cover", value: "19.8", delta: "healthy", icon: "calendar" },
           ]}
           series={[85, 82, 78, 74, 70, 66, 60, 55, 50, 46, 42, 40]}
-          compareSeries={[80, 78, 74, 70, 66, 62, 58, 54, 50, 47, 44, 42]}
+          compareSeries={[75, 72, 68, 64, 60, 56, 50, 44, 40, 36, 32, 30]}
           floorLabel="Reorder at 20"
           pill={{ label: "Guardrails ON", tone: "emerald" }}
         />
@@ -138,7 +138,7 @@ const cfg: PlatformConfig = {
     { icon: ShieldCheck, t: "Guardrails", d: "Buffer stock, safety thresholds and low-stock alerts per channel." },
     { icon: BarChart3, t: "Movement analytics", d: "Sell-through, days-of-cover and reorder recommendations." },
   ],
-  channels: ["Amazon", "Walmart", "eBay", "Etsy", "Flipkart"],
+  channels: ["Amazon", "Walmart", "eBay", "Etsy", "fnac"],
   faq: [
     { q: "How fast is 'real-time'?", a: "Most updates propagate in under 2 seconds, subject to marketplace API rate limits." },
     { q: "Can I hold buffer stock per channel?", a: "Yes — set per-channel buffers globally or per-SKU." },

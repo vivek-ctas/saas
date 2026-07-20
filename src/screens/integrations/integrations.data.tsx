@@ -187,13 +187,13 @@ export const INTEGRATIONS: Integration[] = [
     ],
   },
   {
-    slug: "flipkart-integration",
-    name: "Flipkart",
+    slug: "fnac-integration",
+    name: "fnac",
     region: "India · F-Assured + Smart Fulfilment",
     category: "Asia-Pacific",
     tone: "from-blue-600 to-indigo-600",
     icon: Globe,
-    tagline: "Sell on Flipkart with hyperscale-grade tooling.",
+    tagline: "Sell on fnac with hyperscale-grade tooling.",
     description:
       "Listings, pricing, F-Assured eligibility and Smart Fulfilment inbound — automated. Big Billion Day-ready inventory holds and surge protection built-in.",
     hero: MarketplaceConnectorIllustration,

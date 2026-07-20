@@ -388,7 +388,7 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
     {[
       { y: 70, name: "Amazon", logo: "/logos/amazon-color-svgrepo-com.svg" },
       { y: 145, name: "Walmart", logo: "/logos/walmart.png" },
-      { y: 220, name: "eBay", logo: "/logos/ebay-svgrepo-com.svg" },
+      { y: 220, name: "eBay", logo: "/logos/EBay_logo.svg.webp" },
       { y: 295, name: "Etsy", logo: "/logos/etsy-svgrepo-com.svg" },
     ].map((c) => (
       <g key={c.name} filter="url(#hd-sh)">
@@ -888,7 +888,7 @@ export const WorkflowIllustration = (props: SVGProps<SVGSVGElement>) => (
       fill="#64748b"
       fontWeight="600"
     >
-      Unified across Amazon · Flipkart · Meesho · Walmart · Shopify
+      Unified across Amazon · fnac · bol · Walmart · Shopify
     </text>
   </svg >
 );
@@ -974,7 +974,7 @@ export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => {
     trendUp: (
       <g fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 16l6-6 4 4 8-9" />
-        <path d="M15 2h6v6" />
+        <path d="M16 6H21V11" />
       </g>
     ),
     barChart: (
@@ -1021,7 +1021,7 @@ export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => {
   const TILE_YS = [90, 220, 350];
   const TILE_SIZE = 64;
 
-  const OUT_X = 430;
+  const OUT_X = 450;
   const OUT_W = 170;
   const OUT_H = 70;
   const OUT_YS = [100, 220, 340];
@@ -1084,7 +1084,9 @@ export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => {
       {TILE_YS.map((ty, j) => {
         const y0 = ty + TILE_SIZE / 2;
         const y1 = OUT_YS[j] + OUT_H / 2;
-        const d = `M${AI_X + AI_W + 6} ${y0} C ${AI_X + AI_W + 60} ${y0}, ${OUT_X - 60} ${y1}, ${OUT_X} ${y1}`;
+        const startX = AI_X + AI_W + 6;
+
+        const d = `M${startX} ${y0} C ${startX + 20} ${y0}, ${OUT_X - 20} ${y1}, ${OUT_X} ${y1}`;
         return (
           <g key={`out-${j}`}>
             <path
@@ -1613,7 +1615,7 @@ export const RepricerIllustration = (props: SVGProps<SVGSVGElement>) => (
     <text x="290" y="172" textAnchor="middle" fontSize="13" fontWeight="800" fill="#0f172a">$24.90 · winning Buy Box</text>
     <text x="290" y="190" textAnchor="middle" fontSize="11" fill="#64748b">Adjusts every 60s based on margin &amp; competitor signals</text>
     {/* Marketplace pills */}
-    {["Amazon", "Flipkart", "eBay", "Walmart"].map((m, i) => (
+    {["Amazon", "fnac", "eBay", "Walmart"].map((m, i) => (
       <g key={m}>
         <rect x={40 + i * 130} y="220" width="110" height="28" rx="14" fill="#f8fafc" stroke="#e2e8f0" />
         <text x={95 + i * 130} y="238" textAnchor="middle" fontSize="11" fontWeight="700" fill="#475569">{m}</text>
@@ -2384,14 +2386,14 @@ export const MarketplaceMeshDiagram = (props: SVGProps<SVGSVGElement>) => {
     return name.toLowerCase().replace(/[^a-z0-9]/g, "");
   }
   const channels: Channel[] = [
-    { a: -90, l: "Amazon", c: "#f59e0b", bg: "#fffbeb", logo: "/logos/amazon-color-svgrepo-com.svg" },
-    { a: -45, l: "Walmart", c: "#1d4ed8", bg: "#eff6ff", logo: "/logos/walmart.png" },
-    { a: 0, l: "eBay", c: "#ef4444", bg: "#fef2f2", logo: "/logos/ebay-svgrepo-com.svg" },
-    { a: 45, l: "Shopify", c: "#059669", bg: "#ecfdf5", logo: "/logos/shopify-color-svgrepo-com.svg" },
-    { a: 90, l: "Etsy", c: "#ea580c", bg: "#fff7ed", logo: "/logos/etsy-svgrepo-com.svg" },
-    { a: 135, l: "Lazada", c: "#0ea5e9", bg: "#f0f9ff", logo: "/logos/lazada-svgrepo-com.svg" },
-    { a: 180, l: "Allegro", c: "#7c3aed", bg: "#f5f3ff", logo: "/logos/allegro-svgrepo-com.svg" },
-    { a: 225, l: "Bol.com", c: "#2563eb", bg: "#eff6ff", logo: "/logos/bol-svgrepo-com.svg" },
+    { a: -90, l: "Amazon", c: "#F59E0B", bg: "#FFF7E6", logo: "/logos/amazon-color-svgrepo-com.svg" },
+    { a: -45, l: "Walmart", c: "#2563EB", bg: "#EFF6FF", logo: "/logos/walmart.png" },
+    { a: 0, l: "eBay", c: "#FF1744", bg: "#FFF1F3", logo: "/logos/EBay_logo.svg.webp" },
+    { a: 45, l: "Shopify", c: "#16A34A", bg: "#ECFDF5", logo: "/logos/shopify-color-svgrepo-com.svg" },
+    { a: 90, l: "Etsy", c: "#F4511E", bg: "#FFF7ED", logo: "/logos/etsy-svgrepo-com.svg" },
+    { a: 135, l: "fnac", c: "#F59E0B", bg: "#FFFBEA", logo: "/logos/fnac.png" },
+    { a: 180, l: "Allegro", c: "#A855F7", bg: "#FAF5FF", logo: "/logos/allegro.png" },
+    { a: 225, l: "Bol.com", c: "#4338CA", bg: "#EEF2FF", logo: "/logos/bol.png" },
   ];
 
   const cx = 380;
@@ -2987,7 +2989,7 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
     { label: "INGEST", title: "Raw product CSV", sub: "Photos · brief · specs", hdr: "#2563eb", border: "#bfdbfe", cls: "ap-stage-0" },
     { label: "EMBED", title: "Vector + tags", sub: "OpenAI · category model", hdr: "#1d4ed8", border: "#bfdbfe", cls: "ap-stage-1" },
     { label: "GENERATE", title: "Per-channel listing", sub: "Title · bullets · keywords", hdr: "#1e40af", border: "#bfdbfe", cls: "ap-stage-2" },
-    { label: "PUBLISH", title: "Push to live", sub: "Amazon · eBay · Flipkart", hdr: "#1e3a8a", border: "#bfdbfe", cls: "ap-stage-3" },
+    { label: "PUBLISH", title: "Push to live", sub: "Amazon · eBay · fnac", hdr: "#1e3a8a", border: "#bfdbfe", cls: "ap-stage-3" },
   ];
 
   return (
@@ -3746,7 +3748,7 @@ export const GuideEditorialMockup = (props: SVGProps<SVGSVGElement>) => (
       { y: 50, t: "Algorithmic vs rule-based repricing", c: "Strategy", k: "8 min" },
       { y: 160, t: "Walmart Buy Box: a different game", c: "Walmart", k: "9 min" },
       { y: 270, t: "5 analytics that actually move revenue", c: "Analytics", k: "7 min" },
-      { y: 380, t: "From CSV to Flipkart in 4 minutes", c: "AI", k: "5 min" },
+      { y: 380, t: "From CSV to fnac in 4 minutes", c: "AI", k: "5 min" },
     ].map((p, i) => (
       <g key={i} filter="url(#be-shadow)">
         <rect x="350" y={p.y} width="320" height="92" rx="14" fill="white" stroke="#e2e8f0" />
@@ -6296,7 +6298,7 @@ export const InventorySyncSVG = (props: SVGProps<SVGSVGElement>) => (
     {/* eBay */}
     <g filter="url(#sync-shadow)">
       <rect x="30" y="292" width="185" height="68" rx="14" fill="white" />
-      <image href="/logos/ebay-svgrepo-com.svg" x="48" y="308" width="36" height="36" preserveAspectRatio="xMidYMid meet" />
+      <image href="/logos/EBay_logo.svg.webp" x="48" y="308" width="36" height="36" preserveAspectRatio="xMidYMid meet" />
       <text x="96" y="323" fontFamily="Inter,system-ui" fontSize="14" fontWeight="700" fill="#0f172a">eBay</text>
       <text x="96" y="343" fontFamily="Inter,system-ui" fontSize="12" fill="#64748b">Stock: 1,240</text>
     </g>
@@ -6462,7 +6464,7 @@ export const RepricerSVG = (props: SVGProps<SVGSVGElement>) => {
     trendUp: (
       <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 16l6-6 4 4 8-9" />
-        <path d="M15 2h6v6" />
+        <path d="M16 6H21V11" />
       </g>
     ),
   };
@@ -6545,22 +6547,24 @@ export const RepricerSVG = (props: SVGProps<SVGSVGElement>) => {
       ))}
 
       {/* Chart card */}
-      <rect x="50" y="310" width="900" height="210" rx="16" fill="white" stroke="#ECEFF7" />
+      < rect x="50" y="310" width="900" height="210" rx="16" fill="white" stroke="#ECEFF7" />
 
       {/* Legend */}
-      <line x1="80" y1="346" x2="115" y2="346" stroke="#3B4CD8" strokeWidth="3" strokeLinecap="round" />
+      < line x1="80" y1="346" x2="115" y2="346" stroke="#3B4CD8" strokeWidth="3" strokeLinecap="round" />
       <text x="124" y="351" fontSize="14" fill="#0F172A">Your Price</text>
       <line x1="242" y1="346" x2="277" y2="346" stroke="#93C5FD" strokeWidth="2.4" strokeDasharray="5 4" strokeLinecap="round" />
       <text x="286" y="351" fontSize="14" fill="#0F172A">Competitor Price</text>
 
       {/* Gridlines under each date */}
-      {DATES.map((_, i) => {
-        const x = CHART_X0 + (i / (DATES.length - 1)) * (CHART_X1 - CHART_X0);
-        return <line key={i} x1={x} y1={CHART_TOP - 10} x2={x} y2={CHART_BOTTOM + 10} stroke="#F1F5F9" strokeWidth="1" />;
-      })}
+      {
+        DATES.map((_, i) => {
+          const x = CHART_X0 + (i / (DATES.length - 1)) * (CHART_X1 - CHART_X0);
+          return <line key={i} x1={x} y1={CHART_TOP - 10} x2={x} y2={CHART_BOTTOM + 10} stroke="#F1F5F9" strokeWidth="1" />;
+        })
+      }
 
       {/* Competitor line — animated dashes */}
-      <polyline fill="none" stroke="#93C5FD" strokeWidth="2.4" strokeDasharray="6 5" points={compPts}>
+      < polyline fill="none" stroke="#93C5FD" strokeWidth="2.4" strokeDasharray="6 5" points={compPts} >
         <animate attributeName="stroke-dashoffset" values="0;-22" dur="2.4s" repeatCount="indefinite" />
       </polyline>
 
@@ -6590,10 +6594,131 @@ export const RepricerSVG = (props: SVGProps<SVGSVGElement>) => {
       <text x={CHART_X1 + 10} y={FLOOR_Y - 8} textAnchor="end" fontSize="13" fontWeight="700" fill="#C2410C">Floor $18.50</text>
 
       {/* X axis labels */}
+      {
+        DATES.map((d, i) => {
+          const x = CHART_X0 + (i / (DATES.length - 1)) * (CHART_X1 - CHART_X0);
+          return (
+            <text key={d} x={x} y={FLOOR_Y + 40} textAnchor="middle" fontSize="14" fill="#94A3B8">
+              {d}
+            </text>
+          );
+        })
+      }
+    </svg >
+  );
+};
+
+export const AnalyticsDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
+
+  const DATES = ["May 12", "May 16", "May 20", "May 24", "May 28", "Jun 01", "Jun 05", "Jun 09"];
+
+  // Normalized 0..1 series (denser than the date labels, matching the reference chart's marker count).
+  const REVENUE = [0.28, 0.36, 0.33, 0.53, 0.44, 0.63, 0.56, 0.73, 0.68, 0.88, 0.82];
+  const ORDERS = [0.1, 0.15, 0.13, 0.22, 0.18, 0.28, 0.24, 0.32, 0.28, 0.6, 0.55];
+
+  const CHART_X0 = 60;
+  const CHART_X1 = 590;
+  const CHART_TOP = 96;
+  const CHART_BOTTOM = 260;
+
+  const REVENUE_TICKS = ["0", "20K", "40K", "60K", "80K", "100K"];
+  const ORDERS_TICKS = ["0", "2K", "4K", "6K", "8K", "10K"];
+
+  function pointsFor(values: number[]) {
+    const n = values.length;
+    return values
+      .map((v, i) => {
+        const x = CHART_X0 + (i / (n - 1)) * (CHART_X1 - CHART_X0);
+        const y = CHART_BOTTOM - v * (CHART_BOTTOM - CHART_TOP);
+        return { x, y };
+      });
+  }
+  const revenuePts = pointsFor(REVENUE);
+  const ordersPts = pointsFor(ORDERS);
+  const revenuePolyline = revenuePts.map((p) => `${p.x},${p.y}`).join(" ");
+  const ordersPolyline = ordersPts.map((p) => `${p.x},${p.y}`).join(" ");
+  const revenueMotionPath = `M${revenuePts.map((p) => `${p.x} ${p.y}`).join(" L")}`;
+
+  return (
+    <svg viewBox="0 0 640 320" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      {/* Card */}
+      <rect x="10" y="10" width="620" height="300" rx="16" fill="white" stroke="#E2E8F0" />
+
+      {/* Title + info icon */}
+      <text x="34" y="42" fontSize="17" fontWeight="800" fill="#0F172A">Revenue Over Time</text>
+      <circle cx="210" cy="36" r="8" fill="none" stroke="#94A3B8" strokeWidth="1.4" />
+      <text x="210" y="40" textAnchor="middle" fontSize="10" fontWeight="700" fill="#94A3B8">i</text>
+
+      {/* Date range dropdown */}
+      <rect x="498" y="22" width="112" height="30" rx="15" fill="white" stroke="#E2E8F0" />
+      <text x="514" y="41" fontSize="12" fontWeight="600" fill="#334155">Last 30 days</text>
+      <path d="M594 35l4 4 4-4" fill="none" stroke="#94A3B8" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+
+      {/* Legend */}
+      <line x1="34" y1="68" x2="58" y2="68" stroke="#4338CA" strokeWidth="3" strokeLinecap="round" />
+      <circle cx="46" cy="68" r="3.4" fill="#4338CA" />
+      <text x="66" y="72" fontSize="13" fontWeight="600" fill="#334155">Revenue</text>
+      <line x1="140" y1="68" x2="164" y2="68" stroke="#3B82F6" strokeWidth="2" strokeDasharray="4 3" />
+      <text x="172" y="72" fontSize="13" fontWeight="600" fill="#334155">Orders</text>
+
+      {/* Gridlines + left/right axis labels */}
+      {REVENUE_TICKS.map((label, i) => {
+        const y = CHART_BOTTOM - (i / (REVENUE_TICKS.length - 1)) * (CHART_BOTTOM - CHART_TOP);
+        return (
+          <g key={label}>
+            <line x1={CHART_X0} y1={y} x2={CHART_X1} y2={y} stroke="#F1F5F9" strokeWidth="1" />
+            <text x={CHART_X0 - 10} y={y + 4} textAnchor="end" fontSize="11" fill="#94A3B8">{label}</text>
+            <text x={CHART_X1 + 10} y={y + 4} textAnchor="start" fontSize="11" fill="#94A3B8">{ORDERS_TICKS[i]}</text>
+          </g>
+        );
+      })}
+
+      {/* Axis titles */}
+      <text
+        x="18"
+        y={(CHART_TOP + CHART_BOTTOM) / 2}
+        textAnchor="middle"
+        fontSize="10.5"
+        fontWeight="600"
+        fill="#94A3B8"
+        transform={`rotate(-90 18 ${(CHART_TOP + CHART_BOTTOM) / 2})`}
+      >
+        Revenue (USD)
+      </text>
+      <text
+        x="632"
+        y={(CHART_TOP + CHART_BOTTOM) / 2}
+        textAnchor="middle"
+        fontSize="10.5"
+        fontWeight="600"
+        fill="#94A3B8"
+        transform={`rotate(90 632 ${(CHART_TOP + CHART_BOTTOM) / 2})`}
+      >
+        Orders
+      </text>
+
+      {/* Orders line (dashed, hollow markers) */}
+      <polyline fill="none" stroke="#3B82F6" strokeWidth="1.8" strokeDasharray="5 4" points={ordersPolyline}>
+        <animate attributeName="stroke-dashoffset" values="0;-18" dur="2s" repeatCount="indefinite" />
+      </polyline>
+      {ordersPts.map((p, i) => (
+        <circle key={i} cx={p.x} cy={p.y} r="3.6" fill="white" stroke="#3B82F6" strokeWidth="1.8" />
+      ))}
+
+      {/* Revenue line (solid, filled markers) */}
+      <polyline fill="none" stroke="#4338CA" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" points={revenuePolyline} />
+      {revenuePts.map((p, i) => (
+        <circle key={i} cx={p.x} cy={p.y} r="4.4" fill="#4338CA" />
+      ))}
+      <circle r="4.4" fill="#4338CA" opacity="0.9">
+        <animateMotion dur="3.5s" repeatCount="indefinite" path={revenueMotionPath} />
+      </circle>
+
+      {/* X axis labels */}
       {DATES.map((d, i) => {
         const x = CHART_X0 + (i / (DATES.length - 1)) * (CHART_X1 - CHART_X0);
         return (
-          <text key={d} x={x} y={FLOOR_Y + 40} textAnchor="middle" fontSize="14" fill="#94A3B8">
+          <text key={d} x={x} y={CHART_BOTTOM + 26} textAnchor="middle" fontSize="12" fill="#64748B">
             {d}
           </text>
         );
@@ -6601,36 +6726,6 @@ export const RepricerSVG = (props: SVGProps<SVGSVGElement>) => {
     </svg>
   );
 };
-
-export const AnalyticsDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
-  return (<div className="rounded-2xl border border-slate-200 shadow-sm p-5">
-    <div className="grid grid-cols-3 gap-3 mb-4">
-      {[
-        { l: "Revenue", v: "$284k", d: "+32%" },
-        { l: "Orders", v: "5,912", d: "+14%" },
-        { l: "AOV", v: "$48.10", d: "+6%" },
-      ].map((k) => (
-        <div key={k.l} className="rounded-lg bg-slate-50 border border-slate-100 p-3">
-          <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">{k.l}</div>
-          <div className="text-lg font-bold text-slate-900">{k.v}</div>
-          <div className="text-[11px] font-semibold text-emerald-600">▲ {k.d}</div>
-        </div>
-      ))}
-    </div>
-    <svg viewBox="0 0 400 120" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <polyline fill="none" stroke="#2563eb" strokeWidth="2.4"
-        points="0,90 40,80 80,84 120,60 160,68 200,50 240,58 280,40 320,44 360,28 400,32" />
-      <circle r="3.5" fill="#2563eb" opacity="0.9">
-        <animateMotion dur="3s" repeatCount="indefinite"
-          path="M0 90 L40 80 L80 84 L120 60 L160 68 L200 50 L240 58 L280 40 L320 44 L360 28 L400 32" />
-      </circle>
-      <polyline fill="none" stroke="#60a5fa" strokeWidth="1.6" strokeDasharray="4 3"
-        points="0,100 40,96 80,98 120,86 160,92 200,80 240,86 280,72 320,78 360,64 400,70">
-        <animate attributeName="stroke-dashoffset" values="0;-14" dur="2s" repeatCount="indefinite" />
-      </polyline>
-    </svg>
-  </div>)
-}
 
 
 export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
@@ -6939,8 +7034,8 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: Props) => {
     subtitle: g.d,
   }));
 
-  const OP_X = 760;
-  const OP_W = 230;
+  const OP_X = 745;
+  const OP_W = 240;
   const OP_H = 80;
   const OP_YS = [130, 230, 330, 430];
 
@@ -7051,14 +7146,14 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: Props) => {
           <g key={op.label}>
             <rect x={OP_X} y={y} width={OP_W} height={OP_H} rx="14" fill="white" stroke="#ECEFF7" strokeWidth="1.2" />
             <rect x={OP_X} y={y} width="4" height={OP_H} rx="2" fill={op.accent} />
-            <circle cx={OP_X + 46} cy={y + OP_H / 2} r="26" fill={op.tint} />
-            <g transform={`translate(${OP_X + 34},${y + OP_H / 2 - 12})`} color={op.accent}>
+            <circle cx={OP_X + 42} cy={y + OP_H / 2} r="26" fill={op.tint} />
+            <g transform={`translate(${OP_X + 30},${y + OP_H / 2 - 12})`} color={op.accent}>
               <Icon name={op.icon} size="24" />
             </g>
-            <text x={OP_X + 86} y={y + 33} fontSize="12" fontWeight="700" fill="#64748B" letterSpacing="0.8">
+            <text x={OP_X + 76} y={y + 29} fontSize="12" fontWeight="700" fill="#64748B" letterSpacing="0.8">
               {op.label}
             </text>
-            <text x={OP_X + 86} y={y + 58} fontSize="20" fontWeight="800" fill="#0F172A">
+            <text x={OP_X + 76} y={y + 54} fontSize="20" fontWeight="800" fill="#0F172A">
               {op.value}
             </text>
           </g>

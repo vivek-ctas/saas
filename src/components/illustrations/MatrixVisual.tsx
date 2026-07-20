@@ -182,11 +182,11 @@ export const MatrixVisual = ({
                                     <g key={ci}>
                                         <rect x={cx} y={y} width={cw} height={cellH} rx="12" fill={cell.fill} />
                                         <MatrixIcon
-                                            x={cx + cw / 2 - 30}
-                                            y={y + cellH / 2}
+                                            x={cx + cw / 2 - 32}
+                                            y={y + cellH / 2 - 15}
                                             kind={cell.icon}
                                             color={cell.icon === "check" ? "#059669" : "#4338ca"}
-                                            size={18}
+                                            size={12}
                                         />
                                         <text x={cx + cw / 2 + 2} y={y + cellH / 2 + 4} textAnchor="middle" fontFamily={ILL.font} fontSize="12" fontWeight="800" fill={cell.textFill}>
                                             {cell.text}

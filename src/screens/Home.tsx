@@ -156,7 +156,7 @@ const Home = () => {
                         { name: "Walmart Solution Provider", sub: "Marketplace Connect", logo: "/logos/walmart.png" },
                         { name: "Shopify Plus Partner", sub: "Certified App", logo: "/logos/shopify-color-svgrepo-com.svg" },
                         { name: "AWS Advanced Tier", sub: "Technology Partner", logo: "logos/aws-svgrepo-com.svg" },
-                        { name: "eBay Developer Program", sub: "Marketplace Integration", logo: "/logos/ebay-svgrepo-com.svg" },
+                        { name: "eBay Developer Program", sub: "Marketplace Integration", logo: "/logos/EBay_logo.svg.webp" },
                         { name: "Etsy Developer Platform", sub: "Seller API Partner", logo: "/logos/etsy-svgrepo-com.svg" },
                       ].map((p, i) => (
                         <div key={`${set}-${i}`} className="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/90 backdrop-blur border border-slate-200/70 shadow-sm hover:shadow-lg hover:border-blue-200 transition-stripe">
@@ -188,10 +188,10 @@ const Home = () => {
               <div className="flex items-center gap-3 text-center sm:text-left">
                 <div className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse" />
                 <p className="text-base sm:text-lg font-semibold text-slate-900">
-                  AI Auto-Repricer is live! <span className="text-slate-500 font-normal">Trusted for Amazon, now for Walmart & Flipkart.</span>
+                  AI Auto-Repricer is live! <span className="text-slate-500 font-normal">Trusted for Amazon, now for Walmart & bol.</span>
                 </p>
               </div>
-              <Link href="/services#auto-repricer" className="flex items-center gap-1 text-blue-600 font-bold text-sm hover:gap-2 transition-all whitespace-nowrap">
+              <Link href="/platform/repricer" className="flex items-center gap-1 text-blue-600 font-bold text-sm hover:gap-2 transition-all whitespace-nowrap">
                 Learn more <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -233,7 +233,7 @@ const Home = () => {
         <section className="py-24 bg-blue-50/40">
           <div className="relative px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
+              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100 ">
                 <Workflow className="w-3.5 h-3.5 mr-1" />
                 Marketplace workflow
               </Badge>

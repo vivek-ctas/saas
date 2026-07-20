@@ -27,7 +27,7 @@ const Marketplaces = () => {
       title: "Asia-Pacific",
       icon: Globe,
       tone: "from-secondary to-rose-500",
-      items: ["Lazada", "Shopee", "Rakuten", "Tokopedia", "Flipkart", "Meesho", "Myntra", "Ajio"]
+      items: ["Lazada", "bol", "Rakuten", "Tokopedia", "fnac", , "Decathlon", "worten"]
     },
     {
       title: "Europe",
