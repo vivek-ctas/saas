@@ -19,6 +19,8 @@ import {
   Instagram,
 } from "lucide-react";
 import footerBackground from "@/assets/footer-background.webp";
+import { API_BASE_URL } from "@/lib/api";
+import { useCompanySettings } from "@/hooks/use-company-contact";
 
 /* ------------------------------------------------------------------ */
 /*  Static placeholder data                                           */
@@ -79,37 +81,6 @@ const footerLinkGroups: FooterLinkGroup[] = [
     ],
   },
 ];
-
-const contactDetails = [
-  {
-    icon: Mail,
-    value: "info@ctasis.com",
-    href: "mailto:info@ctasis.com",
-  },
-  {
-    icon: Phone,
-    value: "+91 7948993409",
-    href: "tel:+917948993409",
-  },
-  {
-    icon: MapPin,
-    value:
-      "A-865/866, Money Plant High Street, Jagatpur Road, Sarkhej - Gandhinagar Hwy, near BSNL Office, Gota, Ahmedabad, Gujarat 382470",
-    href: undefined,
-  },
-];
-
-const companyInfo = {
-  name: "Sellerbuz",
-  logoSrc: "/sellerBuz_footer.png",
-  logoAlt: "Sellerbuz Logo",
-  description:
-    "The complete multichannel selling platform trusted by sellers worldwide. Manage inventory, process orders, and grow your business faster.",
-  siblingText: "A product by",
-  siblingLinkLabel: "CTAS Info Services LLP",
-  siblingLinkHref: "https://ctasis.com/",
-};
-
 type HighlightFeature = {
   icon: LucideIcon;
   title: string;
@@ -138,26 +109,6 @@ const highlightFeatures: HighlightFeature[] = [
     description: "Scalable infrastructure and powerful tools to grow your eCommerce business.",
   },
 ];
-
-const socialLinks = [
-  {
-    icon: Linkedin,
-    href: "https://www.linkedin.com/company/ctas-info-services/",
-    label: "LinkedIn",
-  },
-  { icon: Youtube, href: "https://www.youtube.com/@ctasinfoservicesllp7030", label: "YouTube" },
-  { icon: Facebook, href: "https://www.facebook.com/people/Ctas-Info-Service/61566714244013/", label: "Facebook" },
-  { icon: Instagram, href: "https://www.instagram.com/ctasinfoservice/", label: "Instagram" },
-
-];
-
-const bottomBar = {
-  copyright: "© 2026 Ctasis Sellerbuz. All rights reserved.",
-  tagline: "Built for modern sellers. Designed for scale.",
-  companyLabel: "Operated by",
-  companyName: "Ctasis Info Services LLP",
-  companyHref: "https://ctasis.com",
-};
 
 /* ------------------------------------------------------------------ */
 /*  Reusable sub-components                                           */
@@ -247,6 +198,71 @@ const SocialIconLink = ({
 /* ------------------------------------------------------------------ */
 
 const Footer = () => {
+  const { settingsData } = useCompanySettings();
+
+  const primaryLogo: string = "/sellerBuz_footer.png";
+  const apiLogo = settingsData?.company?.logo ? `${API_BASE_URL}/${settingsData.company.logo}` : "";
+  const logoSrc = primaryLogo || apiLogo || "";
+
+  const companyInfo = {
+    name: settingsData?.company?.name || "Sellerbuz",
+    logoSrc: logoSrc,
+    logoAlt: `${settingsData?.company?.name || "Sellerbuz"} Logo`,
+    description:
+      settingsData?.footer?.about ||
+      settingsData?.company?.about ||
+      "The complete multichannel selling platform trusted by sellers worldwide. Manage inventory, process orders, and grow your business faster.",
+    siblingText: "A product by",
+    siblingLinkLabel: "CTAS Info Services LLP",
+    siblingLinkHref: "https://ctasis.com/",
+  };
+
+  const contactDetails = [];
+  if (settingsData?.footer?.show_contact !== false) {
+    contactDetails.push({
+      icon: Mail,
+      value: settingsData?.contact?.email || "info@ctasis.com",
+      href: `mailto:${settingsData?.contact?.email || "info@ctasis.com"}`,
+    });
+    contactDetails.push({
+      icon: Phone,
+      value: settingsData?.contact?.phone || "+91 7948993409",
+      href: `tel:${(settingsData?.contact?.phone || "+91 7948993409").replace(/\s+/g, "")}`,
+    });
+  }
+  if (settingsData?.footer?.show_address !== false) {
+    contactDetails.push({
+      icon: MapPin,
+      value:
+        settingsData?.contact?.address ||
+        "A-865/866, Money Plant High Street, Jagatpur Road, Sarkhej - Gandhinagar Hwy, near BSNL Office, Gota, Ahmedabad, Gujarat 382470",
+      href:
+        settingsData?.contact?.google_map_url ||
+        "https://maps.google.com",
+    });
+  }
+
+  const socialLinks = [];
+  if (settingsData?.footer?.show_social !== false) {
+    const facebook = settingsData?.social?.facebook || "https://www.facebook.com/people/Ctas-Info-Service/61566714244013/";
+    const instagram = settingsData?.social?.instagram || "https://www.instagram.com/ctasinfoservice/";
+    const linkedin = settingsData?.social?.linkedin || "https://www.linkedin.com/company/ctas-info-services/";
+    const youtube = settingsData?.social?.youtube || "https://www.youtube.com/@ctasinfoservicesllp7030";
+
+    if (linkedin) socialLinks.push({ icon: Linkedin, href: linkedin, label: "LinkedIn" });
+    if (youtube) socialLinks.push({ icon: Youtube, href: youtube, label: "YouTube" });
+    if (facebook) socialLinks.push({ icon: Facebook, href: facebook, label: "Facebook" });
+    if (instagram) socialLinks.push({ icon: Instagram, href: instagram, label: "Instagram" });
+  }
+
+  const bottomBar = {
+    copyright: settingsData?.footer?.copyright_text || "© 2026 Ctasis Sellerbuz. All rights reserved.",
+    tagline: settingsData?.company?.tagline || "Built for modern sellers. Designed for scale.",
+    companyLabel: "Operated by",
+    companyName: "Ctasis Info Services LLP",
+    companyHref: "https://ctasis.com",
+  };
+
   return (
     <footer className="relative bg-slate-900 text-white overflow-hidden">
       {/* Background image + overlay, unchanged from existing theme */}

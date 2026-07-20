@@ -13,7 +13,7 @@ import { ContactMapIllustration } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
 // ── Contact-specific hooks ───────────────────────────────────────────────
-import { useCompanyContact } from "@/hooks/use-company-contact";
+import { useCompanySettings } from "@/hooks/use-company-contact";
 import { useContactForm } from "@/hooks/use-contact-form";
 import Link from "next/link";
 
@@ -43,8 +43,20 @@ const validateField = (field: FieldName, value: string): string => {
 const Contact = () => {
   const ref = useReveal<HTMLDivElement>();
 
-  const { companyData } = useCompanyContact();
+  const { settingsData } = useCompanySettings();
   const { form, loading, success, error, handleChange, handleSubmit, resetForm } = useContactForm();
+
+  const companyData = settingsData ? {
+    email: settingsData.contact.email,
+    phone: settingsData.contact.phone,
+    address: settingsData.contact.address +
+      (settingsData.contact.city ? `, ${settingsData.contact.city}` : "") +
+      (settingsData.contact.state ? `, ${settingsData.contact.state}` : "") +
+      (settingsData.contact.country ? `, ${settingsData.contact.country}` : ""),
+    postal_code: settingsData.contact.postal_code,
+    support_hours: settingsData.contact.working_hours || "",
+    email_hours: "24/7 Response",
+  } : null;
 
   const [errors, setErrors] = useState<Partial<Record<FieldName, string>>>({});
   const [touched, setTouched] = useState<Partial<Record<FieldName, boolean>>>({});
