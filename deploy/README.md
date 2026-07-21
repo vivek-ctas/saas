@@ -5,7 +5,7 @@
 ```bash
 docker network create saas-shared-network
 cp .env.example .env
-# Edit .env — NEXT_PUBLIC_* vars are embedded at docker build time
+# Edit .env - NEXT_PUBLIC_* vars are embedded at docker build time
 ```
 
 ## Start / stop

@@ -1,7 +1,7 @@
 import { ReactNode, SVGProps } from "react";
 
 /**
- * Unified illustration design system — sellersnap / sellerbrite inspired.
+ * Unified illustration design system - sellersnap / sellerbrite inspired.
  * Strict navy + blue + light-blue palette. Every diagram uses the same
  * card frame, header bar, chips, stroke weights and typography so the whole
  * site reads as one coherent dashboard language.
@@ -29,7 +29,7 @@ export const ILL = {
   font: "Inter, system-ui, -apple-system, Segoe UI, sans-serif",
 };
 
-/** Reusable defs — drop once at the top of every illustration. */
+/** Reusable defs - drop once at the top of every illustration. */
 export const IllDefs = ({ id = "ill" }: { id?: string }) => (
   <defs>
     <linearGradient id={`${id}-wash`} x1="0" x2="1" y1="0" y2="1">
@@ -98,14 +98,14 @@ export const IllHeader = ({ x = 28, y = 26, label }: { x?: number; y?: number; l
   </g>
 );
 
-/** Pill chip — white with hairline border, navy text. */
+/** Pill chip - white with hairline border, navy text. */
 export const IllChip = ({
   x, y, w = 120, h = 28, label, tone = "light",
 }: { x: number; y: number; w?: number; h?: number; label: string; tone?: "light" | "blue" | "navy" }) => {
   const styles = {
     light: { fill: "white", stroke: ILL.softStroke, dot: ILL.blue, text: ILL.ink },
-    blue:  { fill: ILL.tint, stroke: "#bfdbfe", dot: ILL.blueDeep, text: ILL.blueDeep },
-    navy:  { fill: ILL.navy, stroke: ILL.navy, dot: "#60a5fa", text: "white" },
+    blue: { fill: ILL.tint, stroke: "#bfdbfe", dot: ILL.blueDeep, text: ILL.blueDeep },
+    navy: { fill: ILL.navy, stroke: ILL.navy, dot: "#60a5fa", text: "white" },
   }[tone];
   return (
     <g>
@@ -118,7 +118,7 @@ export const IllChip = ({
   );
 };
 
-/** KPI tile — label + big number + delta. */
+/** KPI tile - label + big number + delta. */
 export const IllKPI = ({
   x, y, w = 150, h = 78, label, value, delta,
 }: { x: number; y: number; w?: number; h?: number; label: string; value: string; delta?: string }) => (

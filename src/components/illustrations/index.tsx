@@ -65,16 +65,16 @@ export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => {
   ];
 
   const features = [
-    { label: "Live performance", desc: "Real-time updates", icon: "trend" as const },
-    { label: "Smart repricing", desc: "Maximize Buy Box", icon: "pulse" as const },
-    { label: "Higher profit", desc: "Automated insights", icon: "target" as const },
-    { label: "Healthy margin", desc: "Sustainable growth", icon: "shield" as const },
-    { label: "Scale faster", desc: "Grow your business", icon: "rocket" as const },
+    { label: "Live Performance", desc: "Real-time updates", icon: "trend" as const },
+    { label: "Smart Repricing", desc: "Maximize Buy Box", icon: "pulse" as const },
+    { label: "Higher Profit", desc: "Automated insights", icon: "target" as const },
+    { label: "Healthy Margin", desc: "Sustainable growth", icon: "shield" as const },
+    { label: "Scale Faster", desc: "Grow your business", icon: "rocket" as const },
   ];
 
   const featureX = [40, 210, 370, 530, 680];
 
-  // Shared palette — matched to the reference screenshot
+  // Shared palette - matched to the reference screenshot
   const indigo = "hsl(226 71% 50%)";       // primary accent (tabs, underline, product accent, icons)
   const indigoDark = "hsl(226 71% 40%)";    // CTASIS text / active tab text
   const indigoIcon = "hsl(226 71% 45%)";    // KPI + feature icon stroke
@@ -414,9 +414,9 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
     {/* right output cards */}
     {[
       { y: 70, title: "Inventory", val: "12,480 SKUs" },
-      { y: 145, title: "Pricing", val: "Rules active" },
-      { y: 220, title: "Orders", val: "241 / today" },
-      { y: 295, title: "Catalog", val: "AI generated" },
+      { y: 145, title: "Pricing", val: "Rules Active" },
+      { y: 220, title: "Orders", val: "241 / Today" },
+      { y: 295, title: "Catalog", val: "AI Generated" },
     ].map((c) => (
       <g key={c.title} filter="url(#hd-sh)">
         <rect x="392" y={c.y} width="140" height="50" rx="10" fill="white" stroke="#e2e8f0" />
@@ -888,7 +888,7 @@ export const WorkflowIllustration = (props: SVGProps<SVGSVGElement>) => (
       fill="#64748b"
       fontWeight="600"
     >
-      Unified across Amazon · fnac · bol · Walmart · Shopify
+      Unified across Amazon · Fnac · Bol · Walmart · Shopify
     </text>
   </svg >
 );
@@ -1615,7 +1615,7 @@ export const RepricerIllustration = (props: SVGProps<SVGSVGElement>) => (
     <text x="290" y="172" textAnchor="middle" fontSize="13" fontWeight="800" fill="#0f172a">$24.90 · winning Buy Box</text>
     <text x="290" y="190" textAnchor="middle" fontSize="11" fill="#64748b">Adjusts every 60s based on margin &amp; competitor signals</text>
     {/* Marketplace pills */}
-    {["Amazon", "fnac", "eBay", "Walmart"].map((m, i) => (
+    {["Amazon", "Fnac", "eBay", "Walmart"].map((m, i) => (
       <g key={m}>
         <rect x={40 + i * 130} y="220" width="110" height="28" rx="14" fill="#f8fafc" stroke="#e2e8f0" />
         <text x={95 + i * 130} y="238" textAnchor="middle" fontSize="11" fontWeight="700" fill="#475569">{m}</text>
@@ -1718,7 +1718,7 @@ export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
           fontFamily="'DM Sans',sans-serif"
           fontSize="11.5" fill="#6b7280"
         >
-          From Marketplace ping to doorstep delivery — zero clicks.
+          From Marketplace ping to doorstep delivery - zero clicks.
         </text>
       </g>
 
@@ -2120,7 +2120,7 @@ export const ContactMapIllustration = (props: SVGProps<SVGSVGElement>) => (
     <path d="M130 180 Q 220 60, 360 175" stroke="hsl(226 71% 50%)" strokeWidth={1.5} fill="none" strokeDasharray="4 4" opacity={0.6} />
     <path d="M360 175 Q 420 90, 460 200" stroke="hsl(217 91% 50%)" strokeWidth={1.5} fill="none" strokeDasharray="4 4" opacity={0.6} />
     <path d="M460 200 Q 510 240, 500 270" stroke="hsl(226 71% 50%)" strokeWidth={1.5} fill="none" strokeDasharray="4 4" opacity={0.6} />
-    <text x={300} y={336} textAnchor="middle" fontSize={11} fill="#64748b">Sales · Support · Engineering — across 5 hubs, 24/7 coverage</text>
+    <text x={300} y={336} textAnchor="middle" fontSize={11} fill="#64748b">Sales · Support · Engineering - across 5 hubs, 24/7 coverage</text>
   </svg>
 );
 
@@ -2141,7 +2141,7 @@ export const LogoChip = ({ name, tone = "primary" }: { name: string; tone?: "pri
 };
 
 /* ------------------------------------------------------------------ */
-/* NodeFlowDiagram — n8n / React Flow style repricer pipeline          */
+/* NodeFlowDiagram - n8n / React Flow style repricer pipeline          */
 /* ------------------------------------------------------------------ */
 export const NodeFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 880 460" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -2278,7 +2278,7 @@ export const NodeFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
 );
 
 /* ------------------------------------------------------------------ */
-/* AnalyticsFlowDiagram — BigQuery + Power BI data flow                */
+/* AnalyticsFlowDiagram - BigQuery + Power BI data flow                */
 /* ------------------------------------------------------------------ */
 export const AnalyticsFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 850 380" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -2362,12 +2362,12 @@ export const AnalyticsFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
         stroke="#0ea5e9" strokeWidth={1.5} fill="none" strokeDasharray="3 4" />
     ))}
 
-    <text x={410} y={344} textAnchor="middle" fontSize={11} fill="#64748b">Every order, click and review — queryable in seconds, exportable forever.</text>
+    <text x={410} y={344} textAnchor="middle" fontSize={11} fill="#64748b">Every order, click and review - queryable in seconds, exportable forever.</text>
   </svg>
 );
 
 /* ------------------------------------------------------------------ */
-/* MarketplaceMeshDiagram — radial channel hub                         */
+/* MarketplaceMeshDiagram - radial channel hub                         */
 /* ------------------------------------------------------------------ */
 
 export const MarketplaceMeshDiagram = (props: SVGProps<SVGSVGElement>) => {
@@ -2391,7 +2391,7 @@ export const MarketplaceMeshDiagram = (props: SVGProps<SVGSVGElement>) => {
     { a: 0, l: "eBay", c: "#FF1744", bg: "#FFF1F3", logo: "/logos/EBay_logo.svg.webp" },
     { a: 45, l: "Shopify", c: "#16A34A", bg: "#ECFDF5", logo: "/logos/shopify-color-svgrepo-com.svg" },
     { a: 90, l: "Etsy", c: "#F4511E", bg: "#FFF7ED", logo: "/logos/etsy-svgrepo-com.svg" },
-    { a: 135, l: "fnac", c: "#F59E0B", bg: "#FFFBEA", logo: "/logos/fnac.png" },
+    { a: 135, l: "Fnac", c: "#F59E0B", bg: "#FFFBEA", logo: "/logos/fnac.png" },
     { a: 180, l: "Allegro", c: "#A855F7", bg: "#FAF5FF", logo: "/logos/allegro.png" },
     { a: 225, l: "Bol.com", c: "#4338CA", bg: "#EEF2FF", logo: "/logos/bol.png" },
   ];
@@ -2541,7 +2541,7 @@ export const MarketplaceMeshDiagram = (props: SVGProps<SVGSVGElement>) => {
         letterSpacing=".5"
         style={{ fontFamily: "DM Sans, sans-serif" }}
       >
-        Sync engine
+        Sync Engine
       </text>
 
       {/* legend */}
@@ -2564,7 +2564,7 @@ export const MarketplaceMeshDiagram = (props: SVGProps<SVGSVGElement>) => {
   );
 };
 /* ------------------------------------------------------------------ */
-/* RepricerStrategyChart — line chart competitor vs Ctasis price       */
+/* RepricerStrategyChart - line chart competitor vs Ctasis price       */
 /* ------------------------------------------------------------------ */
 export const RepricerStrategyChart = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 600 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -2613,7 +2613,7 @@ export const RepricerStrategyChart = (props: SVGProps<SVGSVGElement>) => (
 );
 
 /* ------------------------------------------------------------------ */
-/* ServicesHeroMockup — operator console with service tiles + activity */
+/* ServicesHeroMockup - operator console with service tiles + activity */
 /* ------------------------------------------------------------------ */
 export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -2640,7 +2640,7 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
     </defs>
     <rect x="20" y="20" width="720" height="480" rx="24" fill="url(#svh-bg)" stroke="#E2E8F0" />
     <text x="48" y="60" fontFamily="Inter,system-ui" fontSize="13" fontWeight="800" fill="#0f172a">Service Console</text>
-    <text x="48" y="80" fontFamily="Inter,system-ui" fontSize="11" fill="#64748b">12 services, one operator view — every action is auditable.</text>
+    <text x="48" y="80" fontFamily="Inter,system-ui" fontSize="11" fill="#64748b">12 services, one operator view - every action is auditable.</text>
     <rect x="600" y="44" width="118" height="26" rx="13" fill="hsl(150 70% 92%)" />
     <circle cx="614" cy="57" r="4" fill="hsl(150 70% 45%)" />
     <text x="709" y="61" textAnchor="end" fontFamily="Inter,system-ui" fontSize="10" fontWeight="800" fill="hsl(150 70% 30%)">ALL HEALTHY</text>
@@ -2710,7 +2710,7 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
 );
 
 /* ------------------------------------------------------------------ */
-/* InfraTopologyDiagram — multi-region cluster topology                */
+/* InfraTopologyDiagram - multi-region cluster topology                */
 /* ------------------------------------------------------------------ */
 export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => {
   const REGIONS = [
@@ -2732,7 +2732,7 @@ export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => {
     >
       <defs>
 
-        {/* Card background — soft lavender-to-sky light gradient */}
+        {/* Card background - soft lavender-to-sky light gradient */}
         <linearGradient id="it-bg" x1="0" x2="1" y1="0" y2="1">
           <stop offset="0%" stopColor="#f0f4ff" />
           <stop offset="55%" stopColor="#eff6ff" />
@@ -2745,7 +2745,7 @@ export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => {
           <stop offset="100%" stopColor="#f0f7ff" />
         </linearGradient>
 
-        {/* Pod gradient — blue pill */}
+        {/* Pod gradient - blue pill */}
         <linearGradient id="it-pod" x1="0" x2="0" y1="0" y2="1">
           <stop offset="0%" stopColor="#60a5fa" />
           <stop offset="100%" stopColor="#2563eb" />
@@ -2757,7 +2757,7 @@ export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => {
           <stop offset="100%" stopColor="#1e40af" />
         </linearGradient>
 
-        {/* Core card gradient — deep blue */}
+        {/* Core card gradient - deep blue */}
         <linearGradient id="it-core-grad" x1="0" x2="1" y1="0" y2="1">
           <stop offset="0%" stopColor="#1e40af" />
           <stop offset="100%" stopColor="#1e3a8a" />
@@ -2976,7 +2976,7 @@ export const InfraTopologyDiagram = (props: SVGProps<SVGSVGElement>) => {
 
 
 /* ------------------------------------------------------------------ */
-/* AIPipelineDiagram — distinct from NodeFlow: vertical AI pipeline    */
+/* AIPipelineDiagram - distinct from NodeFlow: vertical AI pipeline    */
 /* ------------------------------------------------------------------ */
 export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
   const STAGE_W = 150;
@@ -2989,7 +2989,7 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
     { label: "INGEST", title: "Raw product CSV", sub: "Photos · brief · specs", hdr: "#2563eb", border: "#bfdbfe", cls: "ap-stage-0" },
     { label: "EMBED", title: "Vector + tags", sub: "OpenAI · category model", hdr: "#1d4ed8", border: "#bfdbfe", cls: "ap-stage-1" },
     { label: "GENERATE", title: "Per-channel listing", sub: "Title · bullets · keywords", hdr: "#1e40af", border: "#bfdbfe", cls: "ap-stage-2" },
-    { label: "PUBLISH", title: "Push to live", sub: "Amazon · eBay · fnac", hdr: "#1e3a8a", border: "#bfdbfe", cls: "ap-stage-3" },
+    { label: "PUBLISH", title: "Push to live", sub: "Amazon · eBay · Fnac", hdr: "#1e3a8a", border: "#bfdbfe", cls: "ap-stage-3" },
   ];
 
   return (
@@ -3247,7 +3247,7 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
   );
 }
 /* ------------------------------------------------------------------ */
-/* ChannelSyncFlow — distinct sync flow for Marketplace page          */
+/* ChannelSyncFlow - distinct sync flow for Marketplace page          */
 /* ------------------------------------------------------------------ */
 export const ChannelSyncFlow = (
   props: SVGProps<SVGSVGElement>
@@ -3404,7 +3404,7 @@ export const ChannelSyncFlow = (
       fill="#64748b"
       fontFamily="'DM Sans',sans-serif"
     >
-      Inventory · pricing · orders · returns —
+      Inventory · pricing · orders · returns -
       propagated across every channel in real time.
     </text>
 
@@ -3683,7 +3683,7 @@ export const ChannelSyncFlow = (
 
 
 /* ------------------------------------------------------------------ */
-/* guideEditorialMockup — magazine-style hero for guide                  */
+/* guideEditorialMockup - magazine-style hero for guide                  */
 /* ------------------------------------------------------------------ */
 export const GuideEditorialMockup = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 720 500" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -3731,7 +3731,7 @@ export const GuideEditorialMockup = (props: SVGProps<SVGSVGElement>) => (
       <polyline points="60,400 90,380 120,390 150,360 180,370 210,340 240,350 270,320"
         stroke="hsl(226 71% 50%)" strokeWidth="2" fill="none" opacity="0.6" />
       <circle cx="270" cy="320" r="4" fill="hsl(226 71% 50%)" opacity="0.8" />
-      <text x="60" y="430" fontFamily="Inter,system-ui" fontSize="9" fill="#64748b">— Buy Box win rate, last 30 days</text>
+      <text x="60" y="430" fontFamily="Inter,system-ui" fontSize="9" fill="#64748b">- Buy Box win rate, last 30 days</text>
 
       {/* Diagonal shine sweep on cover */}
       <g clipPath="url(#be-cover-clip)">
@@ -3743,12 +3743,12 @@ export const GuideEditorialMockup = (props: SVGProps<SVGSVGElement>) => (
       </g>
     </g>
 
-    {/* Right column — article cards */}
+    {/* Right column - article cards */}
     {[
       { y: 50, t: "Algorithmic vs rule-based repricing", c: "Strategy", k: "8 min" },
       { y: 160, t: "Walmart Buy Box: a different game", c: "Walmart", k: "9 min" },
       { y: 270, t: "5 analytics that actually move revenue", c: "Analytics", k: "7 min" },
-      { y: 380, t: "From CSV to fnac in 4 minutes", c: "AI", k: "5 min" },
+      { y: 380, t: "From CSV to Fnac in 4 minutes", c: "AI", k: "5 min" },
     ].map((p, i) => (
       <g key={i} filter="url(#be-shadow)">
         <rect x="350" y={p.y} width="320" height="92" rx="14" fill="white" stroke="#e2e8f0" />
@@ -3776,7 +3776,7 @@ export const GuideEditorialMockup = (props: SVGProps<SVGSVGElement>) => (
 );
 
 /* ------------------------------------------------------------------ */
-/* AboutJourneyMockup — founder story / milestones panel               */
+/* AboutJourneyMockup - founder story / milestones panel               */
 /* ------------------------------------------------------------------ */
 export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -3907,7 +3907,7 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
 );
 
 /* ------------------------------------------------------------------ */
-/* AutomationBuilderDiagram — n8n/Zapier-style node graph              */
+/* AutomationBuilderDiagram - n8n/Zapier-style node graph              */
 /* Used on Services for notification & report automation               */
 /* ------------------------------------------------------------------ */
 export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
@@ -4300,7 +4300,7 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 /* ------------------------------------------------------------------ */
-/* ReportingConsoleMockup — scheduled reports + delivery channels      */
+/* ReportingConsoleMockup - scheduled reports + delivery channels      */
 /* Used on Infrastructure (notifications & reports section)            */
 /* ------------------------------------------------------------------ */
 export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
@@ -4605,7 +4605,7 @@ export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
           Delivery channels
         </text>
 
-        {/* Channel chips — 4 per row */}
+        {/* Channel chips - 4 per row */}
         {CHANNELS.map((ch, i) => {
           const col = i % 4;
           const row = Math.floor(i / 4);
@@ -4644,7 +4644,7 @@ export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
           fontFamily="'DM Sans',sans-serif"
           fontSize="10" fill="#94a3b8"
         >
-          Toggle a channel — Ctasis re-routes instantly. No code, no redeploy.
+          Toggle a channel - Ctasis re-routes instantly. No code, no redeploy.
         </text>
       </g>
 
@@ -4663,7 +4663,7 @@ export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
 };
 
 /* ------------------------------------------------------------------ */
-/* AlertTriageDiagram — incident triage visual                         */
+/* AlertTriageDiagram - incident triage visual                         */
 /* ------------------------------------------------------------------ */
 export const AlertTriageDiagram = (props: SVGProps<SVGSVGElement>) => {
   interface AlertCard {
@@ -4858,7 +4858,7 @@ export const AlertTriageDiagram = (props: SVGProps<SVGSVGElement>) => {
 };
 
 /* ------------------------------------------------------------------ */
-/* ArticleHeroMockup — visual for guide detail pages                    */
+/* ArticleHeroMockup - visual for guide detail pages                    */
 /* ------------------------------------------------------------------ */
 export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -4869,7 +4869,7 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <defs>
-      {/* Light background gradient — soft sky-to-lavender */}
+      {/* Light background gradient - soft sky-to-lavender */}
       <linearGradient id="ah-bg" x1="0" x2="1" y1="0" y2="1">
         <stop offset="0%" stopColor="#e0f2fe" />
         <stop offset="45%" stopColor="#ede9fe" />
@@ -5181,7 +5181,7 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
       strokeDasharray="4 3"
     />
 
-    {/* Data point dots — algo */}
+    {/* Data point dots - algo */}
     {[
       [452, 230], [482, 210], [512, 218], [542, 192],
       [572, 178], [602, 160], [632, 168], [662, 140],
@@ -5332,7 +5332,7 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
 
 
 /* ------------------------------------------------------------------ */
-/* Assetlibrarymockup  — visual for services pages                  */
+/* Assetlibrarymockup  - visual for services pages                  */
 /* ------------------------------------------------------------------ */
 export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
   const products = [
@@ -6154,7 +6154,7 @@ export const RolesIllustration = (props: SVGProps<SVGSVGElement>) => {
             {/* card body */}
             <rect x={x} y={CARD_TOP} width={CARD_W} height={CARD_H} rx="24" fill="white" stroke="#ECEFF7" />
 
-            {/* wave decoration, clipped to card — gentle float */}
+            {/* wave decoration, clipped to card - gentle float */}
             <g clipPath={`url(#card-clip-${i})`}>
               <path
                 d={`M${x} ${CARD_TOP + CARD_H - 60} 
@@ -6177,7 +6177,7 @@ export const RolesIllustration = (props: SVGProps<SVGSVGElement>) => {
             {/* top accent bar */}
             <rect x={x + 10} y={CARD_TOP - 2} width={CARD_W - 20} height="6" rx="3" fill={r.accent} />
 
-            {/* hexagon badge — gentle float */}
+            {/* hexagon badge - gentle float */}
             <g transform={`translate(${cx},${CARD_TOP - 55})`}>
               <polygon
                 points="0,-38 33,-19 33,19 0,38 -33,19 -33,-19"
@@ -6563,7 +6563,7 @@ export const RepricerSVG = (props: SVGProps<SVGSVGElement>) => {
         })
       }
 
-      {/* Competitor line — animated dashes */}
+      {/* Competitor line - animated dashes */}
       < polyline fill="none" stroke="#93C5FD" strokeWidth="2.4" strokeDasharray="6 5" points={compPts} >
         <animate attributeName="stroke-dashoffset" values="0;-22" dur="2.4s" repeatCount="indefinite" />
       </polyline>
@@ -6582,7 +6582,7 @@ export const RepricerSVG = (props: SVGProps<SVGSVGElement>) => {
           }).join(' ')} />
       </circle>
 
-      {/* Highlighted point — pulse ring */}
+      {/* Highlighted point - pulse ring */}
       <circle cx={hx} cy={hy} r="9" fill="#C7D2FE" opacity="0.6">
         <animate attributeName="r" values="9;13;9" dur="2.4s" repeatCount="indefinite" />
         <animate attributeName="opacity" values="0.6;0.15;0.6" dur="2.4s" repeatCount="indefinite" />

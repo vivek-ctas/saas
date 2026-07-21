@@ -20,7 +20,7 @@ export default function CheckoutCancelPage() {
 
         <h1 className="text-2xl font-bold text-slate-900 mb-2">Payment cancelled</h1>
         <p className="text-slate-500 text-sm mb-8 leading-relaxed">
-          No charge was made. Your plan details are saved — you can pick up where you left off.
+          No charge was made. Your plan details are saved - you can pick up where you left off.
         </p>
 
         <div className="flex flex-col gap-3">

@@ -251,7 +251,7 @@ All colors MUST be HSL.
     animation: gradient-shift 14s ease infinite;
   }
 
-  /* Cool blue hero canvas — blue + white, no warm tones */
+  /* Cool blue hero canvas - blue + white, no warm tones */
   .hero-cream {
     background:
       radial-gradient(1200px 500px at 80% 0%, hsl(217 90% 92% / 0.7), transparent 60%),
@@ -267,7 +267,7 @@ All colors MUST be HSL.
     mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
   }
 
-  /* Diagonal slope divider — like SellerSnap section transition */
+  /* Diagonal slope divider - like SellerSnap section transition */
   .slope-divider-bottom {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 64px));
   }

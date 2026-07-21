@@ -10,7 +10,7 @@ import type {
 // ── Company Info ──────────────────────────────────────────────────────────
 
 /**
- * Fetch company contact details for the contact page (public — no auth needed).
+ * Fetch company contact details for the contact page (public - no auth needed).
  */
 export async function fetchCompanyContact(): Promise<{
   data: CompanyContact | null;
@@ -24,7 +24,7 @@ export async function fetchCompanyContact(): Promise<{
 }
 
 /**
- * Fetch full company settings (public — no auth needed).
+ * Fetch full company settings (public - no auth needed).
  * Endpoint: GET /v1/company-settings
  */
 export async function fetchCompanySettings(): Promise<{

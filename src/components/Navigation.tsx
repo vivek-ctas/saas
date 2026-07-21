@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button";
 import { BarChart3, Boxes, ChevronDown, DollarSign, Menu, ShoppingCart, Wand2, X } from "lucide-react";
 
 const platformLinks = [
-  { name: "Inventory sync", href: "/platform/inventory", icon: Boxes, desc: "One stock number, every channel." },
-  { name: "Order hub", href: "/platform/orders", icon: ShoppingCart, desc: "Every marketplace order in one inbox." },
-  { name: "AI catalog", href: "/platform/catalog-ai", icon: Wand2, desc: "Listings that ship in minutes." },
+  { name: "Inventory Sync", href: "/platform/inventory", icon: Boxes, desc: "One stock number, every channel." },
+  { name: "Order Hub", href: "/platform/orders", icon: ShoppingCart, desc: "Every marketplace order in one inbox." },
+  { name: "AI Catalog", href: "/platform/catalog-ai", icon: Wand2, desc: "Listings that ship in minutes." },
   { name: "Repricer", href: "/platform/repricer", icon: DollarSign, desc: "Buy Box aware, margin safe." },
 ];
 

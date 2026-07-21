@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!integration) return {};
 
   return buildMetadata({
-    title: `${integration.name} Integration — Sync ${integration.name} with Ctasis`,
+    title: `${integration.name} Integration - Sync ${integration.name} with Ctasis`,
     description: `${integration.description} Connect ${integration.name} to Ctasis and manage inventory, orders and repricing from one dashboard. ${integration.stats.map((s) => `${s.label}: ${s.value}`).join(" · ")}.`,
     path: `/marketplaces/${params.slug}`,
     type: "website",

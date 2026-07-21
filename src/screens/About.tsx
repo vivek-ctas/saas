@@ -28,7 +28,7 @@ const About = () => {
   const values = [
     { icon: Lightbulb, title: "Simplicity", desc: "Complex problems deserve simple, beautiful solutions.", tone: "from-blue-500 to-cyan-500" },
     { icon: Shield, title: "Reliability", desc: "Your business depends on us. We don't take that lightly.", tone: "from-blue-700 to-indigo-600" },
-    { icon: Sparkles, title: "Innovation", desc: "We ship the next thing — not the obvious thing.", tone: "from-blue-400 to-blue-600" },
+    { icon: Sparkles, title: "Innovation", desc: "We ship the next thing - not the obvious thing.", tone: "from-blue-400 to-blue-600" },
     { icon: Heart, title: "Transparency", desc: "Honest pricing. Honest roadmap. Honest support.", tone: "from-blue-600 to-blue-900" }
   ];
 
@@ -37,9 +37,9 @@ const About = () => {
       <div ref={ref}>
         <PageHero
           badgeIcon={Sparkles}
-          badgeText="Our story"
+          badgeText="Our Story"
           title={<>We're building the <span className="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">operating system</span> for modern commerce.</>}
-          subtitle="50,000+ sellers in 150+ countries trust Ctasis to power their multichannel operations. This is how we got here — and where we're going."
+          subtitle="50,000+ sellers in 150+ countries trust Ctasis to power their multichannel operations. This is how we got here - and where we're going."
           visual={<AboutJourneyMockup className="w-full h-auto" />}
           actions={
             <>
@@ -50,7 +50,7 @@ const About = () => {
               </Link>
               <Link href="/contact">
                 <Button size="lg" className="text-base px-8 h-12 rounded-full group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
-                  Join the team
+                  Talk to Our Team
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
@@ -63,7 +63,7 @@ const About = () => {
         <section className="py-24 bg-white">
           <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Our mission</Badge>
+              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Our Mission</Badge>
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                 Level the playing field<br />for every seller.
               </h2>
@@ -83,7 +83,7 @@ const About = () => {
                 <Eye className="w-10 h-10 mb-6" />
                 <h3 className="text-3xl lg:text-4xl font-bold mb-4">Our vision</h3>
                 <p className="text-lg lg:text-xl text-white/90 leading-relaxed">
-                  To be the global standard for multichannel commerce — enabling millions of sellers
+                  To be the global standard for multichannel commerce - enabling millions of sellers
                   to focus on craft, customers and growth. Not data-entry.
                 </p>
               </div>
@@ -95,7 +95,7 @@ const About = () => {
         <section className="py-24 bg-blue-50/40">
           <div className="relative px-[50px] lg:px-[70px]">
             <div className="text-center mb-16 reveal">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Our journey</Badge>
+              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Our Journey</Badge>
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">5 years. 50,000 sellers.</h2>
               <p className="text-xl lg:text-2xl text-slate-600">From garage idea to global platform.</p>
             </div>
@@ -169,15 +169,15 @@ const About = () => {
           <div className="px-[50px] lg:px-[70px]">
             <div className="text-center mb-14 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
-                <Award className="w-3.5 h-3.5 mr-1" /> Why sellers trust us
+                <Award className="w-3.5 h-3.5 mr-1" /> Why Sellers Trust Us
               </Badge>
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Trust isn't claimed. It's earned.</h2>
-              <p className="text-xl lg:text-2xl text-slate-600">Six commitments we ship against — every release, every day.</p>
+              <p className="text-xl lg:text-2xl text-slate-600">Six commitments we ship against - every release, every day.</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 { icon: Lock, title: "SOC 2 Type II", desc: "Independently audited every year. Your data, encrypted at rest and in transit.", tone: "from-blue-600 to-indigo-600" },
-                { icon: Brain, title: "AI for customer favour", desc: "ML models surface what your buyers want next — purchase-behaviour analytics built in.", tone: "from-blue-500 to-blue-700" },
+                { icon: Brain, title: "AI for customer favour", desc: "ML models surface what your buyers want next - purchase-behaviour analytics built in.", tone: "from-blue-500 to-blue-700" },
                 { icon: Zap, title: "Innovation cadence", desc: "2-3 new integrations every month, shipped without breaking your workflows.", tone: "from-blue-400 to-blue-600" },
                 { icon: Shield, title: "99.99% uptime SLA", desc: "Multi-region failover means your store stays open even when AWS regions don't.", tone: "from-blue-700 to-blue-900" },
                 { icon: Cpu, title: "Built-in compliance", desc: "GDPR, ISO 27001, PCI DSS L1 and HIPAA-ready out of the box.", tone: "from-blue-500 to-cyan-500" },
@@ -202,7 +202,7 @@ const About = () => {
         <section className="py-24 bg-white">
           <div className="relative px-[50px] lg:px-[70px]">
             <div className="text-center mb-14 reveal">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Partnership ecosystem</Badge>
+              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Partnership Ecosystem</Badge>
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Powered by world-class partners</h2>
               <p className="text-xl lg:text-2xl text-slate-600">Logistics across India, Europe and the USA · Marketplace · ad networks · offline retail.</p>
             </div>
@@ -226,7 +226,7 @@ const About = () => {
                   <h3 className="font-bold text-slate-900">Marketplace & offline chains</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  {["Amazon", "Walmart", "Lazada", "Rakuten", "eBay", "Allegro", "bol", "abebooks", "wortan", "Kaufland", "fnac", "cdon"].map((n, i) => (
+                  {["Amazon", "Walmart", "Lazada", "Rakuten", "eBay", "Allegro", "Bol", "Abebooks", "Worten", "Kaufland", "Fnac", "Cdon"].map((n, i) => (
                     <LogoChip key={n} name={n} tone={i % 3 === 0 ? "secondary" : i % 3 === 1 ? "primary" : "accent"} />
                   ))}
                 </div>
@@ -247,24 +247,24 @@ const About = () => {
           </div>
         </section>
 
-        {/* AI for customer favour — illustration block */}
+        {/* AI for customer favour - illustration block */}
         <section className="py-24 bg-blue-50/40">
           <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
-                <Brain className="w-3.5 h-3.5 mr-1" /> AI for customer favour
+                <Brain className="w-3.5 h-3.5 mr-1" /> AI For Customer Favour
               </Badge>
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                Predict what your buyers want — before they search for it.
+                Predict what your buyers want - before they search for it.
               </h2>
               <p className="text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
                 Our ML engine learns from millions of orders to forecast demand, detect repricing
-                opportunities and segment customers by purchase behaviour — so every campaign lands
+                opportunities and segment customers by purchase behaviour - so every campaign lands
                 with the right buyer at the right moment.
               </p>
               <ul className="space-y-3 mb-6">
                 {[
-                  "AI listing generator — turns raw product data into channel-perfect Amazon, eBay & fnac listings",
+                  "AI listing generator - turns raw product data into channel-perfect Amazon, eBay & Fnac listings",
                   "Auto-repricer with your own min/max margin rules (Premium)",
                   "A+ content managed as versioned S3 objects, one-click push to Amazon",
                   "Customer purchase-behaviour analytics powered by BigQuery & Power BI",
@@ -287,7 +287,7 @@ const About = () => {
         <section className="py-24 bg-white">
           <div className="px-[50px] lg:px-[70px]">
             <div className="text-center mb-16 reveal">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">What we believe</Badge>
+              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">What We Believe</Badge>
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Our values</h2>
               <p className="text-xl lg:text-2xl text-slate-600">The principles behind every decision we make.</p>
             </div>
@@ -308,7 +308,7 @@ const About = () => {
           </div>
         </section>
 
-        {/* CAREERS CTA — clean, minimal */}
+        {/* CAREERS CTA - clean, minimal */}
         {/* CAREERS CTA */}
         <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
           <div className="relative px-[50px] lg:px-[70px] text-center reveal">

@@ -104,7 +104,7 @@ const IntegrationDetail = () => {
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 reveal max-w-3xl mx-auto">
               <Badge className="mb-4 bg-accent text-accent-foreground border-0">
-                <Zap className="w-3.5 h-3.5 mr-1" /> Built for {name} sellers
+                <Zap className="w-3.5 h-3.5 mr-1" /> Built For {name} Sellers
               </Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Every {name} workflow, on rails</h2>
               <p className="text-lg text-slate-600">Stop stitching together browser tabs and Zapier zaps. This is the operator console you wish Seller Central shipped with.</p>
@@ -129,7 +129,7 @@ const IntegrationDetail = () => {
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 reveal max-w-3xl mx-auto">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">How it flows</Badge>
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">How It Flows</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">From {name} event to your dashboard in seconds</h2>
               <p className="text-lg text-slate-600">A visual flow you can audit, replay and customize without writing a line of code.</p>
             </div>
@@ -143,12 +143,12 @@ const IntegrationDetail = () => {
         <section className="py-24 section-bg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Operator view</Badge>
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Operator View</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
                 The dashboard {name} sellers actually open every morning
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                Buy Box trends, ad ROAS, return reasons and stockout risk — together, finally. No CSV exports, no copy-paste.
+                Buy Box trends, ad ROAS, return reasons and stockout risk - together, finally. No CSV exports, no copy-paste.
               </p>
               <Button size="lg" className="shadow-stripe-xl group">
                 See sample dashboard <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
@@ -164,7 +164,7 @@ const IntegrationDetail = () => {
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Other integrations</Badge>
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Other Integrations</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Pair {name} with these next</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

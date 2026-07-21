@@ -47,7 +47,7 @@ export const KpiChartVisual = ({
     id: string;
     title: string;
     kpis: { label: string; value: string; delta?: string; icon: "box" | "cart" | "calendar" }[];
-    /** Raw (non-normalized) values — scaled internally against yMax. */
+    /** Raw (non-normalized) values - scaled internally against yMax. */
     series: number[];
     compareSeries?: number[];
     /** Chart ceiling; defaults to the next nice round number above the data max. */

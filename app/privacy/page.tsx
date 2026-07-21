@@ -4,7 +4,7 @@ import { buildMetadata } from "@/lib/seo";
 
 // ─── Page metadata ───────────────────────────────────────────────────────────
 export const metadata: Metadata = buildMetadata({
-    title: "Privacy Policy — Ctasis Sellerbuz",
+    title: "Privacy Policy - Ctasis Sellerbuz",
     description:
         "Read the Privacy Policy of Ctasis Sellerbuz to understand how we encrypt, manage, protect, and use your inventory and account information.",
     path: "/privacy",
@@ -14,7 +14,7 @@ export const metadata: Metadata = buildMetadata({
 const privacyJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Privacy Policy — Ctasis Sellerbuz",
+    name: "Privacy Policy - Ctasis Sellerbuz",
     url: "https://ctasis.com/privacy",
     description:
         "Privacy terms and encryption safeguards governing customer catalog data and store account metrics in Ctasis Sellerbuz.",

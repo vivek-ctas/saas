@@ -152,10 +152,10 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
 
     await openCheckout({
       key: razorpayKeyId,
-      amount: order.amount,          // paise — Razorpay SDK expects paise
+      amount: order.amount,          // paise - Razorpay SDK expects paise
       currency: order.currency,        // "INR"
       name: 'Ctasis',
-      description: `${plan.name} Plan${order.trial_days > 0 ? ` — ${order.trial_days}-day trial` : ''}`,
+      description: `${plan.name} Plan${order.trial_days > 0 ? ` - ${order.trial_days}-day trial` : ''}`,
       order_id: order.razorpay_order_id,
       prefill: {
         name: `${form.first_name} ${form.last_name}`,
@@ -173,7 +173,7 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
 
       handler: async (response) => {
         try {
-          // HMAC verification on backend — never trust frontend for this
+          // HMAC verification on backend - never trust frontend for this
           const { data: activation, error: verifyErr } = await verifyRazorpayPayment({
             lead_id: leadData!.lead_id,
             razorpay_order_id: response.razorpay_order_id,
@@ -222,7 +222,7 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
     if (sessionErr || !session)
       throw new Error(sessionErr || 'Could not create payment session.');
 
-    // Hard redirect — Stripe will append ?session_id=cs_xxx to our success_url
+    // Hard redirect - Stripe will append ?session_id=cs_xxx to our success_url
     window.location.href = session.checkout_url;
   }
 

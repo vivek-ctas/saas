@@ -27,13 +27,13 @@ const Marketplaces = () => {
       title: "Asia-Pacific",
       icon: Globe,
       tone: "from-secondary to-rose-500",
-      items: ["Lazada", "bol", "Rakuten", "Tokopedia", "fnac", , "Decathlon", "worten"]
+      items: ["Lazada", "Bol", "Rakuten", "Tokopedia", "Fnac", , "Decathlon", "Worten"]
     },
     {
       title: "Europe",
       icon: Star,
       tone: "from-primary to-indigo-600",
-      items: ["Allegro", "Cdiscount", "Bol.com", "OTTO", "Zalando", "Fnac", "ManoMano", "Kaufland"]
+      items: ["Allegro", "Cdiscount", "Bol", "OTTO", "Zalando", "Fnac", "ManoMano", "Kaufland"]
     },
     {
       title: "Storefronts & D2C",
@@ -73,7 +73,7 @@ const Marketplaces = () => {
           badgeIcon={Zap}
           badgeText="80+ live integrations"
           title={<>Sell on every channel <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">that matters.</span></>}
-          subtitle="From Amazon FBA to Lazada, TikTok Shop to Reliance Smart — Ctasis connects every Marketplace, storefront, courier and ad network you need to scale globally."
+          subtitle="From Amazon FBA to Lazada, TikTok Shop to Reliance Smart - Ctasis connects every Marketplace, storefront, courier and ad network you need to scale globally."
           // visual={<MarketplaceMeshDiagram className="w-full h-auto" />}
           visual={
             <div className="scale-110 origin-center">
@@ -103,14 +103,14 @@ const Marketplaces = () => {
           </div>
         </PageHero>
 
-        {/* FEATURED INTEGRATIONS — deep-dive subpages */}
+        {/* FEATURED INTEGRATIONS - deep-dive subpages */}
         <section className="py-24 bg-white" id="featured-integrations">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 reveal">
               <Badge className="mb-4 bg-accent text-accent-foreground border-0">
-                <Plug className="w-3.5 h-3.5 mr-1" /> Deep-dive integrations
+                <Plug className="w-3.5 h-3.5 mr-1" /> Deep-Dive Integrations
               </Badge>
-              <h2 className="text-4xl font-bold text-slate-900 mb-4">Pick a channel — see how Ctasis runs it</h2>
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">Pick a channel - see how Ctasis runs it</h2>
               <p className="text-xl text-slate-600">Each integration has its own operator console, automations and analytics.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -178,17 +178,17 @@ const Marketplaces = () => {
           </div>
         </section>
 
-        {/* CHANNEL SYNC FLOW — n8n style visual */}
+        {/* CHANNEL SYNC FLOW - n8n style visual */}
         <section className="py-24 section-bg relative overflow-hidden">
           <div className="absolute inset-0 grid-bg opacity-30" />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 reveal max-w-3xl mx-auto">
               <Badge className="mb-4 bg-accent text-accent-foreground border-0">
-                <Zap className="w-3.5 h-3.5 mr-1" /> How a channel goes live
+                <Zap className="w-3.5 h-3.5 mr-1" /> How A Channel Goes Live
               </Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Connect once. Sync forever.</h2>
               <p className="text-lg text-slate-600">
-                Every Marketplace integration looks the same under the hood — a visual flow you can audit, replay and tweak without writing a line of code.
+                Every Marketplace integration looks the same under the hood - a visual flow you can audit, replay and tweak without writing a line of code.
               </p>
             </div>
             <div className="reveal rounded-3xl bg-white p-4 sm:p-8 border border-slate-100 shadow-stripe">
@@ -197,7 +197,7 @@ const Marketplaces = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
               {[
                 { t: "Two-way inventory", d: "When stock moves on Shopify, it moves on Amazon, eBay and Walmart in the same breath. No more 'oversold' emails at 2 AM." },
-                { t: "Smart price guardrails", d: "Push a new price to one channel and our rules check your floor and ceiling before it hits the others. You set the boundaries — we enforce them." },
+                { t: "Smart price guardrails", d: "Push a new price to one channel and our rules check your floor and ceiling before it hits the others. You set the boundaries - we enforce them." },
                 { t: "Order de-duplication", d: "If the same buyer hits two channels in the same minute, we catch the duplicate before fulfillment ever sees it. Clean orders, clean books." },
               ].map((b, i) => (
                 <Card key={i} className="reveal hover-lift border border-slate-100 bg-white" style={{ transitionDelay: `${i * 80}ms` }}>
@@ -218,16 +218,16 @@ const Marketplaces = () => {
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="reveal">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Seller analytics</Badge>
+              <Badge className="mb-4 bg-accent text-accent-foreground border-0">Seller Analytics</Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
-                See every channel side-by-side — finally.
+                See every channel side-by-side - finally.
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                Most sellers run their business across six tabs and a Google Sheet. Ctasis pulls Amazon, Walmart, Shopify, eBay and your ad networks into one honest profit view — so you stop guessing which channel is actually paying the bills and which one is quietly bleeding cash.
+                Most sellers run their business across six tabs and a Google Sheet. Ctasis pulls Amazon, Walmart, Shopify, eBay and your ad networks into one honest profit view - so you stop guessing which channel is actually paying the bills and which one is quietly bleeding cash.
               </p>
               <ul className="space-y-3 mb-8">
                 {[
-                  "True profit per SKU per channel — fees, ads and refunds included",
+                  "True profit per SKU per channel - fees, ads and refunds included",
                   "Buy Box win-rate trends with hour-level resolution",
                   "Inventory health score: days of cover, dead stock, stockout risk",
                   "One-click drill-down from a number to the order behind it",
@@ -249,10 +249,10 @@ const Marketplaces = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 reveal">
               <Badge className="mb-4 bg-accent text-accent-foreground border-0">
-                <Truck className="w-3.5 h-3.5 mr-1" /> Logistics partners
+                <Truck className="w-3.5 h-3.5 mr-1" /> Logistics Partners
               </Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">Ship anywhere, with anyone</h2>
-              <p className="text-xl text-slate-600">India, Europe, USA — pick the carrier that fits each order.</p>
+              <p className="text-xl text-slate-600">India, Europe, USA - pick the carrier that fits each order.</p>
             </div>
             <div className="reveal flex flex-wrap justify-center gap-3">
               {logistics.map((l, i) => (
@@ -267,7 +267,7 @@ const Marketplaces = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-accent text-accent-foreground border-0">
-                <Megaphone className="w-3.5 h-3.5 mr-1" /> Ads & growth
+                <Megaphone className="w-3.5 h-3.5 mr-1" /> Ads & Growth
               </Badge>
               <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">
                 Run paid campaigns from one console.

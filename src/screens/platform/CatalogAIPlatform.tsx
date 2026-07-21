@@ -6,8 +6,8 @@ import { DashListVisual } from "@/components/illustrations/DashListVisual";
 import { GenVisual } from "@/components/illustrations/GenVisual";
 const cfg: PlatformConfig = {
   slug: "catalog-ai",
-  eyebrow: "AI catalog",
-  title: "Listings that ship in minutes — not afternoons.",
+  eyebrow: "AI Catalog",
+  title: "Listings that ship in minutes - not afternoons.",
   intro:
     "Generate optimized titles, descriptions, bullets and attributes per marketplace with a single click. Tone-aware, SEO-aware, and channel-native from day one.",
   hero: (
@@ -75,7 +75,7 @@ const cfg: PlatformConfig = {
     title: "Writing 5 versions of the same listing kills throughput.",
     points: [
       "Amazon wants bullet-first, eBay wants 80-char titles",
-      "Etsy needs warmth, fnac needs specs",
+      "Etsy needs warmth, Fnac needs specs",
       "New SKUs take an afternoon each",
       "Old listings decay without regenerate loops",
     ],
@@ -91,14 +91,14 @@ const cfg: PlatformConfig = {
   },
   deepDives: [
     {
-      eyebrow: "Generate per channel",
+      eyebrow: "Generate Per Channel",
       title: "One product in. Five channel-native listings out.",
-      desc: "Give SellerBuz a photo and a few specs. It writes an Amazon bullet-first listing, an eBay 80-char title, an Etsy warm description and a fnac spec block — all optimized for that channel's search algorithm.",
+      desc: "Give SellerBuz a photo and a few specs. It writes an Amazon bullet-first listing, an eBay 80-char title, an Etsy warm description and a Fnac spec block - all optimized for that channel's search algorithm.",
       bullets: [
         "Amazon, Walmart, eBay, Etsy and more. Save tone presets",
         "Per-channel title length, keyword density and formatting",
         "Save brand voice presets per storefront",
-        "Human review before publish — nothing goes live silently",
+        "Human review before publish - nothing goes live silently",
       ],
       visual: (
         <GenVisual
@@ -163,14 +163,14 @@ const cfg: PlatformConfig = {
       ),
     },
     {
-      eyebrow: "Image → attributes",
+      eyebrow: "Image → Attributes",
       title: "Vision models read the photo, fill the category attributes.",
       desc: "Category attributes are the tax nobody wants to pay. SellerBuz reads product images plus your uploaded spec sheet and fills the required attributes for each marketplace's category schema.",
       bullets: [
         "Auto-fill Amazon, Walmart and eBay category attributes",
         "Extract color, size, material, weight from images",
         "Match against existing retail catalog to save effort",
-        "Confidence score per attribute — low-confidence flagged for review",
+        "Confidence score per attribute - low-confidence flagged for review",
       ],
       visual: (
         <DashListVisual
@@ -188,9 +188,9 @@ const cfg: PlatformConfig = {
       ),
     },
     {
-      eyebrow: "Bulk regenerate",
+      eyebrow: "Bulk Regenerate",
       title: "Refresh entire categories with one action.",
-      desc: "SEO shifts. Buy-intent language evolves. Old listings decay. SellerBuz lets you bulk-regenerate a category with a new tone, new keyword focus or new brand voice — with a diff view before you publish.",
+      desc: "SEO shifts. Buy-intent language evolves. Old listings decay. SellerBuz lets you bulk-regenerate a category with a new tone, new keyword focus or new brand voice - with a diff view before you publish.",
       bullets: [
         "Bulk regenerate by category, brand or channel",
         "Diff view: before vs after, per SKU",
@@ -239,9 +239,9 @@ const cfg: PlatformConfig = {
     { icon: Upload, t: "Bulk regenerate", d: "Refresh entire categories with new tone or SEO focus." },
     { icon: BarChart3, t: "Content scoring", d: "Track listing quality score per SKU and per channel." },
   ],
-  channels: ["Amazon", "Walmart", "eBay", "Etsy", "fnac"],
+  channels: ["Amazon", "Walmart", "eBay", "Etsy"],
   faq: [
-    { q: "Do I have to accept AI drafts as-is?", a: "No. Every generation is a draft — review, edit, then publish." },
+    { q: "Do I have to accept AI drafts as-is?", a: "No. Every generation is a draft - review, edit, then publish." },
     { q: "What LLM powers this?", a: "SellerBuz uses fine-tuned models optimized per marketplace, updated regularly." },
     { q: "Will Amazon flag AI-generated content?", a: "No. Content is unique per listing and follows Amazon's guidelines." },
     { q: "Can I lock brand voice?", a: "Yes. Save brand voice presets per storefront." },

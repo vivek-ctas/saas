@@ -5,10 +5,10 @@ import { DashListVisual } from "@/components/illustrations/DashListVisual";
 import { ProgressListVisual } from "@/components/illustrations/ProgressListVisual";
 const cfg: PlatformConfig = {
   slug: "orders",
-  eyebrow: "Order hub",
+  eyebrow: "Order Hub",
   title: "Every marketplace order. One inbox. Zero tab-juggling.",
   intro:
-    "Amazon, Walmart, eBay, Etsy and more orders land in a single, unified inbox — with status writebacks to every channel and bulk actions that just work.",
+    "Amazon, Walmart, eBay, Etsy and more orders land in a single, unified inbox - with status writebacks to every channel and bulk actions that just work.",
   hero: (
     <DashListVisual
       id="orders-hero"
@@ -33,7 +33,7 @@ const cfg: PlatformConfig = {
     ],
   },
   solution: {
-    title: "Capture → route → fulfil → close — same pipeline, every channel.",
+    title: "Capture → route → fulfil → close - same pipeline, every channel.",
     points: [
       "Unified inbox with cross-channel filters",
       "Bulk label printing across marketplaces",
@@ -43,9 +43,9 @@ const cfg: PlatformConfig = {
   },
   deepDives: [
     {
-      eyebrow: "Unified inbox",
+      eyebrow: "Unified Inbox",
       title: "Every marketplace order in one filterable inbox.",
-      desc: "New orders from every connected channel land in one inbox with the same shape — SKU, quantity, channel, SLA and destination. Filter by channel, tag, warehouse or fulfilment state.",
+      desc: "New orders from every connected channel land in one inbox with the same shape - SKU, quantity, channel, SLA and destination. Filter by channel, tag, warehouse or fulfilment state.",
       bullets: [
         "Cross-channel filters, saved views and tags",
         "SLA countdowns per marketplace",
@@ -68,9 +68,9 @@ const cfg: PlatformConfig = {
       ),
     },
     {
-      eyebrow: "Routing rules",
-      title: "Route every order to the right warehouse — automatically.",
-      desc: "Set rules based on SKU, region, channel or weight. SellerBuz picks the fulfilment source, generates the pick list and creates the label — no ops person needed for standard orders.",
+      eyebrow: "Routing Rules",
+      title: "Route every order to the right warehouse - automatically.",
+      desc: "Set rules based on SKU, region, channel or weight. SellerBuz picks the fulfilment source, generates the pick list and creates the label - no ops person needed for standard orders.",
       bullets: [
         "SKU, region, channel and weight-based routing",
         "Split orders across warehouses when needed",
@@ -99,7 +99,7 @@ const cfg: PlatformConfig = {
       ),
     },
     {
-      eyebrow: "Fulfil & close",
+      eyebrow: "Fulfil & Close",
       title: "Bulk labels. Auto writeback. Nothing left in a limbo state.",
       desc: "Print labels across marketplaces in one action. As soon as tracking is generated, SellerBuz writes it back to the originating channel so the buyer sees status in their marketplace app.",
       bullets: [
@@ -126,14 +126,14 @@ const cfg: PlatformConfig = {
   featureGrid: [
     { icon: ShoppingCart, t: "Unified inbox", d: "Every order, every marketplace, one view." },
     { icon: Layers, t: "Routing rules", d: "Route orders by SKU, region or channel to the right warehouse or 3PL." },
-    { icon: Upload, t: "Bulk actions", d: "Print labels, mark shipped, refund — in bulk, across channels." },
+    { icon: Upload, t: "Bulk actions", d: "Print labels, mark shipped, refund - in bulk, across channels." },
     { icon: RefreshCw, t: "Status writeback", d: "Tracking numbers and shipped status propagate back to each marketplace." },
     { icon: ShieldCheck, t: "SLA guardrails", d: "Countdowns and priority flags so nothing slips past dispatch." },
     { icon: BarChart3, t: "Fulfilment analytics", d: "On-time rate, cancellation rate and return rate by channel." },
   ],
-  channels: ["Amazon", "Walmart", "eBay", "Etsy", "fnac"],
+  channels: ["Amazon", "Walmart", "eBay", "Etsy"],
   faq: [
-    { q: "Does it print shipping labels?", a: "Yes — integrated with major carriers. Bulk-print across marketplaces." },
+    { q: "Does it print shipping labels?", a: "Yes - integrated with major carriers. Bulk-print across marketplaces." },
     { q: "How are returns handled?", a: "Return events sync into the inbox with the original order attached." },
     { q: "Can I assign orders to team members?", a: "Yes. Ownership, notes and tags per order." },
     { q: "Does it support partial shipments?", a: "Yes. Split shipments write back per-line tracking to each channel." },

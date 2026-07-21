@@ -6,11 +6,11 @@ import { notFound } from "next/navigation";
 type PageProps = { params: { slug: string } };
 
 // ─── Shared post data (mirrors GuidePost.tsx) ─────────────────────────────────
-// NOTE: Ideally extract this into a shared /lib/guide-data.ts — avoid duplication.
+// NOTE: Ideally extract this into a shared /lib/guide-data.ts - avoid duplication.
 const posts = [
   {
     slug: "ai-amazon-business-repricer",
-    title: "Inside our AI Amazon Business Repricer — and why margin floors matter",
+    title: "Inside our AI Amazon Business Repricer - and why margin floors matter",
     category: "Repricing",
     date: "Apr 22, 2026",
     author: "Aman Shah",
@@ -50,7 +50,7 @@ const posts = [
   },
   {
     slug: "ai-listing-generator-from-raw-data",
-    title: "From a messy CSV to a fnac listing in four minutes — with AI",
+    title: "From a messy CSV to a Fnac listing in four minutes - with AI",
     category: "AI",
     date: "Mar 20, 2026",
     author: "Aman Shah",
@@ -62,7 +62,7 @@ const posts = [
     category: "Integrations",
     date: "May 2, 2026",
     author: "Aman Shah",
-    excerpt: "Tighter rate limits, granular roles, and a much friendlier auth flow — here's what we rebuilt for SP-API v2.",
+    excerpt: "Tighter rate limits, granular roles, and a much friendlier auth flow - here's what we rebuilt for SP-API v2.",
   },
   {
     slug: "fba-vs-fbm",
@@ -70,7 +70,7 @@ const posts = [
     category: "Operations",
     date: "Apr 28, 2026",
     author: "Jordan Reyes",
-    excerpt: "Fulfilment By Amazon vs Merchant. Not a religious war — a maths problem with three variables.",
+    excerpt: "Fulfilment By Amazon vs Merchant. Not a religious war - a maths problem with three variables.",
   },
   {
     slug: "amazon-fulfilment-strategies",

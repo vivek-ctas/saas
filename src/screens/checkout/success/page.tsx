@@ -13,11 +13,11 @@ import type { ActivationData } from '@/types';
  *
  * CHANGED from original:
  *
- * 1. Razorpay — was reading plan_name and expired_at from URL params (tamper-able).
+ * 1. Razorpay - was reading plan_name and expired_at from URL params (tamper-able).
  *    Now calls GET /v1/public-checkout/seller/:leadId to fetch activation data
  *    server-side, exactly like Stripe does.
  *
- * 2. Stripe — unchanged: calls verifyStripeSession({ lead_id, session_id }).
+ * 2. Stripe - unchanged: calls verifyStripeSession({ lead_id, session_id }).
  *    The session_id is appended by Stripe to the success_url.
  *    The gateway=stripe is now explicit in the URL (no more fallback guess).
  *
@@ -37,7 +37,7 @@ export default function CheckoutSuccessPage() {
 
   const isStripe = gateway === 'stripe';
   const isRazorpay = gateway === 'razorpay';
-  
+
   const [verifying, setVerifying] = useState(true);
   const [activation, setActivation] = useState<ActivationData | null>(null);
   const [verifyError, setVerifyError] = useState<string | null>(null);
@@ -187,7 +187,7 @@ export default function CheckoutSuccessPage() {
               <div>
                 <div className="text-xs text-slate-500">What happens next</div>
                 <div className="text-sm font-semibold text-slate-800">
-                  Check your inbox — a password setup link is on its way
+                  Check your inbox - a password setup link is on its way
                 </div>
               </div>
             </div>

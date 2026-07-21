@@ -112,7 +112,7 @@ const Contact = () => {
           badgeIcon={MessageCircle}
           badgeText="We reply within 4 hours"
           title={<>Let's talk about <span className="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">your operations.</span></>}
-          subtitle="Sales, support, partnerships — whatever brings you here, we're listening. Real humans across 5 hubs, 24/7 coverage. No bots."
+          subtitle="Sales, support, partnerships - whatever brings you here, we're listening. Real humans across 5 hubs, 24/7 coverage. No bots."
           visual={<ContactMapIllustration className="w-full h-auto" />}
           actions={
             <>

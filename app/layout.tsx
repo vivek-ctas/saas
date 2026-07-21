@@ -5,7 +5,7 @@ import Providers from "./providers";
 import "./globals.css";
 import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
-// ─── Font — loaded via next/font to eliminate render-blocking requests ────────
+// ─── Font - loaded via next/font to eliminate render-blocking requests ────────
 // next/font self-hosts the font, inlines the @font-face, and uses font-display:swap
 // This removes the 17.2 KiB render-blocking CSS chunk Lighthouse flagged.
 const inter = Inter({
@@ -19,7 +19,7 @@ const inter = Inter({
 
 // ─── Global / fallback metadata ────────────────────────────────────────────
 export const metadata: Metadata = {
-  title: `${SITE_NAME} — AI Marketplace OS for Multichannel Sellers`,
+  title: `${SITE_NAME} - AI Marketplace OS for Multichannel Sellers`,
   description: SITE_DESCRIPTION,
   metadataBase: new URL(SITE_URL),
 
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} — AI Marketplace OS for Multichannel Sellers`,
+    title: `${SITE_NAME} - AI Marketplace OS for Multichannel Sellers`,
     description: SITE_DESCRIPTION,
     images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: SITE_NAME }],
   },

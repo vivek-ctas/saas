@@ -4,7 +4,7 @@ import { buildMetadata } from "@/lib/seo";
 
 // ─── Page metadata ───────────────────────────────────────────────────────────
 export const metadata: Metadata = buildMetadata({
-    title: "Terms & Conditions — Ctasis Sellerbuz",
+    title: "Terms & Conditions - Ctasis Sellerbuz",
     description:
         "Review the Terms & Conditions governing your access and use of Ctasis Sellerbuz's cloud-based multi-marketplace management platform.",
     path: "/terms",
@@ -14,7 +14,7 @@ export const metadata: Metadata = buildMetadata({
 const termsJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Terms & Conditions — Ctasis Sellerbuz",
+    name: "Terms & Conditions - Ctasis Sellerbuz",
     url: "https://ctasis.com/terms",
     description:
         "Legal terms and conditions governing the usage of Ctasis Sellerbuz software, billing, database management, and integrations.",

@@ -13,7 +13,7 @@ export async function apiFetch<T = any>(
   options?: RequestInit,
 ): Promise<{ data: T | null; error: string | null }> {
   try {
-    // Attach JWT if present (guarded for SSR — localStorage is browser-only)
+    // Attach JWT if present (guarded for SSR - localStorage is browser-only)
     const token =
       typeof window !== 'undefined' ? localStorage.getItem('authToken') : null;
     const res = await fetch(`${API_BASE_URL}${path}`, {

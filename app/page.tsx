@@ -47,10 +47,10 @@ const faqJsonLd = {
     },
     {
       "@type": "Question",
-      name: "Is there a free trial?",
+      name: "How do I get started?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — every plan includes a 14-day free trial with no credit card required.",
+        text: "Choose the plan that fits your business and contact our team to get started. We'll help you with setup and onboarding.",
       },
     },
     {

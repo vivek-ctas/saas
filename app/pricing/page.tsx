@@ -4,9 +4,9 @@ import Pricing from "@/screens/Pricing";
 
 // ─── Page metadata ───────────────────────────────────────────────────────────
 export const metadata: Metadata = buildMetadata({
-  title: "Pricing — Starter $29 · Pro $79 · Enterprise Custom",
+  title: "Pricing - Starter $29 · Pro $79 · Enterprise Custom",
   description:
-    "Simple, transparent pricing for every stage. Starter at $29/mo, Pro at $79/mo and Enterprise custom plans. All include a 14-day free trial. No credit card required. Cancel anytime.",
+    "Explore SellerBuz pricing plans for businesses of every size. Compare Starter, Pro, and Enterprise plans to streamline inventory, orders, pricing, and marketplace management.",
   path: "/pricing",
 });
 
@@ -17,7 +17,7 @@ const pricingJsonLd = {
   name: "Ctasis Multichannel Seller Platform",
   url: `${SITE_URL}/pricing`,
   description:
-    "AI-powered multichannel seller tooling — inventory sync, order management, repricing and analytics.",
+    "AI-powered multichannel seller tooling - inventory sync, order management, repricing and analytics.",
   offers: [
     {
       "@type": "Offer",
@@ -40,7 +40,7 @@ const pricingJsonLd = {
     {
       "@type": "Offer",
       name: "Enterprise",
-      description: "Custom pricing for large operations — unlimited connections, SLA guarantee, dedicated account manager.",
+      description: "Custom pricing for large operations - unlimited connections, SLA guarantee, dedicated account manager.",
       url: `${SITE_URL}/pricing`,
     },
   ],
@@ -53,8 +53,11 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Is there a free trial?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes — every plan includes a 14-day free trial with no credit card required." },
+      name: "How do I get started?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Choose the plan that best fits your business and contact our team to begin the onboarding process. We'll help you get up and running quickly.",
+      },
     },
     {
       "@type": "Question",
@@ -64,7 +67,7 @@ const faqJsonLd = {
     {
       "@type": "Question",
       name: "What Marketplace are supported?",
-      acceptedAnswer: { "@type": "Answer", text: "Amazon, eBay, Walmart, Shopify, Etsy, TikTok Shop and 50+ more — and we'll build any missing integration." },
+      acceptedAnswer: { "@type": "Answer", text: "Amazon, eBay, Walmart, Shopify, Etsy, TikTok Shop and 50+ more - and we'll build any missing integration." },
     },
     {
       "@type": "Question",
@@ -74,12 +77,12 @@ const faqJsonLd = {
     {
       "@type": "Question",
       name: "Do you offer migration help?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes — our white-glove onboarding team migrates listings, orders and history for free on Pro & Enterprise plans." },
+      acceptedAnswer: { "@type": "Answer", text: "Yes - our white-glove onboarding team migrates listings, orders and history for free on Pro & Enterprise plans." },
     },
     {
       "@type": "Question",
       name: "What happens if I exceed my plan limits?",
-      acceptedAnswer: { "@type": "Answer", text: "We notify you well before you hit a cap — no surprise charges, ever." },
+      acceptedAnswer: { "@type": "Answer", text: "We notify you well before you hit a cap - no surprise charges, ever." },
     },
   ],
 };

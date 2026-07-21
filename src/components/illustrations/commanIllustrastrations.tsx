@@ -1,7 +1,7 @@
 import { ReactNode, SVGProps } from "react";
 
 /**
- * Unified illustration design system — sellersnap / sellerbrite inspired.
+ * Unified illustration design system - sellersnap / sellerbrite inspired.
  * Strict navy + blue + light-blue palette. Every diagram uses the same
  * card frame, header bar, chips, stroke weights and typography so the whole
  * site reads as one coherent dashboard language.
@@ -32,7 +32,7 @@ export const ILL = {
 /** Icon glyphs available on IllIconBadge. Extend this union as new flows need new icons. */
 export type IconKind = "warehouse" | "box" | "bag" | "cart" | "tag" | "dot";
 
-/** Reusable defs — drop once at the top of every illustration. */
+/** Reusable defs - drop once at the top of every illustration. */
 export const IllDefs = ({ id = "ill" }: { id?: string }) => (
     <defs>
         <linearGradient id={`${id}-wash`} x1="0" x2="1" y1="0" y2="1">
@@ -94,7 +94,7 @@ export const IllHeader = ({ x = 10, y = 10, label }: { x?: number; y?: number; l
     </g>
 );
 
-/** Pill chip — white with hairline border, navy text. */
+/** Pill chip - white with hairline border, navy text. */
 export const IllChip = ({
     x, y, w = 120, h = 28, label, tone = "light",
 }: { x: number; y: number; w?: number; h?: number; label: string; tone?: "light" | "blue" | "navy" }) => {
@@ -114,7 +114,7 @@ export const IllChip = ({
     );
 };
 
-/** KPI tile — label + big number + delta. */
+/** KPI tile - label + big number + delta. */
 export const IllKPI = ({
     x, y, w = 150, h = 78, label, value, delta,
 }: { x: number; y: number; w?: number; h?: number; label: string; value: string; delta?: string }) => (
@@ -129,7 +129,7 @@ export const IllKPI = ({
 );
 
 /**
- * Colored icon badge used inside flow-diagram cards — a soft tinted circle
+ * Colored icon badge used inside flow-diagram cards - a soft tinted circle
  * (accent color at low opacity) with a small line-art glyph on top. Add new
  * `kind`s here as new flows need them; unknown/omitted kind falls back to
  * a plain dot so existing callers of IllCard-based diagrams keep working.
@@ -183,7 +183,7 @@ export const IllIconBadge = ({
 /**
  * Connector line between a card and a hub. Draws a dashed line in the given
  * `color`, optional small dots at either endpoint, and an optional inline
- * arrowhead (drawn as a polygon so any accent color works — no per-color
+ * arrowhead (drawn as a polygon so any accent color works - no per-color
  * marker defs needed). `id`/`sky` are kept for backward compatibility with
  * existing call sites that don't pass `color`.
  */

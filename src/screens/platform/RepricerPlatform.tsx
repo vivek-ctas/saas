@@ -38,19 +38,19 @@ const cfg: PlatformConfig = {
     title: "A repricer that respects your margin.",
     points: [
       "Buy Box tracking on Amazon",
-      "Competitor-aware rules on Walmart, eBay, fnac",
-      "Hard floor and ceiling per SKU — no exceptions",
+      "Competitor-aware rules on Walmart, eBay, Fnac",
+      "Hard floor and ceiling per SKU - no exceptions",
       "Schedule promo pricing without touching listings",
     ],
   },
   deepDives: [
     {
-      eyebrow: "Buy Box tracker",
+      eyebrow: "Buy Box Tracker",
       title: "Reacts to Buy Box changes in under 2 seconds.",
-      desc: "SellerBuz watches Buy Box events in real time. When you lose it, we test the smallest price move that gets it back — without ever crossing your floor.",
+      desc: "SellerBuz watches Buy Box events in real time. When you lose it, we test the smallest price move that gets it back - without ever crossing your floor.",
       bullets: [
         "Sub-2-second reaction to Amazon Buy Box events",
-        "Sub-30-second competitor scan on Walmart, eBay, fnac",
+        "Sub-30-second competitor scan on Walmart, eBay, Fnac",
         "Smallest-effective-move algorithm to protect margin",
         "Buy Box win rate, price velocity and margin trend per SKU",
       ],
@@ -71,9 +71,9 @@ const cfg: PlatformConfig = {
       ),
     },
     {
-      eyebrow: "Strategies × channels",
+      eyebrow: "Strategies × Channels",
       title: "A different repricing strategy per SKU, per channel.",
-      desc: "Buy Box on Amazon, competitor-match on Walmart, hold-margin on Etsy. Assign any strategy to any SKU or category — SellerBuz enforces it 24/7.",
+      desc: "Buy Box on Amazon, competitor-match on Walmart, hold-margin on Etsy. Assign any strategy to any SKU or category - SellerBuz enforces it 24/7.",
       bullets: [
         "Match-Buy-Box, beat-by-cents, hold-margin, velocity-based",
         "Assign per SKU or per category, per channel",
@@ -111,9 +111,9 @@ const cfg: PlatformConfig = {
       ),
     },
     {
-      eyebrow: "Promo scheduler",
+      eyebrow: "Promo Scheduler",
       title: "Time-boxed promos with automatic revert.",
-      desc: "Schedule Prime Day, Big Billion Days or a Black Friday window per SKU. Prices drop at the start of the window and revert automatically at the end — no team member needed at midnight.",
+      desc: "Schedule Prime Day, Big Billion Days or a Black Friday window per SKU. Prices drop at the start of the window and revert automatically at the end - no team member needed at midnight.",
       bullets: [
         "Schedule promo windows per SKU or per category",
         "Automatic revert at end of window",
@@ -128,7 +128,7 @@ const cfg: PlatformConfig = {
           columns={["Promo", "Channel", "Window", "Floor"]}
           rows={[
             { cells: ["Prime Day", { dot: "#f59e0b", text: "Amazon" }, "Jul 15 · 48h", "$18.50"], badge: { text: "Armed", tone: "emerald" } },
-            { cells: ["Big Sale", { dot: "#1d4ed8", text: "fnac" }, "Aug 3 · 72h", "₹399"], badge: { text: "Armed", tone: "emerald" } },
+            { cells: ["Big Sale", { dot: "#1d4ed8", text: "Fnac" }, "Aug 3 · 72h", "₹399"], badge: { text: "Armed", tone: "emerald" } },
             { cells: ["Deals Days", { dot: "#2563eb", text: "Walmart" }, "Aug 12 · 48h", "$18.90"], badge: { text: "Draft", tone: "muted" } },
             { cells: ["BFCM", { dot: "#f59e0b", text: "Amazon" }, "Nov 24 · 96h", "$17.90"], badge: { text: "Draft", tone: "muted" } },
           ]}
@@ -144,12 +144,12 @@ const cfg: PlatformConfig = {
     { icon: Sparkles, t: "Promo scheduler", d: "Time-boxed sale prices with automatic revert." },
     { icon: BarChart3, t: "Buy Box analytics", d: "Win rate, price velocity and margin trend per SKU." },
   ],
-  channels: ["Amazon", "Walmart", "eBay", "Etsy", "fnac"],
+  channels: ["Amazon", "Walmart", "eBay", "Etsy"],
   faq: [
     { q: "How fast does the repricer react?", a: "Under 2 seconds for Amazon Buy Box events. Sub-30 seconds for competitor scans on other channels." },
     { q: "Will it violate marketplace pricing policies?", a: "No. Guardrails and marketplace rules are respected." },
     { q: "Can I run different strategies per SKU?", a: "Yes. Strategy library is fully assignable per SKU or per category." },
-    { q: "Is there a manual override?", a: "Yes — freeze pricing on any SKU with one click." },
+    { q: "Is there a manual override?", a: "Yes - freeze pricing on any SKU with one click." },
     { q: "Does it handle promotions like Prime Day?", a: "Yes. Schedule promo windows with automatic revert." },
   ],
 };

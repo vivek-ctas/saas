@@ -4,9 +4,9 @@ import Contact from "@/screens/Contact";
 
 // ─── Page metadata ───────────────────────────────────────────────────────────
 export const metadata: Metadata = buildMetadata({
-  title: "Contact Us — Sales, Support & Partnerships",
+  title: "Contact Us - Sales, Support & Partnerships",
   description:
-    "Reach Ctasis via email at info@ctasis.com, live chat (24/7 for Pro & Enterprise), or phone. We reply within 4 hours. Real humans across 5 global hubs — no bots.",
+    "Reach Ctasis via email at info@ctasis.com, live chat (24/7 for Pro & Enterprise), or phone. We reply within 4 hours. Real humans across 5 global hubs - no bots.",
   path: "/contact",
 });
 

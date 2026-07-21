@@ -11,7 +11,7 @@ import { apiFetch } from '@/lib/api';
 // ── Token status returned by POST /v1/email/verify-setup-token ───────────────
 type TokenStatus = 'checking' | 'valid' | 'expired' | 'used' | 'invalid';
 
-// Admin panel login URL — update this to an env var when deploying
+// Admin panel login URL - update this to an env var when deploying
 const ADMIN_LOGIN_URL = process.env.NEXT_PUBLIC_ADMIN_PANEL_URL
   ? `${process.env.NEXT_PUBLIC_ADMIN_PANEL_URL}/sign-in`
   : 'http://localhost:4200/sign-in';

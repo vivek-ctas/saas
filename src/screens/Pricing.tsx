@@ -42,22 +42,25 @@ const COMPARE = [
 ];
 
 const FAQS = [
-  { q: 'Is there a free trial?', a: 'Yes — every plan includes a 14-day trial with no credit card required.' },
+  {
+    q: "How do I get started?",
+    a: "Choose the plan that best fits your business and contact our team. We'll guide you through the onboarding and setup process."
+  },
   { q: 'Can I change plans anytime?', a: 'Absolutely. Upgrade or downgrade at any time from your billing settings.' },
-  { q: 'What Marketplace are supported?', a: "Amazon, eBay, Walmart, Shopify, Etsy, TikTok Shop and 50+ more — and we'll build any missing one." },
+  { q: 'What Marketplace are supported?', a: "Amazon, eBay, Walmart, Shopify, Etsy, TikTok Shop and 50+ more - and we'll build any missing one." },
   { q: 'How is my data secured?', a: 'SOC 2 Type II certified, end-to-end encryption, regular pen-tests, and GDPR compliant.' },
   { q: 'Do you offer migration help?', a: 'Yes, our white-glove onboarding team will migrate your listings, orders and history for free on Pro & Enterprise.' },
-  { q: 'What happens if I exceed limits?', a: "We'll notify you well before you hit a cap — no surprise charges, ever." },
+  { q: 'What happens if I exceed limits?', a: "We'll notify you well before you hit a cap - no surprise charges, ever." },
 ];
 
 const ADDONS = [
   {
     title: 'Auto-repricer with your margin rules',
-    desc: "Tell us your minimum profit and maximum price. We'll watch every Buy Box competitor 24/7 and reprice automatically — never below your floor, never above your ceiling. Sellers typically recover 8–18% margin in the first month.",
+    desc: "Tell us your minimum profit and maximum price. We'll watch every Buy Box competitor 24/7 and reprice automatically - never below your floor, never above your ceiling. Sellers typically recover 8–18% margin in the first month.",
   },
   {
     title: 'AI listing generator',
-    desc: "Got a spreadsheet of products? Paste it in. Our AI writes complete Amazon, eBay and fnac listings — titles, bullets, search terms, even translations — formatted exactly to each Marketplace's rules so you stop getting suppressed listings.",
+    desc: "Got a spreadsheet of products? Paste it in. Our AI writes complete Amazon, eBay and Fnac listings - titles, bullets, search terms, even translations - formatted exactly to each Marketplace's rules so you stop getting suppressed listings.",
   },
   {
     title: 'A+ content managed in S3',
@@ -65,19 +68,19 @@ const ADDONS = [
   },
   {
     title: 'BigQuery + Power BI pipeline',
-    desc: 'Every order, refund and ad-click streams into a Google BigQuery warehouse you control. Plug it into Power BI or Looker and ask the questions that move revenue — profit by SKU, customer lifetime value, channel ROI.',
+    desc: 'Every order, refund and ad-click streams into a Google BigQuery warehouse you control. Plug it into Power BI or Looker and ask the questions that move revenue - profit by SKU, customer lifetime value, channel ROI.',
   },
   {
     title: 'Customer-behaviour analytics',
-    desc: "We learn from millions of orders to predict what your buyers want next. Surface bundle ideas, repurchase windows and the right ad audience — without you needing a data team.",
+    desc: "We learn from millions of orders to predict what your buyers want next. Surface bundle ideas, repurchase windows and the right ad audience - without you needing a data team.",
   },
   {
     title: 'Centralized catalog + FBA/FBM',
-    desc: 'One golden record per SKU, mapped to every channel. Hybrid fulfillment routing decides whether to ship from FBA, your own warehouse or a 3PL — based on cost, speed and stock levels.',
+    desc: 'One golden record per SKU, mapped to every channel. Hybrid fulfillment routing decides whether to ship from FBA, your own warehouse or a 3PL - based on cost, speed and stock levels.',
   },
 ];
 
-// Static data: every plan includes these — easy to hydrate from backend later
+// Static data: every plan includes these - easy to hydrate from backend later
 const PLAN_PERKS = [
   {
     icon: RefreshCw,
@@ -200,7 +203,7 @@ const Pricing = () => {
               </span>
             </>
           }
-          subtitle="Start free for 14 days. No credit card. No surprises. Cancel anytime."
+          subtitle="Choose the plan that fits your business and start managing every marketplace from one platform."
           visual={<PricingCalculatorMockup className="w-full h-auto" />}
           actions={
             <>
@@ -305,11 +308,14 @@ const Pricing = () => {
                             </span>
                             <span className="text-slate-500">{getPeriod(plan, selectedInterval)}</span>
                           </div>
-                          {plan.trial_days > 0 && !plan.is_custom_plan && (
+                          {/* {plan.trial_days > 0 && !plan.is_custom_plan && (
                             <p className="text-xs text-emerald-600 font-medium mt-1">
                               ✓ {plan.trial_days}-day free trial included
                             </p>
-                          )}
+                          )} */}
+                          <p className="text-xs text-blue-600 font-medium mt-1">
+                            ✓ Get started immediately
+                          </p>
                         </CardHeader>
 
                         <CardContent className="space-y-5">
@@ -347,11 +353,10 @@ const Pricing = () => {
             {!plansLoading && !plansError && (
               <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-slate-500">
                 {[
-                  '🔒 No account needed',
-                  // '🇮🇳 Razorpay · UPI · Cards for India',
-                  '🌍 Stripe for international',
-                  '✅ Instant activation',
-                  '↩️ Cancel anytime',
+                  '⚡ Instant activation',
+                  '🌍 Global payments',
+                  '🔒 Secure checkout',
+                  '💬 Dedicated support',
                 ].map((item, i) => (
                   <span key={i} className="flex items-center gap-1">{item}</span>
                 ))}
@@ -430,7 +435,7 @@ const Pricing = () => {
                 The premium services that pay for the plan
               </h2>
               <p className="text-xl lg:text-2xl text-slate-600">
-                These aren't buzzwords — they're the daily chores Ctasis does for you while you sleep.
+                These aren't buzzwords - they're the daily chores Ctasis does for you while you sleep.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -485,24 +490,36 @@ const Pricing = () => {
           <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
           <div className="relative px-[50px] lg:px-[70px] text-center reveal">
             <Sparkles className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Still have questions?</h2>
-            <p className="text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">Talk to our team — we'll help you pick the right plan.</p>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Ready to scale your marketplace business?</h2>
+            <p className="text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto"> Choose the plan that fits your business and start managing every marketplace from one powerful platform.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/pricing">
+              <Link href="/pricing#plans">
                 <Button size="lg" className="text-lg px-8 rounded-full bg-white text-blue-600 hover:bg-blue-50 border-0 shadow-lg">
-                  Get started
+                  Choose Your Plan
                 </Button>
               </Link>
               <Link href="/contact">
                 <Button size="lg" variant="outline"
-                  className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/20 rounded-full shadow-lg">
+                  className="text-lg px-8 rounded-full bg-white/10 border-white/30 text-white hover:bg-white/20 hover:border-white/50 hover:text-white shadow-lg transition-all duration-300">
                   Talk to our team
                 </Button>
               </Link>
             </div>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-white/80 text-sm">
-              <span className="flex items-center"><Clock className="w-4 h-4 mr-2" />Setup in 15 min</span>
-              <span className="flex items-center"><CheckCircle2 className="w-4 h-4 mr-2" />Cancel anytime</span>
+              <span className="flex items-center">
+                <CheckCircle2 className="w-4 h-4 mr-2" />
+                Secure Payments
+              </span>
+
+              <span className="flex items-center">
+                <Clock className="w-4 h-4 mr-2" />
+                Fast Onboarding
+              </span>
+
+              <span className="flex items-center">
+                <Sparkles className="w-4 h-4 mr-2" />
+                Dedicated Support
+              </span>
             </div>
           </div>
         </section>

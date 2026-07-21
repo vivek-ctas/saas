@@ -5,16 +5,16 @@ export type FlowNode = {
     sub?: string;
     /** Accent colour used for the card top-bar, line stroke and flowing dot. */
     dot?: string;
-    /** SVG logo path rendered as an <image> badge — overrides the default icon badge. */
+    /** SVG logo path rendered as an <image> badge - overrides the default icon badge. */
     logo?: string;
-    /** Icon shown in the node's badge — defaults to a plain dot if omitted. Ignored when `logo` is set. */
+    /** Icon shown in the node's badge - defaults to a plain dot if omitted. Ignored when `logo` is set. */
     icon?: IconKind;
 };
 
 /**
  * Multi-node sync diagram: N source nodes → a central hub → N destination
  * nodes. Reused across every "flow" hero/deep-dive visual (inventory sync,
- * order routing, pricing, etc.) — only the node lists, labels and colors
+ * order routing, pricing, etc.) - only the node lists, labels and colors
  * change per page, the layout math and visual language stay identical.
  */
 export const FlowVisual = ({
@@ -43,7 +43,7 @@ export const FlowVisual = ({
     const hubX = W / 2 - hubW / 2;
     const hubY = H / 2 - hubH / 2;
 
-    /** Resolve a node's accent colour — falls back to the hub blue. */
+    /** Resolve a node's accent colour - falls back to the hub blue. */
     const accent = (n: FlowNode) => n.dot ?? ILL.blue;
 
     return (

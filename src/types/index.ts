@@ -1,5 +1,5 @@
 // =============================================================================
-// ALL FRONTEND TYPES — Single source of truth
+// ALL FRONTEND TYPES - Single source of truth
 // Aligned exactly with backend schemas (public-checkout.service.ts)
 // =============================================================================
 
@@ -12,10 +12,10 @@ export type BillingCycle = 'monthly' | 'quarterly' | 'yearly';
 
 export interface CurrencyOption {
   id: string;  // ObjectId
-  code: string;  // "inr", "usd" — lowercase
-  country: string;  // "INDIA" — uppercase (legacy field)
-  country_name?: string; // "India" — display name
-  country_code?: string; // "inr" — alias for code
+  code: string;  // "inr", "usd" - lowercase
+  country: string;  // "INDIA" - uppercase (legacy field)
+  country_name?: string; // "India" - display name
+  country_code?: string; // "inr" - alias for code
   status: number;  // 1 = active
 }
 
@@ -57,7 +57,7 @@ export interface CheckoutFormState {
   company_name: string;
   contact_number: string;
   currency_id: string;   // tbl_currencies._id
-  country_name: string;  // e.g. "India" — display only
+  country_name: string;  // e.g. "India" - display only
 }
 
 export type CheckoutStep =
@@ -103,7 +103,7 @@ export interface CreateLeadResponse {
   data: CreateLeadData;
 }
 
-// ── Step 2a: Razorpay — create order ─────────────────────────────────────────
+// ── Step 2a: Razorpay - create order ─────────────────────────────────────────
 //
 // Backend: POST /v1/public-checkout/razorpay/create-order
 // Returns: { payment_id, razorpay_order_id, amount, currency, plan_name, trial_days }
@@ -123,7 +123,7 @@ export interface CreateRazorpayOrderResponse {
   data: CreateRazorpayOrderData;
 }
 
-// ── Step 3a: Razorpay — verify & activate ────────────────────────────────────
+// ── Step 3a: Razorpay - verify & activate ────────────────────────────────────
 //
 // Backend: POST /v1/public-checkout/razorpay/verify
 // Returns: { user_plan_id, expired_at, plan_name }
@@ -135,7 +135,7 @@ export interface VerifyRazorpayPayload {
   razorpay_signature: string;
 }
 
-// ── Step 2b: Stripe — create checkout session ─────────────────────────────────
+// ── Step 2b: Stripe - create checkout session ─────────────────────────────────
 //
 // Backend: POST /v1/public-checkout/stripe/create-session
 // Returns: { payment_id, session_id, checkout_url }
@@ -152,7 +152,7 @@ export interface CreateStripeSessionResponse {
   data: CreateStripeSessionData;
 }
 
-// ── Step 3b: Stripe — verify session after redirect ───────────────────────────
+// ── Step 3b: Stripe - verify session after redirect ───────────────────────────
 //
 // Backend: POST /v1/public-checkout/stripe/verify-session
 // Body: { lead_id, session_id }   ← field is session_id (NOT stripe_session_id)

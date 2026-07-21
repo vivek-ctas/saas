@@ -4,7 +4,7 @@ import Services from "@/screens/Services";
 
 // ─── Page metadata ───────────────────────────────────────────────────────────
 export const metadata: Metadata = buildMetadata({
-  title: "Services — Centralized Inventory, Order Management, AI Repricing & More",
+  title: "Services - Centralized Inventory, Order Management, AI Repricing & More",
   description:
     "Explore 10 core seller services in one platform: centralized inventory, unified order management, real-time sync, AI catalog generation, smart repricing, analytics, and more.",
   path: "/services",

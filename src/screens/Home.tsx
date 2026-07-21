@@ -24,10 +24,54 @@ const Home = () => {
   const ref = useReveal<HTMLDivElement>();
 
   const platformStats = [
-    { icon: Users, value: "50,000+", label: "Active Sellers" },
-    { icon: DollarSign, value: "$300M+", label: "GMV Processed" },
-    { icon: Package, value: "10M+", label: "Orders Managed" },
-    { icon: Globe, value: "150+", label: "Countries" }
+    {
+      icon: Users,
+      value: "50,000+",
+      label: "Active Sellers",
+      trend: "12.4%",
+      accentColor: "#7C3AED",
+      iconBg: "bg-purple-100",
+      iconColor: "text-purple-600",
+      trendBg: "bg-purple-50",
+      trendText: "text-purple-700",
+      borderColor: "border-t-purple-500",
+    },
+    {
+      icon: DollarSign,
+      value: "$300M+",
+      label: "GMV Processed",
+      trend: "18.6%",
+      accentColor: "#16A34A",
+      iconBg: "bg-emerald-100",
+      iconColor: "text-emerald-600",
+      trendBg: "bg-emerald-50",
+      trendText: "text-emerald-700",
+      borderColor: "border-t-emerald-500",
+    },
+    {
+      icon: Package,
+      value: "10M+",
+      label: "Orders Managed",
+      trend: "16.3%",
+      accentColor: "#3B82F6",
+      iconBg: "bg-blue-100",
+      iconColor: "text-blue-600",
+      trendBg: "bg-blue-50",
+      trendText: "text-blue-700",
+      borderColor: "border-t-blue-500",
+    },
+    {
+      icon: Globe,
+      value: "150+",
+      label: "Countries",
+      trend: "9.8%",
+      accentColor: "#EA580C",
+      iconBg: "bg-orange-100",
+      iconColor: "text-orange-600",
+      trendBg: "bg-orange-50",
+      trendText: "text-orange-700",
+      borderColor: "border-t-orange-500",
+    },
   ];
 
   const marketplaces = [
@@ -57,10 +101,10 @@ const Home = () => {
               <div className="lg:col-span-6 reveal">
                 <Badge className="mb-6 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">
                   <Sparkles className="w-3.5 h-3.5 mr-1.5" />
-                  Trusted by 50,000+ multichannel sellers
+                  Trusted By 50,000+ Multichannel Sellers
                 </Badge>
                 <h1 className="text-5xl sm:text-6xl lg:text-[5rem] font-bold text-slate-900 mb-6 leading-[1.05] tracking-tight">
-                  The most advanced
+                  The Most Advanced
                   <span className="block bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">
                     AI Marketplace OS
                   </span>
@@ -68,7 +112,7 @@ const Home = () => {
                 </h1>
                 <p className="text-xl lg:text-2xl text-slate-600 mb-10 leading-relaxed max-w-xl">
                   Save time. Sync inventory. Avoid overselling. Maximize profit across Amazon,
-                  Walmart, eBay, Shopify and 50+ channels — from one beautiful dashboard.
+                  Walmart, eBay, Shopify and 50+ channels - from one beautiful dashboard.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 mb-4">
@@ -188,7 +232,7 @@ const Home = () => {
               <div className="flex items-center gap-3 text-center sm:text-left">
                 <div className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse" />
                 <p className="text-base sm:text-lg font-semibold text-slate-900">
-                  AI Auto-Repricer is live! <span className="text-slate-500 font-normal">Trusted for Amazon, now for Walmart & bol.</span>
+                  AI Auto-Repricer is live! <span className="text-slate-500 font-normal">Trusted for Amazon, now for Walmart & Bol.</span>
                 </p>
               </div>
               <Link href="/platform/repricer" className="flex items-center gap-1 text-blue-600 font-bold text-sm hover:gap-2 transition-all whitespace-nowrap">
@@ -200,10 +244,10 @@ const Home = () => {
 
 
         {/* PROBLEM */}
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-white border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The problem</Badge>
+              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The Problem</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-4">
                 Selling on 5 marketplaces shouldn't feel like running 5 businesses.
               </h2>
@@ -230,12 +274,12 @@ const Home = () => {
         </section>
 
         {/* INFRASTRUCTURE TEASER */}
-        <section className="py-24 bg-blue-50/40">
+        <section className="py-24 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="relative px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100 ">
                 <Workflow className="w-3.5 h-3.5 mr-1" />
-                Marketplace workflow
+                Marketplace Workflow
               </Badge>
 
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
@@ -244,7 +288,7 @@ const Home = () => {
 
               <p className="text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
                 From order capture to inventory synchronization, shipping, and analytics,
-                every step is automated inside one centralized workflow—eliminating manual
+                every step is automated inside one centralized workflow - eliminating manual
                 operations while keeping every marketplace perfectly synchronized.
               </p>
 
@@ -277,16 +321,50 @@ const Home = () => {
         </section>
 
         {/* STATS */}
-        <section className="py-20 bg-white">
-          <div className="px-[50px] lg:px-[70px]">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <section className="py-16 sm:py-20 bg-[#F1F3FC] border-t border-[#EAECF3]">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
+            {/* Section header */}
+            <div className="flex justify-center mb-8 sm:mb-10 reveal">
+              <span className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 rounded-full border border-slate-200 bg-white shadow-sm text-xs sm:text-sm font-semibold text-slate-600 tracking-wider uppercase">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                Live Platform Stats
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {platformStats.map((stat, i) => (
-                <div key={i} className="reveal text-center" style={{ transitionDelay: `${i * 100}ms` }}>
-                  <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-900 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    <stat.icon className="w-7 h-7 text-white" />
+                <div
+                  key={i}
+                  className={`reveal bg-white rounded-2xl border border-slate-200 border-t-4 ${stat.borderColor}
+  shadow-sm hover:shadow-lg transition-all duration-300
+  p-5 sm:p-8 flex flex-col items-center text-center min-h-[240px] sm:min-h-[280px]`}
+                  style={{ transitionDelay: `${i * 100}ms` }}
+                >
+                  {/* Icon */}
+                  <div
+                    className={`w-14 h-14 sm:w-20 sm:h-20 rounded-full ${stat.iconBg} flex items-center justify-center mb-4 sm:mb-6`}
+                  >
+                    <stat.icon className={`w-7 h-7 sm:w-10 sm:h-10 ${stat.iconColor}`} />
                   </div>
-                  <div className="text-4xl lg:text-5xl font-bold text-slate-900 mb-1 tracking-tight">{stat.value}</div>
-                  <div className="text-slate-600 lg:text-lg">{stat.label}</div>
+
+                  {/* Value */}
+                  <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-1 sm:mb-2">
+                    {stat.value}
+                  </h3>
+
+                  {/* Label */}
+                  <p className="text-slate-500 text-base sm:text-xl mb-5 sm:mb-8">
+                    {stat.label}
+                  </p>
+
+                  {/* Trend */}
+                  <div
+                    className={`mt-auto inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-1.5 sm:py-2 rounded-full ${stat.trendBg} ${stat.trendText} text-xs sm:text-base font-semibold`}
+                  >
+                    <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <span className="hidden sm:inline">{stat.trend} vs last 30 days</span>
+                    <span className="sm:hidden">{stat.trend}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -294,11 +372,11 @@ const Home = () => {
         </section>
 
         {/* STORY: PROBLEM → SOLUTION */}
-        <section className="py-24 bg-blue-50/40">
+        <section className="py-24 bg-white border-t border-[#EAECF3]">
           <div className="relative px-[50px] lg:px-[70px]">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
               <div className="order-2 lg:order-1 reveal">
-                <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The problem</Badge>
+                <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The Problem</Badge>
                 <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                   Selling on 5 Marketplace shouldn't feel like running 5 businesses.
                 </h2>
@@ -325,7 +403,7 @@ const Home = () => {
                 <SyncIllustration className="w-full h-auto" />
               </div>
               <div className="reveal delay-200">
-                <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The Ctasis way</Badge>
+                <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The Ctasis Way</Badge>
                 <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                   One source of truth. Synced everywhere in milliseconds.
                 </h2>
@@ -333,9 +411,9 @@ const Home = () => {
                   Update a product once and watch it propagate to every connected Marketplace
                   instantly. Our event-driven sync engine processes 10M+ updates daily without breaking a sweat.
                 </p>
-                <Link href="/services#how-it-works">
+                <Link href="/services">
                   <Button size="lg" className="rounded-full shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
-                    See how it works
+                    Explore Our Services
                     <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
@@ -345,31 +423,31 @@ const Home = () => {
           </div>
         </section>
 
-        {/* INTEGRATIONS SECTOR — "Sell on every channel that matters" */}
-        <section className="py-24 bg-white">
+        {/* INTEGRATIONS SECTOR - "Sell on every channel that matters" */}
+        <section className="py-24 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px]">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
               {/* Left copy */}
               <div className="lg:col-span-5 reveal">
                 <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
-                  <Zap className="w-3.5 h-3.5 mr-1" /> 80+ live integrations
+                  <Zap className="w-3.5 h-3.5 mr-1" /> 80+ Live Integrations
                 </Badge>
                 <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-slate-900 leading-tight mb-6">
                   Sell on every channel <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">that matters.</span>
                 </h2>
                 <p className="text-lg lg:text-xl text-slate-600 leading-relaxed mb-8">
-                  From Amazon FBA to Lazada, TikTok Shop to Reliance Smart — Ctasis connects every Marketplace, storefront, courier and ad network you need to scale globally.
+                  From Amazon FBA to Lazada, TikTok Shop to Reliance Smart - Ctasis connects every Marketplace, storefront, courier and ad network you need to scale globally.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                  <Link href="/marketplaces">
+                  <Link href="/marketplaces/amazon">
                     <Button size="lg" variant="outline" className="text-base px-6 h-12 border-slate-200 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm">
-                      See all integrations
+                      Explore Integrations
                     </Button>
                   </Link>
                   <Link href="/contact">
                     <Button size="lg" className="text-base px-6 h-12 rounded-full shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
-                      Connect a channel
+                      Request An Integration
                       <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
@@ -397,7 +475,7 @@ const Home = () => {
         </section>
 
         {/* BENTO FEATURES */}
-        <section className="py-24 bg-blue-50/40">
+        <section className="py-24 bg-[#F1F3FC] border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px]">
             <div className="text-center mb-16 max-w-2xl mx-auto reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Platform</Badge>
@@ -406,7 +484,7 @@ const Home = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Big tile — spans 2 cols and 2 rows on lg */}
+              {/* Big tile - spans 2 cols and 2 rows on lg */}
               <div
                 className="reveal lg:col-span-2 lg:row-span-2 rounded-3xl bg-gradient-to-br from-blue-50 via-white to-indigo-50 border border-slate-200/70 relative overflow-hidden hover-lift min-h-[420px] lg:min-h-0"
               >
@@ -478,7 +556,7 @@ const Home = () => {
                 </div>
               </div>
 
-              {/* Enterprise security — spans 2 cols */}
+              {/* Enterprise security - spans 2 cols */}
               <div className="reveal delay-300 lg:col-span-2 rounded-3xl p-6 bg-slate-900 text-white hover-lift relative overflow-hidden">
                 <Shield className="w-8 h-8 text-blue-400 mb-4" />
 
@@ -528,7 +606,7 @@ const Home = () => {
         </section>
 
         {/* JOURNEY / 3-STEP */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-white border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px]">
             <div className="text-center mb-16 reveal">
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">From signup to scale in 3 steps</h2>
@@ -557,7 +635,7 @@ const Home = () => {
 
 
         {/* CTA */}
-        <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
+        <section className="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
           <div className="relative max-w-5xl mx-auto px-[50px] lg:px-[70px] text-center reveal">
             <Sparkles className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
@@ -574,7 +652,8 @@ const Home = () => {
               </Link>
               <Link href="/contact">
                 <Button size="lg" variant="outline"
-                  className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/20 rounded-full shadow-lg">
+                  className="text-lg px-8 rounded-full bg-white/10 border-white/30 text-white hover:bg-white/20 hover:border-white/50 hover:text-white shadow-lg transition-all duration-300"
+                >
                   Talk to our team
                 </Button>
               </Link>

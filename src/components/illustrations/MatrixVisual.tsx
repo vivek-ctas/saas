@@ -56,7 +56,7 @@ const MatrixIcon = ({
     );
 };
 
-// Simplified marketplace "logo" badges — brand-colored initials rather than
+// Simplified marketplace "logo" badges - brand-colored initials rather than
 // literal trademarked marks, kept legible and on-brand for the column heads.
 const MarketBadge = ({
     x, y, channel,
@@ -112,7 +112,7 @@ export const MatrixVisual = ({
         <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
             <IllDefs id={id} />
             <IllHeader label="Bulk regenerate" />
-            {/* decorative dot cluster, top right — echoes reference */}
+            {/* decorative dot cluster, top right - echoes reference */}
             <g fill={ILL.sky} fillOpacity="0.55">
                 {[0, 1, 2, 3].map((c) =>
                     [0, 1, 2].map((r) => (

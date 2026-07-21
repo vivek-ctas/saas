@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
 import { INTEGRATIONS } from "@/screens/integrations/integrations.data";
 
-// guide slugs — keep in sync with guide/[slug]/page.tsx
+// guide slugs - keep in sync with guide/[slug]/page.tsx
 const guideSlugs = [
   "ai-amazon-business-repricer",
   "amazon-ai-algorithmic-repricer",

@@ -1,4 +1,4 @@
-/* ── local helpers (kept in this file only — reusable primitives are untouched) ── */
+/* ── local helpers (kept in this file only - reusable primitives are untouched) ── */
 import { ILL, IllCard, IllDefs, IllHeader } from "./commanIllustrastrations";
 type StepState = "done" | "active" | "queued";
 
@@ -14,7 +14,7 @@ type StatItem = {
     value: string;
 };
 
-/** Per-row theme cycle — mirrors the purple / blue / teal / orange / gray
+/** Per-row theme cycle - mirrors the purple / blue / teal / orange / gray
  *  progression in the reference (first two "done" rows share the violet
  *  brand color, then the palette rotates per row). */
 const STEP_THEMES = [

@@ -4,7 +4,7 @@ import { buildMetadata, SITE_URL } from "@/lib/seo";
 
 // ─── Page metadata ───────────────────────────────────────────────────────────
 export const metadata: Metadata = buildMetadata({
-  title: "Guide — Multichannel Selling, Repricing & Marketplace Strategy",
+  title: "Guide - Multichannel Selling, Repricing & Marketplace Strategy",
   description:
     "Insights, playbooks and deep-dives for Amazon, Walmart and multichannel sellers. Topics include AI repricing, inventory management, analytics, FBA vs FBM, and Marketplace strategy.",
   path: "/guide",

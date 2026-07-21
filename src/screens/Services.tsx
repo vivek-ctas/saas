@@ -33,9 +33,9 @@ const Services = () => {
 
   const sections: FeatureSection[] = [
     {
-      eyebrow: "Core platform",
-      title: "Centralized inventory & pricing — one source of truth.",
-      desc: "Manage stock levels and pricing from one unified dashboard. Every update reflects instantly across Amazon, Walmart, eBay, Etsy and fnac, so you never oversell or misprice a listing again.",
+      eyebrow: "Core Platform",
+      title: "Centralized inventory & pricing - one source of truth.",
+      desc: "Manage stock levels and pricing from one unified dashboard. Every update reflects instantly across Amazon, Walmart, eBay, Etsy and Fnac, so you never oversell or misprice a listing again.",
       bullets: [
         "Single dashboard for stock and price",
         "Instant propagation to every connected channel",
@@ -46,9 +46,9 @@ const Services = () => {
       visual: <InventorySyncSVG className="w-full h-auto" />,
     },
     {
-      eyebrow: "Order management",
+      eyebrow: "Order Management",
       title: "One inbox for every marketplace order.",
-      desc: "Receive and manage orders from every connected marketplace in a single inbox — no more switching tabs between Amazon Seller Central, Etsy, and other platforms to fulfil orders.",
+      desc: "Receive and manage orders from every connected marketplace in a single inbox - no more switching tabs between Amazon Seller Central, Etsy, and other platforms to fulfil orders.",
       bullets: [
         "Unified order pipeline: capture → route → fulfil → close",
         "Status writebacks to every channel automatically",
@@ -68,7 +68,7 @@ const Services = () => {
             { ch: "Walmart", dot: "#2563eb", sku: "SKU-11024", qty: 1, price: "$24.00", state: "Picked" },
             { ch: "eBay", dot: "#ef4444", sku: "SKU-98220", qty: 3, price: "$147.00", state: "New" },
             { ch: "Etsy", dot: "#ea580c", sku: "SKU-33012", qty: 1, price: "$18.50", state: "Ready to ship" },
-            { ch: "fnac", dot: "#1d4ed8", sku: "SKU-70001", qty: 4, price: "₹4,120", state: "New" },
+            { ch: "Fnac", dot: "#1d4ed8", sku: "SKU-70001", qty: 4, price: "₹4,120", state: "New" },
           ].map((o, i) => (
             <div key={i} className="grid grid-cols-12 items-center py-2.5 border-t border-slate-100 text-sm">
               <div className="col-span-3 flex items-center gap-2">
@@ -90,9 +90,9 @@ const Services = () => {
       reverse: true,
     },
     {
-      eyebrow: "Real-time sync",
+      eyebrow: "Real-Time sync",
       title: "Stock everywhere. Always accurate.",
-      desc: "Stock changes on one channel automatically sync across all others in real time, keeping quantities accurate everywhere at once — even during flash sales and livestream spikes.",
+      desc: "Stock changes on one channel automatically sync across all others in real time, keeping quantities accurate everywhere at once - even during flash sales and livestream spikes.",
       bullets: [
         "Sub-2-second propagation across channels",
         "Cross-channel stock reservations",
@@ -103,9 +103,9 @@ const Services = () => {
       visual: <InventorySyncSVG className="w-full h-auto " />,
     },
     {
-      eyebrow: "AI catalog",
+      eyebrow: "AI Catalog",
       title: "Optimized titles, descriptions and attributes in seconds.",
-      desc: "Generate optimized product titles, descriptions, bullet points and catalog details automatically using AI — cutting listing time from hours to minutes without sacrificing quality or SEO.",
+      desc: "Generate optimized product titles, descriptions, bullet points and catalog details automatically using AI - cutting listing time from hours to minutes without sacrificing quality or SEO.",
       bullets: [
         "Channel-aware title and description generation",
         "Attribute extraction from images and text",
@@ -117,9 +117,9 @@ const Services = () => {
       reverse: true,
     },
     {
-      eyebrow: "Variants & matching",
+      eyebrow: "Variants & Matching",
       title: "Variants and smart catalog matching.",
-      desc: "Create and manage variants (size, color, style) with consistent data across every channel. When your white-label listing matches an existing retail catalog entry, SellerBuz suggests switching to the matched retail listing — or continuing as a standalone product.",
+      desc: "Create and manage variants (size, color, style) with consistent data across every channel. When your white-label listing matches an existing retail catalog entry, SellerBuz suggests switching to the matched retail listing - or continuing as a standalone product.",
       bullets: [
         "Variation matrices with per-SKU inventory",
         "White-label vs retail catalog switch",
@@ -147,7 +147,7 @@ const Services = () => {
           <div className="mt-4 flex items-center gap-2 p-3 rounded-lg bg-blue-50 border border-blue-100">
             <GitMerge className="w-4 h-4 text-blue-700" />
             <div className="text-xs text-blue-900">
-              <span className="font-bold">Smart match found:</span> retail ASIN B0CX92K1LR — switch, or keep standalone.
+              <span className="font-bold">Smart match found:</span> retail ASIN B0CX92K1LR - switch, or keep standalone.
             </div>
           </div>
         </div>
@@ -156,10 +156,10 @@ const Services = () => {
     {
       eyebrow: "Growth",
       title: "Built-in repricer, beside your inventory.",
-      desc: "Automatically adjust pricing based on competition, rules and market conditions — all managed from the same place as inventory. Buy Box aware for Amazon, competitor aware for the rest, with floor and ceiling guardrails per SKU.",
+      desc: "Automatically adjust pricing based on competition, rules and market conditions - all managed from the same place as inventory. Buy Box aware for Amazon, competitor aware for the rest, with floor and ceiling guardrails per SKU.",
       bullets: [
         "Buy Box tracking on Amazon",
-        "Competitor-aware rules on Walmart, eBay, fnac",
+        "Competitor-aware rules on Walmart, eBay, Fnac",
         "Per-SKU floor and ceiling",
         "Schedule-based promotional pricing",
       ],
@@ -170,7 +170,7 @@ const Services = () => {
     {
       eyebrow: "Analytics",
       title: "Revenue and performance in one dashboard.",
-      desc: "A centralized dashboard surfaces revenue trends, listing performance and key KPIs — giving you a clear view of business health across every channel, side by side.",
+      desc: "A centralized dashboard surfaces revenue trends, listing performance and key KPIs - giving you a clear view of business health across every channel, side by side.",
       bullets: [
         "Cross-channel revenue and margin",
         "Listing-level performance and conversion",
@@ -185,12 +185,12 @@ const Services = () => {
     {
       eyebrow: "Content",
       title: "A+ content asset library.",
-      desc: "A dedicated library for enhanced content assets used in premium listings — hero images, comparison charts, brand modules. Keep creative assets organized and reusable across products and channels.",
+      desc: "A dedicated library for enhanced content assets used in premium listings - hero images, comparison charts, brand modules. Keep creative assets organized and reusable across products and channels.",
       bullets: [
         "Reusable A+ modules and templates",
         "Version history per asset",
         "Per-brand and per-channel folders",
-        "Direct push to Amazon, Walmart and fnac",
+        "Direct push to Amazon, Walmart and Fnac",
       ],
       icon: ImageIcon,
       visual: <AssetLibraryMockup className="w-full h-auto" />,
@@ -199,7 +199,7 @@ const Services = () => {
     {
       eyebrow: "Operations",
       title: "Role-based access control.",
-      desc: "Enterprise-grade auth guards with configurable role creation. Let store owners, managers and staff access only what they need — with granular permissions for listings, orders, reports and billing.",
+      desc: "Enterprise-grade auth guards with configurable role creation. Let store owners, managers and staff access only what they need - with granular permissions for listings, orders, reports and billing.",
       bullets: [
         "Custom roles with granular permissions",
         "Per-channel scoping",
@@ -210,9 +210,9 @@ const Services = () => {
       visual: <RolesIllustration className="w-full h-auto " />,
     },
     {
-      eyebrow: "Bulk work",
+      eyebrow: "Bulk Work",
       title: "Bulk operations via file upload.",
-      desc: "Perform bulk updates — inventory, pricing, listings — through simple file uploads. Save hours on large catalog management tasks with template-based imports and clear error reports.",
+      desc: "Perform bulk updates - inventory, pricing, listings - through simple file uploads. Save hours on large catalog management tasks with template-based imports and clear error reports.",
       bullets: [
         "CSV and Excel templates per operation",
         "Line-level validation and error report",
@@ -231,7 +231,7 @@ const Services = () => {
             {[
               { l: "Validate rows", v: "12,480 / 12,480", ok: true },
               { l: "Detect conflicts", v: "0 blocking, 3 warnings", ok: true },
-              { l: "Publish to channels", v: "Amazon · Walmart · eBay · Etsy · fnac", ok: true },
+              { l: "Publish to channels", v: "Amazon · Walmart · eBay · Etsy · Fnac", ok: true },
             ].map((s) => (
               <div key={s.l} className="flex items-center gap-3 p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -253,18 +253,18 @@ const Services = () => {
           badgeIcon={Sparkles}
           badgeText="12 services · 1 platform"
           title={<>Services that <span className="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">do the heavy lifting.</span></>}
-          subtitle="From inventory sync to AI-powered demand forecasting — every service is designed to remove a manual task and add a measurable result."
+          subtitle="From inventory sync to AI-powered demand forecasting - every service is designed to remove a manual task and add a measurable result."
           visual={<ServicesHeroMockup className="w-full h-auto" />}
           actions={
             <>
-              <Link href="/services#all-services">
+              <Link href="/pricing">
                 <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-200 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm">
-                  Explore Services
+                  View Pricing
                 </Button>
               </Link>
-              <Link href="/pricing">
+              <Link href="/contact">
                 <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
-                  Quick Start
+                  Talk to Our Team
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
@@ -303,17 +303,24 @@ const Services = () => {
           <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
           <div className="relative px-[50px] lg:px-[70px] text-center">
             <Sparkles className="w-12 h-12 mx-auto text-blue-200 mb-6 animate-float" />
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Ready to see it running on your channels?</h2>
-            <p className="text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">Connect Amazon, Walmart, eBay, Etsy and fnac in minutes.</p>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Ready to simplify your marketplace operations?</h2>
+            <p className="text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">Manage Amazon, Walmart, eBay, Etsy, Fnac, and more from one centralized platform</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 rounded-full px-8 h-12 border-0 shadow-lg">
-                Start free trial <ArrowRight className="w-4 h-4 ml-1.5" />
-              </Button>
               <Link href="/pricing">
-                <Button size="lg" variant="outline" className="rounded-full px-8 h-12 bg-white/10 border-white/30 text-white hover:bg-white/20 shadow-lg">
-                  See pricing
+                <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 rounded-full px-8 h-12 border-0 shadow-lg">
+                  View Pricing <ArrowRight className="w-4 h-4 ml-1.5" />
                 </Button>
               </Link>
+              <Link href="/contact">
+                <Button size="lg" variant="outline" className="rounded-full px-8 h-12 bg-white/10 border-white/30 text-white hover:bg-white/20 shadow-lg">
+                  Talk to Our Team
+                </Button>
+              </Link>
+            </div>
+            <div className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-white/80">
+              <span>Multi-Channel Management</span>
+              <span>Real-Time Synchronization</span>
+              <span>Dedicated Support</span>
             </div>
           </div>
         </section>

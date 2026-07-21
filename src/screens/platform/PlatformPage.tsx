@@ -46,12 +46,14 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/services">
                   <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-100 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm">
-                    See full platform
+                    Explore Our Services
                   </Button>
                 </Link>
-                <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
-                  Start free trial <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <Link href="/pricing">
+                  <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
+                    Quick Start <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
               </div>
             </div>
             <div className="reveal delay-100 relative">
@@ -89,7 +91,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
           </div>
         </section>
 
-        {/* DEEP DIVES — zig-zag rows with big dashboard visuals */}
+        {/* DEEP DIVES - zig-zag rows with big dashboard visuals */}
         {cfg.deepDives.map((s, i) => (
           <section key={s.title} className={`py-14 ${i % 2 === 0 ? "bg-white" : "bg-blue-50/40"}`}>
             <div className="px-[50px] lg:px-[70px]">
@@ -114,7 +116,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
           </section>
         ))}
 
-        {/* Everything else — compact chip strip (kept from featureGrid) */}
+        {/* Everything else - compact chip strip (kept from featureGrid) */}
         {cfg.featureGrid && cfg.featureGrid.length > 0 && (
           <section className="py-12 bg-slate-50 border-y border-slate-100">
             <div className="px-[50px] lg:px-[70px]">
@@ -174,25 +176,27 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
           <div className="relative px-[50px] lg:px-[70px] text-center reveal">
             <Sparkles className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              See it running on your channels.
+              Ready to streamline your multichannel operations?
             </h2>
             <p className="text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">
-              Free 14-day trial. No credit card. Live in minutes.
+              Manage products, inventory, orders, and pricing across every marketplace from one centralized platform.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8 rounded-full bg-white text-blue-600 hover:bg-blue-50 border-0 shadow-lg">
-                Start free trial
-              </Button>
+              <Link href="/pricing">
+                <Button size="lg" className="text-lg px-8 rounded-full bg-white text-blue-600 hover:bg-blue-50 border-0 shadow-lg">
+                  Explore Pricing
+                </Button>
+              </Link>
               <Link href="/contact">
-                <Button size="lg" variant="outline" className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/20 rounded-full shadow-lg">
+                <Button size="lg" variant="outline" className="text-lg px-8 rounded-full bg-white/10 border-white/30 text-white hover:bg-white/20 hover:border-white/50 hover:text-white shadow-lg transition-all duration-300">
                   Talk to our team
                 </Button>
               </Link>
             </div>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-white/80 text-sm">
-              <span>Setup in 15 min</span>
-              <span>SOC 2 compliant</span>
-              <span>Cancel anytime</span>
+              <span>Fast Implementation</span>
+              <span>Secure Platform</span>
+              <span>Expert Support</span>
             </div>
           </div>
         </section>

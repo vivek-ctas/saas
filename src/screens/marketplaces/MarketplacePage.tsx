@@ -34,7 +34,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
             <div className="reveal">
               <Badge className="mb-4 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">
                 <span className="w-2 h-2 rounded-full mr-2" style={{ background: cfg.dot }} />
-                {cfg.name} · Native integration
+                {cfg.name} · Native Integration
               </Badge>
               <h1 className="text-5xl sm:text-6xl lg:text-[5rem] font-bold text-slate-900 leading-[1.05] tracking-tight mb-4">
                 {cfg.tagline}
@@ -43,14 +43,16 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/pricing">
                   <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-100 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm">
-                    See pricing
+                    View Pricing
                   </Button>
                 </Link>
-                <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
-                  Connect {cfg.name} <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <Link href="/contact">
+                  <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
+                    Talk to Our Team <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
               </div>
-              <p className="text-sm text-slate-500 mt-4">14-day free trial · no credit card · live in under 10 minutes</p>
+              <p className="text-sm text-slate-500 mt-4">Dedicated onboarding · Expert support · Enterprise ready</p>
             </div>
             <div className="reveal delay-100 relative">
               <div className="absolute -inset-6 bg-gradient-to-br from-blue-400/15 via-blue-200/15 to-blue-600/10 blur-3xl rounded-[40px] pointer-events-none" />
@@ -78,9 +80,9 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         <section className="py-14 bg-blue-50/40">
           <div className="px-[50px] lg:px-[70px]">
             <div className="max-w-3xl mb-10 reveal">
-              <Badge className="mb-3 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">What you get</Badge>
+              <Badge className="mb-3 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">What You Get</Badge>
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
-                Everything you need to run {cfg.name} — inside SellerBuz.
+                Everything you need to run {cfg.name} - inside SellerBuz.
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -101,7 +103,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         <section className="py-14 bg-white">
           <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-10">
             <div className="reveal">
-              <Badge className="mb-3 bg-pink-50 text-pink-700 border border-pink-100 shadow-sm">{cfg.name} gotchas we handle</Badge>
+              <Badge className="mb-3 bg-pink-50 text-pink-700 border border-pink-100 shadow-sm">{cfg.name} Gotchas We Handle</Badge>
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-4">
                 The tricky {cfg.name} stuff, solved.
               </h2>
@@ -129,7 +131,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         <section className="py-14 bg-blue-50/40">
           <div className="px-[50px] lg:px-[70px]">
             <div className="text-center mb-8 reveal">
-              <Badge className="mb-3 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">Live in minutes</Badge>
+              <Badge className="mb-3 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">Live In Minutes</Badge>
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900">Four steps to sync your {cfg.name} store.</h2>
             </div>
             <div className="reveal max-w-6xl mx-auto">
@@ -155,7 +157,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         {/* FAQ */}
         <section className="py-14 bg-blue-50/40">
           <div className="px-[50px] lg:px-[70px]">
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 text-center mb-8 reveal">{cfg.name} — frequently asked</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 text-center mb-8 reveal">{cfg.name} - frequently asked</h2>
             <div className="space-y-3">
               {cfg.faq.map((f) => (
                 <details key={f.q} className="group rounded-2xl border border-slate-200/70 bg-white p-5 hover:border-blue-200 transition-all">
@@ -178,22 +180,24 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
               Start selling smarter on {cfg.name}.
             </h2>
             <p className="text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">
-              Free 14-day trial. Connect your store in minutes.
+              Manage your {cfg.name} business from one powerful platform.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8 rounded-full bg-white text-blue-600 hover:bg-blue-50 border-0 shadow-lg">
-                Start free trial
-              </Button>
+              <Link href="/pricing">
+                <Button size="lg" className="text-lg px-8 rounded-full bg-white text-blue-600 hover:bg-blue-50 border-0 shadow-lg">
+                  Explore Pricing
+                </Button>
+              </Link>
               <Link href="/contact">
-                <Button size="lg" variant="outline" className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/20 rounded-full shadow-lg">
+                <Button size="lg" variant="outline" className="text-lg px-8 rounded-full bg-white/10 border-white/30 text-white hover:bg-white/20 hover:border-white/50 hover:text-white shadow-lg transition-all duration-300">
                   Talk to our team
                 </Button>
               </Link>
             </div>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-white/80 text-sm">
-              <span>Setup in 15 min</span>
-              <span>SOC 2 compliant</span>
-              <span>Cancel anytime</span>
+              <span>Multi-Channel Sync</span>
+              <span>Real-Time Inventory</span>
+              <span>Dedicated Support</span>
             </div>
           </div>
         </section>

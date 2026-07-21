@@ -4,7 +4,7 @@ import { buildMetadata } from "@/lib/seo";
 
 // ─── Page metadata ───────────────────────────────────────────────────────────
 export const metadata: Metadata = buildMetadata({
-  title: "About Us — Our Story & Mission",
+  title: "About Us - Our Story & Mission",
   description:
     "Founded in 2019 in Ahmedabad, Ctasis has grown to serve 50,000+ sellers across 150 countries. Learn about our mission to level the playing field for multichannel sellers worldwide.",
   path: "/about",

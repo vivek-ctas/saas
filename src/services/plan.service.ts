@@ -3,7 +3,7 @@ import type { Plan, PlansApiResponse, CurrencyOption, CurrenciesApiResponse } fr
 
 /**
  * Fetches active, self-serve plans for the pricing page.
- * Public — no auth required.
+ * Public - no auth required.
  * Endpoint: GET /v1/manage-plan/public/plans
  */
 export async function fetchPublicPlans(): Promise<{ plans: Plan[]; error: string | null }> {

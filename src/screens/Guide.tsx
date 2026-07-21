@@ -12,7 +12,7 @@ import { useReveal } from "@/hooks/use-reveal";
 const posts = [
   {
     slug: "ai-amazon-business-repricer",
-    title: "Inside our AI Amazon Business Repricer — and why margin floors matter",
+    title: "Inside our AI Amazon Business Repricer - and why margin floors matter",
     excerpt: "A look at how we built a repricer that wins the Buy Box without dragging your profit through the floor. Spoiler: it's not just about being cheapest.",
     category: "Repricing",
     icon: Cpu,
@@ -62,7 +62,7 @@ const posts = [
   },
   {
     slug: "ai-listing-generator-from-raw-data",
-    title: "From a messy CSV to a fnac listing in four minutes — with AI",
+    title: "From a messy CSV to a Fnac listing in four minutes - with AI",
     excerpt: "How our AI listing generator turns raw product data into channel-perfect listings.",
     category: "AI",
     icon: Sparkles,
@@ -73,7 +73,7 @@ const posts = [
   {
     slug: "amazon-new-selling-api",
     title: "Amazon's new Selling Partner API: what changed, and what it means for your stack",
-    excerpt: "Tighter rate limits, granular roles, and a much friendlier auth flow — here's what we rebuilt for SP-API v2.",
+    excerpt: "Tighter rate limits, granular roles, and a much friendlier auth flow - here's what we rebuilt for SP-API v2.",
     category: "Integrations",
     icon: Plug,
     readTime: "7 min read",
@@ -83,7 +83,7 @@ const posts = [
   {
     slug: "fba-vs-fbm",
     title: "FBA vs FBM in 2026: the honest cost, control and growth trade-off",
-    excerpt: "Fulfilment By Amazon vs Merchant. Not a religious war — a maths problem with three variables.",
+    excerpt: "Fulfilment By Amazon vs Merchant. Not a religious war - a maths problem with three variables.",
     category: "Operations",
     icon: Boxes,
     readTime: "8 min read",
@@ -113,7 +113,7 @@ const Guide = () => {
           badgeIcon={BookOpen}
           badgeText="Ctasis · Guide"
           title={<>Stories from <span className="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">the seller front line.</span></>}
-          subtitle="Repricer deep-dives, Marketplace playbooks and honest takes on what actually grows a multichannel business — written by the engineers and sellers who build Ctasis."
+          subtitle="Repricer deep-dives, Marketplace playbooks and honest takes on what actually grows a multichannel business - written by the engineers and sellers who build Ctasis."
           visual={<GuideEditorialMockup className="w-full h-auto" />}
           actions={
             <Link href="/contact">
@@ -161,7 +161,7 @@ const Guide = () => {
           <div className="px-[50px] lg:px-[70px]">
             <div className="flex items-end justify-between mb-12 reveal">
               <div>
-                <Badge className="mb-3 bg-blue-50 text-blue-700 border border-blue-100">Latest articles</Badge>
+                <Badge className="mb-3 bg-blue-50 text-blue-700 border border-blue-100">Latest Articles</Badge>
                 <h2 className="text-4xl lg:text-5xl font-bold text-slate-900">All posts</h2>
               </div>
 
@@ -197,7 +197,7 @@ const Guide = () => {
           <div className="relative px-[50px] lg:px-[70px] text-center reveal">
             <BookOpen className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">Get the playbooks in your inbox.</h2>
-            <p className="text-xl lg:text-2xl text-white/90 mb-10">One short, useful email a week — no fluff, no spam, unsubscribe anytime.</p>
+            <p className="text-xl lg:text-2xl text-white/90 mb-10">One short, useful email a week - no fluff, no spam, unsubscribe anytime.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
               <Link href="/pricing">
                 <Button size="lg" className="text-lg px-8 bg-white text-blue-900 hover:bg-blue-50 shadow-stripe-xl border-0">

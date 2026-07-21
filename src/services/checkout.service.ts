@@ -29,7 +29,7 @@ export async function createGuestLead(
   return { data: data?.data ?? null, error };
 }
 
-// ── STEP 2a: Razorpay — Create Order ─────────────────────────────────────────
+// ── STEP 2a: Razorpay - Create Order ─────────────────────────────────────────
 //
 // POST /v1/public-checkout/razorpay/create-order
 // Body: { lead_id }
@@ -45,7 +45,7 @@ export async function createRazorpayOrder(
   return { data: data?.data ?? null, error };
 }
 
-// ── STEP 3a: Razorpay — Verify & Activate ────────────────────────────────────
+// ── STEP 3a: Razorpay - Verify & Activate ────────────────────────────────────
 //
 // POST /v1/public-checkout/razorpay/verify
 // Backend verifies HMAC-SHA256 signature, marks payment SUCCESS,
@@ -64,7 +64,7 @@ export async function verifyRazorpayPayment(
 
 // ── Razorpay: Fetch activation summary on success page ────────────────────────
 //
-// NEW: Previously the success page read plan_name & expired_at from URL params —
+// NEW: Previously the success page read plan_name & expired_at from URL params -
 // those are tamper-able by anyone who manually edits the URL.
 // Now the success page calls this endpoint which reads from the database.
 //
@@ -80,11 +80,11 @@ export async function verifyRazorpayActivation(
   );
   return { data: data?.data ?? null, error };
 }
-// ── STEP 2b: Stripe — Create Checkout Session ─────────────────────────────────
+// ── STEP 2b: Stripe - Create Checkout Session ─────────────────────────────────
 //
 // POST /v1/public-checkout/stripe/create-session
 // Body: { lead_id, success_url, cancel_url }
-// Returns checkout_url — redirect user here. Stripe appends ?session_id=cs_xxx.
+// Returns checkout_url - redirect user here. Stripe appends ?session_id=cs_xxx.
 
 export async function createStripeSession(
   leadId: string,
@@ -108,7 +108,7 @@ export async function createStripeSession(
   return { data: data?.data ?? null, error };
 }
 
-// ── STEP 3b: Stripe — Verify Session (after redirect) ─────────────────────────
+// ── STEP 3b: Stripe - Verify Session (after redirect) ─────────────────────────
 //
 // POST /v1/public-checkout/stripe/verify-session
 // Body: { lead_id, session_id }   ← MUST be "session_id", not "stripe_session_id"

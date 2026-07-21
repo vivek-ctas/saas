@@ -28,14 +28,14 @@ const GATEWAYS: {
     // {
     //   id: 'razorpay',
     //   label: 'Razorpay',
-    //   badge: 'India — UPI / Cards',
+    //   badge: 'India - UPI / Cards',
     //   desc: 'UPI · PhonePe · Google Pay · Net Banking · Cards',
     //   icon: <Smartphone className="w-5 h-5" />,
     // },
     {
       id: 'stripe',
       label: 'Stripe',
-      badge: 'International — Cards',
+      badge: 'International - Cards',
       desc: 'Visa · Mastercard · Amex · Apple Pay · Google Pay',
       icon: <CreditCard className="w-5 h-5" />,
     },
@@ -299,7 +299,7 @@ export default function CheckoutModal({
   const price = displayPrice(plan, billingCycle, exchangeRates);
   const period = periodLabel(plan, billingCycle);
 
-  // Prices are stored in cents — divide by 100 first, then convert INR→USD if needed.
+  // Prices are stored in cents - divide by 100 first, then convert INR→USD if needed.
   let humanAmount = (billingCycle === 'quarterly' && plan.price_quarterly ? plan.price_quarterly : plan.price) / 100;
   if (plan.currency.toLowerCase() === 'inr' && Object.keys(exchangeRates).length > 0) {
     humanAmount = convertInrToUsd(humanAmount, exchangeRates);
@@ -352,7 +352,7 @@ export default function CheckoutModal({
     setTouched(allTouched);
     setFieldErrors(errors);
 
-    if (Object.keys(errors).length > 0) return; // stop here — show field errors inline
+    if (Object.keys(errors).length > 0) return; // stop here - show field errors inline
 
     onSubmitForm(); // delegate to hook (which may set error for API failures)
   }

@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 const nextConfig = {
   output: "standalone",
 
-  // ─── Modern JS — eliminates legacy polyfills (13.4 KiB saved) ──────────────
+  // ─── Modern JS - eliminates legacy polyfills (13.4 KiB saved) ──────────────
   // Target evergreen browsers; no Array.at, Object.fromEntries, etc. polyfills needed
   experimental: {
     optimizePackageImports: [
@@ -52,7 +52,7 @@ const nextConfig = {
     root: __dirname,
   },
 
-  // ─── HTTP headers — long-lived cache for static assets ──────────────────
+  // ─── HTTP headers - long-lived cache for static assets ──────────────────
   async headers() {
     return [
       {
