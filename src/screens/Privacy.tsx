@@ -209,120 +209,131 @@ const Privacy = () => {
 
     return (
         <Layout>
-            <div ref={containerRef} className="py-20 bg-slate-50/50">
-                <div className="px-[50px] lg:px-[70px]">
-                    {/* HEADER SECTION */}
-                    <div className="reveal grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-12">
-                        <div className="md:col-span-7 text-left space-y-5">
-                            <Badge className="bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200/80 px-3 py-1 rounded-full gap-1.5 text-sm font-semibold select-none">
-                                <Lock className="w-3.5 h-3.5" /> Privacy
-                            </Badge>
-                            <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-                                Privacy Policy
-                            </h1>
-                            <p className="text-lg text-slate-600 leading-relaxed">
-                                We value your privacy and are committed to protecting your personal data. Read through
-                                our policy to understand collection rules and client parameters.
-                            </p>
-                            <div className="flex items-center gap-2 text-slate-500 text-sm">
-                                <Calendar className="w-4 h-4 text-blue-500" />
-                                <span>Last updated: July 2026</span>
+            <div ref={containerRef} className="py-20">
+                {/* HEADER SECTION */}
+                <section className="bg-white border-t border-[#EAECF3]">
+                    <div className="px-[50px] lg:px-[70px]">
+                        <div className="reveal grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                            <div className="md:col-span-7 text-left space-y-5">
+                                <Badge className="bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200/80 px-3 py-1 rounded-full gap-1.5 text-sm font-semibold select-none">
+                                    <Lock className="w-3.5 h-3.5" /> Privacy
+                                </Badge>
+                                <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+                                    Privacy Policy
+                                </h1>
+                                <p className="text-lg text-slate-600 leading-relaxed">
+                                    We value your privacy and are committed to protecting your personal data. Read through
+                                    our policy to understand collection rules and client parameters.
+                                </p>
+                                <div className="flex items-center gap-2 text-slate-500 text-sm">
+                                    <Calendar className="w-4 h-4 text-blue-500" />
+                                    <span>Last updated: July 2026</span>
+                                </div>
+                            </div>
+                            <div className="md:col-span-5 flex justify-center">
+                                <PrivacyIllustration />
                             </div>
                         </div>
-                        <div className="md:col-span-5 flex justify-center">
-                            <PrivacyIllustration />
+                    </div>
+                </section>
+
+                {/* MAIN CARD GRID */}
+                <section className="bg-[#F7F9FC] border-t border-[#EAECF3]">
+                    <div className="px-[50px] lg:px-[70px] py-16">
+                        <div className="reveal">
+                            <Card className="border border-slate-200/60 shadow-xl shadow-slate-100/50 rounded-3xl overflow-hidden bg-white">
+                                <CardContent className="p-8 lg:p-12">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+                                        {PRIVACY_SECTIONS.map((section) => {
+                                            const IconComp = section.icon;
+                                            return (
+                                                <div key={section.id} className="flex gap-4 items-start">
+                                                    {/* Icon Badge */}
+                                                    <div className="w-11 h-11 rounded-xl bg-blue-50/90 text-blue-600 flex items-center justify-center flex-shrink-0 border border-blue-100/40">
+                                                        <IconComp className="w-5 h-5" />
+                                                    </div>
+
+                                                    {/* Content text */}
+                                                    <div className="space-y-2">
+                                                        <h3 className="text-lg font-bold text-slate-900 leading-snug">
+                                                            {section.id}. {section.title}
+                                                        </h3>
+                                                        <p className="text-slate-600 leading-relaxed text-sm">
+                                                            {section.content}
+                                                        </p>
+                                                        {section.bullets && (
+                                                            <ul className="space-y-1.5 pt-1.5">
+                                                                {section.bullets.map((bullet, index) => (
+                                                                    <li key={index} className="flex items-start text-xs text-slate-500 leading-relaxed">
+                                                                        <span className="text-blue-500 mr-2 mt-0.5 select-none font-semibold">•</span>
+                                                                        <span>{bullet}</span>
+                                                                    </li>
+                                                                ))}
+                                                            </ul>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </CardContent>
+                            </Card>
                         </div>
                     </div>
+                </section>
 
-                    {/* MAIN CARD GRID */}
-                    <div className="reveal mt-8 mb-10">
-                        <Card className="border border-slate-200/60 shadow-xl shadow-slate-100/50 rounded-3xl overflow-hidden bg-white">
-                            <CardContent className="p-8 lg:p-12">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
-                                    {PRIVACY_SECTIONS.map((section) => {
-                                        const IconComp = section.icon;
-                                        return (
-                                            <div key={section.id} className="flex gap-4 items-start">
-                                                {/* Icon Badge */}
-                                                <div className="w-11 h-11 rounded-xl bg-blue-50/90 text-blue-600 flex items-center justify-center flex-shrink-0 border border-blue-100/40">
-                                                    <IconComp className="w-5 h-5" />
-                                                </div>
+                {/* THIRD PARTY + CONTACT CARDS */}
+                <section className="bg-[#F1F3FC] border-t border-[#EAECF3]">
+                    <div className="px-[50px] lg:px-[70px] py-16">
+                        {/* THIRD PARTY INTEGRATIONS (FULL WIDTH) */}
+                        <div className="reveal mb-6">
+                            <Card className="border border-slate-200/60 shadow-lg shadow-slate-100/20 rounded-2xl bg-white">
+                                <CardContent className="p-6 sm:p-8 flex gap-4 items-start">
+                                    <div className="w-11 h-11 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0 border border-indigo-100/40">
+                                        <Blocks className="w-5 h-5" />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <h3 className="text-lg font-bold text-slate-900 leading-snug">
+                                            Third-Party Services & Integrations
+                                        </h3>
+                                        <p className="text-slate-600 leading-relaxed text-sm">
+                                            Our platform syncs and routes payload details with external third-party software
+                                            eCommerce channels, including **Amazon, Walmart, Shopify, eBay, Stripe, and Razorpay**.
+                                            Usage of records by these channels is governed strictly by their respective corporate privacy terms.
+                                        </p>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </div>
 
-                                                {/* Content text */}
-                                                <div className="space-y-2">
-                                                    <h3 className="text-lg font-bold text-slate-900 leading-snug">
-                                                        {section.id}. {section.title}
-                                                    </h3>
-                                                    <p className="text-slate-600 leading-relaxed text-sm">
-                                                        {section.content}
-                                                    </p>
-                                                    {section.bullets && (
-                                                        <ul className="space-y-1.5 pt-1.5">
-                                                            {section.bullets.map((bullet, index) => (
-                                                                <li key={index} className="flex items-start text-xs text-slate-500 leading-relaxed">
-                                                                    <span className="text-blue-500 mr-2 mt-0.5 select-none font-semibold">•</span>
-                                                                    <span>{bullet}</span>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </CardContent>
-                        </Card>
+                        {/* QUESTIONS / PRIVACY OFFICER CARD (FULL WIDTH) */}
+                        <div className="reveal">
+                            <Card className="border border-slate-200/60 shadow-lg shadow-slate-100/20 rounded-2xl bg-white">
+                                <CardContent className="p-6 sm:p-8 flex gap-4 items-start">
+                                    <div className="w-11 h-11 rounded-xl bg-blue-100/80 text-blue-600 flex items-center justify-center flex-shrink-0">
+                                        <Mail className="w-5 h-5" />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <h3 className="text-lg font-bold text-slate-900 leading-snug">
+                                            Questions about your privacy?
+                                        </h3>
+                                        <p className="text-slate-600 leading-relaxed text-sm">
+                                            Ctasis Sellerbuz maintains a dedicated data officer. For requests, accounts terminations, or inquiries
+                                            reach out to us directly at{" "}
+                                            <a href="mailto:info@ctasis.com" className="text-blue-600 hover:text-blue-700 underline font-medium">
+                                                info@ctasis.com
+                                            </a>{" "}
+                                            or visit{" "}
+                                            <a href="https://ctasis.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline font-medium">
+                                                CTAS Info Services LLP
+                                            </a>.
+                                        </p>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </div>
-
-                    {/* THIRD PARTY INTEGRATIONS (FULL WIDTH) */}
-                    <div className="reveal mb-6">
-                        <Card className="border border-slate-200/60 shadow-lg shadow-slate-100/20 rounded-2xl bg-white">
-                            <CardContent className="p-6 sm:p-8 flex gap-4 items-start">
-                                <div className="w-11 h-11 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0 border border-indigo-100/40">
-                                    <Blocks className="w-5 h-5" />
-                                </div>
-                                <div className="space-y-2">
-                                    <h3 className="text-lg font-bold text-slate-900 leading-snug">
-                                        Third-Party Services & Integrations
-                                    </h3>
-                                    <p className="text-slate-600 leading-relaxed text-sm">
-                                        Our platform syncs and routes payload details with external third-party software
-                                        eCommerce channels, including **Amazon, Walmart, Shopify, eBay, Stripe, and Razorpay**.
-                                        Usage of records by these channels is governed strictly by their respective corporate privacy terms.
-                                    </p>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    </div>
-
-                    {/* QUESTIONS / PRIVACY OFFICER CARD (FULL WIDTH) */}
-                    <div className="reveal">
-                        <Card className="border border-blue-100 bg-blue-50/30 shadow-lg shadow-slate-100/10 rounded-2xl">
-                            <CardContent className="p-6 sm:p-8 flex gap-4 items-start">
-                                <div className="w-11 h-11 rounded-xl bg-blue-100/80 text-blue-600 flex items-center justify-center flex-shrink-0">
-                                    <Mail className="w-5 h-5" />
-                                </div>
-                                <div className="space-y-2">
-                                    <h3 className="text-lg font-bold text-slate-900 leading-snug">
-                                        Questions about your privacy?
-                                    </h3>
-                                    <p className="text-slate-600 leading-relaxed text-sm">
-                                        Ctasis Sellerbuz maintains a dedicated data officer. For requests, accounts terminations, or inquiries
-                                        reach out to us directly at{" "}
-                                        <a href="mailto:info@ctasis.com" className="text-blue-600 hover:text-blue-700 underline font-medium">
-                                            info@ctasis.com
-                                        </a>{" "}
-                                        or visit{" "}
-                                        <a href="https://ctasis.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline font-medium">
-                                            CTAS Info Services LLP
-                                        </a>.
-                                    </p>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    </div>
-                </div>
+                </section>
             </div>
         </Layout>
     );

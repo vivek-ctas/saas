@@ -126,7 +126,7 @@ const Guide = () => {
         />
 
         {/* FEATURED POST */}
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-white border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px]">
             <Link href={`/guide/${featured.slug}`} className="reveal block group">
               <Card className="overflow-hidden border border-slate-100 hover-lift">
@@ -157,7 +157,7 @@ const Guide = () => {
         </section>
 
         {/* GRID */}
-        <section className="py-20 section-bg">
+        <section className="py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px]">
             <div className="flex items-end justify-between mb-12 reveal">
               <div>
@@ -193,7 +193,7 @@ const Guide = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-24 relative overflow-hidden bg-gradient-to-br from-blue-600 to-blue-900">
+        <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
           <div className="relative px-[50px] lg:px-[70px] text-center reveal">
             <BookOpen className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">Get the playbooks in your inbox.</h2>

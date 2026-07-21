@@ -64,7 +64,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
         </section>
 
         {/* Before / After */}
-        <section className="py-14 bg-white">
+        <section className="py-14 bg-white border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="reveal rounded-3xl border border-slate-200/70 bg-slate-50 p-6">
               <Badge className="mb-3 bg-pink-50 text-pink-700 border border-pink-100 shadow-sm">Before SellerBuz</Badge>
@@ -93,7 +93,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
 
         {/* DEEP DIVES - zig-zag rows with big dashboard visuals */}
         {cfg.deepDives.map((s, i) => (
-          <section key={s.title} className={`py-14 ${i % 2 === 0 ? "bg-white" : "bg-blue-50/40"}`}>
+          <section key={s.title} className={`py-14 ${i % 3 === 0 ? "bg-white" : i % 3 === 1 ? "bg-[#F7F9FC]" : "bg-[#F1F3FC]"} border-t border-[#EAECF3]`}>
             <div className="px-[50px] lg:px-[70px]">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 <div className={`reveal ${i % 2 === 1 ? "lg:order-2" : ""}`}>
@@ -118,7 +118,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
 
         {/* Everything else - compact chip strip (kept from featureGrid) */}
         {cfg.featureGrid && cfg.featureGrid.length > 0 && (
-          <section className="py-12 bg-slate-50 border-y border-slate-100">
+          <section className="py-12 bg-[#F7F9FC] border-t border-[#EAECF3]">
             <div className="px-[50px] lg:px-[70px]">
               <h3 className="text-sm lg:text-base font-bold uppercase tracking-widest text-slate-500 text-center mb-6">Everything else in this capability</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -140,7 +140,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
 
         {/* Works with */}
         {cfg.channels && (
-          <section className="py-10 bg-white border-b border-slate-100">
+          <section className="py-10 bg-[#F1F3FC] border-t border-[#EAECF3]">
             <div className="px-[50px] lg:px-[70px] text-center">
               <div className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Works with</div>
               <div className="flex flex-wrap justify-center gap-3">
@@ -155,7 +155,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
         )}
 
         {/* FAQ */}
-        <section className="py-14 bg-blue-50/40">
+        <section className="py-14 bg-white border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px]">
             <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 text-center mb-8 reveal">Frequently asked</h2>
             <div className="space-y-3">

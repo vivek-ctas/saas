@@ -46,17 +46,32 @@ const Contact = () => {
   const { settingsData } = useCompanySettings();
   const { form, loading, success, error, handleChange, handleSubmit, resetForm } = useContactForm();
 
-  const companyData = settingsData ? {
-    email: settingsData.contact.email,
-    phone: settingsData.contact.phone,
-    address: settingsData.contact.address +
-      (settingsData.contact.city ? `, ${settingsData.contact.city}` : "") +
-      (settingsData.contact.state ? `, ${settingsData.contact.state}` : "") +
-      (settingsData.contact.country ? `, ${settingsData.contact.country}` : ""),
-    postal_code: settingsData.contact.postal_code,
-    support_hours: settingsData.contact.working_hours || "",
-    email_hours: "24/7 Response",
-  } : null;
+  const contactEmail = settingsData?.contact?.email || "info@ctasis.com";
+  const contactPhone = settingsData?.contact?.phone || "+91 7948993409";
+  const contactAddress = (
+    settingsData?.contact?.address ||
+    "A-865/866, Money Plant High Street, Jagatpur Road, Sarkhej - Gandhinagar Hwy, near BSNL Office, Gota, Ahmedabad, Gujarat 382470"
+  ) +
+    (settingsData?.contact?.city ? `, ${settingsData.contact.city}` : "") +
+    (settingsData?.contact?.state ? `, ${settingsData.contact.state}` : "") +
+    (settingsData?.contact?.country ? `, ${settingsData.contact.country}` : "");
+  const contactPostalCode = settingsData?.contact?.postal_code || "382470";
+  const supportHours = settingsData?.contact?.working_hours || "Mon–Fri · 9–6 EST";
+  const emailHours = "24/7 Response";
+  const googleMapUrl = settingsData?.contact?.google_map_url || "https://maps.google.com";
+
+  const quickChannels = [
+    { icon: Mail, title: "Email us", value: contactEmail, note: "General & sales" },
+    { icon: Headphones, title: "Live chat", value: "Available 24/7", note: "For Pro & Enterprise" },
+    { icon: Phone, title: "Call us", value: contactPhone, note: "Mon–Fri · 9–6 EST" },
+  ];
+
+  const sidebarInfo = [
+    { icon: Mail, title: "Email", lines: [contactEmail] },
+    { icon: Phone, title: "Phone", lines: [contactPhone, "Mon–Fri · 9–6 EST"] },
+    { icon: MapPin, title: "HQ", lines: [contactAddress, contactPostalCode], link: googleMapUrl },
+    { icon: Clock, title: "Hours", lines: [supportHours, emailHours] },
+  ];
 
   const [errors, setErrors] = useState<Partial<Record<FieldName, string>>>({});
   const [touched, setTouched] = useState<Partial<Record<FieldName, boolean>>>({});
@@ -132,14 +147,10 @@ const Contact = () => {
         />
 
         {/* QUICK CHANNELS */}
-        <section className="py-16 bg-white -mt-8 relative z-10">
+        <section className="py-16 bg-white border-t border-[#EAECF3] -mt-8 relative z-10">
           <div className="px-[50px] lg:px-[70px]">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                { icon: Mail, title: "Email us", value: companyData?.email || "", note: "General & sales" },
-                { icon: Headphones, title: "Live chat", value: "Available 24/7", note: "For Pro & Enterprise" },
-                { icon: Phone, title: "Call us", value: companyData?.phone || "", note: "Mon–Fri · 9–6 EST" }
-              ].map((c, i) => (
+              {quickChannels.map((c, i) => (
                 <Card key={i} className="reveal hover-lift group" style={{ transitionDelay: `${i * 100}ms` }}>
                   <CardContent className="p-6 flex items-start gap-4">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-blue-900 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
@@ -158,7 +169,7 @@ const Contact = () => {
         </section>
 
         {/* FORM + INFO */}
-        <section className="py-24 section-bg" id="contact-form">
+        <section className="py-24 bg-[#F7F9FC] border-t border-[#EAECF3]" id="contact-form">
           <div className="px-[50px] lg:px-[70px]">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
               {/* Form */}
@@ -303,20 +314,22 @@ const Contact = () => {
                   <div className="absolute -bottom-16 -right-16 w-60 h-60 bg-blue-500/30 rounded-full blur-3xl" />
                   <CardContent className="relative p-8 space-y-6">
                     <h3 className="text-2xl lg:text-3xl font-bold">Reach our team</h3>
-                    {[
-                      { icon: Mail, title: "Email", lines: [companyData?.email || ""] },
-                      { icon: Phone, title: "Phone", lines: [companyData?.phone || "", "Mon–Fri · 9–6 EST"] },
-                      { icon: MapPin, title: "HQ", lines: [companyData?.address || "", companyData?.postal_code || ""] },
-                      { icon: Clock, title: "Hours", lines: [companyData?.support_hours || "", companyData?.email_hours || ""] },
-                    ].map((b, i) => (
+                    {sidebarInfo.map((b, i) => (
                       <div key={i} className="flex gap-4">
                         <div className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur flex items-center justify-center flex-shrink-0">
                           <b.icon className="w-5 h-5" />
                         </div>
-                        <div>
-                          <div className="font-semibold">{b.title}</div>
-                          {b.lines.map((l, j) => <div key={j} className="text-white/80 text-sm">{l}</div>)}
-                        </div>
+                        {b.link ? (
+                          <a href={b.link} target="_blank" rel="noopener noreferrer" className="hover:text-blue-200 transition-colors">
+                            <div className="font-semibold">{b.title}</div>
+                            {b.lines.map((l, j) => <div key={j} className="text-white/80 text-sm">{l}</div>)}
+                          </a>
+                        ) : (
+                          <div>
+                            <div className="font-semibold">{b.title}</div>
+                            {b.lines.map((l, j) => <div key={j} className="text-white/80 text-sm">{l}</div>)}
+                          </div>
+                        )}
                       </div>
                     ))}
                   </CardContent>

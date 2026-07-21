@@ -229,7 +229,7 @@ const Pricing = () => {
         />
 
         {/* ── PLANS SECTION ──────────────────────────────────────────────────── */}
-        <section id="plans" className="py-24 bg-white">
+        <section id="plans" className="py-24 bg-white border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px]">
 
             {/* Loading */}
@@ -366,7 +366,7 @@ const Pricing = () => {
         </section>
 
         {/* ── PLAN PERKS BANNER ───────────────────────────────────────────────── */}
-        <section className="py-12 bg-slate-50 border-y border-slate-100">
+        <section className="py-12 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px]">
             {/* Heading */}
             <p className="text-center text-lg font-semibold text-slate-700 mb-8">
@@ -397,7 +397,7 @@ const Pricing = () => {
         </section>
 
         {/* ── TESTIMONIAL ────────────────────────────────────────────────────── */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-[#F1F3FC] border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="reveal scale-[1.12] lg:scale-[1.18] origin-center">
               <AnalyticsIllustration className="w-full h-auto " />
@@ -427,7 +427,7 @@ const Pricing = () => {
         </section>
 
         {/* ── AI ADD-ONS ──────────────────────────────────────────────────────── */}
-        <section className="py-24 bg-blue-50/40">
+        <section className="py-24 bg-white border-t border-[#EAECF3]">
           <div className="relative px-[50px] lg:px-[70px]">
             <div className="text-center mb-14 reveal max-w-3xl mx-auto">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Inside Pro & Enterprise</Badge>
@@ -459,7 +459,7 @@ const Pricing = () => {
         </section>
 
         {/* ── FAQ ────────────────────────────────────────────────────────────── */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px]">
             <div className="text-center mb-12 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">FAQ</Badge>
@@ -485,7 +485,7 @@ const Pricing = () => {
         </section>
 
         {/* ── BOTTOM CTA ─────────────────────────────────────────────────────── */}
-        <section className="py-24 relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-900">
+        <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
           <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
           <div className="relative px-[50px] lg:px-[70px] text-center reveal">

@@ -235,7 +235,7 @@ const GuidePost = () => {
         </section>
 
         {/* BODY */}
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-white border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px]">
             <p className="reveal text-lg text-slate-700 leading-relaxed mb-10 first-letter:text-5xl first-letter:font-bold first-letter:text-blue-600 first-letter:mr-2 first-letter:float-left first-letter:leading-none">
               {post.intro}
@@ -278,7 +278,7 @@ const GuidePost = () => {
         </section>
 
         {/* RELATED */}
-        <section className="py-20 section-bg">
+        <section className="py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px]">
             <div className="reveal flex items-end justify-between mb-10">
               <div>

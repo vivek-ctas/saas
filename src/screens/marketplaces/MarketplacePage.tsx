@@ -64,7 +64,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         </section>
 
         {/* STATS */}
-        <section className="py-10 bg-white border-y border-slate-100">
+        <section className="py-10 bg-white border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px] grid grid-cols-2 md:grid-cols-4 gap-4">
             {cfg.stats.map((s) => (
               <div key={s.l} className="reveal rounded-2xl border border-slate-200/70 bg-white p-6 hover:border-blue-200 transition-all">
@@ -77,7 +77,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         </section>
 
         {/* CAPABILITIES */}
-        <section className="py-14 bg-blue-50/40">
+        <section className="py-14 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px]">
             <div className="max-w-3xl mb-10 reveal">
               <Badge className="mb-3 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">What You Get</Badge>
@@ -100,7 +100,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         </section>
 
         {/* GOTCHAS */}
-        <section className="py-14 bg-white">
+        <section className="py-14 bg-[#F1F3FC] border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-10">
             <div className="reveal">
               <Badge className="mb-3 bg-pink-50 text-pink-700 border border-pink-100 shadow-sm">{cfg.name} Gotchas We Handle</Badge>
@@ -128,7 +128,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         </section>
 
         {/* ONBOARDING */}
-        <section className="py-14 bg-blue-50/40">
+        <section className="py-14 bg-white border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px]">
             <div className="text-center mb-8 reveal">
               <Badge className="mb-3 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">Live In Minutes</Badge>
@@ -141,7 +141,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         </section>
 
         {/* CROSS CHANNEL */}
-        <section className="py-14 bg-white">
+        <section className="py-14 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px] text-center reveal">
             <div className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Also sells on</div>
             <div className="flex flex-wrap justify-center gap-3">
@@ -155,7 +155,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         </section>
 
         {/* FAQ */}
-        <section className="py-14 bg-blue-50/40">
+        <section className="py-14 bg-[#F1F3FC] border-t border-[#EAECF3]">
           <div className="px-[50px] lg:px-[70px]">
             <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 text-center mb-8 reveal">{cfg.name} - frequently asked</h2>
             <div className="space-y-3">

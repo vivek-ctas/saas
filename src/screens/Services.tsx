@@ -274,7 +274,7 @@ const Services = () => {
         />
         {/* Zig-zag sections */}
         {sections.map((s, i) => (
-          <section key={s.title} className={`py-16 ${i % 2 === 0 ? "bg-white" : "bg-blue-50/40"}`}>
+          <section key={s.title} className={`py-16 ${i % 3 === 0 ? "bg-white" : i % 3 === 1 ? "bg-[#F7F9FC]" : "bg-[#F1F3FC]"} border-t border-[#EAECF3]`}>
             <div className="px-[50px] lg:px-[70px]">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 <div className={`reveal ${s.reverse ? "lg:order-2" : ""}`}>
@@ -298,7 +298,7 @@ const Services = () => {
         ))}
 
         {/* CTA */}
-        <section className="py-24 relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-900">
+        <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
           <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
           <div className="relative px-[50px] lg:px-[70px] text-center">
