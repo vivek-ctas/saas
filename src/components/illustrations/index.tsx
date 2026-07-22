@@ -1434,18 +1434,18 @@ export const InfraIllustration = (props: SVGProps<SVGSVGElement>) => {
       })}
 
       {/* Footer connector routing */}
-      <line x1={LINE_X} y1={lastRowBottom} x2={LINE_X} y2={footY} stroke="#C026D3" strokeWidth="1.5" strokeDasharray="3 4" opacity="0.6">
+      <line x1={LINE_X} y1={lastRowBottom} x2={LINE_X} y2={footY + 15} stroke="#C026D3" strokeWidth="1.5" strokeDasharray="3 4" opacity="0.6">
         <animate attributeName="stroke-dashoffset" values="0;-14" dur="1.4s" repeatCount="indefinite" />
       </line>
       <circle r="2.5" fill="#C026D3" opacity={0.6}>
         <animateMotion dur="1.6s" repeatCount="indefinite"
-          path={`M${LINE_X} ${lastRowBottom} L${LINE_X} ${footY}`} />
+          path={`M${LINE_X} ${lastRowBottom} L${LINE_X} ${footY + 15}`} />
       </circle>
       <line x1={leftPillCx} y1={footY} x2={rightPillCx} y2={footY} stroke="#C026D3" strokeWidth="1.5" strokeDasharray="3 4" opacity="0.6">
         <animate attributeName="stroke-dashoffset" values="0;-14" dur="1.6s" repeatCount="indefinite" />
       </line>
       <circle r="2.5" fill="#C026D3" opacity={0.6}>
-        <animateMotion dur="1.8s" repeatCount="indefinite"
+        <animateMotion dur="4.8s" repeatCount="indefinite"
           path={`M${leftPillCx} ${footY} L${rightPillCx} ${footY}`} />
       </circle>
       <line x1={leftPillCx} y1={footY} x2={leftPillCx} y2={pillY} stroke="#C026D3" strokeWidth="1.5" strokeDasharray="3 4" opacity="0.6">
@@ -7178,3 +7178,548 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: Props) => {
     </svg>
   )
 };
+
+export const InventoryDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
+
+  <defs>
+    <clipPath id="cardClip">
+      <rect x="205" y="215" width="600" height="305" rx="18" />
+    </clipPath>
+    <clipPath id="logoClip">
+      <circle cx="0" cy="0" r="40" />
+    </clipPath>
+    <marker id="arrowHead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#7C3AED" />
+    </marker>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" floodColor="#3B2E7E" floodOpacity="0.16" />
+    </filter>
+    <symbol id="star4" viewBox="0 0 24 24">
+      <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#8B5CF6" />
+    </symbol>
+  </defs>
+  return (
+    <svg viewBox="0 0 1040 540" fill="none" xmlns="http://www.w3.org/2000/svg" {...props} fontFamily="-apple-system,Segoe UI,Helvetica Neue,Arial,sans-serif">
+
+      <rect x="0" y="0" width="1040" height="540" fill="#FFFFFF" />
+      <g transform="translate(195,65)">
+        <circle r="42" fill="#FFFFFF" stroke="#111827" strokeWidth="2" strokeDasharray="4 4" />
+        <image href="logo-amazon.png" x="-40" y="-40" width="80" height="80" clipPath="url(#logoClip)" />
+        <text x="0" y="66" textAnchor="middle" fontSize="14" fontWeight="700" fill="#1E1B4B">Amazon</text>
+      </g>
+
+
+      <g transform="translate(350,65)">
+        <circle r="42" fill="#FFFFFF" stroke="#0071CE" strokeWidth="2" strokeDasharray="4 4" />
+        <image href="logo-walmart.png" x="-40" y="-40" width="80" height="80" clipPath="url(#logoClip)" />
+        <text x="0" y="66" textAnchor="middle" fontSize="14" fontWeight="700" fill="#1E1B4B">Walmart</text>
+      </g>
+
+
+      <g transform="translate(505,65)">
+        <circle r="42" fill="#FFFFFF" stroke="#0064D2" strokeWidth="2" strokeDasharray="4 4" />
+        <image href="logo-ebay.png" x="-40" y="-40" width="80" height="80" clipPath="url(#logoClip)" />
+        <text x="0" y="66" textAnchor="middle" fontSize="14" fontWeight="700" fill="#1E1B4B">eBay</text>
+      </g>
+
+
+      <g transform="translate(660,65)">
+        <circle r="42" fill="#FFFFFF" stroke="#F1641E" strokeWidth="2" strokeDasharray="4 4" />
+        <image href="logo-etsy.png" x="-40" y="-40" width="80" height="80" clipPath="url(#logoClip)" />
+        <text x="0" y="66" textAnchor="middle" fontSize="14" fontWeight="700" fill="#1E1B4B">Etsy</text>
+      </g>
+
+
+      <g transform="translate(815,65)">
+        <circle r="42" fill="#FFFFFF" stroke="#EB6608" strokeWidth="2" strokeDasharray="4 4" />
+        <image href="logo-fnac.png" x="-40" y="-40" width="80" height="80" clipPath="url(#logoClip)" />
+        <text x="0" y="66" textAnchor="middle" fontSize="14" fontWeight="700" fill="#1E1B4B">Fnac</text>
+      </g>
+
+
+      <g fill="none" stroke="#B7A9F2" strokeWidth="2" strokeDasharray="4 5">
+        <path d="M195,107 L195,140" />
+        <path d="M350,107 L350,140" />
+        <path d="M505,107 L505,140" />
+        <path d="M660,107 L660,140" />
+        <path d="M815,107 L815,140" />
+        <path d="M195,140 L815,140" />
+        <path d="M505,140 L505,148" />
+      </g>
+
+
+      <g transform="translate(505,175)">
+        <circle r="27" fill="#FFFFFF" stroke="#7C3AED" strokeWidth="2.5" />
+        <path d="M-10,-3 a10,10 0 1 1 1.8,6.4" fill="none" stroke="#7C3AED" strokeWidth="2.6" strokeLinecap="round" />
+        <path d="M-11,3 l3,-7 l6,4 Z" fill="#7C3AED" />
+        <path d="M10,3 a10,10 0 1 1 -1.8,-6.4" fill="none" stroke="#7C3AED" strokeWidth="2.6" strokeLinecap="round" />
+        <path d="M11,-3 l-3,7 l-6,-4 Z" fill="#7C3AED" />
+      </g>
+      <line x1="505" y1="202" x2="505" y2="212" stroke="#7C3AED" strokeWidth="2.5" markerEnd="url(#arrowHead)" />
+
+
+      <rect x="20" y="275" width="170" height="215" rx="16" fill="#FFFFFF" stroke="#D9CFF9" strokeWidth="2" filter="url(#softShadow)" />
+      <text x="35" y="305" fontSize="14.5" fontWeight="700" fill="#1E1B4B">Your Inventory</text>
+
+
+      <g transform="translate(70,335)">
+        <path d="M0,45 L40,15 L80,45 L80,95 L0,95 Z" fill="#EDE7FC" stroke="#7C3AED" strokeWidth="2.5" strokeLinejoin="round" />
+        <rect x="30" y="65" width="20" height="30" fill="#7C3AED" />
+        <rect x="10" y="55" width="14" height="14" rx="2" fill="#C4B5FD" stroke="#7C3AED" strokeWidth="1.5" />
+        <rect x="56" y="55" width="14" height="14" rx="2" fill="#C4B5FD" stroke="#7C3AED" strokeWidth="1.5" />
+      </g>
+      <g fill="#DDD3FB" stroke="#8B5CF6" strokeWidth="1.5">
+        <rect x="115" y="405" width="26" height="26" rx="3" />
+        <rect x="140" y="418" width="20" height="20" rx="3" />
+      </g>
+
+
+      <rect x="35" y="440" width="140" height="8" rx="4" fill="#EEF0F6" />
+      <rect x="35" y="456" width="110" height="8" rx="4" fill="#EEF0F6" />
+      <rect x="35" y="472" width="85" height="8" rx="4" fill="#EEF0F6" />
+
+
+      <line x1="190" y1="382" x2="203" y2="382" stroke="#7C3AED" strokeWidth="2.5" markerEnd="url(#arrowHead)" />
+
+
+      <rect x="205" y="215" width="600" height="305" rx="18" fill="#FFFFFF" stroke="#E4DEFB" strokeWidth="2" filter="url(#softShadow)" />
+
+      <g clipPath="url(#cardClip)">
+
+        <rect x="205" y="215" width="60" height="305" fill="#5B21B6" />
+
+
+        <rect x="217" y="238" width="36" height="36" rx="9" fill="#8B5CF6" />
+        <path d="M235,246 l10,6 l0,12 l-10,6 l-10,-6 l0,-12 Z" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinejoin="round" transform="translate(0,0)" />
+
+        <g fill="none" stroke="#C4B5FD" strokeWidth="2">
+          <rect x="221" y="293" width="12" height="12" rx="2" />
+          <rect x="237" y="293" width="12" height="12" rx="2" />
+          <rect x="221" y="309" width="12" height="12" rx="2" />
+          <rect x="237" y="309" width="12" height="12" rx="2" />
+        </g>
+
+        <path d="M225,352 l10,-10 l10,10 M235,342 l0,24" fill="none" stroke="#C4B5FD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+
+        <path d="M235,388 a9,9 0 1 1 0,18 a9,9 0 1 1 0,-18 M235,384 l0,4 M235,410 l0,4" fill="none" stroke="#C4B5FD" strokeWidth="2" />
+
+        <circle cx="235" cy="432" r="9" fill="none" stroke="#C4B5FD" strokeWidth="2" />
+        <path d="M235,423 l0,-3 M235,441 l0,3 M226,432 l-3,0 M247,432 l3,0" stroke="#C4B5FD" strokeWidth="2" />
+      </g>
+
+
+      <text x="300" y="252" fontSize="17.5" fontWeight="700" fill="#1E1B4B">Inventory &amp; Pricing Dashboard</text>
+
+
+      <g fontSize="10.5" fill="#6B7280">
+
+        <rect x="300" y="266" width="108" height="56" rx="10" fill="#FAFAFF" stroke="#EDE9FE" strokeWidth="1.5" />
+        <rect x="311" y="278" width="20" height="20" rx="5" fill="#EDE7FC" stroke="#7C3AED" strokeWidth="1.5" />
+        <path d="M321,283 l6,3.5 l0,7 l-6,3.5 l-6,-3.5 l0,-7 Z" fill="none" stroke="#7C3AED" strokeWidth="1.3" />
+        <text x="341" y="286" fontWeight="600">Total Products</text>
+        <text x="311" y="310" fontSize="16" fontWeight="800" fill="#1E1B4B">8,642</text>
+
+
+        <rect x="418" y="266" width="108" height="56" rx="10" fill="#FAFAFF" stroke="#EDE9FE" strokeWidth="1.5" />
+        <rect x="429" y="278" width="20" height="20" rx="5" fill="#EDE7FC" stroke="#7C3AED" strokeWidth="1.5" />
+        <path d="M433,283 h12 v10 h-12 Z M433,283 l6,-4 l6,4" fill="none" stroke="#7C3AED" strokeWidth="1.3" strokeLinejoin="round" />
+        <text x="459" y="286" fontWeight="600">Total Stock</text>
+        <text x="429" y="310" fontSize="16" fontWeight="800" fill="#1E1B4B">45,278</text>
+
+
+        <rect x="536" y="266" width="108" height="56" rx="10" fill="#FAFAFF" stroke="#EDE9FE" strokeWidth="1.5" />
+        <circle cx="547" cy="288" r="10" fill="#EDE7FC" stroke="#7C3AED" strokeWidth="1.5" />
+        <text x="547" y="292" textAnchor="middle" fontSize="11" fontWeight="800" fill="#7C3AED">$</text>
+        <text x="565" y="286" fontWeight="600">Average Price</text>
+        <text x="547" y="310" fontSize="16" fontWeight="800" fill="#1E1B4B">$24.68</text>
+
+
+        <rect x="654" y="266" width="108" height="56" rx="10" fill="#FAFAFF" stroke="#EDE9FE" strokeWidth="1.5" />
+        <rect x="665" y="278" width="20" height="20" rx="5" fill="#EDE7FC" stroke="#7C3AED" strokeWidth="1.5" />
+        <path d="M669,286 l3,-4 l3,3 l4,-6" fill="none" stroke="#7C3AED" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+        <text x="695" y="286" fontWeight="600">Active Listings</text>
+        <text x="665" y="310" fontSize="16" fontWeight="800" fill="#1E1B4B">7,842</text>
+      </g>
+
+
+      <rect x="300" y="337" width="290" height="168" rx="12" fill="#FAFAFF" stroke="#EDE9FE" strokeWidth="1.5" />
+      <text x="315" y="360" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Stock Overview</text>
+      <g stroke="#EEF0F6" strokeWidth="1">
+        <line x1="315" y1="385" x2="575" y2="385" />
+        <line x1="315" y1="415" x2="575" y2="415" />
+        <line x1="315" y1="445" x2="575" y2="445" />
+        <line x1="315" y1="475" x2="575" y2="475" />
+      </g>
+      <polyline points="320,440 355,455 390,420 425,450 460,428 495,452 530,415 565,432"
+        fill="none" stroke="#7C3AED" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <g fill="#7C3AED">
+        <circle cx="320" cy="440" r="3.5" /><circle cx="355" cy="455" r="3.5" /><circle cx="390" cy="420" r="3.5" />
+        <circle cx="425" cy="450" r="3.5" /><circle cx="460" cy="428" r="3.5" /><circle cx="495" cy="452" r="3.5" />
+        <circle cx="530" cy="415" r="3.5" /><circle cx="565" cy="432" r="3.5" />
+      </g>
+      <g fontSize="9" fill="#9CA3AF">
+        <text x="320" y="495" textAnchor="middle">May 12</text>
+        <text x="355" y="495" textAnchor="middle">May 16</text>
+        <text x="390" y="495" textAnchor="middle">May 20</text>
+        <text x="425" y="495" textAnchor="middle">May 24</text>
+        <text x="460" y="495" textAnchor="middle">May 28</text>
+        <text x="495" y="495" textAnchor="middle">Jun 01</text>
+        <text x="530" y="495" textAnchor="middle">Jun 05</text>
+        <text x="565" y="495" textAnchor="middle">Jun 09</text>
+      </g>
+      <g fontSize="9" fill="#9CA3AF">
+        <text x="308" y="478" textAnchor="end">0</text>
+        <text x="308" y="448" textAnchor="end">5K</text>
+        <text x="308" y="418" textAnchor="end">10K</text>
+        <text x="308" y="389" textAnchor="end">15K</text>
+      </g>
+
+
+      <rect x="605" y="337" width="180" height="168" rx="12" fill="#FAFAFF" stroke="#EDE9FE" strokeWidth="1.5" />
+      <path d="M626,352 a7,7 0 1 1 0.01,0 M622,361 h8" stroke="#7C3AED" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+      <text x="639" y="360" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Low Stock Alerts</text>
+
+
+      <rect x="618" y="374" width="26" height="26" rx="6" fill="#EDE7FC" />
+      <path d="M624,388 a7,4 0 1 1 14,0" fill="none" stroke="#7C3AED" strokeWidth="1.4" />
+      <text x="652" y="384" fontSize="10.5" fontWeight="600" fill="#1E1B4B">Wireless Headphones</text>
+      <text x="652" y="396" fontSize="9.5" fill="#9CA3AF">SKU-1001</text>
+      <rect x="740" y="374" width="36" height="18" rx="9" fill="#FEE2E2" />
+      <text x="758" y="386" textAnchor="middle" fontSize="8.5" fontWeight="700" fill="#DC2626">12 left</text>
+
+
+      <rect x="618" y="410" width="26" height="26" rx="6" fill="#EDE7FC" />
+      <rect x="624" y="418" width="14" height="10" rx="2" fill="none" stroke="#7C3AED" strokeWidth="1.4" />
+      <circle cx="631" cy="423" r="2.4" fill="none" stroke="#7C3AED" strokeWidth="1.2" />
+      <text x="652" y="420" fontSize="10.5" fontWeight="600" fill="#1E1B4B">Digital Camera</text>
+      <text x="652" y="432" fontSize="9.5" fill="#9CA3AF">SKU-1002</text>
+      <rect x="740" y="410" width="30" height="18" rx="9" fill="#FEE2E2" />
+      <text x="755" y="422" textAnchor="middle" fontSize="8.5" fontWeight="700" fill="#DC2626">8 left</text>
+
+
+      <rect x="618" y="446" width="26" height="26" rx="6" fill="#EDE7FC" />
+      <circle cx="631" cy="459" r="7" fill="none" stroke="#7C3AED" strokeWidth="1.4" />
+      <path d="M631,459 l0,-4 M631,459 l3,2" stroke="#7C3AED" strokeWidth="1.2" />
+      <text x="652" y="456" fontSize="10.5" fontWeight="600" fill="#1E1B4B">Smart Watch</text>
+      <text x="652" y="468" fontSize="9.5" fill="#9CA3AF">SKU-1003</text>
+      <rect x="740" y="446" width="36" height="18" rx="9" fill="#FEE2E2" />
+      <text x="758" y="458" textAnchor="middle" fontSize="8.5" fontWeight="700" fill="#DC2626">15 left</text>
+
+
+      <line x1="805" y1="382" x2="822" y2="382" stroke="#7C3AED" strokeWidth="2.5" markerEnd="url(#arrowHead)" />
+
+
+      <g>
+        <rect x="845" y="290" width="150" height="195" rx="16" fill="#FFFFFF" stroke="#7C3AED" strokeWidth="2.5" filter="url(#softShadow)" />
+        <circle cx="920" cy="308" r="6" fill="#FFFFFF" stroke="#7C3AED" strokeWidth="2.5" />
+
+        <circle cx="920" cy="345" r="20" fill="#7C3AED" />
+        <text x="920" y="352" textAnchor="middle" fontSize="19" fontWeight="800" fill="#FFFFFF">$</text>
+
+        <text x="920" y="390" textAnchor="middle" fontSize="11.5" fill="#6B7280" fontWeight="600">Price Updated</text>
+        <text x="920" y="415" textAnchor="middle" fontSize="21" fontWeight="800" fill="#7C3AED">$24.68</text>
+
+        <rect x="890" y="435" width="60" height="8" rx="4" fill="#EEF0F6" />
+      </g>
+
+
+      <use href="#star4" x="995" y="270" width="26" height="26" />
+      <use href="#star4" x="1008" y="330" width="18" height="18" />
+      <use href="#star4" x="985" y="470" width="20" height="20" />
+      <circle cx="1005" cy="300" r="9" fill="none" stroke="#C4B5FD" strokeWidth="2" />
+
+    </svg>
+  )
+
+}
+
+
+export const SyncSequenceDiagramSVG = (props: SVGProps<SVGSVGElement>) => {
+
+  <defs>
+    <clipPath id="logoClip2"><circle cx="0" cy="0" r="20" /></clipPath>
+    <marker id="arrowP" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED" /></marker>
+    <marker id="arrowPBack" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 Z" fill="#7C3AED" /></marker>
+    <marker id="arrowBlue" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 Z" fill="#4285F4" /></marker>
+    <marker id="arrowGold" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 Z" fill="#F5B400" /></marker>
+    <marker id="arrowGreen" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 Z" fill="#10B981" /></marker>
+    <marker id="arrowOrange" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 Z" fill="#F97316" /></marker>
+    <marker id="arrowIndigo" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 Z" fill="#6366F1" /></marker>
+    <marker id="arrowDownBlue" markerWidth="9" markerHeight="9" refX="4.5" refY="7" orient="auto"><path d="M0,0 L9,0 L4.5,9 Z" fill="#4285F4" /></marker>
+    <marker id="arrowDownGold" markerWidth="9" markerHeight="9" refX="4.5" refY="7" orient="auto"><path d="M0,0 L9,0 L4.5,9 Z" fill="#F5B400" /></marker>
+    <marker id="arrowDownGreen" markerWidth="9" markerHeight="9" refX="4.5" refY="7" orient="auto"><path d="M0,0 L9,0 L4.5,9 Z" fill="#10B981" /></marker>
+    <marker id="arrowDownOrange" markerWidth="9" markerHeight="9" refX="4.5" refY="7" orient="auto"><path d="M0,0 L9,0 L4.5,9 Z" fill="#F97316" /></marker>
+    <marker id="arrowDownIndigo" markerWidth="9" markerHeight="9" refX="4.5" refY="7" orient="auto"><path d="M0,0 L9,0 L4.5,9 Z" fill="#6366F1" /></marker>
+    <filter id="boxShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" floodColor="#3B2E7E" floodOpacity="0.10" />
+    </filter>
+    <radialGradient id="sd-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stopColor="#7C3AED" stopOpacity="0.15" />
+      <stop offset="100%" stopColor="#7C3AED" stopOpacity="0" />
+    </radialGradient>
+  </defs>
+  return (
+    <svg viewBox="0 0 1050 520" fill="none" xmlns="http://www.w3.org/2000/svg"  {...props} fontFamily="-apple-system,Segoe UI,Helvetica Neue,Arial,sans-serif">
+
+
+      <g strokeWidth="2" strokeDasharray="5 4">
+        <line x1="62" y1="128" x2="62" y2="480" stroke="#7C3AED">
+          <animate attributeName="strokeDashoffset" values="0;-18" dur="4s" repeatCount="indefinite" />
+        </line>
+        <line x1="277" y1="128" x2="277" y2="480" stroke="#7C3AED">
+          <animate attributeName="strokeDashoffset" values="0;-18" dur="4s" repeatCount="indefinite" />
+        </line>
+        <line x1="500" y1="128" x2="500" y2="480" stroke="#4285F4">
+          <animate attributeName="strokeDashoffset" values="0;-18" dur="3.6s" repeatCount="indefinite" />
+        </line>
+        <line x1="617" y1="128" x2="617" y2="480" stroke="#F5B400">
+          <animate attributeName="strokeDashoffset" values="0;-18" dur="3.8s" repeatCount="indefinite" />
+        </line>
+        <line x1="732" y1="128" x2="732" y2="480" stroke="#10B981">
+          <animate attributeName="strokeDashoffset" values="0;-18" dur="4.2s" repeatCount="indefinite" />
+        </line>
+        <line x1="847" y1="128" x2="847" y2="480" stroke="#F97316">
+          <animate attributeName="strokeDashoffset" values="0;-18" dur="3.4s" repeatCount="indefinite" />
+        </line>
+        <line x1="965" y1="128" x2="965" y2="480" stroke="#6366F1">
+          <animate attributeName="strokeDashoffset" values="0;-18" dur="4.4s" repeatCount="indefinite" />
+        </line>
+      </g>
+
+
+      <g>
+        <rect x="14" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
+        <g transform="translate(62,48)">
+          <path d="M-20,4 L0,-14 L20,4 L20,26 L-20,26 Z" fill="#EDE7FC" stroke="#7C3AED" strokeWidth="2" strokeLinejoin="round" />
+          <rect x="-6" y="10" width="12" height="16" fill="#7C3AED" />
+          <rect x="-15" y="4" width="8" height="8" rx="1.5" fill="#C4B5FD" />
+        </g>
+        <text x="62" y="98" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Seller /</text>
+        <text x="62" y="114" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Warehouse</text>
+      </g>
+
+      <g>
+        <rect x="229" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
+        <g transform="translate(277,46)">
+          <circle r="21" fill="#EDE7FC" />
+          <path d="M-9,-3 a9,9 0 1 1 1.6,5.8" fill="none" stroke="#7C3AED" strokeWidth="2.4" strokeLinecap="round" />
+          <path d="M-10,2.5 l2.6,-6.2 l5.4,3.6 Z" fill="#7C3AED" />
+          <path d="M9,3 a9,9 0 1 1 -1.6,-5.8" fill="none" stroke="#7C3AED" strokeWidth="2.4" strokeLinecap="round" />
+          <path d="M10,-2.5 l-2.6,6.2 l-5.4,-3.6 Z" fill="#7C3AED" />
+        </g>
+        <text x="277" y="98" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Sellerbuz</text>
+        <text x="277" y="114" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Sync Engine</text>
+      </g>
+
+
+
+      <g>
+        <rect x="452" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
+        <g transform="translate(500,48)"><image href="logos/amazon-color-svgrepo-com.svg" x="-25" y="-20" width="50" height="50" clipPath="url(#logoClip2)" /></g>
+        <text x="500" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Amazon</text>
+      </g>
+
+      <g>
+        <rect x="569" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
+        <g transform="translate(617,48)"><image href="logos/walmart.png" x="-25" y="-20" width="50" height="50" clipPath="url(#logoClip2)" /></g>
+        <text x="617" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Walmart</text>
+      </g>
+
+      <g>
+        <rect x="684" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
+        <g transform="translate(732,48)"><image href="logos/EBay_logo.svg.webp" x="-25" y="-20" width="50" height="50" clipPath="url(#logoClip2)" /></g>
+        <text x="732" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">eBay</text>
+      </g>
+
+      <g>
+        <rect x="799" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
+        <g transform="translate(847,48)"><image href="logos/etsy-svgrepo-com.svg" x="-25" y="-20" width="50" height="50" clipPath="url(#logoClip2)" /></g>
+        <text x="847" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Etsy</text>
+      </g>
+
+      <g>
+        <rect x="917" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
+        <g transform="translate(965,48)"><image href="logos/fnac.png" x="-25" y="-20" width="50" height="50" clipPath="url(#logoClip2)" /></g>
+        <text x="965" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Fnac</text>
+      </g>
+
+      {/* Glow behind Sync Engine */}
+      <ellipse cx="277" cy="285" rx="60" ry="100" fill="url(#sd-glow)" />
+
+      <rect x="57" y="170" width="10" height="120" rx="5" fill="#7C3AED">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" />
+      </rect>
+      <rect x="272" y="170" width="10" height="230" rx="5" fill="#7C3AED">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" />
+      </rect>
+      <rect x="495" y="270" width="10" height="80" rx="5" fill="#4285F4">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="2.6s" repeatCount="indefinite" />
+      </rect>
+      <rect x="612" y="270" width="10" height="80" rx="5" fill="#F5B400">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" repeatCount="indefinite" />
+      </rect>
+      <rect x="727" y="270" width="10" height="80" rx="5" fill="#10B981">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" />
+      </rect>
+      <rect x="842" y="270" width="10" height="80" rx="5" fill="#F97316">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="2.4s" repeatCount="indefinite" />
+      </rect>
+      <rect x="960" y="270" width="10" height="80" rx="5" fill="#6366F1">
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="3.2s" repeatCount="indefinite" />
+      </rect>
+
+
+      <text x="168" y="188" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">1. Update Stock / Price</text>
+      <line x1="67" y1="200" x2="270" y2="200" stroke="#7C3AED" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowP)">
+        <animate attributeName="strokeDashoffset" values="0;-26" dur="1.4s" repeatCount="indefinite" />
+      </line>
+      <circle r="4" fill="#7C3AED" opacity="0.9">
+        <animateMotion dur="1.8s" repeatCount="indefinite" path="M67 200 L270 200" />
+      </circle>
+
+
+      <text x="390" y="225" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">3. Send Update to Channels</text>
+      <line x1="282" y1="235" x2="965" y2="235" stroke="#7C3AED" strokeWidth="2" strokeDasharray="10 6">
+        <animate attributeName="strokeDashoffset" values="0;-32" dur="2s" repeatCount="indefinite" />
+      </line>
+      {/* Moving dots along the horizontal distribution line */}
+      <circle r="4" fill="#4285F4" opacity="0.9">
+        <animateMotion dur="1.2s" repeatCount="indefinite" path="M282 235 L500 235" />
+      </circle>
+      <circle r="4" fill="#F5B400" opacity="0.9">
+        <animateMotion dur="1.6s" repeatCount="indefinite" path="M282 235 L617 235" />
+      </circle>
+      <circle r="4" fill="#10B981" opacity="0.9">
+        <animateMotion dur="2s" repeatCount="indefinite" path="M282 235 L732 235" />
+      </circle>
+      <circle r="4" fill="#F97316" opacity="0.9">
+        <animateMotion dur="2.3s" repeatCount="indefinite" path="M282 235 L847 235" />
+      </circle>
+      <circle r="4" fill="#6366F1" opacity="0.9">
+        <animateMotion dur="2.6s" repeatCount="indefinite" path="M282 235 L965 235" />
+      </circle>
+      {/* Vertical drops to channels */}
+      <line x1="500" y1="235" x2="500" y2="266" stroke="#4285F4" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#arrowDownBlue)">
+        <animate attributeName="strokeDashoffset" values="0;-18" dur="1s" repeatCount="indefinite" />
+      </line>
+      <line x1="617" y1="235" x2="617" y2="266" stroke="#F5B400" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#arrowDownGold)">
+        <animate attributeName="strokeDashoffset" values="0;-18" dur="1.2s" repeatCount="indefinite" />
+      </line>
+      <line x1="732" y1="235" x2="732" y2="266" stroke="#10B981" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#arrowDownGreen)">
+        <animate attributeName="strokeDashoffset" values="0;-18" dur="1.4s" repeatCount="indefinite" />
+      </line>
+      <line x1="847" y1="235" x2="847" y2="266" stroke="#F97316" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#arrowDownOrange)">
+        <animate attributeName="strokeDashoffset" values="0;-18" dur="1.1s" repeatCount="indefinite" />
+      </line>
+      <line x1="965" y1="235" x2="965" y2="266" stroke="#6366F1" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#arrowDownIndigo)">
+        <animate attributeName="strokeDashoffset" values="0;-18" dur="1.3s" repeatCount="indefinite" />
+      </line>
+      {/* Moving dots down the vertical drops */}
+      <circle r="3.5" fill="#4285F4" opacity="0.85">
+        <animateMotion dur="0.8s" repeatCount="indefinite" path="M500 235 L500 266" />
+      </circle>
+      <circle r="3.5" fill="#F5B400" opacity="0.85">
+        <animateMotion dur="0.9s" repeatCount="indefinite" path="M617 235 L617 266" />
+      </circle>
+      <circle r="3.5" fill="#10B981" opacity="0.85">
+        <animateMotion dur="1s" repeatCount="indefinite" path="M732 235 L732 266" />
+      </circle>
+      <circle r="3.5" fill="#F97316" opacity="0.85">
+        <animateMotion dur="0.85s" repeatCount="indefinite" path="M847 235 L847 266" />
+      </circle>
+      <circle r="3.5" fill="#6366F1" opacity="0.85">
+        <animateMotion dur="0.95s" repeatCount="indefinite" path="M965 235 L965 266" />
+      </circle>
+
+
+      <line x1="270" y1="262" x2="67" y2="262" stroke="#7C3AED" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowPBack)">
+        <animate attributeName="strokeDashoffset" values="0;-26" dur="1.6s" repeatCount="indefinite" />
+      </line>
+      <circle r="4" fill="#7C3AED" opacity="0.9">
+        <animateMotion dur="1.8s" repeatCount="indefinite" path="M270 262 L67 262" />
+      </circle>
+      <text x="168" y="282" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">2. Update Received</text>
+
+
+      <line x1="960" y1="372" x2="852" y2="372" stroke="#6366F1" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowIndigo)">
+        <animate attributeName="strokeDashoffset" values="0;-26" dur="2s" repeatCount="indefinite" />
+      </line>
+      <circle r="4" fill="#6366F1" opacity="0.9">
+        <animateMotion dur="1s" repeatCount="indefinite" path="M960 372 L852 372" />
+      </circle>
+      <line x1="842" y1="372" x2="737" y2="372" stroke="#F97316" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowOrange)">
+        <animate attributeName="strokeDashoffset" values="0;-26" dur="1.8s" repeatCount="indefinite" />
+      </line>
+      <circle r="4" fill="#F97316" opacity="0.9">
+        <animateMotion dur="1.1s" repeatCount="indefinite" path="M842 372 L737 372" />
+      </circle>
+      <line x1="727" y1="372" x2="622" y2="372" stroke="#10B981" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowGreen)">
+        <animate attributeName="strokeDashoffset" values="0;-26" dur="1.6s" repeatCount="indefinite" />
+      </line>
+      <circle r="4" fill="#10B981" opacity="0.9">
+        <animateMotion dur="1.2s" repeatCount="indefinite" path="M727 372 L622 372" />
+      </circle>
+      <line x1="612" y1="372" x2="505" y2="372" stroke="#F5B400" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowGold)">
+        <animate attributeName="strokeDashoffset" values="0;-26" dur="1.4s" repeatCount="indefinite" />
+      </line>
+      <circle r="4" fill="#F5B400" opacity="0.9">
+        <animateMotion dur="1.3s" repeatCount="indefinite" path="M612 372 L505 372" />
+      </circle>
+      <line x1="495" y1="372" x2="284" y2="372" stroke="#4285F4" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowBlue)">
+        <animate attributeName="strokeDashoffset" values="0;-26" dur="1.2s" repeatCount="indefinite" />
+      </line>
+      <circle r="4" fill="#4285F4" opacity="0.9">
+        <animateMotion dur="1.4s" repeatCount="indefinite" path="M495 372 L284 372" />
+      </circle>
+      <text x="390" y="397" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">4. Acknowledgement</text>
+
+
+      <line x1="270" y1="437" x2="67" y2="437" stroke="#7C3AED" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowPBack)">
+        <animate attributeName="strokeDashoffset" values="0;-26" dur="1.4s" repeatCount="indefinite" />
+      </line>
+      <circle r="4" fill="#7C3AED" opacity="0.9">
+        <animateMotion dur="1.6s" repeatCount="indefinite" path="M270 437 L67 437" />
+      </circle>
+      <text x="168" y="470" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">5. All Channels Updated</text>
+
+
+      <g fontSize="12.5" fontWeight="700" fill="#1E1B4B">
+        <circle cx="500" cy="453" r="17" fill="#FFFFFF" stroke="#4285F4" strokeWidth="2">
+          <animate attributeName="r" values="17;19;17" dur="2.4s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="1;0.8;1" dur="2.4s" repeatCount="indefinite" />
+        </circle>
+        <path d="M492,453 l6,6 l11,-13" fill="none" stroke="#4285F4" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+        <text x="500" y="491" textAnchor="middle">Updated</text>
+
+        <circle cx="617" cy="453" r="17" fill="#FFFFFF" stroke="#F5B400" strokeWidth="2">
+          <animate attributeName="r" values="17;19;17" dur="2.6s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="1;0.8;1" dur="2.6s" repeatCount="indefinite" />
+        </circle>
+        <path d="M609,453 l6,6 l11,-13" fill="none" stroke="#F5B400" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+        <text x="617" y="491" textAnchor="middle">Updated</text>
+
+        <circle cx="732" cy="453" r="17" fill="#FFFFFF" stroke="#10B981" strokeWidth="2">
+          <animate attributeName="r" values="17;19;17" dur="2.8s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="1;0.8;1" dur="2.8s" repeatCount="indefinite" />
+        </circle>
+        <path d="M724,453 l6,6 l11,-13" fill="none" stroke="#10B981" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+        <text x="732" y="491" textAnchor="middle">Updated</text>
+
+        <circle cx="847" cy="453" r="17" fill="#FFFFFF" stroke="#F97316" strokeWidth="2">
+          <animate attributeName="r" values="17;19;17" dur="2.2s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="1;0.8;1" dur="2.2s" repeatCount="indefinite" />
+        </circle>
+        <path d="M839,453 l6,6 l11,-13" fill="none" stroke="#F97316" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+        <text x="847" y="491" textAnchor="middle">Updated</text>
+
+        <circle cx="965" cy="453" r="17" fill="#FFFFFF" stroke="#6366F1" strokeWidth="2">
+          <animate attributeName="r" values="17;19;17" dur="3s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="1;0.8;1" dur="3s" repeatCount="indefinite" />
+        </circle>
+        <path d="M957,453 l6,6 l11,-13" fill="none" stroke="#6366F1" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+        <text x="965" y="491" textAnchor="middle">Updated</text>
+      </g>
+
+    </svg>
+  )
+}

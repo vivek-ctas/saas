@@ -147,8 +147,8 @@ const Contact = () => {
         />
 
         {/* QUICK CHANNELS */}
-        <section className="py-16 bg-white border-t border-[#EAECF3] -mt-8 relative z-10">
-          <div className="px-[50px] lg:px-[70px]">
+        <section className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3] -mt-8 relative z-10">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {quickChannels.map((c, i) => (
                 <Card key={i} className="reveal hover-lift group" style={{ transitionDelay: `${i * 100}ms` }}>
@@ -169,9 +169,9 @@ const Contact = () => {
         </section>
 
         {/* FORM + INFO */}
-        <section className="py-24 bg-[#F7F9FC] border-t border-[#EAECF3]" id="contact-form">
-          <div className="px-[50px] lg:px-[70px]">
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3]" id="contact-form">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-10 lg:gap-12">
               {/* Form */}
               <Card className="reveal lg:col-span-3 border-0 shadow-xl bg-white relative overflow-hidden">
                 <div className="absolute -top-20 -right-20 w-60 h-60 bg-blue-200 rounded-full blur-3xl opacity-40" />

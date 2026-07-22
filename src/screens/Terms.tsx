@@ -245,7 +245,7 @@ const Terms = () => {
             <div ref={containerRef} className="py-20">
                 {/* HEADER SECTION */}
                 <section className="bg-white border-t border-[#EAECF3]">
-                    <div className="px-[50px] lg:px-[70px]">
+                    <div className="px-5 sm:px-8 lg:px-[70px]">
                         <div className="reveal grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                             <div className="md:col-span-7 text-left space-y-5">
                                 <Badge className="bg-cyan-50 text-cyan-700 hover:bg-cyan-100 border border-cyan-200/80 px-3 py-1 rounded-full gap-1.5 text-sm font-semibold select-none">
@@ -272,7 +272,7 @@ const Terms = () => {
 
                 {/* MAIN CARD GRID */}
                 <section className="bg-[#F7F9FC] border-t border-[#EAECF3]">
-                    <div className="px-[50px] lg:px-[70px] py-16">
+                    <div className="px-5 sm:px-8 lg:px-[70px] py-14 sm:py-16 lg:py-20">
                         <div className="reveal">
                             <Card className="border border-slate-200/60 shadow-xl shadow-slate-100/50 rounded-3xl overflow-hidden bg-white">
                                 <CardContent className="p-8 lg:p-12">
@@ -317,7 +317,7 @@ const Terms = () => {
 
                 {/* GOVERNING LAW + CONTACT CARDS */}
                 <section className="bg-[#F1F3FC] border-t border-[#EAECF3]">
-                    <div className="px-[50px] lg:px-[70px] py-16">
+                    <div className="px-5 sm:px-8 lg:px-[70px] py-14 sm:py-16 lg:py-20">
                         {/* GOVERNING LAW CARD (FULL WIDTH) */}
                         <div className="reveal mb-6">
                             <Card className="border border-slate-200/60 shadow-lg shadow-slate-100/20 rounded-2xl bg-white">

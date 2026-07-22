@@ -126,8 +126,8 @@ const Guide = () => {
         />
 
         {/* FEATURED POST */}
-        <section className="py-20 bg-white border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px]">
+        <section className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3]">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
             <Link href={`/guide/${featured.slug}`} className="reveal block group">
               <Card className="overflow-hidden border border-slate-100 hover-lift">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -145,7 +145,7 @@ const Guide = () => {
                     <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 leading-tight group-hover:text-blue-600 transition-colors">
                       {featured.title}
                     </h2>
-                    <p className="text-slate-600 leading-relaxed mb-6 lg:text-lg">{featured.excerpt}</p>
+                    <p className="text-slate-600 leading-relaxed mb-6 text-base sm:text-lg">{featured.excerpt}</p>
                     <span className="text-blue-600 font-semibold inline-flex items-center gap-1 story-link">
                       Read article <ArrowRight className="w-4 h-4" />
                     </span>
@@ -157,12 +157,12 @@ const Guide = () => {
         </section>
 
         {/* GRID */}
-        <section className="py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px]">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="flex items-end justify-between mb-12 reveal">
               <div>
                 <Badge className="mb-3 bg-blue-50 text-blue-700 border border-blue-100">Latest Articles</Badge>
-                <h2 className="text-4xl lg:text-5xl font-bold text-slate-900">All posts</h2>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">All posts</h2>
               </div>
 
             </div>
@@ -193,11 +193,11 @@ const Guide = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
-          <div className="relative px-[50px] lg:px-[70px] text-center reveal">
+        <section className="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
+          <div className="relative px-5 sm:px-8 lg:px-[70px] text-center reveal">
             <BookOpen className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">Get the playbooks in your inbox.</h2>
-            <p className="text-xl lg:text-2xl text-white/90 mb-10">One short, useful email a week - no fluff, no spam, unsubscribe anytime.</p>
+            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-10">One short, useful email a week - no fluff, no spam, unsubscribe anytime.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
               <Link href="/pricing">
                 <Button size="lg" className="text-lg px-8 bg-white text-blue-900 hover:bg-blue-50 shadow-stripe-xl border-0">

@@ -29,36 +29,36 @@ const Home = () => {
       value: "50,000+",
       label: "Active Sellers",
       trend: "12.4%",
-      accentColor: "#7C3AED",
-      iconBg: "bg-purple-100",
-      iconColor: "text-purple-600",
-      trendBg: "bg-purple-50",
-      trendText: "text-purple-700",
-      borderColor: "border-t-purple-500",
+      accentColor: "#9333EA",
+      iconBg: "bg-[#F3E8FF]/60",
+      iconColor: "text-[#9333EA]",
+      trendBg: "bg-[#F3E8FF]/80",
+      trendText: "text-[#7C3AED]",
+      borderColor: "border-t-4 border-t-[#A855F7]",
     },
     {
       icon: DollarSign,
       value: "$300M+",
       label: "GMV Processed",
       trend: "18.6%",
-      accentColor: "#16A34A",
-      iconBg: "bg-emerald-100",
-      iconColor: "text-emerald-600",
-      trendBg: "bg-emerald-50",
-      trendText: "text-emerald-700",
-      borderColor: "border-t-emerald-500",
+      accentColor: "#2563EB",
+      iconBg: "bg-[#DBEAFE]/60",
+      iconColor: "text-[#2563EB]",
+      trendBg: "bg-[#DBEAFE]/80",
+      trendText: "text-[#1D4ED8]",
+      borderColor: "border-t-4 border-t-[#3B82F6]",
     },
     {
       icon: Package,
       value: "10M+",
       label: "Orders Managed",
       trend: "16.3%",
-      accentColor: "#3B82F6",
-      iconBg: "bg-blue-100",
-      iconColor: "text-blue-600",
-      trendBg: "bg-blue-50",
-      trendText: "text-blue-700",
-      borderColor: "border-t-blue-500",
+      accentColor: "#059669",
+      iconBg: "bg-[#D1FAE5]/60",
+      iconColor: "text-[#059669]",
+      trendBg: "bg-[#D1FAE5]/80",
+      trendText: "text-[#047857]",
+      borderColor: "border-t-4 border-t-[#10B981]",
     },
     {
       icon: Globe,
@@ -66,11 +66,11 @@ const Home = () => {
       label: "Countries",
       trend: "9.8%",
       accentColor: "#EA580C",
-      iconBg: "bg-orange-100",
-      iconColor: "text-orange-600",
-      trendBg: "bg-orange-50",
-      trendText: "text-orange-700",
-      borderColor: "border-t-orange-500",
+      iconBg: "bg-[#FFEDD5]/60",
+      iconColor: "text-[#EA580C]",
+      trendBg: "bg-[#FFEDD5]/80",
+      trendText: "text-[#C2410C]",
+      borderColor: "border-t-4 border-t-[#F97316]",
     },
   ];
 
@@ -88,14 +88,14 @@ const Home = () => {
 
   return (
     <Layout>
-      <div ref={ref}>
+      <div ref={ref} className="antialiased [text-rendering:optimizeLegibility]">
         {/* HERO – Clean blue & white canvas, light, polished */}
         <section className="relative overflow-hidden hero-cream slope-divider-bottom">
           <div className="absolute inset-0 hero-cream-grid pointer-events-none" />
           <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-500/10 blur-3xl pointer-events-none" />
 
-          <div className="relative px-[50px] lg:px-[70px] pt-20 pb-32 sm:pt-28 sm:pb-40">
+          <div className="relative px-5 sm:px-8 lg:px-[70px] pt-20 pb-32 sm:pt-28 sm:pb-40">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Copy */}
               <div className="lg:col-span-6 reveal">
@@ -103,14 +103,14 @@ const Home = () => {
                   <Sparkles className="w-3.5 h-3.5 mr-1.5" />
                   Trusted By 50,000+ Multichannel Sellers
                 </Badge>
-                <h1 className="text-5xl sm:text-6xl lg:text-[5rem] font-bold text-slate-900 mb-6 leading-[1.05] tracking-tight">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] font-bold text-slate-900 mb-6 leading-[1.1] sm:leading-[1.05] tracking-tight">
                   The Most Advanced
                   <span className="block bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">
                     AI Marketplace OS
                   </span>
                   with built-in seller analytics
                 </h1>
-                <p className="text-xl lg:text-2xl text-slate-600 mb-10 leading-relaxed max-w-xl">
+                <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 mb-10 leading-relaxed max-w-xl">
                   Save time. Sync inventory. Avoid overselling. Maximize profit across Amazon,
                   Walmart, eBay, Shopify and 50+ channels - from one beautiful dashboard.
                 </p>
@@ -145,7 +145,7 @@ const Home = () => {
               {/* Mockup */}
               <div className="lg:col-span-6 relative reveal delay-200">
                 <div className="absolute -inset-8 bg-gradient-to-br from-blue-400/20 via-blue-200/20 to-blue-600/15 blur-3xl rounded-[40px]" />
-                <div className="relative animate-float-slow scale-[1.12] lg:scale-[1.18] origin-center">
+                <div className="relative animate-float-slow lg:scale-[1.12] xl:scale-[1.18] origin-center">
                   <SellerHeroMockup className="w-full h-auto" />
                 </div>
 
@@ -227,7 +227,7 @@ const Home = () => {
 
         {/* WALMART-STYLE LIVE BANNER (SellerSnap pattern) */}
         <section className="relative -mt-12 z-10">
-          <div className="px-[50px] lg:px-[70px]">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="max-w-4xl mx-auto rounded-2xl border-2 border-blue-200 bg-white shadow-lg px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4 reveal">
               <div className="flex items-center gap-3 text-center sm:text-left">
                 <div className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse" />
@@ -244,14 +244,14 @@ const Home = () => {
 
 
         {/* PROBLEM */}
-        <section className="py-20 bg-white border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <section className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3]">
+          <div className="px-5 sm:px-8 lg:px-[70px] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The Problem</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-4">
                 Selling on 5 marketplaces shouldn't feel like running 5 businesses.
               </h2>
-              <p className="text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
+              <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
                 Most sellers juggle a dozen tabs, broken CSV exports and 2 a.m. inventory mismatches. One oversell on Amazon can cost an account suspension worth months of revenue.
               </p>
               <ul className="space-y-2.5">
@@ -267,26 +267,26 @@ const Home = () => {
                 ))}
               </ul>
             </div>
-            <div className=" relative reveal scale-[1.12] lg:scale-[1.18] origin-center">
+            <div className=" relative reveal lg:scale-[1.12] xl:scale-[1.18] origin-center">
               <ProblemDiagram className="w-full h-auto " />
             </div>
           </div>
         </section>
 
         {/* INFRASTRUCTURE TEASER */}
-        <section className="py-24 bg-[#F7F9FC] border-t border-[#EAECF3]">
-          <div className="relative px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <section className="py-16 sm:py-20 lg:py-24 bg-[#F7F9FC] border-t border-[#EAECF3]">
+          <div className="relative px-5 sm:px-8 lg:px-[70px] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100 ">
                 <Workflow className="w-3.5 h-3.5 mr-1" />
                 Marketplace Workflow
               </Badge>
 
-              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                 Every marketplace order follows one intelligent workflow.
               </h2>
 
-              <p className="text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
+              <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
                 From order capture to inventory synchronization, shipping, and analytics,
                 every step is automated inside one centralized workflow - eliminating manual
                 operations while keeping every marketplace perfectly synchronized.
@@ -321,49 +321,69 @@ const Home = () => {
         </section>
 
         {/* STATS */}
-        <section className="py-16 sm:py-20 bg-[#F1F3FC] border-t border-[#EAECF3]">
-          <div className="px-5 sm:px-8 lg:px-[70px]">
+        <section className="py-16 sm:py-24 bg-[#F1F3FC] border-t border-[#EAECF3] relative overflow-hidden">
+          <div className="px-5 sm:px-8 lg:px-[70px] max-w-7xl mx-auto relative z-10">
             {/* Section header */}
-            <div className="flex justify-center mb-8 sm:mb-10 reveal">
-              <span className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 rounded-full border border-slate-200 bg-white shadow-sm text-xs sm:text-sm font-semibold text-slate-600 tracking-wider uppercase">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                Live Platform Stats
-              </span>
+            <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+              <div className="flex justify-center mb-6 reveal">
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-100 bg-[#EBF5FF] text-[11px] sm:text-xs font-semibold text-[#1C64F2] uppercase tracking-wider shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-[#1C64F2] animate-pulse" />
+                  Live Platform Stats
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-[2.6rem] font-bold text-[#0F172A] tracking-tight mb-4 leading-tight reveal">
+                Trusted by sellers worldwide
+              </h2>
+              <p className="text-base sm:text-lg text-[#64748B] leading-relaxed max-w-2xl mx-auto reveal font-normal">
+                Real results from real sellers. Our platform powers thousands of businesses across the globe every single day.
+              </p>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               {platformStats.map((stat, i) => (
                 <div
                   key={i}
-                  className={`reveal bg-white rounded-2xl border border-slate-200 border-t-4 ${stat.borderColor}
-  shadow-sm hover:shadow-lg transition-all duration-300
-  p-5 sm:p-8 flex flex-col items-center text-center min-h-[240px] sm:min-h-[280px]`}
+                  className={`reveal bg-white rounded-[24px] border border-slate-100 ${stat.borderColor}
+                    shadow-[0_10px_35px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_45px_-15px_rgba(28,100,242,0.08)]
+                    hover:scale-[1.02] transition-all duration-300
+                    p-6 sm:p-8 flex flex-col items-center text-center min-h-[300px] sm:min-h-[340px]`}
                   style={{ transitionDelay: `${i * 100}ms` }}
                 >
                   {/* Icon */}
                   <div
-                    className={`w-14 h-14 sm:w-20 sm:h-20 rounded-full ${stat.iconBg} flex items-center justify-center mb-4 sm:mb-6`}
+                    className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full ${stat.iconBg} flex items-center justify-center mb-5 sm:mb-6 transition-transform duration-300 hover:rotate-12`}
                   >
                     <stat.icon className={`w-7 h-7 sm:w-10 sm:h-10 ${stat.iconColor}`} />
                   </div>
 
                   {/* Value */}
-                  <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-1 sm:mb-2">
+                  <h3 className="text-3xl sm:text-[2.5rem] font-bold text-[#0F172A] tracking-tight mb-1 sm:mb-2 leading-none">
                     {stat.value}
                   </h3>
 
                   {/* Label */}
-                  <p className="text-slate-500 text-base sm:text-xl mb-5 sm:mb-8">
+                  <p className="text-[#64748B] text-sm sm:text-base font-semibold mb-6">
                     {stat.label}
                   </p>
 
+                  {/* Divider */}
+                  <div className="w-full border-t border-slate-100 mt-auto pt-6" />
+
                   {/* Trend */}
-                  <div
-                    className={`mt-auto inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-1.5 sm:py-2 rounded-full ${stat.trendBg} ${stat.trendText} text-xs sm:text-base font-semibold`}
-                  >
-                    <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
-                    <span className="hidden sm:inline">{stat.trend} vs last 30 days</span>
-                    <span className="sm:hidden">{stat.trend}</span>
+                  <div className="inline-flex items-center gap-3">
+                    <div
+                      className={`w-8 h-8 rounded-full flex items-center justify-center ${stat.trendBg} ${stat.trendText}`}
+                    >
+                      <TrendingUp className="w-4 h-4" />
+                    </div>
+                    <div className="text-left">
+                      <div className={`text-sm sm:text-base font-bold leading-none mb-1 ${stat.trendText}`}>
+                        {stat.trend}
+                      </div>
+                      <div className="text-[11px] text-slate-400 font-medium leading-none">
+                        vs last 30 days
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -372,15 +392,15 @@ const Home = () => {
         </section>
 
         {/* STORY: PROBLEM → SOLUTION */}
-        <section className="py-24 bg-white border-t border-[#EAECF3]">
-          <div className="relative px-[50px] lg:px-[70px]">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
+        <section className="py-16 sm:py-20 lg:py-24 bg-white border-t border-[#EAECF3]">
+          <div className="relative px-5 sm:px-8 lg:px-[70px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center mb-16 md:mb-20 lg:mb-24">
               <div className="order-2 lg:order-1 reveal">
                 <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The Problem</Badge>
-                <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                   Selling on 5 Marketplace shouldn't feel like running 5 businesses.
                 </h2>
-                <p className="text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
+                <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
                   Most sellers juggle a dozen tabs, broken CSV exports and 2 a.m. inventory mismatches.
                   One overselling incident on Amazon can cost an account suspension worth months of revenue.
                 </p>
@@ -393,21 +413,21 @@ const Home = () => {
                   ))}
                 </ul>
               </div>
-              <div className="order-1 lg:order-2 reveal  scale-[1.12] lg:scale-[1.18] origin-center">
+              <div className="order-1 lg:order-2 reveal  lg:scale-[1.12] xl:scale-[1.18] origin-center">
                 <WorkflowIllustration className="w-full h-auto " />
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div className="reveal  scale-[1.12] lg:scale-[1.18] origin-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center">
+              <div className="reveal  lg:scale-[1.12] xl:scale-[1.18] origin-center">
                 <SyncIllustration className="w-full h-auto" />
               </div>
               <div className="reveal delay-200">
                 <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The Ctasis Way</Badge>
-                <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                   One source of truth. Synced everywhere in milliseconds.
                 </h2>
-                <p className="text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
+                <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
                   Update a product once and watch it propagate to every connected Marketplace
                   instantly. Our event-driven sync engine processes 10M+ updates daily without breaking a sweat.
                 </p>
@@ -424,8 +444,8 @@ const Home = () => {
         </section>
 
         {/* INTEGRATIONS SECTOR - "Sell on every channel that matters" */}
-        <section className="py-24 bg-[#F7F9FC] border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px]">
+        <section className="py-16 sm:py-20 lg:py-24 bg-[#F7F9FC] border-t border-[#EAECF3]">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
               {/* Left copy */}
               <div className="lg:col-span-5 reveal">
@@ -435,7 +455,7 @@ const Home = () => {
                 <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-slate-900 leading-tight mb-6">
                   Sell on every channel <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">that matters.</span>
                 </h2>
-                <p className="text-lg lg:text-xl text-slate-600 leading-relaxed mb-8">
+                <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-8">
                   From Amazon FBA to Lazada, TikTok Shop to Reliance Smart - Ctasis connects every Marketplace, storefront, courier and ad network you need to scale globally.
                 </p>
 
@@ -465,7 +485,7 @@ const Home = () => {
               {/* Right Visual card */}
               <div className="lg:col-span-7 reveal delay-200">
 
-                <div className="reveal scale-[1.12] lg:scale-[1.18] origin-center">
+                <div className="reveal lg:scale-[1.12] xl:scale-[1.18] origin-center">
                   <MarketplaceMeshDiagram className="w-full h-auto" />
                 </div>
 
@@ -475,12 +495,12 @@ const Home = () => {
         </section>
 
         {/* BENTO FEATURES */}
-        <section className="py-24 bg-[#F1F3FC] border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px]">
+        <section className="py-16 sm:py-20 lg:py-24 bg-[#F1F3FC] border-t border-[#EAECF3]">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-16 max-w-2xl mx-auto reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Platform</Badge>
-              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Everything you need to scale</h2>
-              <p className="text-xl lg:text-2xl text-slate-600">A complete operating system for multichannel commerce.</p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Everything you need to scale</h2>
+              <p className="text-lg sm:text-xl lg:text-2xl text-slate-600">A complete operating system for multichannel commerce.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -606,11 +626,11 @@ const Home = () => {
         </section>
 
         {/* JOURNEY / 3-STEP */}
-        <section className="py-24 bg-white border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px]">
+        <section className="py-16 sm:py-20 lg:py-24 bg-white border-t border-[#EAECF3]">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-16 reveal">
-              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">From signup to scale in 3 steps</h2>
-              <p className="text-xl lg:text-2xl text-slate-600">Set up in 15 minutes. See results within a week.</p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">From signup to scale in 3 steps</h2>
+              <p className="text-lg sm:text-xl lg:text-2xl text-slate-600">Set up in 15 minutes. See results within a week.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
               {/* dashed connector */}
@@ -636,12 +656,12 @@ const Home = () => {
 
         {/* CTA */}
         <section className="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
-          <div className="relative max-w-5xl mx-auto px-[50px] lg:px-[70px] text-center reveal">
+          <div className="relative max-w-5xl mx-auto px-5 sm:px-8 lg:px-[70px] text-center reveal">
             <Sparkles className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Ready to grow your<br />multichannel business?
             </h2>
-            <p className="text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">
               Join 50,000+ sellers who trust Ctasis Sellerbuz. Free 14 days, no credit card.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

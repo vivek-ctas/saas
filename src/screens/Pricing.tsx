@@ -229,8 +229,8 @@ const Pricing = () => {
         />
 
         {/* ── PLANS SECTION ──────────────────────────────────────────────────── */}
-        <section id="plans" className="py-24 bg-white border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px]">
+        <section id="plans" className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3]">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
 
             {/* Loading */}
             {plansLoading && (
@@ -366,8 +366,8 @@ const Pricing = () => {
         </section>
 
         {/* ── PLAN PERKS BANNER ───────────────────────────────────────────────── */}
-        <section className="py-12 bg-[#F7F9FC] border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px]">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
             {/* Heading */}
             <p className="text-center text-lg font-semibold text-slate-700 mb-8">
               Everything included in every plan
@@ -397,9 +397,9 @@ const Pricing = () => {
         </section>
 
         {/* ── TESTIMONIAL ────────────────────────────────────────────────────── */}
-        <section className="py-24 bg-[#F1F3FC] border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="reveal scale-[1.12] lg:scale-[1.18] origin-center">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#F1F3FC] border-t border-[#EAECF3]">
+          <div className="px-5 sm:px-8 lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
+            <div className="reveal lg:scale-[1.12] xl:scale-[1.18] origin-center">
               <AnalyticsIllustration className="w-full h-auto " />
             </div>
             <div className="reveal delay-200">
@@ -409,7 +409,7 @@ const Pricing = () => {
                 ))}
               </div>
               <Quote className="w-10 h-10 text-blue-600 mb-4" />
-              <p className="text-2xl lg:text-3xl font-medium text-slate-900 leading-relaxed mb-6">
+              <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-slate-900 leading-relaxed mb-6">
                 "We tried 3 other platforms before Ctasis. The Pro plan paid for itself in week one
                 from saved labor alone."
               </p>
@@ -427,14 +427,14 @@ const Pricing = () => {
         </section>
 
         {/* ── AI ADD-ONS ──────────────────────────────────────────────────────── */}
-        <section className="py-24 bg-white border-t border-[#EAECF3]">
-          <div className="relative px-[50px] lg:px-[70px]">
+        <section className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3]">
+          <div className="relative px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-14 reveal max-w-3xl mx-auto">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Inside Pro & Enterprise</Badge>
-              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
                 The premium services that pay for the plan
               </h2>
-              <p className="text-xl lg:text-2xl text-slate-600">
+              <p className="text-lg sm:text-xl lg:text-2xl text-slate-600">
                 These aren't buzzwords - they're the daily chores Ctasis does for you while you sleep.
               </p>
             </div>
@@ -450,7 +450,7 @@ const Pricing = () => {
                       <Sparkles className="w-5 h-5 text-blue-600" />
                       <h3 className="font-bold text-slate-900 text-lg lg:text-xl">{b.title}</h3>
                     </div>
-                    <p className="text-slate-600 leading-relaxed lg:text-lg">{b.desc}</p>
+                    <p className="text-base sm:text-lg text-slate-600 leading-relaxed">{b.desc}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -459,11 +459,11 @@ const Pricing = () => {
         </section>
 
         {/* ── FAQ ────────────────────────────────────────────────────────────── */}
-        <section className="py-24 bg-[#F7F9FC] border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px]">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-12 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">FAQ</Badge>
-              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Frequently asked questions</h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Frequently asked questions</h2>
             </div>
             <Accordion type="single" collapsible className="reveal space-y-3">
               {FAQS.map((f, i) => (
@@ -485,13 +485,13 @@ const Pricing = () => {
         </section>
 
         {/* ── BOTTOM CTA ─────────────────────────────────────────────────────── */}
-        <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
+        <section className="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
           <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
-          <div className="relative px-[50px] lg:px-[70px] text-center reveal">
+          <div className="relative px-5 sm:px-8 lg:px-[70px] text-center reveal">
             <Sparkles className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Ready to scale your marketplace business?</h2>
-            <p className="text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto"> Choose the plan that fits your business and start managing every marketplace from one powerful platform.</p>
+            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto"> Choose the plan that fits your business and start managing every marketplace from one powerful platform.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing#plans">
                 <Button size="lg" className="text-lg px-8 rounded-full bg-white text-blue-600 hover:bg-blue-50 border-0 shadow-lg">

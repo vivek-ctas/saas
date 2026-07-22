@@ -36,13 +36,13 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
         {/* HERO */}
         <section className="relative overflow-hidden hero-cream slope-divider-bottom py-14">
           <div className="absolute inset-0 hero-cream-grid pointer-events-none" />
-          <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div className="px-5 sm:px-8 lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="reveal">
               <Badge className="mb-3 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">{cfg.eyebrow}</Badge>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.05] tracking-tight mb-4">
                 {cfg.title}
               </h1>
-              <p className="text-lg lg:text-xl text-slate-600 leading-relaxed mb-6 max-w-xl">{cfg.intro}</p>
+              <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-6 max-w-xl">{cfg.intro}</p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/services">
                   <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-100 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm">
@@ -65,7 +65,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
 
         {/* Before / After */}
         <section className="py-14 bg-white border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="px-5 sm:px-8 lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
             <div className="reveal rounded-3xl border border-slate-200/70 bg-slate-50 p-6">
               <Badge className="mb-3 bg-pink-50 text-pink-700 border border-pink-100 shadow-sm">Before SellerBuz</Badge>
               <h3 className="text-xl lg:text-2xl font-bold text-slate-900 mb-3">{cfg.problem.title}</h3>
@@ -94,12 +94,12 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
         {/* DEEP DIVES - zig-zag rows with big dashboard visuals */}
         {cfg.deepDives.map((s, i) => (
           <section key={s.title} className={`py-14 ${i % 3 === 0 ? "bg-white" : i % 3 === 1 ? "bg-[#F7F9FC]" : "bg-[#F1F3FC]"} border-t border-[#EAECF3]`}>
-            <div className="px-[50px] lg:px-[70px]">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div className="px-5 sm:px-8 lg:px-[70px]">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
                 <div className={`reveal ${i % 2 === 1 ? "lg:order-2" : ""}`}>
                   <Badge className="mb-3 bg-blue-50 text-blue-700 border border-blue-100 shadow-sm text-xs">{s.eyebrow}</Badge>
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-4">{s.title}</h2>
-                  <p className="text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">{s.desc}</p>
+                  <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">{s.desc}</p>
                   <ul className="space-y-2">
                     {s.bullets.map((b) => (
                       <li key={b} className="flex items-start gap-2 text-sm text-slate-700">
@@ -119,7 +119,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
         {/* Everything else - compact chip strip (kept from featureGrid) */}
         {cfg.featureGrid && cfg.featureGrid.length > 0 && (
           <section className="py-12 bg-[#F7F9FC] border-t border-[#EAECF3]">
-            <div className="px-[50px] lg:px-[70px]">
+            <div className="px-5 sm:px-8 lg:px-[70px]">
               <h3 className="text-sm lg:text-base font-bold uppercase tracking-widest text-slate-500 text-center mb-6">Everything else in this capability</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {cfg.featureGrid.map((f) => (
@@ -141,7 +141,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
         {/* Works with */}
         {cfg.channels && (
           <section className="py-10 bg-[#F1F3FC] border-t border-[#EAECF3]">
-            <div className="px-[50px] lg:px-[70px] text-center">
+            <div className="px-5 sm:px-8 lg:px-[70px] text-center">
               <div className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Works with</div>
               <div className="flex flex-wrap justify-center gap-3">
                 {cfg.channels.map((c) => (
@@ -156,8 +156,8 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
 
         {/* FAQ */}
         <section className="py-14 bg-white border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px]">
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 text-center mb-8 reveal">Frequently asked</h2>
+          <div className="px-5 sm:px-8 lg:px-[70px]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 text-center mb-8 reveal">Frequently asked</h2>
             <div className="space-y-3">
               {cfg.faq.map((f) => (
                 <details key={f.q} className="group rounded-2xl border border-slate-200/70 bg-white p-5 hover:border-blue-200 transition-all">
@@ -172,13 +172,13 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
         </section>
 
         {/* CTA */}
-        <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
-          <div className="relative px-[50px] lg:px-[70px] text-center reveal">
+        <section className="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
+          <div className="relative px-5 sm:px-8 lg:px-[70px] text-center reveal">
             <Sparkles className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Ready to streamline your multichannel operations?
             </h2>
-            <p className="text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">
               Manage products, inventory, orders, and pricing across every marketplace from one centralized platform.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

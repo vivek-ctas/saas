@@ -30,7 +30,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         {/* HERO */}
         <section className="relative overflow-hidden hero-cream slope-divider-bottom">
           <div className="absolute inset-0 hero-cream-grid pointer-events-none" />
-          <div className="px-[50px] lg:px-[70px] pt-14 pb-14 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div className="px-5 sm:px-8 lg:px-[70px] pt-14 pb-14 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">
                 <span className="w-2 h-2 rounded-full mr-2" style={{ background: cfg.dot }} />
@@ -39,7 +39,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
               <h1 className="text-5xl sm:text-6xl lg:text-[5rem] font-bold text-slate-900 leading-[1.05] tracking-tight mb-4">
                 {cfg.tagline}
               </h1>
-              <p className="text-xl lg:text-2xl text-slate-600 leading-relaxed mb-6 max-w-xl">{cfg.intro}</p>
+              <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 leading-relaxed mb-6 max-w-xl">{cfg.intro}</p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/pricing">
                   <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-100 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm">
@@ -65,7 +65,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
 
         {/* STATS */}
         <section className="py-10 bg-white border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px] grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="px-5 sm:px-8 lg:px-[70px] grid grid-cols-2 md:grid-cols-4 gap-4">
             {cfg.stats.map((s) => (
               <div key={s.l} className="reveal rounded-2xl border border-slate-200/70 bg-white p-6 hover:border-blue-200 transition-all">
                 <div className="text-sm text-slate-600 font-semibold">{s.l}</div>
@@ -78,10 +78,10 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
 
         {/* CAPABILITIES */}
         <section className="py-14 bg-[#F7F9FC] border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px]">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="max-w-3xl mb-10 reveal">
               <Badge className="mb-3 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">What You Get</Badge>
-              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
                 Everything you need to run {cfg.name} - inside SellerBuz.
               </h2>
             </div>
@@ -101,13 +101,13 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
 
         {/* GOTCHAS */}
         <section className="py-14 bg-[#F1F3FC] border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div className="px-5 sm:px-8 lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-10">
             <div className="reveal">
               <Badge className="mb-3 bg-pink-50 text-pink-700 border border-pink-100 shadow-sm">{cfg.name} Gotchas We Handle</Badge>
-              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-4">
                 The tricky {cfg.name} stuff, solved.
               </h2>
-              <p className="text-lg lg:text-xl text-slate-600">
+              <p className="text-base sm:text-lg lg:text-xl text-slate-600">
                 Every marketplace has its own quirks. SellerBuz handles the sharp edges of {cfg.name} so your team doesn't have to become experts to sell.
               </p>
             </div>
@@ -129,10 +129,10 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
 
         {/* ONBOARDING */}
         <section className="py-14 bg-white border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px]">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-8 reveal">
               <Badge className="mb-3 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">Live In Minutes</Badge>
-              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900">Four steps to sync your {cfg.name} store.</h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">Four steps to sync your {cfg.name} store.</h2>
             </div>
             <div className="reveal max-w-6xl mx-auto">
               <OnboardingDiagram className="w-full h-auto" />
@@ -142,7 +142,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
 
         {/* CROSS CHANNEL */}
         <section className="py-14 bg-[#F7F9FC] border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px] text-center reveal">
+          <div className="px-5 sm:px-8 lg:px-[70px] text-center reveal">
             <div className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Also sells on</div>
             <div className="flex flex-wrap justify-center gap-3">
               {cfg.otherChannels.map((c) => (
@@ -156,8 +156,8 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
 
         {/* FAQ */}
         <section className="py-14 bg-[#F1F3FC] border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px]">
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 text-center mb-8 reveal">{cfg.name} - frequently asked</h2>
+          <div className="px-5 sm:px-8 lg:px-[70px]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 text-center mb-8 reveal">{cfg.name} - frequently asked</h2>
             <div className="space-y-3">
               {cfg.faq.map((f) => (
                 <details key={f.q} className="group rounded-2xl border border-slate-200/70 bg-white p-5 hover:border-blue-200 transition-all">
@@ -173,13 +173,13 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         </section>
 
         {/* CTA */}
-        <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
-          <div className="relative px-[50px] lg:px-[70px] text-center reveal">
+        <section className="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
+          <div className="relative px-5 sm:px-8 lg:px-[70px] text-center reveal">
             <Sparkles className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Start selling smarter on {cfg.name}.
             </h2>
-            <p className="text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">
               Manage your {cfg.name} business from one powerful platform.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

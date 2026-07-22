@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import Image from "next/image";
-import { AssetLibraryMockup, ServicesHeroMockup, RolesIllustration, InventorySyncSVG, AICatalogSVG, RepricerSVG, AnalyticsDashboardSVG } from "@/components/illustrations";
+import { AssetLibraryMockup, ServicesHeroMockup, RolesIllustration, InventorySyncSVG, AICatalogSVG, RepricerSVG, AnalyticsDashboardSVG, InventoryDashboardSVG, SyncSequenceDiagramSVG } from "@/components/illustrations";
 import PageHero from "@/components/PageHero";
 
 
@@ -70,15 +70,15 @@ const Services = () => {
             { ch: "Etsy", dot: "#ea580c", sku: "SKU-33012", qty: 1, price: "$18.50", state: "Ready to ship" },
             { ch: "Fnac", dot: "#1d4ed8", sku: "SKU-70001", qty: 4, price: "₹4,120", state: "New" },
           ].map((o, i) => (
-            <div key={i} className="grid grid-cols-12 items-center py-2.5 border-t border-slate-100 text-sm">
-              <div className="col-span-3 flex items-center gap-2">
+            <div key={i} className="flex flex-wrap sm:grid sm:grid-cols-12 items-center gap-y-1 py-2.5 border-t border-slate-100 text-sm">
+              <div className="w-1/2 sm:w-auto sm:col-span-3 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full" style={{ background: o.dot }} />
                 <span className="font-semibold text-slate-800">{o.ch}</span>
               </div>
-              <div className="col-span-3 text-slate-500 text-xs">{o.sku}</div>
-              <div className="col-span-2 text-slate-700">×{o.qty}</div>
-              <div className="col-span-2 font-semibold text-slate-900">{o.price}</div>
-              <div className="col-span-2">
+              <div className="w-1/3 sm:w-auto sm:col-span-3 text-slate-500 text-xs">{o.sku}</div>
+              <div className="w-1/3 sm:w-auto sm:col-span-2 text-slate-700">×{o.qty}</div>
+              <div className="w-1/3 sm:w-auto sm:col-span-2 font-semibold text-slate-900">{o.price}</div>
+              <div className="w-1/2 sm:w-auto sm:col-span-2 text-right sm:text-left">
                 <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${o.state === "New" ? "bg-blue-50 text-blue-700" : o.state === "Picked" ? "bg-amber-50 text-amber-700" : "bg-emerald-50 text-emerald-700"}`}>
                   {o.state}
                 </span>
@@ -100,7 +100,7 @@ const Services = () => {
         "Full sync audit log",
       ],
       icon: RefreshCw,
-      visual: <InventorySyncSVG className="w-full h-auto " />,
+      visual: <SyncSequenceDiagramSVG className="w-full h-auto " />,
     },
     {
       eyebrow: "AI Catalog",
@@ -274,13 +274,13 @@ const Services = () => {
         />
         {/* Zig-zag sections */}
         {sections.map((s, i) => (
-          <section key={s.title} className={`py-16 ${i % 3 === 0 ? "bg-white" : i % 3 === 1 ? "bg-[#F7F9FC]" : "bg-[#F1F3FC]"} border-t border-[#EAECF3]`}>
-            <div className="px-[50px] lg:px-[70px]">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <section key={s.title} className={`py-14 sm:py-16 lg:py-20 ${i % 3 === 0 ? "bg-white" : i % 3 === 1 ? "bg-[#F7F9FC]" : "bg-[#F1F3FC]"} border-t border-[#EAECF3]`}>
+            <div className="px-5 sm:px-8 lg:px-[70px]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
                 <div className={`reveal ${s.reverse ? "lg:order-2" : ""}`}>
                   <Badge className="mb-3 bg-blue-50 text-blue-700 border border-blue-100 text-xs">{s.eyebrow}</Badge>
-                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 leading-tight mb-3">{s.title}</h2>
-                  <p className="text-slate-600 leading-relaxed mb-5 lg:text-lg">{s.desc}</p>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-3">{s.title}</h2>
+                  <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-5">{s.desc}</p>
                   <ul className="space-y-2">
                     {s.bullets.map((b) => (
                       <li key={b} className="flex items-start gap-2 text-sm lg:text-base text-slate-700">
@@ -289,7 +289,7 @@ const Services = () => {
                     ))}
                   </ul>
                 </div>
-                <div className={`reveal delay-100 ${s.reverse ? "lg:order-1" : ""} scale-[1.12] lg:scale-[1.18] origin-center`}>
+                <div className={`reveal delay-100 ${s.reverse ? "lg:order-1" : ""} lg:scale-[1.12] xl:scale-[1.18] origin-center`}>
                   {s.visual}
                 </div>
               </div>
@@ -298,13 +298,13 @@ const Services = () => {
         ))}
 
         {/* CTA */}
-        <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
+        <section className="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
           <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
-          <div className="relative px-[50px] lg:px-[70px] text-center">
+          <div className="relative px-5 sm:px-8 lg:px-[70px] text-center">
             <Sparkles className="w-12 h-12 mx-auto text-blue-200 mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Ready to simplify your marketplace operations?</h2>
-            <p className="text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">Manage Amazon, Walmart, eBay, Etsy, Fnac, and more from one centralized platform</p>
+            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">Manage Amazon, Walmart, eBay, Etsy, Fnac, and more from one centralized platform</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing">
                 <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 rounded-full px-8 h-12 border-0 shadow-lg">

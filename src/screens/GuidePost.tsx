@@ -204,7 +204,7 @@ const GuidePost = () => {
       <div ref={ref}>
         {/* HERO */}
         <section className="relative pt-28 pb-16 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-          <div className="px-[50px] lg:px-[70px]">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
             <Link href="/guide" className="reveal inline-flex items-center gap-2 text-sm text-slate-600 hover:text-blue-600 mb-6">
               <ArrowLeft className="w-4 h-4" /> Back to all articles
             </Link>
@@ -217,7 +217,7 @@ const GuidePost = () => {
             <h1 className="reveal text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-5">
               {post.title}
             </h1>
-            <p className="reveal text-xl lg:text-2xl text-slate-600 leading-relaxed mb-6 max-w-3xl">{post.excerpt}</p>
+            <p className="reveal text-lg sm:text-xl lg:text-2xl text-slate-600 leading-relaxed mb-6 max-w-3xl">{post.excerpt}</p>
             <div className="reveal flex items-center gap-3 mb-10">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-blue-900" />
               <div>
@@ -235,9 +235,9 @@ const GuidePost = () => {
         </section>
 
         {/* BODY */}
-        <section className="py-20 bg-white border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px]">
-            <p className="reveal text-lg text-slate-700 leading-relaxed mb-10 first-letter:text-5xl first-letter:font-bold first-letter:text-blue-600 first-letter:mr-2 first-letter:float-left first-letter:leading-none">
+        <section className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3]">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
+            <p className="reveal text-base sm:text-lg text-slate-700 leading-relaxed mb-10 first-letter:text-5xl first-letter:font-bold first-letter:text-blue-600 first-letter:mr-2 first-letter:float-left first-letter:leading-none">
               {post.intro}
             </p>
 
@@ -278,12 +278,12 @@ const GuidePost = () => {
         </section>
 
         {/* RELATED */}
-        <section className="py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
-          <div className="px-[50px] lg:px-[70px]">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="reveal flex items-end justify-between mb-10">
               <div>
                 <Badge className="mb-3 bg-blue-50 text-blue-700 border border-blue-100">Keep Reading</Badge>
-                <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">More from the guide</h2>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">More from the guide</h2>
               </div>
               <Link href="/guide" className="text-blue-600 text-sm font-semibold inline-flex items-center gap-1 story-link">
                 <BookOpen className="w-4 h-4" /> All articles

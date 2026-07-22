@@ -97,14 +97,14 @@ export default {
 				'blob': { '0%, 100%': { transform: 'translate(0,0) scale(1)' }, '33%': { transform: 'translate(20px,-30px) scale(1.05)' }, '66%': { transform: 'translate(-15px,15px) scale(0.97)' } },
 				'gradient-shift': { '0%, 100%': { backgroundPosition: '0% 50%' }, '50%': { backgroundPosition: '100% 50%' } },
 				'marquee': { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
-			'pulse-ring': { '0%': { transform: 'scale(0.95)', opacity: '0.7' }, '70%, 100%': { transform: 'scale(1.4)', opacity: '0' } },
-			'draw-line': { '0%': { strokeDashoffset: '1000' }, '100%': { strokeDashoffset: '0' } },
-			'bounce-in': {
-				'0%': { transform: 'translateY(16px) scale(0.6)', opacity: '0' },
-				'50%': { transform: 'translateY(-4px) scale(1.08)', opacity: '1' },
-				'70%': { transform: 'translateY(2px) scale(0.97)' },
-				'100%': { transform: 'translateY(0) scale(1)', opacity: '1' },
-			},
+				'pulse-ring': { '0%': { transform: 'scale(0.95)', opacity: '0.7' }, '70%, 100%': { transform: 'scale(1.4)', opacity: '0' } },
+				'draw-line': { '0%': { strokeDashoffset: '1000' }, '100%': { strokeDashoffset: '0' } },
+				'bounce-in': {
+					'0%': { transform: 'translateY(16px) scale(0.6)', opacity: '0' },
+					'50%': { transform: 'translateY(-4px) scale(1.08)', opacity: '1' },
+					'70%': { transform: 'translateY(2px) scale(0.97)' },
+					'100%': { transform: 'translateY(0) scale(1)', opacity: '1' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -117,9 +117,9 @@ export default {
 				'blob': 'blob 14s ease-in-out infinite',
 				'gradient-shift': 'gradient-shift 8s ease infinite',
 				'marquee': 'marquee 40s linear infinite',
-			'pulse-ring': 'pulse-ring 2.4s cubic-bezier(0.215,0.61,0.355,1) infinite',
-			'draw-line': 'draw-line 2.5s ease-out forwards',
-			'bounce-in': 'bounce-in 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards',
+				'pulse-ring': 'pulse-ring 2.4s cubic-bezier(0.215,0.61,0.355,1) infinite',
+				'draw-line': 'draw-line 2.5s ease-out forwards',
+				'bounce-in': 'bounce-in 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards',
 			}
 		}
 	},
