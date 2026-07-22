@@ -137,7 +137,7 @@ const About = () => {
         {/* IMPACT NUMBERS */}
         <section className="py-14 sm:py-16 lg:py-20 bg-[#F1F3FC] border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
-            <div className="reveal lg:scale-[1.12] xl:scale-[1.18] origin-center">
+            <div className="reveal lg:scale-105 xl:scale-110 origin-center">
               <WorkflowIllustration className="w-full h-auto " />
             </div>
             <div className="reveal delay-200">
@@ -277,7 +277,7 @@ const About = () => {
                 ))}
               </ul>
             </div>
-            <div className="reveal delay-200 lg:scale-[1.12] xl:scale-[1.18] origin-center">
+            <div className="reveal delay-200 lg:scale-105 xl:scale-110 origin-center">
               <NeuralIllustration className="w-full h-auto" />
             </div>
           </div>

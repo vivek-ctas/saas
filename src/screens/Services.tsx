@@ -289,7 +289,7 @@ const Services = () => {
                     ))}
                   </ul>
                 </div>
-                <div className={`reveal delay-100 ${s.reverse ? "lg:order-1" : ""} lg:scale-[1.12] xl:scale-[1.18] origin-center`}>
+                <div className={`reveal delay-100 ${s.reverse ? "lg:order-1" : ""} lg:scale-105 xl:scale-110 origin-center`}>
                   {s.visual}
                 </div>
               </div>

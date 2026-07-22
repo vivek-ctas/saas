@@ -67,7 +67,7 @@ const PageHero = ({
             </div>
             <div className="md:col-span-1 lg:col-span-6 relative reveal delay-200">
               <div className="absolute -inset-8 bg-gradient-to-br from-blue-400/20 via-blue-200/20 to-blue-600/15 blur-3xl rounded-[40px]" />
-              <div className="relative animate-float-slow lg:scale-[1.12] xl:scale-[1.18] origin-center">{visual}</div>
+              <div className="relative animate-float-slow lg:scale-105 xl:scale-110 origin-center">{visual}</div>
             </div>
           </div>
         )}

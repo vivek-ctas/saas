@@ -6,14 +6,15 @@ import {
   Users, DollarSign, Package, Globe, Clock, CheckCircle, Sparkles,
   Star, ShoppingBag, Smartphone, Monitor, Tablet, ArrowRight, Quote,
   Truck, Megaphone, Brain, Server, Workflow, Boxes, Store,
-  RefreshCcw
+  RefreshCcw, Settings, FileText
 } from "lucide-react";
 import Link from "next/link";
 import Layout from "@/components/Layout";
 import {
   BlobBackdrop, DashboardMockup, SellerHeroMockup, SyncIllustration,
   AnalyticsIllustration, GlobeIllustration, WorkflowIllustration,
-  NeuralIllustration, InfraIllustration, LogoChip, MarketplaceMeshDiagram, ProblemDiagram
+  NeuralIllustration, InfraIllustration, LogoChip, MarketplaceMeshDiagram, ProblemDiagram,
+  InventoryDashboardSVG
 } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 import { useState } from "react";
@@ -95,7 +96,7 @@ const Home = () => {
           <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
           <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-500/10 blur-3xl pointer-events-none" />
 
-          <div className="relative px-5 sm:px-8 lg:px-[70px] pt-20 pb-32 sm:pt-28 sm:pb-40">
+          <div className="relative px-5 sm:px-8 lg:px-[70px] pt-16 pb-20 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Copy */}
               <div className="lg:col-span-6 reveal">
@@ -145,7 +146,7 @@ const Home = () => {
               {/* Mockup */}
               <div className="lg:col-span-6 relative reveal delay-200">
                 <div className="absolute -inset-8 bg-gradient-to-br from-blue-400/20 via-blue-200/20 to-blue-600/15 blur-3xl rounded-[40px]" />
-                <div className="relative animate-float-slow lg:scale-[1.12] xl:scale-[1.18] origin-center">
+                <div className="relative animate-float-slow lg:scale-105 xl:scale-110 origin-center">
                   <SellerHeroMockup className="w-full h-auto" />
                 </div>
 
@@ -267,14 +268,14 @@ const Home = () => {
                 ))}
               </ul>
             </div>
-            <div className=" relative reveal lg:scale-[1.12] xl:scale-[1.18] origin-center">
+            <div className=" relative reveal lg:scale-105 xl:scale-110 origin-center">
               <ProblemDiagram className="w-full h-auto " />
             </div>
           </div>
         </section>
 
         {/* INFRASTRUCTURE TEASER */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-[#F7F9FC] border-t border-[#EAECF3]">
+        <section className="py-12 sm:py-14 lg:py-16 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="relative px-5 sm:px-8 lg:px-[70px] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100 ">
@@ -321,7 +322,7 @@ const Home = () => {
         </section>
 
         {/* STATS */}
-        <section className="py-16 sm:py-24 bg-[#F1F3FC] border-t border-[#EAECF3] relative overflow-hidden">
+        <section className="py-14 lg:py-16 bg-[#F1F3FC] border-t border-[#EAECF3] relative overflow-hidden">
           <div className="px-5 sm:px-8 lg:px-[70px] max-w-7xl mx-auto relative z-10">
             {/* Section header */}
             <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -392,7 +393,7 @@ const Home = () => {
         </section>
 
         {/* STORY: PROBLEM → SOLUTION */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-white border-t border-[#EAECF3]">
+        <section className="py-12 sm:py-14 lg:py-16 bg-white border-t border-[#EAECF3]">
           <div className="relative px-5 sm:px-8 lg:px-[70px]">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center mb-16 md:mb-20 lg:mb-24">
               <div className="order-2 lg:order-1 reveal">
@@ -413,13 +414,13 @@ const Home = () => {
                   ))}
                 </ul>
               </div>
-              <div className="order-1 lg:order-2 reveal  lg:scale-[1.12] xl:scale-[1.18] origin-center">
+              <div className="order-1 lg:order-2 reveal  lg:scale-105 xl:scale-110 origin-center">
                 <WorkflowIllustration className="w-full h-auto " />
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center">
-              <div className="reveal  lg:scale-[1.12] xl:scale-[1.18] origin-center">
+              <div className="reveal  lg:scale-105 xl:scale-110 origin-center">
                 <SyncIllustration className="w-full h-auto" />
               </div>
               <div className="reveal delay-200">
@@ -444,7 +445,7 @@ const Home = () => {
         </section>
 
         {/* INTEGRATIONS SECTOR - "Sell on every channel that matters" */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-[#F7F9FC] border-t border-[#EAECF3]">
+        <section className="py-12 sm:py-14 lg:py-16 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
               {/* Left copy */}
@@ -485,7 +486,7 @@ const Home = () => {
               {/* Right Visual card */}
               <div className="lg:col-span-7 reveal delay-200">
 
-                <div className="reveal lg:scale-[1.12] xl:scale-[1.18] origin-center">
+                <div className="reveal lg:scale-105 xl:scale-110 origin-center">
                   <MarketplaceMeshDiagram className="w-full h-auto" />
                 </div>
 
@@ -494,139 +495,83 @@ const Home = () => {
           </div>
         </section>
 
-        {/* BENTO FEATURES */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-[#F1F3FC] border-t border-[#EAECF3]">
+        {/* INVENTORY SYNC PRODUCT HIGHLIGHT */}
+        <section className="py-12 sm:py-14 lg:py-16 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px]">
-            <div className="text-center mb-16 max-w-2xl mx-auto reveal">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Platform</Badge>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Everything you need to scale</h2>
-              <p className="text-lg sm:text-xl lg:text-2xl text-slate-600">A complete operating system for multichannel commerce.</p>
-            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+              {/* Left copy */}
+              <div className="lg:col-span-7 reveal delay-200">
+                <div className="reveal lg:scale-105 xl:scale-110 origin-center">
+                  <InventoryDashboardSVG className="w-full h-auto" />
+                </div>
+              </div>
+              {/* Right Visual card */}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Big tile - spans 2 cols and 2 rows on lg */}
-              <div
-                className="reveal lg:col-span-2 lg:row-span-2 rounded-3xl bg-gradient-to-br from-blue-50 via-white to-indigo-50 border border-slate-200/70 relative overflow-hidden hover-lift min-h-[420px] lg:min-h-0"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] items-center gap-2 h-full">
+              <div className="lg:col-span-5 reveal">
+                <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
+                  <RefreshCw className="w-3.5 h-3.5 mr-1" /> Inventory Sync
+                </Badge>
+                <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-slate-900 leading-tight mb-6">
+                  Stock everywhere. <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Always accurate.</span>
+                </h2>
+                <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-8">
+                  Real-time stock sync across all marketplaces and warehouses. One update. Everywhere. Instantly.
+                </p>
 
-                  {/* LEFT SIDE */}
-                  <div className="relative z-10 flex flex-col justify-center py-8 pl-8 pr-2 lg:pl-10 lg:pr-3">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-2xl bg-blue-100 flex items-center justify-center">
-                        <BarChart3 className="w-6 h-6 text-blue-600" />
+                <div className="space-y-5 mb-8">
+                  {[
+                    {
+                      icon: Zap,
+                      title: "Real-time updates",
+                      desc: "Sub-2-second propagation across channels"
+                    },
+                    {
+                      icon: Shield,
+                      title: "Cross-channel reservations",
+                      desc: "Prevent overselling with smart reservations"
+                    },
+                    {
+                      icon: Settings,
+                      title: "Automatic conflict resolution",
+                      desc: "Resolve stock conflicts automatically"
+                    },
+                    {
+                      icon: FileText,
+                      title: "Full sync audit log",
+                      desc: "Track every change with detailed logs"
+                    }
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-[#EEF2FF] text-[#6366F1]">
+                        <item.icon className="w-5 h-5 font-bold" />
+                      </div>
+                      <div>
+                        <h4 className="text-base font-bold text-slate-900 mb-1">
+                          {item.title}
+                        </h4>
+                        <p className="text-sm text-slate-500 font-medium leading-relaxed">
+                          {item.desc}
+                        </p>
                       </div>
                     </div>
+                  ))}
+                </div>
 
-                    <h3 className="text-3xl lg:text-[38px] font-bold leading-tight tracking-tight mb-3 text-slate-900">
-                      Real-time analytics
-                    </h3>
-
-                    <p className="text-slate-600 text-[15px] leading-relaxed max-w-[280px]">
-                      Profit margins, channel performance and AI-powered recommendations
-                      updated <span className="font-medium text-blue-600">every second</span>.
-                    </p>
-                  </div>
-                  {/* RIGHT SIDE */}
-                  <div className="relative flex items-center justify-center pr-4 lg:pr-6 h-full">
-                    <div className="relative z-10 w-full max-w-[500px]">
-                      <AnalyticsIllustration className="w-full h-auto" />
-                    </div>
-                  </div>
-
+                <div className="flex flex-wrap gap-3 text-slate-700 text-sm">
+                  {["Sub-2s propagation", "Zero overselling", "Full audit trail"].map((t, i) => (
+                    <span key={i} className="flex items-center gap-2 bg-blue-50/60 px-3 py-1.5 rounded-full border border-blue-100 shadow-sm">
+                      <CheckCircle className="w-4 h-4 text-blue-600" /> {t}
+                    </span>
+                  ))}
                 </div>
               </div>
 
-              {/* Inventory sync */}
-              <div className="reveal delay-100 rounded-3xl p-6 bg-white border border-slate-200/70 hover:border-blue-200 transition-all">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-900 flex items-center justify-center mb-4">
-                  <RefreshCw className="w-5 h-5 text-white" />
-                </div>
-
-                <h3 className="font-bold text-slate-900 text-lg lg:text-xl mb-2">
-                  Inventory sync
-                </h3>
-
-                <p className="text-sm lg:text-base text-slate-600 leading-relaxed mb-4">
-                  Real-time stock sync across Marketplace and warehouses.
-                </p>
-
-                <div className="flex items-center gap-2 text-xs font-medium text-blue-600">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  Live updates
-                </div>
-              </div>
-
-              {/* Smart routing */}
-              <div className="reveal delay-200 rounded-3xl p-6 bg-white border border-slate-200/70 hover:border-blue-200 transition-all">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-4">
-                  <ShoppingCart className="w-5 h-5 text-white" />
-                </div>
-
-                <h3 className="font-bold text-slate-900 text-lg lg:text-xl mb-2">
-                  Smart routing
-                </h3>
-
-                <p className="text-sm lg:text-base text-slate-600 leading-relaxed mb-4">
-                  Orders route automatically to the best fulfilment node.
-                </p>
-
-                <div className="flex items-center gap-3 text-xs text-slate-500">
-                  <span>AI optimized</span>
-                </div>
-              </div>
-
-              {/* Enterprise security - spans 2 cols */}
-              <div className="reveal delay-300 lg:col-span-2 rounded-3xl p-6 bg-slate-900 text-white hover-lift relative overflow-hidden">
-                <Shield className="w-8 h-8 text-blue-400 mb-4" />
-
-                <h3 className="font-bold text-xl lg:text-2xl mb-2">
-                  Enterprise security
-                </h3>
-
-                <p className="text-sm lg:text-base text-white/70 leading-relaxed max-w-lg mb-5">
-                  SOC 2 infrastructure with encrypted data and enterprise-grade uptime.
-                </p>
-
-                <div className="flex flex-wrap gap-3">
-                  <div className="px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-medium">
-                    SOC 2
-                  </div>
-
-                  <div className="px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-medium">
-                    99.9% SLA
-                  </div>
-
-                  <div className="px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs font-medium">
-                    Encrypted
-                  </div>
-                </div>
-              </div>
-
-              {/* Global reach */}
-              <div className="reveal delay-400 rounded-3xl p-6 bg-white border border-slate-200/70 hover:border-blue-200 transition-all hover-lift">
-                <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center mb-4">
-                  <Globe className="w-5 h-5 text-blue-600" />
-                </div>
-
-                <h3 className="font-bold text-slate-900 text-lg lg:text-xl mb-2">
-                  Global reach
-                </h3>
-
-                <p className="text-sm lg:text-base text-slate-600 leading-relaxed mb-4">
-                  Sell globally with multi-currency and regional support.
-                </p>
-
-                <div className="flex items-center gap-2 text-xs font-medium text-blue-600">
-                  <span>150+ countries</span>
-                </div>
-              </div>
             </div>
           </div>
         </section>
 
         {/* JOURNEY / 3-STEP */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-white border-t border-[#EAECF3]">
+        <section className="py-12 sm:py-14 lg:py-16 bg-white border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-16 reveal">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">From signup to scale in 3 steps</h2>
@@ -655,7 +600,7 @@ const Home = () => {
 
 
         {/* CTA */}
-        <section className="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
+        <section className="py-14 lg:py-16 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
           <div className="relative max-w-5xl mx-auto px-5 sm:px-8 lg:px-[70px] text-center reveal">
             <Sparkles className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
