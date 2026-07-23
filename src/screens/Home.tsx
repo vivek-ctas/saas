@@ -4,8 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import {
   BarChart3, RefreshCw, ShoppingCart, TrendingUp, Zap, Shield,
   Users, DollarSign, Package, Globe, Clock, CheckCircle, Sparkles,
-  Star, ShoppingBag, Smartphone, Monitor, Tablet, ArrowRight, Quote,
-  Truck, Megaphone, Brain, Server, Workflow, Boxes, Store,
+  Star, ShoppingBag, ArrowRight, Quote,
+  Truck, Megaphone, Brain, Server, Workflow, Boxes,
   RefreshCcw, Settings, FileText
 } from "lucide-react";
 import Link from "next/link";
@@ -76,9 +76,7 @@ const Home = () => {
   ];
 
   const marketplaces = [
-    { name: "Amazon", icon: ShoppingBag }, { name: "eBay", icon: Globe },
-    { name: "Walmart", icon: Star }, { name: "Shopify", icon: ShoppingCart },
-    { name: "Etsy", icon: Sparkles }, { name: "Facebook", icon: Monitor },
+    { name: "Amazon", icon: ShoppingBag }, { name: "Shopify", icon: ShoppingCart },
   ];
 
   const journey = [
@@ -113,7 +111,7 @@ const Home = () => {
                 </h1>
                 <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 mb-10 leading-relaxed max-w-xl">
                   Save time. Sync inventory. Avoid overselling. Maximize profit across Amazon,
-                  Walmart, eBay, Shopify and 50+ channels - from one beautiful dashboard.
+                  Shopify and more channels - from one beautiful dashboard.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 mb-4">
@@ -198,11 +196,8 @@ const Home = () => {
                     <div key={set} className="flex items-center gap-4 sm:gap-6 pr-4 sm:pr-6 shrink-0">
                       {[
                         { name: "Amazon SP-API Partner", sub: "Selling Partner Appstore", logo: "/logos/amazon-color-svgrepo-com.svg" },
-                        { name: "Walmart Solution Provider", sub: "Marketplace Connect", logo: "/logos/walmart.png" },
                         { name: "Shopify Plus Partner", sub: "Certified App", logo: "/logos/shopify-color-svgrepo-com.svg" },
-                        { name: "AWS Advanced Tier", sub: "Technology Partner", logo: "logos/aws-svgrepo-com.svg" },
-                        { name: "eBay Developer Program", sub: "Marketplace Integration", logo: "/logos/EBay_logo.svg.webp" },
-                        { name: "Etsy Developer Platform", sub: "Seller API Partner", logo: "/logos/etsy-svgrepo-com.svg" },
+                        { name: "AWS Advanced Tier", sub: "Technology Partner", logo: "/logos/aws-svgrepo-com.svg" },
                       ].map((p, i) => (
                         <div key={`${set}-${i}`} className="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/90 backdrop-blur border border-slate-200/70 shadow-sm hover:shadow-lg hover:border-blue-200 transition-stripe">
                           <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center p-1">
@@ -227,21 +222,7 @@ const Home = () => {
         </section>
 
         {/* WALMART-STYLE LIVE BANNER (SellerSnap pattern) */}
-        <section className="relative -mt-12 z-10">
-          <div className="px-5 sm:px-8 lg:px-[70px]">
-            <div className="max-w-4xl mx-auto rounded-2xl border-2 border-blue-200 bg-white shadow-lg px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4 reveal">
-              <div className="flex items-center gap-3 text-center sm:text-left">
-                <div className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse" />
-                <p className="text-base sm:text-lg font-semibold text-slate-900">
-                  AI Auto-Repricer is live! <span className="text-slate-500 font-normal">Trusted for Amazon, now for Walmart & Bol.</span>
-                </p>
-              </div>
-              <Link href="/platform/repricer" className="flex items-center gap-1 text-blue-600 font-bold text-sm hover:gap-2 transition-all whitespace-nowrap">
-                Learn more <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </section>
+
 
 
         {/* PROBLEM */}

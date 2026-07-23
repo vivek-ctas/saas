@@ -4,11 +4,11 @@ import { INTEGRATIONS } from "@/screens/integrations/integrations.data";
 
 // guide slugs - keep in sync with guide/[slug]/page.tsx
 const guideSlugs = [
-  "ai-amazon-business-repricer",
-  "amazon-ai-algorithmic-repricer",
-  "custom-repricing-strategies",
+  // "ai-amazon-business-repricer",
+  // "amazon-ai-algorithmic-repricer",
+  // "custom-repricing-strategies",
   "amazon-seller-analytics-that-matter",
-  "walmart-repricer-playbook",
+  // "walmart-repricer-playbook",
   "ai-listing-generator-from-raw-data",
   "amazon-new-selling-api",
   "fba-vs-fbm",

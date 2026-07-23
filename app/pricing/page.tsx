@@ -67,7 +67,7 @@ const faqJsonLd = {
     {
       "@type": "Question",
       name: "What Marketplace are supported?",
-      acceptedAnswer: { "@type": "Answer", text: "Amazon, eBay, Walmart, Shopify, Etsy, TikTok Shop and 50+ more - and we'll build any missing integration." },
+      acceptedAnswer: { "@type": "Answer", text: "Amazon, Shopify and more - and we'll build any missing integration." },
     },
     {
       "@type": "Question",

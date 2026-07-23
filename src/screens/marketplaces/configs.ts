@@ -1,8 +1,8 @@
-import { Boxes, ShoppingCart, DollarSign, BarChart3, Wand2, RefreshCw, LayoutGrid, GitMerge, Upload, ShieldCheck, Image as ImageIcon, Sparkles } from "lucide-react";
+import { Boxes, ShoppingCart, DollarSign, BarChart3, Wand2, Image as ImageIcon } from "lucide-react";
 import type { MarketplaceConfig } from "./MarketplacePage";
 
 const others = (name: string) =>
-  ["Amazon", "Walmart", "eBay", "Etsy"].filter((n) => n !== name);
+  ["Amazon"].filter((n) => n !== name);
 
 export const amazonConfig: MarketplaceConfig = {
   slug: "amazon",
@@ -41,121 +41,4 @@ export const amazonConfig: MarketplaceConfig = {
     { q: "How long does onboarding take?", a: "Most sellers connect Amazon and see their first synced catalog within 10 minutes." },
   ],
   otherChannels: others("Amazon"),
-};
-
-export const walmartConfig: MarketplaceConfig = {
-  slug: "walmart",
-  name: "Walmart",
-  dot: "#2563eb",
-  logo: "/logos/walmart.png",
-  tagline: "Walmart Marketplace - clean listings, clean sync.",
-  intro:
-    "Walmart's 2-step listing model punishes sloppy data. SellerBuz gets your setup + spec right the first time, then keeps inventory, price and orders in perfect sync with your other channels.",
-  stats: [
-    { l: "Listing Accuracy", v: "99.4%" },
-    { l: "Time to Publish", v: "5 min" },
-    { l: "Item Spec Coverage", v: "Full" },
-    { l: "Order Sync Latency", v: "< 2s" },
-  ],
-  capabilities: [
-    { icon: LayoutGrid, t: "Item Spec builder", d: "Guided attribute completion for every Walmart category, so listings clear the first review.", stat: "100% coverage" },
-    { icon: RefreshCw, t: "2-way inventory sync", d: "Every Walmart Seller Center stock change reflects across Amazon, eBay, Etsy and Fnac in seconds.", stat: "< 2s latency" },
-    { icon: DollarSign, t: "Competitor repricer", d: "Match or beat the Walmart winning offer with rule-based repricing and margin guardrails.", stat: "Rule-based" },
-    { icon: ShoppingCart, t: "Order routing", d: "Route Walmart orders to your warehouse, 3PL or drop-shipper with automatic status writebacks.", stat: "Auto routed" },
-    { icon: Wand2, t: "AI content for Walmart", d: "Long descriptions, key features and rich media - generated in Walmart's preferred format.", stat: "AI generated" },
-    { icon: BarChart3, t: "Listing Quality Score", d: "Track Walmart's LQS per SKU and see exactly which fields to improve.", stat: "LQS tracked" },
-  ],
-  gotchas: [
-    { t: "Setup + spec split", d: "Unified workflow" },
-    { t: "Category attributes", d: "Auto validation" },
-    { t: "Shipping templates", d: "Warehouse mapping" },
-    { t: "Walmart Buy Box", d: "Smart repricing" },
-  ],
-  onboarding: ["Connect Walmart API", "Map categories", "Import & validate", "Publish live"],
-  faq: [
-    { q: "Do you support Walmart Fulfillment Services (WFS)?", a: "Yes. WFS inventory and standard MF inventory are tracked side-by-side." },
-    { q: "Can I use SellerBuz if I'm not yet approved?", a: "You can build your catalog inside SellerBuz first, then publish once Walmart approves you." },
-    { q: "Does the repricer respect Walmart's pricing policies?", a: "Yes. Floors, ceilings and price parity across channels are enforced." },
-    { q: "How are returns handled?", a: "Return events sync into the unified order inbox with the original order attached." },
-    { q: "Which regions are supported?", a: "Walmart US, Walmart Canada and Walmart Mexico." },
-  ],
-  otherChannels: others("Walmart"),
-};
-
-export const ebayConfig: MarketplaceConfig = {
-  slug: "ebay",
-  name: "eBay",
-  dot: "#0ea5e9",
-  logo: "/logos/EBay_logo.svg.webp",
-  tagline: "eBay - variations, promotions and listings, tamed.",
-  intro:
-    "eBay's variation model, promoted listings and international rollouts can eat hours a week. SellerBuz gives you a single source of truth for stock, price and content - then pushes changes to eBay in real time.",
-  stats: [
-    { l: "Variations Per Listing", v: "Up to 250" },
-    { l: "GTC Listings", v: "Native" },
-    { l: "Regions Supported", v: "20+" },
-    { l: "Promoted Listings", v: "Rule-based" },
-  ],
-  capabilities: [
-    { icon: LayoutGrid, t: "Variations manager", d: "Manage size, color and style variations at scale with per-variant SKU, price and stock.", stat: "Up to 250" },
-    { icon: DollarSign, t: "eBay repricer", d: "Compete on eBay best-match with rule-based repricing that respects your margin floor.", stat: "Best-match" },
-    { icon: RefreshCw, t: "GTC-first sync", d: "Good-Til-Cancelled listings stay live and accurate - no relist babysitting.", stat: "Always live" },
-    { icon: ShoppingCart, t: "Order + label flow", d: "Orders sync with shipping preferences, buyer notes and one-click label generation.", stat: "1-click labels" },
-    { icon: Wand2, t: "eBay-optimized titles", d: "80-char titles crafted for eBay search + item specifics filled from a single image.", stat: "SEO tuned" },
-    { icon: BarChart3, t: "Promoted Listings ROAS", d: "Track promoted listings spend and return alongside organic sales.", stat: "ROAS tracked" },
-  ],
-  gotchas: [
-    { t: "Item specifics", d: "Auto validation" },
-    { t: "GTC vs auction", d: "Flexible listing" },
-    { t: "International ship", d: "Global shipping" },
-    { t: "eBay policies", d: "Policy mapping" },
-  ],
-  onboarding: ["Connect eBay account", "Import active listings", "Set repricer rules", "Enable 2-way sync"],
-  faq: [
-    { q: "Does it support eBay stores in all regions?", a: "Yes - .com, .co.uk, .de, .fr, .it, .es, .com.au, .ca and more." },
-    { q: "Can I run promoted listings from SellerBuz?", a: "You can set default promoted listing rates per category and see ROAS beside organic revenue." },
-    { q: "What about eBay Motors, art, collectibles?", a: "Supported. Category-specific item specifics are enforced during listing." },
-    { q: "Will my existing eBay listings stay live?", a: "Yes. SellerBuz imports them as-is and starts syncing without a relist." },
-    { q: "Does it support multi-quantity auctions?", a: "Fixed price and GTC recommended for multi-quantity; auctions supported for single-quantity items." },
-  ],
-  otherChannels: others("eBay"),
-};
-
-export const etsyConfig: MarketplaceConfig = {
-  slug: "etsy",
-  name: "Etsy",
-  dot: "#ea580c",
-  logo: "/logos/etsy-svgrepo-com.svg",
-  tagline: "Etsy - keep your handmade brand, lose the busywork.",
-  intro:
-    "Etsy rewards personality and consistency. SellerBuz keeps every listing, variation and stock number accurate across your Etsy shop and other marketplaces - while you keep making product, not spreadsheets.",
-  stats: [
-    { l: "Sections + Tags", v: "Full support" },
-    { l: "Variations", v: "Native" },
-    { l: "Renewal Automation", v: "Auto" },
-    { l: "Inventory Conflicts", v: "0" },
-  ],
-  capabilities: [
-    { icon: Boxes, t: "Shop inventory sync", d: "Etsy stock stays in lockstep with Amazon, Walmart, eBay and Fnac in real time.", stat: "Real-time" },
-    { icon: LayoutGrid, t: "Variations + sections", d: "Build shop sections, tags and variation matrices from one catalog view.", stat: "Full support" },
-    { icon: Wand2, t: "Etsy-voice AI catalog", d: "Warm, brand-consistent titles and descriptions - tuned for Etsy search, not sterile marketplace copy.", stat: "Brand tuned" },
-    { icon: ShoppingCart, t: "Order Management", d: "Buyer messages, personalization notes and gift options all land in the unified inbox.", stat: "Unified inbox" },
-    { icon: DollarSign, t: "Smart pricing", d: "Rule-based pricing across channels while keeping Etsy's fee structure intact.", stat: "Fee-aware" },
-    { icon: ImageIcon, t: "Photo + video assets", d: "Manage listing photos and videos in the shared asset library - reuse across marketplaces.", stat: "Shared assets" },
-  ],
-  gotchas: [
-    { t: "Fee-aware pricing", d: "Smart pricing" },
-    { t: "Personalization", d: "Buyer notes" },
-    { t: "Sections & tags", d: "Bulk organize" },
-    { t: "Digital + physical", d: "All products" },
-  ],
-  onboarding: ["Connect Etsy shop", "Sync listings", "Map channels", "Enable auto-renew"],
-  faq: [
-    { q: "Will SellerBuz change my Etsy voice?", a: "No. The AI catalog is tone-aware per channel; Etsy stays warm and personal, Amazon stays feature-first." },
-    { q: "Are offsite ads reported?", a: "Yes. Offsite Ads spend and revenue are tracked in the analytics dashboard." },
-    { q: "Does it support Etsy Payments?", a: "Yes. Payouts and fees import into revenue analytics." },
-    { q: "Can I use SellerBuz with a Pattern site?", a: "Not directly - but the Etsy shop it sits on syncs fully." },
-    { q: "How are digital products handled?", a: "Digital listings, delivery files and instant download orders are all supported." },
-  ],
-  otherChannels: others("Etsy"),
 };

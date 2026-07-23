@@ -72,10 +72,10 @@ const cfg: PlatformConfig = {
     />
   ),
   problem: {
-    title: "Writing 5 versions of the same listing kills throughput.",
+    title: "Writing multiple versions of the same listing kills throughput.",
     points: [
-      "Amazon wants bullet-first, eBay wants 80-char titles",
-      "Etsy needs warmth, Fnac needs specs",
+      "Amazon wants bullet-first titles",
+      "Shopify needs descriptive copy",
       "New SKUs take an afternoon each",
       "Old listings decay without regenerate loops",
     ],
@@ -92,10 +92,10 @@ const cfg: PlatformConfig = {
   deepDives: [
     {
       eyebrow: "Generate Per Channel",
-      title: "One product in. Five channel-native listings out.",
-      desc: "Give SellerBuz a photo and a few specs. It writes an Amazon bullet-first listing, an eBay 80-char title, an Etsy warm description and a Fnac spec block - all optimized for that channel's search algorithm.",
+      title: "One product in. Multiple channel-native listings out.",
+      desc: "Give SellerBuz a photo and a few specs. It writes optimized listings for Amazon, Shopify and other channels - all optimized for that channel's search algorithm.",
       bullets: [
-        "Amazon, Walmart, eBay, Etsy and more. Save tone presets",
+        "Amazon, Shopify and more. Save tone presets",
         "Per-channel title length, keyword density and formatting",
         "Save brand voice presets per storefront",
         "Human review before publish - nothing goes live silently",
@@ -119,13 +119,8 @@ const cfg: PlatformConfig = {
             },
             {
               icon: "document",
-              title: "eBay",
+              title: "Shopify",
               body: "Ready listing",
-            },
-            {
-              icon: "list",
-              title: "Etsy",
-              body: "Brand copy",
             },
           ]}
           outputChips={[]}
@@ -167,7 +162,7 @@ const cfg: PlatformConfig = {
       title: "Vision models read the photo, fill the category attributes.",
       desc: "Category attributes are the tax nobody wants to pay. SellerBuz reads product images plus your uploaded spec sheet and fills the required attributes for each marketplace's category schema.",
       bullets: [
-        "Auto-fill Amazon, Walmart and eBay category attributes",
+        "Auto-fill Amazon and Shopify category attributes",
         "Extract color, size, material, weight from images",
         "Match against existing retail catalog to save effort",
         "Confidence score per attribute - low-confidence flagged for review",
@@ -201,9 +196,9 @@ const cfg: PlatformConfig = {
         <MatrixVisual
           id="cat-bulk"
           title="Bulk regenerate · Q3 refresh"
-          cols={["Amazon", "Walmart", "eBay", "Etsy"]}
+          cols={["Amazon", "Shopify"]}
           rows={["Home", "Kitchen", "Outdoor"]}
-          colLogos={{ Amazon: "/logos/amazon-color-svgrepo-com.svg", Walmart: "/logos/walmart.png", eBay: "/logos/EBay_logo.svg.webp", Etsy: "/logos/etsy-svgrepo-com.svg" }}
+          colLogos={{ Amazon: "/logos/amazon-color-svgrepo-com.svg", Shopify: "/logos/shopify-color-svgrepo-com.svg" }}
           cellFor={(r, c) => {
             const done = (r + c) % 3 !== 0;
 
@@ -239,7 +234,7 @@ const cfg: PlatformConfig = {
     { icon: Upload, t: "Bulk regenerate", d: "Refresh entire categories with new tone or SEO focus." },
     { icon: BarChart3, t: "Content scoring", d: "Track listing quality score per SKU and per channel." },
   ],
-  channels: ["Amazon", "Walmart", "eBay", "Etsy"],
+  channels: ["Amazon", "Shopify"],
   faq: [
     { q: "Do I have to accept AI drafts as-is?", a: "No. Every generation is a draft - review, edit, then publish." },
     { q: "What LLM powers this?", a: "SellerBuz uses fine-tuned models optimized per marketplace, updated regularly." },

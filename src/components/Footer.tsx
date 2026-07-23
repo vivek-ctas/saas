@@ -42,19 +42,9 @@ const footerLinkGroups: FooterLinkGroup[] = [
   {
     title: "Platform",
     links: [
-      { name: "Inventory Sync", href: "/platform/inventory" },
-      { name: "Order Hub", href: "/platform/orders" },
-      { name: "AI Catalog", href: "/platform/catalog-ai" },
-      { name: "Repricer", href: "/platform/repricer" },
-    ],
-  },
-  {
-    title: "Marketplaces",
-    links: [
       { name: "Amazon", href: "/marketplaces/amazon" },
-      { name: "Walmart", href: "/marketplaces/walmart" },
-      { name: "eBay", href: "/marketplaces/ebay" },
-      { name: "Etsy", href: "/marketplaces/etsy" },
+      { name: "Inventory Sync", href: "/platform/inventory" },
+      { name: "AI Catalog", href: "/platform/catalog-ai" },
     ],
   },
   {

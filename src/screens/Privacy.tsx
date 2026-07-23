@@ -151,7 +151,7 @@ const PRIVACY_SECTIONS = [
         bullets: [
             "Authorized clearing networks for subscription operations (e.g. Stripe, Razorpay).",
             "Secure hosting systems and databases (e.g. AWS).",
-            "External marketplace structures (Amazon, Walmart, Shopify, eBay, Etsy) as authorized by your sync configs.",
+            "External marketplace structures (Amazon, Shopify) as authorized by your sync configs.",
         ],
     },
     {
@@ -298,7 +298,7 @@ const Privacy = () => {
                                         </h3>
                                         <p className="text-slate-600 leading-relaxed text-sm">
                                             Our platform syncs and routes payload details with external third-party software
-                                            eCommerce channels, including **Amazon, Walmart, Shopify, eBay, Stripe, and Razorpay**.
+                                            eCommerce channels, including **Amazon, Shopify, Stripe, and Razorpay**.
                                             Usage of records by these channels is governed strictly by their respective corporate privacy terms.
                                         </p>
                                     </div>

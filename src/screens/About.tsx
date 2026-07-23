@@ -226,7 +226,7 @@ const About = () => {
                   <h3 className="font-bold text-slate-900">Marketplace & offline chains</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  {["Amazon", "Walmart", "Lazada", "Rakuten", "eBay", "Allegro", "Bol", "Abebooks", "Worten", "Kaufland", "Fnac", "Cdon"].map((n, i) => (
+                  {["Amazon", "Shopify"].map((n, i) => (
                     <LogoChip key={n} name={n} tone={i % 3 === 0 ? "secondary" : i % 3 === 1 ? "primary" : "accent"} />
                   ))}
                 </div>
@@ -264,7 +264,7 @@ const About = () => {
               </p>
               <ul className="space-y-3 mb-6">
                 {[
-                  "AI listing generator - turns raw product data into channel-perfect Amazon, eBay & Fnac listings",
+                  "AI listing generator - turns raw product data into channel-perfect Amazon and Shopify listings",
                   "Auto-repricer with your own min/max margin rules (Premium)",
                   "A+ content managed as versioned S3 objects, one-click push to Amazon",
                   "Customer purchase-behaviour analytics powered by BigQuery & Power BI",

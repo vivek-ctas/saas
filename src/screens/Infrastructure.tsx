@@ -10,7 +10,7 @@ import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import {
   BlobBackdrop, InfraTopologyDiagram, NeuralIllustration, ChannelSyncFlow,
-  AIPipelineDiagram, AnalyticsFlowDiagram, RepricerStrategyChart, LogoChip,
+  AIPipelineDiagram, AnalyticsFlowDiagram, /* RepricerStrategyChart, */ LogoChip,
   ReportingConsoleMockup, AlertTriageDiagram
 } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
@@ -244,7 +244,7 @@ const Infrastructure = () => {
             <div className="reveal mb-12 rounded-3xl bg-white p-4 sm:p-8 border border-slate-100 shadow-stripe">
               <AIPipelineDiagram className="w-full h-auto" />
               <p className="text-center text-sm text-slate-500 mt-4">
-                A live look at the auto-repricer pipeline - every node is observable, replayable and version-controlled.
+                A live look at the AI pipeline - every node is observable, replayable and version-controlled.
               </p>
             </div>
 
@@ -252,7 +252,7 @@ const Infrastructure = () => {
               {[
                 {
                   icon: Workflow, title: "AI listing generator",
-                  desc: "Drop your raw product data - a CSV, a brief, even a phone photo - and our AI writes channel-perfect listings for Amazon, eBay and Fnac. Titles, bullets, search terms and backend keywords are tuned to each Marketplace's ranking rules so listings actually surface to buyers, not just sit in your catalog.",
+                  desc: "Drop your raw product data - a CSV, a brief, even a phone photo - and our AI writes channel-perfect listings for Amazon and Shopify. Titles, bullets, search terms and backend keywords are tuned to each Marketplace's ranking rules so listings actually surface to buyers, not just sit in your catalog.",
                   tone: "from-primary to-indigo-600",
                 },
                 {
@@ -260,11 +260,11 @@ const Infrastructure = () => {
                   desc: "Manage every A+ image, comparison chart and brand-story banner as versioned S3 objects. One click pushes the latest creative to Amazon Brand Registry - no more emailing PSDs to a designer or wondering which version is live in which region.",
                   tone: "from-secondary to-orange-500",
                 },
-                {
-                  icon: Cpu, title: "Auto-repricer (Premium)",
-                  desc: "Set your minimum and maximum margin once. Our repricer watches Buy Box competitors 24/7 and re-prices in real time - never below your floor, never above your ceiling. Profit-protected, hands-free, and explainable: every move is logged with the reason.",
-                  tone: "from-secondary to-pink-600",
-                },
+                // {
+                //   icon: Cpu, title: "Auto-repricer (Premium)",
+                //   desc: "Set your minimum and maximum margin once. Our repricer watches Buy Box competitors 24/7 and re-prices in real time - never below your floor, never above your ceiling. Profit-protected, hands-free, and explainable: every move is logged with the reason.",
+                //   tone: "from-secondary to-pink-600",
+                // },
               ].map((b, i) => (
                 <Card key={i} className="reveal hover-lift relative overflow-hidden border border-slate-100 bg-white" style={{ transitionDelay: `${i * 90}ms` }}>
                   <div className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br ${b.tone} opacity-10 blur-2xl`} />
@@ -282,6 +282,7 @@ const Infrastructure = () => {
         </section>
 
         {/* REPRICER STRATEGY CHART - visual proof */}
+        {/*
         <section className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="reveal">
@@ -315,6 +316,7 @@ const Infrastructure = () => {
             </div>
           </div>
         </section>
+        */}
 
         {/* POST-DATA ANALYTICS - BigQuery + Power BI */}
         <section className="py-24 bg-white">

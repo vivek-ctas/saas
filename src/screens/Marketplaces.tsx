@@ -3,8 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  ShoppingBag, Globe, Star, ShoppingCart, Sparkles, Package,
-  Smartphone, Truck, Megaphone, Store, ArrowRight, CheckCircle, Zap, Plug
+  ShoppingBag, ShoppingCart, Sparkles, ArrowRight, CheckCircle, Zap, Plug, Truck, Megaphone
 } from "lucide-react";
 import Link from "next/link";
 import Layout from "@/components/Layout";
@@ -21,19 +20,7 @@ const Marketplaces = () => {
       title: "Global Marketplace",
       icon: ShoppingBag,
       tone: "from-primary to-secondary",
-      items: ["Amazon (FBA + FBM)", "eBay", "Walmart", "Etsy", "Target Plus", "Best Buy", "Newegg", "Wayfair"]
-    },
-    {
-      title: "Asia-Pacific",
-      icon: Globe,
-      tone: "from-secondary to-rose-500",
-      items: ["Lazada", "Bol", "Rakuten", "Tokopedia", "Fnac", , "Decathlon", "Worten"]
-    },
-    {
-      title: "Europe",
-      icon: Star,
-      tone: "from-primary to-indigo-600",
-      items: ["Allegro", "Cdiscount", "Bol", "OTTO", "Zalando", "Fnac", "ManoMano", "Kaufland"]
+      items: ["Amazon (FBA + FBM)"]
     },
     {
       title: "Storefronts & D2C",
@@ -41,18 +28,6 @@ const Marketplaces = () => {
       tone: "from-secondary to-orange-500",
       items: ["Shopify", "WooCommerce", "BigCommerce", "Magento", "Wix", "Squarespace", "Shift4Shop", "PrestaShop"]
     },
-    {
-      title: "Social commerce",
-      icon: Smartphone,
-      tone: "from-rose-500 to-pink-600",
-      items: ["TikTok Shop", "Instagram Shopping", "Facebook Marketplace", "Pinterest", "YouTube Shopping", "WhatsApp Catalog"]
-    },
-    {
-      title: "Offline chains & B2B",
-      icon: Store,
-      tone: "from-slate-700 to-slate-900",
-      items: ["Reliance Smart", "Croma", "DMart Ready", "Costco B2B", "Faire", "Alibaba.com", "Ankorstore", "Joor"]
-    }
   ];
 
   const logistics = [
@@ -63,7 +38,7 @@ const Marketplaces = () => {
 
   const ads = [
     "Amazon Ads", "Google Shopping", "Meta Ads", "TikTok Ads",
-    "Walmart Connect", "Microsoft Ads", "Pinterest Ads", "Criteo"
+    "Microsoft Ads", "Pinterest Ads", "Criteo"
   ];
 
   return (
@@ -71,9 +46,9 @@ const Marketplaces = () => {
       <div ref={ref}>
         <PageHero
           badgeIcon={Zap}
-          badgeText="80+ live integrations"
+          badgeText="Multiple live integrations"
           title={<>Sell on every channel <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">that matters.</span></>}
-          subtitle="From Amazon FBA to Lazada, TikTok Shop to Reliance Smart - Ctasis connects every Marketplace, storefront, courier and ad network you need to scale globally."
+          subtitle="From Amazon FBA to Shopify and other storefronts - Ctasis connects every Marketplace, storefront, courier and ad network you need to scale globally."
           // visual={<MarketplaceMeshDiagram className="w-full h-auto" />}
           visual={
             <div className="scale-110 origin-center">
@@ -196,7 +171,7 @@ const Marketplaces = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
               {[
-                { t: "Two-way inventory", d: "When stock moves on Shopify, it moves on Amazon, eBay and Walmart in the same breath. No more 'oversold' emails at 2 AM." },
+                { t: "Two-way inventory", d: "When stock moves on Shopify, it moves on Amazon and other channels in the same breath. No more 'oversold' emails at 2 AM." },
                 { t: "Smart price guardrails", d: "Push a new price to one channel and our rules check your floor and ceiling before it hits the others. You set the boundaries - we enforce them." },
                 { t: "Order de-duplication", d: "If the same buyer hits two channels in the same minute, we catch the duplicate before fulfillment ever sees it. Clean orders, clean books." },
               ].map((b, i) => (
@@ -223,7 +198,7 @@ const Marketplaces = () => {
                 See every channel side-by-side - finally.
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                Most sellers run their business across six tabs and a Google Sheet. Ctasis pulls Amazon, Walmart, Shopify, eBay and your ad networks into one honest profit view - so you stop guessing which channel is actually paying the bills and which one is quietly bleeding cash.
+                Most sellers run their business across six tabs and a Google Sheet. Ctasis pulls Amazon, Shopify and your ad networks into one honest profit view - so you stop guessing which channel is actually paying the bills and which one is quietly bleeding cash.
               </p>
               <ul className="space-y-3 mb-8">
                 {[

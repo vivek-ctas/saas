@@ -163,7 +163,7 @@ const TERMS_SECTIONS = [
         title: "Marketplace Integrations",
         icon: Network,
         content:
-            "Our platform connects and syncs with third-party store channels (including Amazon, Walmart, Shopify, eBay, Etsy, and others). Specifically, we are not responsible for:",
+            "Our platform connects and syncs with third-party store channels (including Amazon, Shopify, and others). Specifically, we are not responsible for:",
         bullets: [
             "Any marketplace system downtime, service outages, or API changes.",
             "Account suspensions, listings penalties, or inventory blocks imposed by search algorithms.",

@@ -11,36 +11,6 @@ import { useReveal } from "@/hooks/use-reveal";
 
 const posts = [
   {
-    slug: "ai-amazon-business-repricer",
-    title: "Inside our AI Amazon Business Repricer - and why margin floors matter",
-    excerpt: "A look at how we built a repricer that wins the Buy Box without dragging your profit through the floor. Spoiler: it's not just about being cheapest.",
-    category: "Repricing",
-    icon: Cpu,
-    readTime: "6 min read",
-    date: "Apr 22, 2026",
-    tone: "from-blue-600 to-indigo-600",
-  },
-  {
-    slug: "amazon-ai-algorithmic-repricer",
-    title: "Algorithmic vs rule-based repricing: which one actually grows your business?",
-    excerpt: "Most sellers start with rules and outgrow them in a quarter. Here's the honest breakdown.",
-    category: "Strategy",
-    icon: Brain,
-    readTime: "8 min read",
-    date: "Apr 18, 2026",
-    tone: "from-blue-500 to-blue-700",
-  },
-  {
-    slug: "custom-repricing-strategies",
-    title: "Custom repricing strategies for hero SKUs, clearance and MAP-protected brands",
-    excerpt: "One repricer config will never fit a 500-SKU catalog. Three real-world strategy templates.",
-    category: "Playbooks",
-    icon: Workflow,
-    readTime: "10 min read",
-    date: "Apr 12, 2026",
-    tone: "from-blue-400 to-blue-600",
-  },
-  {
     slug: "amazon-seller-analytics-that-matter",
     title: "The five Amazon seller analytics that actually move revenue",
     excerpt: "Vanity metrics are easy. Profit-moving metrics take a little more work. Here are the five.",
@@ -49,26 +19,6 @@ const posts = [
     readTime: "7 min read",
     date: "Apr 5, 2026",
     tone: "from-blue-700 to-blue-900",
-  },
-  {
-    slug: "walmart-repricer-playbook",
-    title: "The Walmart repricer playbook: what's different from Amazon, and what isn't",
-    excerpt: "Walmart's Buy Box plays by its own rules. Here's how to think about it.",
-    category: "Walmart",
-    icon: Layers,
-    readTime: "9 min read",
-    date: "Mar 28, 2026",
-    tone: "from-blue-500 to-cyan-500",
-  },
-  {
-    slug: "ai-listing-generator-from-raw-data",
-    title: "From a messy CSV to a Fnac listing in four minutes - with AI",
-    excerpt: "How our AI listing generator turns raw product data into channel-perfect listings.",
-    category: "AI",
-    icon: Sparkles,
-    readTime: "5 min read",
-    date: "Mar 20, 2026",
-    tone: "from-blue-600 to-blue-900",
   },
   {
     slug: "amazon-new-selling-api",
@@ -113,7 +63,7 @@ const Guide = () => {
           badgeIcon={BookOpen}
           badgeText="Ctasis · Guide"
           title={<>Stories from <span className="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">the seller front line.</span></>}
-          subtitle="Repricer deep-dives, Marketplace playbooks and honest takes on what actually grows a multichannel business - written by the engineers and sellers who build Ctasis."
+          subtitle="Marketplace playbooks and honest takes on what actually grows a multichannel business - written by the engineers and sellers who build Ctasis."
           visual={<GuideEditorialMockup className="w-full h-auto" />}
           actions={
             <Link href="/contact">

@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import Image from "next/image";
-import { AssetLibraryMockup, ServicesHeroMockup, RolesIllustration, InventorySyncSVG, AICatalogSVG, RepricerSVG, AnalyticsDashboardSVG, InventoryDashboardSVG, SyncSequenceDiagramSVG } from "@/components/illustrations";
+import { AssetLibraryMockup, ServicesHeroMockup, RolesIllustration, InventorySyncSVG, AICatalogSVG, /* RepricerSVG, */ AnalyticsDashboardSVG, InventoryDashboardSVG, SyncSequenceDiagramSVG } from "@/components/illustrations";
 import PageHero from "@/components/PageHero";
 
 
@@ -35,7 +35,7 @@ const Services = () => {
     {
       eyebrow: "Core Platform",
       title: "Centralized inventory & pricing - one source of truth.",
-      desc: "Manage stock levels and pricing from one unified dashboard. Every update reflects instantly across Amazon, Walmart, eBay, Etsy and Fnac, so you never oversell or misprice a listing again.",
+      desc: "Manage stock levels and pricing from one unified dashboard. Every update reflects instantly across Amazon, Shopify and more channels, so you never oversell or misprice a listing again.",
       bullets: [
         "Single dashboard for stock and price",
         "Instant propagation to every connected channel",
@@ -48,7 +48,7 @@ const Services = () => {
     {
       eyebrow: "Order Management",
       title: "One inbox for every marketplace order.",
-      desc: "Receive and manage orders from every connected marketplace in a single inbox - no more switching tabs between Amazon Seller Central, Etsy, and other platforms to fulfil orders.",
+      desc: "Receive and manage orders from every connected marketplace in a single inbox - no more switching tabs between platforms to fulfil orders.",
       bullets: [
         "Unified order pipeline: capture → route → fulfil → close",
         "Status writebacks to every channel automatically",
@@ -65,10 +65,7 @@ const Services = () => {
           </div>
           {[
             { ch: "Amazon", dot: "#f59e0b", sku: "SKU-42891", qty: 2, price: "$59.90", state: "Ready to ship" },
-            { ch: "Walmart", dot: "#2563eb", sku: "SKU-11024", qty: 1, price: "$24.00", state: "Picked" },
-            { ch: "eBay", dot: "#ef4444", sku: "SKU-98220", qty: 3, price: "$147.00", state: "New" },
-            { ch: "Etsy", dot: "#ea580c", sku: "SKU-33012", qty: 1, price: "$18.50", state: "Ready to ship" },
-            { ch: "Fnac", dot: "#1d4ed8", sku: "SKU-70001", qty: 4, price: "₹4,120", state: "New" },
+            { ch: "Shopify", dot: "#2563eb", sku: "SKU-11024", qty: 1, price: "$24.00", state: "Picked" },
           ].map((o, i) => (
             <div key={i} className="flex flex-wrap sm:grid sm:grid-cols-12 items-center gap-y-1 py-2.5 border-t border-slate-100 text-sm">
               <div className="w-1/2 sm:w-auto sm:col-span-3 flex items-center gap-2">
@@ -153,20 +150,20 @@ const Services = () => {
         </div>
       ),
     },
-    {
-      eyebrow: "Growth",
-      title: "Built-in repricer, beside your inventory.",
-      desc: "Automatically adjust pricing based on competition, rules and market conditions - all managed from the same place as inventory. Buy Box aware for Amazon, competitor aware for the rest, with floor and ceiling guardrails per SKU.",
-      bullets: [
-        "Buy Box tracking on Amazon",
-        "Competitor-aware rules on Walmart, eBay, Fnac",
-        "Per-SKU floor and ceiling",
-        "Schedule-based promotional pricing",
-      ],
-      icon: DollarSign,
-      visual: <RepricerSVG className="w-full h-auto " />,
-      reverse: true,
-    },
+    // {
+    //   eyebrow: "Growth",
+    //   title: "Built-in repricer, beside your inventory.",
+    //   desc: "Automatically adjust pricing based on competition, rules and market conditions - all managed from the same place as inventory. Buy Box aware for Amazon, competitor aware for the rest, with floor and ceiling guardrails per SKU.",
+    //   bullets: [
+    //     "Buy Box tracking on Amazon",
+    //     "Competitor-aware rules on Walmart, eBay, Fnac",
+    //     "Per-SKU floor and ceiling",
+    //     "Schedule-based promotional pricing",
+    //   ],
+    //   icon: DollarSign,
+    //   visual: <RepricerSVG className="w-full h-auto " />,
+    //   reverse: true,
+    // },
     {
       eyebrow: "Analytics",
       title: "Revenue and performance in one dashboard.",
@@ -190,7 +187,7 @@ const Services = () => {
         "Reusable A+ modules and templates",
         "Version history per asset",
         "Per-brand and per-channel folders",
-        "Direct push to Amazon, Walmart and Fnac",
+        "Direct push to Amazon and Shopify",
       ],
       icon: ImageIcon,
       visual: <AssetLibraryMockup className="w-full h-auto" />,
@@ -231,7 +228,7 @@ const Services = () => {
             {[
               { l: "Validate rows", v: "12,480 / 12,480", ok: true },
               { l: "Detect conflicts", v: "0 blocking, 3 warnings", ok: true },
-              { l: "Publish to channels", v: "Amazon · Walmart · eBay · Etsy · Fnac", ok: true },
+              { l: "Publish to channels", v: "Amazon · Shopify · and more", ok: true },
             ].map((s) => (
               <div key={s.l} className="flex items-center gap-3 p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -304,7 +301,7 @@ const Services = () => {
           <div className="relative px-5 sm:px-8 lg:px-[70px] text-center">
             <Sparkles className="w-12 h-12 mx-auto text-blue-200 mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Ready to simplify your marketplace operations?</h2>
-            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">Manage Amazon, Walmart, eBay, Etsy, Fnac, and more from one centralized platform</p>
+            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">Manage Amazon, Shopify and more channels from one centralized platform</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing">
                 <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 rounded-full px-8 h-12 border-0 shadow-lg">
