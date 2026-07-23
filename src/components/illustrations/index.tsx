@@ -7416,18 +7416,6 @@ export const SyncSequenceDiagramSVG = (props: SVGProps<SVGSVGElement>) => {
     <svg viewBox="0 0 1050 520" fill="none" xmlns="http://www.w3.org/2000/svg"  {...props} fontFamily="-apple-system,Segoe UI,Helvetica Neue,Arial,sans-serif">
       <defs>
         <clipPath id="logoClip2"><circle cx="0" cy="0" r="20" /></clipPath>
-        <marker id="arrowP" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#7C3AED" /></marker>
-        <marker id="arrowPBack" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 Z" fill="#7C3AED" /></marker>
-        <marker id="arrowBlue" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 Z" fill="#4285F4" /></marker>
-        <marker id="arrowGold" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 Z" fill="#F5B400" /></marker>
-        <marker id="arrowGreen" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 Z" fill="#10B981" /></marker>
-        <marker id="arrowOrange" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 Z" fill="#F97316" /></marker>
-        <marker id="arrowIndigo" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 Z" fill="#6366F1" /></marker>
-        <marker id="arrowDownBlue" markerWidth="9" markerHeight="9" refX="4.5" refY="7" orient="auto"><path d="M0,0 L9,0 L4.5,9 Z" fill="#4285F4" /></marker>
-        <marker id="arrowDownGold" markerWidth="9" markerHeight="9" refX="4.5" refY="7" orient="auto"><path d="M0,0 L9,0 L4.5,9 Z" fill="#F5B400" /></marker>
-        <marker id="arrowDownGreen" markerWidth="9" markerHeight="9" refX="4.5" refY="7" orient="auto"><path d="M0,0 L9,0 L4.5,9 Z" fill="#10B981" /></marker>
-        <marker id="arrowDownOrange" markerWidth="9" markerHeight="9" refX="4.5" refY="7" orient="auto"><path d="M0,0 L9,0 L4.5,9 Z" fill="#F97316" /></marker>
-        <marker id="arrowDownIndigo" markerWidth="9" markerHeight="9" refX="4.5" refY="7" orient="auto"><path d="M0,0 L9,0 L4.5,9 Z" fill="#6366F1" /></marker>
         <filter id="boxShadow" x="-30%" y="-30%" width="160%" height="160%">
           <feDropShadow dx="0" dy="3" stdDeviation="6" floodColor="#3B2E7E" floodOpacity="0.10" />
         </filter>

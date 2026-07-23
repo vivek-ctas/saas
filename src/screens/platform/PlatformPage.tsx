@@ -187,9 +187,6 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
                       ))}
                     </ul>
 
-                    <div className="inline-flex items-center gap-1.5 text-blue-600 text-sm font-semibold group-hover:gap-3 transition-all duration-200 mt-auto">
-                      Learn more <ArrowRight className="w-3.5 h-3.5" />
-                    </div>
                   </div>
                 </div>
               ))}

@@ -121,17 +121,24 @@ const FooterLinkColumn = ({ title, links }: FooterLinkGroup) => (
       <span className="mt-2 block h-0.5 w-6 rounded-full bg-gradient-to-r from-[#6D5BF2] to-[#8B7CF6]" />
     </div>
     <ul className="space-y-3 text-sm">
-      {links.map((link) => (
-        <li key={link.name}>
-          <Link
-            href={link.href}
-            className="group flex items-center text-slate-400 hover:text-[#8B7CF6] transition-colors"
-          >
-            <ChevronRight className="w-3.5 h-3.5 mr-1.5 text-[#8B7CF6]/70 transition-transform group-hover:translate-x-0.5" />
-            {link.name}
-          </Link>
-        </li>
-      ))}
+      {links.map((link) => {
+        const isExternal = link.href.startsWith("http://") || link.href.startsWith("https://");
+        return (
+          <li key={link.name}>
+            <Link
+              href={link.href}
+              {...(isExternal && {
+                target: "_blank",
+                rel: "noopener noreferrer",
+              })}
+              className="group flex items-center text-slate-400 hover:text-[#8B7CF6] transition-colors"
+            >
+              <ChevronRight className="w-3.5 h-3.5 mr-1.5 text-[#8B7CF6]/70 transition-transform group-hover:translate-x-0.5" />
+              {link.name}
+            </Link>
+          </li>
+        )
+      })}
     </ul>
   </div>
 );
