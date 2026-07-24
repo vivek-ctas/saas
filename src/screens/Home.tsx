@@ -6,7 +6,8 @@ import {
   Users, DollarSign, Package, Globe, Clock, CheckCircle, Sparkles,
   Star, ShoppingBag, ArrowRight, Quote,
   Truck, Megaphone, Brain, Server, Workflow, Boxes,
-  RefreshCcw, Settings, FileText
+  RefreshCcw, Settings, FileText,
+  Layers
 } from "lucide-react";
 import Link from "next/link";
 import Layout from "@/components/Layout";
@@ -191,30 +192,28 @@ const Home = () => {
                 <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-24 bg-gradient-to-r from-blue-50/60 via-blue-50/60 to-transparent z-10" />
                 <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-24 bg-gradient-to-l from-blue-50/60 via-blue-50/60 to-transparent z-10" />
 
-                <div className="marquee-track flex w-max" style={{ animation: 'marquee-scroll 30s linear infinite' }}>
-                  {[0, 1].map((set) => (
-                    <div key={set} className="flex items-center gap-4 sm:gap-6 pr-4 sm:pr-6 shrink-0">
-                      {[
-                        { name: "Amazon SP-API Partner", sub: "Selling Partner Appstore", logo: "/logos/amazon-color-svgrepo-com.svg" },
-                        { name: "Shopify Plus Partner", sub: "Certified App", logo: "/logos/shopify-color-svgrepo-com.svg" },
-                        { name: "AWS Advanced Tier", sub: "Technology Partner", logo: "/logos/aws-svgrepo-com.svg" },
-                      ].map((p, i) => (
-                        <div key={`${set}-${i}`} className="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/90 backdrop-blur border border-slate-200/70 shadow-sm hover:shadow-lg hover:border-blue-200 transition-stripe">
-                          <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center p-1">
-                            <img
-                              src={p.logo}
-                              alt={p.name}
-                              className="w-full h-full object-contain"
-                            />
-                          </div>
-                          <div>
-                            <div className="text-xs font-bold text-slate-900 leading-tight">{p.name}</div>
-                            <div className="text-[10px] text-slate-500">{p.sub}</div>
-                          </div>
+                <div className="marquee-track flex w-max py-2" style={{ animation: 'marquee-scroll 30s linear infinite' }}>
+                  {Array.from({ length: 4 }).flatMap((_, set) =>
+                    [
+                      { name: "Amazon SP-API Partner", sub: "Selling Partner Appstore", logo: "/logos/amazon-color-svgrepo-com.svg" },
+                      { name: "Shopify Plus Partner", sub: "Certified App", logo: "/logos/shopify-color-svgrepo-com.svg" },
+                      { name: "AWS Advanced Tier", sub: "Technology Partner", logo: "/logos/aws-svgrepo-com.svg" },
+                    ].map((p, i) => (
+                      <div key={`${set}-${i}`} className="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/90 backdrop-blur border border-slate-200/70 shadow-sm hover:shadow-lg hover:border-blue-200 transition-stripe shrink-0 mr-4 sm:mr-6">
+                        <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center p-1">
+                          <img
+                            src={p.logo}
+                            alt={p.name}
+                            className="w-full h-full object-contain"
+                          />
                         </div>
-                      ))}
-                    </div>
-                  ))}
+                        <div>
+                          <div className="text-xs font-bold text-slate-900 leading-tight">{p.name}</div>
+                          <div className="text-[10px] text-slate-500">{p.sub}</div>
+                        </div>
+                      </div>
+                    ))
+                  )}
                 </div>
               </div>
             </div>
@@ -238,10 +237,11 @@ const Home = () => {
               </p>
               <ul className="space-y-2.5">
                 {[
-                  "Manual stock updates across platforms",
-                  "Lost orders and angry customers",
-                  "No single source of truth",
-                  "Hours wasted reconciling spreadsheets",
+                  "Manual inventory and listing updates",
+                  "Disconnected order management workflows",
+                  "Difficult stock reconciliation",
+                  "Limited visibility across business operations",
+                  "Time-consuming spreadsheet management",
                 ].map((t) => (
                   <li key={t} className="flex items-center gap-2 text-slate-700">
                     <span className="w-1.5 h-1.5 rounded-full bg-blue-500" /> {t}
@@ -276,10 +276,13 @@ const Home = () => {
 
               <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  { icon: ShoppingCart, label: "Real-time order capture" },
-                  { icon: RefreshCcw, label: "Inventory synchronization" },
-                  { icon: Truck, label: "Shipping & tracking" },
-                  { icon: BarChart3, label: "Live analytics & insights" },
+                  { icon: ShoppingCart, label: "Centralized Order Processing" },
+                  { icon: Boxes, label: "Smart Inventory Updates" },
+                  { icon: Truck, label: "Automated Shipping Workflow" },
+                  { icon: BarChart3, label: "Real-time Business Visibility" },
+                  { icon: Layers, label: "Bulk Operations" },
+                  { icon: Sparkles, label: "AI-powered Automation" },
+
                 ].map((f, i) => (
                   <div
                     key={i}
@@ -410,8 +413,9 @@ const Home = () => {
                   One source of truth. Synced everywhere in milliseconds.
                 </h2>
                 <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
-                  Update a product once and watch it propagate to every connected Marketplace
-                  instantly. Our event-driven sync engine processes 10M+ updates daily without breaking a sweat.
+                  Update your product information once and let the platform automatically synchronize inventory, pricing, listings,
+                  and operational data across your connected workflows.
+                  Intelligent automation minimizes manual intervention, reduces costly errors, and keeps your business running efficiently as your catalog continues to grow.
                 </p>
                 <Link href="/services">
                   <Button size="lg" className="rounded-full shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
@@ -425,7 +429,7 @@ const Home = () => {
           </div>
         </section>
 
-        {/* INTEGRATIONS SECTOR - "Sell on every channel that matters" */}
+        {/* INTEGRATIONS SECTOR - "Connect your business with that matters" */}
         <section className="py-12 sm:py-14 lg:py-16 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -435,12 +439,26 @@ const Home = () => {
                   <Zap className="w-3.5 h-3.5 mr-1" /> 80+ Live Integrations
                 </Badge>
                 <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-slate-900 leading-tight mb-6">
-                  Sell on every channel <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">that matters.</span>
+                  Connect your business with <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">everything you need.</span>
                 </h2>
                 <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-8">
-                  From Amazon FBA to Lazada, TikTok Shop to Reliance Smart - Ctasis connects every Marketplace, storefront, courier and ad network you need to scale globally.
+                  Bring inventory, orders, listings, analytics, and business operations together in one centralized platform. Automate repetitive tasks, improve accuracy, and keep your workflows running smoothly.
                 </p>
-
+                <div className="space-y-3 mb-8">
+                  {[
+                    "Centralized inventory & order management",
+                    "Real-time synchronization across operations",
+                    "AI-powered catalog & listing optimization",
+                    "Bulk updates with validation & audit logs",
+                    "Business analytics and performance insights",
+                    "Secure APIs with scalable integrations",
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 shrink-0" />
+                      <span className="text-slate-700 text-sm lg:text-base">{item}</span>
+                    </div>
+                  ))}
+                </div>
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <Link href="/marketplaces/amazon">
                     <Button size="lg" variant="outline" className="text-base px-6 h-12 border-slate-200 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm">

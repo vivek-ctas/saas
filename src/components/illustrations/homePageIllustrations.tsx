@@ -1114,7 +1114,7 @@ export const InventoryDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
 
             {/* marketplace logo nodes with shimmer halos */}
             {[
-                { tx: 195, stroke: "#2563EB", logo: "logos/amazon-color-svgrepo-com.svg", label: "Amazon" },
+                { tx: 505, stroke: "#2563EB", logo: "logos/amazon-color-svgrepo-com.svg", label: "Amazon" },
             ].map((n, i) => (
                 <g key={n.label} transform={`translate(${n.tx},55)`}>
                     <circle r="48" fill="none" stroke={n.stroke} strokeWidth="1" opacity="0.18">
@@ -1144,20 +1144,9 @@ export const InventoryDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
                 </g>
             ))}
 
-            {/* horizontal rail + drop to center sync icon */}
-            <line x1={195} y1={150} x2={815} y2={150} stroke="#2563EB" strokeWidth="2" strokeDasharray="4 5">
-                <animate attributeName="stroke-dashoffset" values="0;-18" dur="2.4s" repeatCount="indefinite" />
-            </line>
             <line x1={505} y1={150} x2={505} y2={160} stroke="#2563EB" strokeWidth="2.5" strokeDasharray="4 5">
                 <animate attributeName="stroke-dashoffset" values="0;-18" dur="1.8s" repeatCount="indefinite" />
             </line>
-            {/* flowing dot along horizontal rail to center */}
-            <circle r="2.5" fill="#2563EB" opacity="0.7">
-                <animateMotion dur="4s" repeatCount="indefinite" path="M195 150 L505 150" />
-            </circle>
-            <circle r="2.5" fill="#2563EB" opacity="0.7">
-                <animateMotion dur="4s" repeatCount="indefinite" path="M815 150 L505 150" />
-            </circle>
 
             {/* center sync icon with pulse rings */}
             <g transform="translate(505,180)">
