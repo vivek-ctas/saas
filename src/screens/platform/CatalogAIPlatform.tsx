@@ -16,7 +16,7 @@ const cfg: PlatformConfig = {
       inputLabel="product.jpg"
       inputMeta={[
         { icon: "tag", label: "Category", value: "Electronics" },
-        { icon: "box", label: "Brand", value: "Sellerbuz" },
+        { icon: "box", label: "Brand", value: "SellerBuz" },
         { icon: "image", label: "Images", value: "4 uploaded" },
       ]}
       outputLines={[

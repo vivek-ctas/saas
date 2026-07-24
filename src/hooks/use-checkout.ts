@@ -154,7 +154,7 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
       key: razorpayKeyId,
       amount: order.amount,          // paise - Razorpay SDK expects paise
       currency: order.currency,        // "INR"
-      name: 'Ctasis',
+      name: 'SellerBuz',
       description: `${plan.name} Plan${order.trial_days > 0 ? ` - ${order.trial_days}-day trial` : ''}`,
       order_id: order.razorpay_order_id,
       prefill: {

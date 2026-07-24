@@ -89,7 +89,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
                     <span className="text-rose-500 text-sm font-bold">✕</span>
                   </div>
                   <div>
-                    <Badge className="mb-1.5 bg-rose-100 text-rose-700 border border-rose-200 shadow-none text-xs">Before Ctasis</Badge>
+                    <Badge className="mb-1.5 bg-rose-100 text-rose-700 border border-rose-200 shadow-none text-xs">Before SellerBuz</Badge>
                     <h3 className="text-xl lg:text-2xl font-bold text-slate-900 leading-snug">{cfg.problem.title}</h3>
                   </div>
                 </div>
@@ -112,7 +112,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
                     <CheckCircle2 className="w-4 h-4 text-blue-600" />
                   </div>
                   <div>
-                    <Badge className="mb-1.5 bg-white text-blue-700 border border-blue-200 shadow-sm text-xs hover:bg-white">With Ctasis</Badge>
+                    <Badge className="mb-1.5 bg-white text-blue-700 border border-blue-200 shadow-sm text-xs hover:bg-white">With SellerBuz</Badge>
                     <h3 className="text-xl lg:text-2xl font-bold text-slate-900 leading-snug">{cfg.solution.title}</h3>
                   </div>
                 </div>

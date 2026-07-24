@@ -61,9 +61,9 @@ const Guide = () => {
       <div ref={ref}>
         <PageHero
           badgeIcon={BookOpen}
-          badgeText="Ctasis · Guide"
+          badgeText="SellerBuz · Guide"
           title={<>Stories from <span className="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">the seller front line.</span></>}
-          subtitle="Marketplace playbooks and honest takes on what actually grows a multichannel business - written by the engineers and sellers who build Ctasis."
+          subtitle="Marketplace playbooks and honest takes on what actually grows a multichannel business - written by the engineers and sellers who build SellerBuz."
           visual={<GuideEditorialMockup className="w-full h-auto" />}
           actions={
             <Link href="/contact">

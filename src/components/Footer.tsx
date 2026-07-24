@@ -202,9 +202,9 @@ const Footer = () => {
   const logoSrc = primaryLogo || apiLogo || "";
 
   const companyInfo = {
-    name: settingsData?.company?.name || "Sellerbuz",
+    name: settingsData?.company?.name || "SellerBuz",
     logoSrc: logoSrc,
-    logoAlt: `${settingsData?.company?.name || "Sellerbuz"} Logo`,
+    logoAlt: `${settingsData?.company?.name || "SellerBuz"} Logo`,
     description:
       settingsData?.footer?.about ||
       settingsData?.company?.about ||
@@ -253,7 +253,7 @@ const Footer = () => {
   }
 
   const bottomBar = {
-    copyright: settingsData?.footer?.copyright_text || "© 2026 Ctasis Sellerbuz. All rights reserved.",
+    copyright: settingsData?.footer?.copyright_text || "© 2026 SellerBuz. All rights reserved.",
     tagline: settingsData?.company?.tagline || "Built for modern sellers. Designed for scale.",
     companyLabel: "Operated by",
     companyName: "Ctasis Info Services LLP",

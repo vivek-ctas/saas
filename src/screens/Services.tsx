@@ -47,7 +47,7 @@ const Services = () => {
     {
       eyebrow: "AI Listing Retry",
       title: "Listing mismatch? AI retries until it's right.",
-      desc: "When a listing gets suppressed or fails channel validation, Ctasis automatically retries with AI-optimized content - fixing titles, attributes and formatting until the listing goes live. No manual intervention needed.",
+      desc: "When a listing gets suppressed or fails channel validation, SellerBuz automatically retries with AI-optimized content - fixing titles, attributes and formatting until the listing goes live. No manual intervention needed.",
       bullets: [
         "Automatic detection of suppressed or rejected listings",
         "AI rewrites content to match channel requirements",
@@ -88,7 +88,7 @@ const Services = () => {
     {
       eyebrow: "Variants & Matching",
       title: "Variants and smart catalog matching.",
-      desc: "Create and manage variants (size, color, style) with consistent data across every channel. Ctasis helps maintain accurate variant relationships and product data across your catalog.",
+      desc: "Create and manage variants (size, color, style) with consistent data across every channel. SellerBuz helps maintain accurate variant relationships and product data across your catalog.",
       bullets: [
         "Variation matrices with per-SKU inventory",
         "White-label vs retail catalog switch",

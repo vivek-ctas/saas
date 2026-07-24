@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 // ─── Site-wide constants ────────────────────────────────────────────────────
-export const SITE_NAME = "Ctasis";
+export const SITE_NAME = "SellerBuz";
 export const SITE_URL = "https://ctasis.com";
 export const SITE_DESCRIPTION =
   "Manage all your Marketplace accounts from one dashboard. Sync inventory, route orders, and analyze performance across Amazon, eBay, Walmart, Shopify and more";

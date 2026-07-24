@@ -112,7 +112,7 @@ const TERMS_SECTIONS = [
         title: "Acceptance of Terms",
         icon: FileText,
         content:
-            "Welcome to Ctasis Sellerbuz. These Terms & Conditions govern your access to and use of our marketplace management platform, website, applications, and related services.",
+            "Welcome to SellerBuz. These Terms & Conditions govern your access to and use of our marketplace management platform, website, applications, and related services.",
         bullets: [
             "By accessing or using our platform, you agree to be bound by these Terms.",
             "If you do not agree to these terms, please discontinue using our services.",
@@ -122,7 +122,7 @@ const TERMS_SECTIONS = [
         id: 2,
         title: "Eligibility",
         icon: UserCheck,
-        content: "To access or use Ctasis Sellerbuz, you must ensure that you meet all eligibility requirements. In particular, you must:",
+        content: "To access or use SellerBuz, you must ensure that you meet all eligibility requirements. In particular, you must:",
         bullets: [
             "Be at least 18 years old.",
             "Have the legal authority to enter into binding agreements.",
@@ -135,7 +135,7 @@ const TERMS_SECTIONS = [
         title: "Services",
         icon: Cpu,
         content:
-            "Ctasis Sellerbuz provides cloud-based software solutions for multi-marketplace Sellers. Our feature set includes:",
+            "SellerBuz provides cloud-based software solutions for multi-marketplace Sellers. Our feature set includes:",
         bullets: [
             "Multi-marketplace product management and optimization.",
             "Real-time inventory synchronization across channels.",
@@ -200,7 +200,7 @@ const TERMS_SECTIONS = [
         title: "Intellectual Property",
         icon: Copyright,
         content:
-            "All codebase, interface designs, graphics, branding identity, technical documentations, and technology are the proprietary property of Ctasis Sellerbuz (under Ctasis Info Services LLP). You may not copy, replicate, distribute, or modify any portion without express written permission.",
+            "All codebase, interface designs, graphics, branding identity, technical documentations, and technology are the proprietary property of SellerBuz (under Ctasis Info Services LLP). You may not copy, replicate, distribute, or modify any portion without express written permission.",
     },
     {
         id: 9,
@@ -214,7 +214,7 @@ const TERMS_SECTIONS = [
         title: "Limitation of Liability",
         icon: AlertOctagon,
         content:
-            "To the maximum extent permitted by applicable laws, Ctasis Sellerbuz shall not be liable for losses arising from system use:",
+            "To the maximum extent permitted by applicable laws, SellerBuz shall not be liable for losses arising from system use:",
         bullets: [
             "Lost sales profits, revenue, or business opportunities.",
             "Downtime, data loss, or server migration anomalies.",
@@ -255,7 +255,7 @@ const Terms = () => {
                                     Terms & Conditions
                                 </h1>
                                 <p className="text-lg text-slate-600 leading-relaxed">
-                                    These terms govern your use of Ctasis Sellerbuz. By accessing or using our platform,
+                                    These terms govern your use of SellerBuz. By accessing or using our platform,
                                     you agree to be bound by these legal conditions.
                                 </p>
                                 <div className="flex items-center gap-2 text-slate-500 text-sm">

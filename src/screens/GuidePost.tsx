@@ -53,9 +53,9 @@ const posts: Post[] = [
     intro: "Amazon's Selling Partner API has quietly become the backbone of every serious multichannel operation. The latest revision tightens rate limits, splits permissions into granular roles, and finally fixes the painful LWA refresh dance. Here's what changed and why your integration probably needs a tune-up.",
     Visual: MarketplaceMeshDiagram,
     sections: [
-      { h: "Granular roles, not godmode tokens", p: ["The old MWS keys gave any integration the keys to the kingdom. SP-API v2 splits scope into pricing, inventory, orders, finance and brand analytics - each with its own approval flow.", "We rewrote our auth layer so each Ctasis module requests only the scopes it actually needs. The result: cleaner audit trails and faster Amazon approvals."] },
+      { h: "Granular roles, not godmode tokens", p: ["The old MWS keys gave any integration the keys to the kingdom. SP-API v2 splits scope into pricing, inventory, orders, finance and brand analytics - each with its own approval flow.", "We rewrote our auth layer so each SellerBuz module requests only the scopes it actually needs. The result: cleaner audit trails and faster Amazon approvals."] },
       { h: "Rate limits that punish polling", p: ["The new limits are forgiving for event-driven listeners and brutal for naive pollers. If your stack still hits /orders every 60 seconds, you're already throttled."], bullets: ["Use Notifications (SQS/EventBridge) for order + pricing updates", "Cache catalog calls aggressively - they're the most expensive", "Backoff with jitter, not fixed retries"] },
-      { h: "What we shipped for Ctasis sellers", p: ["Every Ctasis tenant now runs on SP-API v2 with per-module scopes, EventBridge subscriptions for orders and pricing, and a refresh-token rotation that just works. You don't have to think about it - and that's the whole point."] },
+      { h: "What we shipped for SellerBuz sellers", p: ["Every SellerBuz tenant now runs on SP-API v2 with per-module scopes, EventBridge subscriptions for orders and pricing, and a refresh-token rotation that just works. You don't have to think about it - and that's the whole point."] },
     ],
   },
   {
@@ -71,7 +71,7 @@ const posts: Post[] = [
     sections: [
       { h: "FBA: speed, trust, and a fee schedule that bites", p: ["FBA wins you Prime eligibility, the Buy Box edge, and the operational silence of not running a warehouse. It also charges you for storage, removal, returns processing, and a fulfilment fee that quietly creeps every year.", "For high-velocity, small-and-light SKUs with margins above 25%, FBA is almost always the right answer."] },
       { h: "FBM: control, margin, and a real ops team", p: ["FBM keeps fulfilment in-house (or with a 3PL). You keep more margin per order, control packaging and unboxing, and don't get hit with long-term storage fees on slow movers."], bullets: ["Best for oversized, heavy, or low-margin SKUs", "Best for fragile or brand-experience-led products", "Requires a real ops team and reliable carriers", "Demands flawless on-time shipping - Amazon punishes lateness hard"] },
-      { h: "The hybrid playbook (what most winners do)", p: ["The biggest sellers we work with don't pick one. They run FBA on hero SKUs and seasonal pushes, and FBM on long-tail, oversized and brand-experience products. Ctasis routes orders to the right fulfilment node automatically based on SKU rules you set once."] },
+      { h: "The hybrid playbook (what most winners do)", p: ["The biggest sellers we work with don't pick one. They run FBA on hero SKUs and seasonal pushes, and FBM on long-tail, oversized and brand-experience products. SellerBuz routes orders to the right fulfilment node automatically based on SKU rules you set once."] },
     ],
   },
   {
@@ -89,7 +89,7 @@ const posts: Post[] = [
       { h: "FBA for velocity, Prime trust and the Buy Box edge", p: ["FBA earns its fees on fast-moving, small-and-light SKUs where Prime eligibility moves the conversion needle. Treat it as a premium service you pay for - not a default."], bullets: ["Hero SKUs and proven steady sellers", "Anything where 2-day Prime visibly lifts conversion", "Avoid for slow movers - long-term storage fees compound fast"] },
       { h: "Seller-Fulfilled Prime: the underused middle ground", p: ["SFP gives you the Prime badge while keeping inventory in your own (or your 3PL's) warehouse. The bar is high - sub-2-day delivery, weekend shipping, near-perfect on-time rate - but the unit economics on heavy or fragile SKUs can beat FBA by 30%+.", "It's the right answer when you want Prime conversion without surrendering control of packaging or returns."] },
       { h: "FBM and 3PL for oversized, fragile and brand-experience SKUs", p: ["For anything heavy, fragile, custom-packaged or brand-experience-led, FBM (in-house or via a 3PL) almost always wins on margin and customer experience. The trade-off is operational: you own the SLA, the carrier relationship and the returns desk."] },
-      { h: "How Ctasis routes orders automatically", p: ["Inside Ctasis you define fulfilment rules once per SKU cohort - and every incoming order is routed to FBA, SFP, your 3PL or your own warehouse based on stock, SLA risk and unit economics. No spreadsheets, no 2am re-routing, no missed Prime promises."] },
+      { h: "How SellerBuz routes orders automatically", p: ["Inside SellerBuz you define fulfilment rules once per SKU cohort - and every incoming order is routed to FBA, SFP, your 3PL or your own warehouse based on stock, SLA risk and unit economics. No spreadsheets, no 2am re-routing, no missed Prime promises."] },
     ],
   },
 ];
@@ -132,7 +132,7 @@ const GuidePost = () => {
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-blue-900" />
               <div>
                 <div className="text-sm font-bold text-slate-900">{post.author}</div>
-                <div className="text-xs text-slate-500">Ctasis team</div>
+                <div className="text-xs text-slate-500">SellerBuz team</div>
               </div>
               <Button variant="outline" size="sm" className="ml-auto rounded-full">
                 <Share2 className="w-3.5 h-3.5" /> Share

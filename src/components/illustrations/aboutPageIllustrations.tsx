@@ -57,7 +57,7 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
             <text x="60" y="220" fontFamily="Inter,system-ui" fontSize="20" fontWeight="800" fill="#0f172a">Two engineers,</text>
             <text x="60" y="246" fontFamily="Inter,system-ui" fontSize="20" fontWeight="800" fill="#0f172a">one mission.</text>
             <line x1="60" y1="266" x2="160" y2="266" stroke="hsl(226 71% 50%)" strokeWidth="3" />
-            <text x="60" y="296" fontFamily="Inter,system-ui" fontSize="11" fill="#475569">We started Ctasis in an Ahmedabad</text>
+            <text x="60" y="296" fontFamily="Inter,system-ui" fontSize="11" fill="#475569">We started SellerBuz in an Ahmedabad</text>
             <text x="60" y="312" fontFamily="Inter,system-ui" fontSize="11" fill="#475569">garage to end the spreadsheet hell</text>
             <text x="60" y="328" fontFamily="Inter,system-ui" fontSize="11" fill="#475569">of multichannel sellers.</text>
 

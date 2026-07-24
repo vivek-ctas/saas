@@ -8,14 +8,24 @@ import {
   Truck, Megaphone, Brain, Server, Workflow, Boxes,
   RefreshCcw, Settings, FileText,
   Layers,
-  Wand2
+  Wand2,
+  Upload,
+  FileCheck,
+  FlaskConical,
+  AlertTriangle,
+  Bot,
+  FileSpreadsheet,
+  Send,
+  Diff,
+  Pencil
 } from "lucide-react";
 import Link from "next/link";
 import Layout from "@/components/Layout";
 import {
   SellerHeroMockup, SyncIllustration,
   InfraIllustration, MarketplaceMeshDiagram, ProblemDiagram,
-  InventoryDashboardSVG
+  InventoryDashboardSVG,
+  ListingWorkflowIllustration
 } from "@/components/illustrations/homePageIllustrations";
 import { WorkflowIllustration } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
@@ -256,37 +266,123 @@ const Home = () => {
         </section>
 
         {/* INFRASTRUCTURE TEASER */}
+
         <section className="py-12 sm:py-14 lg:py-16 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="relative px-5 sm:px-8 lg:px-[70px] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100 ">
                 <Workflow className="w-3.5 h-3.5 mr-1" />
-                Marketplace Workflow
+                Listing Workflow
               </Badge>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                Every product follows one intelligent workflow.
+                From a raw file to a live, whitelabel listing — without the busywork.
               </h2>
 
               <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
-                From AI-powered catalog creation to real-time inventory synchronization and bulk product management, every step is automated within one centralized platform—helping you manage Amazon and Shopify stores more efficiently while reducing manual work and keeping your catalog accurate and up to date.
+                Upload your catalog, we validate every row, push a test listing, grab the
+                marketplace error, and hand it to an AI that retries up to 10 times — adding,
+                removing or rewriting attributes until it passes. SEO titles and descriptions
+                are regenerated from your catalog data, then a clean draft with side-by-side
+                diffs lands in your dashboard for one-click finalization.
               </p>
 
               <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  { icon: Boxes, label: "Centralized Inventory Management" },
-                  { icon: RefreshCcw, label: "Smart Inventory Synchronization" },
-                  { icon: Wand2, label: "AI-powered Catalog Generation" },
-                  { icon: BarChart3, label: "Real-time Business Visibility" },
-                  { icon: Layers, label: "Bulk Catalog Operations" },
-                  { icon: Sparkles, label: "AI-powered Automation" },
+                  { icon: Upload, label: "Bulk file upload" },
+                  { icon: FileCheck, label: "Schema validation" },
+                  { icon: FlaskConical, label: "Test listing first" },
+                  { icon: AlertTriangle, label: "Error capture" },
+                  { icon: Bot, label: "AI retry (up to 10×)" },
+                  { icon: Pencil, label: "Attribute add/remove" },
+                  { icon: Sparkles, label: "SEO title & description" },
+                  { icon: Diff, label: "Draft with diff marks" },
+                  { icon: Send, label: "Whitelabel publish" },
+                  { icon: FileSpreadsheet, label: "Catalog-trained AI" },
                 ].map((f, i) => (
                   <div
                     key={i}
                     className="flex items-center gap-2 text-sm text-slate-700 font-medium"
                   >
-                    <f.icon className="w-4 h-4 text-blue-600" />
+                    <f.icon className="w-4 h-4 text-blue-600 shrink-0" />
                     {f.label}
+                  </div>
+                ))}
+              </div>
+
+              {/* Workflow stages — expanded explainer */}
+              <div className="mb-6 rounded-2xl border border-slate-200/70 bg-white/70 backdrop-blur-sm p-4 sm:p-5 shadow-sm">
+                <div className="text-[11px] font-bold uppercase tracking-wider text-blue-700 mb-3">
+                  How a listing goes from raw file to live
+                </div>
+                <ul className="space-y-2.5">
+                  {[
+                    {
+                      step: "1",
+                      title: "Upload & validate",
+                      desc: "Drop a CSV, XLSX or feed. We parse rows, normalize fields and surface every schema error before anything hits the marketplace.",
+                    },
+                    {
+                      step: "2",
+                      title: "Add to test listing",
+                      desc: "Each item is pushed to the marketplace's test endpoint so we can capture the real validation response — not a guess.",
+                    },
+                    {
+                      step: "3",
+                      title: "Grab error → AI retries (up to 10×)",
+                      desc: "Our AI reads the error, then loops: add missing attributes, remove rejected ones, rewrite non-conforming values, resubmit. Tireless, not tireless-by-hand.",
+                    },
+                    {
+                      step: "4",
+                      title: "Return to seller if blocked",
+                      desc: "If 10 retries still fail, the row is returned to the seller with the marketplace's exact reason — no silent drops, no zombie rows.",
+                    },
+                    {
+                      step: "5",
+                      title: "Regenerate SEO from your catalog",
+                      desc: "AI trained on your full catalog rewrites the title and description to be keyword-rich, compliant and on-brand for the target marketplace.",
+                    },
+                    {
+                      step: "6",
+                      title: "Draft with diff marks",
+                      desc: "A clean draft lands in your dashboard showing exactly what you uploaded vs. what the AI changed — green for added, red for removed, yellow for rewritten.",
+                    },
+                    {
+                      step: "7",
+                      title: "Seller verifies & finalizes",
+                      desc: "Approve the diff in one click, or tweak inline. Once confirmed, the listing goes live as a whitelabel product under your brand.",
+                    },
+                  ].map((s) => (
+                    <li key={s.step} className="flex items-start gap-3">
+                      <span className="mt-0.5 w-6 h-6 shrink-0 rounded-full bg-gradient-to-br from-blue-600 to-blue-900 text-white text-[11px] font-bold flex items-center justify-center shadow-sm">
+                        {s.step}
+                      </span>
+                      <div className="text-sm leading-snug">
+                        <span className="font-semibold text-slate-900">{s.title} — </span>
+                        <span className="text-slate-600">{s.desc}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Mini metrics strip */}
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { value: "10×", label: "AI retry ceiling" },
+                  { value: "100%", label: "Diff-verified drafts" },
+                  { value: "0", label: "Silent listing drops" },
+                ].map((m, i) => (
+                  <div
+                    key={i}
+                    className="rounded-xl border border-slate-200/70 bg-white px-3 py-2.5 text-center shadow-sm"
+                  >
+                    <div className="text-base sm:text-lg font-bold text-slate-900 leading-none mb-1">
+                      {m.value}
+                    </div>
+                    <div className="text-[11px] text-slate-500 font-medium leading-none">
+                      {m.label}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -296,12 +392,11 @@ const Home = () => {
                 </Button>
               </Link> */}
             </div>
-            <div className="reveal delay-200">
-              <InfraIllustration className="w-full h-auto max-w-[550px] mx-auto" />
+            <div className="delay-200 relative reveal lg:scale-105 xl:scale-110 origin-center">
+              <ListingWorkflowIllustration className="w-full h-auto " />
             </div>
           </div>
         </section>
-
         {/* STATS */}
         <section className="py-14 lg:py-16 bg-[#F1F3FC] border-t border-[#EAECF3] relative overflow-hidden">
           <div className="px-5 sm:px-8 lg:px-[70px] max-w-7xl mx-auto relative z-10">
@@ -405,7 +500,7 @@ const Home = () => {
                 <SyncIllustration className="w-full h-auto" />
               </div>
               <div className="reveal delay-200">
-                <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The Ctasis Way</Badge>
+                <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The SellerBuz Way</Badge>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                   One source of truth. Synced everywhere in milliseconds.
                 </h2>
@@ -603,7 +698,7 @@ const Home = () => {
               Ready to grow your<br />multichannel business?
             </h2>
             <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">
-              Join 50,000+ sellers who trust Ctasis Sellerbuz. Free 14 days, no credit card.
+              Join 50,000+ sellers who trust SellerBuz. Free 14 days, no credit card.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing">

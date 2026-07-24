@@ -542,7 +542,7 @@ export const ChannelSyncFlow = (
         fill="white"
         fontFamily="'Space Grotesk',sans-serif"
       >
-        Ctasis Sync
+        SellerBuz Sync
       </text>
 
       <text

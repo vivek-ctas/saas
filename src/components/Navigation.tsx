@@ -88,7 +88,7 @@ const Navigation = () => {
           >
             <img
               src="/sellerbuz.png"
-              alt="Sellerbuz Logo"
+              alt="SellerBuz Logo"
               className="w-auto h-14 object-contain transition-all duration-300 group-hover:scale-105"
             />
           </Link>
@@ -214,7 +214,7 @@ const Navigation = () => {
           <div className="flex items-center justify-between">
             <img
               src="/sellerbuz.png"
-              alt="Sellerbuz Logo"
+              alt="SellerBuz Logo"
               className="w-auto h-10 object-contain"
             />
             <button

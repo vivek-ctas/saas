@@ -314,7 +314,7 @@ export const AnalyticsFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
 
 
 /* ------------------------------------------------------------------ */
-/* RepricerStrategyChart - line chart competitor vs Ctasis price       */
+/* RepricerStrategyChart - line chart competitor vs SellerBuz price       */
 /* ------------------------------------------------------------------ */
 export const RepricerStrategyChart = (props: SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 600 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -346,12 +346,12 @@ export const RepricerStrategyChart = (props: SVGProps<SVGSVGElement>) => (
             stroke="#94a3b8" strokeWidth="2" fill="none" strokeDasharray="3 3" />
         <text x="540" y="160" fontSize="9" fontWeight="700" fill="#64748b">Competitor</text>
 
-        {/* Ctasis line (smooth, slightly under ceiling) */}
+        {/* SellerBuz line (smooth, slightly under ceiling) */}
         <path d="M60 195 C 110 175, 170 200, 230 155 S 350 215, 410 145 S 500 195, 540 165"
             stroke="hsl(226 71% 50%)" strokeWidth="3" fill="none" />
         <path d="M60 195 C 110 175, 170 200, 230 155 S 350 215, 410 145 S 500 195, 540 165 L 540 280 L 60 280 Z"
             fill="url(#rsc-fill)" />
-        <text x="540" y="155" fontSize="10" fontWeight="800" fill="hsl(226 71% 40%)">Ctasis</text>
+        <text x="540" y="155" fontSize="10" fontWeight="800" fill="hsl(226 71% 40%)">SellerBuz</text>
 
         {/* Data points */}
         {[[230, 155], [410, 145], [540, 165]].map(([x, y], i) => (
@@ -1471,7 +1471,7 @@ export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
                     fontFamily="'DM Sans',sans-serif"
                     fontSize="10" fill="#94a3b8"
                 >
-                    Toggle a channel - Ctasis re-routes instantly. No code, no redeploy.
+                    Toggle a channel - SellerBuz re-routes instantly. No code, no redeploy.
                 </text>
             </g>
 
@@ -1918,7 +1918,7 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
             fill="#94a3b8"
             fontFamily="Georgia, serif"
         >
-            Ctasis team · Apr 18, 2026
+            SellerBuz team · Apr 18, 2026
         </text>
 
         {/* ── CHART CARD ── */}

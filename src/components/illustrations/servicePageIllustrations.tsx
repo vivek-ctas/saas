@@ -295,7 +295,7 @@ export const SyncSequenceDiagramSVG = (props: SVGProps<SVGSVGElement>) => {
                     <path d="M9,3 a9,9 0 1 1 -1.6,-5.8" fill="none" stroke="#7C3AED" strokeWidth="2.4" strokeLinecap="round" />
                     <path d="M10,-2.5 l-2.6,6.2 l-5.4,-3.6 Z" fill="#7C3AED" />
                 </g>
-                <text x="277" y="98" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Sellerbuz</text>
+                <text x="277" y="98" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">SellerBuz</text>
                 <text x="277" y="114" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Sync Engine</text>
             </g>
 

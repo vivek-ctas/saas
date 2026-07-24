@@ -318,7 +318,7 @@ const Privacy = () => {
                                             Questions about your privacy?
                                         </h3>
                                         <p className="text-slate-600 leading-relaxed text-sm">
-                                            Ctasis Sellerbuz maintains a dedicated data officer. For requests, accounts terminations, or inquiries
+                                            SellerBuz maintains a dedicated data officer. For requests, accounts terminations, or inquiries
                                             reach out to us directly at{" "}
                                             <a href="mailto:info@ctasis.com" className="text-blue-600 hover:text-blue-700 underline font-medium">
                                                 info@ctasis.com

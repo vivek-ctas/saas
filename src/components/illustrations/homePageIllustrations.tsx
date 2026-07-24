@@ -806,7 +806,7 @@ export const InfraIllustration = (props: SVGProps<SVGSVGElement>) => {
 };
 
 /* ------------------------------------------------------------------ */
-/* SyncIllustration – Channel-flow diagram (Listings <-> Ctasis <-> Orders / Shipping)
+/* SyncIllustration – Channel-flow diagram (Listings <-> SellerBuz <-> Orders / Shipping)
    Animated connecting lines with flowing data dots                      */
 /* ------------------------------------------------------------------ */
 export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
@@ -844,7 +844,7 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
             <circle cx="295" cy="200" r="26" fill="#fff" opacity="0.14" />
             <circle cx="295" cy="200" r="16" fill="#fff" />
             <path d="M289 200l4 4 8-8" stroke="#1e3a8a" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-            <text x="295" y="240" textAnchor="middle" fontFamily="Inter" fontSize="13" fontWeight="800" fill="#fff">Ctasis Core</text>
+            <text x="295" y="240" textAnchor="middle" fontFamily="Inter" fontSize="13" fontWeight="800" fill="#fff">SellerBuz Core</text>
             <text x="295" y="256" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#bfdbfe">Inventory · Pricing · Orders</text>
             <text x="295" y="272" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#bfdbfe">Real-time · 2-way sync</text>
         </g>
@@ -1056,7 +1056,7 @@ export const MarketplaceMeshDiagram = (props: SVGProps<SVGSVGElement>) => {
             </g>
 
             <text x={cx} y={cy - 4} textAnchor="middle" fontSize="16" fontWeight="800" fill="white" style={{ fontFamily: "Space Grotesk, sans-serif" }}>
-                Ctasis
+                SellerBuz
             </text>
 
             <text
@@ -1309,3 +1309,348 @@ export const InventoryDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
     )
 
 }
+
+
+export const ListingWorkflowIllustration = (props: SVGProps<SVGSVGElement>) => {
+    const indigo = "#4338CA";
+    const blue = "#2563EB";
+    const blueLight = "#DBEAFE";
+    const blue50 = "#EFF6FF";
+    const emerald = "#10B981";
+    const emeraldLight = "#D1FAE5";
+    const amber = "#F59E0B";
+    const amberLight = "#FEF3C7";
+    const rose = "#F43F5E";
+    const roseLight = "#FFE4E6";
+    const slate900 = "#0F172A";
+    const slate700 = "#334155";
+    const slate600 = "#475569";
+    const slate500 = "#64748B";
+    const slate400 = "#94A3B8";
+    const slate300 = "#CBD5E1";
+    const slate200 = "#E2E8F0";
+    const slate100 = "#F1F5F9";
+    const slate50 = "#F8FAFC";
+    const white = "#FFFFFF";
+
+    return (
+        <svg viewBox="0 0 980 990" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+            {/* eyebrow */}
+            <text x="40" y="10" fontFamily="Inter,system-ui" fontSize="12" fontWeight={700} fill={slate400} letterSpacing="1.5">
+                ONE FILE, ONE PERFECT LISTING
+            </text>
+
+            <defs>
+                <linearGradient id="lw-ai-grad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#7C3AED" />
+                    <stop offset="100%" stopColor="#4338CA" />
+                </linearGradient>
+                <linearGradient id="lw-success-grad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#10B981" />
+                    <stop offset="100%" stopColor="#059669" />
+                </linearGradient>
+                <marker id="lw-arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M0 0L10 5L0 10z" fill={blue} />
+                </marker>
+                <marker id="lw-arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M0 0L10 5L0 10z" fill={blue} />
+                </marker>
+                <marker id="lw-arrow-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M0 0L10 5L0 10z" fill={slate500} />
+                </marker>
+                <marker id="lw-arrow-emerald" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M0 0L10 5L0 10z" fill={emerald} />
+                </marker>
+            </defs>
+
+            {/* central spine — the "happy path" lifeline */}
+            <line x1="170" y1="70" x2="170" y2="930" stroke={slate300} strokeWidth="2" strokeDasharray="3 5" opacity={0.7}>
+                <animate attributeName="stroke-dashoffset" values="0;-16" dur="2s" repeatCount="indefinite" />
+            </line>
+
+            {/* flowing dot on spine */}
+            <circle r="4" fill={blue}>
+                <animateMotion dur="6s" repeatCount="indefinite" path="M170 60 L170 930" />
+            </circle>
+
+            {/* ---------- 1. UPLOAD FILE ---------- */}
+            <g>
+                <circle cx="170" cy="90" r="22" fill={white} stroke={blue} strokeWidth="2.5" />
+                <circle cx="170" cy="90" r="22" fill={blueLight} opacity={0.6} />
+                <text x="170" y="95" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="13" fontWeight={800} fill={blue}>1</text>
+
+                <rect x="210" y="60" width="280" height="70" rx="12" fill={white} stroke={slate200} />
+                <rect x="222" y="76" width="38" height="38" rx="9" fill={blueLight} />
+                <g transform="translate(229,86)" stroke={blue} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 14h18M12 4v10M8 8l4-4 4 4" />
+                </g>
+                <text x="270" y="86" fontFamily="Inter,system-ui" fontSize="15" fontWeight={700} fill={slate900}>Upload catalog</text>
+                <text x="270" y="106" fontFamily="Inter,system-ui" fontSize="12.5" fontWeight={500} fill={slate500}>CSV · XLSX · feed URL</text>
+                <text x="270" y="122" fontFamily="Inter,system-ui" fontSize="11.5" fontWeight={600} fill={blue}>1,248 rows detected</text>
+            </g>
+
+            {/* ---------- 2. VALIDATE ---------- */}
+            <g>
+                <circle cx="170" cy="190" r="22" fill={white} stroke={blue} strokeWidth="2.5" />
+                <text x="170" y="195" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="13" fontWeight={800} fill={blue}>2</text>
+
+                <rect x="210" y="160" width="280" height="70" rx="12" fill={white} stroke={slate200} />
+                <rect x="222" y="176" width="38" height="38" rx="9" fill={emeraldLight} />
+                <g transform="translate(230,183)" stroke={emerald} strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M2 12l5 5 11-12" />
+                </g>
+                <text x="270" y="186" fontFamily="Inter,system-ui" fontSize="15" fontWeight={700} fill={slate900}>Validate schema</text>
+                <text x="270" y="206" fontFamily="Inter,system-ui" fontSize="12.5" fontWeight={500} fill={slate500}>Field types · required attrs · ranges</text>
+                <g transform="translate(270,215)">
+                    <rect width="58" height="15" rx="3.5" fill={emeraldLight} />
+                    <text x="29" y="10.5" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10.5" fontWeight={700} fill="#047857">1,201 ✓</text>
+                    <rect x="62" width="50" height="15" rx="3.5" fill={amberLight} />
+                    <text x="87" y="10.5" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10.5" fontWeight={700} fill="#B45309">47 ⚠</text>
+                </g>
+            </g>
+
+            {/* ---------- 3. TEST LISTING ---------- */}
+            <g>
+                <circle cx="170" cy="290" r="22" fill={white} stroke={blue} strokeWidth="2.5" />
+                <text x="170" y="295" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="13" fontWeight={800} fill={blue}>3</text>
+
+                <rect x="210" y="260" width="280" height="70" rx="12" fill={white} stroke={slate200} />
+                <rect x="222" y="276" width="38" height="38" rx="9" fill={blueLight} />
+                <g transform="translate(229,282)" stroke={blue} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 18V8a3 3 0 013-3h10a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3z" />
+                    <path d="M9 12h6M9 9h6M9 15h4" />
+                </g>
+                <text x="270" y="286" fontFamily="Inter,system-ui" fontSize="15" fontWeight={700} fill={slate900}>Push to test listing</text>
+                <text x="270" y="306" fontFamily="Inter,system-ui" fontSize="12.5" fontWeight={500} fill={slate500}>Real marketplace validation endpoint</text>
+                <text x="270" y="322" fontFamily="Inter,system-ui" fontSize="10.5" fontWeight={600} fill={slate700}>test_listing_id · pending review</text>
+            </g>
+
+            {/* ---------- 4. GRAB ERROR ---------- */}
+            <g>
+                <circle cx="170" cy="390" r="22" fill={white} stroke={rose} strokeWidth="2.5" />
+                <text x="170" y="395" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="13" fontWeight={800} fill={rose}>!</text>
+
+                <rect x="210" y="360" width="280" height="70" rx="12" fill={white} stroke={roseLight} />
+                <rect x="222" y="376" width="38" height="38" rx="9" fill={roseLight} />
+                <g transform="translate(230,383)" stroke={rose} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M11 2L22 20H0L11 2z" />
+                    <path d="M11 9v5M11 17v.5" />
+                </g>
+                <text x="270" y="383" fontFamily="Inter,system-ui" fontSize="15" fontWeight={700} fill={slate900}>Grab error</text>
+                <text x="270" y="403" fontFamily="Inter,system-ui" fontSize="12.5" fontWeight={500} fill={slate500}>22 rows rejected by marketplace</text>
+                <text x="270" y="419" fontFamily="Inter,system-ui" fontSize="10.5" fontWeight={600} fill={rose}>missing "material" attr · 12 rows</text>
+            </g>
+
+            {/* ---------- AI RETRY LOOP (right side) ---------- */}
+            <g>
+                {/* big card */}
+                <rect x="560" y="120" width="410" height="380" rx="18" fill="url(#lw-ai-grad)" opacity={0.06} />
+                <rect x="560" y="120" width="410" height="380" rx="18" fill={white} stroke={blue} strokeWidth="1.5" />
+
+                {/* header pill */}
+                <rect x="565" y="130" width="148" height="26" rx="13" fill={blueLight} />
+                <circle cx="580" cy="142" r="5" fill={blue} />
+                <text x="588" y="146" fontFamily="Inter,system-ui" fontSize="12" fontWeight={800} fill={blue} letterSpacing="0.5">AI RETRY ENGINE</text>
+
+                <text x="575" y="185" fontFamily="Inter,system-ui" fontSize="18" fontWeight={800} fill={slate900}>
+                    Loops until it passes
+                </text>
+                <text x="575" y="205" fontFamily="Inter,system-ui" fontSize="12" fontWeight={500} fill={slate500}>
+                    Reads the marketplace error each pass — never the same fix twice.
+                </text>
+
+                {/* attempt counter ring */}
+                <g transform="translate(925,155)">
+                    <circle r="26" fill={white} stroke={blueLight} strokeWidth="4" />
+                    <circle r="26" fill="none" stroke={blue} strokeWidth="4" strokeDasharray="110 138" strokeLinecap="round" transform="rotate(-90)" />
+                    <text textAnchor="middle" y="2" fontFamily="Inter,system-ui" fontSize="13" fontWeight={800} fill={blue}>7/10</text>
+                    <text textAnchor="middle" y="14" fontFamily="Inter,system-ui" fontSize="10" fontWeight={600} fill={slate500}>atp</text>
+                </g>
+
+                {/* retry steps */}
+                {[
+                    { n: 1, label: "Read error", desc: '"material" is required', color: slate500 },
+                    { n: 2, label: "Add missing attribute", desc: 'injects material = "cotton 100%"', color: emerald },
+                    { n: 3, label: "Remove rejected field", desc: 'strips "custom_label_3"', color: rose },
+                    { n: 4, label: "Rewrite non-conforming", desc: 'normalizes "Color→Colour"', color: amber },
+                ].map((s, i) => {
+                    const yPos = 290 + i * 62;
+                    return (
+                        <g key={i} transform={`translate(575,${yPos - 50})`}>
+                            <rect width="368" height="50" rx="10" fill={slate50} stroke={slate200} />
+                            <circle cx="22" cy="24" r="15" fill={s.color} />
+                            <text x="22" y="30" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="15" fontWeight={800} fill={white}>{s.n}</text>
+                            <text x="46" y="20" fontFamily="Inter,system-ui" fontSize="15" fontWeight={700} fill={slate900}>{s.label}</text>
+                            <text x="46" y="40" fontFamily="Inter,system-ui" fontSize="12" fontWeight={500} fill={slate500}>{s.desc}</text>
+                            <text x="350" y="30" textAnchor="end" fontFamily="Inter,system-ui" fontSize="18" fontWeight={700} fill={s.color}>✓</text>
+                        </g>
+                    );
+                })}
+
+                {/* return-to-seller branch */}
+                <g transform="translate(556,510)">
+                    <rect width="420" height="45" rx="10" fill={amberLight} stroke="#FCD34D" />
+                    <g transform="translate(14,12)" stroke="#B45309" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M3 8h10l-3-3M3 8l3 3" />
+                        <path d="M3 8h10" />
+                    </g>
+                    <text x="42" y="17" fontFamily="Inter,system-ui" fontSize="15" fontWeight={800} fill="#B45309">If still failing after 10×</text>
+                    <text x="42" y="35" fontFamily="Inter,system-ui" fontSize="13" fontWeight={500} fill="#92400E">Return row to seller with exact reason — never a silent drop.</text>
+                </g>
+
+                {/* arrow from "grab error" into AI engine */}
+                <line x1="490" y1="390" x2="560" y2="390" stroke={blue} strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#lw-arrow-purple)">
+                    <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.2s" repeatCount="indefinite" />
+                </line>
+                <text x="525" y="382" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill={blue}>FEED ERRORS</text>
+
+                {/* arrow from AI engine back to spine (success) */}
+                <path d="M 560 240 Q 510 240 510 300 Q 510 380 400 375" fill="none" stroke={emerald} strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#lw-arrow-emerald)">
+                    <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.6s" repeatCount="indefinite" />
+                </path>
+                <rect x="425" y="320" width="62" height="18" rx="9" fill={emeraldLight} />
+                <text x="460" y="332" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="9.5" fontWeight={800} fill="#047857">PASSES ✓</text>
+            </g>
+
+            {/* ---------- 5. SEO REGENERATION ---------- */}
+            <g>
+                <circle cx="170" cy="490" r="22" fill={white} stroke={blue} strokeWidth="2.5" />
+                <text x="170" y="495" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="13" fontWeight={800} fill={blue}>5</text>
+
+                <rect x="210" y="460" width="280" height="70" rx="12" fill={white} stroke={blueLight} />
+                <rect x="222" y="478" width="38" height="38" rx="9" fill={blueLight} />
+                <g transform="translate(229,486)" stroke={blue} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M11 3l8 4-8 4-8-4 8-4z" />
+                    <path d="M3 11l8 4 8-4M3 15l8 4 8-4" />
+                </g>
+                <text x="270" y="486" fontFamily="Inter,system-ui" fontSize="15" fontWeight={700} fill={slate900}>Regenerate SEO</text>
+                <text x="270" y="506" fontFamily="Inter,system-ui" fontSize="12.5" fontWeight={500} fill={slate500}>Title & description from catalog data</text>
+                <text x="270" y="522" fontFamily="Inter,system-ui" fontSize="10.5" fontWeight={600} fill={blue}>trained on your full catalog</text>
+            </g>
+
+            {/* ---------- 6. DRAFT WITH DIFF MARKS ---------- */}
+            <g>
+                <circle cx="170" cy="610" r="22" fill={white} stroke={blue} strokeWidth="2.5" />
+                <text x="170" y="615" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="13" fontWeight={800} fill={blue}>6</text>
+
+                {/* diff preview card */}
+                <rect x="210" y="560" width="730" height="130" rx="14" fill={white} stroke={slate200} />
+                <rect x="210" y="560" width="730" height="30" rx="14" fill={blueLight} />
+                <circle cx="226" cy="574" r="3.5" fill={blue} />
+                <circle cx="238" cy="574" r="3.5" fill={blue} />
+                <circle cx="250" cy="574" r="3.5" fill={blue} />
+                <text x="278" y="581" fontFamily="Inter,system-ui" fontSize="15" fontWeight={700} fill={slate700}>draft.html · diff view</text>
+
+                {/* column labels */}
+                <text x="226" y="608" fontFamily="Inter,system-ui" fontSize="11" fontWeight={700} fill={slate500} letterSpacing="0.8">YOUR UPLOAD</text>
+                <text x="586" y="608" fontFamily="Inter,system-ui" fontSize="11" fontWeight={700} fill={blue} letterSpacing="0.8">AI REWRITE</text>
+
+                {/* left column - original */}
+                <g fontFamily="Inter,system-ui" fontSize="12.5">
+                    <rect x="220" y="616" width="350" height="16" rx="3" fill={roseLight} opacity={0.55} />
+                    <text x="226" y="627" fontWeight={500} fill={slate700}>Blue Cotton T-Shirt XL</text>
+                    <text x="555" y="627" textAnchor="end" fontWeight={700} fill={rose}>−</text>
+
+                    <text x="226" y="648" fontWeight={500} fill={slate700}>comfortable tshirt for daily use</text>
+
+                    <text x="226" y="658" fontFamily="Inter,system-ui" fontSize="10" fontWeight={500} fill={slate400}>. . . 2 more lines</text>
+                </g>
+
+                {/* divider */}
+                <line x1="580" y1="590" x2="580" y2="690" stroke={blue} strokeDasharray="2 3" />
+
+                {/* right column - AI rewrite with diff marks */}
+                <g fontFamily="Inter,system-ui" fontSize="12.5">
+                    <rect x="590" y="616" width="350" height="14" rx="3" fill={emeraldLight} opacity={0.6} />
+                    <text x="596" y="627" fontWeight={600} fill={slate900}>Men's Premium Cotton T-Shirt — XL, Heather Blue</text>
+                    <text x="925" y="627" textAnchor="end" fontWeight={700} fill={emerald}>+</text>
+
+                    <text x="596" y="648" fontWeight={500} fill={slate700}>
+                        <tspan fill={slate500} textDecoration="lineThrough">comfortable tshirt</tspan>
+                        <tspan x="596" y="665"> breathable everyday tee, 100% combed cotton</tspan>
+                    </text>
+                </g>
+
+                {/* diff legend */}
+                <g transform="translate(250,670)">
+                    <rect width="15" height="15" rx="2" fill={emeraldLight} stroke={emerald} />
+                    <text x="18" y="10" fontFamily="Inter,system-ui" fontSize="13" fontWeight={600} fill={slate600}>added</text>
+                    <rect x="70" width="15" height="15" rx="2" fill={roseLight} stroke={rose} />
+                    <text x="90" y="10" fontFamily="Inter,system-ui" fontSize="13" fontWeight={600} fill={slate600}>removed</text>
+                    <rect x="150" width="15" height="15" rx="2" fill={amberLight} stroke={amber} />
+                    <text x="170" y="10" fontFamily="Inter,system-ui" fontSize="13" fontWeight={600} fill={slate600}>rewritten</text>
+                </g>
+            </g>
+
+            {/* ---------- 7. SELLER VERIFIES ---------- */}
+            <g>
+                <circle cx="170" cy="730" r="22" fill={white} stroke={blue} strokeWidth="2.5" />
+                <text x="170" y="735" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="13" fontWeight={800} fill={blue}>7</text>
+
+                <rect x="210" y="700" width="280" height="70" rx="12" fill={white} stroke={slate200} />
+                <rect x="222" y="716" width="38" height="38" rx="9" fill={blueLight} />
+                <g transform="translate(229,723)" stroke={blue} strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2l-7 7-3-3" />
+                    <circle cx="11" cy="11" r="9" />
+                </g>
+                <text x="270" y="726" fontFamily="Inter,system-ui" fontSize="15" fontWeight={700} fill={slate900}>Seller verifies</text>
+                <text x="270" y="746" fontFamily="Inter,system-ui" fontSize="12.5" fontWeight={500} fill={slate500}>Approve the diff in one click</text>
+                <text x="270" y="760" fontFamily="Inter,system-ui" fontSize="10.5" fontWeight={600} fill={blue}>or tweak inline before finalizing</text>
+            </g>
+
+            {/* ---------- 8. WHITELABEL PUBLISH ---------- */}
+            <g>
+                <circle cx="170" cy="830" r="22" fill="url(#lw-success-grad)" />
+                <g transform="translate(160,820)" stroke="white" strokeWidth="2.4" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 10l4 4 8-9" />
+                </g>
+
+                <rect x="210" y="800" width="280" height="70" rx="12" fill="url(#lw-success-grad)" />
+                <rect x="222" y="816" width="38" height="38" rx="9" fill={white} fillOpacity={0.2} />
+                <g transform="translate(228,823)" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 18l4-4 4 3 6-7 4 3" />
+                    <path d="M3 4h18v16H3z" />
+                </g>
+                <text x="270" y="826" fontFamily="Inter,system-ui" fontSize="15" fontWeight={800} fill={white}>Whitelabel published</text>
+                <text x="270" y="846" fontFamily="Inter,system-ui" fontSize="12.5" fontWeight={500} fill={white} opacity={0.85}>Live on marketplace · your brand</text>
+                <text x="270" y="860" fontFamily="Inter,system-ui" fontSize="10.5" fontWeight={700} fill="white">sku_cts-2291 · synced in 0.4s</text>
+            </g>
+
+            {/* ---------- spine arrow flow ---------- */}
+            {[120, 220, 320, 420, 520, 640, 760].map((yPos, i) => (
+                <circle key={i} cx="170" cy={yPos} r="2" fill={blue} opacity={0.6}>
+                    <animate attributeName="opacity" values="0.2;1;0.2" dur="1.6s" begin={`${i * 0.2}s`} repeatCount="indefinite" />
+                </circle>
+            ))}
+
+            {/* ---------- bottom metric pills ---------- */}
+            <g transform="translate(40,890)">
+                <rect width="200" height="80" rx="14" fill={white} stroke={slate200} />
+                <text x="20" y="30" fontFamily="Inter,system-ui" fontSize="22" fontWeight={800} fill={slate900}>10×</text>
+                <text x="20" y="50" fontFamily="Inter,system-ui" fontSize="12" fontWeight={500} fill={slate500}>AI retry ceiling</text>
+                <text x="20" y="70" fontFamily="Inter,system-ui" fontSize="10.5" fontWeight={700} fill={blue}>before seller handoff</text>
+            </g>
+
+            <g transform="translate(260,890)">
+                <rect width="200" height="80" rx="14" fill="url(#lw-success-grad)" />
+                <text x="20" y="30" fontFamily="Inter,system-ui" fontSize="22" fontWeight={800} fill={white}>100%</text>
+                <text x="20" y="50" fontFamily="Inter,system-ui" fontSize="12" fontWeight={500} fill={white} opacity={0.85}>Diff-verified drafts</text>
+                <text x="20" y="70" fontFamily="Inter,system-ui" fontSize="10.5" fontWeight={700} fill={white}>seller sees every change</text>
+            </g>
+
+            <g transform="translate(480,890)">
+                <rect width="200" height="80" rx="14" fill={white} stroke={slate200} />
+                <text x="20" y="30" fontFamily="Inter,system-ui" fontSize="20" fontWeight={800} fill={slate900}>0</text>
+                <text x="20" y="50" fontFamily="Inter,system-ui" fontSize="12" fontWeight={500} fill={slate500}>Silent listing drops</text>
+                <text x="20" y="70" fontFamily="Inter,system-ui" fontSize="10.5" fontWeight={700} fill={rose}>fails always have a reason</text>
+            </g>
+
+            <g transform="translate(700,890)">
+                <rect width="240" height="80" rx="14" fill={blue50} stroke={blueLight} />
+                <text x="20" y="30" fontFamily="Inter,system-ui" fontSize="20" fontWeight={800} fill={blue}>Whitelabel</text>
+                <text x="20" y="50" fontFamily="Inter,system-ui" fontSize="12" fontWeight={500} fill={slate600}>Listings go live under your brand</text>
+                <text x="20" y="70" fontFamily="Inter,system-ui" fontSize="10.5" fontWeight={700} fill={blue}>no marketplace co-branding</text>
+            </g>
+        </svg>
+    );
+};

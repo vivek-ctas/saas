@@ -71,7 +71,7 @@ const ADDONS = [
   },
   {
     title: 'AI listing mismatch retry',
-    desc: "When Amazon or Shopify rejects a listing, Ctasis AI rewrites the content and retries automatically — fixing titles, attributes and formatting until it passes. Full audit trail of every attempt.",
+    desc: "When Amazon or Shopify rejects a listing, SellerBuz AI rewrites the content and retries automatically — fixing titles, attributes and formatting until it passes. Full audit trail of every attempt.",
   },
 ];
 
@@ -407,7 +407,7 @@ const Pricing = () => {
               </div>
               <Quote className="w-10 h-10 text-blue-600 mb-4" />
               <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-slate-900 leading-relaxed mb-6">
-                "We tried 3 other platforms before Ctasis. The Pro plan paid for itself in week one
+                "We tried 3 other platforms before SellerBuz. The Pro plan paid for itself in week one
                 from saved labor alone."
               </p>
               <div className="flex items-center gap-4">
@@ -432,7 +432,7 @@ const Pricing = () => {
                 The premium services that pay for the plan
               </h2>
               <p className="text-lg sm:text-xl lg:text-2xl text-slate-600">
-                These aren't buzzwords - they're the daily chores Ctasis does for you while you sleep.
+                These aren't buzzwords - they're the daily chores SellerBuz does for you while you sleep.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

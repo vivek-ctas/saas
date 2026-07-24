@@ -40,7 +40,7 @@ const About = () => {
           badgeIcon={Sparkles}
           badgeText="Our Story"
           title={<>We're building the <span className="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">operating system</span> for modern commerce.</>}
-          subtitle="50,000+ sellers in 150+ countries trust Ctasis to power their multichannel operations. This is how we got here - and where we're going."
+          subtitle="50,000+ sellers in 150+ countries trust SellerBuz to power their multichannel operations. This is how we got here - and where we're going."
           visual={<AboutJourneyMockup className="w-full h-auto" />}
           actions={
             <>
@@ -73,7 +73,7 @@ const About = () => {
                 and a hope-it-works spreadsheet. We close that gap.
               </p>
               <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed">
-                Ctasis gives every entrepreneur access to enterprise-grade tooling without enterprise complexity
+                SellerBuz gives every entrepreneur access to enterprise-grade tooling without enterprise complexity
                 or enterprise pricing. That's the whole game.
               </p>
             </div>
