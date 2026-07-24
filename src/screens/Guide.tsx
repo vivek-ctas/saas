@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, BookOpen, Clock, Sparkles, Cpu, BarChart3, Workflow, Brain, Layers, Plug, Boxes, Truck } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
-import { GuideEditorialMockup } from "@/components/illustrations";
+import { GuideEditorialMockup } from "@/components/illustrations/guidesPageIllustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
 const posts = [

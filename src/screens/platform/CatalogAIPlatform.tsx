@@ -1,9 +1,7 @@
 import PlatformPage, { PlatformConfig } from "./PlatformPage";
-import { MatrixVisual } from "@/components/illustrations/MatrixVisual";
-import { ILL } from "@/components/illustrations/primitives";
+import { MatrixVisual, ILL, DashListVisual, GenVisual } from "@/components/illustrations/platformPageIllustrations";
 import { Wand2, LayoutGrid, GitMerge, Image as ImageIcon, Upload, BarChart3 } from "lucide-react";
-import { DashListVisual } from "@/components/illustrations/DashListVisual";
-import { GenVisual } from "@/components/illustrations/GenVisual";
+
 const cfg: PlatformConfig = {
   slug: "catalog-ai",
   eyebrow: "AI Catalog",

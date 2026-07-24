@@ -1,8 +1,6 @@
 import PlatformPage, { PlatformConfig } from "./PlatformPage";
 import { Boxes, RefreshCw, ShieldCheck, BarChart3, Layers, Upload } from "lucide-react";
-import { FlowVisual } from "@/components/illustrations/flowchart"
-import { DashListVisual } from "@/components/illustrations/DashListVisual";
-import { KpiChartVisual } from "@/components/illustrations/KpiChartVisual";
+import { FlowVisual, DashListVisual, KpiChartVisual } from "@/components/illustrations/platformPageIllustrations";
 const cfg: PlatformConfig = {
   slug: "inventory",
   eyebrow: "Inventory Sync",

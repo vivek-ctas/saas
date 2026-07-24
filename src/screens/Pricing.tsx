@@ -18,7 +18,7 @@ import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Layout from '@/components/Layout';
 import PageHero from '@/components/PageHero';
-import { AnalyticsIllustration, PricingCalculatorMockup } from '@/components/illustrations';
+import { AnalyticsIllustration, PricingCalculatorMockup } from '@/components/illustrations/pricePageIllustrations';
 import { useReveal } from '@/hooks/use-reveal';
 import { MaintenanceState } from '@/components/maintenancestate';
 import { usePlans } from '@/hooks/use-plans';

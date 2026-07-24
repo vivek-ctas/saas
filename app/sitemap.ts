@@ -1,6 +1,5 @@
 import { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
-import { INTEGRATIONS } from "@/screens/integrations/integrations.data";
 
 // guide slugs - keep in sync with guide/[slug]/page.tsx
 const guideSlugs = [
@@ -27,13 +26,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/contact`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.6 },
   ];
 
-  const integrationPages: MetadataRoute.Sitemap = INTEGRATIONS.map((i) => ({
-    url: `${SITE_URL}/marketplaces/${i.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
-
   const guidePages: MetadataRoute.Sitemap = guideSlugs.map((slug) => ({
     url: `${SITE_URL}/guide/${slug}`,
     lastModified: new Date(),
@@ -41,5 +33,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...integrationPages, ...guidePages];
+  return [...staticPages, ...guidePages];
 }

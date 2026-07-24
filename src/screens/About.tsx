@@ -9,7 +9,8 @@ import {
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
-import { WorkflowIllustration, GlobeIllustration, NeuralIllustration, AboutJourneyMockup, LogoChip } from "@/components/illustrations";
+import { WorkflowIllustration, LogoChip } from "@/components/illustrations";
+import { AboutJourneyMockup, NeuralIllustration } from "@/components/illustrations/aboutPageIllustrations";
 import { useReveal } from "@/hooks/use-reveal";
 import Link from "next/link";
 

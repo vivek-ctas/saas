@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Mail, MapPin, Phone, Clock, ArrowRight, MessageCircle, Headphones, BookOpen, Code, Video, CheckCircle2, Loader2 } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
-import { ContactMapIllustration } from "@/components/illustrations";
+import { ContactMapIllustration } from "@/components/illustrations/contactIllustrations";
 import { useReveal } from "@/hooks/use-reveal";
 
 // ── Contact-specific hooks ───────────────────────────────────────────────

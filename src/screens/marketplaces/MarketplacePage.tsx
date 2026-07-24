@@ -4,9 +4,7 @@ import Link from "next/link";
 import Layout from "@/components/Layout";
 import { ArrowRight, CheckCircle2, Sparkles, Boxes, ShoppingCart, DollarSign, BarChart3, Wand2, RefreshCw } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
-import { ReactNode } from "react";
-import { OnboardingDiagram } from "@/components/illustrations";
-import { ChannelHeroDiagram } from "@/components/illustrations";
+import { ChannelHeroDiagram, OnboardingDiagram } from "@/components/illustrations/platformPageIllustrations";
 
 export type MarketplaceConfig = {
   slug: string;
@@ -22,6 +20,7 @@ export type MarketplaceConfig = {
   faq: { q: string; a: string }[]; // 5 items
   otherChannels: string[];     // for cross-link strip
 };
+
 const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
   const ref = useReveal<HTMLDivElement>();
   return (

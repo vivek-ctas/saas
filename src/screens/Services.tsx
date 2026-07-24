@@ -11,8 +11,7 @@ import {
   BarChart3, Sparkles, CheckCircle2, Layers,
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
-import Image from "next/image";
-import { AssetLibraryMockup, ServicesHeroMockup, RolesIllustration, InventorySyncSVG, AICatalogSVG, /* RepricerSVG, */ AnalyticsDashboardSVG, InventoryDashboardSVG, SyncSequenceDiagramSVG } from "@/components/illustrations";
+import { AssetLibraryMockup, ServicesHeroMockup, RolesIllustration, InventorySyncSVG, AICatalogSVG, /* RepricerSVG, */ AnalyticsDashboardSVG, SyncSequenceDiagramSVG } from "@/components/illustrations/servicePageIllustrations";
 import PageHero from "@/components/PageHero";
 
 

@@ -5,19 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight, Clock, Share2, BookOpen, CheckCircle } from "lucide-react";
 import Layout from "@/components/Layout";
-import {
-  ArticleHeroMockup,
-  // RepricerStrategyChart,
-  AIPipelineDiagram,
-  AnalyticsFlowDiagram,
-  ChannelSyncFlow,
-  AutomationBuilderDiagram,
-  ReportingConsoleMockup,
-  AlertTriageDiagram,
-  MarketplaceMeshDiagram,
-  OrderFlowDiagram,
-} from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
+import { AnalyticsFlowDiagram, ArticleHeroMockup, OrderFlowDiagram, ReportingConsoleMockup } from "@/components/illustrations/guidesPageIllustrations";
+import { MarketplaceMeshDiagram } from "@/components/illustrations/homePageIllustrations";
 
 type Section = { h: string; p: string[]; bullets?: string[] };
 type Post = {

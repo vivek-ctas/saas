@@ -11,11 +11,11 @@ import {
 import Link from "next/link";
 import Layout from "@/components/Layout";
 import {
-  BlobBackdrop, DashboardMockup, SellerHeroMockup, SyncIllustration,
-  AnalyticsIllustration, GlobeIllustration, WorkflowIllustration,
-  NeuralIllustration, InfraIllustration, LogoChip, MarketplaceMeshDiagram, ProblemDiagram,
+  SellerHeroMockup, SyncIllustration,
+  InfraIllustration, MarketplaceMeshDiagram, ProblemDiagram,
   InventoryDashboardSVG
-} from "@/components/illustrations";
+} from "@/components/illustrations/homePageIllustrations";
+import { WorkflowIllustration } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
 import { useState } from "react";
 
