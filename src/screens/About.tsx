@@ -23,7 +23,7 @@ const About = () => {
     { year: "2021", title: "Series A", desc: "Raised funding to scale our infrastructure and double the engineering team.", icon: Rocket },
     { year: "2022", title: "Enterprise launch", desc: "Built dedicated tooling for sellers managing 100k+ SKUs across 10+ channels.", icon: Building2 },
     { year: "2023", title: "Global expansion", desc: "Crossed into 50+ countries with multi-currency and multi-language support.", icon: Globe },
-    { year: "2024", title: "AI integration", desc: "Launched ML-powered demand forecasting and automated repricing.", icon: Brain }
+    { year: "2024", title: "AI integration", desc: "Launched AI-powered catalog optimization, listing asset management and inventory sync engine.", icon: Brain }
   ];
 
   const values = [
@@ -253,24 +253,22 @@ const About = () => {
           <div className="px-5 sm:px-8 lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
-                <Brain className="w-3.5 h-3.5 mr-1" /> AI For Customer Favour
+                <Brain className="w-3.5 h-3.5 mr-1" /> AI-Powered Catalog
               </Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                Predict what your buyers want - before they search for it.
+                Generate channel-perfect listings in seconds, not hours.
               </h2>
               <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
-                Our ML engine learns from millions of orders to forecast demand, detect repricing
-                opportunities and segment customers by purchase behaviour - so every campaign lands
-                with the right buyer at the right moment.
+                Our AI engine analyzes your product data and generates optimized titles, descriptions, bullet points and attributes for Amazon and Shopify. When listings get suppressed, AI retries automatically until they go live.
               </p>
               <ul className="space-y-3 mb-6">
                 {[
-                  "AI listing generator - turns raw product data into channel-perfect Amazon and Shopify listings",
-                  "Auto-repricer with your own min/max margin rules (Premium)",
-                  "A+ content managed as versioned S3 objects, one-click push to Amazon",
-                  "Customer purchase-behaviour analytics powered by BigQuery & Power BI",
-                  "Demand forecasting per SKU per channel",
-                  "Sentiment analysis from reviews & support tickets",
+                  "AI listing generator for Amazon and Shopify — titles, bullets, search terms",
+                  "Automatic listing mismatch detection and AI-powered retry",
+                  "S3-backed asset storage for white-label listing images and brand content",
+                  "A+ content management with reusable modules and templates",
+                  "Channel-aware formatting — each listing optimized per marketplace rules",
+                  "Bulk regenerate entire categories with new SEO focus or brand voice",
                 ].map((it, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm sm:text-base text-slate-700">
                     <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" /> {it}

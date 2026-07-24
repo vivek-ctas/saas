@@ -6,7 +6,7 @@ const cfg: PlatformConfig = {
   eyebrow: "Inventory Sync",
   title: "One stock number. Every channel. Always accurate.",
   intro:
-    "Stop reconciling spreadsheets at 2 a.m. SellerBuz keeps stock levels in perfect sync across Amazon, Shopify and other channels - with sub-2-second propagation and zero oversells.",
+    "Stop reconciling spreadsheets at 2 a.m. SellerBuz keeps stock levels in perfect sync across Amazon and Shopify - with sub-2-second propagation and zero oversells.",
   hero: (
     <FlowVisual
       id="inv-hero"
@@ -47,7 +47,7 @@ const cfg: PlatformConfig = {
     {
       eyebrow: "Real-Time Sync",
       title: "One stock number. Fanned out to every channel in under 2 seconds.",
-      desc: "SellerBuz sits between your warehouse and every marketplace. When stock moves, we push the new number to Amazon, Shopify and other channels in parallel - with automatic retries and full audit history.",
+      desc: "SellerBuz sits between your warehouse and every marketplace. When stock moves, we push the new number to Amazon and Shopify in parallel - with automatic retries and full audit history.",
       bullets: [
         "Sub-2-second propagation via native marketplace APIs",
         "Parallel writes - one slow channel doesn't block the others",

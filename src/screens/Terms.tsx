@@ -139,7 +139,7 @@ const TERMS_SECTIONS = [
         bullets: [
             "Multi-marketplace product management and optimization.",
             "Real-time inventory synchronization across channels.",
-            "Centralized order management and fulfillment coordination.",
+            "Centralized inventory management and catalog synchronization.",
             "AI-powered catalog writing, attribute extraction, and analytics.",
             "Pricing automation based on custom strategy rules.",
             "Reporting, data analytics, and operational insights.",

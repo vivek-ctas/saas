@@ -81,7 +81,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
             <div className="max-w-3xl mb-10 reveal">
               <Badge className="mb-3 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">What You Get</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
-                Everything you need to run {cfg.name} - inside SellerBuz.
+                Everything you need to run {cfg.name} - inside Ctasis.
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -107,7 +107,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
                 The tricky {cfg.name} stuff, solved.
               </h2>
               <p className="text-base sm:text-lg lg:text-xl text-slate-600">
-                Every marketplace has its own quirks. SellerBuz handles the sharp edges of {cfg.name} so your team doesn't have to become experts to sell.
+                Every marketplace has its own quirks. Ctasis handles the sharp edges of {cfg.name} so your team doesn't have to become experts to sell.
               </p>
             </div>
             <div className="space-y-3">

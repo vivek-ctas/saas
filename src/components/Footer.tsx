@@ -86,7 +86,7 @@ const highlightFeatures: HighlightFeature[] = [
   {
     icon: Globe2,
     title: "Global Reach",
-    description: "Serving sellers in 150+ countries with multi-currency and regional support.",
+    description: "Multi-currency and regional marketplace support across Amazon and Shopify.",
   },
   {
     icon: Headphones,

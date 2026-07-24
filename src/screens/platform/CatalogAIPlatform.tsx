@@ -91,9 +91,9 @@ const cfg: PlatformConfig = {
     {
       eyebrow: "Generate Per Channel",
       title: "One product in. Multiple channel-native listings out.",
-      desc: "Give SellerBuz a photo and a few specs. It writes optimized listings for Amazon, Shopify and other channels - all optimized for that channel's search algorithm.",
+      desc: "Give SellerBuz a photo and a few specs. It writes optimized listings for Amazon and Shopify - all optimized for that channel's search algorithm.",
       bullets: [
-        "Amazon, Shopify and more. Save tone presets",
+        "Amazon and Shopify. Save tone presets",
         "Per-channel title length, keyword density and formatting",
         "Save brand voice presets per storefront",
         "Human review before publish - nothing goes live silently",

@@ -7,7 +7,8 @@ import {
   Star, ShoppingBag, ArrowRight, Quote,
   Truck, Megaphone, Brain, Server, Workflow, Boxes,
   RefreshCcw, Settings, FileText,
-  Layers
+  Layers,
+  Wand2
 } from "lucide-react";
 import Link from "next/link";
 import Layout from "@/components/Layout";
@@ -82,8 +83,8 @@ const Home = () => {
 
   const journey = [
     { step: "01", title: "Connect", desc: "Link your Marketplace in minutes with one-click integrations.", icon: Zap },
-    { step: "02", title: "Sync", desc: "Inventory, orders & pricing flow automatically across every channel.", icon: RefreshCw },
-    { step: "03", title: "Grow", desc: "AI insights surface what to ship next, what to reprice, what to scale.", icon: TrendingUp }
+    { step: "02", title: "Sync", desc: "Inventory, stock & pricing flow automatically across every channel.", icon: RefreshCw },
+    { step: "03", title: "Grow", desc: "AI insights surface what to list next, where to restock, and what to scale.", icon: TrendingUp }
   ];
 
   return (
@@ -104,15 +105,14 @@ const Home = () => {
                   Trusted By 50,000+ Multichannel Sellers
                 </Badge>
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] font-bold text-slate-900 mb-6 leading-[1.1] sm:leading-[1.05] tracking-tight">
-                  The Most Advanced
+                  The Smartest
                   <span className="block bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">
-                    AI Marketplace OS
+                    AI Catalog & Inventory Platform
                   </span>
-                  with built-in seller analytics
+                  for Amazon and Shopify Sellers
                 </h1>
                 <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 mb-10 leading-relaxed max-w-xl">
-                  Save time. Sync inventory. Avoid overselling. Maximize profit across Amazon,
-                  Shopify and more channels - from one beautiful dashboard.
+                  Generate AI-optimized listings, sync inventory in real-time, and manage your Amazon and Shopify stores from one beautiful dashboard.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 mb-4">
@@ -265,24 +265,21 @@ const Home = () => {
               </Badge>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                Every marketplace order follows one intelligent workflow.
+                Every product follows one intelligent workflow.
               </h2>
 
               <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
-                From order capture to inventory synchronization, shipping, and analytics,
-                every step is automated inside one centralized workflow - eliminating manual
-                operations while keeping every marketplace perfectly synchronized.
+                From AI-powered catalog creation to real-time inventory synchronization and bulk product management, every step is automated within one centralized platform—helping you manage Amazon and Shopify stores more efficiently while reducing manual work and keeping your catalog accurate and up to date.
               </p>
 
               <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  { icon: ShoppingCart, label: "Centralized Order Processing" },
-                  { icon: Boxes, label: "Smart Inventory Updates" },
-                  { icon: Truck, label: "Automated Shipping Workflow" },
+                  { icon: Boxes, label: "Centralized Inventory Management" },
+                  { icon: RefreshCcw, label: "Smart Inventory Synchronization" },
+                  { icon: Wand2, label: "AI-powered Catalog Generation" },
                   { icon: BarChart3, label: "Real-time Business Visibility" },
-                  { icon: Layers, label: "Bulk Operations" },
+                  { icon: Layers, label: "Bulk Catalog Operations" },
                   { icon: Sparkles, label: "AI-powered Automation" },
-
                 ].map((f, i) => (
                   <div
                     key={i}
@@ -429,17 +426,17 @@ const Home = () => {
           </div>
         </section>
 
-        {/* INTEGRATIONS SECTOR - "Connect your business with that matters" */}
+        { }
         <section className="py-12 sm:py-14 lg:py-16 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
               {/* Left copy */}
               <div className="lg:col-span-5 reveal">
                 <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
-                  <Zap className="w-3.5 h-3.5 mr-1" /> 80+ Live Integrations
+                  <Zap className="w-3.5 h-3.5 mr-1" />  Amazon + Shopify Integrations
                 </Badge>
                 <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-slate-900 leading-tight mb-6">
-                  Connect your business with <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">everything you need.</span>
+                  Connect your <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Amazon and Shopify stores in minutes.</span>
                 </h2>
                 <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-8">
                   Bring inventory, orders, listings, analytics, and business operations together in one centralized platform. Automate repetitive tasks, improve accuracy, and keep your workflows running smoothly.

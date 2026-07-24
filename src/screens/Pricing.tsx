@@ -34,7 +34,6 @@ const COMPARE = [
   ['Marketplace connections', '3', '10', 'Unlimited'],
   ['Product listings', '5,000', '25,000', 'Unlimited'],
   ['Real-time inventory sync', false, true, true],
-  ['Automated repricing', false, true, true],
   ['Custom workflows', false, true, true],
   ['API access', false, false, true],
   ['Dedicated account manager', false, false, true],
@@ -47,9 +46,9 @@ const FAQS = [
     a: "Choose the plan that best fits your business and contact our team. We'll guide you through the onboarding and setup process."
   },
   { q: 'Can I change plans anytime?', a: 'Absolutely. Upgrade or downgrade at any time from your billing settings.' },
-  { q: 'What Marketplace are supported?', a: "Amazon, Shopify and more - and we'll build any missing one." },
+  { q: 'What Marketplace are supported?', a: "Currently Amazon and Shopify. We're building integrations based on seller demand." },
   { q: 'How is my data secured?', a: 'SOC 2 Type II certified, end-to-end encryption, regular pen-tests, and GDPR compliant.' },
-  { q: 'Do you offer migration help?', a: 'Yes, our white-glove onboarding team will migrate your listings, orders and history for free on Pro & Enterprise.' },
+  { q: 'Do you offer migration help?', a: 'Yes, our white-glove onboarding team will migrate your listings and catalog history for free on Pro & Enterprise.' },
   { q: 'What happens if I exceed limits?', a: "We'll notify you well before you hit a cap - no surprise charges, ever." },
 ];
 
@@ -63,20 +62,16 @@ const ADDONS = [
     desc: "Got a spreadsheet of products? Paste it in. Our AI writes complete Amazon and Shopify listings - titles, bullets, search terms - formatted exactly to each Marketplace's rules so you stop getting suppressed listings.",
   },
   {
-    title: 'A+ content managed in S3',
-    desc: "Every brand banner, comparison chart and lifestyle image lives in versioned cloud storage. Update once, and the latest creative pushes to Amazon Brand Registry instantly. No more 'which version is live?' confusion.",
-  },
-  {
-    title: 'BigQuery + Power BI pipeline',
-    desc: 'Every order, refund and ad-click streams into a Google BigQuery warehouse you control. Plug it into Power BI or Looker and ask the questions that move revenue - profit by SKU, customer lifetime value, channel ROI.',
-  },
-  {
-    title: 'Customer-behaviour analytics',
-    desc: "We learn from millions of orders to predict what your buyers want next. Surface bundle ideas, repurchase windows and the right ad audience - without you needing a data team.",
+    title: 'Listing asset library (S3)',
+    desc: 'Store brand banners, comparison charts and lifestyle images in organized S3 folders. Reuse across products and push directly to Amazon and Shopify listings.',
   },
   {
     title: 'Centralized catalog + FBA/FBM',
     desc: 'One golden record per SKU, mapped to every channel. Hybrid fulfillment routing decides whether to ship from FBA, your own warehouse or a 3PL - based on cost, speed and stock levels.',
+  },
+  {
+    title: 'AI listing mismatch retry',
+    desc: "When Amazon or Shopify rejects a listing, Ctasis AI rewrites the content and retries automatically — fixing titles, attributes and formatting until it passes. Full audit trail of every attempt.",
   },
 ];
 

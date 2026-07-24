@@ -34,7 +34,7 @@ const Services = () => {
     {
       eyebrow: "Core Platform",
       title: "Centralized inventory & pricing - one source of truth.",
-      desc: "Manage stock levels and pricing from one unified dashboard. Every update reflects instantly across Amazon, Shopify and more channels, so you never oversell or misprice a listing again.",
+      desc: "Manage stock levels and pricing from one unified dashboard. Every update reflects instantly across Amazon and Shopify, so you never oversell or misprice a listing again.",
       bullets: [
         "Single dashboard for stock and price",
         "Instant propagation to every connected channel",
@@ -45,44 +45,17 @@ const Services = () => {
       visual: <InventorySyncSVG className="w-full h-auto" />,
     },
     {
-      eyebrow: "Order Management",
-      title: "One inbox for every marketplace order.",
-      desc: "Receive and manage orders from every connected marketplace in a single inbox - no more switching tabs between platforms to fulfil orders.",
+      eyebrow: "AI Listing Retry",
+      title: "Listing mismatch? AI retries until it's right.",
+      desc: "When a listing gets suppressed or fails channel validation, Ctasis automatically retries with AI-optimized content - fixing titles, attributes and formatting until the listing goes live. No manual intervention needed.",
       bullets: [
-        "Unified order pipeline: capture → route → fulfil → close",
-        "Status writebacks to every channel automatically",
-        "Bulk actions across marketplaces",
-        "Notes, tags and assignment per order",
+        "Automatic detection of suppressed or rejected listings",
+        "AI rewrites content to match channel requirements",
+        "Retry loop with progressive improvements",
+        "Full audit trail of every attempt and fix",
       ],
-      icon: ShoppingCart,
-      visual: (
-        <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-4">
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-2 h-2 rounded-full bg-blue-600" />
-            <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Order inbox · today</div>
-            <div className="ml-auto text-[11px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full">241 open</div>
-          </div>
-          {[
-            { ch: "Amazon", dot: "#f59e0b", sku: "SKU-42891", qty: 2, price: "$59.90", state: "Ready to ship" },
-            { ch: "Shopify", dot: "#2563eb", sku: "SKU-11024", qty: 1, price: "$24.00", state: "Picked" },
-          ].map((o, i) => (
-            <div key={i} className="flex flex-wrap sm:grid sm:grid-cols-12 items-center gap-y-1 py-2.5 border-t border-slate-100 text-sm">
-              <div className="w-1/2 sm:w-auto sm:col-span-3 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full" style={{ background: o.dot }} />
-                <span className="font-semibold text-slate-800">{o.ch}</span>
-              </div>
-              <div className="w-1/3 sm:w-auto sm:col-span-3 text-slate-500 text-xs">{o.sku}</div>
-              <div className="w-1/3 sm:w-auto sm:col-span-2 text-slate-700">×{o.qty}</div>
-              <div className="w-1/3 sm:w-auto sm:col-span-2 font-semibold text-slate-900">{o.price}</div>
-              <div className="w-1/2 sm:w-auto sm:col-span-2 text-right sm:text-left">
-                <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${o.state === "New" ? "bg-blue-50 text-blue-700" : o.state === "Picked" ? "bg-amber-50 text-amber-700" : "bg-emerald-50 text-emerald-700"}`}>
-                  {o.state}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      ),
+      icon: Wand2,
+      visual: <AICatalogSVG className="w-full h-auto" />,
       reverse: true,
     },
     {
@@ -115,7 +88,7 @@ const Services = () => {
     {
       eyebrow: "Variants & Matching",
       title: "Variants and smart catalog matching.",
-      desc: "Create and manage variants (size, color, style) with consistent data across every channel. When your white-label listing matches an existing retail catalog entry, SellerBuz suggests switching to the matched retail listing - or continuing as a standalone product.",
+      desc: "Create and manage variants (size, color, style) with consistent data across every channel. Ctasis helps maintain accurate variant relationships and product data across your catalog.",
       bullets: [
         "Variation matrices with per-SKU inventory",
         "White-label vs retail catalog switch",
@@ -143,26 +116,12 @@ const Services = () => {
           <div className="mt-4 flex items-center gap-2 p-3 rounded-lg bg-blue-50 border border-blue-100">
             <GitMerge className="w-4 h-4 text-blue-700" />
             <div className="text-xs text-blue-900">
-              <span className="font-bold">Smart match found:</span> retail ASIN B0CX92K1LR - switch, or keep standalone.
+              <span className="font-bold">Variant sync complete:</span> All variants are synchronized across your catalog.
             </div>
           </div>
         </div>
       ),
     },
-    // {
-    //   eyebrow: "Growth",
-    //   title: "Built-in repricer, beside your inventory.",
-    //   desc: "Automatically adjust pricing based on competition, rules and market conditions - all managed from the same place as inventory. Buy Box aware for Amazon, competitor aware for the rest, with floor and ceiling guardrails per SKU.",
-    //   bullets: [
-    //     "Buy Box tracking on Amazon",
-    //     "Competitor-aware rules on Walmart, eBay, Fnac",
-    //     "Per-SKU floor and ceiling",
-    //     "Schedule-based promotional pricing",
-    //   ],
-    //   icon: DollarSign,
-    //   visual: <RepricerSVG className="w-full h-auto " />,
-    //   reverse: true,
-    // },
     {
       eyebrow: "Analytics",
       title: "Revenue and performance in one dashboard.",
@@ -195,7 +154,7 @@ const Services = () => {
     {
       eyebrow: "Operations",
       title: "Role-based access control.",
-      desc: "Enterprise-grade auth guards with configurable role creation. Let store owners, managers and staff access only what they need - with granular permissions for listings, orders, reports and billing.",
+      desc: "Enterprise-grade auth guards with configurable role creation. Let store owners, managers and staff access only what they need - with granular permissions for listings, inventory, reports and billing.",
       bullets: [
         "Custom roles with granular permissions",
         "Per-channel scoping",
@@ -227,7 +186,7 @@ const Services = () => {
             {[
               { l: "Validate rows", v: "12,480 / 12,480", ok: true },
               { l: "Detect conflicts", v: "0 blocking, 3 warnings", ok: true },
-              { l: "Publish to channels", v: "Amazon · Shopify · and more", ok: true },
+              { l: "Publish to channels", v: "Amazon · Shopify", ok: true },
             ].map((s) => (
               <div key={s.l} className="flex items-center gap-3 p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -247,9 +206,9 @@ const Services = () => {
         {/* HERO */}
         <PageHero
           badgeIcon={Sparkles}
-          badgeText="12 services · 1 platform"
+          badgeText="9 services · 1 platform"
           title={<>Services that <span className="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">do the heavy lifting.</span></>}
-          subtitle="From inventory sync to AI-powered demand forecasting - every service is designed to remove a manual task and add a measurable result."
+          subtitle="From inventory sync to AI-powered catalog optimization - every service is designed to remove a manual task and add a measurable result."
           visual={<ServicesHeroMockup className="w-full h-auto" />}
           actions={
             <>
@@ -300,7 +259,7 @@ const Services = () => {
           <div className="relative px-5 sm:px-8 lg:px-[70px] text-center">
             <Sparkles className="w-12 h-12 mx-auto text-blue-200 mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Ready to simplify your marketplace operations?</h2>
-            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">Manage Amazon, Shopify and more channels from one centralized platform</p>
+            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">Manage Amazon and Shopify from one centralized platform.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing">
                 <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 rounded-full px-8 h-12 border-0 shadow-lg">
