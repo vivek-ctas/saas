@@ -11,7 +11,7 @@ import {
   BarChart3, Sparkles, CheckCircle2, Layers,
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
-import { AssetLibraryMockup, ServicesHeroMockup, RolesIllustration, InventorySyncSVG, AICatalogSVG, /* RepricerSVG, */ AnalyticsDashboardSVG, SyncSequenceDiagramSVG } from "@/components/illustrations/servicePageIllustrations";
+import { AssetLibraryMockup, ServicesHeroMockup, RolesIllustration, InventorySyncSVG, AICatalogSVG, /* RepricerSVG, */ AnalyticsDashboardSVG, SyncSequenceDiagramSVG, SyncFlowDiagram } from "@/components/illustrations/servicePageIllustrations";
 import PageHero from "@/components/PageHero";
 
 
@@ -69,7 +69,7 @@ const Services = () => {
         "Full sync audit log",
       ],
       icon: RefreshCw,
-      visual: <SyncSequenceDiagramSVG className="w-full h-auto " />,
+      visual: <SyncFlowDiagram className="w-full h-auto " />,
     },
     {
       eyebrow: "AI Catalog",

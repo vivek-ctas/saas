@@ -23,9 +23,11 @@ import Link from "next/link";
 import Layout from "@/components/Layout";
 import {
   SellerHeroMockup, SyncIllustration,
-  InfraIllustration, MarketplaceMeshDiagram, ProblemDiagram,
+  InfraIllustration, MarketplaceMeshDiagram,
   InventoryDashboardSVG,
-  ListingWorkflowIllustration
+  ListingWorkflowIllustration,
+  EcosystemHubMockup,
+  SyncEngineDiagram
 } from "@/components/illustrations/homePageIllustrations";
 import { WorkflowIllustration } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
@@ -259,8 +261,8 @@ const Home = () => {
                 ))}
               </ul>
             </div>
-            <div className=" relative reveal lg:scale-105 xl:scale-110 origin-center">
-              <ProblemDiagram className="w-full h-auto " />
+            <div className="relative reveal lg:scale-105 xl:scale-110 origin-center">
+              <SyncEngineDiagram className="w-full h-auto" />
             </div>
           </div>
         </section>
@@ -578,7 +580,7 @@ const Home = () => {
               <div className="lg:col-span-7 reveal delay-200">
 
                 <div className="reveal lg:scale-105 xl:scale-110 origin-center">
-                  <MarketplaceMeshDiagram className="w-full h-auto" />
+                  <EcosystemHubMockup className="w-full h-auto" />
                 </div>
 
               </div>

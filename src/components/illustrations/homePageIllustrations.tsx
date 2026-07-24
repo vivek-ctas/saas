@@ -325,171 +325,199 @@ export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => {
 /* ------------------------------------------------------------------ */
 /* Sync Queue   */
 /* ------------------------------------------------------------------ */
-export const ProblemDiagram = (props: SVGProps<SVGSVGElement>) => {
 
-    const cards = [
-        {
-            x: 95, y: 55,
-            name: "Amazon Seller Central",
-            dots: ["#f59e0b", "#7c3aed", "#e2e8f0"],
-            badge: "Oversold ×3",
-            theme: "blue" as const,
-            wave: "M0 26 Q 16 8, 32 22 T 64 20 T 96 10 T 150 24 T 200 14",
-            endY: 14,
-        },
-        {
-            x: 545, y: 45,
-            name: "Etsy Shop Manager",
-            dots: ["#ef4444", "#e2e8f0", "#e2e8f0"],
-            badge: "Price mismatch",
-            theme: "purple" as const,
-            wave: "M0 18 Q 18 30, 34 16 T 70 24 T 110 8 T 150 22 T 200 12",
-            endY: 12,
-        },
-        {
-            x: 80, y: 400,
-            name: "inventory_master.xlsx",
-            dots: ["#10b981", "#7c3aed", "#e2e8f0"],
-            badge: "12 conflicts",
-            theme: "purple" as const,
-            wave: "M0 22 Q 20 6, 38 20 T 80 26 T 120 12 T 160 22 T 200 16",
-            endY: 16,
-        },
-        {
-            x: 545, y: 405,
-            name: "Walmart Seller Center",
-            dots: ["#1e3a8a", "#7c3aed", "#e2e8f0"],
-            badge: "3 hrs/day, by hand",
-            theme: "blue" as const,
-            wave: "M0 20 Q 16 32, 34 18 T 76 22 T 116 8 T 156 24 T 200 14",
-            endY: 14,
-        },
-    ];
+export const SyncEngineDiagram = (props: SVGProps<SVGSVGElement>) => {
 
-    const center = { x: 450, y: 315 };
-    const anchors = [
-        { x: 330, y: 195 },
-        { x: 565, y: 195 },
-        { x: 320, y: 405 },
-        { x: 565, y: 410 },
-    ];
+    const blue = "#2563EB";
+    const blueSoft = "#EFF6FF";
+    const blueBorder = "#93c1fa";
+    const blueText = "#1D4ED8";
 
-    function lerp(a: number, b: number, t: number) {
-        return a + (b - a) * t;
-    }
+    const green = "#10B981";
+    const greenSoft = "#ECFDF5";
+    const greenBorder = "#A7F3D0";
+    const greenText = "#059669";
 
+    const slate900 = "#0F172A";
+    const slateGray = "#8A94A6";
+    const cardBorder = "#E7E9F3";
 
-    const blue = "hsl(226 71% 50%)";
-    const blueSoft = "hsl(226 71% 95%)";
-    const blueBorder = "hsl(226 60% 82%)";
-    const purple = "hsl(262 60% 50%)";
-    const purpleSoft = "hsl(262 60% 96%)";
-    const purpleBorder = "hsl(262 45% 84%)";
-    const slate900 = "#0f172a";
+    const topCard = { x: 130, y: 24, w: 260, h: 210, rx: 20 };
+    const leftCard = { x: -100, y: 300, w: 190, h: 150, rx: 18 };
+    const rightCard = { x: 420, y: 300, w: 190, h: 150, rx: 18 };
+
+    const centerX = topCard.x + topCard.w / 2; // 260
+    const core = { x: centerX, y: 410 };
 
     return (
-        <svg viewBox="0 0 900 620" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <svg viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
             <defs>
-                <filter id="pd-shadow" x="-30%" y="-30%" width="160%" height="160%">
-                    <feGaussianBlur stdDeviation="8" />
-                    <feOffset dy="6" />
-                    <feComponentTransfer><feFuncA type="linear" slope="0.12" /></feComponentTransfer>
+                <filter id="se-shadow" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="10" />
+                    <feOffset dy="10" />
+                    <feComponentTransfer><feFuncA type="linear" slope="0.10" /></feComponentTransfer>
+                    <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+                <filter id="se-shadow-sm" x="-40%" y="-40%" width="180%" height="180%">
+                    <feGaussianBlur stdDeviation="5" />
+                    <feOffset dy="4" />
+                    <feComponentTransfer><feFuncA type="linear" slope="0.14" /></feComponentTransfer>
                     <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
                 </filter>
             </defs>
 
-            {/* Animated connector lines */}
-            {anchors.map((a, i) => (
-                <g key={"line" + i}>
-                    <line
-                        x1={a.x} y1={a.y} x2={center.x} y2={center.y}
-                        stroke={blue} strokeWidth={1.4} strokeDasharray="6 5" opacity={0.55}
-                    >
-                        <animate attributeName="stroke-dashoffset" values="0;-22" dur={`${1.8 + i * 0.3}s`} repeatCount="indefinite" />
-                    </line>
-                    <circle r="3" fill={blue} opacity={0.7}>
-                        <animateMotion dur={`${2.2 + i * 0.25}s`} repeatCount="indefinite"
-                            path={`M${a.x} ${a.y} L${center.x} ${center.y}`} />
-                    </circle>
+            <g transform="translate(152, 0) scale(0.8)">
+                {/* ================= TOP CARD: AMAZON ================= */}
+                <g filter="url(#se-shadow)">
+                    <rect x={topCard.x} y={topCard.y} width={topCard.w} height={topCard.h} rx={topCard.rx} fill="#ffffff" stroke={cardBorder} />
                 </g>
-            ))}
 
-            {/* Animated pulse rings around center */}
-            <circle cx={center.x} cy={center.y} r="56" fill={blue} opacity={0.12}>
-                <animate attributeName="r" values="56;100" dur="3s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.15;0" dur="3s" repeatCount="indefinite" />
-            </circle>
-            <circle cx={center.x} cy={center.y} r="56" fill={blue} opacity={0.08}>
-                <animate attributeName="r" values="56;130" dur="4s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.1;0" dur="4s" repeatCount="indefinite" />
-            </circle>
+                {/* amazon logo tile */}
+                <image href="/logos/amazon-color-svgrepo-com.svg" x={topCard.x + 26} y={topCard.y + 26} width="52" height="52" />
 
-            {/* Alert badges along the lines */}
-            {anchors.map((a, i) => {
-                const bx = lerp(a.x, center.x, 0.42);
-                const by = lerp(a.y, center.y, 0.42);
-                return (
-                    <g key={i} filter="url(#pd-shadow)">
-                        <circle cx={bx} cy={by} r="14" fill="#ffffff" stroke={blue} strokeWidth={1.6} />
-                        <line x1={bx} y1={by - 5} x2={bx} y2={by + 1.5} stroke={blue} strokeWidth={1.8} strokeLinecap="round" />
-                        <circle cx={bx} cy={by + 5} r="1.1" fill={blue} />
-                    </g>
-                );
-            })}
+                {/* title */}
+                <text x={topCard.x + 100} y={topCard.y + 46} fontFamily="Inter,system-ui" fontSize="25" fontWeight={800} fill={slate900}>
+                    Amazon
+                </text>
 
-            {/* Center sync queue */}
-            <g filter="url(#pd-shadow)">
-                <circle cx={center.x} cy={center.y} r="55" fill="#ffffff" stroke={blueBorder} strokeWidth={1.4} />
+                {/* connected badge */}
+                <rect x={topCard.x + 100} y={topCard.y + 60} width="110" height="26" rx="12" fill={greenSoft} stroke={greenBorder} />
+                <circle cx={topCard.x + 115} cy={topCard.y + 72} r="6" fill={green} />
+                <text x={topCard.x + 125} y={topCard.y + 76} fontFamily="Inter,system-ui" fontSize="14" fontWeight={700} fill={greenText}>
+                    Connected
+                </text>
+
+                {/* divider */}
+                <line x1={topCard.x} y1={topCard.y + 100} x2={topCard.x + topCard.w} y2={topCard.y + 100} stroke="#EEF0F6" strokeWidth={2.4} />
+
+                {/* stock stat */}
+                <text x={centerX} y={topCard.y + 130} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="13" fontWeight={600} fill={slateGray}>
+                    Stock
+                </text>
+                <text x={centerX} y={topCard.y + 165} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="30" fontWeight={800} fill={blueText}>
+                    12,480
+                </text>
+                <text x={centerX} y={topCard.y + 188} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="13" fontWeight={600} fill={slateGray}>
+                    SKUs
+                </text>
+
+                {/* ================= CONNECTOR: TOP -> CORE ================= */}
+                <line x1={centerX} y1={topCard.y + topCard.h} x2={centerX} y2={core.y - 95} stroke={blue} strokeWidth={1.6} strokeDasharray="5 5" opacity={0.6}>
+                    <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.6s" repeatCount="indefinite" />
+                </line>
+                <circle cx={centerX} cy={topCard.y + topCard.h} r="4" fill={blue} />
+                <circle cx={centerX} cy={core.y - 95} r="4" fill={blue} />
+
+                {/* ================= CONNECTOR: LEFT CARD -> CORE ================= */}
+                <line x1={leftCard.x + leftCard.w} y1={leftCard.y + leftCard.h / 2} x2={core.x - 95} y2={core.y} stroke={blue} strokeWidth={1.6} strokeDasharray="5 5" opacity={0.6}>
+                    <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.6s" repeatCount="indefinite" />
+                </line>
+                <circle cx={leftCard.x + leftCard.w + 3} cy={leftCard.y + leftCard.h / 2} r="4" fill={blue} />
+                <circle cx={core.x - 95} cy={core.y} r="4" fill={blue} />
+
+                {/* ================= CONNECTOR: RIGHT CARD -> CORE ================= */}
+                <line x1={rightCard.x} y1={rightCard.y + rightCard.h / 2} x2={core.x + 95} y2={core.y} stroke={blue} strokeWidth={1.6} strokeDasharray="5 5" opacity={0.6}>
+                    <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.6s" repeatCount="indefinite" />
+                </line>
+                <circle cx={rightCard.x - 3} cy={rightCard.y + rightCard.h / 2} r="4" fill={blue} />
+                <circle cx={core.x + 95} cy={core.y} r="4" fill={blue} />
+
+                {/* ================= SYNC ENGINE CORE ================= */}
+                <circle cx={core.x} cy={core.y} r="90" fill="none" stroke={blueBorder} strokeWidth={2.2} strokeDasharray="3 6" opacity={0.5}>
+                    <animateTransform attributeName="transform" type="rotate" from={`0 ${core.x} ${core.y}`} to={`360 ${core.x} ${core.y}`} dur="40s" repeatCount="indefinite" />
+                </circle>
+                <circle cx={core.x} cy={core.y} r="105" fill="none" stroke={blueBorder} strokeWidth={2.2} strokeDasharray="3 6" opacity={0.5}>
+                    <animateTransform attributeName="transform" type="rotate" from={`360 ${core.x} ${core.y}`} to={`0 ${core.x} ${core.y}`} dur="40s" repeatCount="indefinite" />
+                </circle>
+                <circle cx={core.x} cy={core.y} r="120" fill="none" stroke={blueBorder} strokeWidth={2.2} strokeDasharray="3 6" opacity={0.5}>
+                    <animateTransform attributeName="transform" type="rotate" from={`0 ${core.x} ${core.y}`} to={`360 ${core.x} ${core.y}`} dur="40s" repeatCount="indefinite" />
+                </circle>
+
+
+                <g filter="url(#se-shadow)">
+                    <circle cx={core.x} cy={core.y} r="80" fill={blueSoft} />
+                    <circle cx={core.x} cy={core.y} r="68" fill="#ffffff" stroke={blue} strokeWidth={2.4} />
+                </g>
+
+                {/* sync icon */}
+                <g transform={`translate(${core.x},${core.y - 32})`}>
+                    <path d="M-13 -1 A13 13 0 0 1 9 -11" fill="none" stroke={blue} strokeWidth={3} strokeLinecap="round" />
+                    <polygon points="9,-11 3,-12 7.5,-18" fill={blue} />
+                    <path d="M13 1 A13 13 0 0 1 -9 11" fill="none" stroke={blue} strokeWidth={3} strokeLinecap="round" />
+                    <polygon points="-9,11 -3,12 -7.5,18" fill={blue} />
+                </g>
+
+                <text x={core.x} y={core.y + 18} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="18" fontWeight={800} fill={blueText}>
+                    Sync Engine
+                </text>
+                <text x={core.x} y={core.y + 35} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="13" fontWeight={600} fill={slateGray}>
+                    Real-time sync
+                </text>
+
+                {/* latency pill */}
+                <rect x={core.x - 46} y={core.y + 50} width="92" height="22" rx="11" fill={blueSoft} stroke={blueBorder} />
+                <text x={core.x} y={core.y + 65} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="13.5" fontWeight={700} fill={blueText}>
+                    &lt; 2s latency
+                </text>
+
+                {/* ================= LEFT CARD: INVENTORY ================= */}
+                <g filter="url(#se-shadow)">
+                    <rect x={leftCard.x} y={leftCard.y} width={leftCard.w} height={leftCard.h} rx={leftCard.rx} fill="#ffffff" stroke={cardBorder} />
+                </g>
+                <rect x={leftCard.x + 20} y={leftCard.y + 20} width="44" height="44" rx="10" fill={blueSoft} />
+                <path
+                    d={`M${leftCard.x + 42} ${leftCard.y + 34} l12 7 v14 l-12 7 -12 -7 v-14 z M${leftCard.x + 42} ${leftCard.y + 34} l12 7 -12 7 -12 -7 z M${leftCard.x + 42} ${leftCard.y + 41} v17`}
+                    fill="none" stroke={blue} strokeWidth={1.6} strokeLinejoin="round"
+                />
+                <text x={leftCard.x + 20} y={leftCard.y + 96} fontFamily="Inter,system-ui" fontSize="16" fontWeight={800} fill={slate900}>
+                    Your Inventory
+                </text>
+                <text x={leftCard.x + 20} y={leftCard.y + 118} fontFamily="Inter,system-ui" fontSize="13" fontWeight={500} fill={slateGray}>
+                    Single source
+                </text>
+                <text x={leftCard.x + 20} y={leftCard.y + 134} fontFamily="Inter,system-ui" fontSize="13" fontWeight={500} fill={slateGray}>
+                    of truth
+                </text>
+
+                {/* ================= RIGHT CARD: LISTING & PRICING ================= */}
+                <g filter="url(#se-shadow)">
+                    <rect x={rightCard.x} y={rightCard.y} width={rightCard.w} height={rightCard.h} rx={rightCard.rx} fill="#ffffff" stroke={cardBorder} />
+                </g>
+                <rect x={rightCard.x + 20} y={rightCard.y + 20} width="44" height="44" rx="10" fill={blueSoft} />
+                <path
+                    d={`M${rightCard.x + 34} ${rightCard.y + 42} l6 6 12 -13`}
+                    fill="none" stroke={blue} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"
+                />
+                <text x={rightCard.x + 20} y={rightCard.y + 96} fontFamily="Inter,system-ui" fontSize="16" fontWeight={800} fill={slate900}>
+                    Listing &amp; Pricing
+                </text>
+                <text x={rightCard.x + 20} y={rightCard.y + 118} fontFamily="Inter,system-ui" fontSize="13" fontWeight={500} fill={slateGray}>
+                    Consistent across
+                </text>
+                <text x={rightCard.x + 20} y={rightCard.y + 134} fontFamily="Inter,system-ui" fontSize="13" fontWeight={500} fill={slateGray}>
+                    Amazon
+                </text>
+
+                {/* ================= CONNECTOR: CORE -> BOTTOM PILL ================= */}
+                <line x1={core.x} y1={core.y + 98} x2={core.x} y2={580} stroke={blue} strokeWidth={1.6} strokeDasharray="5 5" opacity={0.6}>
+                    <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.6s" repeatCount="indefinite" />
+                </line>
+                <circle cx={core.x} cy={core.y + 98} r="4" fill={blue} />
+                <circle cx={core.x} cy={578} r="4" fill={blue} />
+
+                {/* ================= BOTTOM PILL ================= */}
+                <g filter="url(#se-shadow-sm)">
+                    <rect x={core.x - 180} y={580} width="365" height="45" rx="21" fill="#ffffff" stroke={blueBorder} />
+                </g>
+                <circle cx={core.x - 140} cy={602} r="14" fill={blue} />
+                <path
+                    d={`M${core.x - 145} ${602} l3,3 l6,-6`}
+                    fill="none" stroke="#ffffff" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round"
+                />
+                <text x={core.x + 25} y={608} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="16" fontWeight={700} fill={blueText}>
+                    One update. Everywhere. Every time.
+                </text>
             </g>
-            <g transform={`translate(${center.x},${center.y - 12})`}>
-                <path d="M-10 -1 A10 10 0 0 1 7 -8.5" fill="none" stroke={blue} strokeWidth={2.4} strokeLinecap="round" />
-                <polygon points="7,-8.5 2.5,-9.2 6,-13.4" fill={blue} />
-                <path d="M10 1 A10 10 0 0 1 -7 8.5" fill="none" stroke={blue} strokeWidth={2.4} strokeLinecap="round" />
-                <polygon points="-7,8.5 -2.5,9.2 -6,13.4" fill={blue} />
-            </g>
-            <text x={center.x} y={center.y + 26} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="12" fontWeight={700} fill={blue}>
-                Sync Queue
-            </text>
-
-            {/* Marketplace / file cards */}
-            {cards.map((c, i) => {
-                const soft = c.theme === "blue" ? blueSoft : purpleSoft;
-                const mid = c.theme === "blue" ? blue : purple;
-                const bord = c.theme === "blue" ? blueBorder : purpleBorder;
-                return (
-                    <g key={i}>
-                        <g filter="url(#pd-shadow)">
-                            <rect x={c.x} y={c.y} width="260" height="175" rx="16" fill="#ffffff" stroke="#e6e9f5" />
-                        </g>
-
-                        {/* traffic dots */}
-                        <circle cx={c.x + 22} cy={c.y + 26} r="5" fill={c.dots[0]} />
-                        <circle cx={c.x + 38} cy={c.y + 26} r="5" fill={c.dots[1]} />
-                        <circle cx={c.x + 54} cy={c.y + 26} r="5" fill={c.dots[2]} />
-
-                        {/* title */}
-                        <text x={c.x + 22} y={c.y + 56} fontFamily="Inter,system-ui" fontSize="16.5" fontWeight={700} fill={slate900}>
-                            {c.name}
-                        </text>
-
-                        {/* badge */}
-                        <rect x={c.x + 20} y={c.y + 68} width={c.badge.length * 6.6 + 34} height="26" rx="13" fill={soft} stroke={bord} />
-                        <circle cx={c.x + 34} cy={c.y + 81} r="6.5" fill="none" stroke={mid} strokeWidth={1.4} />
-                        <line x1={c.x + 34} y1={c.y + 77.5} x2={c.x + 34} y2={c.y + 81.5} stroke={mid} strokeWidth={1.3} strokeLinecap="round" />
-                        <circle cx={c.x + 34} cy={c.y + 84.5} r="0.9" fill={mid} />
-                        <text x={c.x + 46} y={c.y + 85.5} fontFamily="Inter,system-ui" fontSize="12.5" fontWeight={700} fill={mid}>
-                            {c.badge}
-                        </text>
-
-                        {/* sparkline */}
-                        <g transform={`translate(${c.x + 20},${c.y + 108})`}>
-                            <path d={c.wave} fill="none" stroke={mid} strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
-                            <circle cx="200" cy={c.endY} r="7" fill={mid} opacity={0.18} />
-                            <circle cx="200" cy={c.endY} r="4" fill={mid} />
-                        </g>
-                    </g>
-                );
-            })}
         </svg>
     );
 };
@@ -824,10 +852,7 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
         </defs>
         {/* channel cards left */}
         {[
-            { y: 70, name: "Amazon", logo: "/logos/amazon-color-svgrepo-com.svg" },
-            { y: 145, name: "Walmart", logo: "/logos/walmart.png" },
-            { y: 220, name: "eBay", logo: "/logos/EBay_logo.svg.webp" },
-            { y: 295, name: "Etsy", logo: "/logos/etsy-svgrepo-com.svg" },
+            { y: 190, name: "Amazon", logo: "/logos/amazon-color-svgrepo-com.svg" },
         ].map((c) => (
             <g key={c.name} filter="url(#hd-sh)">
                 <rect x="28" y={c.y} width="150" height="50" rx="10" fill="white" stroke="#e2e8f0" />
@@ -840,13 +865,13 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
 
         {/* core engine */}
         <g filter="url(#hd-sh)">
-            <rect x="220" y="140" width="150" height="150" rx="18" fill="url(#hd-core)" />
-            <circle cx="295" cy="200" r="26" fill="#fff" opacity="0.14" />
-            <circle cx="295" cy="200" r="16" fill="#fff" />
-            <path d="M289 200l4 4 8-8" stroke="#1e3a8a" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-            <text x="295" y="240" textAnchor="middle" fontFamily="Inter" fontSize="13" fontWeight="800" fill="#fff">SellerBuz Core</text>
-            <text x="295" y="256" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#bfdbfe">Inventory · Pricing · Orders</text>
-            <text x="295" y="272" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#bfdbfe">Real-time · 2-way sync</text>
+            <rect x="210" y="140" width="150" height="150" rx="18" fill="url(#hd-core)" />
+            <circle cx="285" cy="200" r="26" fill="#fff" opacity="0.14" />
+            <circle cx="285" cy="200" r="16" fill="#fff" />
+            <path d="M279 200l4 4 8-8" stroke="#1e3a8a" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <text x="285" y="256" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#bfdbfe">Inventory · Pricing · Orders</text>
+            <text x="285" y="240" textAnchor="middle" fontFamily="Inter" fontSize="13" fontWeight="800" fill="#fff">SellerBuz Core</text>
+            <text x="285" y="272" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#bfdbfe">Real-time · 2-way sync</text>
         </g>
 
         {/* right output cards */}
@@ -867,14 +892,14 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
         ))}
 
         {/* ── left arrows (channel → core) with flowing dots ── */}
-        {[95, 170, 245, 320].map((y, i) => (
+        {[215].map((y, i) => (
             <g key={"l" + y}>
-                <line x1="180" y1={y} x2="218" y2="215" stroke="#60a5fa" strokeWidth="1.4" strokeDasharray="4 4">
+                <line x1="170" y1={y} x2="208" y2="215" stroke="#60a5fa" strokeWidth="1.4" strokeDasharray="4 4">
                     <animate attributeName="stroke-dashoffset" values="0;-16" dur={`${1.2 + i * 0.15}s`} repeatCount="indefinite" />
                 </line>
                 <circle r="3" fill="#60a5fa" opacity="0.8">
                     <animateMotion dur={`${1.8 + i * 0.2}s`} repeatCount="indefinite"
-                        path={`M180 ${y} L218 215`} />
+                        path={`M180 ${y} L208 215`} />
                 </circle>
             </g>
         ))}
@@ -882,12 +907,12 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
         {/* ── right arrows (core → output) with flowing dots ── */}
         {[95, 170, 245, 320].map((y, i) => (
             <g key={"r" + y}>
-                <line x1="372" y1="215" x2="390" y2={y} stroke="#2563eb" strokeWidth="1.4" strokeDasharray="4 4">
+                <line x1="360" y1="215" x2="390" y2={y} stroke="#2563eb" strokeWidth="1.4" strokeDasharray="4 4">
                     <animate attributeName="stroke-dashoffset" values="0;-16" dur={`${1.2 + i * 0.15}s`} repeatCount="indefinite" />
                 </line>
                 <circle r="3" fill="#2563eb" opacity="0.8">
                     <animateMotion dur={`${1.8 + i * 0.2}s`} repeatCount="indefinite"
-                        path={`M372 215 L390 ${y}`} />
+                        path={`M360 215 L390 ${y}`} />
                 </circle>
             </g>
         ))}
@@ -1650,6 +1675,250 @@ export const ListingWorkflowIllustration = (props: SVGProps<SVGSVGElement>) => {
                 <text x="20" y="30" fontFamily="Inter,system-ui" fontSize="20" fontWeight={800} fill={blue}>Whitelabel</text>
                 <text x="20" y="50" fontFamily="Inter,system-ui" fontSize="12" fontWeight={500} fill={slate600}>Listings go live under your brand</text>
                 <text x="20" y="70" fontFamily="Inter,system-ui" fontSize="10.5" fontWeight={700} fill={blue}>no marketplace co-branding</text>
+            </g>
+        </svg>
+    );
+};
+
+
+type FeatureIcon = "box" | "tag" | "cart" | "chart";
+
+type FeatureItem = {
+    icon: FeatureIcon;
+    color: string;
+    bg: string;
+    title: string;
+    desc: string;
+};
+
+const defaultFeatures: FeatureItem[] = [
+    { icon: "box", color: "#2563EB", bg: "#eff6ff", title: "Inventory Sync", desc: "Real-time updates" },
+    { icon: "tag", color: "#1D4ED8", bg: "#dbeafe", title: "Auto Repricer", desc: "AI-powered pricing" },
+    { icon: "cart", color: "#ef4444", bg: "#fee2e2", title: "Order Management", desc: "Centralized orders" },
+    { icon: "chart", color: "#10b981", bg: "#d1fae5", title: "Listing Management", desc: "Bulk & AI optimized" },
+];
+
+function FeatureGlyph({ icon, color }: { icon: FeatureIcon; color: string }) {
+    return (
+        <g stroke={color} strokeWidth={1.8} fill="none" strokeLinecap="round" strokeLinejoin="round">
+            {icon === "box" && (
+                <>
+                    <path d="M-9 -3 L0 -8 L9 -3 V6 L0 11 L-9 6 Z" />
+                    <path d="M-9 -3 L0 2 L9 -3 M0 2 V11" />
+                </>
+            )}
+            {icon === "tag" && (
+                <>
+                    <path d="M-8 -8 H2 L9 -1 L-1 9 L-8 2 Z" />
+                    <circle cx="-4.5" cy="-4.5" r="1.6" fill={color} stroke="none" />
+                </>
+            )}
+            {icon === "cart" && (
+                <>
+                    <path d="M-10 -7 h3 l3 13 h11" />
+                    <path d="M-3 -2 h16 l-2 7 h-12 z" />
+                    <circle cx="2" cy="9" r="1.7" fill={color} stroke="none" />
+                    <circle cx="10" cy="9" r="1.7" fill={color} stroke="none" />
+                </>
+            )}
+            {icon === "chart" && (
+                <g fill={color} stroke="none">
+                    <rect x="-8" y="0" width="4" height="9" rx="1" />
+                    <rect x="-1.5" y="-6" width="4" height="15" rx="1" />
+                    <rect x="5" y="-3" width="4" height="12" rx="1" />
+                </g>
+            )}
+        </g>
+    );
+}
+
+export const EcosystemHubMockup = ({
+    sourceLabel = "Marketplace",
+    sourceStatus = "Connected",
+    hubTitle = "Ctasis Core",
+    hubSubtitle = "Sync Engine",
+    trustTitle = "Secure • Reliable • Scalable",
+    trustSubtitle = "Built for serious sellers",
+    features = defaultFeatures,
+    ...props
+}: {
+    sourceLabel?: string;
+    sourceStatus?: string;
+    hubTitle?: string;
+    hubSubtitle?: string;
+    trustTitle?: string;
+    trustSubtitle?: string;
+    features?: FeatureItem[];
+} & SVGProps<SVGSVGElement>) => {
+    const blue = "#2563EB";
+    const blueDeep = "#1D4ED8";
+    const ink = "#0f172a";
+    const muted = "#64748b";
+    const border = "#e6e9f5";
+
+    const hub = { cx: 165, cy: 360, r: 92 };
+    const cardX = 375, cardW = 250, cardH = 84, cardGap = 22;
+    const cardYs = features.map((_, i) => 148 + i * (cardH + cardGap));
+
+    return (
+        <svg viewBox="0 0 720 480" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+            <defs>
+                <linearGradient id="eh-hub" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0%" stopColor={blue} />
+                    <stop offset="100%" stopColor={blueDeep} />
+                </linearGradient>
+                <filter id="eh-shadow" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="8" />
+                    <feOffset dy="6" />
+                    <feComponentTransfer><feFuncA type="linear" slope="0.14" /></feComponentTransfer>
+                    <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+                <clipPath id="ehLogoClip">
+                    <circle cx="0" cy="0" r="34" />
+                </clipPath>
+            </defs>
+
+            <g transform="translate(145, 0) scale(0.72)">
+                {/* Source node – Amazon logo (InventoryDashboardSVG pattern) */}
+                <circle cx={hub.cx} cy="85" r="48" fill="none" stroke={blue} strokeWidth="1" opacity="0.18">
+                    <animate attributeName="r" values="44;54;44" dur="2.6s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="0.12;0.3;0.12" dur="2.6s" repeatCount="indefinite" />
+                </circle>
+                <g filter="url(#eh-shadow)">
+                    <circle cx={hub.cx} cy="85" r="42" fill="#FFFFFF" stroke={blue} strokeWidth="2" strokeDasharray="4 4">
+                        <animate attributeName="stroke-dashoffset" values="0;-16" dur="3s" repeatCount="indefinite" />
+                    </circle>
+                </g>
+                <g transform={`translate(${hub.cx},85)`}>
+                    <image href="/logos/amazon-color-svgrepo-com.svg" x="-24" y="-22" width="50" height="50" clipPath="url(#ehLogoClip)" />
+                </g>
+                {/* Connected badge */}
+                <circle cx={hub.cx + 46} cy="35" r="8" fill="#10b981" stroke="white" strokeWidth={3}>
+                    <animate attributeName="r" values="8;9.5;8" dur="2.2s" repeatCount="indefinite" />
+                </circle>
+
+                <text x={hub.cx} y="168" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="17" fontWeight={800} fill={ink}>
+                    {sourceLabel}
+                </text>
+                <rect x={hub.cx - 52} y="182" width="104" height="26" rx="13" fill="#ecfdf5" stroke="#a7f3d0" />
+                <circle cx={hub.cx - 34} cy="195" r="3.5" fill="#10b981" />
+                <text x={hub.cx + 6} y="199" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10.5" fontWeight={700} fill="#047857">
+                    {sourceStatus}
+                </text>
+
+                {/* Line: source → hub (animated) */}
+                <line x1={hub.cx} y1="208" x2={hub.cx} y2={hub.cy - hub.r} stroke={blue} strokeWidth={2} strokeDasharray="6 6" strokeLinecap="round" opacity={0.55}>
+                    <animate attributeName="stroke-dashoffset" values="0;-24" dur="1.8s" repeatCount="indefinite" />
+                </line>
+                <circle r="3" fill={blue} opacity={0.7}>
+                    <animateMotion dur="1.8s" repeatCount="indefinite"
+                        path={`M${hub.cx} 208 L${hub.cx} ${hub.cy - hub.r}`} />
+                </circle>
+
+                {/* Hub glow rings (subtle pulse) */}
+                <circle cx={hub.cx} cy={hub.cy} r={hub.r + 46} fill={blue} opacity={0.05}>
+                    <animate attributeName="opacity" values="0.05;0.08;0.05" dur="4s" repeatCount="indefinite" />
+                </circle>
+                <circle cx={hub.cx} cy={hub.cy} r={hub.r + 24} fill={blue} opacity={0.09}>
+                    <animate attributeName="opacity" values="0.09;0.13;0.09" dur="4s" repeatCount="indefinite" />
+                </circle>
+                <g filter="url(#eh-shadow)">
+                    <circle cx={hub.cx} cy={hub.cy} r={hub.r} fill="url(#eh-hub)" />
+                </g>
+
+                {/* Refresh icon */}
+                <g transform={`translate(${hub.cx},${hub.cy - 34})`}>
+                    <g stroke="white" strokeWidth={2.6} fill="none" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M-13 -1 A13 13 0 0 1 9.5 -11" />
+                        <polygon points="9.5,-11 3,-12 8,-18" fill="white" />
+                        <path d="M13 1 A13 13 0 0 1 -9.5 11" />
+                        <polygon points="-9.5,11 -3,12 -8,18" fill="white" />
+                    </g>
+                </g>
+                <text x={hub.cx} y={hub.cy + 8} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="18" fontWeight={800} fill="white">
+                    {hubTitle}
+                </text>
+                <text x={hub.cx} y={hub.cy + 28} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="11.5" fill="#bfdbfe">
+                    {hubSubtitle}
+                </text>
+
+                {/* Line: hub → trust badge (animated) */}
+                <line x1={hub.cx} y1={hub.cy + hub.r} x2={hub.cx} y2="516" stroke={blue} strokeWidth={2} strokeDasharray="6 6" strokeLinecap="round" opacity={0.55}>
+                    <animate attributeName="stroke-dashoffset" values="0;-24" dur="1.8s" repeatCount="indefinite" />
+                </line>
+                <circle r="3" fill={blue} opacity={0.7}>
+                    <animateMotion dur="1.8s" repeatCount="indefinite"
+                        path={`M${hub.cx} ${hub.cy + hub.r} L${hub.cx} 516`} />
+                </circle>
+
+                {/* Shield node */}
+                <g filter="url(#eh-shadow)">
+                    <circle cx={hub.cx} cy="546" r="28" fill="white" stroke={border} />
+                </g>
+                <g transform={`translate(${hub.cx},${546})`} stroke="#10b981" strokeWidth={1.8} fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M0 -10 L9 -6.5 V2 C9 8 4.5 11.5 0 13.5 C-4.5 11.5 -9 8 -9 2 V-6.5 Z" />
+                    <path d="M-4.5 0.5 L-1 4 L5 -3" />
+                </g>
+
+                {/* Trust card */}
+                <g filter="url(#eh-shadow)">
+                    <rect x={hub.cx - 148} y="580" width="296" height="76" rx="18" fill="white" stroke={border} />
+                </g>
+                <text x={hub.cx} y="614" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="14.5" fontWeight={800} fill={ink}>
+                    {trustTitle}
+                </text>
+                <text x={hub.cx} y="636" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="11.5" fill={muted}>
+                    {trustSubtitle}
+                </text>
+
+                {/* Feature cards + curved connectors (animated) */}
+                {features.map((f, i) => {
+                    const y = cardYs[i];
+                    const cy = y + cardH / 2;
+                    const hx = hub.cx + hub.r;
+                    const hy = hub.cy + (i - (features.length - 1) / 2) * 10;
+                    const midX = (hx + cardX) / 2;
+                    const curveD = `M ${hx} ${hy} C ${midX} ${hy}, ${midX} ${cy}, ${cardX} ${cy}`;
+                    return (
+                        <g key={f.title}>
+                            <path
+                                d={curveD}
+                                fill="none"
+                                stroke={blue}
+                                strokeWidth={2}
+                                strokeDasharray="6 6"
+                                strokeLinecap="round"
+                                opacity={0.55}
+                            >
+                                <animate attributeName="stroke-dashoffset" values="0;-24" dur={`${1.6 + i * 0.15}s`} repeatCount="indefinite" />
+                            </path>
+                            <circle cx={hx} cy={hy} r="4.5" fill={blueDeep}>
+                                <animate attributeName="r" values="4.5;6;4.5" dur="3s" repeatCount="indefinite" />
+                            </circle>
+                            <circle cx={cardX} cy={cy} r="4.5" fill={blueDeep}>
+                                <animate attributeName="r" values="4.5;6;4.5" dur="3s" repeatCount="indefinite" />
+                            </circle>
+                            <circle r="3" fill={blue} opacity={0.7}>
+                                <animateMotion dur={`${2 + i * 0.2}s`} repeatCount="indefinite"
+                                    path={curveD} />
+                            </circle>
+
+                            <g filter="url(#eh-shadow)">
+                                <rect x={cardX} y={y} width={cardW} height={cardH} rx="16" fill="white" stroke={border} />
+                            </g>
+                            <circle cx={cardX + 40} cy={cy} r="24" fill={f.bg} />
+                            <g transform={`translate(${cardX + 40},${cy})`}>
+                                <FeatureGlyph icon={f.icon} color={f.color} />
+                            </g>
+                            <text x={cardX + 78} y={cy - 4} fontFamily="Inter,system-ui" fontSize="14.5" fontWeight={800} fill={ink}>
+                                {f.title}
+                            </text>
+                            <text x={cardX + 78} y={cy + 16} fontFamily="Inter,system-ui" fontSize="11.5" fill={muted}>
+                                {f.desc}
+                            </text>
+                        </g>
+                    );
+                })}
             </g>
         </svg>
     );
