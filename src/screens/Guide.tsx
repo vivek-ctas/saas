@@ -8,6 +8,9 @@ import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import { GuideEditorialMockup } from "@/components/illustrations/guidesPageIllustrations";
 import { useReveal } from "@/hooks/use-reveal";
+import { ProductListingGuide } from "@/components/illustrations/ProductListingGuide";
+import { ConnectAmazonGuide } from "@/components/illustrations/ConnectAmazonGuide";
+import { SyncCatalogGuide } from "@/components/illustrations/SyncCatalogGuide";
 
 const posts = [
   {
@@ -74,6 +77,15 @@ const Guide = () => {
             </Link>
           }
         />
+
+        {/* GUIDE SECTION – Step 1: Create Your Product Listing */}
+        <ProductListingGuide />
+
+        {/* GUIDE SECTION – Step 2: Connect Your Amazon Store */}
+        <ConnectAmazonGuide />
+
+        {/* GUIDE SECTION – Step 3: From My Catalog to Amazon Inventory */}
+        <SyncCatalogGuide />
 
         {/* FEATURED POST */}
         <section className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3]">
