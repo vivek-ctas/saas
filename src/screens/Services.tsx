@@ -11,7 +11,7 @@ import {
   BarChart3, Sparkles, CheckCircle2, Layers,
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
-import { AssetLibraryMockup, ServicesHeroMockup, RolesIllustration, InventorySyncSVG, AICatalogSVG, /* RepricerSVG, */ AnalyticsDashboardSVG, SyncSequenceDiagramSVG, SyncFlowDiagram } from "@/components/illustrations/servicePageIllustrations";
+import { AssetLibraryMockup, ServicesHeroMockup, RolesIllustration, InventorySyncSVG, AICatalogSVG, /* RepricerSVG, */ AnalyticsDashboardSVG, SyncSequenceDiagramSVG, SyncFlowDiagram, SyncFlowDiagramV2 } from "@/components/illustrations/servicePageIllustrations";
 import PageHero from "@/components/PageHero";
 
 
@@ -42,7 +42,7 @@ const Services = () => {
         "Real-time low-stock alerts",
       ],
       icon: Boxes,
-      visual: <InventorySyncSVG className="w-full h-auto" />,
+      visual: <SyncFlowDiagramV2 className="w-full h-auto" />,
     },
     {
       eyebrow: "AI Listing Retry",

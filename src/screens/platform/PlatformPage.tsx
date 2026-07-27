@@ -326,109 +326,280 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
         )}
 
         {/* ═══════════════════════════════════════
-            CHANNEL PIPELINE
+            CHANNEL PIPELINE  –  redesigned
             "From warehouse to marketplace in
-             milliseconds." – horizontal flow visual
-            Warehouse → Sync Engine → Channels → Customers
+             milliseconds." – reference-image layout
         ═══════════════════════════════════════ */}
         {cfg.channels && (
-          <section className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3] relative overflow-hidden">
-            <div className="px-5 sm:px-8 lg:px-[70px]">
-              <div className="text-center mb-10 reveal">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-slate-400 mb-2">Works seamlessly with</p>
-                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">
-                  From warehouse to marketplace in milliseconds.
-                </h3>
+          <section className="py-16 sm:py-20 lg:py-24 bg-[#F7F9FC] border-t border-[#EAECF3] relative overflow-hidden">
+            {/* Subtle background decoration */}
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-b from-blue-50/60 to-transparent rounded-full blur-3xl" />
+            </div>
+
+            {/* ── Keyframe styles ── */}
+            <style>{`
+              @keyframes flowDot {
+                0%   { transform: translateX(0);   opacity: 0; }
+                15%  { opacity: 1; }
+                85%  { opacity: 1; }
+                100% { transform: translateX(80px); opacity: 0; }
+              }
+              @keyframes pipelinePulse {
+                0%, 100% { box-shadow: 0 0 0 0 rgba(37,99,235,0.3); }
+                50%       { box-shadow: 0 0 0 8px rgba(37,99,235,0); }
+              }
+              .flow-dot {
+                animation: flowDot 1.8s ease-in-out infinite;
+              }
+              .flow-dot-d1 { animation-delay: 0.0s; }
+              .flow-dot-d2 { animation-delay: 0.6s; }
+              .flow-dot-d3 { animation-delay: 1.2s; }
+              .pipeline-pulse { animation: pipelinePulse 2.4s ease-in-out infinite; }
+            `}</style>
+
+            <div className="relative px-5 sm:px-8 lg:px-[70px]">
+
+              {/* ── Header ── */}
+              <div className="text-center mb-12 reveal">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-blue-200 shadow-sm text-blue-700 text-xs font-semibold mb-5">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  Lightning Fast Sync
+                </span>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-3">
+                  From warehouse to{" "}
+                  <span className="text-blue-600">marketplace</span>
+                  <br className="hidden sm:block" /> in milliseconds.
+                </h2>
+                <p className="text-slate-500 text-base sm:text-lg">
+                  One update. Real-time sync. Zero delays.
+                </p>
               </div>
 
-              {/* Horizontal pipeline flow */}
-              <div className="reveal delay-100 flex flex-wrap lg:flex-nowrap items-center justify-center gap-2 lg:gap-0 overflow-x-auto pb-2">
+              {/* ── Pipeline Flow ── */}
+              <div className="reveal delay-100">
 
-                {/* Warehouse node */}
-                <div className="flex flex-col items-center gap-2 shrink-0">
-                  <div className="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center">
-                    <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                {/* Desktop / Tablet: horizontal */}
+                <div className="hidden md:flex items-center justify-center gap-0">
+
+                  {/* ── Stage 1: Warehouse ── */}
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="w-[148px] bg-white border border-slate-200/80 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 hover:border-blue-200 transition-all duration-300 p-4 flex flex-col items-center gap-3 cursor-default">
+                      <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center pipeline-pulse">
+                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-sm font-bold text-slate-800">Warehouse</p>
+                        <p className="text-[11px] text-slate-400 mt-0.5">Stock Update</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ── Connector 1 ── */}
+                  <div className="relative flex items-center w-16 shrink-0 overflow-visible">
+                    <div className="w-full border-t-2 border-dashed border-blue-200" />
+                    <div className="flow-dot flow-dot-d1 absolute left-0 w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_6px_rgba(37,99,235,0.6)]" />
+                    <div className="flow-dot flow-dot-d2 absolute left-0 w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_6px_rgba(37,99,235,0.4)]" />
+                    <div className="flow-dot flow-dot-d3 absolute left-0 w-2 h-2 rounded-full bg-blue-300 shadow-[0_0_6px_rgba(37,99,235,0.3)]" />
+                    <svg className="absolute right-0 w-3 h-3 text-blue-400" fill="currentColor" viewBox="0 0 8 8">
+                      <polygon points="0,0 8,4 0,8" />
                     </svg>
                   </div>
-                  <span className="text-[11px] text-slate-500 font-medium">Warehouse</span>
-                </div>
 
-                {/* Arrow connector */}
-                <div className="hidden lg:flex items-center px-2">
-                  <div className="w-8 h-px bg-slate-300" />
-                  <div className="w-0 h-0 border-t-[4px] border-b-[4px] border-l-[6px] border-t-transparent border-b-transparent border-l-slate-400" />
-                </div>
+                  {/* ── Stage 2: Sync Engine ── */}
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="w-[148px] bg-white border border-slate-200/80 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 hover:border-blue-200 transition-all duration-300 p-4 flex flex-col items-center gap-3 cursor-default">
+                      <div className="w-12 h-12 rounded-full bg-blue-100 border-2 border-blue-300 flex items-center justify-center pipeline-pulse" style={{ animationDelay: "0.4s" }}>
+                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-sm font-bold text-slate-800">Sync Engine</p>
+                        <p className="text-[11px] text-slate-400 mt-0.5">Processing Update</p>
+                      </div>
+                    </div>
+                  </div>
 
-                {/* Sync Engine node */}
-                <div className="flex flex-col items-center gap-2 shrink-0">
-                  <div className="w-16 h-16 rounded-full bg-blue-100 border-2 border-blue-300 flex items-center justify-center shadow-lg shadow-blue-100">
-                    <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  {/* ── Connector 2 ── */}
+                  <div className="relative flex items-center w-16 shrink-0 overflow-visible">
+                    <div className="w-full border-t-2 border-dashed border-blue-200" />
+                    <div className="flow-dot flow-dot-d2 absolute left-0 w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_6px_rgba(37,99,235,0.6)]" />
+                    <div className="flow-dot flow-dot-d3 absolute left-0 w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_6px_rgba(37,99,235,0.4)]" />
+                    <svg className="absolute right-0 w-3 h-3 text-blue-400" fill="currentColor" viewBox="0 0 8 8">
+                      <polygon points="0,0 8,4 0,8" />
                     </svg>
                   </div>
-                  <span className="text-[11px] text-blue-700 font-semibold">Sync Engine</span>
-                </div>
 
-                {/* Arrow connector */}
-                <div className="hidden lg:flex items-center px-2">
-                  <div className="w-8 h-px bg-slate-300" />
-                  <div className="w-0 h-0 border-t-[4px] border-b-[4px] border-l-[6px] border-t-transparent border-b-transparent border-l-slate-400" />
-                </div>
+                  {/* ── Stage 3: Data Sent ── */}
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="w-[148px] bg-white border border-slate-200/80 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 hover:border-blue-200 transition-all duration-300 p-4 flex flex-col items-center gap-3 cursor-default">
+                      <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center pipeline-pulse" style={{ animationDelay: "0.8s" }}>
+                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                        </svg>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-sm font-bold text-slate-800">Data Sent</p>
+                        <p className="text-[11px] text-slate-400 mt-0.5">Secure Transmission</p>
+                      </div>
+                    </div>
+                  </div>
 
-                {/* Channel nodes */}
-                <div className="flex flex-wrap lg:flex-nowrap items-center gap-2 lg:gap-0">
-                  {cfg.channels.map((c, idx) => (
-                    <div key={c} className="flex items-center">
-                      <Link
-                        href={`/marketplaces/${c.toLowerCase()}`}
-                        className="group flex flex-col items-center gap-2 shrink-0"
-                      >
-                        <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-200 hover:bg-blue-100 hover:border-blue-300 transition-all duration-200 flex items-center justify-center group-hover:scale-105">
-                          <span className="text-blue-700 font-bold text-[13px]">{c.slice(0, 1)}</span>
+                  {/* ── Connector 3 ── */}
+                  <div className="relative flex items-center w-16 shrink-0 overflow-visible">
+                    <div className="w-full border-t-2 border-dashed border-blue-200" />
+                    <div className="flow-dot flow-dot-d1 absolute left-0 w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_6px_rgba(37,99,235,0.6)]" />
+                    <div className="flow-dot flow-dot-d2 absolute left-0 w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_6px_rgba(37,99,235,0.4)]" />
+                    <svg className="absolute right-0 w-3 h-3 text-blue-400" fill="currentColor" viewBox="0 0 8 8">
+                      <polygon points="0,0 8,4 0,8" />
+                    </svg>
+                  </div>
+
+                  {/* ── Stage 4: Channel API ── */}
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="w-[148px] bg-white border border-slate-200/80 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 hover:border-blue-200 transition-all duration-300 p-4 flex flex-col items-center gap-3 cursor-default">
+                      <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center pipeline-pulse" style={{ animationDelay: "1.2s" }}>
+                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-sm font-bold text-slate-800">Channel API</p>
+                        <p className="text-[11px] text-slate-400 mt-0.5">Update Received</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ── Connector 4 ── */}
+                  <div className="relative flex items-center w-16 shrink-0 overflow-visible">
+                    <div className="w-full border-t-2 border-dashed border-blue-200" />
+                    <div className="flow-dot flow-dot-d3 absolute left-0 w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_6px_rgba(37,99,235,0.6)]" />
+                    <div className="flow-dot flow-dot-d1 absolute left-0 w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_6px_rgba(37,99,235,0.4)]" />
+                    <svg className="absolute right-0 w-3 h-3 text-blue-400" fill="currentColor" viewBox="0 0 8 8">
+                      <polygon points="0,0 8,4 0,8" />
+                    </svg>
+                  </div>
+
+                  {/* ── Stage 5: Marketplace (highlighted card) ── */}
+                  <Link href="/marketplaces/amazon" className="flex flex-col items-center gap-3 cursor-pointer">
+                    <div className="flex flex-col items-center gap-3">
+                      <div className="w-[164px] bg-white border-2 border-blue-300 rounded-2xl shadow-xl shadow-blue-100/50 hover:shadow-2xl hover:-translate-y-1 hover:border-blue-400 transition-all duration-300 p-5 flex flex-col items-center gap-3  relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/60 to-white pointer-events-none" />
+                        <div className="relative w-14 h-14 rounded-xl overflow-hidden bg-white border border-slate-100 shadow-sm flex items-center justify-center">
+                          <img
+                            src="/logos/amazon-color-svgrepo-com.svg"
+                            alt="Amazon"
+                            className="w-full h-full object-contain p-1.5"
+                            onError={(e) => {
+                              const t = e.currentTarget;
+                              t.style.display = "none";
+                              const next = t.nextElementSibling as HTMLElement | null;
+                              if (next) next.style.display = "flex";
+                            }}
+                          />
+                          <div className="hidden w-full h-full items-center justify-center bg-slate-50">
+                            <span className="text-2xl font-black text-slate-800">a</span>
+                          </div>
                         </div>
-                        <span className="text-[11px] text-slate-500 font-medium group-hover:text-slate-900 transition-colors">{c}</span>
-                      </Link>
-                      {idx < cfg.channels.length - 1 && (
-                        <div className="hidden lg:flex items-center px-1.5">
-                          <div className="w-5 h-px bg-slate-300" />
+                        <div className="relative text-center">
+                          <p className="text-sm font-bold text-slate-900">Amazon</p>
+                          <span className="inline-flex items-center gap-1 mt-1.5 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-semibold">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
+                            Updated
+                          </span>
+                          <p className="text-[11px] text-slate-400 mt-1.5">Live in &lt; 2s</p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+
+                </div>
+
+                {/* Mobile: vertical stack */}
+                <div className="flex md:hidden flex-col items-center gap-0">
+                  {[
+                    { label: "Warehouse", sub: "Stock Update", icon: <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg> },
+                    { label: "Sync Engine", sub: "Processing Update", icon: <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg> },
+                    { label: "Data Sent", sub: "Secure Transmission", icon: <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg> },
+                    { label: "Channel API", sub: "Update Received", icon: <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> },
+                  ].map((stage, i) => (
+                    <div key={stage.label} className="flex flex-col items-center">
+                      <div className="flex items-center gap-3 w-full max-w-xs bg-white border border-slate-200 rounded-2xl shadow-sm px-4 py-3">
+                        <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0">
+                          {stage.icon}
+                        </div>
+                        <div>
+                          <p className="text-sm font-bold text-slate-800">{stage.label}</p>
+                          <p className="text-[11px] text-slate-400">{stage.sub}</p>
+                        </div>
+                      </div>
+                      {i < 3 && (
+                        <div className="relative flex flex-col items-center my-1 h-8">
+                          <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 border-l-2 border-dashed border-blue-200 w-0" />
+                          <div className="flow-dot absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-blue-500" style={{ animation: "flowDot 1.8s ease-in-out infinite", animationDelay: `${i * 0.4}s`, transform: "none" }} />
                         </div>
                       )}
                     </div>
                   ))}
-                </div>
-
-                {/* Arrow connector */}
-                <div className="hidden lg:flex items-center px-2">
-                  <div className="w-8 h-px bg-slate-300" />
-                  <div className="w-0 h-0 border-t-[4px] border-b-[4px] border-l-[6px] border-t-transparent border-b-transparent border-l-slate-400" />
-                </div>
-
-                {/* Customers node */}
-                <div className="flex flex-col items-center gap-2 shrink-0">
-                  <div className="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center">
-                    <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
+                  {/* Marketplace end card — mobile */}
+                  <div className="flex flex-col items-center mt-1">
+                    <div className="relative w-0 h-8 border-l-2 border-dashed border-blue-300" />
+                    <div className="flex items-center gap-3 w-full max-w-xs bg-white border-2 border-blue-300 rounded-2xl shadow-lg px-4 py-3">
+                      <div className="w-10 h-10 rounded-xl overflow-hidden bg-white border border-slate-100 flex items-center justify-center shrink-0">
+                        <img src="/logos/amazon-color-svgrepo-com.svg" alt="Amazon" className="w-full h-full object-contain p-1" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold text-slate-900">Amazon</p>
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-semibold">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" /> Updated
+                        </span>
+                      </div>
+                      <p className="ml-auto text-[11px] text-slate-400">Live in &lt; 2s</p>
+                    </div>
                   </div>
-                  <span className="text-[11px] text-slate-500 font-medium">Customers</span>
                 </div>
-
               </div>
 
-              {/* Stat strip */}
-              <div className="reveal delay-200 mt-10 flex flex-wrap justify-center gap-x-10 gap-y-3">
+              {/* ── Stat Strip ── */}
+              <div className="reveal delay-200 mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
                 {[
-                  { v: "< 2s", l: "propagation time" },
-                  { v: "99.98%", l: "sync uptime" },
-                  { v: "0", l: "tab-switching" },
+                  {
+                    icon: <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
+                    v: "< 2s", l: "Sync Time",
+                  },
+                  {
+                    icon: <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" strokeWidth={1.5} /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6l4 2" /></svg>,
+                    v: "99.99%", l: "Uptime",
+                  },
+                  {
+                    icon: <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
+                    v: "100%", l: "Data Safe",
+                  },
+                  {
+                    icon: <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>,
+                    v: "Real-time", l: "Always Updated",
+                  },
                 ].map((s) => (
-                  <div key={s.l} className="flex flex-col items-center">
-                    <span className="text-2xl font-bold text-slate-900">{s.v}</span>
-                    <span className="text-xs text-slate-500 mt-0.5">{s.l}</span>
+                  <div
+                    key={s.l}
+                    className="flex items-center gap-3 bg-white border border-slate-200/80 rounded-2xl px-4 py-3 shadow-sm hover:border-blue-200 hover:shadow-md transition-all duration-200"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0">
+                      {s.icon}
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-blue-600 leading-tight">{s.v}</p>
+                      <p className="text-[11px] text-slate-500">{s.l}</p>
+                    </div>
                   </div>
                 ))}
               </div>
+
             </div>
           </section>
         )}

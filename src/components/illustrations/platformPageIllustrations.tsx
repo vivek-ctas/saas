@@ -1146,19 +1146,19 @@ export const MatrixVisual = ({
 
                             {cols.map((_, ci) => {
                                 const cell = cellFor(ri, ci);
-                                const cx = gridX + gridLeftW + ci * cellW + 6;
-                                const cw = cellW - 12;
+                                const cx = gridX + gridLeftW + ci * cellW + 30;
+                                const cw = cellW - 60;
                                 return (
                                     <g key={ci}>
                                         <rect x={cx} y={y} width={cw} height={cellH} rx="12" fill={cell.fill} />
                                         <MatrixIcon
-                                            x={cx + cw / 2 - 32}
-                                            y={y + cellH / 2 - 15}
+                                            x={cx + cw / 2 - 40}
+                                            y={y + cellH / 2}
                                             kind={cell.icon}
                                             color={cell.icon === "check" ? "#059669" : "#4338ca"}
-                                            size={12}
+                                            size={18}
                                         />
-                                        <text x={cx + cw / 2 + 2} y={y + cellH / 2 + 4} textAnchor="middle" fontFamily={ILL.font} fontSize="12" fontWeight="800" fill={cell.textFill}>
+                                        <text x={cx + cw / 2 + 4} y={y + cellH / 2 + 4} textAnchor="middle" fontFamily={ILL.font} fontSize="16" fontWeight="600" fill={cell.textFill}>
                                             {cell.text}
                                         </text>
                                     </g>
