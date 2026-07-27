@@ -173,12 +173,14 @@ function ConnectAmazonMockup() {
             <div className="p-4 flex-1 flex flex-col items-center justify-between gap-3">
                 <div className="flex flex-col items-center gap-3">
                     {/* Amazon logo circle */}
-                    <div className="w-14 h-14 rounded-full bg-slate-50 border-2 border-slate-200 flex items-center justify-center">
-                        <span className="text-2xl font-black text-orange-500" style={{ fontFamily: "serif" }}>a</span>
+                    <div className="w-14 h-14 rounded-full bg-slate-50 border-2 border-slate-200 flex items-center justify-center overflow-hidden">
+                        <img src="/logos/amazon-color-svgrepo-com.svg" alt="Amazon" className="w-10 h-10 object-contain" />
                     </div>
-                    <p className="text-[10px] text-slate-500 text-center leading-relaxed">
-                        Connect your Amazon Seller Central account to authorize access.
-                    </p>
+                    <div className="flex items-center justify-center gap-2">
+                        <p className="text-[10px] text-slate-500 text-center leading-relaxed">
+                            Connect your Amazon Seller Central account to authorize access.
+                        </p>
+                    </div>
                     {/* connect button */}
                     <div className="w-full flex items-center justify-center gap-1.5 bg-blue-600 text-white rounded-xl py-2.5 text-xs font-semibold">
                         <LockKeyhole className="w-3 h-3" />
