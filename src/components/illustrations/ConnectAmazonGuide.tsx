@@ -125,29 +125,31 @@ function SelectMarketplaceMockup() {
 ────────────────────────────────────── */
 function AddStoreMockup() {
     return (
-        <div className="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden">
+        <div className="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden h-full flex flex-col">
             {/* title */}
             <div className="px-4 pt-4 pb-2 border-b border-slate-100">
                 <p className="text-sm font-bold text-slate-900">Add Amazon Store</p>
             </div>
-            <div className="p-4 space-y-3">
-                {/* Store name */}
-                <div>
-                    <label className="block text-[10px] font-semibold text-slate-500 mb-1">Store Name</label>
-                    <div className="flex items-center gap-2 border border-slate-200 rounded-xl px-3 py-2 bg-slate-50">
-                        <Store className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                        <span className="text-[11px] text-slate-400">Enter Store Name</span>
-                    </div>
-                </div>
-                {/* Channel select */}
-                <div>
-                    <label className="block text-[10px] font-semibold text-slate-500 mb-1">Select the channel you wish to authorize for access</label>
-                    <div className="flex items-center justify-between border border-slate-200 rounded-xl px-3 py-2 bg-slate-50">
-                        <div className="flex items-center gap-1.5">
-                            <span className="text-sm">🇺🇸</span>
-                            <span className="text-[11px] text-slate-700 font-medium">Amazon.com (USA)</span>
+            <div className="p-4 flex-1 flex flex-col justify-between">
+                <div className="space-y-3">
+                    {/* Store name */}
+                    <div>
+                        <label className="block text-[10px] font-semibold text-slate-500 mb-1">Store Name</label>
+                        <div className="flex items-center gap-2 border border-slate-200 rounded-xl px-3 py-2 bg-slate-50">
+                            <Store className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                            <span className="text-[11px] text-slate-400">Enter Store Name</span>
                         </div>
-                        <ChevronDown className="w-3 h-3 text-slate-400" />
+                    </div>
+                    {/* Channel select */}
+                    <div>
+                        <label className="block text-[10px] font-semibold text-slate-500 mb-1">Select the channel you wish to authorize for access</label>
+                        <div className="flex items-center justify-between border border-slate-200 rounded-xl px-3 py-2 bg-slate-50">
+                            <div className="flex items-center gap-1.5">
+                                <span className="text-sm">🇺🇸</span>
+                                <span className="text-[11px] text-slate-700 font-medium">Amazon.com (USA)</span>
+                            </div>
+                            <ChevronDown className="w-3 h-3 text-slate-400" />
+                        </div>
                     </div>
                 </div>
                 {/* Continue button */}
@@ -158,30 +160,30 @@ function AddStoreMockup() {
         </div>
     );
 }
-
 /* ─────────────────────────────────────
    Step 03: Connect to Amazon mockup
 ────────────────────────────────────── */
 function ConnectAmazonMockup() {
     return (
-        <div className="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden">
+        <div className="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden h-full flex flex-col">
             {/* title */}
             <div className="px-4 pt-4 pb-2 border-b border-slate-100">
                 <p className="text-sm font-bold text-slate-900">Amazon Authorization</p>
             </div>
-            <div className="p-4 flex flex-col items-center gap-3">
-                {/* Amazon logo circle */}
-                <div className="w-14 h-14 rounded-full bg-slate-50 border-2 border-slate-200 flex items-center justify-center">
-                    {/* stylised 'a' */}
-                    <span className="text-2xl font-black text-orange-500" style={{ fontFamily: "serif" }}>a</span>
-                </div>
-                <p className="text-[10px] text-slate-500 text-center leading-relaxed">
-                    Connect your Amazon Seller Central account to authorize access.
-                </p>
-                {/* connect button */}
-                <div className="w-full flex items-center justify-center gap-1.5 bg-blue-600 text-white rounded-xl py-2.5 text-xs font-semibold">
-                    <LockKeyhole className="w-3 h-3" />
-                    Connect to Amazon
+            <div className="p-4 flex-1 flex flex-col items-center justify-between gap-3">
+                <div className="flex flex-col items-center gap-3">
+                    {/* Amazon logo circle */}
+                    <div className="w-14 h-14 rounded-full bg-slate-50 border-2 border-slate-200 flex items-center justify-center">
+                        <span className="text-2xl font-black text-orange-500" style={{ fontFamily: "serif" }}>a</span>
+                    </div>
+                    <p className="text-[10px] text-slate-500 text-center leading-relaxed">
+                        Connect your Amazon Seller Central account to authorize access.
+                    </p>
+                    {/* connect button */}
+                    <div className="w-full flex items-center justify-center gap-1.5 bg-blue-600 text-white rounded-xl py-2.5 text-xs font-semibold">
+                        <LockKeyhole className="w-3 h-3" />
+                        Connect to Amazon
+                    </div>
                 </div>
                 {/* status row */}
                 <div className="flex items-center justify-around w-full pt-1">
@@ -283,7 +285,7 @@ function StepCard({
 }) {
     return (
         <div
-            className="flex flex-col gap-3"
+            className="flex flex-col gap-3 h-full"
             style={{
                 transition: `opacity 0.6s ease ${delay}ms, transform 0.6s ease ${delay}ms`,
                 opacity: visible ? 1 : 0,
@@ -301,7 +303,7 @@ function StepCard({
                 </div>
             </div>
             {/* ui mockup */}
-            {children}
+            <div className="flex-1 flex flex-col">{children}</div>
         </div>
     );
 }
@@ -387,7 +389,7 @@ export function ConnectAmazonGuide() {
                             }}
                         >
                             {/* 3-column card row */}
-                            <div className="flex flex-col md:flex-row items-start gap-4 md:gap-0">
+                            <div className="flex flex-col md:flex-row items-stretch gap-4 md:gap-0">
                                 {/* STEP 01 */}
                                 <div className="flex-1 min-w-0">
                                     <StepCard
