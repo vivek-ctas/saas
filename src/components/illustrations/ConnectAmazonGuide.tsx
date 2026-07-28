@@ -262,7 +262,7 @@ function BottomConnector({ visible }: { visible: boolean }) {
                     </div>
                     {/* connector dashes (not after last node) */}
                     {i < nodes.length - 1 && (
-                        <div className="hidden sm:flex items-center px-1 mt-4 sm:mt-5 shrink-0">
+                        <div className="flex items-center px-1 mt-4 sm:mt-5 shrink-0">
                             <svg width="60" height="14" viewBox="0 0 60 14">
                                 <line x1="2" y1="7" x2="50" y2="7" stroke="#CBD5E1" strokeWidth="1.5" strokeDasharray="5 3" />
                                 <polyline points="46,3 54,7 46,11" fill="none" stroke="#94A3B8" strokeWidth="1.5" strokeLinejoin="round" />

@@ -373,16 +373,16 @@ function WhiteLabelStrip({ visible }: { visible: boolean }) {
 
     return (
         <div
-            className="mt-3 sm:mt-4 rounded-xl sm:rounded-2xl bg-blue-50 border border-blue-200 overflow-hidden"
+            className="mt-3 rounded-2xl bg-blue-50 border border-blue-200 overflow-hidden "
             style={{ transition: "opacity 0.6s ease 800ms", opacity: visible ? 1 : 0 }}
         >
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4">
                 {/* left label */}
-                <div className="flex items-start gap-2.5 sm:gap-3 shrink-0">
+                <div className="flex items-start gap-2.5 sm:gap-3 w-full sm:w-auto sm:shrink sm:min-w-0">
                     <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-blue-600 flex items-center justify-center shrink-0 mt-0.5">
                         <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
                     </div>
-                    <div className="max-w-[500px] sm:max-w-[650px]">
+                    <div className="min-w-0 sm:max-w-[220px] md:max-w-[300px] lg:max-w-[420px] xl:max-w-[560px]">
                         <p className="text-xs sm:text-sm font-bold text-blue-900">White Label to Retail</p>
                         <p className="text-[10px] sm:text-xs text-blue-700 mt-0.5 leading-relaxed">
                             Convert your White Label products into Retail products by completing product details and listing them on Amazon.
@@ -392,22 +392,22 @@ function WhiteLabelStrip({ visible }: { visible: boolean }) {
                 {/* divider */}
                 <div className="hidden sm:block w-px h-10 bg-blue-200 shrink-0" />
                 {/* flow */}
-                <div className="flex-1 flex items-center pl-6 sm:pl-10 overflow-x-auto">
+                <div className="flex-1 flex flex-wrap items-start justify-center sm:justify-start gap-x-3 gap-y-4 w-full sm:w-auto sm:pl-6 lg:pl-10 min-w-0">
                     {steps.map((s, i) => (
-                        <div key={i} className="flex items-center mx-1 sm:mx-2">
-                            <div className="flex flex-col items-center gap-1.5 sm:gap-2 min-w-[72px] sm:min-w-[92px]">
-                                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 flex items-center justify-center ${s.success ? "bg-emerald-500 border-emerald-500" : "bg-white border-blue-300"}`}>
-                                    <s.icon className={`w-4 h-4 sm:w-5 sm:h-5 ${s.success ? "text-white" : "text-blue-600"}`} />
+                        <div key={i} className="flex items-start">
+                            <div className="flex flex-col items-center gap-2 min-w-[92px]">
+                                <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center shrink-0 ${s.success ? "bg-emerald-500 border-emerald-500" : "bg-white border-blue-300"}`}>
+                                    <s.icon className={`w-5 h-5 ${s.success ? "text-white" : "text-blue-600"}`} />
                                 </div>
-                                <span className={`text-[9px] sm:text-[11px] font-semibold text-center leading-tight whitespace-nowrap ${s.success ? "text-emerald-700" : "text-blue-700"}`}>
+                                <span className={`text-[11px] font-semibold text-center leading-tight whitespace-pre-line sm:whitespace-nowrap ${s.success ? "text-emerald-700" : "text-blue-700"}`}>
                                     {s.label}
                                 </span>
                             </div>
                             {i < steps.length - 1 && (
-                                <div className="flex items-center px-0.5 sm:px-1 mb-3 sm:mb-4">
-                                    <svg width="36" height="14" viewBox="0 0 36 14" className="sm:w-[48px]">
-                                        <line x1="2" y1="7" x2="28" y2="7" stroke="#BFDBFE" strokeWidth="1.5" strokeDasharray="4 3" />
-                                        <polyline points="26,3 34,7 26,11" fill="none" stroke="#60A5FA" strokeWidth="1.5" strokeLinejoin="round" />
+                                <div className="flex items-center px-1 mt-4 shrink-0">
+                                    <svg width="48" height="14" viewBox="0 0 48 14">
+                                        <line x1="2" y1="7" x2="36" y2="7" stroke="#BFDBFE" strokeWidth="1.5" strokeDasharray="4 3" />
+                                        <polyline points="34,3 44,7 34,11" fill="none" stroke="#60A5FA" strokeWidth="1.5" strokeLinejoin="round" />
                                     </svg>
                                 </div>
                             )}
