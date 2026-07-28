@@ -75,12 +75,12 @@ function StepCard({
             }}
         >
             <div className="flex items-start gap-3">
-                <span className="inline-flex items-center px-3 py-1 rounded-xl text-[11px] font-bold bg-blue-600 text-white shrink-0 shadow">
+                <span className="inline-flex items-center px-3 py-1 rounded-xl text-xs font-bold bg-blue-600 text-white shrink-0 shadow">
                     {num}
                 </span>
                 <div>
-                    <p className="text-sm font-bold text-slate-900 leading-tight">{title}</p>
-                    <p className="text-[11px] text-slate-500 mt-0.5 leading-relaxed">{desc}</p>
+                    <p className="text-base font-bold text-slate-900 leading-tight">{title}</p>
+                    <p className="text-sm text-slate-500 mt-0.5 leading-relaxed">{desc}</p>
                 </div>
             </div>
             {children}
@@ -104,20 +104,20 @@ function MyCatalogMockup() {
         <div className="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden">
             {/* header */}
             <div className="flex items-center justify-between px-3 py-2.5 border-b border-slate-100 bg-slate-50">
-                <span className="text-xs font-bold text-slate-800">My Catalog</span>
+                <span className="text-sm font-bold text-slate-800">My Catalog</span>
                 <button className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-blue-600 text-white text-[10px] font-semibold">
-                    <Plus className="w-2.5 h-2.5" /> Add Product
+                    <Plus className="w-3 h-3" /> Add Product
                 </button>
             </div>
             {/* search */}
             <div className="flex items-center gap-1.5 mx-3 my-2 border border-slate-200 rounded-lg px-2 py-1.5 bg-slate-50">
-                <Search className="w-3 h-3 text-slate-400 shrink-0" />
-                <span className="text-[9px] text-slate-400">Search products…</span>
+                <Search className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                <span className="text-[10px] text-slate-400">Search products…</span>
             </div>
             {/* col headers */}
             <div className="grid grid-cols-[20px_16px_1fr_52px_38px_32px] gap-1 px-3 py-1 bg-slate-50 border-y border-slate-100">
                 {["", "", "TITLE", "SKU", "PRICE", "STOCK"].map((h, i) => (
-                    <span key={i} className="text-[8px] font-bold text-slate-400 uppercase tracking-wider truncate">{h}</span>
+                    <span key={i} className="text-[9px] font-bold text-slate-400 uppercase tracking-wider truncate">{h}</span>
                 ))}
             </div>
             {/* rows */}
@@ -127,23 +127,23 @@ function MyCatalogMockup() {
                         {r.checked && <span className="text-[7px] text-white font-bold">✓</span>}
                     </div>
                     <span className="text-sm">{r.init}</span>
-                    <span className="text-[9px] font-medium text-slate-800 truncate">{r.name}</span>
-                    <span className="text-[8px] font-mono text-slate-400 truncate">{r.sku}</span>
-                    <span className="text-[9px] font-medium text-slate-700">{r.price}</span>
-                    <span className="text-[9px] text-slate-500">{r.stock}</span>
+                    <span className="text-[10px] font-medium text-slate-800 truncate">{r.name}</span>
+                    <span className="text-[9px] font-mono text-slate-400 truncate">{r.sku}</span>
+                    <span className="text-[10px] font-medium text-slate-700">{r.price}</span>
+                    <span className="text-[10px] text-slate-500">{r.stock}</span>
                 </div>
             ))}
             {/* footer */}
             <div className="flex items-center justify-between px-3 py-2 border-t border-slate-100 bg-slate-50">
-                <span className="text-[9px] text-slate-500">3 products selected</span>
-                <button className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-blue-600 text-white text-[9px] font-semibold">
-                    <RefreshCw className="w-2.5 h-2.5" /> Sync to Amazon
+                <span className="text-[10px] text-slate-500">3 products selected</span>
+                <button className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-blue-600 text-white text-[10px] font-semibold">
+                    <RefreshCw className="w-3 h-3" /> Sync to Amazon
                 </button>
             </div>
             {/* info strip */}
             <div className="flex items-start gap-2 mx-3 mb-3 mt-1 bg-blue-50 border border-blue-100 rounded-xl px-2.5 py-2">
-                <Send className="w-3 h-3 text-blue-500 shrink-0 mt-px" />
-                <p className="text-[9px] text-blue-700 leading-relaxed">
+                <Send className="w-3.5 h-3.5 text-blue-500 shrink-0 mt-px" />
+                <p className="text-[10px] text-blue-700 leading-relaxed">
                     Selected products will be synced to <span className="font-semibold">Amazon Inventory</span> for the selected country.
                 </p>
             </div>
@@ -165,27 +165,27 @@ function AmazonInventoryMockup() {
         <div className="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden">
             {/* header */}
             <div className="flex items-center justify-between px-3 py-2.5 border-b border-slate-100 bg-slate-50">
-                <span className="text-xs font-bold text-slate-800">Amazon Inventory</span>
+                <span className="text-sm font-bold text-slate-800">Amazon Inventory</span>
                 <div className="flex items-center gap-1 border border-slate-200 rounded-lg px-2 py-1 bg-white">
                     <span className="text-xs">🇺🇸</span>
-                    <span className="text-[9px] text-slate-600 font-medium">Amazon.com (USA)</span>
-                    <ChevronDown className="w-3 h-3 text-slate-400" />
+                    <span className="text-[10px] text-slate-600 font-medium">Amazon.com (USA)</span>
+                    <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
                 </div>
             </div>
             {/* col headers */}
             <div className="grid grid-cols-[16px_1fr_52px_36px_40px_28px] gap-1 px-3 py-1.5 bg-slate-50 border-b border-slate-100">
                 {["", "TITLE", "SKU", "TYPE", "STATUS", ""].map((h, i) => (
-                    <span key={i} className="text-[8px] font-bold text-slate-400 uppercase tracking-wider truncate">{h}</span>
+                    <span key={i} className="text-[9px] font-bold text-slate-400 uppercase tracking-wider truncate">{h}</span>
                 ))}
             </div>
             {/* rows */}
             {INV_ROWS.map((r, idx) => (
                 <div key={r.sku} className={`grid grid-cols-[16px_1fr_52px_36px_40px_28px] gap-1 items-center px-3 py-2 border-b border-slate-50 last:border-0 ${idx === 0 ? "relative" : ""}`}>
                     <span className="text-sm">{r.init}</span>
-                    <span className="text-[9px] font-medium text-slate-800 truncate">{r.title}</span>
-                    <span className="text-[8px] font-mono text-slate-400 truncate">{r.sku}</span>
-                    <span className="text-[8px] text-slate-400">—</span>
-                    <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[8px] font-semibold bg-amber-50 text-amber-700 border border-amber-200">
+                    <span className="text-[10px] font-medium text-slate-800 truncate">{r.title}</span>
+                    <span className="text-[9px] font-mono text-slate-400 truncate">{r.sku}</span>
+                    <span className="text-[9px] text-slate-400">—</span>
+                    <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[9px] font-semibold bg-amber-50 text-amber-700 border border-amber-200">
                         Draft
                     </span>
                     <button className="w-5 h-5 rounded flex items-center justify-center hover:bg-slate-100">
@@ -196,20 +196,20 @@ function AmazonInventoryMockup() {
             {/* context menu hint */}
             <div className="mx-3 mb-2 mt-1 rounded-xl border border-blue-100 bg-blue-50 overflow-hidden shadow-sm">
                 <div className="flex items-center gap-2 px-3 py-1.5 border-b border-blue-100 hover:bg-blue-100 cursor-pointer">
-                    <Plus className="w-3 h-3 text-blue-600" />
-                    <span className="text-[9px] font-semibold text-blue-700">Add Inventory Details</span>
+                    <Plus className="w-3.5 h-3.5 text-blue-600" />
+                    <span className="text-[10px] font-semibold text-blue-700">Add Inventory Details</span>
                 </div>
                 {[{ icon: Pencil, label: "Edit" }, { icon: Eye, label: "View" }, { icon: Trash2, label: "Delete" }].map(({ icon: Icon, label }) => (
                     <div key={label} className="flex items-center gap-2 px-3 py-1.5 hover:bg-blue-50 border-b border-blue-50 last:border-0 cursor-pointer">
-                        <Icon className="w-3 h-3 text-slate-500" />
-                        <span className="text-[9px] text-slate-600">{label}</span>
+                        <Icon className="w-3.5 h-3.5 text-slate-500" />
+                        <span className="text-[10px] text-slate-600">{label}</span>
                     </div>
                 ))}
             </div>
             {/* footer */}
             <div className="flex items-start gap-2 mx-3 mb-3 bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2">
-                <CheckCircle2 className="w-3 h-3 text-blue-500 shrink-0 mt-px" />
-                <p className="text-[9px] text-slate-600 leading-relaxed">
+                <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0 mt-px" />
+                <p className="text-[10px] text-slate-600 leading-relaxed">
                     Products are synced as <span className="font-semibold text-amber-700">Draft</span>. Add inventory details to publish on Amazon.
                 </p>
             </div>
@@ -226,35 +226,35 @@ function AddInventoryMockup() {
             {/* sub-step 1: Select Product Type */}
             <div className="p-3 border-b border-slate-100">
                 <div className="flex items-center gap-2 mb-2">
-                    <span className="w-5 h-5 rounded-full bg-blue-600 text-white text-[9px] font-bold flex items-center justify-center shrink-0">1</span>
-                    <span className="text-[10px] font-bold text-slate-800">Select Product Type</span>
+                    <span className="w-5 h-5 rounded-full bg-blue-600 text-white text-[10px] font-bold flex items-center justify-center shrink-0">1</span>
+                    <span className="text-xs font-bold text-slate-800">Select Product Type</span>
                 </div>
                 <div className="grid grid-cols-2 gap-1.5 mb-2">
                     <div className="flex items-center gap-1.5">
-                        <span className="text-[8px] text-slate-500">Product Type</span>
+                        <span className="text-[9px] text-slate-500">Product Type</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <label className="flex items-center gap-1">
                             <div className="w-3 h-3 rounded-full border-2 border-blue-600 flex items-center justify-center">
                                 <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
                             </div>
-                            <span className="text-[8px] text-slate-700">Retail</span>
+                            <span className="text-[9px] text-slate-700">Retail</span>
                         </label>
                         <label className="flex items-center gap-1">
                             <div className="w-3 h-3 rounded-full border-2 border-slate-300" />
-                            <span className="text-[8px] text-slate-400">White Label</span>
+                            <span className="text-[9px] text-slate-400">White Label</span>
                         </label>
                     </div>
                 </div>
                 <div className="flex items-center gap-2">
-                    <span className="text-[8px] text-slate-500 w-20 shrink-0">SKU</span>
+                    <span className="text-[9px] text-slate-500 w-20 shrink-0">SKU</span>
                     <div className="flex-1 bg-slate-50 border border-slate-200 rounded-md px-2 py-1">
-                        <span className="text-[8px] font-mono text-slate-600">WL-TSHIRT-001</span>
+                        <span className="text-[9px] font-mono text-slate-600">WL-TSHIRT-001</span>
                     </div>
                 </div>
                 <div className="mt-2 flex justify-end">
-                    <div className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-blue-600 text-white text-[9px] font-semibold">
-                        Next <ArrowRight className="w-2 h-2" />
+                    <div className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-blue-600 text-white text-[10px] font-semibold">
+                        Next <ArrowRight className="w-2.5 h-2.5" />
                     </div>
                 </div>
             </div>
@@ -262,13 +262,13 @@ function AddInventoryMockup() {
             {/* sub-step 2: Fill Product Info */}
             <div className="p-3 border-b border-slate-100">
                 <div className="flex items-center gap-2 mb-2">
-                    <span className="w-5 h-5 rounded-full bg-blue-600 text-white text-[9px] font-bold flex items-center justify-center shrink-0">2</span>
-                    <span className="text-[10px] font-bold text-slate-800">Fill Product Information</span>
+                    <span className="w-5 h-5 rounded-full bg-blue-600 text-white text-[10px] font-bold flex items-center justify-center shrink-0">2</span>
+                    <span className="text-xs font-bold text-slate-800">Fill Product Information</span>
                 </div>
                 <div className="flex gap-2">
                     {/* Left form */}
                     <div className="flex-1 space-y-1">
-                        <span className="text-[8px] font-semibold text-slate-500 block">Basic Information</span>
+                        <span className="text-[9px] font-semibold text-slate-500 block">Basic Information</span>
                         {[
                             { label: "Product Name", val: "Cotton T-Shirt" },
                             { label: "Brand", val: "Your Brand" },
@@ -277,19 +277,19 @@ function AddInventoryMockup() {
                             { label: "Size", val: "M" },
                         ].map(({ label, val }) => (
                             <div key={label} className="grid grid-cols-[60px_1fr] gap-1 items-center">
-                                <span className="text-[7px] text-slate-500 truncate">{label}</span>
+                                <span className="text-[8px] text-slate-500 truncate">{label}</span>
                                 <div className="bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5">
-                                    <span className="text-[7px] text-slate-600">{val}</span>
+                                    <span className="text-[8px] text-slate-600">{val}</span>
                                 </div>
                             </div>
                         ))}
                     </div>
                     {/* Right variants */}
                     <div className="w-[90px] shrink-0">
-                        <span className="text-[8px] font-semibold text-slate-500 block mb-1">Variants</span>
-                        <div className="grid grid-cols-[30px_12px_1fr] gap-0.5 text-[7px] bg-slate-50 border border-slate-100 rounded p-1">
+                        <span className="text-[9px] font-semibold text-slate-500 block mb-1">Variants</span>
+                        <div className="grid grid-cols-[30px_12px_1fr] gap-0.5 text-[8px] bg-slate-50 border border-slate-100 rounded p-1">
                             {["COLOR", "SIZE", "SKU"].map(h => (
-                                <span key={h} className="font-bold text-slate-400 truncate text-[6px]">{h}</span>
+                                <span key={h} className="font-bold text-slate-400 truncate text-[7px]">{h}</span>
                             ))}
                             {[
                                 ["Black", "S", "BLK-S"],
@@ -299,13 +299,13 @@ function AddInventoryMockup() {
                                 <React.Fragment key={sku}>
                                     <span className="text-slate-600 truncate">{c}</span>
                                     <span className="text-slate-600">{s}</span>
-                                    <span className="text-slate-400 truncate font-mono text-[6px]">
+                                    <span className="text-slate-400 truncate font-mono text-[7px]">
                                         {sku}
                                     </span>
                                 </React.Fragment>
                             ))}
                         </div>
-                        <button className="mt-1 text-[7px] text-blue-600 font-semibold">+ Add Variant</button>
+                        <button className="mt-1 text-[8px] text-blue-600 font-semibold">+ Add Variant</button>
                     </div>
                 </div>
             </div>
@@ -313,13 +313,13 @@ function AddInventoryMockup() {
             {/* sub-step 3: Review & Submit */}
             <div className="p-3">
                 <div className="flex items-center gap-2 mb-2">
-                    <span className="w-5 h-5 rounded-full bg-blue-600 text-white text-[9px] font-bold flex items-center justify-center shrink-0">3</span>
-                    <span className="text-[10px] font-bold text-slate-800">Review &amp; Submit</span>
+                    <span className="w-5 h-5 rounded-full bg-blue-600 text-white text-[10px] font-bold flex items-center justify-center shrink-0">3</span>
+                    <span className="text-xs font-bold text-slate-800">Review &amp; Submit</span>
                 </div>
                 <div className="flex gap-2 items-start">
                     {/* product summary */}
                     <div className="flex-1 bg-slate-50 border border-slate-200 rounded-xl p-2">
-                        <span className="text-[8px] font-bold text-slate-700 block mb-1">Product Summary</span>
+                        <span className="text-[9px] font-bold text-slate-700 block mb-1">Product Summary</span>
                         <div className="flex items-center gap-2">
                             {/* shirt icon */}
                             <div className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center shrink-0">
@@ -333,8 +333,8 @@ function AddInventoryMockup() {
                                     ["Marketplace", "Amazon.com (USA)"],
                                 ].map(([k, v]) => (
                                     <div key={k} className="flex gap-1">
-                                        <span className="text-[7px] text-slate-400 w-16 shrink-0">{k}:</span>
-                                        <span className="text-[7px] font-medium text-slate-700 truncate">{v}</span>
+                                        <span className="text-[8px] text-slate-400 w-16 shrink-0">{k}:</span>
+                                        <span className="text-[8px] font-medium text-slate-700 truncate">{v}</span>
                                     </div>
                                 ))}
                             </div>
@@ -345,14 +345,14 @@ function AddInventoryMockup() {
                         {["Product Information", "Variants", "Images", "Compliance"].map((item) => (
                             <div key={item} className="flex items-center gap-1">
                                 <CheckCircle2 className="w-3 h-3 text-emerald-500 shrink-0" />
-                                <span className="text-[8px] text-slate-600">{item}</span>
+                                <span className="text-[9px] text-slate-600">{item}</span>
                             </div>
                         ))}
                     </div>
                 </div>
                 <div className="mt-2 flex justify-end">
-                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-[9px] font-bold">
-                        Submit <Send className="w-2.5 h-2.5" />
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-[10px] font-bold">
+                        Submit <Send className="w-3 h-3" />
                     </div>
                 </div>
             </div>
@@ -383,8 +383,8 @@ function WhiteLabelStrip({ visible }: { visible: boolean }) {
                         <ShoppingBag className="w-4 h-4 text-white" />
                     </div>
                     <div className="max-w-[180px]">
-                        <p className="text-xs font-bold text-blue-900">White Label to Retail</p>
-                        <p className="text-[10px] text-blue-700 mt-0.5 leading-relaxed">
+                        <p className="text-sm font-bold text-blue-900">White Label to Retail</p>
+                        <p className="text-xs text-blue-700 mt-0.5 leading-relaxed">
                             Convert your White Label products into Retail products by completing product details and listing them on Amazon.
                         </p>
                     </div>
@@ -399,7 +399,7 @@ function WhiteLabelStrip({ visible }: { visible: boolean }) {
                                 <div className={`w-9 h-9 rounded-full border-2 flex items-center justify-center ${s.success ? "bg-emerald-500 border-emerald-500" : "bg-white border-blue-300"}`}>
                                     <s.icon className={`w-4 h-4 ${s.success ? "text-white" : "text-blue-600"}`} />
                                 </div>
-                                <span className={`text-[8px] font-medium text-center leading-tight whitespace-pre-line ${s.success ? "text-emerald-700" : "text-blue-700"}`}>
+                                <span className={`text-[9px] font-medium text-center leading-tight whitespace-pre-line ${s.success ? "text-emerald-700" : "text-blue-700"}`}>
                                     {s.label}
                                 </span>
                             </div>
@@ -447,7 +447,7 @@ export function SyncCatalogGuide() {
                             Amazon Inventory
                         </span>
                     </h2>
-                    <p className="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
+                    <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-2xl leading-relaxed">
                         Sync your products to Amazon and complete product details to make them live. Select, sync, and submit in three clear steps.
                     </p>
                 </div>
@@ -463,8 +463,8 @@ export function SyncCatalogGuide() {
                         <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-600 text-white shadow">
                             STEP 3
                         </span>
-                        <span className="text-sm font-semibold text-slate-700">Sync to Amazon Inventory</span>
-                        <span className="text-xs text-slate-400 ml-auto hidden sm:block">
+                        <span className="text-base font-semibold text-slate-700">Sync to Amazon Inventory</span>
+                        <span className="text-sm text-slate-400 ml-auto hidden sm:block">
                             Select products → Sync → Add details → Go live
                         </span>
                     </div>
@@ -529,7 +529,7 @@ export function SyncCatalogGuide() {
                             style={{ transition: "opacity 0.6s ease 900ms", opacity: visible ? 1 : 0 }}
                         >
                             <BadgeCheck className="w-5 h-5 text-emerald-600 shrink-0" />
-                            <p className="text-xs font-semibold text-slate-700">
+                            <p className="text-sm font-semibold text-slate-700">
                                 Once submitted, your listing goes live on Amazon. SellerBuz keeps inventory and pricing in sync automatically from that point on.
                             </p>
                         </div>
@@ -538,7 +538,7 @@ export function SyncCatalogGuide() {
 
                 {/* Three feature callouts */}
                 <div
-                    className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-5"
+                    className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-6"
                     style={{
                         transition: "opacity 0.6s ease 600ms, transform 0.6s ease 600ms",
                         opacity: visible ? 1 : 0,
@@ -550,13 +550,13 @@ export function SyncCatalogGuide() {
                         { icon: Package, title: "White Label & Retail", desc: "Manage both White Label and Retail product types with separate workflows and SKUs." },
                         { icon: CheckCircle2, title: "Live Instantly After Submit", desc: "Once product details are complete and submitted, your listing is live on Amazon immediately." },
                     ].map(({ icon: Icon, title, desc }) => (
-                        <div key={title} className="flex items-start gap-3 bg-white border border-slate-200 rounded-2xl px-5 py-4 shadow-sm">
-                            <div className="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 mt-0.5">
-                                <Icon className="w-4 h-4 text-blue-600" />
+                        <div key={title} className="flex items-start gap-3 bg-white border border-slate-200 rounded-2xl px-5 py-5 shadow-sm">
+                            <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 mt-0.5">
+                                <Icon className="w-5 h-5 text-blue-600" />
                             </div>
                             <div>
-                                <p className="text-sm font-semibold text-slate-900">{title}</p>
-                                <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">{desc}</p>
+                                <p className="text-base font-semibold text-slate-900">{title}</p>
+                                <p className="text-sm text-slate-500 mt-1 leading-relaxed">{desc}</p>
                             </div>
                         </div>
                     ))}

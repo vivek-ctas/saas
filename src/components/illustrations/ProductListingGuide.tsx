@@ -63,10 +63,10 @@ function Arrow({ dashed = false }: { dashed?: boolean }) {
 function OptionLabel({ badge, label }: { badge: string; label: string }) {
     return (
         <div className="flex flex-col items-center gap-2" style={{ width: 100, flexShrink: 0 }}>
-            <span className="inline-flex items-center px-3 py-1.5 rounded-lg text-[11px] font-bold bg-blue-600 text-white leading-none shadow text-center">
+            <span className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white leading-none shadow text-center">
                 {badge}
             </span>
-            <span className="text-xs font-semibold text-slate-500 text-center leading-tight">{label}</span>
+            <span className="text-xs font-semibold text-slate-600 text-center leading-tight">{label}</span>
         </div>
     );
 }
@@ -117,8 +117,8 @@ function Node({
                 <Icon className={`w-7 h-7 ${iconCls}`} />
             </div>
             <div className="text-center">
-                <p className="text-[13px] font-bold text-slate-800 leading-tight">{label}</p>
-                {sub && <p className="text-[10px] text-slate-500 leading-snug mt-1">{sub}</p>}
+                <p className="text-sm font-bold text-slate-800 leading-tight">{label}</p>
+                {sub && <p className="text-xs text-slate-500 leading-snug mt-1">{sub}</p>}
             </div>
         </div>
     );
@@ -145,13 +145,13 @@ function FormNode({ visible = true, delay = 0 }: { visible?: boolean; delay?: nu
                     <span className="w-2 h-2 rounded-full bg-red-400" />
                     <span className="w-2 h-2 rounded-full bg-yellow-400" />
                     <span className="w-2 h-2 rounded-full bg-green-400" />
-                    <span className="ml-1 text-[8px] text-slate-400 font-medium">Product Form</span>
+                    <span className="ml-1 text-[9px] text-slate-400 font-medium">Product Form</span>
                 </div>
                 <div className="p-2 space-y-1.5">
                     {/* image upload */}
                     <div className="flex items-center gap-1.5 rounded border border-dashed border-blue-200 bg-blue-50 px-2 py-1">
                         <ImageIcon className="w-3 h-3 text-blue-400 shrink-0" />
-                        <span className="text-[8px] text-blue-600">Upload Image</span>
+                        <span className="text-[9px] text-blue-600">Upload Image</span>
                     </div>
                     {/* fields */}
                     {[
@@ -162,18 +162,18 @@ function FormNode({ visible = true, delay = 0 }: { visible?: boolean; delay?: nu
                     ].map(({ Icon, label }) => (
                         <div key={label} className="flex items-center gap-1.5 rounded border border-slate-100 bg-slate-50 px-2 py-1">
                             <Icon className="w-2.5 h-2.5 text-slate-400 shrink-0" />
-                            <span className="text-[8px] text-slate-500">{label}…</span>
+                            <span className="text-[9px] text-slate-500">{label}…</span>
                         </div>
                     ))}
                     <div className="flex items-start gap-1.5 rounded border border-slate-100 bg-slate-50 px-2 py-1">
                         <AlignLeft className="w-2.5 h-2.5 text-slate-400 shrink-0 mt-px" />
-                        <span className="text-[8px] text-slate-500">Description…</span>
+                        <span className="text-[9px] text-slate-500">Description…</span>
                     </div>
                 </div>
             </div>
             <div className="text-center">
-                <p className="text-[13px] font-bold text-slate-800 leading-tight">Fill Product Details</p>
-                <p className="text-[10px] text-slate-500 leading-snug mt-1">Title, Brand, SKU,<br />Price, Stock…</p>
+                <p className="text-sm font-bold text-slate-800 leading-tight">Fill Product Details</p>
+                <p className="text-xs text-slate-500 leading-snug mt-1">Title, Brand, SKU,<br />Price, Stock…</p>
             </div>
         </div>
     );
@@ -204,22 +204,22 @@ function CatalogPanel({ visible = true, delay = 0 }: { visible?: boolean; delay?
                 <span className="w-2.5 h-2.5 rounded-full bg-white/40" />
                 <span className="w-2.5 h-2.5 rounded-full bg-white/40" />
                 <span className="w-2.5 h-2.5 rounded-full bg-white/40" />
-                <span className="ml-2 text-xs font-bold text-white tracking-wide">My Catalog</span>
+                <span className="ml-2 text-sm font-bold text-white tracking-wide">My Catalog</span>
             </div>
             {/* col headers */}
             <div className="grid grid-cols-[30px_1fr_58px_28px] gap-2 px-4 py-2 bg-slate-50 border-b border-slate-100">
                 {["", "Product Name", "SKU", ""].map((h, i) => (
-                    <span key={i} className="text-[9px] font-bold uppercase tracking-wider text-slate-500 truncate">{h}</span>
+                    <span key={i} className="text-[10px] font-bold uppercase tracking-wider text-slate-500 truncate">{h}</span>
                 ))}
             </div>
             {/* rows */}
             {PRODUCTS.map((p) => (
                 <div key={p.sku} className="grid grid-cols-[30px_1fr_58px_28px] gap-2 items-center px-4 py-2 border-b border-slate-50 last:border-0">
                     <div className="w-6 h-6 rounded-md bg-blue-50 flex items-center justify-center">
-                        <span className="text-[7px] font-bold text-blue-700">{p.init}</span>
+                        <span className="text-[8px] font-bold text-blue-700">{p.init}</span>
                     </div>
-                    <span className="text-[10px] font-semibold text-slate-800 truncate">{p.name}</span>
-                    <span className="text-[9px] font-mono text-slate-500 truncate">{p.sku}</span>
+                    <span className="text-xs font-semibold text-slate-800 truncate">{p.name}</span>
+                    <span className="text-[10px] font-mono text-slate-500 truncate">{p.sku}</span>
                     <div className="flex items-center">
                         <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
                     </div>
@@ -228,7 +228,7 @@ function CatalogPanel({ visible = true, delay = 0 }: { visible?: boolean; delay?
             {/* success footer */}
             <div className="flex items-center gap-2 px-4 py-3 bg-emerald-50 border-t border-emerald-100">
                 <Sparkles className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span className="text-[10px] font-semibold text-emerald-700">Products Added Successfully!</span>
+                <span className="text-xs font-semibold text-emerald-700">Products Added Successfully!</span>
             </div>
         </div>
     );
@@ -251,8 +251,8 @@ function Sidebar({ visible }: { visible: boolean }) {
                 STEP 1
             </span>
             <div>
-                <h3 className="text-lg font-bold text-slate-900 leading-snug">Create Your Product Listing</h3>
-                <p className="text-sm text-slate-500 mt-2 leading-relaxed">Add products to your catalog manually or in bulk. Listings appear in My Catalog instantly, ready to go live.</p>
+                <h3 className="text-xl font-bold text-slate-900 leading-snug">Create Your Product Listing</h3>
+                <p className="text-sm sm:text-base text-slate-500 mt-2 leading-relaxed">Add products to your catalog manually or in bulk. Listings appear in My Catalog instantly, ready to go live.</p>
             </div>
             {/* Option 1 */}
             <div className="rounded-2xl border border-blue-100 bg-blue-50 p-4">
@@ -261,9 +261,9 @@ function Sidebar({ visible }: { visible: boolean }) {
                         <Tag className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                        <p className="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Option 1</p>
-                        <p className="text-sm font-semibold text-slate-800 mt-0.5">Add Product Manually</p>
-                        <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">Fill product details one by one — title, SKU, price, stock, images — and save your listing.</p>
+                        <p className="text-xs font-bold text-blue-600 uppercase tracking-wider">Option 1</p>
+                        <p className="text-base font-semibold text-slate-800 mt-0.5">Add Product Manually</p>
+                        <p className="text-sm text-slate-500 mt-1.5 leading-relaxed">Fill product details one by one — title, SKU, price, stock, images — and save your listing.</p>
                     </div>
                 </div>
             </div>
@@ -280,9 +280,9 @@ function Sidebar({ visible }: { visible: boolean }) {
                         <UploadCloud className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                        <p className="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Option 2</p>
-                        <p className="text-sm font-semibold text-slate-800 mt-0.5">Import via File</p>
-                        <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">Download the template, fill in your product data, upload the file — all products are created automatically.</p>
+                        <p className="text-xs font-bold text-blue-600 uppercase tracking-wider">Option 2</p>
+                        <p className="text-base font-semibold text-slate-800 mt-0.5">Import via File</p>
+                        <p className="text-sm text-slate-500 mt-1.5 leading-relaxed">Download the template, fill in your product data, upload the file — all products are created automatically.</p>
                     </div>
                 </div>
             </div>
@@ -315,7 +315,7 @@ export function ProductListingGuide() {
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-3">
                         Create Your Product Listing
                     </h2>
-                    <p className="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
+                    <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-2xl leading-relaxed">
                         Choose how you want to add products to your catalog — fill in details manually or bulk-import via a file.
                         Either path takes your listings live in My Catalog within seconds.
                     </p>
@@ -412,7 +412,7 @@ export function ProductListingGuide() {
                                             <div style={{ height: 1, width: 32, borderTop: "2px dashed #CBD5E1" }} />
                                             <span
                                                 style={{
-                                                    fontSize: 10,
+                                                    fontSize: 11,
                                                     fontWeight: 700,
                                                     color: "#94A3B8",
                                                     background: "white",
@@ -479,8 +479,8 @@ export function ProductListingGuide() {
                                         opacity: visible ? 1 : 0,
                                     }}
                                 >
-                                    <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
-                                    <p className="text-xs font-semibold text-slate-700">
+                                    <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" />
+                                    <p className="text-sm font-semibold text-slate-700">
                                         Both paths sync instantly to My Catalog — listings go live on Amazon within seconds.
                                     </p>
                                 </div>
@@ -491,7 +491,7 @@ export function ProductListingGuide() {
 
                 {/* Three feature callouts */}
                 <div
-                    className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-5"
+                    className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-6"
                     style={{
                         transition: "opacity 0.6s ease 500ms, transform 0.6s ease 500ms",
                         opacity: visible ? 1 : 0,
@@ -503,13 +503,13 @@ export function ProductListingGuide() {
                         { icon: FileSpreadsheet, title: "Excel & CSV Supported", desc: "Download our sample template, fill it in, and upload. We handle the rest automatically." },
                         { icon: CheckCircle2, title: "Instant Catalog Sync", desc: "Every product appears in My Catalog within seconds, ready to push live on Amazon." },
                     ].map(({ icon: Icon, title, desc }) => (
-                        <div key={title} className="flex items-start gap-3 bg-white border border-slate-200 rounded-2xl px-5 py-4 shadow-sm">
-                            <div className="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 mt-0.5">
-                                <Icon className="w-4 h-4 text-blue-600" />
+                        <div key={title} className="flex items-start gap-3 bg-white border border-slate-200 rounded-2xl px-5 py-5 shadow-sm">
+                            <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 mt-0.5">
+                                <Icon className="w-5 h-5 text-blue-600" />
                             </div>
                             <div>
-                                <p className="text-sm font-semibold text-slate-900">{title}</p>
-                                <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">{desc}</p>
+                                <p className="text-base font-semibold text-slate-900">{title}</p>
+                                <p className="text-sm text-slate-500 mt-1 leading-relaxed">{desc}</p>
                             </div>
                         </div>
                     ))}
