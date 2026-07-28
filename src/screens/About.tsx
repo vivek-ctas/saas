@@ -18,12 +18,12 @@ const About = () => {
   const ref = useReveal<HTMLDivElement>();
 
   const milestones = [
-    { year: "2019", title: "Founded in Ahmedabad", desc: "Two engineers, one mission: end the spreadsheet hell of multichannel sellers.", icon: Sparkles },
-    { year: "2020", title: "First 1,000 sellers", desc: "Hit our first major milestone during a year that reshaped commerce forever.", icon: Users },
-    { year: "2021", title: "Series A", desc: "Raised funding to scale our infrastructure and double the engineering team.", icon: Rocket },
-    { year: "2022", title: "Enterprise launch", desc: "Built dedicated tooling for sellers managing 100k+ SKUs across 10+ channels.", icon: Building2 },
-    { year: "2023", title: "Global expansion", desc: "Crossed into 50+ countries with multi-currency and multi-language support.", icon: Globe },
-    { year: "2024", title: "AI integration", desc: "Launched AI-powered catalog optimization, listing asset management and inventory sync engine.", icon: Brain }
+    { year: "2019", title: "CTAS Founded", desc: "CTAS Info Services LLP was established with a vision to simplify eCommerce operations through modern software solutions.", icon: Sparkles },
+    { year: "2020", title: "Marketplace Solutions", desc: "Started building automation tools for inventory management, catalog processing, and marketplace integrations.", icon: Users },
+    { year: "2021", title: "Platform Expansion", desc: "Expanded our product portfolio with scalable cloud-based solutions designed for growing online businesses.", icon: Rocket },
+    { year: "2022", title: "Enterprise Infrastructure", desc: "Enhanced platform architecture with secure APIs, workflow automation, and enterprise-grade performance.", icon: Building2 },
+    { year: "2023", title: "Intelligent Automation", desc: "Introduced advanced automation to streamline catalog validation, inventory synchronization, and operational workflows.", icon: Globe },
+    { year: "2024", title: "AI-Powered Platform", desc: "Integrated AI capabilities for catalog optimization, content generation, data validation, and business process automation.", icon: Brain }
   ];
 
   const values = [
@@ -97,8 +97,8 @@ const About = () => {
           <div className="relative px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-16 reveal">
               <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Our Journey</Badge>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">5 years. 50,000 sellers.</h2>
-              <p className="text-lg sm:text-xl lg:text-2xl text-slate-600">From garage idea to global platform.</p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Building Smarter Commerce Solutions</h2>
+              <p className="text-lg sm:text-xl lg:text-2xl text-slate-600">Continuously evolving our platform to help businesses automate, scale, and grow.</p>
             </div>
 
             <div className="relative">

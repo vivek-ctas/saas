@@ -108,7 +108,7 @@ const FooterLinkColumn = ({ title, links }: FooterLinkGroup) => (
   <div className="space-y-4">
     <div>
       <h4 className="font-semibold text-white text-base">{title}</h4>
-      <span className="mt-2 block h-0.5 w-6 rounded-full bg-gradient-to-r from-[#6D5BF2] to-[#8B7CF6]" />
+      <span className="mt-2 block h-0.5 w-6 rounded-full bg-gradient-to-r from-[#3C9AC4] to-[#5BB8E8]" />
     </div>
     <ul className="space-y-3 text-sm">
       {links.map((link) => {
@@ -121,9 +121,9 @@ const FooterLinkColumn = ({ title, links }: FooterLinkGroup) => (
                 target: "_blank",
                 rel: "noopener noreferrer",
               })}
-              className="group flex items-center text-slate-400 hover:text-[#8B7CF6] transition-colors"
+              className="group flex items-center text-slate-400 hover:text-[#3C9AC4] transition-colors"
             >
-              <ChevronRight className="w-3.5 h-3.5 mr-1.5 text-[#8B7CF6]/70 transition-transform group-hover:translate-x-0.5" />
+              <ChevronRight className="w-3.5 h-3.5 mr-1.5 text-[#3C9AC4] transition-transform group-hover:translate-x-0.5" />
               {link.name}
             </Link>
           </li>
@@ -144,13 +144,13 @@ const ContactRow = ({
 }) => {
   const content = (
     <>
-      <Icon className="w-4 h-4 mr-3 mt-0.5 text-[#8B7CF6] flex-shrink-0" />
+      <Icon className="w-4 h-4 mr-3 mt-0.5 text-[#3C9AC4] hover:text-white flex-shrink-0" />
       <span>{value}</span>
     </>
   );
 
   return href ? (
-    <a href={href} className="flex items-start text-slate-300 text-sm hover:text-[#8B7CF6] transition-colors">
+    <a href={href} className="flex items-start text-slate-300 text-sm hover:text-[#3C9AC4] transition-colors">
       {content}
     </a>
   ) : (
@@ -160,8 +160,8 @@ const ContactRow = ({
 
 const HighlightCard = ({ icon: Icon, title, description }: HighlightFeature) => (
   <div className="flex items-start gap-4">
-    <div className="w-12 h-12 rounded-xl bg-[#8B7CF6]/10 flex items-center justify-center flex-shrink-0">
-      <Icon className="w-5 h-5 text-[#8B7CF6]" />
+    <div className="w-12 h-12 rounded-xl bg-[#3C9AC4]/10 flex items-center justify-center flex-shrink-0">
+      <Icon className="w-5 h-5 text-[#3C9AC4] hover:text-white" />
     </div>
     <div>
       <h5 className="font-semibold text-white text-sm mb-1">{title}</h5>
@@ -184,7 +184,7 @@ const SocialIconLink = ({
     target="_blank"
     rel="noreferrer"
     aria-label={label}
-    className="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-[#8B7CF6] hover:border-[#8B7CF6]/50 transition-colors"
+    className="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-[#3C9AC4] hover:border-[#3C9AC4]/50 transition-colors"
   >
     <Icon className="w-4 h-4" />
   </a>
@@ -254,9 +254,9 @@ const Footer = () => {
 
   const bottomBar = {
     copyright: settingsData?.footer?.copyright_text || "© 2026 SellerBuz. All rights reserved.",
-    tagline: settingsData?.company?.tagline || "Built for modern sellers. Designed for scale.",
+    tagline: settingsData?.company?.tagline || "AI Ecommerce Automation & Marketplace Solutions",
     companyLabel: "Operated by",
-    companyName: "Ctasis Info Services LLP",
+    companyName: "CTAS Info Services LLP",
     companyHref: "https://ctasis.com",
   };
 
@@ -334,7 +334,7 @@ const Footer = () => {
                   href={bottomBar.companyHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#8B7CF6] hover:text-[#a596ff] transition-colors font-medium"
+                  className="text-[#3C9AC4] hover:text-white transition-colors font-medium"
                 >
                   {bottomBar.companyName}
                 </a>

@@ -74,6 +74,17 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
+    /* Typography Scale */
+    --font-size-h1: 3rem;       /* 48px */
+    --font-size-h2: 2.5rem;     /* 40px */
+    --font-size-h3: 2rem;       /* 32px */
+    --font-size-h4: 1.5rem;     /* 24px */
+    --font-size-h5: 1.25rem;    /* 20px */
+    --font-size-h6: 1.125rem;   /* 18px */
+    --font-size-body: 1rem;     /* 16px */
+    --font-size-small: 0.875rem; /* 14px */
+    --font-size-caption: 0.75rem; /* 12px */
+
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -141,7 +152,28 @@ All colors MUST be HSL.
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-sora), var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-montserrat), var(--font-inter), system-ui, sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  h1 { font-size: var(--font-size-h1); }
+  h2 { font-size: var(--font-size-h2); }
+  h3 { font-size: var(--font-size-h3); }
+  h4 { font-size: var(--font-size-h4); }
+  h5 { font-size: var(--font-size-h5); }
+  h6 { font-size: var(--font-size-h6); }
+
+  body {
+    font-size: var(--font-size-body);
+  }
+
+  small {
+    font-size: var(--font-size-small);
+  }
+
+  caption, figcaption {
+    font-size: var(--font-size-caption);
   }
 }
 

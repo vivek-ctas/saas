@@ -20,6 +20,19 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
+				heading: ['var(--font-montserrat)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
+				montserrat: ['var(--font-montserrat)', 'system-ui', 'sans-serif'],
+			},
+			fontSize: {
+				'h1': ['var(--font-size-h1)', { lineHeight: '1.2', fontWeight: '600' }],
+				'h2': ['var(--font-size-h2)', { lineHeight: '1.2', fontWeight: '600' }],
+				'h3': ['var(--font-size-h3)', { lineHeight: '1.2', fontWeight: '600' }],
+				'h4': ['var(--font-size-h4)', { lineHeight: '1.3', fontWeight: '600' }],
+				'h5': ['var(--font-size-h5)', { lineHeight: '1.4', fontWeight: '600' }],
+				'h6': ['var(--font-size-h6)', { lineHeight: '1.4', fontWeight: '600' }],
+				'body': ['var(--font-size-body)', { lineHeight: '1.6' }],
+				'small': ['var(--font-size-small)', { lineHeight: '1.5' }],
+				'caption': ['var(--font-size-caption)', { lineHeight: '1.4' }],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

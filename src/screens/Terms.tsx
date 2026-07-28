@@ -200,7 +200,7 @@ const TERMS_SECTIONS = [
         title: "Intellectual Property",
         icon: Copyright,
         content:
-            "All codebase, interface designs, graphics, branding identity, technical documentations, and technology are the proprietary property of SellerBuz (under Ctasis Info Services LLP). You may not copy, replicate, distribute, or modify any portion without express written permission.",
+            "All codebase, interface designs, graphics, branding identity, technical documentations, and technology are the proprietary property of SellerBuz (under CTAS Info Services LLP). You may not copy, replicate, distribute, or modify any portion without express written permission.",
     },
     {
         id: 9,

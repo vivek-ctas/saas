@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Sora } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import Providers from "./providers";
 
 import "./globals.css";
@@ -17,12 +17,12 @@ const inter = Inter({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-const sora = Sora({
+const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-sora",
+  variable: "--font-montserrat",
   preload: true,
-  weight: ["400", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 // ─── Global / fallback metadata ────────────────────────────────────────────
@@ -110,7 +110,7 @@ const softwareJsonLd = {
 // ─── Layout ─────────────────────────────────────────────────────────────────
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${sora.variable}`}>
+    <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
       <head>
         {/* JSON-LD structured data */}
         <script
