@@ -43,17 +43,17 @@ function useInView(threshold = 0.08) {
 ────────────────────────────────────── */
 function SelectMarketplaceMockup() {
     return (
-        <div className="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden">
+        <div className="rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden">
             {/* chrome bar */}
-            <div className="flex items-center gap-1.5 px-3 py-2 border-b border-slate-100 bg-slate-50">
+            <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 border-b border-slate-100 bg-slate-50">
                 <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
                 <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
-                <span className="ml-2 text-xs font-semibold text-slate-500">Amazon</span>
+                <span className="ml-2 text-[11px] sm:text-xs font-semibold text-slate-500">Amazon</span>
             </div>
 
             {/* Single unified SVG map — everything in one coordinate system */}
-            <div className="mx-2 mt-2 mb-1 rounded-xl overflow-hidden border border-slate-100">
+            <div className="mx-1.5 sm:mx-2 mt-1.5 sm:mt-2 mb-1 rounded-lg sm:rounded-xl overflow-hidden border border-slate-100">
                 <svg
                     viewBox="0 0 280 118"
                     className="w-full block"
@@ -106,13 +106,13 @@ function SelectMarketplaceMockup() {
             </div>
 
             {/* Add region + Next */}
-            <div className="px-3 pb-3 space-y-1.5">
-                <button className="w-full flex items-center justify-center gap-1.5 border border-dashed border-slate-300 rounded-xl py-1.5 text-xs text-slate-500 hover:bg-slate-50 transition-colors">
-                    <Plus className="w-3.5 h-3.5" />
-                    Add More Region…
+            <div className="px-2.5 sm:px-3 pb-2.5 sm:pb-3 space-y-1.5">
+                <button className="w-full flex items-center justify-center gap-1.5 border border-dashed border-slate-300 rounded-lg sm:rounded-xl py-1.5 text-[11px] sm:text-xs text-slate-500 hover:bg-slate-50 transition-colors">
+                    <Plus className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
+                    <span className="truncate">Add More Region…</span>
                 </button>
-                <div className="w-full flex items-center justify-center gap-1.5 bg-blue-600 text-white rounded-xl py-2 text-xs font-semibold cursor-pointer select-none">
-                    Next <ArrowRight className="w-3.5 h-3.5" />
+                <div className="w-full flex items-center justify-center gap-1.5 bg-blue-600 text-white rounded-lg sm:rounded-xl py-2 text-[11px] sm:text-xs font-semibold cursor-pointer select-none">
+                    Next <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
                 </div>
             </div>
         </div>
@@ -125,36 +125,38 @@ function SelectMarketplaceMockup() {
 ────────────────────────────────────── */
 function AddStoreMockup() {
     return (
-        <div className="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden h-full flex flex-col">
+        <div className="rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden h-full flex flex-col">
             {/* title */}
-            <div className="px-4 pt-4 pb-2 border-b border-slate-100">
-                <p className="text-base font-bold text-slate-900">Add Amazon Store</p>
+            <div className="px-3 sm:px-4 pt-3 sm:pt-4 pb-2 border-b border-slate-100">
+                <p className="text-sm sm:text-base font-bold text-slate-900">Add Amazon Store</p>
             </div>
-            <div className="p-4 flex-1 flex flex-col justify-between">
+            <div className="p-3 sm:p-4 flex-1 flex flex-col justify-between gap-4">
                 <div className="space-y-3">
                     {/* Store name */}
                     <div>
-                        <label className="block text-xs font-semibold text-slate-500 mb-1">Store Name</label>
-                        <div className="flex items-center gap-2 border border-slate-200 rounded-xl px-3 py-2 bg-slate-50">
+                        <label className="block text-[11px] sm:text-xs font-semibold text-slate-500 mb-1">Store Name</label>
+                        <div className="flex items-center gap-2 border border-slate-200 rounded-lg sm:rounded-xl px-2.5 sm:px-3 py-2 bg-slate-50">
                             <Store className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                            <span className="text-xs text-slate-400">Enter Store Name</span>
+                            <span className="text-[11px] sm:text-xs text-slate-400 truncate">Enter Store Name</span>
                         </div>
                     </div>
                     {/* Channel select */}
                     <div>
-                        <label className="block text-xs font-semibold text-slate-500 mb-1">Select the channel you wish to authorize for access</label>
-                        <div className="flex items-center justify-between border border-slate-200 rounded-xl px-3 py-2 bg-slate-50">
-                            <div className="flex items-center gap-1.5">
-                                <span className="text-sm">🇺🇸</span>
-                                <span className="text-xs text-slate-700 font-medium">Amazon.com (USA)</span>
+                        <label className="block text-[11px] sm:text-xs font-semibold text-slate-500 mb-1 leading-snug">
+                            Select the channel you wish to authorize for access
+                        </label>
+                        <div className="flex items-center justify-between gap-2 border border-slate-200 rounded-lg sm:rounded-xl px-2.5 sm:px-3 py-2 bg-slate-50">
+                            <div className="flex items-center gap-1.5 min-w-0">
+                                <span className="text-sm shrink-0">🇺🇸</span>
+                                <span className="text-[11px] sm:text-xs text-slate-700 font-medium truncate">Amazon.com (USA)</span>
                             </div>
-                            <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+                            <ChevronDown className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                         </div>
                     </div>
                 </div>
                 {/* Continue button */}
-                <div className="w-full flex items-center justify-center gap-1.5 bg-blue-600 text-white rounded-xl py-2.5 text-xs font-semibold">
-                    Continue <ArrowRight className="w-3.5 h-3.5" />
+                <div className="w-full flex items-center justify-center gap-1.5 bg-blue-600 text-white rounded-lg sm:rounded-xl py-2.5 text-[11px] sm:text-xs font-semibold">
+                    Continue <ArrowRight className="w-3.5 h-3.5 shrink-0" />
                 </div>
             </div>
         </div>
@@ -165,47 +167,47 @@ function AddStoreMockup() {
 ────────────────────────────────────── */
 function ConnectAmazonMockup() {
     return (
-        <div className="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden h-full flex flex-col">
+        <div className="rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden h-full flex flex-col">
             {/* title */}
-            <div className="px-4 pt-4 pb-2 border-b border-slate-100">
-                <p className="text-base font-bold text-slate-900">Amazon Authorization</p>
+            <div className="px-3 sm:px-4 pt-3 sm:pt-4 pb-2 border-b border-slate-100">
+                <p className="text-sm sm:text-base font-bold text-slate-900">Amazon Authorization</p>
             </div>
-            <div className="p-4 flex-1 flex flex-col items-center justify-between gap-3">
-                <div className="flex flex-col items-center gap-3">
+            <div className="p-3 sm:p-4 flex-1 flex flex-col items-center justify-between gap-3">
+                <div className="flex flex-col items-center gap-2.5 sm:gap-3">
                     {/* Amazon logo circle */}
-                    <div className="w-14 h-14 rounded-full bg-slate-50 border-2 border-slate-200 flex items-center justify-center overflow-hidden">
-                        <img src="/logos/amazon-color-svgrepo-com.svg" alt="Amazon" className="w-10 h-10 object-contain" />
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-slate-50 border-2 border-slate-200 flex items-center justify-center overflow-hidden shrink-0">
+                        <img src="/logos/amazon-color-svgrepo-com.svg" alt="Amazon" className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
                     </div>
                     <div className="flex items-center justify-center gap-2">
-                        <p className="text-xs text-slate-500 text-center leading-relaxed">
+                        <p className="text-[11px] sm:text-xs text-slate-500 text-center leading-relaxed">
                             Connect your Amazon Seller Central account to authorize access.
                         </p>
                     </div>
                     {/* connect button */}
-                    <div className="w-full flex items-center justify-center gap-1.5 bg-blue-600 text-white rounded-xl py-2.5 text-xs font-semibold">
-                        <LockKeyhole className="w-3.5 h-3.5" />
-                        Connect to Amazon
+                    <div className="w-full flex items-center justify-center gap-1.5 bg-blue-600 text-white rounded-lg sm:rounded-xl py-2.5 text-[11px] sm:text-xs font-semibold">
+                        <LockKeyhole className="w-3.5 h-3.5 shrink-0" />
+                        <span className="truncate">Connect to Amazon</span>
                     </div>
                 </div>
                 {/* status row */}
-                <div className="flex items-center justify-around w-full pt-1">
+                <div className="flex items-center justify-around w-full pt-1 gap-1">
                     {[
                         { icon: Globe, label: "Authorize" },
                         { icon: ShieldCheck, label: "Verify" },
                         { icon: Check, label: "Success" },
                     ].map(({ icon: Icon, label }, i) => (
-                        <div key={label} className="flex flex-col items-center gap-1">
+                        <div key={label} className="flex flex-col items-center gap-1 min-w-0">
                             <div
-                                className={`w-7 h-7 rounded-full flex items-center justify-center border-2 ${i === 2
+                                className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center border-2 shrink-0 ${i === 2
                                     ? "bg-emerald-500 border-emerald-500"
                                     : i === 1
                                         ? "bg-blue-100 border-blue-300"
                                         : "bg-slate-100 border-slate-200"
                                     }`}
                             >
-                                <Icon className={`w-3.5 h-3.5 ${i === 2 ? "text-white" : i === 1 ? "text-blue-600" : "text-slate-500"}`} />
+                                <Icon className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${i === 2 ? "text-white" : i === 1 ? "text-blue-600" : "text-slate-500"}`} />
                             </div>
-                            <span className="text-[10px] text-slate-500 font-medium">{label}</span>
+                            <span className="text-[9px] sm:text-[10px] text-slate-500 font-medium truncate">{label}</span>
                         </div>
                     ))}
                 </div>
@@ -227,40 +229,40 @@ function BottomConnector({ visible }: { visible: boolean }) {
 
     return (
         <div
-            className="flex items-center justify-center gap-0 pt-6 pb-2"
+            className="flex flex-wrap items-start justify-center gap-x-1 gap-y-4 pt-6 pb-2"
             style={{
                 transition: "opacity 0.6s ease 700ms",
                 opacity: visible ? 1 : 0,
             }}
         >
             {nodes.map((n, i) => (
-                <div key={i} className="flex items-center gap-0">
+                <div key={i} className="flex items-start">
                     {/* node */}
-                    <div className="flex flex-col items-center gap-1.5">
+                    <div className="flex flex-col items-center gap-1.5 w-[86px] sm:w-[120px]">
                         <div
-                            className={`w-12 h-12 rounded-full border-2 flex items-center justify-center ${n.success
+                            className={`w-9 h-9 sm:w-12 sm:h-12 rounded-full border-2 flex items-center justify-center shrink-0 ${n.success
                                 ? "bg-emerald-50 border-emerald-400"
                                 : "bg-white border-slate-200 shadow-sm"
                                 }`}
                         >
-                            <n.icon className={`w-5 h-5 ${n.success ? "text-emerald-600" : "text-blue-600"}`} />
+                            <n.icon className={`w-4 h-4 sm:w-5 sm:h-5 ${n.success ? "text-emerald-600" : "text-blue-600"}`} />
                         </div>
                         <div className="text-center mt-1">
                             <p
-                                className={`text-sm font-bold leading-tight ${n.success ? "text-emerald-700" : "text-slate-800"
+                                className={`text-xs sm:text-sm font-bold leading-tight ${n.success ? "text-emerald-700" : "text-slate-800"
                                     }`}
                             >
                                 {n.label}
                             </p>
 
-                            <p className="text-xs text-slate-500 leading-tight mt-0.5 whitespace-pre-line">
+                            <p className="text-[10px] sm:text-xs text-slate-500 leading-tight mt-0.5 whitespace-pre-line">
                                 {n.sub}
                             </p>
                         </div>
                     </div>
                     {/* connector dashes (not after last node) */}
                     {i < nodes.length - 1 && (
-                        <div className="flex items-center px-1" style={{ marginBottom: n.success ? 0 : 0 }}>
+                        <div className="hidden sm:flex items-center px-1 mt-4 sm:mt-5 shrink-0">
                             <svg width="60" height="14" viewBox="0 0 60 14">
                                 <line x1="2" y1="7" x2="50" y2="7" stroke="#CBD5E1" strokeWidth="1.5" strokeDasharray="5 3" />
                                 <polyline points="46,3 54,7 46,11" fill="none" stroke="#94A3B8" strokeWidth="1.5" strokeLinejoin="round" />
@@ -293,7 +295,7 @@ function StepCard({
 }) {
     return (
         <div
-            className="flex flex-col gap-3 h-full"
+            className="flex flex-col gap-2.5 sm:gap-3 h-full"
             style={{
                 transition: `opacity 0.6s ease ${delay}ms, transform 0.6s ease ${delay}ms`,
                 opacity: visible ? 1 : 0,
@@ -301,13 +303,13 @@ function StepCard({
             }}
         >
             {/* step header */}
-            <div className="flex items-start gap-3 min-h-[72px]">
-                <span className="inline-flex items-center px-3 py-1 rounded-xl text-xs font-bold bg-blue-600 text-white shrink-0 shadow">
+            <div className="flex items-start gap-2.5 sm:gap-3">
+                <span className="inline-flex items-center px-2.5 sm:px-3 py-1 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold bg-blue-600 text-white shrink-0 shadow">
                     {num}
                 </span>
-                <div>
-                    <p className="text-base font-bold text-slate-900 leading-tight">{title}</p>
-                    <p className="text-sm text-slate-500 mt-0.5 leading-relaxed">{desc}</p>
+                <div className="min-w-0">
+                    <p className="text-sm sm:text-base font-bold text-slate-900 leading-tight">{title}</p>
+                    <p className="text-xs sm:text-sm text-slate-500 mt-0.5 leading-relaxed">{desc}</p>
                 </div>
             </div>
             {/* ui mockup */}
@@ -322,7 +324,7 @@ function StepCard({
 function StepArrow({ visible }: { visible: boolean }) {
     return (
         <div
-            className="flex items-center justify-center shrink-0 mt-10 px-1"
+            className="hidden lg:flex items-center justify-center shrink-0 mt-10 px-1"
             style={{
                 transition: "opacity 0.5s ease 400ms",
                 opacity: visible ? 1 : 0,
@@ -343,25 +345,25 @@ export function ConnectAmazonGuide() {
     const { ref, visible } = useInView();
 
     return (
-        <section className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3]">
-            <div className="px-5 sm:px-8 lg:px-[70px]">
+        <section className="py-10 sm:py-14 lg:py-20 bg-white border-t border-[#EAECF3]">
+            <div className="px-4 sm:px-8 lg:px-[70px]">
 
                 {/* Section heading */}
                 <div
-                    className="mb-5"
+                    className="mb-4 sm:mb-5"
                     style={{
                         transition: "opacity 0.6s ease, transform 0.6s ease",
                         opacity: visible ? 1 : 0,
                         transform: visible ? "translateY(0)" : "translateY(14px)",
                     }}
                 >
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100 mb-3">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100 mb-2.5 sm:mb-3">
                         How It Works
                     </span>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-3">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-2.5 sm:mb-3 leading-tight">
                         Connect Your Amazon Store
                     </h2>
-                    <p className="text-base sm:text-lg lg:text-xl text-slate-600  leading-relaxed w-full">
+                    <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed w-full">
                         Link your Amazon Seller Central account in just 3 simple steps. Select your marketplace, add your store details, and securely authorize access through Amazon's official OAuth process. Once connected, SellerBuz automatically syncs your store, enabling real-time inventory, orders, and pricing updates so you can start selling within minutes.
                     </p>
                 </div>
@@ -369,27 +371,29 @@ export function ConnectAmazonGuide() {
                 {/* Main panel */}
                 <div
                     ref={ref}
-                    className="rounded-3xl bg-white border border-slate-200 shadow-sm overflow-hidden"
+                    className="rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-sm overflow-hidden"
                     style={{
                         transition: "opacity 0.6s ease 80ms",
                         opacity: visible ? 1 : 0,
                     }}
                 >
                     {/* top label strip */}
-                    <div className="flex items-center gap-3 px-6 lg:px-8 py-4 border-b border-slate-100 bg-slate-50">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-600 text-white shadow">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 px-3 sm:px-6 lg:px-8 py-3 sm:py-4 border-b border-slate-100 bg-slate-50">
+                        <span className="inline-flex items-center px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-blue-600 text-white shadow shrink-0">
                             STEP 2
                         </span>
-                        <span className="text-base font-semibold text-slate-700">Amazon Workflow</span>
-                        <span className="text-sm text-slate-400 ml-auto hidden sm:block">Connect your Amazon store in 3 simple steps</span>
+                        <span className="text-sm sm:text-base font-semibold text-slate-700">Amazon Workflow</span>
+                        <span className="text-xs sm:text-sm text-slate-400 sm:ml-auto hidden md:block">
+                            Connect your Amazon store in 3 simple steps
+                        </span>
                     </div>
 
                     {/* Step cards */}
-                    <div className="p-6 lg:p-8">
+                    <div className="p-3 sm:p-6 lg:p-8">
 
                         {/* dot-grid bg */}
                         <div
-                            className="rounded-2xl p-6"
+                            className="rounded-xl sm:rounded-2xl p-3 sm:p-6"
                             style={{
                                 background: "radial-gradient(circle, #E2E8F0 1px, transparent 1px)",
                                 backgroundSize: "22px 22px",
@@ -397,7 +401,7 @@ export function ConnectAmazonGuide() {
                             }}
                         >
                             {/* 3-column card row */}
-                            <div className="flex flex-col md:flex-row items-stretch gap-4 md:gap-0">
+                            <div className="flex flex-col lg:flex-row items-stretch gap-5 sm:gap-6 lg:gap-0">
                                 {/* STEP 01 */}
                                 <div className="flex-1 min-w-0">
                                     <StepCard
@@ -448,14 +452,14 @@ export function ConnectAmazonGuide() {
 
                         {/* footer info strip */}
                         <div
-                            className="mt-5 flex items-center gap-2.5 bg-blue-50 border border-blue-100 rounded-2xl px-4 py-3"
+                            className="mt-4 sm:mt-5 flex items-start gap-2 sm:gap-2.5 bg-blue-50 border border-blue-100 rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3"
                             style={{
                                 transition: "opacity 0.6s ease 800ms",
                                 opacity: visible ? 1 : 0,
                             }}
                         >
-                            <BadgeCheck className="w-5 h-5 text-blue-600 shrink-0" />
-                            <p className="text-sm font-semibold text-slate-700">
+                            <BadgeCheck className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 shrink-0 mt-0.5 sm:mt-0" />
+                            <p className="text-xs sm:text-sm font-semibold text-slate-700 leading-relaxed">
                                 One-time setup. Once authorized, SellerBuz syncs your Amazon store automatically — inventory, orders and pricing update in real time.
                             </p>
                         </div>
@@ -464,7 +468,7 @@ export function ConnectAmazonGuide() {
 
                 {/* Three feature callouts */}
                 <div
-                    className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-6"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 mt-5 sm:mt-6"
                     style={{
                         transition: "opacity 0.6s ease 500ms, transform 0.6s ease 500ms",
                         opacity: visible ? 1 : 0,
@@ -488,13 +492,13 @@ export function ConnectAmazonGuide() {
                             desc: "Your store is live and syncing within minutes of completing the authorization step.",
                         },
                     ].map(({ icon: Icon, title, desc }) => (
-                        <div key={title} className="flex items-start gap-3 bg-white border border-slate-200 rounded-2xl px-5 py-5 shadow-sm">
-                            <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 mt-0.5">
-                                <Icon className="w-5 h-5 text-blue-600" />
+                        <div key={title} className="flex items-start gap-3 bg-white border border-slate-200 rounded-xl sm:rounded-2xl px-4 py-4 sm:px-5 sm:py-5 shadow-sm">
+                            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-blue-50 flex items-center justify-center shrink-0 mt-0.5">
+                                <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
                             </div>
-                            <div>
-                                <p className="text-base font-semibold text-slate-900">{title}</p>
-                                <p className="text-sm text-slate-500 mt-1 leading-relaxed">{desc}</p>
+                            <div className="min-w-0">
+                                <p className="text-sm sm:text-base font-semibold text-slate-900">{title}</p>
+                                <p className="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">{desc}</p>
                             </div>
                         </div>
                     ))}

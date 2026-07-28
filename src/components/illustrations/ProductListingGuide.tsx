@@ -40,7 +40,7 @@ function useInView(threshold = 0.08) {
 }
 
 /* ─────────────────────────────────────
-   SVG inline arrow
+   SVG inline arrow (horizontal)
 ────────────────────────────────────── */
 function Arrow({ dashed = false }: { dashed?: boolean }) {
     return (
@@ -52,6 +52,24 @@ function Arrow({ dashed = false }: { dashed?: boolean }) {
                     <line x1="4" y1="9" x2="42" y2="9" stroke="#BFDBFE" strokeWidth="2" />
                 )}
                 <polyline points="38,4 50,9 38,14" fill="none" stroke={dashed ? "#94A3B8" : "#60A5FA"} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+            </svg>
+        </div>
+    );
+}
+
+/* ─────────────────────────────────────
+   SVG inline arrow (vertical, for mobile)
+────────────────────────────────────── */
+function ArrowDown({ dashed = false }: { dashed?: boolean }) {
+    return (
+        <div className="flex items-center justify-center py-1" style={{ height: 36, flexShrink: 0 }}>
+            <svg width="18" height="36" viewBox="0 0 18 36" fill="none">
+                {dashed ? (
+                    <line x1="9" y1="4" x2="9" y2="26" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="5 4" />
+                ) : (
+                    <line x1="9" y1="4" x2="9" y2="26" stroke="#BFDBFE" strokeWidth="2" />
+                )}
+                <polyline points="4,22 9,30 14,22" fill="none" stroke={dashed ? "#94A3B8" : "#60A5FA"} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
             </svg>
         </div>
     );
@@ -267,19 +285,19 @@ function Sidebar({ visible }: { visible: boolean }) {
                 STEP 1
             </span>
             <div>
-                <h3 className="text-xl font-bold text-slate-900 leading-snug">Create Your Product Listing</h3>
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 leading-snug">Create Your Product Listing</h3>
                 <p className="text-sm sm:text-base text-slate-500 mt-2 leading-relaxed">Add products to your catalog manually or in bulk. Listings appear in My Catalog instantly, ready to go live.</p>
             </div>
             {/* Option 1 */}
-            <div className="rounded-2xl border border-blue-100 bg-blue-50 p-4">
-                <div className="flex gap-3">
-                    <div className="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center shrink-0 mt-px">
-                        <Tag className="w-4 h-4 text-white" />
+            <div className="rounded-2xl border border-blue-100 bg-blue-50 p-3 sm:p-4">
+                <div className="flex gap-2.5 sm:gap-3">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-blue-600 flex items-center justify-center shrink-0 mt-px">
+                        <Tag className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                         <p className="text-xs font-bold text-blue-600 uppercase tracking-wider">Option 1</p>
-                        <p className="text-base font-semibold text-slate-800 mt-0.5">Add Product Manually</p>
-                        <p className="text-sm text-slate-500 mt-1.5 leading-relaxed">Fill product details one by one - title, SKU, price, stock, images — and save your listing.</p>
+                        <p className="text-sm sm:text-base font-semibold text-slate-800 mt-0.5">Add Product Manually</p>
+                        <p className="text-xs sm:text-sm text-slate-500 mt-1 sm:mt-1.5 leading-relaxed">Fill product details one by one - title, SKU, price, stock, images — and save your listing.</p>
                     </div>
                 </div>
             </div>
@@ -290,15 +308,15 @@ function Sidebar({ visible }: { visible: boolean }) {
                 <div className="flex-1 h-px bg-slate-200" />
             </div>
             {/* Option 2 */}
-            <div className="rounded-2xl border border-blue-100 bg-blue-50 p-4">
-                <div className="flex gap-3">
-                    <div className="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center shrink-0 mt-px">
-                        <UploadCloud className="w-4 h-4 text-white" />
+            <div className="rounded-2xl border border-blue-100 bg-blue-50 p-3 sm:p-4">
+                <div className="flex gap-2.5 sm:gap-3">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-blue-600 flex items-center justify-center shrink-0 mt-px">
+                        <UploadCloud className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                         <p className="text-xs font-bold text-blue-600 uppercase tracking-wider">Option 2</p>
-                        <p className="text-base font-semibold text-slate-800 mt-0.5">Import via File</p>
-                        <p className="text-sm text-slate-500 mt-1.5 leading-relaxed">Download the template, fill in your product data, upload the file — all products are created automatically.</p>
+                        <p className="text-sm sm:text-base font-semibold text-slate-800 mt-0.5">Import via File</p>
+                        <p className="text-xs sm:text-sm text-slate-500 mt-1 sm:mt-1.5 leading-relaxed">Download the template, fill in your product data, upload the file — all products are created automatically.</p>
                     </div>
                 </div>
             </div>
@@ -318,7 +336,7 @@ export function ProductListingGuide() {
 
                 {/* Section heading */}
                 <div
-                    className="mb-5"
+                    className="mb-4 sm:mb-5"
                     style={{
                         transition: "opacity 0.6s ease, transform 0.6s ease",
                         opacity: visible ? 1 : 0,
@@ -328,10 +346,10 @@ export function ProductListingGuide() {
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100 mb-3">
                         How It Works
                     </span>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-3">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-2 sm:mb-3">
                         Create Your Product Listing
                     </h2>
-                    <p className="text-base sm:text-lg lg:text-xl text-slate-600  leading-relaxed">
+                    <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed">
                         Create product listings the way that works best for your business. Add products individually by entering all the required details, or save time by bulk-importing multiple products using a spreadsheet template. Regardless of the method you choose, SellerBuz validates your data and instantly syncs every product to your My Catalog, making your listings ready for publishing and marketplace management within seconds.
                     </p>
                 </div>
@@ -348,151 +366,147 @@ export function ProductListingGuide() {
                     <div className="flex flex-col lg:flex-row">
 
                         {/* ── Sidebar ─────────────────────────────────── */}
-                        <div className="w-full lg:w-[360px] xl:w-[400px] shrink-0 border-b lg:border-b-0 lg:border-r border-slate-100 p-8">
+                        <div className="w-full lg:w-[360px] xl:w-[400px] shrink-0 border-b lg:border-b-0 lg:border-r border-slate-100 p-5 sm:p-8">
                             <Sidebar visible={visible} />
                         </div>
 
                         {/* ── Diagram area ───────────────────────────────── */}
-                        <div className="flex-1 pt-6 pb-6 pr-6 pl-1 lg:pt-8 lg:pb-8 lg:pr-8 lg:pl-2 min-w-0 overflow-x-auto">
+                        <div className="flex-1 min-w-0">
+
+                            {/* ── Mobile / Tablet: vertical flow ──────────── */}
                             <div
-                                className="relative rounded-2xl py-6 pb-8 pr-5 pl-3 min-w-[900px] w-full"
+                                className="lg:hidden rounded-2xl py-5 px-4 flex flex-col items-center gap-1"
                                 style={{
                                     background: "radial-gradient(circle, #E2E8F0 1px, transparent 1px)",
                                     backgroundSize: "22px 22px",
                                     backgroundColor: "#F8FAFC",
                                 }}
                             >
+                                {/* Option 1 */}
+                                <OptionLabel badge="OPTION 1" label="Add Product Manually" />
+                                <ArrowDown dashed />
+                                <Node icon={Plus} label="Add Product" variant="blue" visible={visible} delay={150} width={110} />
+                                <ArrowDown />
+                                <div className="w-full max-w-[170px]"><FormNode visible={visible} delay={250} /></div>
+                                <ArrowDown />
+                                <Node icon={CheckCircle2} label="Save Product" sub="Added to My Catalog" variant="blue" visible={visible} delay={350} width={110} />
 
-                                {/* Use CSS grid to let Catalog span both rows */}
+                                {/* OR divider */}
+                                <div className="flex items-center gap-3 my-3 w-full max-w-[220px]">
+                                    <div className="flex-1 h-px border-t-2 border-dashed border-slate-200" />
+                                    <span className="text-[11px] font-bold text-slate-400 bg-white border border-slate-200 rounded-full px-2.5 py-0.5 shadow-sm select-none">OR</span>
+                                    <div className="flex-1 h-px border-t-2 border-dashed border-slate-200" />
+                                </div>
+
+                                {/* Option 2 */}
+                                <OptionLabel badge="OPTION 2" label="Import Products via File" />
+                                <ArrowDown dashed />
+                                <Node icon={Download} label="Download Sample" sub="Get template as reference" visible={visible} delay={200} width={110} />
+                                <ArrowDown />
+                                <Node icon={FileSpreadsheet} label="Fill the Template" sub="Enter product details in file" visible={visible} delay={300} width={120} />
+                                <ArrowDown />
+                                <Node icon={UploadCloud} label="Upload File" sub="Upload the completed file" visible={visible} delay={400} width={110} />
+                                <ArrowDown />
+
+                                {/* Catalog */}
+                                <div className="w-full max-w-[380px]">
+                                    <CatalogPanel visible={visible} delay={550} />
+                                </div>
+
+                                {/* Bottom sync strip */}
                                 <div
-                                    style={{
-                                        display: "grid",
-                                        gridTemplateColumns: "200px 50px 120px 50px 200px 50px 120px 50px 350px",
-                                        gridTemplateRows: "auto 36px auto",
-                                        alignItems: "center",
-                                        gap: "0",
-                                        width: "100%",
-                                    }}
+                                    className="mt-4 flex items-start gap-2 bg-white border border-blue-100 rounded-2xl px-3 py-2.5 shadow-sm w-full max-w-[380px]"
+                                    style={{ transition: "opacity 0.6s ease 700ms", opacity: visible ? 1 : 0 }}
                                 >
-                                    {/* ── ROW 0: OPTION 1 ─────────────────────── */}
+                                    <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-px" />
+                                    <p className="text-xs font-semibold text-slate-700 leading-relaxed">
+                                        Both paths sync instantly to My Catalog — listings go live on Amazon within seconds.
+                                    </p>
+                                </div>
+                            </div>
 
-                                    {/* Option 1 label: col 1, row 1 */}
-                                    <div style={{ gridColumn: 1, gridRow: 1, display: "flex", justifyContent: "center", alignItems: "center" }}>
-                                        <OptionLabel badge="OPTION 1" label="Add Product Manually" />
-                                    </div>
-
-                                    {/* arrow: col 2, row 1 */}
-                                    <div style={{ gridColumn: 2, gridRow: 1 }}>
-                                        <Arrow dashed />
-                                    </div>
-
-                                    {/* Add Product node: col 3, row 1 */}
-                                    <div style={{ gridColumn: 3, gridRow: 1, display: "flex", justifyContent: "center" }}>
-                                        <Node icon={Plus} label="Add Product" variant="blue" visible={visible} delay={150} />
-                                    </div>
-
-                                    {/* arrow: col 4, row 1 */}
-                                    <div style={{ gridColumn: 4, gridRow: 1 }}>
-                                        <Arrow />
-                                    </div>
-
-                                    {/* Fill Details: col 5, row 1 */}
-                                    <div style={{ gridColumn: 5, gridRow: 1, display: "flex", justifyContent: "center" }}>
-                                        <FormNode visible={visible} delay={250} />
-                                    </div>
-
-                                    {/* arrow: col 6, row 1 */}
-                                    <div style={{ gridColumn: 6, gridRow: 1 }}>
-                                        <Arrow />
-                                    </div>
-
-                                    {/* Save Product: col 7, row 1 */}
-                                    <div style={{ gridColumn: 7, gridRow: 1, display: "flex", justifyContent: "center" }}>
-                                        <Node icon={CheckCircle2} label="Save Product" sub="Added to My Catalog" variant="blue" visible={visible} delay={350} />
-                                    </div>
-
-                                    {/* arrow: col 8, row 1 */}
-                                    <div style={{ gridColumn: 8, gridRow: 1 }}>
-                                        <Arrow />
-                                    </div>
-
-                                    {/* My Catalog: col 9, row 1 to 3 (spans all rows) */}
-                                    <div style={{ gridColumn: 9, gridRow: "1 / 4", display: "block", paddingLeft: 12 }}>
-                                        <CatalogPanel visible={visible} delay={550} />
-                                    </div>
-
-                                    {/* ── ROW 1: OR divider ───────────────────── */}
-                                    <div style={{ gridColumn: "1 / 9", gridRow: "2", display: "flex", alignItems: "center", paddingLeft: 1 }}>
-                                        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                            <div style={{ height: 1, width: 32, borderTop: "2px dashed #CBD5E1" }} />
-                                            <span
-                                                style={{
-                                                    fontSize: 11,
-                                                    fontWeight: 700,
-                                                    color: "#94A3B8",
-                                                    background: "white",
-                                                    border: "1px solid #E2E8F0",
-                                                    borderRadius: 999,
-                                                    padding: "2px 10px",
-                                                    boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
-                                                }}
-                                            >
-                                                OR
-                                            </span>
-                                            <div style={{ height: 1, width: 32, borderTop: "2px dashed #CBD5E1" }} />
+                            {/* ── Desktop: horizontal flow ─────────────────── */}
+                            <div
+                                className="hidden lg:block rounded-2xl py-6 pb-8 pr-5 pl-3"
+                                style={{
+                                    background: "radial-gradient(circle, #E2E8F0 1px, transparent 1px)",
+                                    backgroundSize: "22px 22px",
+                                    backgroundColor: "#F8FAFC",
+                                }}
+                            >
+                                {/* Contained scroll: the grid below has a fixed
+                                    minimum width. On narrower lg/xl viewports where
+                                    the sidebar + diagram can't both fit it, this wrapper
+                                    scrolls internally instead of breaking the page layout. */}
+                                <div className="overflow-x-auto">
+                                    <div
+                                        style={{
+                                            display: "grid",
+                                            gridTemplateColumns: "200px 50px 120px 50px 200px 50px 120px 50px 350px",
+                                            gridTemplateRows: "auto 36px auto",
+                                            alignItems: "center",
+                                            gap: "0",
+                                            width: "100%",
+                                            minWidth: 1190,
+                                        }}
+                                    >
+                                        {/* ROW 0: OPTION 1 */}
+                                        <div style={{ gridColumn: 1, gridRow: 1, display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                            <OptionLabel badge="OPTION 1" label="Add Product Manually" />
                                         </div>
-                                    </div>
+                                        <div style={{ gridColumn: 2, gridRow: 1 }}><Arrow dashed /></div>
+                                        <div style={{ gridColumn: 3, gridRow: 1, display: "flex", justifyContent: "center" }}>
+                                            <Node icon={Plus} label="Add Product" variant="blue" visible={visible} delay={150} />
+                                        </div>
+                                        <div style={{ gridColumn: 4, gridRow: 1 }}><Arrow /></div>
+                                        <div style={{ gridColumn: 5, gridRow: 1, display: "flex", justifyContent: "center" }}>
+                                            <FormNode visible={visible} delay={250} />
+                                        </div>
+                                        <div style={{ gridColumn: 6, gridRow: 1 }}><Arrow /></div>
+                                        <div style={{ gridColumn: 7, gridRow: 1, display: "flex", justifyContent: "center" }}>
+                                            <Node icon={CheckCircle2} label="Save Product" sub="Added to My Catalog" variant="blue" visible={visible} delay={350} />
+                                        </div>
+                                        <div style={{ gridColumn: 8, gridRow: 1 }}><Arrow /></div>
+                                        {/* My Catalog spans all rows */}
+                                        <div style={{ gridColumn: 9, gridRow: "1 / 4", display: "block", paddingLeft: 12 }}>
+                                            <CatalogPanel visible={visible} delay={550} />
+                                        </div>
 
-                                    {/* ── ROW 2: OPTION 2 ─────────────────────── */}
+                                        {/* ROW 1: OR divider */}
+                                        <div style={{ gridColumn: "1 / 9", gridRow: "2", display: "flex", alignItems: "center", paddingLeft: 1 }}>
+                                            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                                <div style={{ height: 1, width: 32, borderTop: "2px dashed #CBD5E1" }} />
+                                                <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", background: "white", border: "1px solid #E2E8F0", borderRadius: 999, padding: "2px 10px", boxShadow: "0 1px 2px rgba(0,0,0,0.05)" }}>OR</span>
+                                                <div style={{ height: 1, width: 32, borderTop: "2px dashed #CBD5E1" }} />
+                                            </div>
+                                        </div>
 
-                                    {/* Option 2 label: col 1, row 3 */}
-                                    <div style={{ gridColumn: 1, gridRow: 3, display: "flex", justifyContent: "center", alignItems: "center" }}>
-                                        <OptionLabel badge="OPTION 2" label="Import Products via File" />
-                                    </div>
-
-                                    {/* arrow: col 2, row 3 */}
-                                    <div style={{ gridColumn: 2, gridRow: 3 }}>
-                                        <Arrow dashed />
-                                    </div>
-
-                                    {/* Download: col 3, row 3 */}
-                                    <div style={{ gridColumn: 3, gridRow: 3, display: "flex", justifyContent: "center" }}>
-                                        <Node icon={Download} label="Download Sample" sub="Get template as reference" visible={visible} delay={200} width={88} />
-                                    </div>
-
-                                    {/* arrow: col 4, row 3 */}
-                                    <div style={{ gridColumn: 4, gridRow: 3 }}>
-                                        <Arrow />
-                                    </div>
-
-                                    {/* Fill Template: col 5, row 3 */}
-                                    <div style={{ gridColumn: 5, gridRow: 3, display: "flex", justifyContent: "center" }}>
-                                        <Node icon={FileSpreadsheet} label="Fill the Template" sub="Enter product details in file" visible={visible} delay={300} width={108} />
-                                    </div>
-
-                                    {/* arrow: col 6, row 3 */}
-                                    <div style={{ gridColumn: 6, gridRow: 3 }}>
-                                        <Arrow />
-                                    </div>
-
-                                    {/* Upload File: col 7, row 3 */}
-                                    <div style={{ gridColumn: 7, gridRow: 3, display: "flex", justifyContent: "center" }}>
-                                        <Node icon={UploadCloud} label="Upload File" sub="Upload the completed file" visible={visible} delay={400} width={110} />
-                                    </div>
-
-                                    {/* arrow col 8 row 3: goes to catalog */}
-                                    <div style={{ gridColumn: 8, gridRow: 3, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                        <Arrow />
+                                        {/* ROW 2: OPTION 2 */}
+                                        <div style={{ gridColumn: 1, gridRow: 3, display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                            <OptionLabel badge="OPTION 2" label="Import Products via File" />
+                                        </div>
+                                        <div style={{ gridColumn: 2, gridRow: 3 }}><Arrow dashed /></div>
+                                        <div style={{ gridColumn: 3, gridRow: 3, display: "flex", justifyContent: "center" }}>
+                                            <Node icon={Download} label="Download Sample" sub="Get template as reference" visible={visible} delay={200} width={88} />
+                                        </div>
+                                        <div style={{ gridColumn: 4, gridRow: 3 }}><Arrow /></div>
+                                        <div style={{ gridColumn: 5, gridRow: 3, display: "flex", justifyContent: "center" }}>
+                                            <Node icon={FileSpreadsheet} label="Fill the Template" sub="Enter product details in file" visible={visible} delay={300} width={108} />
+                                        </div>
+                                        <div style={{ gridColumn: 6, gridRow: 3 }}><Arrow /></div>
+                                        <div style={{ gridColumn: 7, gridRow: 3, display: "flex", justifyContent: "center" }}>
+                                            <Node icon={UploadCloud} label="Upload File" sub="Upload the completed file" visible={visible} delay={400} width={110} />
+                                        </div>
+                                        <div style={{ gridColumn: 8, gridRow: 3, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                            <Arrow />
+                                        </div>
                                     </div>
                                 </div>
 
                                 {/* Bottom sync strip */}
                                 <div
-                                    className="mt-6 flex items-center gap-2.5 bg-white border border-blue-100 rounded-2xl px-4 py-3 shadow-sm"
-                                    style={{
-                                        transition: "opacity 0.6s ease 700ms",
-                                        opacity: visible ? 1 : 0,
-                                    }}
+                                    className="mt-6 flex items-start gap-2.5 bg-white border border-blue-100 rounded-2xl px-4 py-3 shadow-sm"
+                                    style={{ transition: "opacity 0.6s ease 700ms", opacity: visible ? 1 : 0 }}
                                 >
                                     <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" />
                                     <p className="text-sm font-semibold text-slate-700">
@@ -500,13 +514,14 @@ export function ProductListingGuide() {
                                     </p>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
 
                 {/* Three feature callouts */}
                 <div
-                    className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-6"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-6"
                     style={{
                         transition: "opacity 0.6s ease 500ms, transform 0.6s ease 500ms",
                         opacity: visible ? 1 : 0,
@@ -518,7 +533,7 @@ export function ProductListingGuide() {
                         { icon: FileSpreadsheet, title: "Excel & CSV Supported", desc: "Download our sample template, fill it in, and upload. We handle the rest automatically." },
                         { icon: CheckCircle2, title: "Instant Catalog Sync", desc: "Every product appears in My Catalog within seconds, ready to push live on Amazon." },
                     ].map(({ icon: Icon, title, desc }) => (
-                        <div key={title} className="flex items-start gap-3 bg-white border border-slate-200 rounded-2xl px-5 py-5 shadow-sm">
+                        <div key={title} className="flex items-start gap-3 bg-white border border-slate-200 rounded-2xl px-4 py-4 sm:px-5 sm:py-5 shadow-sm">
                             <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 mt-0.5">
                                 <Icon className="w-5 h-5 text-blue-600" />
                             </div>

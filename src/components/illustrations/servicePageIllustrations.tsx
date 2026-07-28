@@ -958,7 +958,7 @@ export const AICatalogSVG = (props: SVGProps<SVGSVGElement>) => (
             <rect x="20" y="90" width="140" height="3" rx="1.5" fill="#94a3b8" />
             <text x="34" y="112" fontFamily="Inter" fontSize="9" fontWeight="700" fill="#64748b" letterSpacing="1">INPUT</text>
             <rect x="34" y="122" width="112" height="60" rx="6" fill="#f1f5f9" />
-            <text x="90" y="158" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#64748b">product.jpg</text>
+            <text x="90" y="165" textAnchor="middle" fontFamily="Inter" fontSize="40" fill="#64748b">📦</text>
             <rect x="34" y="190" width="72" height="10" rx="2" fill="#e2e8f0" />
             <rect x="34" y="206" width="90" height="10" rx="2" fill="#e2e8f0" />
         </g>
