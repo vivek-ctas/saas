@@ -219,9 +219,9 @@ function ConnectAmazonMockup() {
 ────────────────────────────────────── */
 function BottomConnector({ visible }: { visible: boolean }) {
     const nodes = [
-        { icon: Globe, label: "" },
-        { icon: Store, label: "" },
-        { icon: ShieldCheck, label: "" },
+        { icon: Globe, label: "Select Region", sub: "Choose your Amazon\nmarketplace", },
+        { icon: Store, label: "Store Details", sub: "Add your store name\nand marketplace", },
+        { icon: ShieldCheck, label: "Authorize", sub: "Securely connect your\nSeller Central account", },
         { icon: Store, label: "Store Created", sub: "Your Amazon store\nis now connected!", success: true },
     ];
 
@@ -245,12 +245,18 @@ function BottomConnector({ visible }: { visible: boolean }) {
                         >
                             <n.icon className={`w-5 h-5 ${n.success ? "text-emerald-600" : "text-blue-600"}`} />
                         </div>
-                        {n.success && (
-                            <div className="text-center">
-                                <p className="text-sm font-bold text-emerald-700 leading-tight">{n.label}</p>
-                                <p className="text-xs text-slate-400 leading-tight mt-0.5 whitespace-pre-line">{n.sub}</p>
-                            </div>
-                        )}
+                        <div className="text-center mt-1">
+                            <p
+                                className={`text-sm font-bold leading-tight ${n.success ? "text-emerald-700" : "text-slate-800"
+                                    }`}
+                            >
+                                {n.label}
+                            </p>
+
+                            <p className="text-xs text-slate-500 leading-tight mt-0.5 whitespace-pre-line">
+                                {n.sub}
+                            </p>
+                        </div>
                     </div>
                     {/* connector dashes (not after last node) */}
                     {i < nodes.length - 1 && (
@@ -295,7 +301,7 @@ function StepCard({
             }}
         >
             {/* step header */}
-            <div className="flex items-start gap-3">
+            <div className="flex items-start gap-3 min-h-[72px]">
                 <span className="inline-flex items-center px-3 py-1 rounded-xl text-xs font-bold bg-blue-600 text-white shrink-0 shadow">
                     {num}
                 </span>
@@ -342,7 +348,7 @@ export function ConnectAmazonGuide() {
 
                 {/* Section heading */}
                 <div
-                    className="mb-10"
+                    className="mb-5"
                     style={{
                         transition: "opacity 0.6s ease, transform 0.6s ease",
                         opacity: visible ? 1 : 0,
@@ -355,8 +361,8 @@ export function ConnectAmazonGuide() {
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-3">
                         Connect Your Amazon Store
                     </h2>
-                    <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-2xl leading-relaxed">
-                        Link your Amazon Seller Central account in 3 simple steps. Select your marketplace, add store details, and authorize access — your store goes live in minutes.
+                    <p className="text-base sm:text-lg lg:text-xl text-slate-600  leading-relaxed w-full">
+                        Link your Amazon Seller Central account in just 3 simple steps. Select your marketplace, add your store details, and securely authorize access through Amazon's official OAuth process. Once connected, SellerBuz automatically syncs your store, enabling real-time inventory, orders, and pricing updates so you can start selling within minutes.
                     </p>
                 </div>
 

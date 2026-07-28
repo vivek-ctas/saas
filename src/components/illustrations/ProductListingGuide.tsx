@@ -47,11 +47,11 @@ function Arrow({ dashed = false }: { dashed?: boolean }) {
         <div className="flex items-center justify-center" style={{ width: 56, flexShrink: 0 }}>
             <svg width="56" height="18" viewBox="0 0 56 18" fill="none">
                 {dashed ? (
-                    <line x1="4" y1="9" x2="44" y2="9" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="5 4" />
+                    <line x1="4" y1="9" x2="42" y2="9" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="5 4" />
                 ) : (
-                    <line x1="4" y1="9" x2="44" y2="9" stroke="#BFDBFE" strokeWidth="2" />
+                    <line x1="4" y1="9" x2="42" y2="9" stroke="#BFDBFE" strokeWidth="2" />
                 )}
-                <polyline points="40,4 50,9 40,14" fill="none" stroke={dashed ? "#94A3B8" : "#60A5FA"} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />
+                <polyline points="38,4 50,9 38,14" fill="none" stroke={dashed ? "#94A3B8" : "#60A5FA"} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
             </svg>
         </div>
     );
@@ -139,7 +139,7 @@ function FormNode({ visible = true, delay = 0 }: { visible?: boolean; delay?: nu
                 transform: visible ? "translateY(0)" : "translateY(10px)",
             }}
         >
-            <div className="w-[120px] rounded-2xl bg-white border-2 border-slate-200 shadow-md overflow-hidden">
+            <div className="w-[160px] rounded-2xl bg-white border-2 border-slate-200 shadow-md overflow-hidden">
                 {/* chrome bar */}
                 <div className="flex items-center gap-1.5 px-3 py-2 bg-slate-50 border-b border-slate-100">
                     <span className="w-2 h-2 rounded-full bg-red-400" />
@@ -147,28 +147,44 @@ function FormNode({ visible = true, delay = 0 }: { visible?: boolean; delay?: nu
                     <span className="w-2 h-2 rounded-full bg-green-400" />
                     <span className="ml-1 text-[9px] text-slate-400 font-medium">Product Form</span>
                 </div>
-                <div className="p-2 space-y-1.5">
-                    {/* image upload */}
+                <div className="p-2 space-y-2">
+
+                    {/* Upload */}
                     <div className="flex items-center gap-1.5 rounded border border-dashed border-blue-200 bg-blue-50 px-2 py-1">
                         <ImageIcon className="w-3 h-3 text-blue-400 shrink-0" />
                         <span className="text-[9px] text-blue-600">Upload Image</span>
                     </div>
-                    {/* fields */}
-                    {[
-                        { Icon: Tag, label: "Title" },
-                        { Icon: Hash, label: "SKU" },
-                        { Icon: DollarSign, label: "Price" },
-                        { Icon: Package, label: "Stock" },
-                    ].map(({ Icon, label }) => (
-                        <div key={label} className="flex items-center gap-1.5 rounded border border-slate-100 bg-slate-50 px-2 py-1">
-                            <Icon className="w-2.5 h-2.5 text-slate-400 shrink-0" />
-                            <span className="text-[9px] text-slate-500">{label}…</span>
-                        </div>
-                    ))}
+
+                    {/* 2 Column Fields */}
+                    <div className="grid grid-cols-2 gap-1.5">
+
+                        {[
+                            { Icon: Tag, label: "Title" },
+                            { Icon: Hash, label: "SKU" },
+                            { Icon: DollarSign, label: "Price" },
+                            { Icon: Package, label: "Stock" },
+                        ].map(({ Icon, label }) => (
+                            <div
+                                key={label}
+                                className="flex items-center gap-1 rounded border border-slate-100 bg-slate-50 px-1.5 py-1 min-w-0"
+                            >
+                                <Icon className="w-2.5 h-2.5 text-slate-400 shrink-0" />
+                                <span className="text-[8px] text-slate-500 truncate">
+                                    {label}
+                                </span>
+                            </div>
+                        ))}
+
+                    </div>
+
+                    {/* Description */}
                     <div className="flex items-start gap-1.5 rounded border border-slate-100 bg-slate-50 px-2 py-1">
                         <AlignLeft className="w-2.5 h-2.5 text-slate-400 shrink-0 mt-px" />
-                        <span className="text-[9px] text-slate-500">Description…</span>
+                        <span className="text-[9px] text-slate-500">
+                            Description...
+                        </span>
                     </div>
+
                 </div>
             </div>
             <div className="text-center">
@@ -263,7 +279,7 @@ function Sidebar({ visible }: { visible: boolean }) {
                     <div>
                         <p className="text-xs font-bold text-blue-600 uppercase tracking-wider">Option 1</p>
                         <p className="text-base font-semibold text-slate-800 mt-0.5">Add Product Manually</p>
-                        <p className="text-sm text-slate-500 mt-1.5 leading-relaxed">Fill product details one by one — title, SKU, price, stock, images — and save your listing.</p>
+                        <p className="text-sm text-slate-500 mt-1.5 leading-relaxed">Fill product details one by one - title, SKU, price, stock, images — and save your listing.</p>
                     </div>
                 </div>
             </div>
@@ -302,7 +318,7 @@ export function ProductListingGuide() {
 
                 {/* Section heading */}
                 <div
-                    className="mb-10"
+                    className="mb-5"
                     style={{
                         transition: "opacity 0.6s ease, transform 0.6s ease",
                         opacity: visible ? 1 : 0,
@@ -315,9 +331,8 @@ export function ProductListingGuide() {
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-3">
                         Create Your Product Listing
                     </h2>
-                    <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-2xl leading-relaxed">
-                        Choose how you want to add products to your catalog — fill in details manually or bulk-import via a file.
-                        Either path takes your listings live in My Catalog within seconds.
+                    <p className="text-base sm:text-lg lg:text-xl text-slate-600  leading-relaxed">
+                        Create product listings the way that works best for your business. Add products individually by entering all the required details, or save time by bulk-importing multiple products using a spreadsheet template. Regardless of the method you choose, SellerBuz validates your data and instantly syncs every product to your My Catalog, making your listings ready for publishing and marketplace management within seconds.
                     </p>
                 </div>
 
@@ -352,7 +367,7 @@ export function ProductListingGuide() {
                                 <div
                                     style={{
                                         display: "grid",
-                                        gridTemplateColumns: "80px 42px 100px 42px 180px 42px 100px 42px minmax(280px, 1fr)",
+                                        gridTemplateColumns: "200px 50px 120px 50px 200px 50px 120px 50px 350px",
                                         gridTemplateRows: "auto 36px auto",
                                         alignItems: "center",
                                         gap: "0",
@@ -407,7 +422,7 @@ export function ProductListingGuide() {
                                     </div>
 
                                     {/* ── ROW 1: OR divider ───────────────────── */}
-                                    <div style={{ gridColumn: "1 / 9", gridRow: 2, display: "flex", alignItems: "center", paddingLeft: 1 }}>
+                                    <div style={{ gridColumn: "1 / 9", gridRow: "2", display: "flex", alignItems: "center", paddingLeft: 1 }}>
                                         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                                             <div style={{ height: 1, width: 32, borderTop: "2px dashed #CBD5E1" }} />
                                             <span

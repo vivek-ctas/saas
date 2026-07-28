@@ -1,9 +1,7 @@
 "use client";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, BookOpen, Clock, Sparkles, Cpu, BarChart3, Workflow, Brain, Layers, Plug, Boxes, Truck } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import { GuideEditorialMockup } from "@/components/illustrations/guidesPageIllustrations";
@@ -12,52 +10,8 @@ import { ProductListingGuide } from "@/components/illustrations/ProductListingGu
 import { ConnectAmazonGuide } from "@/components/illustrations/ConnectAmazonGuide";
 import { SyncCatalogGuide } from "@/components/illustrations/SyncCatalogGuide";
 
-const posts = [
-  {
-    slug: "amazon-seller-analytics-that-matter",
-    title: "The five Amazon seller analytics that actually move revenue",
-    excerpt: "Vanity metrics are easy. Profit-moving metrics take a little more work. Here are the five.",
-    category: "Analytics",
-    icon: BarChart3,
-    readTime: "7 min read",
-    date: "Apr 5, 2026",
-    tone: "from-blue-700 to-blue-900",
-  },
-  {
-    slug: "amazon-new-selling-api",
-    title: "Amazon's new Selling Partner API: what changed, and what it means for your stack",
-    excerpt: "Tighter rate limits, granular roles, and a much friendlier auth flow - here's what we rebuilt for SP-API v2.",
-    category: "Integrations",
-    icon: Plug,
-    readTime: "7 min read",
-    date: "May 2, 2026",
-    tone: "from-blue-600 to-indigo-500",
-  },
-  {
-    slug: "fba-vs-fbm",
-    title: "FBA vs FBM in 2026: the honest cost, control and growth trade-off",
-    excerpt: "Fulfilment By Amazon vs Merchant. Not a religious war - a maths problem with three variables.",
-    category: "Operations",
-    icon: Boxes,
-    readTime: "8 min read",
-    date: "Apr 28, 2026",
-    tone: "from-blue-400 to-blue-700",
-  },
-  {
-    slug: "amazon-fulfilment-strategies",
-    title: "Amazon fulfilment strategies: blending FBA, FBM, SFP and 3PL without losing your margin",
-    excerpt: "Most sellers default to one fulfilment model and pay for it later. Here's how the top operators mix FBA, FBM, SFP and 3PL by SKU cohort.",
-    category: "Operations",
-    icon: Truck,
-    readTime: "9 min read",
-    date: "May 5, 2026",
-    tone: "from-blue-600 to-indigo-600",
-  },
-];
-
 const Guide = () => {
   const ref = useReveal<HTMLDivElement>();
-  const [featured, ...rest] = posts;
 
   return (
     <Layout>
@@ -86,73 +40,6 @@ const Guide = () => {
 
         {/* GUIDE SECTION – Step 3: From My Catalog to Amazon Inventory */}
         <SyncCatalogGuide />
-
-        {/* FEATURED POST */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3]">
-          <div className="px-5 sm:px-8 lg:px-[70px]">
-            <Link href={`/guide/${featured.slug}`} className="reveal block group">
-              <Card className="overflow-hidden border border-slate-100 hover-lift">
-                <div className="grid grid-cols-1 lg:grid-cols-2">
-                  <div className={`relative bg-gradient-to-br ${featured.tone} p-12 flex items-center justify-center min-h-[280px]`}>
-                    <div className="absolute inset-0 grid-bg opacity-20" />
-                    <featured.icon className="relative w-24 h-24 text-white/90" />
-                    <Badge className="absolute top-6 left-6 bg-white text-slate-900 border-0">Featured</Badge>
-                  </div>
-                  <CardContent className="p-10 flex flex-col justify-center">
-                    <div className="flex items-center gap-3 text-xs text-slate-500 mb-3">
-                      <Badge variant="secondary" className="text-xs">{featured.category}</Badge>
-                      <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {featured.readTime}</span>
-                      <span>·</span><span>{featured.date}</span>
-                    </div>
-                    <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 leading-tight group-hover:text-blue-600 transition-colors">
-                      {featured.title}
-                    </h2>
-                    <p className="text-slate-600 leading-relaxed mb-6 text-base sm:text-lg">{featured.excerpt}</p>
-                    <span className="text-blue-600 font-semibold inline-flex items-center gap-1 story-link">
-                      Read article <ArrowRight className="w-4 h-4" />
-                    </span>
-                  </CardContent>
-                </div>
-              </Card>
-            </Link>
-          </div>
-        </section>
-
-        {/* GRID */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
-          <div className="px-5 sm:px-8 lg:px-[70px]">
-            <div className="flex items-end justify-between mb-12 reveal">
-              <div>
-                <Badge className="mb-3 bg-blue-50 text-blue-700 border border-blue-100">Latest Articles</Badge>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">All posts</h2>
-              </div>
-
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {rest.map((p, i) => (
-                <Link href={`/guide/${p.slug}`} key={p.slug} className="reveal block group" style={{ transitionDelay: `${i * 70}ms` }}>
-                  <Card className="h-full border border-slate-100 hover-lift overflow-hidden">
-                    <div className={`relative h-44 bg-gradient-to-br ${p.tone} flex items-center justify-center`}>
-                      <div className="absolute inset-0 grid-bg opacity-20" />
-                      <p.icon className="relative w-14 h-14 text-white/90" />
-                    </div>
-                    <CardContent className="p-6">
-                      <div className="flex items-center gap-2 text-xs text-slate-500 mb-2">
-                        <Badge variant="secondary" className="text-xs">{p.category}</Badge>
-                        <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {p.readTime}</span>
-                      </div>
-                      <h3 className="text-lg lg:text-xl font-bold text-slate-900 mb-2 leading-snug group-hover:text-blue-600 transition-colors">{p.title}</h3>
-                      <p className="text-slate-600 text-sm lg:text-base leading-relaxed mb-3">{p.excerpt}</p>
-                      <span className="text-blue-600 text-sm font-semibold inline-flex items-center gap-1">
-                        Read more <ArrowRight className="w-3.5 h-3.5" />
-                      </span>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* CTA */}
         <section className="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">

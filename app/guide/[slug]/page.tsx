@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { buildMetadata, SITE_URL } from "@/lib/seo";
-import GuidePost from "@/screens/GuidePost";
 import { notFound } from "next/navigation";
 
 type PageProps = { params: { slug: string } };
@@ -149,7 +148,6 @@ export default async function Page({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       )}
-      <GuidePost />
     </>
   );
 }
