@@ -213,7 +213,7 @@ export const WorkflowIllustration = (props: SVGProps<SVGSVGElement>) => (
       fill="#64748b"
       fontWeight="600"
     >
-      Unified across Amazon · Fnac · Bol · Walmart · Shopify
+      One platform for Amazon & Shopify
     </text>
   </svg >
 );

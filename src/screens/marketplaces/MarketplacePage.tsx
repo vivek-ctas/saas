@@ -140,7 +140,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         </section>
 
         {/* CROSS CHANNEL */}
-        <section className="py-14 bg-[#F7F9FC] border-t border-[#EAECF3]">
+        {/* <section className="py-14 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px] text-center reveal">
             <div className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Also sells on</div>
             <div className="flex flex-wrap justify-center gap-3">
@@ -151,7 +151,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* FAQ */}
         <section className="py-14 bg-[#F1F3FC] border-t border-[#EAECF3]">

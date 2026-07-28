@@ -249,6 +249,11 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => {
                 <stop offset="50%" stopColor="#ffffff" stopOpacity="0.5" />
                 <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
             </linearGradient>
+            {KPIS.map((k, i) => (
+                <clipPath key={`kpiClip${i}`} id={`kpiClip${i}`}>
+                    <rect x={k.x} y="160" width="200" height="110" rx="16" />
+                </clipPath>
+            ))}
         </defs>
     );
 
@@ -376,10 +381,10 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => {
             <text x="30" y="130" fontFamily="Inter,system-ui" fontSize="14" fill={slate500}>Track your business performance with AI-powered analytics</text>
 
             {/* KPI cards */}
-            {KPIS.map((k) => (
+            {KPIS.map((k, i) => (
                 <g key={k.label}>
                     <rect x={k.x} y="160" width="200" height="110" rx="16" fill="white" stroke={border} />
-                    <rect x={k.x} y="160" width="6" height="110" rx="3" fill={k.accent}>
+                    <rect x={k.x} y="160" width="6" height="110" rx="3" fill={k.accent} clipPath={`url(#kpiClip${i})`}>
                         <animate attributeName="opacity" values="1;0.6;1" dur="3s" repeatCount="indefinite" />
                     </rect>
                     <circle cx={k.x + 42} cy="196" r="18" fill={k.iconBg} />

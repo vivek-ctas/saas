@@ -63,8 +63,13 @@ export const IllCard = ({
     x: number; y: number; w: number; h: number; accent?: string; id?: string; children?: ReactNode;
 }) => (
     <g filter={`url(#${id}-shadow)`}>
+        <defs>
+            <clipPath id={`${id}-cardClip-${x}-${y}`}>
+                <rect x={x} y={y} width={w} height={h} rx="14" />
+            </clipPath>
+        </defs>
         <rect x={x} y={y} width={w} height={h} rx="14" fill="white" stroke={ILL.softStroke} />
-        <rect x={x} y={y} width={w} height="3" rx="1.5" fill={accent} />
+        <rect x={x} y={y} width={w} height="3" rx="1.5" fill={accent} clipPath={`url(#${id}-cardClip-${x}-${y})`} />
         {children}
     </g>
 );
@@ -1573,7 +1578,7 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
         { title: "Connect", subtitle: "SP-API", icon: "connect", badge: "#3730A3", bar: "#3B4CD8" },
         { title: "Import", subtitle: "catalog", icon: "import", badge: "#3730A3", bar: "#3B4CD8" },
         { title: "Set", subtitle: "rules", icon: "set", badge: "#3730A3", bar: "#3B4CD8" },
-        { title: "Go", subtitle: "live", icon: "go", badge: "#F59E0B", bar: "#F59E0B" },
+        { title: "Go", subtitle: "live", icon: "go", badge: "#db9825", bar: "#F59E0B" },
     ];
 
     const CARD_W = 190;
@@ -1598,6 +1603,7 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
                     <stop offset="0%" stopColor="#7C86F0" />
                     <stop offset="100%" stopColor="#3730A3" />
                 </linearGradient>
+
             </defs>
 
             {STEPS.map((s, i) => {
@@ -1605,9 +1611,19 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
                 const cx = x + CARD_W / 2;
                 return (
                     <g key={s.title}>
-                        <rect x={x} y={CARD_TOP} width={CARD_W} height={CARD_H} rx="18" fill="white" stroke="#ECEFF9" />
-                        <rect x={x + 8} y={CARD_TOP - 2} width={CARD_W - 16} height="5" rx="2.5" fill={s.bar} />
-
+                        <defs>
+                            <clipPath id={`cardClip-${i}`}>
+                                <rect
+                                    x={x}
+                                    y={CARD_TOP}
+                                    width={CARD_W}
+                                    height={CARD_H - 25}
+                                    rx="16"
+                                />
+                            </clipPath>
+                        </defs>
+                        <rect x={x} y={CARD_TOP} width={CARD_W} height={CARD_H} rx="15" fill="white" stroke={s.bar} />
+                        <rect x={x} y={CARD_TOP} width={CARD_W} height="20" fill={s.bar} clipPath={`url(#cardClip-${i})`} />
                         <circle cx={cx} cy={CARD_TOP - 20} r="30" fill={s.badge} />
                         <text x={cx} y={CARD_TOP - 12} textAnchor="middle" fontSize="20" fontWeight="800" fill="white">
                             {i + 1}
@@ -1788,8 +1804,8 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: SVGProps<SVGSVGElement> & 
         subtitle: g.d,
     }));
 
-    const OP_X = 745;
-    const OP_W = 240;
+    const OP_X = 735;
+    const OP_W = 250;
     const OP_H = 80;
     const OP_YS = [130, 230, 330, 430];
 
@@ -1812,6 +1828,26 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: SVGProps<SVGSVGElement> & 
                     <stop offset="0%" stopColor="#2F5FF0" />
                     <stop offset="100%" stopColor="#0B1E4F" />
                 </linearGradient>
+                <clipPath id="mainCardClip">
+                    <rect
+                        x="30"
+                        y="222"
+                        width="270"
+                        height="180"
+                        rx="16"
+                    />
+                </clipPath>
+                {OP_YS.map((oy, i) => (
+                    <clipPath key={`opsClip${i}`} id={`opsClip${i}`}>
+                        <rect
+                            x={OP_X}
+                            y={oy}
+                            width={OP_W}
+                            height={OP_H}
+                            rx="14"
+                        />
+                    </clipPath>
+                ))}
             </defs>
 
             {/* Subtle dot cluster decorations – transparent bg so they float */}
@@ -1820,7 +1856,7 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: SVGProps<SVGSVGElement> & 
 
             {/* Marketplace card */}
             <rect x="30" y="222" width="270" height="180" rx="16" fill="white" stroke="#ECEFF7" strokeWidth="1.2" />
-            <rect x="30" y="220" width="270" height="5" rx="2.5" fill={cfg.dot} />
+            <rect x="30" y="220" width="270" height="10" rx="2.5" fill={cfg.dot} clipPath="url(#mainCardClip)" />
             {cfg.logo ? (
                 <image href={cfg.logo} x="44" y="244" width="56" height="56" preserveAspectRatio="xMidYMid meet" />
             ) : (
@@ -1899,7 +1935,7 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: SVGProps<SVGSVGElement> & 
                 return (
                     <g key={op.label}>
                         <rect x={OP_X} y={y} width={OP_W} height={OP_H} rx="14" fill="white" stroke="#ECEFF7" strokeWidth="1.2" />
-                        <rect x={OP_X} y={y} width="4" height={OP_H} rx="2" fill={op.accent} />
+                        <rect x={OP_X} y={y} width="4" height={OP_H} rx="2" fill={op.accent} clipPath={`url(#opsClip${i})`} />
                         <circle cx={OP_X + 42} cy={y + OP_H / 2} r="26" fill={op.tint} />
                         <g transform={`translate(${OP_X + 30},${y + OP_H / 2 - 12})`} color={op.accent}>
                             <Icon name={op.icon} size="24" />

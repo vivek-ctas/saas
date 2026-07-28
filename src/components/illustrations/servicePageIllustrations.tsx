@@ -25,6 +25,18 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
                 <feComponentTransfer><feFuncA type="linear" slope="0.18" /></feComponentTransfer>
                 <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
             </filter>
+            {[
+                { x: 48, y: 110 },
+                { x: 232, y: 110 },
+                { x: 416, y: 110 },
+                { x: 48, y: 230 },
+                { x: 232, y: 230 },
+                { x: 416, y: 230 },
+            ].map((t, i) => (
+                <clipPath key={`svhTileClip${i}`} id={`svhTileClip${i}`}>
+                    <rect x={t.x} y={t.y} width={168} height={104} rx={16} />
+                </clipPath>
+            ))}
         </defs>
         <rect x="20" y="20" width="720" height="480" rx="24" fill="url(#svh-bg)" stroke="#E2E8F0" />
         <text x="48" y="60" fontFamily="Inter,system-ui" fontSize="13" fontWeight="800" fill="#0f172a">Service Console</text>
@@ -44,7 +56,7 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
         ].map((tile, i) => (
             <g key={i} filter="url(#svh-shadow)">
                 <rect x={tile.x} y={tile.y} width={168} height={104} rx={16} fill="white" stroke="#E2E8F0" />
-                <rect x={tile.x} y={tile.y} width={168} height={6} rx={3} fill={tile.c} />
+                <rect x={tile.x} y={tile.y} width={168} height={6} rx={3} fill={tile.c} clipPath={`url(#svhTileClip${i})`} />
                 <text x={tile.x + 16} y={tile.y + 36} fontFamily="Inter,system-ui" fontSize={11} fontWeight={800} fill="#0f172a">{tile.t}</text>
                 <text x={tile.x + 16} y={tile.y + 64} fontFamily="Inter,system-ui" fontSize={18} fontWeight={800} fill="#0f172a">{tile.v}</text>
                 <rect x={tile.x + 16} y={tile.y + 76} width={56} height={18} rx={9} fill="hsl(217 91% 95%)" />
@@ -279,6 +291,9 @@ export const SyncFlowDiagramV2 = (props: SVGProps<SVGSVGElement>) => {
                 <clipPath id="sfv2LogoClip">
                     <circle cx="0" cy="0" r="34" />
                 </clipPath>
+                <clipPath id="sfv2Card1Clip">
+                    <rect x={cols[0] - cardW / 2} y={cardY} width={cardW} height={cardH} rx={14} />
+                </clipPath>
             </defs>
 
             {/* pulsing rings behind final card */}
@@ -342,7 +357,7 @@ export const SyncFlowDiagramV2 = (props: SVGProps<SVGSVGElement>) => {
             {/* ================= CARD 1: STOCK & PRICE ================= */}
             <g filter="url(#sfv2-shadow)">
                 <rect x={cols[0] - cardW / 2} y={cardY} width={cardW} height={cardH} rx={14} fill="#ffffff" stroke={cardBorder} />
-                <rect x={cols[0] - cardW / 2} y={cardY} width={10} height={cardH} rx={5} fill={blue} />
+                <rect x={cols[0] - cardW / 2} y={cardY} width={10} height={cardH} rx={5} fill={blue} clipPath="url(#sfv2Card1Clip)" />
             </g>
             <rect x={cols[0] - cardW / 2 + 15} y={cardY + 14} width={110} height={40} rx={8} fill="#ffffff" stroke={cardBorder} />
             <text x={cols[0] - cardW / 2 + 32} y={cardY + 30} fontFamily="Inter,system-ui" fontSize="10.5" fontWeight={600} fill={slateGray}>Stock</text>
@@ -950,12 +965,18 @@ export const AICatalogSVG = (props: SVGProps<SVGSVGElement>) => (
                 <stop offset="0%" stopColor="#2563eb" />
                 <stop offset="100%" stopColor="#1e3a8a" />
             </linearGradient>
+            <clipPath id="s-cat-input-clip">
+                <rect x="20" y="90" width="140" height="140" rx="12" />
+            </clipPath>
+            <clipPath id="s-cat-output-clip">
+                <rect x="360" y="60" width="140" height="200" rx="12" />
+            </clipPath>
         </defs>
 
         {/* input */}
         <g filter="url(#s-sh)">
             <rect x="20" y="90" width="140" height="140" rx="12" fill="white" stroke="#e2e8f0" />
-            <rect x="20" y="90" width="140" height="3" rx="1.5" fill="#94a3b8" />
+            <rect x="20" y="90" width="140" height="3" rx="1.5" fill="#94a3b8" clipPath="url(#s-cat-input-clip)" />
             <text x="34" y="112" fontFamily="Inter" fontSize="9" fontWeight="700" fill="#64748b" letterSpacing="1">INPUT</text>
             <rect x="34" y="122" width="112" height="60" rx="6" fill="#f1f5f9" />
             <text x="90" y="165" textAnchor="middle" fontFamily="Inter" fontSize="40" fill="#64748b">📦</text>
@@ -971,7 +992,7 @@ export const AICatalogSVG = (props: SVGProps<SVGSVGElement>) => (
         {/* output */}
         <g filter="url(#s-sh)">
             <rect x="360" y="60" width="140" height="200" rx="12" fill="white" stroke="#e2e8f0" />
-            <rect x="360" y="60" width="140" height="3" rx="1.5" fill="#2563eb" />
+            <rect x="360" y="60" width="140" height="3" rx="1.5" fill="#2563eb" clipPath="url(#s-cat-output-clip)" />
             <text x="374" y="82" fontFamily="Inter" fontSize="9" fontWeight="700" fill="#2563eb" letterSpacing="1">GENERATED</text>
             <text x="374" y="100" fontFamily="Inter" fontSize="10" fontWeight="700" fill="#0f172a">Title</text>
             <rect x="374" y="106" width="112" height="6" rx="2" fill="#dbeafe" />
@@ -1799,7 +1820,7 @@ export const RolesIllustration = (props: SVGProps<SVGSVGElement>) => {
                         </g>
 
                         {/* top accent bar */}
-                        <rect x={x + 10} y={CARD_TOP - 2} width={CARD_W - 20} height="6" rx="3" fill={r.accent} />
+                        <rect x={x + 10} y={CARD_TOP - 2} width={CARD_W - 20} height="6" rx="3" fill={r.accent} clipPath={`url(#card-clip-${i})`} />
 
                         {/* hexagon badge - gentle float */}
                         <g transform={`translate(${cx},${CARD_TOP - 55})`}>
@@ -1842,36 +1863,38 @@ export const RolesIllustration = (props: SVGProps<SVGSVGElement>) => {
                         </text>
 
                         {/* permission rows */}
-                        {r.perms.map((p, pi) => {
-                            const ry = CARD_TOP + 258 + pi * 58;
-                            return (
-                                <g key={p.label}>
-                                    <rect x={x + 20} y={ry} width={CARD_W - 40} height="48" rx="14" fill="#F5F6FA" />
-                                    <rect x={x + 30} y={ry + 9} width="30" height="30" rx="9" fill={r.tint} />
-                                    <g transform={`translate(${x + 37},${ry + 16})`} color={r.accent}>
-                                        <Icon name={p.icon} size={16} />
+                        {
+                            r.perms.map((p, pi) => {
+                                const ry = CARD_TOP + 258 + pi * 58;
+                                return (
+                                    <g key={p.label}>
+                                        <rect x={x + 20} y={ry} width={CARD_W - 40} height="48" rx="14" fill="#F5F6FA" />
+                                        <rect x={x + 30} y={ry + 9} width="30" height="30" rx="9" fill={r.tint} />
+                                        <g transform={`translate(${x + 37},${ry + 16})`} color={r.accent}>
+                                            <Icon name={p.icon} size={16} />
+                                        </g>
+                                        <text x={x + 76} y={ry + 30} fontSize="16" fontWeight="700" fill="#0F172A">
+                                            {p.label}
+                                        </text>
+                                        <circle cx={x + CARD_W - 40} cy={ry + 24} r="12" fill="#22C55E">
+                                            <animate
+                                                attributeName="opacity"
+                                                values="1;0.65;1"
+                                                dur={`${2.5 + (i + pi) * 0.3}s`}
+                                                repeatCount="indefinite"
+                                            />
+                                        </circle>
+                                        <g transform={`translate(${x + CARD_W - 52},${ry + 12})`}>
+                                            <Icon name="check" size={24} />
+                                        </g>
                                     </g>
-                                    <text x={x + 76} y={ry + 30} fontSize="16" fontWeight="700" fill="#0F172A">
-                                        {p.label}
-                                    </text>
-                                    <circle cx={x + CARD_W - 40} cy={ry + 24} r="12" fill="#22C55E">
-                                        <animate
-                                            attributeName="opacity"
-                                            values="1;0.65;1"
-                                            dur={`${2.5 + (i + pi) * 0.3}s`}
-                                            repeatCount="indefinite"
-                                        />
-                                    </circle>
-                                    <g transform={`translate(${x + CARD_W - 52},${ry + 12})`}>
-                                        <Icon name="check" size={24} />
-                                    </g>
-                                </g>
-                            );
-                        })}
+                                );
+                            })
+                        }
                     </g>
                 );
             })}
-        </svg>
+        </svg >
     )
 };
 
