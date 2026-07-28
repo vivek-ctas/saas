@@ -1565,11 +1565,11 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
                         fill="url(#ob-rocket)"
                     />
                     <circle cx="0" cy="-24" r="7" fill="#EEF1FE" stroke="#3730A3" strokeWidth="1.5" />
-                    <path d="M-14 8l-10 18 16-8z" fill="#F59E0B" />
-                    <path d="M14 8l10 18-16-8z" fill="#F59E0B" />
-                    <path d="M-6 30q6 14 6 22q6-8 6-22z" fill="#FBBF24" />
+                    <path d="M-14 8l-10 18 16-8z" fill="#C7D2FE" />
+                    <path d="M14 8l10 18-16-8z" fill="#C7D2FE" />
+                    <path d="M-6 30q6 14 6 22q6-8 6-22z" fill="#C7D2FE" />
                 </g>
-                <path d="M-46 -30l4 4M46 -34l-4 4M-40 40l4-4M42 36l-4-4" stroke="#FBBF24" strokeWidth="2.4" strokeLinecap="round" />
+                <path d="M-46 -30l4 4M46 -34l-4 4M-40 40l4-4M42 36l-4-4" stroke="#3730A3" strokeWidth="2.4" strokeLinecap="round" />
             </g>
         ),
     };
@@ -1578,7 +1578,7 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
         { title: "Connect", subtitle: "SP-API", icon: "connect", badge: "#3730A3", bar: "#3B4CD8" },
         { title: "Import", subtitle: "catalog", icon: "import", badge: "#3730A3", bar: "#3B4CD8" },
         { title: "Set", subtitle: "rules", icon: "set", badge: "#3730A3", bar: "#3B4CD8" },
-        { title: "Go", subtitle: "live", icon: "go", badge: "#db9825", bar: "#F59E0B" },
+        { title: "Go", subtitle: "live", icon: "go", badge: "#3730A3", bar: "#3B4CD8" },
     ];
 
     const CARD_W = 190;
@@ -1637,7 +1637,7 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
                         <text x={cx} y={CARD_TOP + 235} textAnchor="middle" fontSize="16" fill="#64748B">
                             {s.subtitle}
                         </text>
-                        <rect x={cx - 18} y={CARD_TOP + 253} width="36" height="3" rx="1.5" fill={i === STEPS.length - 1 ? "#F59E0B" : "#93A4F5"} />
+                        <rect x={cx - 18} y={CARD_TOP + 253} width="36" height="3" rx="1.5" fill="#93A4F5" />
 
                         {i < STEPS.length - 1 && (
                             <g>

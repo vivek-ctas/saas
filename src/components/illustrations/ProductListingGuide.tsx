@@ -40,25 +40,25 @@ function useInView(threshold = 0.08) {
 }
 
 /* ─────────────────────────────────────
-   SVG inline arrow (horizontal)
+   SVG inline arrow (horizontal) – desktop only
 ────────────────────────────────────── */
 function Arrow({ dashed = false }: { dashed?: boolean }) {
     return (
-        <div className="flex items-center justify-center" style={{ width: 56, flexShrink: 0 }}>
-            <svg width="56" height="18" viewBox="0 0 56 18" fill="none">
+        <div className="flex items-center justify-center" style={{ width: 44, flexShrink: 0 }}>
+            <svg width="44" height="18" viewBox="0 0 44 18" fill="none">
                 {dashed ? (
-                    <line x1="4" y1="9" x2="42" y2="9" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="5 4" />
+                    <line x1="3" y1="9" x2="34" y2="9" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="5 4" />
                 ) : (
-                    <line x1="4" y1="9" x2="42" y2="9" stroke="#BFDBFE" strokeWidth="2" />
+                    <line x1="3" y1="9" x2="34" y2="9" stroke="#BFDBFE" strokeWidth="2" />
                 )}
-                <polyline points="38,4 50,9 38,14" fill="none" stroke={dashed ? "#94A3B8" : "#60A5FA"} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+                <polyline points="30,4 40,9 30,14" fill="none" stroke={dashed ? "#94A3B8" : "#60A5FA"} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
             </svg>
         </div>
     );
 }
 
 /* ─────────────────────────────────────
-   SVG inline arrow (vertical, for mobile)
+   SVG inline arrow (vertical – mobile / tablet / laptop)
 ────────────────────────────────────── */
 function ArrowDown({ dashed = false }: { dashed?: boolean }) {
     return (
@@ -80,7 +80,7 @@ function ArrowDown({ dashed = false }: { dashed?: boolean }) {
 ────────────────────────────────────── */
 function OptionLabel({ badge, label }: { badge: string; label: string }) {
     return (
-        <div className="flex flex-col items-center gap-2" style={{ width: 100, flexShrink: 0 }}>
+        <div className="flex flex-col items-center gap-2" style={{ width: 96, flexShrink: 0 }}>
             <span className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white leading-none shadow text-center">
                 {badge}
             </span>
@@ -99,7 +99,7 @@ function Node({
     variant = "white",
     delay = 0,
     visible = true,
-    width = 100,
+    width = 96,
 }: {
     icon: React.FC<{ className?: string }>;
     label: string;
@@ -131,12 +131,12 @@ function Node({
                 transform: visible ? "translateY(0)" : "translateY(10px)",
             }}
         >
-            <div className={`w-16 h-16 rounded-2xl flex items-center justify-center ${ring}`}>
-                <Icon className={`w-7 h-7 ${iconCls}`} />
+            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${ring}`}>
+                <Icon className={`w-6 h-6 ${iconCls}`} />
             </div>
             <div className="text-center">
-                <p className="text-sm font-bold text-slate-800 leading-tight">{label}</p>
-                {sub && <p className="text-xs text-slate-500 leading-snug mt-1">{sub}</p>}
+                <p className="text-xs font-bold text-slate-800 leading-tight">{label}</p>
+                {sub && <p className="text-[10px] text-slate-500 leading-snug mt-1">{sub}</p>}
             </div>
         </div>
     );
@@ -150,32 +150,29 @@ function FormNode({ visible = true, delay = 0 }: { visible?: boolean; delay?: nu
         <div
             className="flex flex-col items-center gap-3"
             style={{
-                width: 130,
+                width: 120,
                 flexShrink: 0,
                 transition: `opacity 0.5s ease ${delay}ms, transform 0.5s ease ${delay}ms`,
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(10px)",
             }}
         >
-            <div className="w-[160px] rounded-2xl bg-white border-2 border-slate-200 shadow-md overflow-hidden">
+            <div className="w-full rounded-xl bg-white border-2 border-slate-200 shadow-md overflow-hidden">
                 {/* chrome bar */}
-                <div className="flex items-center gap-1.5 px-3 py-2 bg-slate-50 border-b border-slate-100">
-                    <span className="w-2 h-2 rounded-full bg-red-400" />
-                    <span className="w-2 h-2 rounded-full bg-yellow-400" />
-                    <span className="w-2 h-2 rounded-full bg-green-400" />
-                    <span className="ml-1 text-[9px] text-slate-400 font-medium">Product Form</span>
+                <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 border-b border-slate-100">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
+                    <span className="ml-1 text-[8px] text-slate-400 font-medium">Product Form</span>
                 </div>
-                <div className="p-2 space-y-2">
-
+                <div className="p-1.5 space-y-1.5">
                     {/* Upload */}
-                    <div className="flex items-center gap-1.5 rounded border border-dashed border-blue-200 bg-blue-50 px-2 py-1">
-                        <ImageIcon className="w-3 h-3 text-blue-400 shrink-0" />
-                        <span className="text-[9px] text-blue-600">Upload Image</span>
+                    <div className="flex items-center gap-1 rounded border border-dashed border-blue-200 bg-blue-50 px-1.5 py-1">
+                        <ImageIcon className="w-2.5 h-2.5 text-blue-400 shrink-0" />
+                        <span className="text-[8px] text-blue-600">Upload Image</span>
                     </div>
-
                     {/* 2 Column Fields */}
-                    <div className="grid grid-cols-2 gap-1.5">
-
+                    <div className="grid grid-cols-2 gap-1">
                         {[
                             { Icon: Tag, label: "Title" },
                             { Icon: Hash, label: "SKU" },
@@ -184,30 +181,23 @@ function FormNode({ visible = true, delay = 0 }: { visible?: boolean; delay?: nu
                         ].map(({ Icon, label }) => (
                             <div
                                 key={label}
-                                className="flex items-center gap-1 rounded border border-slate-100 bg-slate-50 px-1.5 py-1 min-w-0"
+                                className="flex items-center gap-1 rounded border border-slate-100 bg-slate-50 px-1 py-0.5 min-w-0"
                             >
-                                <Icon className="w-2.5 h-2.5 text-slate-400 shrink-0" />
-                                <span className="text-[8px] text-slate-500 truncate">
-                                    {label}
-                                </span>
+                                <Icon className="w-2 h-2 text-slate-400 shrink-0" />
+                                <span className="text-[7px] text-slate-500 truncate">{label}</span>
                             </div>
                         ))}
-
                     </div>
-
                     {/* Description */}
-                    <div className="flex items-start gap-1.5 rounded border border-slate-100 bg-slate-50 px-2 py-1">
-                        <AlignLeft className="w-2.5 h-2.5 text-slate-400 shrink-0 mt-px" />
-                        <span className="text-[9px] text-slate-500">
-                            Description...
-                        </span>
+                    <div className="flex items-start gap-1 rounded border border-slate-100 bg-slate-50 px-1.5 py-1">
+                        <AlignLeft className="w-2 h-2 text-slate-400 shrink-0 mt-px" />
+                        <span className="text-[8px] text-slate-500">Description...</span>
                     </div>
-
                 </div>
             </div>
             <div className="text-center">
-                <p className="text-sm font-bold text-slate-800 leading-tight">Fill Product Details</p>
-                <p className="text-xs text-slate-500 leading-snug mt-1">Title, Brand, SKU,<br />Price, Stock…</p>
+                <p className="text-xs font-bold text-slate-800 leading-tight">Fill Product Details</p>
+                <p className="text-[10px] text-slate-500 leading-snug mt-1">Title, SKU,<br />Price, Stock…</p>
             </div>
         </div>
     );
@@ -241,14 +231,14 @@ function CatalogPanel({ visible = true, delay = 0 }: { visible?: boolean; delay?
                 <span className="ml-2 text-sm font-bold text-white tracking-wide">My Catalog</span>
             </div>
             {/* col headers */}
-            <div className="grid grid-cols-[30px_1fr_58px_28px] gap-2 px-4 py-2 bg-slate-50 border-b border-slate-100">
+            <div className="grid grid-cols-[28px_1fr_56px_24px] gap-2 px-4 py-2 bg-slate-50 border-b border-slate-100">
                 {["", "Product Name", "SKU", ""].map((h, i) => (
                     <span key={i} className="text-[10px] font-bold uppercase tracking-wider text-slate-500 truncate">{h}</span>
                 ))}
             </div>
             {/* rows */}
             {PRODUCTS.map((p) => (
-                <div key={p.sku} className="grid grid-cols-[30px_1fr_58px_28px] gap-2 items-center px-4 py-2 border-b border-slate-50 last:border-0">
+                <div key={p.sku} className="grid grid-cols-[28px_1fr_56px_24px] gap-2 items-center px-4 py-2 border-b border-slate-50 last:border-0">
                     <div className="w-6 h-6 rounded-md bg-blue-50 flex items-center justify-center">
                         <span className="text-[8px] font-bold text-blue-700">{p.init}</span>
                     </div>
@@ -325,13 +315,65 @@ function Sidebar({ visible }: { visible: boolean }) {
 }
 
 /* ─────────────────────────────────────
+   Dot-grid background style (shared)
+────────────────────────────────────── */
+const dotBg = {
+    background: "radial-gradient(circle, #E2E8F0 1px, transparent 1px)",
+    backgroundSize: "22px 22px",
+    backgroundColor: "#F8FAFC",
+} as const;
+
+/* ─────────────────────────────────────
+   Step card – used in the xl "2-column steps" layout
+────────────────────────────────────── */
+function StepCard({
+    icon: Icon,
+    label,
+    sub,
+    variant = "white",
+    delay = 0,
+    visible = true,
+}: {
+    icon: React.FC<{ className?: string }>;
+    label: string;
+    sub?: string;
+    variant?: "white" | "blue";
+    delay?: number;
+    visible?: boolean;
+}) {
+    const ring = variant === "blue"
+        ? "bg-blue-600 shadow-blue-200"
+        : "bg-white border border-slate-200";
+    const iconCls = variant === "blue" ? "text-white" : "text-blue-600";
+
+    return (
+        <div
+            className="flex items-center gap-3 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-2xl px-4 py-3 shadow-sm"
+            style={{
+                transition: `opacity 0.5s ease ${delay}ms, transform 0.5s ease ${delay}ms`,
+                opacity: visible ? 1 : 0,
+                transform: visible ? "translateY(0)" : "translateY(8px)",
+            }}
+        >
+            <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow ${ring}`}>
+                <Icon className={`w-5 h-5 ${iconCls}`} />
+            </div>
+            <div className="min-w-0">
+                <p className="text-sm font-bold text-slate-800 leading-tight truncate">{label}</p>
+                {sub && <p className="text-xs text-slate-500 mt-0.5 leading-snug">{sub}</p>}
+            </div>
+        </div>
+    );
+}
+
+/* ─────────────────────────────────────
    MAIN COMPONENT
 ────────────────────────────────────── */
 export function ProductListingGuide() {
     const { ref, visible } = useInView();
 
     return (
-        <section className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3] overflow-x-hidden">
             <div className="px-5 sm:px-8 lg:px-[70px]">
 
                 {/* Section heading */}
@@ -363,38 +405,46 @@ export function ProductListingGuide() {
                         opacity: visible ? 1 : 0,
                     }}
                 >
-                    <div className="flex flex-col lg:flex-row">
+                    {/* ── Inner layout: sidebar + diagram ───────── */}
+                    {/*
+                        Breakpoint strategy (no horizontal scrollbar on ANY size):
+                        - xs/sm/md/lg   (< 1280px)  → full-width sidebar stacked above vertical flow
+                        - xl            (1280–1535px) → sidebar left | 2-col step cards right
+                        - 2xl+          (≥ 1536px)   → sidebar left | classic horizontal arrow diagram
+                    */}
+                    <div className="flex flex-col xl:flex-row">
 
-                        {/* ── Sidebar ─────────────────────────────────── */}
-                        <div className="w-full lg:w-[360px] xl:w-[400px] shrink-0 border-b lg:border-b-0 lg:border-r border-slate-100 p-5 sm:p-8">
+                        {/* ── Sidebar ─────────────────────────────── */}
+                        <div className="w-full xl:w-[340px] 2xl:w-[380px] shrink-0 border-b xl:border-b-0 xl:border-r border-slate-100 p-5 sm:p-8">
                             <Sidebar visible={visible} />
                         </div>
 
-                        {/* ── Diagram area ───────────────────────────────── */}
+                        {/* ── Diagram area ─────────────────────────── */}
                         <div className="flex-1 min-w-0">
 
-                            {/* ── Mobile / Tablet: vertical flow ──────────── */}
+                            {/* ══════════════════════════════════════════
+                                MOBILE / TABLET / SMALL LAPTOP (< xl = <1280px)
+                                Vertical flow: all steps in a clean column
+                            ══════════════════════════════════════════ */}
                             <div
-                                className="lg:hidden rounded-2xl py-5 px-4 flex flex-col items-center gap-1"
-                                style={{
-                                    background: "radial-gradient(circle, #E2E8F0 1px, transparent 1px)",
-                                    backgroundSize: "22px 22px",
-                                    backgroundColor: "#F8FAFC",
-                                }}
+                                className="xl:hidden rounded-2xl py-6 px-5 flex flex-col items-center gap-1"
+                                style={dotBg}
                             >
                                 {/* Option 1 */}
                                 <OptionLabel badge="OPTION 1" label="Add Product Manually" />
                                 <ArrowDown dashed />
                                 <Node icon={Plus} label="Add Product" variant="blue" visible={visible} delay={150} width={110} />
                                 <ArrowDown />
-                                <div className="w-full max-w-[170px]"><FormNode visible={visible} delay={250} /></div>
+                                <div className="w-full max-w-[170px]">
+                                    <FormNode visible={visible} delay={250} />
+                                </div>
                                 <ArrowDown />
                                 <Node icon={CheckCircle2} label="Save Product" sub="Added to My Catalog" variant="blue" visible={visible} delay={350} width={110} />
 
                                 {/* OR divider */}
-                                <div className="flex items-center gap-3 my-3 w-full max-w-[220px]">
+                                <div className="flex items-center gap-3 my-4 w-full max-w-[260px]">
                                     <div className="flex-1 h-px border-t-2 border-dashed border-slate-200" />
-                                    <span className="text-[11px] font-bold text-slate-400 bg-white border border-slate-200 rounded-full px-2.5 py-0.5 shadow-sm select-none">OR</span>
+                                    <span className="text-[11px] font-bold text-slate-400 bg-white border border-slate-200 rounded-full px-3 py-0.5 shadow-sm select-none">OR</span>
                                     <div className="flex-1 h-px border-t-2 border-dashed border-slate-200" />
                                 </div>
 
@@ -415,7 +465,7 @@ export function ProductListingGuide() {
 
                                 {/* Bottom sync strip */}
                                 <div
-                                    className="mt-4 flex items-start gap-2 bg-white border border-blue-100 rounded-2xl px-3 py-2.5 shadow-sm w-full max-w-[380px]"
+                                    className="mt-4 flex items-start gap-2 bg-white border border-blue-100 rounded-2xl px-4 py-3 shadow-sm w-full max-w-[380px]"
                                     style={{ transition: "opacity 0.6s ease 700ms", opacity: visible ? 1 : 0 }}
                                 >
                                     <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-px" />
@@ -425,81 +475,140 @@ export function ProductListingGuide() {
                                 </div>
                             </div>
 
-                            {/* ── Desktop: horizontal flow ─────────────────── */}
+                            {/* ══════════════════════════════════════════
+                                xl ONLY (1280–1535px): 2-column step card grid
+                                No fixed widths → guaranteed to fit without overflow
+                            ══════════════════════════════════════════ */}
                             <div
-                                className="hidden lg:block rounded-2xl py-6 pb-8 pr-5 pl-3"
-                                style={{
-                                    background: "radial-gradient(circle, #E2E8F0 1px, transparent 1px)",
-                                    backgroundSize: "22px 22px",
-                                    backgroundColor: "#F8FAFC",
-                                }}
+                                className="hidden xl:flex 2xl:hidden flex-col gap-4 p-6"
+                                style={dotBg}
                             >
-                                {/* Contained scroll: the grid below has a fixed
-                                    minimum width. On narrower lg/xl viewports where
-                                    the sidebar + diagram can't both fit it, this wrapper
-                                    scrolls internally instead of breaking the page layout. */}
-                                <div className="overflow-x-auto">
-                                    <div
-                                        style={{
-                                            display: "grid",
-                                            gridTemplateColumns: "200px 50px 120px 50px 200px 50px 120px 50px 350px",
-                                            gridTemplateRows: "auto 36px auto",
-                                            alignItems: "center",
-                                            gap: "0",
-                                            width: "100%",
-                                            minWidth: 1190,
-                                        }}
-                                    >
-                                        {/* ROW 0: OPTION 1 */}
-                                        <div style={{ gridColumn: 1, gridRow: 1, display: "flex", justifyContent: "center", alignItems: "center" }}>
-                                            <OptionLabel badge="OPTION 1" label="Add Product Manually" />
-                                        </div>
-                                        <div style={{ gridColumn: 2, gridRow: 1 }}><Arrow dashed /></div>
-                                        <div style={{ gridColumn: 3, gridRow: 1, display: "flex", justifyContent: "center" }}>
-                                            <Node icon={Plus} label="Add Product" variant="blue" visible={visible} delay={150} />
-                                        </div>
-                                        <div style={{ gridColumn: 4, gridRow: 1 }}><Arrow /></div>
-                                        <div style={{ gridColumn: 5, gridRow: 1, display: "flex", justifyContent: "center" }}>
-                                            <FormNode visible={visible} delay={250} />
-                                        </div>
-                                        <div style={{ gridColumn: 6, gridRow: 1 }}><Arrow /></div>
-                                        <div style={{ gridColumn: 7, gridRow: 1, display: "flex", justifyContent: "center" }}>
-                                            <Node icon={CheckCircle2} label="Save Product" sub="Added to My Catalog" variant="blue" visible={visible} delay={350} />
-                                        </div>
-                                        <div style={{ gridColumn: 8, gridRow: 1 }}><Arrow /></div>
-                                        {/* My Catalog spans all rows */}
-                                        <div style={{ gridColumn: 9, gridRow: "1 / 4", display: "block", paddingLeft: 12 }}>
-                                            <CatalogPanel visible={visible} delay={550} />
-                                        </div>
+                                {/* OPTION 1 block */}
+                                <div
+                                    className="rounded-2xl bg-white/60 border border-slate-200 p-4 space-y-3"
+                                    style={{ transition: `opacity 0.5s ease 100ms`, opacity: visible ? 1 : 0 }}
+                                >
+                                    <div className="flex items-center gap-2">
+                                        <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-[11px] font-bold bg-blue-600 text-white leading-none shadow">OPTION 1</span>
+                                        <span className="text-sm font-semibold text-slate-600">Add Product Manually</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-3">
+                                        <StepCard icon={Plus} label="Add Product" variant="blue" visible={visible} delay={150} />
+                                        <StepCard icon={ImageIcon} label="Fill Product Details" sub="Title, SKU, Price, Stock…" visible={visible} delay={220} />
+                                        <StepCard icon={CheckCircle2} label="Save Product" sub="Added to My Catalog" variant="blue" visible={visible} delay={290} />
+                                        <StepCard icon={Sparkles} label="Live on Catalog" sub="Listing ready instantly" visible={visible} delay={360} />
+                                    </div>
+                                </div>
 
-                                        {/* ROW 1: OR divider */}
-                                        <div style={{ gridColumn: "1 / 9", gridRow: "2", display: "flex", alignItems: "center", paddingLeft: 1 }}>
-                                            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                                <div style={{ height: 1, width: 32, borderTop: "2px dashed #CBD5E1" }} />
-                                                <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", background: "white", border: "1px solid #E2E8F0", borderRadius: 999, padding: "2px 10px", boxShadow: "0 1px 2px rgba(0,0,0,0.05)" }}>OR</span>
-                                                <div style={{ height: 1, width: 32, borderTop: "2px dashed #CBD5E1" }} />
-                                            </div>
-                                        </div>
+                                {/* OR divider */}
+                                <div className="flex items-center gap-3">
+                                    <div className="flex-1 h-px border-t-2 border-dashed border-slate-300" />
+                                    <span className="text-[11px] font-bold text-slate-400 bg-white border border-slate-200 rounded-full px-3 py-0.5 shadow-sm select-none">OR</span>
+                                    <div className="flex-1 h-px border-t-2 border-dashed border-slate-300" />
+                                </div>
 
-                                        {/* ROW 2: OPTION 2 */}
-                                        <div style={{ gridColumn: 1, gridRow: 3, display: "flex", justifyContent: "center", alignItems: "center" }}>
-                                            <OptionLabel badge="OPTION 2" label="Import Products via File" />
+                                {/* OPTION 2 block */}
+                                <div
+                                    className="rounded-2xl bg-white/60 border border-slate-200 p-4 space-y-3"
+                                    style={{ transition: `opacity 0.5s ease 300ms`, opacity: visible ? 1 : 0 }}
+                                >
+                                    <div className="flex items-center gap-2">
+                                        <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-[11px] font-bold bg-blue-600 text-white leading-none shadow">OPTION 2</span>
+                                        <span className="text-sm font-semibold text-slate-600">Import Products via File</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-3">
+                                        <StepCard icon={Download} label="Download Sample" sub="Get template as reference" visible={visible} delay={350} />
+                                        <StepCard icon={FileSpreadsheet} label="Fill the Template" sub="Enter product details in file" visible={visible} delay={420} />
+                                        <StepCard icon={UploadCloud} label="Upload File" sub="Upload the completed file" visible={visible} delay={490} />
+                                        <StepCard icon={CheckCircle2} label="Products Created" sub="All listings auto-generated" variant="blue" visible={visible} delay={560} />
+                                    </div>
+                                </div>
+
+                                {/* Catalog preview */}
+                                <div className="mt-1">
+                                    <CatalogPanel visible={visible} delay={600} />
+                                </div>
+
+                                {/* Bottom sync strip */}
+                                <div
+                                    className="flex items-start gap-2.5 bg-white border border-blue-100 rounded-2xl px-4 py-3 shadow-sm"
+                                    style={{ transition: "opacity 0.6s ease 700ms", opacity: visible ? 1 : 0 }}
+                                >
+                                    <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-px" />
+                                    <p className="text-sm font-semibold text-slate-700">
+                                        Both paths sync instantly to My Catalog — listings go live on Amazon within seconds.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* ══════════════════════════════════════════
+                                2xl+ (≥1536px): Classic horizontal arrow diagram
+                                At this viewport: sidebar(380) + diagram fits comfortably
+                                Grid total ≈ 960px; diagram area = 1536-140-380 = 1016px ✓
+                            ══════════════════════════════════════════ */}
+                            <div
+                                className="hidden 2xl:block rounded-2xl py-6 pb-8 pr-4 pl-2"
+                                style={dotBg}
+                            >
+                                <div
+                                    style={{
+                                        display: "grid",
+                                        gridTemplateColumns: "160px 44px 100px 44px 160px 44px 100px 44px 300px",
+                                        gridTemplateRows: "auto 30px auto",
+                                        alignItems: "center",
+                                        gap: "0",
+                                        width: "100%",
+                                    }}
+                                >
+                                    {/* ROW 0: OPTION 1 */}
+                                    <div style={{ gridColumn: 1, gridRow: 1, display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                        <OptionLabel badge="OPTION 1" label="Add Product Manually" />
+                                    </div>
+                                    <div style={{ gridColumn: 2, gridRow: 1 }}><Arrow dashed /></div>
+                                    <div style={{ gridColumn: 3, gridRow: 1, display: "flex", justifyContent: "center" }}>
+                                        <Node icon={Plus} label="Add Product" variant="blue" visible={visible} delay={150} />
+                                    </div>
+                                    <div style={{ gridColumn: 4, gridRow: 1 }}><Arrow /></div>
+                                    <div style={{ gridColumn: 5, gridRow: 1, display: "flex", justifyContent: "center" }}>
+                                        <FormNode visible={visible} delay={250} />
+                                    </div>
+                                    <div style={{ gridColumn: 6, gridRow: 1 }}><Arrow /></div>
+                                    <div style={{ gridColumn: 7, gridRow: 1, display: "flex", justifyContent: "center" }}>
+                                        <Node icon={CheckCircle2} label="Save Product" sub="Added to My Catalog" variant="blue" visible={visible} delay={350} />
+                                    </div>
+                                    <div style={{ gridColumn: 8, gridRow: 1 }}><Arrow /></div>
+                                    {/* My Catalog spans all rows */}
+                                    <div style={{ gridColumn: 9, gridRow: "1 / 4", display: "block", paddingLeft: 10 }}>
+                                        <CatalogPanel visible={visible} delay={550} />
+                                    </div>
+
+                                    {/* ROW 1: OR divider */}
+                                    <div style={{ gridColumn: "1 / 9", gridRow: "2", display: "flex", alignItems: "center", paddingLeft: 2 }}>
+                                        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                            <div style={{ height: 1, width: 28, borderTop: "2px dashed #CBD5E1" }} />
+                                            <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", background: "white", border: "1px solid #E2E8F0", borderRadius: 999, padding: "2px 10px", boxShadow: "0 1px 2px rgba(0,0,0,0.05)" }}>OR</span>
+                                            <div style={{ height: 1, width: 28, borderTop: "2px dashed #CBD5E1" }} />
                                         </div>
-                                        <div style={{ gridColumn: 2, gridRow: 3 }}><Arrow dashed /></div>
-                                        <div style={{ gridColumn: 3, gridRow: 3, display: "flex", justifyContent: "center" }}>
-                                            <Node icon={Download} label="Download Sample" sub="Get template as reference" visible={visible} delay={200} width={88} />
-                                        </div>
-                                        <div style={{ gridColumn: 4, gridRow: 3 }}><Arrow /></div>
-                                        <div style={{ gridColumn: 5, gridRow: 3, display: "flex", justifyContent: "center" }}>
-                                            <Node icon={FileSpreadsheet} label="Fill the Template" sub="Enter product details in file" visible={visible} delay={300} width={108} />
-                                        </div>
-                                        <div style={{ gridColumn: 6, gridRow: 3 }}><Arrow /></div>
-                                        <div style={{ gridColumn: 7, gridRow: 3, display: "flex", justifyContent: "center" }}>
-                                            <Node icon={UploadCloud} label="Upload File" sub="Upload the completed file" visible={visible} delay={400} width={110} />
-                                        </div>
-                                        <div style={{ gridColumn: 8, gridRow: 3, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                            <Arrow />
-                                        </div>
+                                    </div>
+
+                                    {/* ROW 2: OPTION 2 */}
+                                    <div style={{ gridColumn: 1, gridRow: 3, display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                        <OptionLabel badge="OPTION 2" label="Import Products via File" />
+                                    </div>
+                                    <div style={{ gridColumn: 2, gridRow: 3 }}><Arrow dashed /></div>
+                                    <div style={{ gridColumn: 3, gridRow: 3, display: "flex", justifyContent: "center" }}>
+                                        <Node icon={Download} label="Download Sample" sub="Get template" visible={visible} delay={200} width={88} />
+                                    </div>
+                                    <div style={{ gridColumn: 4, gridRow: 3 }}><Arrow /></div>
+                                    <div style={{ gridColumn: 5, gridRow: 3, display: "flex", justifyContent: "center" }}>
+                                        <Node icon={FileSpreadsheet} label="Fill Template" sub="Enter product details" visible={visible} delay={300} width={100} />
+                                    </div>
+                                    <div style={{ gridColumn: 6, gridRow: 3 }}><Arrow /></div>
+                                    <div style={{ gridColumn: 7, gridRow: 3, display: "flex", justifyContent: "center" }}>
+                                        <Node icon={UploadCloud} label="Upload File" sub="Upload completed file" visible={visible} delay={400} width={100} />
+                                    </div>
+                                    <div style={{ gridColumn: 8, gridRow: 3, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                        <Arrow />
                                     </div>
                                 </div>
 
@@ -515,9 +624,9 @@ export function ProductListingGuide() {
                                 </div>
                             </div>
 
-                        </div>
-                    </div>
-                </div>
+                        </div>{/* end diagram area */}
+                    </div>{/* end flex row */}
+                </div>{/* end main bordered container */}
 
                 {/* Three feature callouts */}
                 <div
