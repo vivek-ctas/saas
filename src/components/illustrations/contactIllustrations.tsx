@@ -7,7 +7,7 @@ export const ContactMapIllustration = (props: SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 600 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
         <defs>
             <linearGradient id="cm-bg" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="#E8F0F6" />
+                <stop offset="0%" stopColor="#FFFFFF" />
                 <stop offset="100%" stopColor="#E8F0F6" />
             </linearGradient>
         </defs>

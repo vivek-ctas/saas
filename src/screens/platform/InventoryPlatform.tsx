@@ -4,7 +4,7 @@ import { FlowVisual, DashListVisual, KpiChartVisual } from "@/components/illustr
 const cfg: PlatformConfig = {
   slug: "inventory",
   eyebrow: "Inventory Sync",
-  title: "One stock number. Every channel. Always accurate.",
+  title: <>One stock number. Every channel. <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">Always accurate.</span></>,
   intro:
     "Stop reconciling spreadsheets at 2 a.m. SellerBuz keeps stock levels in perfect sync across Amazon and Shopify - with sub-2-second propagation and zero oversells.",
   hero: (
@@ -26,7 +26,7 @@ const cfg: PlatformConfig = {
     />
   ),
   problem: {
-    title: "Selling multi-channel from spreadsheets is a time bomb.",
+    title: <>Selling multi-channel from spreadsheets is <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">a time bomb.</span></>,
     points: [
       "Manual stock updates across 5 dashboards",
       "One late edit → oversell → suspended listing",
@@ -35,7 +35,7 @@ const cfg: PlatformConfig = {
     ],
   },
   solution: {
-    title: "One master catalog, five channels, one source of truth.",
+    title: <>One master catalog, five channels, <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">one source of truth.</span></>,
     points: [
       "Sub-2-second propagation across every channel",
       "Cross-channel stock reservations during checkout",
@@ -46,7 +46,7 @@ const cfg: PlatformConfig = {
   deepDives: [
     {
       eyebrow: "Real-Time Sync",
-      title: "One stock number. Fanned out to every channel in under 2 seconds.",
+      title: <>One stock number. Fanned out to every channel <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">in under 2 seconds.</span></>,
       desc: "SellerBuz sits between your warehouse and every marketplace. When stock moves, we push the new number to Amazon and Shopify in parallel - with automatic retries and full audit history.",
       bullets: [
         "Sub-2-second propagation via native marketplace APIs",
@@ -75,7 +75,7 @@ const cfg: PlatformConfig = {
     },
     {
       eyebrow: "Multi-Warehouse",
-      title: "Split inventory across warehouses, netted for the seller.",
+      title: <>Split inventory across warehouses, <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">netted for the seller.</span></>,
       desc: "Track stock separately across your own warehouse, FBA, WFS and 3PLs - with allocation rules per region and per channel. Available-to-sell is netted centrally so no channel ever oversells.",
       bullets: [
         "Per-warehouse and per-channel allocation rules",
@@ -99,7 +99,7 @@ const cfg: PlatformConfig = {
     },
     {
       eyebrow: "Guardrails",
-      title: "Buffer stock and low-stock alerts - before you oversell.",
+      title: <>Buffer stock and low-stock alerts - <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">before you oversell.</span></>,
       desc: "Hold a safety buffer on every channel automatically. Get a low-stock alert before you drop below your reorder point, and see days-of-cover trends per SKU so you reorder at the right moment.",
       bullets: [
         "Per-SKU or global buffer stock rules",

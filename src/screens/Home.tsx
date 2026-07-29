@@ -135,7 +135,7 @@ const Home = () => {
                   </Link>
 
                   <Link href="/pricing">
-                    <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-[#3C9AC4] to-[#13355A] hover:opacity-95 border-0">
+                    <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] hover:opacity-95 border-0">
                       Quick Start
                       <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                     </Button>
@@ -241,8 +241,11 @@ const Home = () => {
           <div className="px-5 sm:px-8 lg:px-[70px] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
             <div className="reveal">
               <Badge className="mb-4 bg-accent text-primary border border-primary/10">The Problem</Badge>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-4">
-                Selling on 5 marketplaces shouldn't feel like running 5 businesses.
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                Selling on 5 Marketplace shouldn't feel like{" "}
+                <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
+                  running 5 businesses.
+                </span>
               </h2>
               <p className="text-base sm:text-lg lg:text-xl text-[#334155] leading-relaxed mb-6">
                 Most sellers juggle a dozen tabs, broken CSV exports and 2 a.m. inventory mismatches. One oversell on Amazon can cost an account suspension worth months of revenue.
@@ -278,7 +281,11 @@ const Home = () => {
               </Badge>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                From a raw file to a live, whitelabel listing — without the busywork.
+                From a raw file to a{" "}
+                <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
+                  live, whitelabel listing
+                </span>{" "}
+                — without the busywork.
               </h2>
 
               <p className="text-base sm:text-lg lg:text-xl text-[#334155] leading-relaxed mb-6">
@@ -411,7 +418,10 @@ const Home = () => {
                 </span>
               </div>
               <h2 className="text-3xl sm:text-[2.6rem] font-bold text-[#0F172A] tracking-tight mb-4 leading-tight reveal">
-                Trusted by sellers worldwide
+                Trusted by{" "}
+                <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
+                  sellers worldwide
+                </span>
               </h2>
               <p className="text-base sm:text-lg text-[#64748B] leading-relaxed max-w-2xl mx-auto reveal font-normal">
                 Real results from real sellers. Our platform powers thousands of businesses across the globe every single day.
@@ -475,16 +485,18 @@ const Home = () => {
           <div className="relative px-5 sm:px-8 lg:px-[70px]">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center mb-16 md:mb-20 lg:mb-24">
               <div className="order-2 lg:order-1 reveal">
-                <Badge className="mb-4 bg-accent text-primary border border-primary/10">The Problem</Badge>
+                <Badge className="mb-4 bg-accent text-primary border border-primary/10"> Why SellerBuz</Badge>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                  Selling on 5 Marketplace shouldn't feel like running 5 businesses.
+                  Everything your ecommerce business needs, in{" "}
+                  <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
+                    one intelligent platform.
+                  </span>
                 </h2>
                 <p className="text-base sm:text-lg lg:text-xl text-[#334155] leading-relaxed mb-6">
-                  Most sellers juggle a dozen tabs, broken CSV exports and 2 a.m. inventory mismatches.
-                  One overselling incident on Amazon can cost an account suspension worth months of revenue.
+                  Replace disconnected tools with one centralized workspace for inventory, catalog management, order operations, and AI-powered automation. Spend less time managing systems and more time growing your business.
                 </p>
                 <ul className="space-y-3">
-                  {["Manual stock updates across platforms", "Lost orders & angry customers", "No single source of truth", "Hours wasted reconciling data"].map((p, i) => (
+                  {["One unified dashboard for all operations", "AI-powered catalog and listing management", "Real-time inventory synchronization", "Automated workflows that save hours every day"].map((p, i) => (
                     <li key={i} className="flex items-start gap-3 text-slate-700">
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
                       {p}
@@ -504,7 +516,11 @@ const Home = () => {
               <div className="reveal delay-200">
                 <Badge className="mb-4 bg-accent text-primary border border-primary/10">The SellerBuz Way</Badge>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                  One source of truth. Synced everywhere in milliseconds.
+                  One source of truth.{" "}
+                  <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
+                    Synced everywhere
+                  </span>{" "}
+                  in milliseconds.
                 </h2>
                 <p className="text-base sm:text-lg lg:text-xl text-[#334155] leading-relaxed mb-6">
                   Update your product information once and let the platform automatically synchronize inventory, pricing, listings,
@@ -512,7 +528,7 @@ const Home = () => {
                   Intelligent automation minimizes manual intervention, reduces costly errors, and keeps your business running efficiently as your catalog continues to grow.
                 </p>
                 <Link href="/services">
-                  <Button size="lg" className="rounded-full shadow-lg group bg-gradient-to-r from-[#3C9AC4] to-[#13355A] hover:opacity-95 border-0">
+                  <Button size="lg" className="rounded-full shadow-lg group bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] hover:opacity-95 border-0">
                     Explore Our Services
                     <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </Button>
@@ -533,7 +549,10 @@ const Home = () => {
                   <Zap className="w-3.5 h-3.5 mr-1" />  Amazon + Shopify Integrations
                 </Badge>
                 <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-slate-900 leading-tight mb-6">
-                  Connect your <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">Amazon and Shopify stores in minutes.</span>
+                  Connect your Amazon and Shopify{" "}
+                  <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
+                    stores in minutes.
+                  </span>
                 </h2>
                 <p className="text-base sm:text-lg lg:text-xl text-[#334155] leading-relaxed mb-8">
                   Bring inventory, orders, listings, analytics, and business operations together in one centralized platform. Automate repetitive tasks, improve accuracy, and keep your workflows running smoothly.
@@ -560,7 +579,7 @@ const Home = () => {
                     </Button>
                   </Link>
                   <Link href="/contact">
-                    <Button size="lg" className="text-base px-6 h-12 rounded-full shadow-lg group bg-gradient-to-r from-[#3C9AC4] to-[#13355A] hover:opacity-95 border-0">
+                    <Button size="lg" className="text-base px-6 h-12 rounded-full shadow-lg group bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] hover:opacity-95 border-0">
                       Request An Integration
                       <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                     </Button>

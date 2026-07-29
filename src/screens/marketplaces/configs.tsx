@@ -9,7 +9,7 @@ export const amazonConfig: MarketplaceConfig = {
   name: "Amazon",
   dot: "#f59e0b",
   logo: "/logos/amazon-color-svgrepo-com.svg",
-  tagline: "Sell smarter on Amazon - Buy Box first, ops second.",
+  tagline: <>Sell smarter on Amazon - <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">Buy Box first, ops second.</span></>,
   intro:
     "Generate AI-optimized listings, track FBA and FBM inventory in real-time, and manage your entire Amazon catalog from one dashboard.",
   stats: [

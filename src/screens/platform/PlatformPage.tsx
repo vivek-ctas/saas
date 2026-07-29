@@ -8,7 +8,7 @@ import { ReactNode } from "react";
 
 export type DeepDive = {
   eyebrow: string;
-  title: string;
+  title: string | ReactNode;
   desc: string;
   bullets: string[];
   visual: ReactNode;
@@ -17,11 +17,11 @@ export type DeepDive = {
 export type PlatformConfig = {
   slug: string;
   eyebrow: string;
-  title: string;
+  title: string | ReactNode;
   intro: string;
   hero: ReactNode;
-  problem: { title: string; points: string[] };
-  solution: { title: string; points: string[] };
+  problem: { title: string | ReactNode; points: string[] };
+  solution: { title: string | ReactNode; points: string[] };
   deepDives: DeepDive[];
   featureGrid?: { icon: any; t: string; d: string }[];
   channels?: string[];
@@ -57,7 +57,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
                   </Button>
                 </Link>
                 <Link href="/pricing">
-                  <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-[#3C9AC4] to-[#13355A] hover:opacity-95 border-0">
+                  <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] hover:opacity-95 border-0">
                     Quick Start <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
@@ -206,7 +206,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
           /* ── 2-col: text left, visual right ── */
           if (pattern === 0) {
             return (
-              <section key={s.title} className="py-14 sm:py-16 lg:py-20 bg-[#F1F3FC] border-t border-[#EAECF3]">
+              <section key={s.eyebrow} className="py-14 sm:py-16 lg:py-20 bg-[#F1F3FC] border-t border-[#EAECF3]">
                 <div className="px-5 sm:px-8 lg:px-[70px]">
                   <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-16 items-center">
                     <div className="reveal">
@@ -236,7 +236,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
           /* ── full-width: centered title + large visual + 2-col chips ── */
           if (pattern === 1) {
             return (
-              <section key={s.title} className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3]">
+              <section key={s.eyebrow} className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3]">
                 <div className="px-5 sm:px-8 lg:px-[70px]">
                   <div className="text-center max-w-3xl mx-auto mb-10 reveal">
                     <Badge className="mb-3 bg-[#E8F0F6] text-[#13355A] border border-[#BDD9EE] shadow-sm text-xs">{s.eyebrow}</Badge>
@@ -261,7 +261,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
 
           /* ── 2-col: visual left, text right ── */
           return (
-            <section key={s.title} className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
+            <section key={s.eyebrow} className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
               <div className="px-5 sm:px-8 lg:px-[70px]">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                   <div className="reveal order-2 lg:order-1">
@@ -649,9 +649,9 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
         {/* ═══════════════════════════════════════
             CTA  –  unchanged gradient block
         ═══════════════════════════════════════ */}
-        <section className="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-[#3C9AC4] to-[#13355A]">
-          <div className="relative px-5 sm:px-8 lg:px-[70px] text-center reveal">
-            <Sparkles className="w-12 h-12 text-[#6BC1E0] mx-auto mb-6 animate-float" />
+        <section className="py-14 lg:py-16 relative overflow-hidden bg-gradient-to-br from-[#13355A] to-[#1a4a7a]">
+          <div className="relative max-w-5xl mx-auto px-5 sm:px-8 lg:px-[70px] text-center reveal">
+            <Sparkles className="w-12 h-12 text-white/20 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Ready to streamline your multichannel operations?
             </h2>
@@ -660,7 +660,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing">
-                <Button size="lg" className="text-lg px-8 rounded-full bg-white text-[#3C9AC4] hover:bg-[#E8F0F6] border-0 shadow-lg">
+                <Button size="lg" className="text-lg px-8 rounded-full bg-white text-primary hover:bg-accent border-0 shadow-lg">
                   Explore Pricing
                 </Button>
               </Link>

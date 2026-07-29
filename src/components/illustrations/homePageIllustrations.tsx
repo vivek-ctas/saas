@@ -840,10 +840,10 @@ export const InfraIllustration = (props: SVGProps<SVGSVGElement>) => {
 export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 560 420" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg" {...props}>
         <defs>
-    <linearGradient id="hd-core" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#3C9AC4"/>
-            <stop offset="100%" stopColor="#13355A"/>
-    </linearGradient>
+            <linearGradient id="hd-core" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stopColor="#3C9AC4" />
+                <stop offset="100%" stopColor="#13355A" />
+            </linearGradient>
             <filter id="hd-sh" x="-20%" y="-20%" width="140%" height="140%">
                 <feGaussianBlur stdDeviation="6" /><feOffset dy="3" />
                 <feComponentTransfer><feFuncA type="linear" slope="0.14" /></feComponentTransfer>

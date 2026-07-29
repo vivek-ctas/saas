@@ -53,7 +53,7 @@ const About = () => {
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button size="lg" className="text-base px-8 h-12 rounded-full group bg-gradient-to-r from-[#3C9AC4] to-[#13355A] hover:opacity-95 border-0">
+                <Button size="lg" className="text-base px-8 h-12 rounded-full group bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] hover:opacity-95 border-0">
                   Talk to Our Team
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -69,7 +69,7 @@ const About = () => {
             <div className="reveal">
               <Badge className="mb-4 bg-accent text-primary border border-primary/10">Our Mission</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                Level the playing field<br />for every seller.
+                Level the playing field<br />for <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">every seller.</span>
               </h2>
               <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-4">
                 Enterprise sellers have armies of engineers. Independent sellers have you, your laptop,
@@ -100,7 +100,7 @@ const About = () => {
           <div className="relative px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-16 reveal">
               <Badge className="mb-4 bg-accent text-primary border border-primary/10">Our Journey</Badge>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Building Smarter Commerce Solutions</h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Building <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">Smarter Commerce</span> Solutions</h2>
               <p className="text-lg sm:text-xl lg:text-2xl text-slate-600">Continuously evolving our platform to help businesses automate, scale, and grow.</p>
             </div>
 
@@ -147,7 +147,7 @@ const About = () => {
             <div className="reveal delay-200">
               <Badge className="mb-4 bg-accent text-primary border border-primary/10">Our Strengths</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-8 leading-tight">
-                Technology built for<br /> modern commerce.
+                Technology built for<br /> <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">modern commerce.</span>
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {[
@@ -187,7 +187,7 @@ const About = () => {
               <Badge className="mb-4 bg-accent text-primary border border-primary/10">
                 <Award className="w-3.5 h-3.5 mr-1" /> Why Sellers Trust Us
               </Badge>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Trust isn't claimed. It's earned.</h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Trust isn't claimed. <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">It's earned.</span></h2>
               <p className="text-lg sm:text-xl lg:text-2xl text-slate-600">Six commitments we ship against - every release, every day.</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -219,7 +219,7 @@ const About = () => {
           <div className="relative px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-14 reveal">
               <Badge className="mb-4 bg-accent text-primary border border-primary/10">Partnership Ecosystem</Badge>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Powered by world-class partners</h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Powered by <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">world-class partners</span></h2>
               <p className="text-lg sm:text-xl lg:text-2xl text-slate-600">Logistics across India, Europe and the USA · Marketplace · ad networks · offline retail.</p>
             </div>
 
@@ -271,7 +271,7 @@ const About = () => {
                 <Brain className="w-3.5 h-3.5 mr-1" /> AI-Powered Catalog
               </Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                Generate channel-perfect listings in seconds, not hours.
+                Generate channel-perfect listings <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">in seconds, not hours.</span>
               </h2>
               <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
                 Our AI engine analyzes your product data and generates optimized titles, descriptions, bullet points and attributes for Amazon and Shopify. When listings get suppressed, AI retries automatically until they go live.
@@ -324,8 +324,8 @@ const About = () => {
 
         {/* CAREERS CTA - clean, minimal */}
         {/* CAREERS CTA */}
-        <section className="py-16 lg:py-20 relative overflow-hidden bg-[#13355A]">
-          <div className="relative px-5 sm:px-8 lg:px-[70px] text-center reveal">
+        <section className="py-14 lg:py-16 relative overflow-hidden bg-gradient-to-br from-[#13355A] to-[#1a4a7a]">
+          <div className="relative max-w-5xl mx-auto px-5 sm:px-8 lg:px-[70px] text-center reveal">
             <Trophy className="w-12 h-12 text-white/20 mx-auto mb-6 animate-float" />
 
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
@@ -353,7 +353,7 @@ const About = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-lg px-8 rounded-full bg-white/10 border-white/30 text-white hover:bg-white/20 shadow-lg"
+                  className="text-lg px-8 rounded-full bg-white/10 border-white/30 text-white hover:bg-white/20 hover:border-white/50 hover:text-white shadow-lg transition-all duration-300"
                 >
                   Read Our Guide
                 </Button>

@@ -962,7 +962,7 @@ export const AICatalogSVG = (props: SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 520 320" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg" {...props}>
         <defs>
             <linearGradient id="s-eng" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="#2563eb" />
+                <stop offset="0%" stopColor="#3C9AC4" />
                 <stop offset="100%" stopColor="#13355A" />
             </linearGradient>
             <clipPath id="s-cat-input-clip">

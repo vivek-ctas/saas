@@ -216,7 +216,7 @@ const Pricing = () => {
 
               <Link
                 href="#plans"
-                className="inline-flex items-center justify-center rounded-full text-base px-8 h-12 shadow-lg group bg-gradient-to-r from-[#3C9AC4] to-[#13355A] hover:opacity-95 border-0 text-white"
+                className="inline-flex items-center justify-center rounded-full text-base px-8 h-12 shadow-lg group bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] hover:opacity-95 border-0 text-white"
               >
                 See Plans
                 <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
@@ -429,7 +429,10 @@ const Pricing = () => {
             <div className="text-center mb-14 reveal max-w-3xl mx-auto">
               <Badge className="mb-4 bg-accent text-primary border border-primary/10">Inside Pro & Enterprise</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
-                The premium services that pay for the plan
+                The premium services that{" "}
+                <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
+                  pay for the plan
+                </span>
               </h2>
               <p className="text-lg sm:text-xl lg:text-2xl text-slate-600">
                 These aren't buzzwords - they're the daily chores SellerBuz does for you while you sleep.
@@ -482,10 +485,8 @@ const Pricing = () => {
         </section>
 
         {/* ── BOTTOM CTA ─────────────────────────────────────────────────────── */}
-        <section className="py-16 lg:py-20 relative overflow-hidden bg-[#13355A]">
-          <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-white/10 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-white/5 blur-3xl pointer-events-none" />
-          <div className="relative px-5 sm:px-8 lg:px-[70px] text-center reveal">
+        <section className="py-14 lg:py-16 relative overflow-hidden bg-gradient-to-br from-[#13355A] to-[#1a4a7a]">
+          <div className="relative max-w-5xl mx-auto px-5 sm:px-8 lg:px-[70px] text-center reveal">
             <Sparkles className="w-12 h-12 text-white/20 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Ready to scale your marketplace business?</h2>
             <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto"> Choose the plan that fits your business and start managing every marketplace from one powerful platform.</p>

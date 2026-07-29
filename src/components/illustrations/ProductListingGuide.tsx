@@ -389,7 +389,7 @@ export function ProductListingGuide() {
                         How It Works
                     </span>
                     <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-2 sm:mb-3">
-                        Create Your Product Listing
+                        Create Your <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">Product Listing</span>
                     </h2>
                     <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed">
                         Create product listings the way that works best for your business. Add products individually by entering all the required details, or save time by bulk-importing multiple products using a spreadsheet template. Regardless of the method you choose, SellerBuz validates your data and instantly syncs every product to your My Catalog, making your listings ready for publishing and marketplace management within seconds.

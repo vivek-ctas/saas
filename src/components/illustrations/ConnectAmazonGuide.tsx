@@ -361,7 +361,7 @@ export function ConnectAmazonGuide() {
                         How It Works
                     </span>
                     <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-2.5 sm:mb-3 leading-tight">
-                        Connect Your Amazon Store
+                        Connect Your <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">Amazon Store</span>
                     </h2>
                     <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed w-full">
                         Link your Amazon Seller Central account in just 3 simple steps. Select your marketplace, add your store details, and securely authorize access through Amazon's official OAuth process. Once connected, SellerBuz automatically syncs your store, enabling real-time inventory, orders, and pricing updates so you can start selling within minutes.

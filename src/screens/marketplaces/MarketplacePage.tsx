@@ -5,13 +5,14 @@ import Layout from "@/components/Layout";
 import { ArrowRight, CheckCircle2, Sparkles, Boxes, ShoppingCart, DollarSign, BarChart3, Wand2, RefreshCw } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { ChannelHeroDiagram, OnboardingDiagram } from "@/components/illustrations/platformPageIllustrations";
+import type { ReactNode } from "react";
 
 export type MarketplaceConfig = {
   slug: string;
   name: string;
   dot: string;                 // small accent dot color
   logo?: string;               // optional SVG logo path (e.g. "/amazon.svg")
-  tagline: string;             // hero H1
+  tagline: ReactNode;          // hero H1
   intro: string;               // hero paragraph
   stats: { l: string; v: string; d?: string }[]; // 4 stat tiles
   capabilities: { icon: any; t: string; d: string; stat: string }[]; // 6 cards
@@ -46,7 +47,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
                   </Button>
                 </Link>
                 <Link href="/contact">
-                  <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-[#3C9AC4] to-[#13355A] hover:opacity-95 border-0">
+                  <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] hover:opacity-95 border-0">
                     Talk to Our Team <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
@@ -81,7 +82,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
             <div className="max-w-3xl mb-10 reveal">
               <Badge className="mb-3 bg-[#E8F0F6] text-[#13355A] border border-[#BDD9EE] shadow-sm hover:bg-white">What You Get</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
-                Everything you need to run {cfg.name} - inside SellerBuz.
+                Everything you need to run {cfg.name} - <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">inside SellerBuz.</span>
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -104,7 +105,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
             <div className="reveal">
               <Badge className="mb-3 bg-[#E8F0F6] text-[#13355A] border border-[#BDD9EE] shadow-sm">{cfg.name} Gotchas We Handle</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-4">
-                The tricky {cfg.name} stuff, solved.
+                The tricky {cfg.name} stuff, <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">solved.</span>
               </h2>
               <p className="text-base sm:text-lg lg:text-xl text-slate-600">
                 Every marketplace has its own quirks. SellerBuz handles the sharp edges of {cfg.name} so your team doesn't have to become experts to sell.
@@ -131,7 +132,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
           <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-8 reveal">
               <Badge className="mb-3 bg-[#E8F0F6] text-[#13355A] border border-[#BDD9EE] shadow-sm hover:bg-white">Live In Minutes</Badge>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">Four steps to sync your {cfg.name} store.</h2>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">Four steps to <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">sync your {cfg.name} store.</span></h2>
             </div>
             <div className="reveal max-w-6xl mx-auto">
               <OnboardingDiagram className="w-full h-auto" />
@@ -156,7 +157,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         {/* FAQ */}
         <section className="py-14 bg-[#F1F3FC] border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px]">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 text-center mb-8 reveal">{cfg.name} - frequently asked</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 text-center mb-8 reveal">{cfg.name} - <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">frequently asked</span></h2>
             <div className="space-y-3">
               {cfg.faq.map((f) => (
                 <details key={f.q} className="group rounded-2xl border border-slate-200/70 bg-white p-5 hover:border-[#BDD9EE] transition-all">
@@ -172,9 +173,9 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         </section>
 
         {/* CTA */}
-        <section className="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-[#3C9AC4] to-[#13355A]">
-          <div className="relative px-5 sm:px-8 lg:px-[70px] text-center reveal">
-            <Sparkles className="w-12 h-12 text-[#6BC1E0] mx-auto mb-6 animate-float" />
+        <section className="py-14 lg:py-16 relative overflow-hidden bg-gradient-to-br from-[#13355A] to-[#1a4a7a]">
+          <div className="relative max-w-5xl mx-auto px-5 sm:px-8 lg:px-[70px] text-center reveal">
+            <Sparkles className="w-12 h-12 text-white/20 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Start selling smarter on {cfg.name}.
             </h2>
@@ -183,7 +184,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing">
-                <Button size="lg" className="text-lg px-8 rounded-full bg-white text-[#3C9AC4] hover:bg-[#E8F0F6] border-0 shadow-lg">
+                <Button size="lg" className="text-lg px-8 rounded-full bg-white text-primary hover:bg-accent border-0 shadow-lg">
                   Explore Pricing
                 </Button>
               </Link>

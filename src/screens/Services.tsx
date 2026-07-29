@@ -19,7 +19,7 @@ import PageHero from "@/components/PageHero";
 
 type FeatureSection = {
   eyebrow: string;
-  title: string;
+  title: React.ReactNode;
   desc: string;
   bullets: string[];
   icon: any;
@@ -33,7 +33,7 @@ const Services = () => {
   const sections: FeatureSection[] = [
     {
       eyebrow: "Core Platform",
-      title: "Centralized inventory & pricing - one source of truth.",
+      title: <>Centralized inventory & pricing — <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">one source of truth.</span></>,
       desc: "Manage stock levels and pricing from one unified dashboard. Every update reflects instantly across Amazon and Shopify, so you never oversell or misprice a listing again.",
       bullets: [
         "Single dashboard for stock and price",
@@ -46,7 +46,7 @@ const Services = () => {
     },
     {
       eyebrow: "AI Listing Retry",
-      title: "Listing mismatch? AI retries until it's right.",
+      title: <>Listing mismatch? AI retries <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">until it's right.</span></>,
       desc: "When a listing gets suppressed or fails channel validation, SellerBuz automatically retries with AI-optimized content - fixing titles, attributes and formatting until the listing goes live. No manual intervention needed.",
       bullets: [
         "Automatic detection of suppressed or rejected listings",
@@ -60,7 +60,7 @@ const Services = () => {
     },
     {
       eyebrow: "Real-Time sync",
-      title: "Stock everywhere. Always accurate.",
+      title: <>Stock everywhere. <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">Always accurate.</span></>,
       desc: "Stock changes on one channel automatically sync across all others in real time, keeping quantities accurate everywhere at once - even during flash sales and livestream spikes.",
       bullets: [
         "Sub-2-second propagation across channels",
@@ -73,7 +73,7 @@ const Services = () => {
     },
     {
       eyebrow: "AI Catalog",
-      title: "Optimized titles, descriptions and attributes in seconds.",
+      title: <>Optimized titles, descriptions and attributes <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">in seconds.</span></>,
       desc: "Generate optimized product titles, descriptions, bullet points and catalog details automatically using AI - cutting listing time from hours to minutes without sacrificing quality or SEO.",
       bullets: [
         "Channel-aware title and description generation",
@@ -87,7 +87,7 @@ const Services = () => {
     },
     {
       eyebrow: "Variants & Matching",
-      title: "Variants and smart catalog matching.",
+      title: <>Variants and <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">smart catalog matching.</span></>,
       desc: "Create and manage variants (size, color, style) with consistent data across every channel. SellerBuz helps maintain accurate variant relationships and product data across your catalog.",
       bullets: [
         "Variation matrices with per-SKU inventory",
@@ -124,7 +124,7 @@ const Services = () => {
     },
     {
       eyebrow: "Analytics",
-      title: "Revenue and performance in one dashboard.",
+      title: <>Revenue and performance <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">in one dashboard.</span></>,
       desc: "A centralized dashboard surfaces revenue trends, listing performance and key KPIs - giving you a clear view of business health across every channel, side by side.",
       bullets: [
         "Cross-channel revenue and margin",
@@ -139,7 +139,7 @@ const Services = () => {
     },
     {
       eyebrow: "Content",
-      title: "A+ content asset library.",
+      title: <>A+ content <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">asset library.</span></>,
       desc: "A dedicated library for enhanced content assets used in premium listings - hero images, comparison charts, brand modules. Keep creative assets organized and reusable across products and channels.",
       bullets: [
         "Reusable A+ modules and templates",
@@ -153,7 +153,7 @@ const Services = () => {
     },
     {
       eyebrow: "Operations",
-      title: "Role-based access control.",
+      title: <>Role-based <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">access control.</span></>,
       desc: "Enterprise-grade auth guards with configurable role creation. Let store owners, managers and staff access only what they need - with granular permissions for listings, inventory, reports and billing.",
       bullets: [
         "Custom roles with granular permissions",
@@ -166,7 +166,7 @@ const Services = () => {
     },
     {
       eyebrow: "Bulk Work",
-      title: "Bulk operations via file upload.",
+      title: <>Bulk operations <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">via file upload.</span></>,
       desc: "Perform bulk updates - inventory, pricing, listings - through simple file uploads. Save hours on large catalog management tasks with template-based imports and clear error reports.",
       bullets: [
         "CSV and Excel templates per operation",
@@ -218,7 +218,7 @@ const Services = () => {
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-[#3C9AC4] to-[#13355A] hover:opacity-95 border-0">
+                <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] hover:opacity-95 border-0">
                   Talk to Our Team
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -229,7 +229,7 @@ const Services = () => {
         />
         {/* Zig-zag sections */}
         {sections.map((s, i) => (
-          <section key={s.title} className={`py-14 sm:py-16 lg:py-20 ${i % 3 === 0 ? "bg-white" : i % 3 === 1 ? "bg-[#F7F9FC]" : "bg-[#F1F3FC]"} border-t border-[#EAECF3]`}>
+          <section key={s.eyebrow} className={`py-14 sm:py-16 lg:py-20 ${i % 3 === 0 ? "bg-white" : i % 3 === 1 ? "bg-[#F7F9FC]" : "bg-[#F1F3FC]"} border-t border-[#EAECF3]`}>
             <div className="px-5 sm:px-8 lg:px-[70px]">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
                 <div className={`reveal ${s.reverse ? "lg:order-2" : ""}`}>
@@ -253,26 +253,30 @@ const Services = () => {
         ))}
 
         {/* CTA */}
-        <section className="py-16 lg:py-20 relative overflow-hidden bg-[#13355A]">
-          <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-white/10 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-white/5 blur-3xl pointer-events-none" />
-          <div className="relative px-5 sm:px-8 lg:px-[70px] text-center">
-            <Sparkles className="w-12 h-12 mx-auto text-white/20 mb-6 animate-float" />
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Ready to simplify your marketplace operations?</h2>
-            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">Manage Amazon and Shopify from one centralized platform.</p>
+        <section className="py-14 lg:py-16 relative overflow-hidden bg-gradient-to-br from-[#13355A] to-[#1a4a7a]">
+          <div className="relative max-w-5xl mx-auto px-5 sm:px-8 lg:px-[70px] text-center reveal">
+            <Sparkles className="w-12 h-12 text-white/20 mx-auto mb-6 animate-float" />
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              Ready to simplify your marketplace operations?
+            </h2>
+            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">
+              Manage Amazon and Shopify from one centralized platform.
+            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing">
-                <Button size="lg" className="bg-white text-primary hover:bg-accent rounded-full px-8 h-12 border-0 shadow-lg">
+                <Button size="lg" className="text-lg px-8 rounded-full bg-white text-primary hover:bg-accent border-0 shadow-lg">
                   View Pricing <ArrowRight className="w-4 h-4 ml-1.5" />
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button size="lg" variant="outline" className="rounded-full px-8 h-12 bg-white/10 border-white/30 text-white hover:bg-white/20 shadow-lg">
+                <Button size="lg" variant="outline"
+                  className="text-lg px-8 rounded-full bg-white/10 border-white/30 text-white hover:bg-white/20 hover:border-white/50 hover:text-white shadow-lg transition-all duration-300"
+                >
                   Talk to Our Team
                 </Button>
               </Link>
             </div>
-            <div className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-white/80">
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-white/80">
               <span>Multi-Channel Management</span>
               <span>Real-Time Synchronization</span>
               <span>Dedicated Support</span>

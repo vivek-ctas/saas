@@ -5,7 +5,7 @@ import { Wand2, LayoutGrid, GitMerge, Image as ImageIcon, Upload, BarChart3 } fr
 const cfg: PlatformConfig = {
   slug: "catalog-ai",
   eyebrow: "AI Catalog",
-  title: "Listings that ship in minutes - not afternoons.",
+  title: <>Listings that ship <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">in minutes - not afternoons.</span></>,
   intro:
     "Generate optimized titles, descriptions, bullets and attributes per marketplace with a single click. Tone-aware, SEO-aware, and channel-native from day one.",
   hero: (
@@ -70,7 +70,7 @@ const cfg: PlatformConfig = {
     />
   ),
   problem: {
-    title: "Writing multiple versions of the same listing kills throughput.",
+    title: <>Writing multiple versions of the same listing <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">kills throughput.</span></>,
     points: [
       "Amazon wants bullet-first titles",
       "Shopify needs descriptive copy",
@@ -79,7 +79,7 @@ const cfg: PlatformConfig = {
     ],
   },
   solution: {
-    title: "One product. Five channel-native listings. Seconds.",
+    title: <>One product. Five <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">channel-native listings. Seconds.</span></>,
     points: [
       "Per-channel tone and format presets",
       "Attribute extraction from a single image",
@@ -90,7 +90,7 @@ const cfg: PlatformConfig = {
   deepDives: [
     {
       eyebrow: "Generate Per Channel",
-      title: "One product in. Multiple channel-native listings out.",
+      title: <>One product in. Multiple <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">channel-native listings out.</span></>,
       desc: "Give SellerBuz a photo and a few specs. It writes optimized listings for Amazon and Shopify - all optimized for that channel's search algorithm.",
       bullets: [
         "Amazon and Shopify. Save tone presets",
@@ -157,7 +157,7 @@ const cfg: PlatformConfig = {
     },
     {
       eyebrow: "Image → Attributes",
-      title: "Vision models read the photo, fill the category attributes.",
+      title: <>Vision models read the photo, <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">fill the category attributes.</span></>,
       desc: "Category attributes are the tax nobody wants to pay. SellerBuz reads product images plus your uploaded spec sheet and fills the required attributes for each marketplace's category schema.",
       bullets: [
         "Auto-fill Amazon and Shopify category attributes",
@@ -182,7 +182,7 @@ const cfg: PlatformConfig = {
     },
     {
       eyebrow: "Bulk Regenerate",
-      title: "Refresh entire categories with one action.",
+      title: <>Refresh entire categories with <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">one action.</span></>,
       desc: "SEO shifts. Buy-intent language evolves. Old listings decay. SellerBuz lets you bulk-regenerate a category with a new tone, new keyword focus or new brand voice - with a diff view before you publish.",
       bullets: [
         "Bulk regenerate by category, brand or channel",

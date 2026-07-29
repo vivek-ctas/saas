@@ -137,7 +137,7 @@ const Contact = () => {
                 </Button>
               </Link>
               <Link href="/pricing">
-                <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-[#13355A] to-[#0D2440] hover:opacity-95 border-0">
+                <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] hover:opacity-95 border-0">
                   View Pricing
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -176,7 +176,7 @@ const Contact = () => {
               <Card className="reveal lg:col-span-3 border-0 shadow-xl bg-white relative overflow-hidden">
                 <div className="absolute -top-20 -right-20 w-60 h-60 bg-[#BDD9EE] rounded-full blur-3xl opacity-40" />
                 <CardHeader className="relative">
-                  <CardTitle className="text-3xl lg:text-4xl font-bold text-slate-900">Send us a message</CardTitle>
+                  <CardTitle className="text-3xl lg:text-4xl font-bold text-slate-900">Send us a <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">message</span></CardTitle>
                   <p className="text-slate-600">We'll respond within 24 hours, usually faster.</p>
                 </CardHeader>
                 <CardContent className="relative space-y-5">
@@ -337,7 +337,7 @@ const Contact = () => {
 
                 <Card className="reveal delay-300 hover-lift">
                   <CardHeader>
-                    <CardTitle className="text-lg lg:text-xl font-semibold">Self-serve resources</CardTitle>
+                    <CardTitle className="text-lg lg:text-xl font-semibold">Self-serve <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">resources</span></CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-2">
                     {[
