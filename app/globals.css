@@ -17,19 +17,19 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    /* Ctasis brand: deep indigo/blue primary */
-    --primary: 226 71% 40%;
+    /* CTAS Brand: Navy #13355A */
+    --primary: 211 65% 21%;
     --primary-foreground: 0 0% 100%;
 
-    /* Ctasis secondary: blue */
-    --secondary: 217 91% 50%;
+    /* CTAS Brand: Accent Blue #3C9AC4 */
+    --secondary: 199 54% 50%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 220 20% 96%;
     --muted-foreground: 222 15% 45%;
 
-    --accent: 226 71% 95%;
-    --accent-foreground: 226 71% 30%;
+    --accent: 211 65% 95%;
+    --accent-foreground: 211 65% 30%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
@@ -39,13 +39,13 @@ All colors MUST be HSL.
     --ring: 226 71% 40%;
 
     /* Brand palette tokens (kept under emerald-* keys for back-compat
-       so existing utility classes inherit the new Ctasis blue scale) */
-    --emerald-50: 226 100% 97%;
-    --emerald-100: 226 90% 93%;
-    --emerald-500: 226 71% 50%;
-    --emerald-600: 226 71% 40%;
-    --emerald-700: 230 65% 32%;
-    --emerald-900: 232 60% 18%;
+       so existing utility classes inherit the new CTAS navy scale) */
+    --emerald-50: 211 65% 95%;
+    --emerald-100: 211 65% 90%;
+    --emerald-500: 199 54% 50%;
+    --emerald-600: 211 65% 30%;
+    --emerald-700: 211 65% 22%;
+    --emerald-900: 211 65% 12%;
 
     --slate-50: 220 20% 98%;
     --slate-100: 220 20% 95%;
@@ -53,12 +53,12 @@ All colors MUST be HSL.
     --slate-700: 222 25% 30%;
     --slate-900: 232 60% 12%;
 
-    /* Ctasis-inspired Gradients (blue palette, no warm tones) */
-    --gradient-primary: linear-gradient(135deg, hsl(226 71% 40%) 0%, hsl(232 60% 22%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(232 60% 16%) 0%, hsl(226 71% 32%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(226 71% 50%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(217 40% 99%) 100%);
-    --gradient-section: linear-gradient(180deg, hsl(217 40% 98%) 0%, hsl(0 0% 100%) 100%);
+    /* CTAS-inspired Gradients (Navy + Accent Blue palette) */
+    --gradient-primary: linear-gradient(135deg, hsl(211 65% 21%) 0%, hsl(211 65% 30%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(211 65% 12%) 0%, hsl(211 65% 25%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(199 54% 50%) 0%, hsl(211 65% 21%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(199 40% 97%) 100%);
+    --gradient-section: linear-gradient(180deg, hsl(211 20% 97%) 0%, hsl(0 0% 100%) 100%);
 
     /* Brand-tinted shadows */
     --shadow-xs: 0 1px 2px 0 hsl(232 60% 18% / 0.05);
@@ -282,23 +282,23 @@ All colors MUST be HSL.
   }
 
   .gradient-animated {
-    background: linear-gradient(120deg, hsl(226 71% 32%), hsl(232 60% 22%), hsl(217 91% 40%), hsl(226 71% 32%));
+    background: linear-gradient(120deg, hsl(211 65% 25%), hsl(211 65% 18%), hsl(199 54% 40%), hsl(211 65% 25%));
     background-size: 300% 300%;
     animation: gradient-shift 14s ease infinite;
   }
 
-  /* Cool blue hero canvas - blue + white, no warm tones */
+  /* Cool blue hero canvas - CTAS blue + white */
   .hero-cream {
     background:
-      radial-gradient(1200px 500px at 80% 0%, hsl(217 90% 92% / 0.7), transparent 60%),
-      radial-gradient(900px 400px at 0% 30%, hsl(226 90% 95% / 0.7), transparent 60%),
-      linear-gradient(180deg, hsl(217 50% 97%) 0%, hsl(0 0% 100%) 100%);
+      radial-gradient(1200px 500px at 80% 0%, hsl(199 70% 92% / 0.7), transparent 60%),
+      radial-gradient(900px 400px at 0% 30%, hsl(211 65% 95% / 0.7), transparent 60%),
+      linear-gradient(180deg, hsl(199 40% 97%) 0%, hsl(0 0% 100%) 100%);
   }
 
   .hero-cream-grid {
     background-image:
-      linear-gradient(hsl(217 20% 88% / 0.5) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(217 20% 88% / 0.5) 1px, transparent 1px);
+      linear-gradient(hsl(211 20% 85% / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(211 20% 85% / 0.4) 1px, transparent 1px);
     background-size: 56px 56px;
     mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
   }

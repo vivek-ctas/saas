@@ -202,9 +202,9 @@ const cfg: PlatformConfig = {
 
             return done
               ? {
-                fill: "#d1fae5",
+                fill: "#E8F0F6",
                 text: "98%",
-                textFill: "#065f46",
+                textFill: "#13355A",
                 icon: "check",
               }
               : {

@@ -78,9 +78,9 @@ export const PricingCalculatorMockup = (props: SVGProps<SVGSVGElement>) => {
     const FIELD_TOP = 156;
     const FIELD_GAP = 66;
 
-    const indigo = "hsl(226 71% 50%)";
-    const indigoDark = "hsl(226 71% 40%)";
-    const indigoSoft = "hsl(226 71% 95%)";
+    const indigo = "#3C9AC4";
+    const indigoDark = "#13355A";
+    const indigoSoft = "#E8F0F6";
     const green = "hsl(150 70% 40%)";
     const slate900 = "#0f172a";
     const slate500 = "#64748b";
@@ -168,19 +168,19 @@ export const PricingCalculatorMockup = (props: SVGProps<SVGSVGElement>) => {
             </circle>
 
             {/* Card 2: Extra revenue */}
-            <rect x="424" y="272" width="372" height="130" rx="18" fill="#EBF3FE" stroke={border} />
+            <rect x="424" y="272" width="372" height="130" rx="18" fill="#E8F0F6" stroke={border} />
             <circle cx="470" cy="337" r="30" fill="none" stroke={border} strokeWidth="1.5" strokeDasharray="3 4">
                 <animate attributeName="stroke-dashoffset" values="0;-14" dur="2.2s" repeatCount="indefinite" />
             </circle>
             <circle cx="470" cy="337" r="21" fill="white" />
-            <g transform="translate(459,326)" color="#2563EB">
+            <g transform="translate(459,326)" color="#3C9AC4">
                 <Icon name="barChart" size="22" />
             </g>
-            <text x="516" y="318" fontFamily="Inter,system-ui" fontSize="12" fontWeight="800" fill="#2563EB" letterSpacing="0.6">EXTRA REVENUE</text>
-            <text x="516" y="358" fontFamily="Inter,system-ui" fontSize="34" fontWeight="800" fill="#1D4ED8">$54.8k</text>
+            <text x="516" y="318" fontFamily="Inter,system-ui" fontSize="12" fontWeight="800" fill="#3C9AC4" letterSpacing="0.6">EXTRA REVENUE</text>
+            <text x="516" y="358" fontFamily="Inter,system-ui" fontSize="34" fontWeight="800" fill="#13355A">$54.8k</text>
             <text x="700" y="358" fontFamily="Inter,system-ui" fontSize="12" fill={slate500}>/ month</text>
             <path d="M424 390 Q 520 368 620 388 T 796 382" fill="none" stroke={border} strokeWidth="2" />
-            <circle cx="796" cy="382" r="4" fill="#2563EB">
+            <circle cx="796" cy="382" r="4" fill="#3C9AC4">
                 <animate attributeName="r" values="4;6;4" dur="2.2s" repeatCount="indefinite" />
             </circle>
 
@@ -190,10 +190,10 @@ export const PricingCalculatorMockup = (props: SVGProps<SVGSVGElement>) => {
                 <animate attributeName="stroke-dashoffset" values="0;-14" dur="2.4s" repeatCount="indefinite" />
             </circle>
             <circle cx="470" cy="472" r="21" fill="#20204A" />
-            <g transform="translate(459,461)" color="#60A5FA">
+            <g transform="translate(459,461)" color="#6BC1E0">
                 <Icon name="calendar" size="22" />
             </g>
-            <text x="516" y="454" fontFamily="Inter,system-ui" fontSize="12" fontWeight="800" fill="#60A5FA" letterSpacing="0.6">PAYBACK PERIOD</text>
+            <text x="516" y="454" fontFamily="Inter,system-ui" fontSize="12" fontWeight="800" fill="#6BC1E0" letterSpacing="0.6">PAYBACK PERIOD</text>
             <text x="516" y="492" fontFamily="Inter,system-ui" fontSize="28" fontWeight="800" fill="white">18 days</text>
             <text x="672" y="492" fontFamily="Inter,system-ui" fontSize="12" fill={slate400}>to break even</text>
             <path d="M424 522 Q 520 505 620 520 T 796 515" fill="none" stroke="#3B3A66" strokeWidth="2" />
@@ -231,18 +231,18 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => {
     const DiagramDefs = () => (
         <defs>
             <linearGradient id="g-purple-bar" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(226 71% 50%)" />
-                <stop offset="70%" stopColor="hsl(226 71% 65%)" />
-                <stop offset="100%" stopColor="hsl(226 71% 95%)" />
+                <stop offset="0%" stopColor="#3C9AC4" />
+                <stop offset="70%" stopColor="#6BC1E0" />
+                <stop offset="100%" stopColor="#E8F0F6" />
             </linearGradient>
             <linearGradient id="g-blue-bar" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#3B82F6" />
-                <stop offset="70%" stopColor="#93C5FD" />
-                <stop offset="100%" stopColor="#EFF6FF" />
+                <stop offset="0%" stopColor="#3C9AC4" />
+                <stop offset="70%" stopColor="#6BC1E0" />
+                <stop offset="100%" stopColor="#E8F0F6" />
             </linearGradient>
             <linearGradient id="g-purple-chip" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="hsl(226 71% 50%)" />
-                <stop offset="100%" stopColor="hsl(226 71% 40%)" />
+                <stop offset="0%" stopColor="#3C9AC4" />
+                <stop offset="100%" stopColor="#13355A" />
             </linearGradient>
             <linearGradient id="ai-shine" x1="0" x2="1" y1="0" y2="0">
                 <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
@@ -288,9 +288,9 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => {
         ),
     };
 
-    const indigo = "hsl(226 71% 50%)";
-    const indigoDark = "hsl(226 71% 40%)";
-    const indigoSoft = "hsl(226 71% 95%)";
+    const indigo = "#3C9AC4";
+    const indigoDark = "#13355A";
+    const indigoSoft = "#E8F0F6";
     const slate900 = "#0f172a";
     const slate500 = "#64748b";
     const slate400 = "#94a3b8";
@@ -311,15 +311,15 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => {
         },
         {
             x: 250,
-            accent: "#3B82F6",
-            tint: "#EFF6FF",
-            iconBg: "#DBEAFE",
+            accent: "#3C9AC4",
+            tint: "#E8F0F6",
+            iconBg: "#E8F0F6",
             icon: Icon.cart,
             label: "Orders",
             value: "84,210",
             valueColor: slate900,
             delta: "14.3%",
-            deltaColor: "#2563EB",
+            deltaColor: "#3C9AC4",
         },
         {
             x: 470,
@@ -404,7 +404,7 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => {
             {/* Legend */}
             <circle cx="50" cy="322" r="5" fill={indigo} />
             <text x="62" y="326" fontFamily="Inter,system-ui" fontSize="12" fontWeight="600" fill="#334155">BigQuery</text>
-            <circle cx="146" cy="322" r="5" fill="#3B82F6" />
+            <circle cx="146" cy="322" r="5" fill="#3C9AC4" />
             <text x="158" y="326" fontFamily="Inter,system-ui" fontSize="12" fontWeight="600" fill="#334155">Power BI</text>
 
             {/* Date range pill */}

@@ -7,7 +7,7 @@ export const BlobBackdrop = ({ className = "" }: { className?: string }) => (
   <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden>
     <div className="hero-blob bg-primary/40 w-[420px] h-[420px] -top-24 -left-20 animate-blob" />
     <div className="hero-blob bg-secondary/40 w-[360px] h-[360px] top-32 right-0 animate-blob" style={{ animationDelay: "3s" }} />
-    <div className="hero-blob bg-orange-300/30 w-[300px] h-[300px] bottom-0 left-1/3 animate-blob" style={{ animationDelay: "6s" }} />
+    <div className="hero-blob bg-[#13355A]/20 w-[300px] h-[300px] bottom-0 left-1/3 animate-blob" style={{ animationDelay: "6s" }} />
   </div>
 );
 
@@ -17,8 +17,8 @@ export const BlobBackdrop = ({ className = "" }: { className?: string }) => (
 const DiagramDefs = () => (
   <defs>
     <linearGradient id="g-blue" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0%" stopColor="#1e40af" />
-      <stop offset="100%" stopColor="#1e3a8a" />
+      <stop offset="0%" stopColor="#3C9AC4" />
+      <stop offset="100%" stopColor="#13355A" />
     </linearGradient>
     <linearGradient id="g-purple" x1="0" x2="0" y1="0" y2="1">
       <stop offset="0%" stopColor="#6d28d9" />
@@ -37,10 +37,10 @@ const DiagramDefs = () => (
       <stop offset="100%" stopColor="#9d174d" />
     </linearGradient>
     <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M0,0 L10,5 L0,10 z" fill="#3b82f6" />
+      <path d="M0,0 L10,5 L0,10 z" fill="#13355A" />
     </marker>
     <marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M0,0 L10,5 L0,10 z" fill="#8b5cf6" />
+      <path d="M0,0 L10,5 L0,10 z" fill="#13355A" />
     </marker>
     <marker id="arrow-emerald" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
       <path d="M0,0 L10,5 L0,10 z" fill="#10b981" />
@@ -65,28 +65,28 @@ export const WorkflowIllustration = (props: SVGProps<SVGSVGElement>) => (
         x: 25,
         n: "1",
         t: "Order capture",
-        c: "#89aad9",
+        c: "#BDD9EE",
         icon: "S1",
       },
       {
         x: 170,
         n: "2",
         t: "Route & assign",
-        c: "#76b7f5",
+        c: "#6BC1E0",
         icon: "S2",
       },
       {
         x: 315,
         n: "3",
         t: "Fulfil & ship",
-        c: "#488afa",
+        c: "#3C9AC4",
         icon: "S3",
       },
       {
         x: 460,
         n: "4",
         t: "Track & close",
-        c: "#faaa55",
+        c: "#13355A",
         icon: "S4",
       },
     ].map((s, i) => (
@@ -230,8 +230,8 @@ export const LogoChip = ({ name, tone = "primary" }: { name: string; tone?: "pri
   void tone;
   const initials = name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
   return (
-    <div className="group inline-flex items-center gap-2.5 pl-2 pr-4 py-2 rounded-full bg-white border border-slate-200 hover:border-blue-300 hover:shadow-sm transition-all duration-200">
-      <div className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-50 to-blue-100 text-blue-700 flex items-center justify-center text-[11px] font-bold tracking-tight">
+    <div className="group inline-flex items-center gap-2.5 pl-2 pr-4 py-2 rounded-full bg-white border border-slate-200 hover:border-primary/30 hover:shadow-sm transition-all duration-200">
+      <div className="w-7 h-7 rounded-full bg-gradient-to-br from-accent to-accent text-primary flex items-center justify-center text-[11px] font-bold tracking-tight">
         {initials}
       </div>
       <span className="text-sm font-medium text-slate-700 whitespace-nowrap group-hover:text-slate-900">{name}</span>
@@ -260,19 +260,19 @@ export const ChannelSyncFlow = (
         cy="50%"
         r="70%"
       >
-        <stop offset="0%" stopColor="#f8f4ff" />
-        <stop offset="60%" stopColor="#fff0f7" />
-        <stop offset="100%" stopColor="#fff8ed" />
+        <stop offset="0%" stopColor="#E8F4FA" />
+        <stop offset="60%" stopColor="#f0f4f8" />
+        <stop offset="100%" stopColor="#f5f7fa" />
       </radialGradient>
 
       {/* Core gradient */}
 
 
       <linearGradient id="cs-core" x1="30%" y1="15%" x2="70%" y2="88%" gradientUnits="objectBoundingBox">
-        <stop offset="0%" stopColor="#7C92FF" />
-        <stop offset="38%" stopColor="#4564F7" />
-        <stop offset="72%" stopColor="#314EDB" />
-        <stop offset="100%" stopColor="#1F369F" />
+        <stop offset="0%" stopColor="#3C9AC4" />
+        <stop offset="38%" stopColor="#2A7FA8" />
+        <stop offset="72%" stopColor="#1A5F82" />
+        <stop offset="100%" stopColor="#13355A" />
       </linearGradient>
 
       {/* Core shine */}
@@ -322,8 +322,8 @@ export const ChannelSyncFlow = (
           dx="0"
           dy="2"
           stdDeviation="5"
-          floodColor="#c4b5fd"
-          floodOpacity="0.18"
+          floodColor="#13355A"
+          floodOpacity="0.12"
         />
       </filter>
 
@@ -375,7 +375,7 @@ export const ChannelSyncFlow = (
       height="400"
       rx="20"
       fill="url(#cs-bg)"
-      stroke="#e9d5ff"
+      stroke="#d0e4f0"
       filter="url(#cs-shadow)"
     />
 

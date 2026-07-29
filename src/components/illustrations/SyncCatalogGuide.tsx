@@ -49,8 +49,8 @@ function StepArrow({ visible }: { visible: boolean }) {
             style={{ transition: "opacity 0.5s ease 450ms", opacity: visible ? 1 : 0 }}
         >
             <svg width="44" height="14" viewBox="0 0 44 14">
-                <line x1="2" y1="7" x2="34" y2="7" stroke="#BFDBFE" strokeWidth="2" />
-                <polyline points="30,3 38,7 30,11" fill="none" stroke="#60A5FA" strokeWidth="2" strokeLinejoin="round" />
+                <line x1="2" y1="7" x2="34" y2="7" stroke="#BDD9EE" strokeWidth="2" />
+                <polyline points="30,3 38,7 30,11" fill="none" stroke="#6BC1E0" strokeWidth="2" strokeLinejoin="round" />
             </svg>
         </div>
     );
@@ -75,7 +75,7 @@ function StepCard({
             }}
         >
             <div className="flex items-start gap-2.5 sm:gap-3">
-                <span className="inline-flex items-center px-2.5 sm:px-3 py-1 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold bg-blue-600 text-white shrink-0 shadow">
+                <span className="inline-flex items-center px-2.5 sm:px-3 py-1 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold bg-[#13355A] text-white shrink-0 shadow">
                     {num}
                 </span>
                 <div className="min-w-0">
@@ -105,7 +105,7 @@ function MyCatalogMockup() {
             {/* header */}
             <div className="flex items-center justify-between px-2.5 sm:px-3 py-2 sm:py-2.5 border-b border-slate-100 bg-slate-50">
                 <span className="text-xs sm:text-sm font-bold text-slate-800">My Catalog</span>
-                <button className="flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg bg-blue-600 text-white text-[9px] sm:text-[10px] font-semibold">
+                <button className="flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg bg-[#13355A] text-white text-[9px] sm:text-[10px] font-semibold">
                     <Plus className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> Add Product
                 </button>
             </div>
@@ -123,7 +123,7 @@ function MyCatalogMockup() {
             {/* rows */}
             {CATALOG_ROWS.map((r) => (
                 <div key={r.sku} className="grid grid-cols-[20px_16px_1fr_52px_38px_32px] gap-1 items-center px-2.5 sm:px-3 py-1.5 border-b border-slate-50 last:border-0">
-                    <div className={`w-3 h-3 sm:w-3.5 sm:h-3.5 rounded border-2 flex items-center justify-center ${r.checked ? "bg-blue-600 border-blue-600" : "border-slate-300"}`}>
+                    <div className={`w-3 h-3 sm:w-3.5 sm:h-3.5 rounded border-2 flex items-center justify-center ${r.checked ? "bg-[#13355A] border-blue-600" : "border-slate-300"}`}>
                         {r.checked && <span className="text-[6px] sm:text-[7px] text-white font-bold">✓</span>}
                     </div>
                     <span className="text-xs sm:text-sm">{r.init}</span>
@@ -136,14 +136,14 @@ function MyCatalogMockup() {
             {/* footer */}
             <div className="flex items-center justify-between px-2.5 sm:px-3 py-1.5 sm:py-2 border-t border-slate-100 bg-slate-50">
                 <span className="text-[9px] sm:text-[10px] text-slate-500">3 products selected</span>
-                <button className="flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg bg-blue-600 text-white text-[9px] sm:text-[10px] font-semibold">
+                <button className="flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-lg bg-[#13355A] text-white text-[9px] sm:text-[10px] font-semibold">
                     <RefreshCw className="w-2.5 h-2.5 sm:w-3 sm:h-3" /> Sync to Amazon
                 </button>
             </div>
             {/* info strip */}
-            <div className="flex items-start gap-1.5 sm:gap-2 mx-2.5 sm:mx-3 mb-2.5 sm:mb-3 mt-1 bg-blue-50 border border-blue-100 rounded-lg sm:rounded-xl px-2 sm:px-2.5 py-1.5 sm:py-2">
-                <Send className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-500 shrink-0 mt-px" />
-                <p className="text-[9px] sm:text-[10px] text-blue-700 leading-relaxed">
+            <div className="flex items-start gap-1.5 sm:gap-2 mx-2.5 sm:mx-3 mb-2.5 sm:mb-3 mt-1 bg-[#E8F0F6] border border-[#BDD9EE] rounded-lg sm:rounded-xl px-2 sm:px-2.5 py-1.5 sm:py-2">
+                <Send className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#3C9AC4] shrink-0 mt-px" />
+                <p className="text-[9px] sm:text-[10px] text-[#13355A] leading-relaxed">
                     Selected products will be synced to <span className="font-semibold">Amazon Inventory</span> for the selected country.
                 </p>
             </div>
@@ -194,13 +194,13 @@ function AmazonInventoryMockup() {
                 </div>
             ))}
             {/* context menu hint */}
-            <div className="mx-2.5 sm:mx-3 mb-2 mt-1 rounded-lg sm:rounded-xl border border-blue-100 bg-blue-50 overflow-hidden shadow-sm">
-                <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 border-b border-blue-100 hover:bg-blue-100 cursor-pointer">
-                    <Plus className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-600" />
-                    <span className="text-[9px] sm:text-[10px] font-semibold text-blue-700">Add Inventory Details</span>
+            <div className="mx-2.5 sm:mx-3 mb-2 mt-1 rounded-lg sm:rounded-xl border border-[#BDD9EE] bg-[#E8F0F6] overflow-hidden shadow-sm">
+                <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 border-b border-[#BDD9EE] hover:bg-[#E8F0F6] cursor-pointer">
+                    <Plus className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#3C9AC4]" />
+                    <span className="text-[9px] sm:text-[10px] font-semibold text-[#13355A]">Add Inventory Details</span>
                 </div>
                 {[{ icon: Pencil, label: "Edit" }, { icon: Eye, label: "View" }, { icon: Trash2, label: "Delete" }].map(({ icon: Icon, label }) => (
-                    <div key={label} className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 hover:bg-blue-50 border-b border-blue-50 last:border-0 cursor-pointer">
+                    <div key={label} className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 hover:bg-[#E8F0F6] border-b border-[#E8F0F6] last:border-0 cursor-pointer">
                         <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-500" />
                         <span className="text-[9px] sm:text-[10px] text-slate-600">{label}</span>
                     </div>
@@ -208,7 +208,7 @@ function AmazonInventoryMockup() {
             </div>
             {/* footer */}
             <div className="flex items-start gap-1.5 sm:gap-2 mx-2.5 sm:mx-3 mb-2.5 sm:mb-3 bg-slate-50 border border-slate-200 rounded-lg sm:rounded-xl px-2 sm:px-2.5 py-1.5 sm:py-2">
-                <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-500 shrink-0 mt-px" />
+                <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#3C9AC4] shrink-0 mt-px" />
                 <p className="text-[9px] sm:text-[10px] text-slate-600 leading-relaxed">
                     Products are synced as <span className="font-semibold text-amber-700">Draft</span>. Add inventory details to publish on Amazon.
                 </p>
@@ -226,7 +226,7 @@ function AddInventoryMockup() {
             {/* sub-step 1: Select Product Type */}
             <div className="p-2.5 sm:p-3 border-b border-slate-100">
                 <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
-                    <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-blue-600 text-white text-[9px] sm:text-[10px] font-bold flex items-center justify-center shrink-0">1</span>
+                    <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#13355A] text-white text-[9px] sm:text-[10px] font-bold flex items-center justify-center shrink-0">1</span>
                     <span className="text-[11px] sm:text-xs font-bold text-slate-800">Select Product Type</span>
                 </div>
                 <div className="grid grid-cols-2 gap-1 sm:gap-1.5 mb-1.5 sm:mb-2">
@@ -236,7 +236,7 @@ function AddInventoryMockup() {
                     <div className="flex items-center gap-1.5 sm:gap-2">
                         <label className="flex items-center gap-1">
                             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full border-2 border-blue-600 flex items-center justify-center">
-                                <div className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-blue-600" />
+                                <div className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-[#13355A]" />
                             </div>
                             <span className="text-[8px] sm:text-[9px] text-slate-700">Retail</span>
                         </label>
@@ -253,7 +253,7 @@ function AddInventoryMockup() {
                     </div>
                 </div>
                 <div className="mt-1.5 sm:mt-2 flex justify-end">
-                    <div className="flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg bg-blue-600 text-white text-[9px] sm:text-[10px] font-semibold">
+                    <div className="flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg bg-[#13355A] text-white text-[9px] sm:text-[10px] font-semibold">
                         Next <ArrowRight className="w-2 h-2 sm:w-2.5 sm:h-2.5" />
                     </div>
                 </div>
@@ -262,7 +262,7 @@ function AddInventoryMockup() {
             {/* sub-step 2: Fill Product Info */}
             <div className="p-2.5 sm:p-3 border-b border-slate-100">
                 <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
-                    <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-blue-600 text-white text-[9px] sm:text-[10px] font-bold flex items-center justify-center shrink-0">2</span>
+                    <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#13355A] text-white text-[9px] sm:text-[10px] font-bold flex items-center justify-center shrink-0">2</span>
                     <span className="text-[11px] sm:text-xs font-bold text-slate-800">Fill Product Information</span>
                 </div>
                 <div className="flex gap-1.5 sm:gap-2">
@@ -305,7 +305,7 @@ function AddInventoryMockup() {
                                 </React.Fragment>
                             ))}
                         </div>
-                        <button className="mt-0.5 sm:mt-1 text-[7px] sm:text-[8px] text-blue-600 font-semibold">+ Add Variant</button>
+                        <button className="mt-0.5 sm:mt-1 text-[7px] sm:text-[8px] text-[#3C9AC4] font-semibold">+ Add Variant</button>
                     </div>
                 </div>
             </div>
@@ -313,7 +313,7 @@ function AddInventoryMockup() {
             {/* sub-step 3: Review & Submit */}
             <div className="p-2.5 sm:p-3">
                 <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
-                    <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-blue-600 text-white text-[9px] sm:text-[10px] font-bold flex items-center justify-center shrink-0">3</span>
+                    <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#13355A] text-white text-[9px] sm:text-[10px] font-bold flex items-center justify-center shrink-0">3</span>
                     <span className="text-[11px] sm:text-xs font-bold text-slate-800">Review &amp; Submit</span>
                 </div>
                 <div className="flex gap-1.5 sm:gap-2 items-start">
@@ -351,7 +351,7 @@ function AddInventoryMockup() {
                     </div>
                 </div>
                 <div className="mt-1.5 sm:mt-2 flex justify-end">
-                    <div className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-blue-600 text-white text-[9px] sm:text-[10px] font-bold">
+                    <div className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-[#13355A] text-white text-[9px] sm:text-[10px] font-bold">
                         Submit <Send className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                     </div>
                 </div>
@@ -373,18 +373,18 @@ function WhiteLabelStrip({ visible }: { visible: boolean }) {
 
     return (
         <div
-            className="mt-3 rounded-2xl bg-blue-50 border border-blue-200 overflow-hidden "
+            className="mt-3 rounded-2xl bg-[#E8F0F6] border border-[#BDD9EE] overflow-hidden "
             style={{ transition: "opacity 0.6s ease 800ms", opacity: visible ? 1 : 0 }}
         >
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4">
                 {/* left label */}
                 <div className="flex items-start gap-2.5 sm:gap-3 w-full sm:w-auto sm:shrink sm:min-w-0">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-blue-600 flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#13355A] flex items-center justify-center shrink-0 mt-0.5">
                         <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
                     </div>
                     <div className="min-w-0 sm:max-w-[220px] md:max-w-[300px] lg:max-w-[420px] xl:max-w-[560px]">
-                        <p className="text-xs sm:text-sm font-bold text-blue-900">White Label to Retail</p>
-                        <p className="text-[10px] sm:text-xs text-blue-700 mt-0.5 leading-relaxed">
+                        <p className="text-xs sm:text-sm font-bold text-[#13355A]">White Label to Retail</p>
+                        <p className="text-[10px] sm:text-xs text-[#13355A] mt-0.5 leading-relaxed">
                             Convert your White Label products into Retail products by completing product details and listing them on Amazon.
                         </p>
                     </div>
@@ -397,17 +397,17 @@ function WhiteLabelStrip({ visible }: { visible: boolean }) {
                         <div key={i} className="flex items-start">
                             <div className="flex flex-col items-center gap-2 min-w-[92px]">
                                 <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center shrink-0 ${s.success ? "bg-emerald-500 border-emerald-500" : "bg-white border-blue-300"}`}>
-                                    <s.icon className={`w-5 h-5 ${s.success ? "text-white" : "text-blue-600"}`} />
+                                    <s.icon className={`w-5 h-5 ${s.success ? "text-white" : "text-[#3C9AC4]"}`} />
                                 </div>
-                                <span className={`text-[11px] font-semibold text-center leading-tight whitespace-pre-line sm:whitespace-nowrap ${s.success ? "text-emerald-700" : "text-blue-700"}`}>
+                                <span className={`text-[11px] font-semibold text-center leading-tight whitespace-pre-line sm:whitespace-nowrap ${s.success ? "text-emerald-700" : "text-[#13355A]"}`}>
                                     {s.label}
                                 </span>
                             </div>
                             {i < steps.length - 1 && (
                                 <div className="flex items-center px-1 mt-4 shrink-0">
                                     <svg width="48" height="14" viewBox="0 0 48 14">
-                                        <line x1="2" y1="7" x2="36" y2="7" stroke="#BFDBFE" strokeWidth="1.5" strokeDasharray="4 3" />
-                                        <polyline points="34,3 44,7 34,11" fill="none" stroke="#60A5FA" strokeWidth="1.5" strokeLinejoin="round" />
+                                        <line x1="2" y1="7" x2="36" y2="7" stroke="#BDD9EE" strokeWidth="1.5" strokeDasharray="4 3" />
+                                        <polyline points="34,3 44,7 34,11" fill="none" stroke="#6BC1E0" strokeWidth="1.5" strokeLinejoin="round" />
                                     </svg>
                                 </div>
                             )}
@@ -438,12 +438,12 @@ export function SyncCatalogGuide() {
                         transform: visible ? "translateY(0)" : "translateY(14px)",
                     }}
                 >
-                    <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100 mb-2.5 sm:mb-3">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold bg-[#E8F0F6] text-[#13355A] border border-[#BDD9EE] mb-2.5 sm:mb-3">
                         How It Works
                     </span>
                     <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-2.5 sm:mb-3 leading-tight">
                         From My Catalog to{" "}
-                        <span className="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
                             Amazon Inventory
                         </span>
                     </h2>
@@ -460,7 +460,7 @@ export function SyncCatalogGuide() {
                 >
                     {/* label strip */}
                     <div className="flex flex-wrap items-center gap-2 sm:gap-3 px-3 sm:px-6 lg:px-8 py-3 sm:py-4 border-b border-slate-100 bg-slate-50">
-                        <span className="inline-flex items-center px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-blue-600 text-white shadow shrink-0">
+                        <span className="inline-flex items-center px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-[#13355A] text-white shadow shrink-0">
                             STEP 3
                         </span>
                         <span className="text-sm sm:text-base font-semibold text-slate-700">Sync to Amazon Inventory</span>
@@ -557,8 +557,8 @@ export function SyncCatalogGuide() {
                         { icon: CheckCircle2, title: "Live Instantly After Submit", desc: "Once product details are complete and submitted, your listing is live on Amazon immediately." },
                     ].map(({ icon: Icon, title, desc }) => (
                         <div key={title} className="flex items-start gap-3 bg-white border border-slate-200 rounded-xl sm:rounded-2xl px-4 py-4 sm:px-5 sm:py-5 shadow-sm">
-                            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-blue-50 flex items-center justify-center shrink-0 mt-0.5">
-                                <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
+                            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-[#E8F0F6] flex items-center justify-center shrink-0 mt-0.5">
+                                <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#3C9AC4]" />
                             </div>
                             <div className="min-w-0">
                                 <p className="text-sm sm:text-base font-semibold text-slate-900">{title}</p>

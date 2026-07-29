@@ -30,13 +30,13 @@ const PageHero = ({
   return (
     <section className="relative overflow-hidden hero-cream slope-divider-bottom">
       <div className="absolute inset-0 hero-cream-grid pointer-events-none" />
-      <div className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-32 -left-32 w-[440px] h-[440px] rounded-full bg-blue-500/10 blur-3xl pointer-events-none" />
+      <div className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-[#BDD9EE]/15 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-32 -left-32 w-[440px] h-[440px] rounded-full bg-[#6BC1E0]/10 blur-3xl pointer-events-none" />
 
       <div className="relative px-5 sm:px-8 lg:px-[70px] pt-20 pb-32 sm:pt-28 sm:pb-40">
         {centered ? (
           <div className="max-w-4xl mx-auto text-center reveal">
-            <Badge className="mb-6 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">
+            <Badge className="mb-6 bg-white text-[#13355A] border border-[#BDD9EE] shadow-sm hover:bg-white">
               {BadgeIcon && <BadgeIcon className="w-3.5 h-3.5 mr-1.5" />}
               {badgeText}
             </Badge>
@@ -52,7 +52,7 @@ const PageHero = ({
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-10 lg:gap-12 items-center">
             <div className="md:col-span-1 lg:col-span-6 reveal">
-              <Badge className="mb-6 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">
+              <Badge className="mb-6 bg-white text-[#13355A] border border-[#BDD9EE] shadow-sm hover:bg-white">
                 {BadgeIcon && <BadgeIcon className="w-3.5 h-3.5 mr-1.5" />}
                 {badgeText}
               </Badge>
@@ -66,7 +66,7 @@ const PageHero = ({
               {children}
             </div>
             <div className="md:col-span-1 lg:col-span-6 relative reveal delay-200">
-              <div className="absolute -inset-8 bg-gradient-to-br from-blue-400/20 via-blue-200/20 to-blue-600/15 blur-3xl rounded-[40px]" />
+              <div className="absolute -inset-8 bg-gradient-to-br from-[#6BC1E0]/20 via-[#BDD9EE]/20 to-[#3C9AC4]/15 blur-3xl rounded-[40px]" />
               <div className="relative animate-float-slow lg:scale-105 xl:scale-110 origin-center">{visual}</div>
             </div>
           </div>

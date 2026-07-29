@@ -31,7 +31,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
           <div className="absolute inset-0 hero-cream-grid pointer-events-none" />
           <div className="px-5 sm:px-8 lg:px-[70px] pt-14 pb-14 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="reveal">
-              <Badge className="mb-4 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">
+              <Badge className="mb-4 bg-[#E8F0F6] text-[#13355A] border border-[#BDD9EE] shadow-sm hover:bg-white">
                 <span className="w-2 h-2 rounded-full mr-2" style={{ background: cfg.dot }} />
                 {cfg.name} · Native Integration
               </Badge>
@@ -41,12 +41,12 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
               <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 leading-relaxed mb-6 max-w-xl">{cfg.intro}</p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/pricing">
-                  <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-100 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm">
+                  <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-100 bg-white hover:bg-[#E8F0F6] text-slate-900 rounded-full shadow-sm">
                     View Pricing
                   </Button>
                 </Link>
                 <Link href="/contact">
-                  <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
+                  <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-[#3C9AC4] to-[#13355A] hover:opacity-95 border-0">
                     Talk to Our Team <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
@@ -54,7 +54,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
               <p className="text-sm text-slate-500 mt-4">Dedicated onboarding · Expert support · Enterprise ready</p>
             </div>
             <div className="reveal delay-100 relative">
-              <div className="absolute -inset-6 bg-gradient-to-br from-blue-400/15 via-blue-200/15 to-blue-600/10 blur-3xl rounded-[40px] pointer-events-none" />
+              <div className="absolute -inset-6 bg-gradient-to-br from-[#3C9AC4]/15 via-[#6BC1E0]/15 to-[#3C9AC4]/10 blur-3xl rounded-[40px] pointer-events-none" />
               <div className="relative rounded-3xl bg-white shadow-xl border border-slate-200/70 p-4">
                 <ChannelHeroDiagram cfg={cfg} className="w-full h-auto" />
               </div>
@@ -66,10 +66,10 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         <section className="py-10 bg-white border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px] grid grid-cols-2 md:grid-cols-4 gap-4">
             {cfg.stats.map((s) => (
-              <div key={s.l} className="reveal rounded-2xl border border-slate-200/70 bg-white p-6 hover:border-blue-200 transition-all">
+              <div key={s.l} className="reveal rounded-2xl border border-slate-200/70 bg-white p-6 hover:border-[#BDD9EE] transition-all">
                 <div className="text-sm text-slate-600 font-semibold">{s.l}</div>
                 <div className="text-3xl lg:text-4xl font-bold text-slate-900 mt-1 tracking-tight">{s.v}</div>
-                {s.d && <div className="text-xs font-semibold text-emerald-600 mt-1">▲ {s.d}</div>}
+                {s.d && <div className="text-xs font-semibold text-[#2B7AA8] mt-1">▲ {s.d}</div>}
               </div>
             ))}
           </div>
@@ -79,15 +79,15 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         <section className="py-14 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="max-w-3xl mb-10 reveal">
-              <Badge className="mb-3 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">What You Get</Badge>
+              <Badge className="mb-3 bg-[#E8F0F6] text-[#13355A] border border-[#BDD9EE] shadow-sm hover:bg-white">What You Get</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
                 Everything you need to run {cfg.name} - inside SellerBuz.
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {cfg.capabilities.map((c, i) => (
-                <div key={c.t} className="reveal rounded-2xl bg-white border border-slate-200/70 p-6 hover:border-blue-200 hover:shadow-md transition-all" style={{ transitionDelay: `${i * 30}ms` }}>
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-900 flex items-center justify-center mb-3">
+                <div key={c.t} className="reveal rounded-2xl bg-white border border-slate-200/70 p-6 hover:border-[#BDD9EE] hover:shadow-md transition-all" style={{ transitionDelay: `${i * 30}ms` }}>
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3C9AC4] to-[#13355A] flex items-center justify-center mb-3">
                     <c.icon className="w-5 h-5 text-white" />
                   </div>
                   <h3 className="font-bold text-slate-900 mb-1.5 lg:text-lg">{c.t}</h3>
@@ -102,7 +102,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         <section className="py-14 bg-[#F1F3FC] border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-10">
             <div className="reveal">
-              <Badge className="mb-3 bg-pink-50 text-pink-700 border border-pink-100 shadow-sm">{cfg.name} Gotchas We Handle</Badge>
+              <Badge className="mb-3 bg-[#E8F0F6] text-[#13355A] border border-[#BDD9EE] shadow-sm">{cfg.name} Gotchas We Handle</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-4">
                 The tricky {cfg.name} stuff, solved.
               </h2>
@@ -112,9 +112,9 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
             </div>
             <div className="space-y-3">
               {cfg.gotchas.map((g) => (
-                <div key={g.t} className="reveal rounded-2xl border border-slate-200/70 bg-white p-5 hover:border-blue-200 transition-all">
+                <div key={g.t} className="reveal rounded-2xl border border-slate-200/70 bg-white p-5 hover:border-[#BDD9EE] transition-all">
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-blue-600 mt-0.5 shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-[#3C9AC4] mt-0.5 shrink-0" />
                     <div>
                       <div className="font-bold text-slate-900">{g.t}</div>
                       <div className="text-sm lg:text-base text-slate-600 mt-0.5">{g.d}</div>
@@ -130,7 +130,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         <section className="py-14 bg-white border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-8 reveal">
-              <Badge className="mb-3 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">Live In Minutes</Badge>
+              <Badge className="mb-3 bg-[#E8F0F6] text-[#13355A] border border-[#BDD9EE] shadow-sm hover:bg-white">Live In Minutes</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">Four steps to sync your {cfg.name} store.</h2>
             </div>
             <div className="reveal max-w-6xl mx-auto">
@@ -145,7 +145,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
             <div className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Also sells on</div>
             <div className="flex flex-wrap justify-center gap-3">
               {cfg.otherChannels.map((c) => (
-                <Link key={c} href={`/marketplaces/${c.toLowerCase()}`} className="px-4 py-2 rounded-full border border-slate-200 bg-slate-50 hover:bg-blue-50 hover:border-blue-200 text-sm font-semibold text-slate-700 transition-all">
+                <Link key={c} href={`/marketplaces/${c.toLowerCase()}`} className="px-4 py-2 rounded-full border border-slate-200 bg-slate-50 hover:bg-[#E8F0F6] hover:border-[#BDD9EE] text-sm font-semibold text-slate-700 transition-all">
                   {c}
                 </Link>
               ))}
@@ -159,10 +159,10 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 text-center mb-8 reveal">{cfg.name} - frequently asked</h2>
             <div className="space-y-3">
               {cfg.faq.map((f) => (
-                <details key={f.q} className="group rounded-2xl border border-slate-200/70 bg-white p-5 hover:border-blue-200 transition-all">
+                <details key={f.q} className="group rounded-2xl border border-slate-200/70 bg-white p-5 hover:border-[#BDD9EE] transition-all">
                   <summary className="cursor-pointer font-semibold text-slate-900 flex items-center justify-between list-none">
                     {f.q}
-                    <span className="text-blue-600 group-open:rotate-45 transition-transform text-2xl leading-none">+</span>
+                    <span className="text-[#3C9AC4] group-open:rotate-45 transition-transform text-2xl leading-none">+</span>
                   </summary>
                   <p className="mt-3 text-slate-600 text-sm leading-relaxed">{f.a}</p>
                 </details>
@@ -172,9 +172,9 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
         </section>
 
         {/* CTA */}
-        <section className="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
+        <section className="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-[#3C9AC4] to-[#13355A]">
           <div className="relative px-5 sm:px-8 lg:px-[70px] text-center reveal">
-            <Sparkles className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
+            <Sparkles className="w-12 h-12 text-[#6BC1E0] mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Start selling smarter on {cfg.name}.
             </h2>
@@ -183,7 +183,7 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing">
-                <Button size="lg" className="text-lg px-8 rounded-full bg-white text-blue-600 hover:bg-blue-50 border-0 shadow-lg">
+                <Button size="lg" className="text-lg px-8 rounded-full bg-white text-[#3C9AC4] hover:bg-[#E8F0F6] border-0 shadow-lg">
                   Explore Pricing
                 </Button>
               </Link>

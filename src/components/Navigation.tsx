@@ -130,10 +130,10 @@ const Navigation = () => {
                         <Link
                           key={item.href}
                           href={item.href}
-                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-blue-50 transition"
+                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-accent transition"
                         >
-                          <div className="w-10 h-10 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0">
-                            <item.icon className="w-5 h-5 text-blue-600" />
+                          <div className="w-10 h-10 rounded-lg bg-accent border border-primary/10 flex items-center justify-center shrink-0">
+                            <item.icon className="w-5 h-5 text-primary" />
                           </div>
 
                           <div>
@@ -210,7 +210,7 @@ const Navigation = () => {
           }`}
       >
         {/* Sidebar header */}
-        <div className="relative shrink-0 bg-gradient-to-br from-blue-50/70 via-white to-white px-5 pt-5 pb-4 border-b border-slate-100">
+        <div className="relative shrink-0 bg-gradient-to-br from-accent via-white to-white px-5 pt-5 pb-4 border-b border-slate-100">
           <div className="flex items-center justify-between">
             <img
               src="/sellerbuz.png"
@@ -254,12 +254,12 @@ const Navigation = () => {
                     key={item.href}
                     href={item.href}
                     className={`group flex items-center gap-3 p-3 rounded-2xl border transition-all ${active
-                      ? "bg-blue-50/80 border-blue-100"
-                      : "bg-white border-slate-100 hover:border-blue-100 hover:bg-blue-50/60 hover:shadow-sm"
+                      ? "bg-accent/80 border-primary/10"
+                      : "bg-white border-slate-100 hover:border-primary/20 hover:bg-accent/60 hover:shadow-sm"
                       }`}
                   >
-                    <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                      <item.icon className="w-5 h-5 text-blue-600" />
+                    <div className="w-10 h-10 rounded-xl bg-accent border border-primary/10 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                      <item.icon className="w-5 h-5 text-[#3C9AC4]" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="font-semibold text-sm text-slate-900">
@@ -269,7 +269,7 @@ const Navigation = () => {
                         {item.desc}
                       </div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-300 shrink-0 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all" />
+                    <ArrowRight className="w-4 h-4 text-slate-300 shrink-0 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
                   </Link>
                 );
               })}
@@ -293,7 +293,7 @@ const Navigation = () => {
                     key={item.name}
                     href={item.href}
                     className={`relative flex items-center gap-3 pl-4 pr-3 py-2.5 rounded-xl text-[15px] transition-all ${active
-                      ? "bg-blue-50 text-primary font-semibold"
+                      ? "bg-accent text-primary font-semibold"
                       : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                       }`}
                   >

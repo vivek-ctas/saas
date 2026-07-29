@@ -7,13 +7,13 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
         <defs>
             <linearGradient id="svh-bg" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0%" stopColor="#ffffff" /><stop offset="100%" stopColor="#eff6ff" />
+                <stop offset="0%" stopColor="#ffffff" /><stop offset="100%" stopColor="#E8F0F6" />
             </linearGradient>
             <linearGradient id="svh-tile" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="hsl(226 71% 50%)" /><stop offset="100%" stopColor="hsl(226 71% 38%)" />
+                <stop offset="0%" stopColor="hsl(211 65% 50%)" /><stop offset="100%" stopColor="hsl(211 65% 28%)" />
             </linearGradient>
             <linearGradient id="svh-tile2" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="hsl(217 91% 50%)" /><stop offset="100%" stopColor="hsl(224 76% 32%)" />
+                <stop offset="0%" stopColor="hsl(199 54% 50%)" /><stop offset="100%" stopColor="hsl(211 65% 28%)" />
             </linearGradient>
             <linearGradient id="svh-shine" x1="0" x2="1" y1="0" y2="0">
                 <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
@@ -41,9 +41,9 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
         <rect x="20" y="20" width="720" height="480" rx="24" fill="url(#svh-bg)" stroke="#E2E8F0" />
         <text x="48" y="60" fontFamily="Inter,system-ui" fontSize="13" fontWeight="800" fill="#0f172a">Service Console</text>
         <text x="48" y="80" fontFamily="Inter,system-ui" fontSize="11" fill="#64748b">12 services, one operator view - every action is auditable.</text>
-        <rect x="600" y="44" width="118" height="26" rx="13" fill="hsl(150 70% 92%)" />
-        <circle cx="614" cy="57" r="4" fill="hsl(150 70% 45%)" />
-        <text x="709" y="61" textAnchor="end" fontFamily="Inter,system-ui" fontSize="10" fontWeight="800" fill="hsl(150 70% 30%)">ALL HEALTHY</text>
+        <rect x="600" y="44" width="118" height="26" rx="13" fill="hsl(199 54% 92%)" />
+        <circle cx="614" cy="57" r="4" fill="hsl(199 54% 45%)" />
+        <text x="709" y="61" textAnchor="end" fontFamily="Inter,system-ui" fontSize="10" fontWeight="800" fill="hsl(199 54% 30%)">ALL HEALTHY</text>
 
         {/* Service tiles grid */}
         {[
@@ -59,8 +59,8 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
                 <rect x={tile.x} y={tile.y} width={168} height={6} rx={3} fill={tile.c} clipPath={`url(#svhTileClip${i})`} />
                 <text x={tile.x + 16} y={tile.y + 36} fontFamily="Inter,system-ui" fontSize={11} fontWeight={800} fill="#0f172a">{tile.t}</text>
                 <text x={tile.x + 16} y={tile.y + 64} fontFamily="Inter,system-ui" fontSize={18} fontWeight={800} fill="#0f172a">{tile.v}</text>
-                <rect x={tile.x + 16} y={tile.y + 76} width={56} height={18} rx={9} fill="hsl(217 91% 95%)" />
-                <text x={tile.x + 44} y={tile.y + 89} textAnchor="middle" fontFamily="Inter,system-ui" fontSize={9} fontWeight={800} fill="hsl(217 91% 40%)">{tile.k}</text>
+                <rect x={tile.x + 16} y={tile.y + 76} width={56} height={18} rx={9} fill="hsl(199 54% 95%)" />
+                <text x={tile.x + 44} y={tile.y + 89} textAnchor="middle" fontFamily="Inter,system-ui" fontSize={9} fontWeight={800} fill="hsl(199 54% 40%)">{tile.k}</text>
             </g>
         ))}
 
@@ -69,10 +69,10 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
             <rect x="48" y="358" width="664" height="124" rx="16" fill="white" stroke="#E2E8F0" />
             <text x="64" y="382" fontFamily="Inter,system-ui" fontSize="11" fontWeight="800" fill="#64748b" letterSpacing="1">LIVE ACTIVITY</text>
             {[
-                { y: 402, t: "Repricer raised SKU-8632 to $24.49", c: "hsl(226 71% 50%)" },
-                { y: 424, t: "Inventory synced from Shopify → Amazon (FBM)", c: "hsl(217 91% 50%)" },
-                { y: 446, t: "Order #14829 routed to USA-East warehouse", c: "hsl(226 71% 40%)" },
-                { y: 468, t: "AI listing generator drafted 18 new bullets", c: "hsl(226 71% 55%)" },
+                { y: 402, t: "Repricer raised SKU-8632 to $24.49", c: "hsl(211 65% 50%)" },
+                { y: 424, t: "Inventory synced from Shopify → Amazon (FBM)", c: "hsl(199 54% 50%)" },
+                { y: 446, t: "Order #14829 routed to USA-East warehouse", c: "hsl(211 65% 40%)" },
+                { y: 468, t: "AI listing generator drafted 18 new bullets", c: "hsl(211 65% 55%)" },
             ].map((a, i) => (
                 <g key={i}>
                     <circle cx="74" cy={a.y - 4} r="4" fill={a.c} />
@@ -83,7 +83,7 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
         </g>
 
         {/* Sparkles */}
-        <g fill="#ffffff" stroke="hsl(226 71% 70%)" strokeWidth={0.6}>
+        <g fill="#ffffff" stroke="hsl(211 65% 70%)" strokeWidth={0.6}>
             <path d="M680 90 q3 9 12 12 q-9 3 -12 12 q-3 -9 -12 -12 q9 -3 12 -12 z">
                 <animate attributeName="opacity" values="0.3;1;0.3" dur="2.2s" repeatCount="indefinite" />
             </path>
@@ -115,18 +115,18 @@ export const InventorySyncSVG = (props: SVGProps<SVGSVGElement>) => (
         <defs>
 
             <linearGradient id="s-eng" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="#2563eb" /><stop offset="100%" stopColor="#1e3a8a" />
+                <stop offset="0%" stopColor="#3C9AC4" /><stop offset="100%" stopColor="#13355A" />
             </linearGradient>
 
-            {/* Purple gradient for center engine */}
+            {/* Navy gradient for center engine */}
             <linearGradient id="sync-eng-grad" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="#7C3AED" />
-                <stop offset="100%" stopColor="#4C1D95" />
+                <stop offset="0%" stopColor="#13355A" />
+                <stop offset="100%" stopColor="#13355A" />
             </linearGradient>
             {/* Soft background glow behind center */}
             <radialGradient id="sync-glow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#7C3AED" stopOpacity="0.18" />
-                <stop offset="100%" stopColor="#7C3AED" stopOpacity="0" />
+                <stop offset="0%" stopColor="#13355A" stopOpacity="0.18" />
+                <stop offset="100%" stopColor="#13355A" stopOpacity="0" />
             </radialGradient>
             {/* Drop shadow filter */}
             <filter id="sync-shadow" x="-20%" y="-20%" width="140%" height="140%">
@@ -163,30 +163,30 @@ export const InventorySyncSVG = (props: SVGProps<SVGSVGElement>) => (
 
         {/* ── Dashed connecting lines: Left → Center ── */}
         {/* Amazon → Center */}
-        <path d="M215 94 C 270 94, 285 210, 290 210" stroke="#3B82F6" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
+        <path d="M215 94 C 270 94, 285 210, 290 210" stroke="#3C9AC4" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
             <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.4s" repeatCount="indefinite" />
         </path>
-        <circle cx="215" cy="94" r="5" fill="#3B82F6" />
-        <circle cx="290" cy="210" r="5" fill="white" stroke="#3B82F6" strokeWidth="2" />
-        <circle r="3.5" fill="#3B82F6" opacity="0.85">
+        <circle cx="215" cy="94" r="5" fill="#3C9AC4" />
+        <circle cx="290" cy="210" r="5" fill="white" stroke="#3C9AC4" strokeWidth="2" />
+        <circle r="3.5" fill="#3C9AC4" opacity="0.85">
             <animateMotion dur="2s" repeatCount="indefinite" path="M215 94 C 270 94, 285 210, 290 210" />
         </circle>
 
         {/* Walmart → Center */}
-        <path d="M215 210 L290 210" stroke="#3B82F6" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
+        <path d="M215 210 L290 210" stroke="#3C9AC4" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
             <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.2s" repeatCount="indefinite" />
         </path>
-        <circle cx="215" cy="210" r="5" fill="#1E40AF" />
-        <circle r="3.5" fill="#3B82F6" opacity="0.85">
+        <circle cx="215" cy="210" r="5" fill="#13355A" />
+        <circle r="3.5" fill="#3C9AC4" opacity="0.85">
             <animateMotion dur="1.6s" repeatCount="indefinite" path="M215 210 L290 210" />
         </circle>
 
         {/* eBay → Center */}
-        <path d="M215 326 C 270 326, 285 210, 290 210" stroke="#3B82F6" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
+        <path d="M215 326 C 270 326, 285 210, 290 210" stroke="#3C9AC4" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
             <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.6s" repeatCount="indefinite" />
         </path>
-        <circle cx="215" cy="326" r="5" fill="#1E40AF" />
-        <circle r="3.5" fill="#3B82F6" opacity="0.85">
+        <circle cx="215" cy="326" r="5" fill="#13355A" />
+        <circle r="3.5" fill="#3C9AC4" opacity="0.85">
             <animateMotion dur="2.2s" repeatCount="indefinite" path="M215 326 C 270 326, 285 210, 290 210" />
         </circle>
 
@@ -203,7 +203,7 @@ export const InventorySyncSVG = (props: SVGProps<SVGSVGElement>) => (
                 <polyline points="-14,6 -14,13 -21,6" fill="white" stroke="none" />
             </g>
             <text x="350" y="222" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="13" fontWeight="800" fill="white">Sync Engine</text>
-            <text x="350" y="240" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10.5" fill="#C4B5FD">latency &lt; 2s</text>
+            <text x="350" y="240" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10.5" fill="#BDD9EE">latency &lt; 2s</text>
             {/* Small white dot at bottom */}
             <circle cx="350" cy="258" r="6" fill="white" opacity="0.25" />
             <circle cx="350" cy="258" r="3" fill="white" />
@@ -211,20 +211,20 @@ export const InventorySyncSVG = (props: SVGProps<SVGSVGElement>) => (
 
         {/* ── Dashed connecting lines: Center → Right ── */}
         {/* Center → Etsy */}
-        <path d="M410 210 C 430 210, 445 94, 485 94" stroke="#3B82F6" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
+        <path d="M410 210 C 430 210, 445 94, 485 94" stroke="#3C9AC4" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
             <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.4s" repeatCount="indefinite" />
         </path>
-        <circle cx="410" cy="210" r="5" fill="white" stroke="#3B82F6" strokeWidth="2" />
-        <circle cx="485" cy="94" r="5" fill="#3B82F6" />
-        <circle r="3.5" fill="#3B82F6" opacity="0.85">
+        <circle cx="410" cy="210" r="5" fill="white" stroke="#3C9AC4" strokeWidth="2" />
+        <circle cx="485" cy="94" r="5" fill="#3C9AC4" />
+        <circle r="3.5" fill="#3C9AC4" opacity="0.85">
             <animateMotion dur="2s" repeatCount="indefinite" path="M410 210 C 430 210, 445 94, 485 94" />
         </circle>
 
         {/* Center → Warehouse */}
-        <path d="M410 210 C 430 210, 445 326, 485 326" stroke="#3B82F6" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
+        <path d="M410 210 C 430 210, 445 326, 485 326" stroke="#3C9AC4" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
             <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.6s" repeatCount="indefinite" />
         </path>
-        <circle r="3.5" fill="#3B82F6" opacity="0.85">
+        <circle r="3.5" fill="#3C9AC4" opacity="0.85">
             <animateMotion dur="2.2s" repeatCount="indefinite" path="M410 210 C 430 210, 445 326, 485 326" />
         </circle>
 
@@ -249,15 +249,15 @@ export const InventorySyncSVG = (props: SVGProps<SVGSVGElement>) => (
 
 export const SyncFlowDiagramV2 = (props: SVGProps<SVGSVGElement>) => {
 
-    const blue = "#2563EB";
-    const blueDark = "#1D4ED8";
-    const blueSoft = "#EFF6FF";
-    const blueBorder = "#BFDBFE";
-    const blueText = "#1D4ED8";
+    const blue = "#13355A";
+    const blueDark = "#13355A";
+    const blueSoft = "#E8F0F6";
+    const blueBorder = "#BDD9EE";
+    const blueText = "#13355A";
 
-    const green = "#10B981";
-    const greenSoft = "#ECFDF5";
-    const greenText = "#059669";
+    const green = "#3C9AC4";
+    const greenSoft = "#E8F0F6";
+    const greenText = "#3C9AC4";
 
     const slate900 = "#111827";
     const slateGray = "#6B7280";
@@ -478,35 +478,35 @@ export const SyncSequenceDiagramSVG = (props: SVGProps<SVGSVGElement>) => {
             <defs>
                 <clipPath id="logoClip2"><circle cx="0" cy="0" r="20" /></clipPath>
                 <filter id="boxShadow" x="-30%" y="-30%" width="160%" height="160%">
-                    <feDropShadow dx="0" dy="3" stdDeviation="6" floodColor="#3B2E7E" floodOpacity="0.10" />
+                    <feDropShadow dx="0" dy="3" stdDeviation="6" floodColor="#13355A" floodOpacity="0.10" />
                 </filter>
                 <radialGradient id="sd-glow" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="#7C3AED" stopOpacity="0.15" />
-                    <stop offset="100%" stopColor="#7C3AED" stopOpacity="0" />
+                    <stop offset="0%" stopColor="#13355A" stopOpacity="0.15" />
+                    <stop offset="100%" stopColor="#13355A" stopOpacity="0" />
                 </radialGradient>
             </defs>
 
 
             <g strokeWidth="2" strokeDasharray="5 4">
-                <line x1="62" y1="128" x2="62" y2="480" stroke="#7C3AED">
+                <line x1="62" y1="128" x2="62" y2="480" stroke="#13355A">
                     <animate attributeName="strokeDashoffset" values="0;-18" dur="4s" repeatCount="indefinite" />
                 </line>
-                <line x1="277" y1="128" x2="277" y2="480" stroke="#7C3AED">
+                <line x1="277" y1="128" x2="277" y2="480" stroke="#13355A">
                     <animate attributeName="strokeDashoffset" values="0;-18" dur="4s" repeatCount="indefinite" />
                 </line>
-                <line x1="500" y1="128" x2="500" y2="480" stroke="#4285F4">
+                <line x1="500" y1="128" x2="500" y2="480" stroke="#3C9AC4">
                     <animate attributeName="strokeDashoffset" values="0;-18" dur="3.6s" repeatCount="indefinite" />
                 </line>
-                <line x1="617" y1="128" x2="617" y2="480" stroke="#F5B400">
+                <line x1="617" y1="128" x2="617" y2="480" stroke="#6BC1E0">
                     <animate attributeName="strokeDashoffset" values="0;-18" dur="3.8s" repeatCount="indefinite" />
                 </line>
-                <line x1="732" y1="128" x2="732" y2="480" stroke="#10B981">
+                <line x1="732" y1="128" x2="732" y2="480" stroke="#3C9AC4">
                     <animate attributeName="strokeDashoffset" values="0;-18" dur="4.2s" repeatCount="indefinite" />
                 </line>
-                <line x1="847" y1="128" x2="847" y2="480" stroke="#F97316">
+                <line x1="847" y1="128" x2="847" y2="480" stroke="#6BC1E0">
                     <animate attributeName="strokeDashoffset" values="0;-18" dur="3.4s" repeatCount="indefinite" />
                 </line>
-                <line x1="965" y1="128" x2="965" y2="480" stroke="#6366F1">
+                <line x1="965" y1="128" x2="965" y2="480" stroke="#13355A">
                     <animate attributeName="strokeDashoffset" values="0;-18" dur="4.4s" repeatCount="indefinite" />
                 </line>
             </g>
@@ -515,25 +515,25 @@ export const SyncSequenceDiagramSVG = (props: SVGProps<SVGSVGElement>) => {
             <g>
                 <rect x="14" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
                 <g transform="translate(62,48)">
-                    <path d="M-20,4 L0,-14 L20,4 L20,26 L-20,26 Z" fill="#EDE7FC" stroke="#7C3AED" strokeWidth="2" strokeLinejoin="round" />
-                    <rect x="-6" y="10" width="12" height="16" fill="#7C3AED" />
-                    <rect x="-15" y="4" width="8" height="8" rx="1.5" fill="#C4B5FD" />
+                    <path d="M-20,4 L0,-14 L20,4 L20,26 L-20,26 Z" fill="#E8F0F6" stroke="#13355A" strokeWidth="2" strokeLinejoin="round" />
+                    <rect x="-6" y="10" width="12" height="16" fill="#13355A" />
+                    <rect x="-15" y="4" width="8" height="8" rx="1.5" fill="#BDD9EE" />
                 </g>
-                <text x="62" y="98" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Seller /</text>
-                <text x="62" y="114" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Warehouse</text>
+                <text x="62" y="98" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">Seller /</text>
+                <text x="62" y="114" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">Warehouse</text>
             </g>
 
             <g>
                 <rect x="229" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
                 <g transform="translate(277,46)">
-                    <circle r="21" fill="#EDE7FC" />
-                    <path d="M-9,-3 a9,9 0 1 1 1.6,5.8" fill="none" stroke="#7C3AED" strokeWidth="2.4" strokeLinecap="round" />
-                    <path d="M-10,2.5 l2.6,-6.2 l5.4,3.6 Z" fill="#7C3AED" />
-                    <path d="M9,3 a9,9 0 1 1 -1.6,-5.8" fill="none" stroke="#7C3AED" strokeWidth="2.4" strokeLinecap="round" />
-                    <path d="M10,-2.5 l-2.6,6.2 l-5.4,-3.6 Z" fill="#7C3AED" />
+                    <circle r="21" fill="#E8F0F6" />
+                    <path d="M-9,-3 a9,9 0 1 1 1.6,5.8" fill="none" stroke="#13355A" strokeWidth="2.4" strokeLinecap="round" />
+                    <path d="M-10,2.5 l2.6,-6.2 l5.4,3.6 Z" fill="#13355A" />
+                    <path d="M9,3 a9,9 0 1 1 -1.6,-5.8" fill="none" stroke="#13355A" strokeWidth="2.4" strokeLinecap="round" />
+                    <path d="M10,-2.5 l-2.6,6.2 l-5.4,-3.6 Z" fill="#13355A" />
                 </g>
-                <text x="277" y="98" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">SellerBuz</text>
-                <text x="277" y="114" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Sync Engine</text>
+                <text x="277" y="98" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">SellerBuz</text>
+                <text x="277" y="114" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">Sync Engine</text>
             </g>
 
 
@@ -541,207 +541,207 @@ export const SyncSequenceDiagramSVG = (props: SVGProps<SVGSVGElement>) => {
             <g>
                 <rect x="452" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
                 <g transform="translate(500,48)"><image href="logos/amazon-color-svgrepo-com.svg" x="-25" y="-20" width="50" height="50" clipPath="url(#logoClip2)" /></g>
-                <text x="500" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Amazon</text>
+                <text x="500" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">Amazon</text>
             </g>
 
             <g>
                 <rect x="569" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
                 <g transform="translate(617,48)"><image href="logos/walmart.png" x="-25" y="-20" width="50" height="50" clipPath="url(#logoClip2)" /></g>
-                <text x="617" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Walmart</text>
+                <text x="617" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">Walmart</text>
             </g>
 
             <g>
                 <rect x="684" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
                 <g transform="translate(732,48)"><image href="logos/EBay_logo.svg.webp" x="-25" y="-20" width="50" height="50" clipPath="url(#logoClip2)" /></g>
-                <text x="732" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">eBay</text>
+                <text x="732" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">eBay</text>
             </g>
 
             <g>
                 <rect x="799" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
                 <g transform="translate(847,48)"><image href="logos/etsy-svgrepo-com.svg" x="-25" y="-20" width="50" height="50" clipPath="url(#logoClip2)" /></g>
-                <text x="847" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Etsy</text>
+                <text x="847" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">Etsy</text>
             </g>
 
             <g>
                 <rect x="917" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
                 <g transform="translate(965,48)"><image href="logos/fnac.png" x="-25" y="-20" width="50" height="50" clipPath="url(#logoClip2)" /></g>
-                <text x="965" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">Fnac</text>
+                <text x="965" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">Fnac</text>
             </g>
 
             {/* Glow behind Sync Engine */}
             <ellipse cx="277" cy="285" rx="60" ry="100" fill="url(#sd-glow)" />
 
-            <rect x="57" y="170" width="10" height="120" rx="5" fill="#7C3AED">
+            <rect x="57" y="170" width="10" height="120" rx="5" fill="#13355A">
                 <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" />
             </rect>
-            <rect x="272" y="170" width="10" height="230" rx="5" fill="#7C3AED">
+            <rect x="272" y="170" width="10" height="230" rx="5" fill="#13355A">
                 <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" />
             </rect>
-            <rect x="495" y="270" width="10" height="80" rx="5" fill="#4285F4">
+            <rect x="495" y="270" width="10" height="80" rx="5" fill="#3C9AC4">
                 <animate attributeName="opacity" values="0.5;1;0.5" dur="2.6s" repeatCount="indefinite" />
             </rect>
-            <rect x="612" y="270" width="10" height="80" rx="5" fill="#F5B400">
+            <rect x="612" y="270" width="10" height="80" rx="5" fill="#6BC1E0">
                 <animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" repeatCount="indefinite" />
             </rect>
-            <rect x="727" y="270" width="10" height="80" rx="5" fill="#10B981">
+            <rect x="727" y="270" width="10" height="80" rx="5" fill="#3C9AC4">
                 <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" />
             </rect>
-            <rect x="842" y="270" width="10" height="80" rx="5" fill="#F97316">
+            <rect x="842" y="270" width="10" height="80" rx="5" fill="#6BC1E0">
                 <animate attributeName="opacity" values="0.5;1;0.5" dur="2.4s" repeatCount="indefinite" />
             </rect>
-            <rect x="960" y="270" width="10" height="80" rx="5" fill="#6366F1">
+            <rect x="960" y="270" width="10" height="80" rx="5" fill="#13355A">
                 <animate attributeName="opacity" values="0.5;1;0.5" dur="3.2s" repeatCount="indefinite" />
             </rect>
 
 
-            <text x="168" y="188" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">1. Update Stock / Price</text>
-            <line x1="67" y1="200" x2="270" y2="200" stroke="#7C3AED" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowP)">
+            <text x="168" y="188" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">1. Update Stock / Price</text>
+            <line x1="67" y1="200" x2="270" y2="200" stroke="#13355A" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowP)">
                 <animate attributeName="strokeDashoffset" values="0;-26" dur="1.4s" repeatCount="indefinite" />
             </line>
-            <circle r="4" fill="#7C3AED" opacity="0.9">
+            <circle r="4" fill="#13355A" opacity="0.9">
                 <animateMotion dur="1.8s" repeatCount="indefinite" path="M67 200 L270 200" />
             </circle>
 
 
-            <text x="390" y="225" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">3. Send Update to Channels</text>
-            <line x1="282" y1="235" x2="965" y2="235" stroke="#7C3AED" strokeWidth="2" strokeDasharray="10 6">
+            <text x="390" y="225" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">3. Send Update to Channels</text>
+            <line x1="282" y1="235" x2="965" y2="235" stroke="#13355A" strokeWidth="2" strokeDasharray="10 6">
                 <animate attributeName="strokeDashoffset" values="0;-32" dur="2s" repeatCount="indefinite" />
             </line>
             {/* Moving dots along the horizontal distribution line */}
-            <circle r="4" fill="#4285F4" opacity="0.9">
+            <circle r="4" fill="#3C9AC4" opacity="0.9">
                 <animateMotion dur="1.2s" repeatCount="indefinite" path="M282 235 L500 235" />
             </circle>
-            <circle r="4" fill="#F5B400" opacity="0.9">
+            <circle r="4" fill="#6BC1E0" opacity="0.9">
                 <animateMotion dur="1.6s" repeatCount="indefinite" path="M282 235 L617 235" />
             </circle>
-            <circle r="4" fill="#10B981" opacity="0.9">
+            <circle r="4" fill="#3C9AC4" opacity="0.9">
                 <animateMotion dur="2s" repeatCount="indefinite" path="M282 235 L732 235" />
             </circle>
-            <circle r="4" fill="#F97316" opacity="0.9">
+            <circle r="4" fill="#6BC1E0" opacity="0.9">
                 <animateMotion dur="2.3s" repeatCount="indefinite" path="M282 235 L847 235" />
             </circle>
-            <circle r="4" fill="#6366F1" opacity="0.9">
+            <circle r="4" fill="#13355A" opacity="0.9">
                 <animateMotion dur="2.6s" repeatCount="indefinite" path="M282 235 L965 235" />
             </circle>
             {/* Vertical drops to channels */}
-            <line x1="500" y1="235" x2="500" y2="266" stroke="#4285F4" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#arrowDownBlue)">
+            <line x1="500" y1="235" x2="500" y2="266" stroke="#3C9AC4" strokeWidth="2" strokeDasharray="5 4">
                 <animate attributeName="strokeDashoffset" values="0;-18" dur="1s" repeatCount="indefinite" />
             </line>
-            <line x1="617" y1="235" x2="617" y2="266" stroke="#F5B400" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#arrowDownGold)">
+            <line x1="617" y1="235" x2="617" y2="266" stroke="#6BC1E0" strokeWidth="2" strokeDasharray="5 4">
                 <animate attributeName="strokeDashoffset" values="0;-18" dur="1.2s" repeatCount="indefinite" />
             </line>
-            <line x1="732" y1="235" x2="732" y2="266" stroke="#10B981" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#arrowDownGreen)">
+            <line x1="732" y1="235" x2="732" y2="266" stroke="#3C9AC4" strokeWidth="2" strokeDasharray="5 4">
                 <animate attributeName="strokeDashoffset" values="0;-18" dur="1.4s" repeatCount="indefinite" />
             </line>
-            <line x1="847" y1="235" x2="847" y2="266" stroke="#F97316" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#arrowDownOrange)">
+            <line x1="847" y1="235" x2="847" y2="266" stroke="#6BC1E0" strokeWidth="2" strokeDasharray="5 4">
                 <animate attributeName="strokeDashoffset" values="0;-18" dur="1.1s" repeatCount="indefinite" />
             </line>
-            <line x1="965" y1="235" x2="965" y2="266" stroke="#6366F1" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#arrowDownIndigo)">
+            <line x1="965" y1="235" x2="965" y2="266" stroke="#13355A" strokeWidth="2" strokeDasharray="5 4">
                 <animate attributeName="strokeDashoffset" values="0;-18" dur="1.3s" repeatCount="indefinite" />
             </line>
             {/* Moving dots down the vertical drops */}
-            <circle r="3.5" fill="#4285F4" opacity="0.85">
+            <circle r="3.5" fill="#3C9AC4" opacity="0.85">
                 <animateMotion dur="0.8s" repeatCount="indefinite" path="M500 235 L500 266" />
             </circle>
-            <circle r="3.5" fill="#F5B400" opacity="0.85">
+            <circle r="3.5" fill="#6BC1E0" opacity="0.85">
                 <animateMotion dur="0.9s" repeatCount="indefinite" path="M617 235 L617 266" />
             </circle>
-            <circle r="3.5" fill="#10B981" opacity="0.85">
+            <circle r="3.5" fill="#3C9AC4" opacity="0.85">
                 <animateMotion dur="1s" repeatCount="indefinite" path="M732 235 L732 266" />
             </circle>
-            <circle r="3.5" fill="#F97316" opacity="0.85">
+            <circle r="3.5" fill="#6BC1E0" opacity="0.85">
                 <animateMotion dur="0.85s" repeatCount="indefinite" path="M847 235 L847 266" />
             </circle>
-            <circle r="3.5" fill="#6366F1" opacity="0.85">
+            <circle r="3.5" fill="#13355A" opacity="0.85">
                 <animateMotion dur="0.95s" repeatCount="indefinite" path="M965 235 L965 266" />
             </circle>
 
 
-            <line x1="270" y1="262" x2="67" y2="262" stroke="#7C3AED" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowPBack)">
+            <line x1="270" y1="262" x2="67" y2="262" stroke="#13355A" strokeWidth="2" strokeDasharray="8 5">
                 <animate attributeName="strokeDashoffset" values="0;-26" dur="1.6s" repeatCount="indefinite" />
             </line>
-            <circle r="4" fill="#7C3AED" opacity="0.9">
+            <circle r="4" fill="#13355A" opacity="0.9">
                 <animateMotion dur="1.8s" repeatCount="indefinite" path="M270 262 L67 262" />
             </circle>
-            <text x="168" y="282" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">2. Update Received</text>
+            <text x="168" y="282" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">2. Update Received</text>
 
 
-            <line x1="960" y1="372" x2="852" y2="372" stroke="#6366F1" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowIndigo)">
+            <line x1="960" y1="372" x2="852" y2="372" stroke="#13355A" strokeWidth="2" strokeDasharray="8 5">
                 <animate attributeName="strokeDashoffset" values="0;-26" dur="2s" repeatCount="indefinite" />
             </line>
-            <circle r="4" fill="#6366F1" opacity="0.9">
+            <circle r="4" fill="#13355A" opacity="0.9">
                 <animateMotion dur="1s" repeatCount="indefinite" path="M960 372 L852 372" />
             </circle>
-            <line x1="842" y1="372" x2="737" y2="372" stroke="#F97316" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowOrange)">
+            <line x1="842" y1="372" x2="737" y2="372" stroke="#6BC1E0" strokeWidth="2" strokeDasharray="8 5">
                 <animate attributeName="strokeDashoffset" values="0;-26" dur="1.8s" repeatCount="indefinite" />
             </line>
-            <circle r="4" fill="#F97316" opacity="0.9">
+            <circle r="4" fill="#6BC1E0" opacity="0.9">
                 <animateMotion dur="1.1s" repeatCount="indefinite" path="M842 372 L737 372" />
             </circle>
-            <line x1="727" y1="372" x2="622" y2="372" stroke="#10B981" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowGreen)">
+            <line x1="727" y1="372" x2="622" y2="372" stroke="#3C9AC4" strokeWidth="2" strokeDasharray="8 5">
                 <animate attributeName="strokeDashoffset" values="0;-26" dur="1.6s" repeatCount="indefinite" />
             </line>
-            <circle r="4" fill="#10B981" opacity="0.9">
+            <circle r="4" fill="#3C9AC4" opacity="0.9">
                 <animateMotion dur="1.2s" repeatCount="indefinite" path="M727 372 L622 372" />
             </circle>
-            <line x1="612" y1="372" x2="505" y2="372" stroke="#F5B400" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowGold)">
+            <line x1="612" y1="372" x2="505" y2="372" stroke="#6BC1E0" strokeWidth="2" strokeDasharray="8 5">
                 <animate attributeName="strokeDashoffset" values="0;-26" dur="1.4s" repeatCount="indefinite" />
             </line>
-            <circle r="4" fill="#F5B400" opacity="0.9">
+            <circle r="4" fill="#6BC1E0" opacity="0.9">
                 <animateMotion dur="1.3s" repeatCount="indefinite" path="M612 372 L505 372" />
             </circle>
-            <line x1="495" y1="372" x2="284" y2="372" stroke="#4285F4" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowBlue)">
+            <line x1="495" y1="372" x2="284" y2="372" stroke="#3C9AC4" strokeWidth="2" strokeDasharray="8 5">
                 <animate attributeName="strokeDashoffset" values="0;-26" dur="1.2s" repeatCount="indefinite" />
             </line>
-            <circle r="4" fill="#4285F4" opacity="0.9">
+            <circle r="4" fill="#3C9AC4" opacity="0.9">
                 <animateMotion dur="1.4s" repeatCount="indefinite" path="M495 372 L284 372" />
             </circle>
-            <text x="390" y="397" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">4. Acknowledgement</text>
+            <text x="390" y="397" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">4. Acknowledgement</text>
 
 
-            <line x1="270" y1="437" x2="67" y2="437" stroke="#7C3AED" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowPBack)">
+            <line x1="270" y1="437" x2="67" y2="437" stroke="#13355A" strokeWidth="2" strokeDasharray="8 5">
                 <animate attributeName="strokeDashoffset" values="0;-26" dur="1.4s" repeatCount="indefinite" />
             </line>
-            <circle r="4" fill="#7C3AED" opacity="0.9">
+            <circle r="4" fill="#13355A" opacity="0.9">
                 <animateMotion dur="1.6s" repeatCount="indefinite" path="M270 437 L67 437" />
             </circle>
-            <text x="168" y="470" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1E1B4B">5. All Channels Updated</text>
+            <text x="168" y="470" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">5. All Channels Updated</text>
 
 
-            <g fontSize="12.5" fontWeight="700" fill="#1E1B4B">
-                <circle cx="500" cy="453" r="17" fill="#FFFFFF" stroke="#4285F4" strokeWidth="2">
+            <g fontSize="12.5" fontWeight="700" fill="#0F263F">
+                <circle cx="500" cy="453" r="17" fill="#FFFFFF" stroke="#3C9AC4" strokeWidth="2">
                     <animate attributeName="r" values="17;19;17" dur="2.4s" repeatCount="indefinite" />
                     <animate attributeName="opacity" values="1;0.8;1" dur="2.4s" repeatCount="indefinite" />
                 </circle>
-                <path d="M492,453 l6,6 l11,-13" fill="none" stroke="#4285F4" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M492,453 l6,6 l11,-13" fill="none" stroke="#3C9AC4" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
                 <text x="500" y="491" textAnchor="middle">Updated</text>
 
-                <circle cx="617" cy="453" r="17" fill="#FFFFFF" stroke="#F5B400" strokeWidth="2">
+                <circle cx="617" cy="453" r="17" fill="#FFFFFF" stroke="#6BC1E0" strokeWidth="2">
                     <animate attributeName="r" values="17;19;17" dur="2.6s" repeatCount="indefinite" />
                     <animate attributeName="opacity" values="1;0.8;1" dur="2.6s" repeatCount="indefinite" />
                 </circle>
-                <path d="M609,453 l6,6 l11,-13" fill="none" stroke="#F5B400" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M609,453 l6,6 l11,-13" fill="none" stroke="#6BC1E0" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
                 <text x="617" y="491" textAnchor="middle">Updated</text>
 
-                <circle cx="732" cy="453" r="17" fill="#FFFFFF" stroke="#10B981" strokeWidth="2">
+                <circle cx="732" cy="453" r="17" fill="#FFFFFF" stroke="#3C9AC4" strokeWidth="2">
                     <animate attributeName="r" values="17;19;17" dur="2.8s" repeatCount="indefinite" />
                     <animate attributeName="opacity" values="1;0.8;1" dur="2.8s" repeatCount="indefinite" />
                 </circle>
-                <path d="M724,453 l6,6 l11,-13" fill="none" stroke="#10B981" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M724,453 l6,6 l11,-13" fill="none" stroke="#3C9AC4" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
                 <text x="732" y="491" textAnchor="middle">Updated</text>
 
-                <circle cx="847" cy="453" r="17" fill="#FFFFFF" stroke="#F97316" strokeWidth="2">
+                <circle cx="847" cy="453" r="17" fill="#FFFFFF" stroke="#6BC1E0" strokeWidth="2">
                     <animate attributeName="r" values="17;19;17" dur="2.2s" repeatCount="indefinite" />
                     <animate attributeName="opacity" values="1;0.8;1" dur="2.2s" repeatCount="indefinite" />
                 </circle>
-                <path d="M839,453 l6,6 l11,-13" fill="none" stroke="#F97316" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M839,453 l6,6 l11,-13" fill="none" stroke="#6BC1E0" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
                 <text x="847" y="491" textAnchor="middle">Updated</text>
 
-                <circle cx="965" cy="453" r="17" fill="#FFFFFF" stroke="#6366F1" strokeWidth="2">
+                <circle cx="965" cy="453" r="17" fill="#FFFFFF" stroke="#13355A" strokeWidth="2">
                     <animate attributeName="r" values="17;19;17" dur="3s" repeatCount="indefinite" />
                     <animate attributeName="opacity" values="1;0.8;1" dur="3s" repeatCount="indefinite" />
                 </circle>
-                <path d="M957,453 l6,6 l11,-13" fill="none" stroke="#6366F1" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M957,453 l6,6 l11,-13" fill="none" stroke="#13355A" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
                 <text x="965" y="491" textAnchor="middle">Updated</text>
             </g>
 
@@ -752,14 +752,14 @@ export const SyncSequenceDiagramSVG = (props: SVGProps<SVGSVGElement>) => {
 
 export const SyncFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
 
-    const blue = "#2563EB";
-    const blueDark = "#1D4ED8";
-    const blueSoft = "#EFF6FF";
-    const blueBorder = "#BFDBFE";
-    const blueText = "#1D4ED8";
+    const blue = "#13355A";
+    const blueDark = "#13355A";
+    const blueSoft = "#E8F0F6";
+    const blueBorder = "#BDD9EE";
+    const blueText = "#13355A";
 
-    const green = "#10B981";
-    const greenSoft = "#ECFDF5";
+    const green = "#3C9AC4";
+    const greenSoft = "#E8F0F6";
 
     const slate900 = "#111827";
     const slateGray = "#6B7280";
@@ -896,7 +896,7 @@ export const SyncFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
                 <text y={16} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="14" fontWeight={800} fill="#ffffff">
                     Sync Engine
                 </text>
-                <text y={34} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="11.5" fontWeight={500} fill="#E9E4FB">
+                <text y={34} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="11.5" fontWeight={500} fill="#BDD9EE">
                     Real-time
                 </text>
             </g>
@@ -915,7 +915,7 @@ export const SyncFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
                 </g>
                 <rect x={25} y={104} width={100} height={26} rx={12} fill={greenSoft} />
                 <circle cx={38} cy={118} r="4" fill={green} />
-                <text x={48} y={122} fontFamily="Inter,system-ui" fontSize="12.5" fontWeight={700} fill="#059669">
+                <text x={48} y={122} fontFamily="Inter,system-ui" fontSize="12.5" fontWeight={700} fill="#3C9AC4">
                     Connected
                 </text>
             </g>
@@ -963,7 +963,7 @@ export const AICatalogSVG = (props: SVGProps<SVGSVGElement>) => (
         <defs>
             <linearGradient id="s-eng" x1="0" x2="0" y1="0" y2="1">
                 <stop offset="0%" stopColor="#2563eb" />
-                <stop offset="100%" stopColor="#1e3a8a" />
+                <stop offset="100%" stopColor="#13355A" />
             </linearGradient>
             <clipPath id="s-cat-input-clip">
                 <rect x="20" y="90" width="140" height="140" rx="12" />
@@ -992,38 +992,38 @@ export const AICatalogSVG = (props: SVGProps<SVGSVGElement>) => (
         {/* output */}
         <g filter="url(#s-sh)">
             <rect x="360" y="60" width="140" height="200" rx="12" fill="white" stroke="#e2e8f0" />
-            <rect x="360" y="60" width="140" height="3" rx="1.5" fill="#2563eb" clipPath="url(#s-cat-output-clip)" />
-            <text x="374" y="82" fontFamily="Inter" fontSize="9" fontWeight="700" fill="#2563eb" letterSpacing="1">GENERATED</text>
+            <rect x="360" y="60" width="140" height="3" rx="1.5" fill="#13355A" clipPath="url(#s-cat-output-clip)" />
+            <text x="374" y="82" fontFamily="Inter" fontSize="9" fontWeight="700" fill="#13355A" letterSpacing="1">GENERATED</text>
             <text x="374" y="100" fontFamily="Inter" fontSize="10" fontWeight="700" fill="#0f172a">Title</text>
-            <rect x="374" y="106" width="112" height="6" rx="2" fill="#dbeafe" />
-            <rect x="374" y="116" width="90" height="6" rx="2" fill="#dbeafe" />
+            <rect x="374" y="106" width="112" height="6" rx="2" fill="#D4E5F2" />
+            <rect x="374" y="116" width="90" height="6" rx="2" fill="#D4E5F2" />
             <text x="374" y="140" fontFamily="Inter" fontSize="10" fontWeight="700" fill="#0f172a">Description</text>
             <rect x="374" y="146" width="112" height="5" rx="2" fill="#e2e8f0" />
             <rect x="374" y="154" width="106" height="5" rx="2" fill="#e2e8f0" />
             <rect x="374" y="162" width="98" height="5" rx="2" fill="#e2e8f0" />
             <text x="374" y="184" fontFamily="Inter" fontSize="10" fontWeight="700" fill="#0f172a">Bullets · Attributes</text>
-            <rect x="374" y="192" width="60" height="18" rx="9" fill="#dbeafe" />
-            <text x="404" y="204" textAnchor="middle" fontFamily="Inter" fontSize="9" fontWeight="700" fill="#1d4ed8">SEO ✓</text>
-            <rect x="440" y="192" width="46" height="18" rx="9" fill="#ecfdf5" />
-            <text x="463" y="204" textAnchor="middle" fontFamily="Inter" fontSize="9" fontWeight="700" fill="#047857">A+ ✓</text>
+            <rect x="374" y="192" width="60" height="18" rx="9" fill="#D4E5F2" />
+            <text x="404" y="204" textAnchor="middle" fontFamily="Inter" fontSize="9" fontWeight="700" fill="#13355A">SEO ✓</text>
+            <rect x="440" y="192" width="46" height="18" rx="9" fill="#E8F0F6" />
+            <text x="463" y="204" textAnchor="middle" fontFamily="Inter" fontSize="9" fontWeight="700" fill="#3C9AC4">A+ ✓</text>
         </g>
         {/* animated line: input → AI engine */}
-        <line x1="160" y1="160" x2="200" y2="160" stroke="#60a5fa" strokeWidth="1.6" strokeDasharray="4 4" markerEnd="url(#hd-arrow2)">
+        <line x1="160" y1="160" x2="200" y2="160" stroke="#6BC1E0" strokeWidth="1.6" strokeDasharray="4 4" markerEnd="url(#hd-arrow2)">
             <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.4s" repeatCount="indefinite" />
         </line>
-        <circle r="3" fill="#60a5fa" opacity="0.8">
+        <circle r="3" fill="#6BC1E0" opacity="0.8">
             <animateMotion dur="1.8s" repeatCount="indefinite" path="M160 160 L200 160" />
         </circle>
         {/* animated line: AI engine → output */}
-        <line x1="320" y1="160" x2="360" y2="160" stroke="#2563eb" strokeWidth="1.6" strokeDasharray="4 4" markerEnd="url(#hd-arrow3)">
+        <line x1="320" y1="160" x2="360" y2="160" stroke="#13355A" strokeWidth="1.6" strokeDasharray="4 4" markerEnd="url(#hd-arrow3)">
             <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.4s" repeatCount="indefinite" />
         </line>
-        <circle r="3" fill="#2563eb" opacity="0.8">
+        <circle r="3" fill="#13355A" opacity="0.8">
             <animateMotion dur="1.8s" repeatCount="indefinite" path="M320 160 L360 160" />
         </circle>
         <defs>
-            <marker id="hd-arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#60a5fa" /></marker>
-            <marker id="hd-arrow3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb" /></marker>
+            <marker id="hd-arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6BC1E0" /></marker>
+            <marker id="hd-arrow3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#13355A" /></marker>
         </defs>
     </svg>
 );
@@ -1077,10 +1077,10 @@ export const AnalyticsDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
             <path d="M594 35l4 4 4-4" fill="none" stroke="#94A3B8" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
 
             {/* Legend */}
-            <line x1="34" y1="68" x2="58" y2="68" stroke="#4338CA" strokeWidth="3" strokeLinecap="round" />
-            <circle cx="46" cy="68" r="3.4" fill="#4338CA" />
+            <line x1="34" y1="68" x2="58" y2="68" stroke="#13355A" strokeWidth="3" strokeLinecap="round" />
+            <circle cx="46" cy="68" r="3.4" fill="#13355A" />
             <text x="66" y="72" fontSize="13" fontWeight="600" fill="#334155">Revenue</text>
-            <line x1="140" y1="68" x2="164" y2="68" stroke="#3B82F6" strokeWidth="2" strokeDasharray="4 3" />
+            <line x1="140" y1="68" x2="164" y2="68" stroke="#3C9AC4" strokeWidth="2" strokeDasharray="4 3" />
             <text x="172" y="72" fontSize="13" fontWeight="600" fill="#334155">Orders</text>
 
             {/* Gridlines + left/right axis labels */}
@@ -1120,19 +1120,19 @@ export const AnalyticsDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
             </text>
 
             {/* Orders line (dashed, hollow markers) */}
-            <polyline fill="none" stroke="#3B82F6" strokeWidth="1.8" strokeDasharray="5 4" points={ordersPolyline}>
+            <polyline fill="none" stroke="#3C9AC4" strokeWidth="1.8" strokeDasharray="5 4" points={ordersPolyline}>
                 <animate attributeName="stroke-dashoffset" values="0;-18" dur="2s" repeatCount="indefinite" />
             </polyline>
             {ordersPts.map((p, i) => (
-                <circle key={i} cx={p.x} cy={p.y} r="3.6" fill="white" stroke="#3B82F6" strokeWidth="1.8" />
+                <circle key={i} cx={p.x} cy={p.y} r="3.6" fill="white" stroke="#3C9AC4" strokeWidth="1.8" />
             ))}
 
             {/* Revenue line (solid, filled markers) */}
-            <polyline fill="none" stroke="#4338CA" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" points={revenuePolyline} />
+            <polyline fill="none" stroke="#13355A" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" points={revenuePolyline} />
             {revenuePts.map((p, i) => (
-                <circle key={i} cx={p.x} cy={p.y} r="4.4" fill="#4338CA" />
+                <circle key={i} cx={p.x} cy={p.y} r="4.4" fill="#13355A" />
             ))}
-            <circle r="4.4" fill="#4338CA" opacity="0.9">
+            <circle r="4.4" fill="#13355A" opacity="0.9">
                 <animateMotion dur="3.5s" repeatCount="indefinite" path={revenueMotionPath} />
             </circle>
 
@@ -1189,17 +1189,17 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
         <svg viewBox="0 0 900 650" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
             <defs>
                 <linearGradient id="alm-hero" x1="0" x2="1" y1="0" y2="0">
-                    <stop offset="0%" stopColor="#DBEAFE" />
-                    <stop offset="60%" stopColor="#BFDBFE" />
-                    <stop offset="100%" stopColor="#93C5FD" />
+                    <stop offset="0%" stopColor="#D4E5F2" />
+                    <stop offset="60%" stopColor="#BDD9EE" />
+                    <stop offset="100%" stopColor="#9BC7E0" />
                 </linearGradient>
                 <linearGradient id="alm-living" x1="0" x2="1" y1="0" y2="0">
-                    <stop offset="0%" stopColor="#EFF6FF" />
-                    <stop offset="100%" stopColor="#DBEAFE" />
+                    <stop offset="0%" stopColor="#E8F0F6" />
+                    <stop offset="100%" stopColor="#D4E5F2" />
                 </linearGradient>
                 <linearGradient id="alm-accent" x1="0" x2="1" y1="0" y2="0">
-                    <stop offset="0%" stopColor="hsl(221 83% 53%)" />
-                    <stop offset="100%" stopColor="hsl(213 94% 68%)" />
+                    <stop offset="0%" stopColor="hsl(211 65% 21%)" />
+                    <stop offset="100%" stopColor="hsl(199 54% 60%)" />
                 </linearGradient>
                 <filter id="alm-shadow" x="-20%" y="-20%" width="140%" height="140%">
                     <feGaussianBlur stdDeviation="8" />
@@ -1237,18 +1237,18 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
 
             {/* Toolbar */}
             <g>
-                <rect x="620" y="34" width="120" height="34" rx="10" fill="#FFFFFF" stroke="hsl(221 83% 53%)" strokeWidth={1.4} />
+                <rect x="620" y="34" width="120" height="34" rx="10" fill="#FFFFFF" stroke="hsl(211 65% 21%)" strokeWidth={1.4} />
                 <g transform="translate(636,44)">
-                    <rect x="0" y="0" width="6" height="6" rx="1.5" fill="hsl(221 83% 53%)" />
-                    <rect x="9" y="0" width="6" height="6" rx="1.5" fill="hsl(221 83% 53%)" />
-                    <rect x="0" y="9" width="6" height="6" rx="1.5" fill="hsl(221 83% 53%)" />
-                    <rect x="9" y="9" width="6" height="6" rx="1.5" fill="hsl(221 83% 53%)" />
+                    <rect x="0" y="0" width="6" height="6" rx="1.5" fill="hsl(211 65% 21%)" />
+                    <rect x="9" y="0" width="6" height="6" rx="1.5" fill="hsl(211 65% 21%)" />
+                    <rect x="0" y="9" width="6" height="6" rx="1.5" fill="hsl(211 65% 21%)" />
+                    <rect x="9" y="9" width="6" height="6" rx="1.5" fill="hsl(211 65% 21%)" />
                 </g>
-                <text x="660" y="56" fontFamily="Inter,system-ui" fontSize="13" fontWeight={600} fill="hsl(221 83% 53%)">
+                <text x="660" y="56" fontFamily="Inter,system-ui" fontSize="13" fontWeight={600} fill="hsl(211 65% 21%)">
                     Grid View
                 </text>
 
-                <rect x="750" y="34" width="110" height="34" rx="10" fill="hsl(221 83% 53%)" />
+                <rect x="750" y="34" width="110" height="34" rx="10" fill="hsl(211 65% 21%)" />
                 <g transform="translate(766,44)" stroke="#FFFFFF" strokeWidth={1.6} fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M3 9 V4 M3 4 L0.5 6.5 M3 4 L5.5 6.5" />
                     <path d="M-1 10 v1.5 a1 1 0 0 0 1 1 h6 a1 1 0 0 0 1 -1 V10" />
@@ -1268,7 +1268,7 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
                 </clipPath>
                 <g clipPath="url(#alm-hero-clip)">
                     <rect x="56" y="114" width="368" height="96" fill="url(#alm-hero)" />
-                    <rect x="72" y="128" width="18" height="3" rx="1.5" fill="hsl(221 83% 53%)" />
+                    <rect x="72" y="128" width="18" height="3" rx="1.5" fill="hsl(211 65% 21%)" />
                     <text x="72" y="150" fontFamily="Inter,system-ui" fontSize="14" fontWeight={700} fill="#0F172A">
                         Elevate Your
                     </text>
@@ -1278,7 +1278,7 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
                     <text x="72" y="180" fontFamily="Inter,system-ui" fontSize="8" fill="#64748B">
                         Premium quality. Pure performance.
                     </text>
-                    <rect x="72" y="188" width="62" height="16" rx="8" fill="hsl(221 83% 53%)" />
+                    <rect x="72" y="188" width="62" height="16" rx="8" fill="hsl(211 65% 21%)" />
                     <text x="103" y="199" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="8" fontWeight={600} fill="#FFFFFF">
                         Shop Now
                     </text>
@@ -1290,11 +1290,11 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
                         <path d="M8 30 A24 24 0 0 1 56 30" fill="none" stroke="#1E293B" strokeWidth={6} strokeLinecap="round" />
                         <rect x="0" y="26" width="14" height="20" rx="7" fill="#334155" />
                         <rect x="50" y="26" width="14" height="20" rx="7" fill="#334155" />
-                        <circle cx="7" cy="36" r="4" fill="#1E3A8A" />
-                        <circle cx="57" cy="36" r="4" fill="#1E3A8A" />
+                        <circle cx="7" cy="36" r="4" fill="#13355A" />
+                        <circle cx="57" cy="36" r="4" fill="#13355A" />
                     </g>
 
-                    <circle cx="404" cy="130" r="16" fill="hsl(221 83% 53%)" />
+                    <circle cx="404" cy="130" r="16" fill="hsl(211 65% 21%)" />
                     <text x="404" y="127" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="6.5" fontWeight={700} fill="#FFFFFF">
                         New
                     </text>
@@ -1303,7 +1303,7 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
                     </text>
                 </g>
 
-                <rect x="56" y="216" width="20" height="20" rx="6" fill="hsl(221 83% 53%)" />
+                <rect x="56" y="216" width="20" height="20" rx="6" fill="hsl(211 65% 21%)" />
                 <text x="66" y="230" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill="#FFFFFF">
                     1
                 </text>
@@ -1315,7 +1315,7 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
             {/* Comparison table */}
             <g filter="url(#alm-shadow)">
                 <rect x="460" y="100" width="400" height="150" rx="14" fill="#FFFFFF" stroke="#E2E8F0" />
-                <rect x="626" y="114" width="90" height="94" fill="#EFF6FF" />
+                <rect x="626" y="114" width="90" height="94" fill="#E8F0F6" />
 
                 <text x="474" y="128" fontFamily="Inter,system-ui" fontSize="8.5" fontWeight={700} fill="#0F172A">
                     Features
@@ -1342,7 +1342,7 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
 
                             {row.ours ? (
                                 <>
-                                    <circle cx="671" cy={dotY} r="6" fill="hsl(221 83% 53%)" />
+                                    <circle cx="671" cy={dotY} r="6" fill="hsl(211 65% 21%)" />
                                     <path d={`M668 ${dotY} l2 2 l4 -4`} stroke="#FFFFFF" strokeWidth={1.3} fill="none" strokeLinecap="round" strokeLinejoin="round" />
                                 </>
                             ) : (
@@ -1370,7 +1370,7 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
                     );
                 })}
 
-                <rect x="474" y="216" width="20" height="20" rx="6" fill="hsl(221 83% 53%)" />
+                <rect x="474" y="216" width="20" height="20" rx="6" fill="hsl(211 65% 21%)" />
                 <text x="484" y="230" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill="#FFFFFF">
                     2
                 </text>
@@ -1385,9 +1385,9 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
             <g filter="url(#alm-shadow)">
                 <rect x="40" y="270" width="400" height="150" rx="14" fill="#FFFFFF" stroke="#E2E8F0" />
 
-                <polygon points="66,286 76,291 76,301 66,306 56,301 56,291" fill="hsl(221 83% 53%)" />
+                <polygon points="66,286 76,291 76,301 66,306 56,301 56,291" fill="hsl(211 65% 21%)" />
                 <text x="82" y="296" fontFamily="Inter,system-ui" fontSize="12" fontWeight={800} fill="#0F172A">
-                    A+ <tspan fill="hsl(221 83% 53%)">BRAND</tspan>
+                    A+ <tspan fill="hsl(211 65% 21%)">BRAND</tspan>
                 </text>
                 <text x="82" y="307" fontFamily="Inter,system-ui" fontSize="7" fill="#64748B">
                     Built for Better Living
@@ -1397,8 +1397,8 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
                     const x = 80 + i * 100;
                     return (
                         <g key={t.year} textAnchor="middle">
-                            <circle cx={x} cy="344" r="4" fill="hsl(221 83% 53%)" />
-                            <circle cx={x} cy="366" r="12" fill="#DBEAFE" />
+                            <circle cx={x} cy="344" r="4" fill="hsl(211 65% 21%)" />
+                            <circle cx={x} cy="366" r="12" fill="#D4E5F2" />
                             <text x={x} y="338" fontFamily="Inter,system-ui" fontSize="7" fontWeight={700} fill="#0F172A" textAnchor="middle">
                                 {t.year}
                             </text>
@@ -1409,7 +1409,7 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
                     );
                 })}
 
-                <rect x="56" y="396" width="20" height="20" rx="6" fill="hsl(221 83% 53%)" />
+                <rect x="56" y="396" width="20" height="20" rx="6" fill="hsl(211 65% 21%)" />
                 <text x="66" y="410" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill="#FFFFFF">
                     3
                 </text>
@@ -1427,12 +1427,12 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
                     const cy = 300;
                     return (
                         <g key={f.label} transform={`translate(${cx},${cy})`} textAnchor="middle">
-                            <circle cx="0" cy="0" r="20" fill="#EFF6FF" />
+                            <circle cx="0" cy="0" r="20" fill="#E8F0F6" />
                             {i === 0 && (
                                 <>
-                                    <rect x="-9" y="-8" width="16" height="16" rx="2" fill="none" stroke="hsl(221 83% 53%)" strokeWidth={1.6} />
-                                    <rect x="7" y="-4" width="3" height="8" rx="1" fill="hsl(221 83% 53%)" />
-                                    <path d="M-3 -8 l-2 6 h4 l-2 6" fill="none" stroke="hsl(221 83% 53%)" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" />
+                                    <rect x="-9" y="-8" width="16" height="16" rx="2" fill="none" stroke="hsl(211 65% 21%)" strokeWidth={1.6} />
+                                    <rect x="7" y="-4" width="3" height="8" rx="1" fill="hsl(211 65% 21%)" />
+                                    <path d="M-3 -8 l-2 6 h4 l-2 6" fill="none" stroke="hsl(211 65% 21%)" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" />
                                 </>
                             )}
                             {i === 1 && (
@@ -1440,21 +1440,21 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
                                     <path
                                         d="M-8 -8 q-4 4 0 8 q-2 4 2 6 q4 2 6 -2 q4 -1 3 -6 q3 -4 -1 -7 q-4 -3 -7 0 q-2 0 -3 1"
                                         fill="none"
-                                        stroke="hsl(221 83% 53%)"
+                                        stroke="hsl(211 65% 21%)"
                                         strokeWidth={1.4}
                                         strokeLinejoin="round"
                                     />
-                                    <circle cx="-4" cy="-2" r="1" fill="hsl(221 83% 53%)" />
-                                    <circle cx="2" cy="2" r="1" fill="hsl(221 83% 53%)" />
-                                    <circle cx="-2" cy="5" r="1" fill="hsl(221 83% 53%)" />
+                                    <circle cx="-4" cy="-2" r="1" fill="hsl(211 65% 21%)" />
+                                    <circle cx="2" cy="2" r="1" fill="hsl(211 65% 21%)" />
+                                    <circle cx="-2" cy="5" r="1" fill="hsl(211 65% 21%)" />
                                 </>
                             )}
                             {i === 2 && (
                                 <>
-                                    <rect x="-10" y="-5" width="13" height="10" rx="1.5" fill="none" stroke="hsl(221 83% 53%)" strokeWidth={1.5} />
-                                    <path d="M3 -2 h6 l3 4 v3 h-9 z" fill="none" stroke="hsl(221 83% 53%)" strokeWidth={1.5} strokeLinejoin="round" />
-                                    <circle cx="-5" cy="7" r="2.2" fill="none" stroke="hsl(221 83% 53%)" strokeWidth={1.3} />
-                                    <circle cx="6" cy="7" r="2.2" fill="none" stroke="hsl(221 83% 53%)" strokeWidth={1.3} />
+                                    <rect x="-10" y="-5" width="13" height="10" rx="1.5" fill="none" stroke="hsl(211 65% 21%)" strokeWidth={1.5} />
+                                    <path d="M3 -2 h6 l3 4 v3 h-9 z" fill="none" stroke="hsl(211 65% 21%)" strokeWidth={1.5} strokeLinejoin="round" />
+                                    <circle cx="-5" cy="7" r="2.2" fill="none" stroke="hsl(211 65% 21%)" strokeWidth={1.3} />
+                                    <circle cx="6" cy="7" r="2.2" fill="none" stroke="hsl(211 65% 21%)" strokeWidth={1.3} />
                                 </>
                             )}
                             {i === 3 && (
@@ -1462,11 +1462,11 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
                                     <path
                                         d="M0 -10 l9 3 v6 c0 6 -4 9 -9 11 c-5 -2 -9 -5 -9 -11 v-6 z"
                                         fill="none"
-                                        stroke="hsl(221 83% 53%)"
+                                        stroke="hsl(211 65% 21%)"
                                         strokeWidth={1.5}
                                         strokeLinejoin="round"
                                     />
-                                    <path d="M-4 0 l3 3 l6 -6" fill="none" stroke="hsl(221 83% 53%)" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
+                                    <path d="M-4 0 l3 3 l6 -6" fill="none" stroke="hsl(211 65% 21%)" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
                                 </>
                             )}
                             <text x="0" y="34" fontFamily="Inter,system-ui" fontSize="8" fontWeight={700} fill="#0F172A">
@@ -1479,7 +1479,7 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
                     );
                 })}
 
-                <rect x="474" y="386" width="20" height="20" rx="6" fill="hsl(221 83% 53%)" />
+                <rect x="474" y="386" width="20" height="20" rx="6" fill="hsl(211 65% 21%)" />
                 <text x="484" y="400" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill="#FFFFFF">
                     4
                 </text>
@@ -1500,22 +1500,22 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
                     return (
                         <g key={p.name} transform={`translate(${x},${y})`}>
                             <rect x="0" y="0" width="58" height="80" rx="8" fill="#F8FAFC" stroke="#E2E8F0" />
-                            <rect x="16" y="12" width="26" height="26" rx="6" fill="hsl(221 83% 95%)" />
-                            <circle cx="29" cy="25" r="8" fill="hsl(221 83% 60%)" />
+                            <rect x="16" y="12" width="26" height="26" rx="6" fill="hsl(211 65% 95%)" />
+                            <circle cx="29" cy="25" r="8" fill="hsl(199 54% 50%)" />
                             <text x="29" y="58" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="5.6" fill="#0F172A">
                                 {p.name}
                             </text>
-                            <text x="29" y="66" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="5.8" fontWeight={700} fill="hsl(221 83% 53%)">
+                            <text x="29" y="66" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="5.8" fontWeight={700} fill="hsl(211 65% 21%)">
                                 {p.price}
                             </text>
-                            <text x="29" y="75" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="6" fill="#F59E0B">
+                            <text x="29" y="75" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="6" fill="#3C9AC4">
                                 {p.rating}
                             </text>
                         </g>
                     );
                 })}
 
-                <rect x="54" y="556" width="20" height="20" rx="6" fill="hsl(221 83% 53%)" />
+                <rect x="54" y="556" width="20" height="20" rx="6" fill="hsl(211 65% 21%)" />
                 <text x="64" y="570" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill="#FFFFFF">
                     5
                 </text>
@@ -1533,7 +1533,7 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
                 <g clipPath="url(#alm-life-clip)">
                     <rect x="476" y="454" width="368" height="96" fill="url(#alm-living)" />
 
-                    <rect x="490" y="468" width="16" height="3" rx="1.5" fill="hsl(221 83% 53%)" />
+                    <rect x="490" y="468" width="16" height="3" rx="1.5" fill="hsl(211 65% 21%)" />
                     <text x="490" y="488" fontFamily="Inter,system-ui" fontSize="13" fontWeight={700} fill="#0F172A">
                         Designed for
                     </text>
@@ -1543,7 +1543,7 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
                     <text x="490" y="514" fontFamily="Inter,system-ui" fontSize="7" fill="#64748B">
                         Fits your lifestyle with elegance.
                     </text>
-                    <rect x="490" y="522" width="58" height="15" rx="7.5" fill="hsl(221 83% 53%)" />
+                    <rect x="490" y="522" width="58" height="15" rx="7.5" fill="hsl(211 65% 21%)" />
                     <text x="519" y="532" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="7.5" fontWeight={600} fill="#FFFFFF">
                         Explore
                     </text>
@@ -1552,30 +1552,30 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
                         <rect x="0" y="0" width="26" height="40" fill="none" stroke="#94A3B8" strokeWidth={1.4} />
                         <line x1="0" y1="14" x2="26" y2="14" stroke="#94A3B8" strokeWidth={1.2} />
                         <line x1="0" y1="27" x2="26" y2="27" stroke="#94A3B8" strokeWidth={1.2} />
-                        <rect x="3" y="3" width="4" height="9" fill="#93C5FD" />
-                        <rect x="9" y="3" width="4" height="9" fill="hsl(221 83% 53%)" />
-                        <circle cx="20" cy="7" r="4" fill="none" stroke="#60A5FA" strokeWidth={1.2} />
+                        <rect x="3" y="3" width="4" height="9" fill="#9BC7E0" />
+                        <rect x="9" y="3" width="4" height="9" fill="hsl(211 65% 21%)" />
+                        <circle cx="20" cy="7" r="4" fill="none" stroke="#6BC1E0" strokeWidth={1.2} />
                     </g>
 
                     <g transform="translate(772,466)">
                         <line x1="0" y1="10" x2="0" y2="46" stroke="#334155" strokeWidth={1.6} />
-                        <path d="M-7 10 l14 0 l-4 -8 l-6 0 z" fill="#60A5FA" />
+                        <path d="M-7 10 l14 0 l-4 -8 l-6 0 z" fill="#6BC1E0" />
                     </g>
 
                     <g transform="translate(626,510)">
-                        <rect x="-8" y="18" width="16" height="16" rx="2" fill="#93C5FD" />
-                        <path d="M0 18 q-2 -14 -10 -16" fill="none" stroke="#16A34A" strokeWidth={2.2} strokeLinecap="round" />
-                        <path d="M0 18 q2 -18 12 -20" fill="none" stroke="#16A34A" strokeWidth={2.2} strokeLinecap="round" />
-                        <path d="M0 18 q0 -20 0 -22" fill="none" stroke="#16A34A" strokeWidth={2.2} strokeLinecap="round" />
+                        <rect x="-8" y="18" width="16" height="16" rx="2" fill="#9BC7E0" />
+                        <path d="M0 18 q-2 -14 -10 -16" fill="none" stroke="#3C9AC4" strokeWidth={2.2} strokeLinecap="round" />
+                        <path d="M0 18 q2 -18 12 -20" fill="none" stroke="#3C9AC4" strokeWidth={2.2} strokeLinecap="round" />
+                        <path d="M0 18 q0 -20 0 -22" fill="none" stroke="#3C9AC4" strokeWidth={2.2} strokeLinecap="round" />
                     </g>
 
                     <g transform="translate(650,510)">
-                        <rect x="-4" y="8" width="120" height="22" rx="8" fill="#93C5FD" />
-                        <rect x="-4" y="-2" width="20" height="18" rx="6" fill="#60A5FA" />
-                        <rect x="96" y="-2" width="20" height="18" rx="6" fill="#60A5FA" />
-                        <rect x="16" y="0" width="76" height="14" rx="6" fill="#BFDBFE" />
-                        <rect x="0" y="28" width="8" height="8" fill="#60A5FA" />
-                        <rect x="104" y="28" width="8" height="8" fill="#60A5FA" />
+                        <rect x="-4" y="8" width="120" height="22" rx="8" fill="#9BC7E0" />
+                        <rect x="-4" y="-2" width="20" height="18" rx="6" fill="#6BC1E0" />
+                        <rect x="96" y="-2" width="20" height="18" rx="6" fill="#6BC1E0" />
+                        <rect x="16" y="0" width="76" height="14" rx="6" fill="#BDD9EE" />
+                        <rect x="0" y="28" width="8" height="8" fill="#6BC1E0" />
+                        <rect x="104" y="28" width="8" height="8" fill="#6BC1E0" />
                     </g>
 
                     <g transform="translate(696,538)">
@@ -1589,7 +1589,7 @@ export const AssetLibraryMockup = (props: SVGProps<SVGSVGElement>) => {
                     <rect x="606" y="464" width="16" height="20" rx="2" fill="none" stroke="#94A3B8" strokeWidth={1.3} />
                 </g>
 
-                <rect x="474" y="556" width="20" height="20" rx="6" fill="hsl(221 83% 53%)" />
+                <rect x="474" y="556" width="20" height="20" rx="6" fill="hsl(211 65% 21%)" />
                 <text x="484" y="570" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill="#FFFFFF">
                     6
                 </text>
@@ -1721,13 +1721,13 @@ export const RolesIllustration = (props: SVGProps<SVGSVGElement>) => {
 
     const ROLES = [
         {
-            accent: "#2E1065",
-            tint: "#EDEAFB",
+            accent: "#13355A",
+            tint: "#E8F0F6",
             title: "Owner",
             subtitle: "Full access & control",
             hexIcon: "crown",
             badgeIcon: "star",
-            wave: "#C7BEF2",
+            wave: "#BDD9EE",
             perms: [
                 { icon: "document", label: "Billing" },
                 { icon: "users", label: "Users" },
@@ -1735,13 +1735,13 @@ export const RolesIllustration = (props: SVGProps<SVGSVGElement>) => {
             ],
         },
         {
-            accent: "#2549E8",
-            tint: "#E9EDFD",
+            accent: "#3C9AC4",
+            tint: "#E8F0F6",
             title: "Manager",
             subtitle: "Manage & oversee operations",
             hexIcon: "briefcase",
             badgeIcon: "shieldCheck",
-            wave: "#BCCBF6",
+            wave: "#BDD9EE",
             perms: [
                 { icon: "tag", label: "Listings" },
                 { icon: "cart", label: "Orders" },
@@ -1749,13 +1749,13 @@ export const RolesIllustration = (props: SVGProps<SVGSVGElement>) => {
             ],
         },
         {
-            accent: "#38A6E8",
-            tint: "#E9F5FD",
+            accent: "#6BC1E0",
+            tint: "#E8F0F6",
             title: "Staff",
             subtitle: "Limited access",
             hexIcon: "person",
             badgeIcon: "shieldCheck",
-            wave: "#BFE3F7",
+            wave: "#BDD9EE",
             perms: [
                 { icon: "clipboard", label: "Orders" },
                 { icon: "box", label: "Ship labels" },
@@ -1876,7 +1876,7 @@ export const RolesIllustration = (props: SVGProps<SVGSVGElement>) => {
                                         <text x={x + 76} y={ry + 30} fontSize="16" fontWeight="700" fill="#0F172A">
                                             {p.label}
                                         </text>
-                                        <circle cx={x + CARD_W - 40} cy={ry + 24} r="12" fill="#22C55E">
+                                        <circle cx={x + CARD_W - 40} cy={ry + 24} r="12" fill="#3C9AC4">
                                             <animate
                                                 attributeName="opacity"
                                                 values="1;0.65;1"
@@ -1929,9 +1929,9 @@ export const RepricerSVG = (props: SVGProps<SVGSVGElement>) => {
     );
 
     const KPIS = [
-        { x: 50, icon: "tag", iconBg: "#EDE9FE", iconColor: "#5B21B6", label: "PRICE", value: "$21.40", delta: "+$0.30" },
-        { x: 355, icon: "trophy", iconBg: "#DBEAFE", iconColor: "#2563EB", label: "BUY BOX WINNER", value: "82%", delta: "+9%" },
-        { x: 660, icon: "trendUp", iconBg: "#D1FAE5", iconColor: "#059669", label: "MARGIN", value: "31.6%", delta: "+3.6%" },
+        { x: 50, icon: "tag", iconBg: "#E8F0F6", iconColor: "#13355A", label: "PRICE", value: "$21.40", delta: "+$0.30" },
+        { x: 355, icon: "trophy", iconBg: "#D4E5F2", iconColor: "#13355A", label: "BUY BOX WINNER", value: "82%", delta: "+9%" },
+        { x: 660, icon: "trendUp", iconBg: "#E8F0F6", iconColor: "#3C9AC4", label: "MARGIN", value: "31.6%", delta: "+3.6%" },
     ];
     const KPI_W = 290;
     const KPI_Y = 160;
@@ -1973,12 +1973,12 @@ export const RepricerSVG = (props: SVGProps<SVGSVGElement>) => {
             <text x="50" y="130" fontSize="15" fill="#64748B">Buy Box tracking · rule-based · guardrails on</text>
 
             {/* Buy Box WON pill */}
-            <rect x="800" y="80" width="150" height="38" rx="19" fill="#D1FAE5" />
-            <circle cx="820" cy="100" r="5" fill="#16A34A">
+            <rect x="800" y="80" width="150" height="38" rx="19" fill="#E8F0F6" />
+            <circle cx="820" cy="100" r="5" fill="#3C9AC4">
                 <animate attributeName="r" values="5;6.5;5" dur="2s" repeatCount="indefinite" />
                 <animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite" />
             </circle>
-            <text x="834" y="105" fontSize="14" fontWeight="700" fill="#166534">Buy Box · WON</text>
+            <text x="834" y="105" fontSize="14" fontWeight="700" fill="#13355A">Buy Box · WON</text>
 
             {/* KPI cards */}
             {KPIS.map((k) => (
@@ -1994,8 +1994,8 @@ export const RepricerSVG = (props: SVGProps<SVGSVGElement>) => {
                     <text x={k.x + 92} y={KPI_Y + 82} fontSize="30" fontWeight="800" fill="#0F172A">
                         {k.value}
                     </text>
-                    <path d={`M${k.x + 33} ${KPI_Y + 107} l5 -8 l5 8 z`} fill="#16A34A" />
-                    <text x={k.x + 46} y={KPI_Y + 108} fontSize="14" fontWeight="700" fill="#16A34A">{k.delta}</text>
+                    <path d={`M${k.x + 33} ${KPI_Y + 107} l5 -8 l5 8 z`} fill="#3C9AC4" />
+                    <text x={k.x + 46} y={KPI_Y + 108} fontSize="14" fontWeight="700" fill="#3C9AC4">{k.delta}</text>
                 </g>
             ))}
 
@@ -2003,9 +2003,9 @@ export const RepricerSVG = (props: SVGProps<SVGSVGElement>) => {
             < rect x="50" y="310" width="900" height="210" rx="16" fill="white" stroke="#ECEFF7" />
 
             {/* Legend */}
-            < line x1="80" y1="346" x2="115" y2="346" stroke="#3B4CD8" strokeWidth="3" strokeLinecap="round" />
+            < line x1="80" y1="346" x2="115" y2="346" stroke="#13355A" strokeWidth="3" strokeLinecap="round" />
             <text x="124" y="351" fontSize="14" fill="#0F172A">Your Price</text>
-            <line x1="242" y1="346" x2="277" y2="346" stroke="#93C5FD" strokeWidth="2.4" strokeDasharray="5 4" strokeLinecap="round" />
+            <line x1="242" y1="346" x2="277" y2="346" stroke="#9BC7E0" strokeWidth="2.4" strokeDasharray="5 4" strokeLinecap="round" />
             <text x="286" y="351" fontSize="14" fill="#0F172A">Competitor Price</text>
 
             {/* Gridlines under each date */}
@@ -2017,15 +2017,15 @@ export const RepricerSVG = (props: SVGProps<SVGSVGElement>) => {
             }
 
             {/* Competitor line - animated dashes */}
-            < polyline fill="none" stroke="#93C5FD" strokeWidth="2.4" strokeDasharray="6 5" points={compPts} >
+            < polyline fill="none" stroke="#9BC7E0" strokeWidth="2.4" strokeDasharray="6 5" points={compPts} >
                 <animate attributeName="stroke-dashoffset" values="0;-22" dur="2.4s" repeatCount="indefinite" />
             </polyline>
 
             {/* Your price line */}
-            <polyline fill="none" stroke="#3B4CD8" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" points={yourPts} />
+            <polyline fill="none" stroke="#13355A" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" points={yourPts} />
 
             {/* Moving dot along your price line */}
-            <circle r="3.5" fill="#3B4CD8" opacity="0.9">
+            <circle r="3.5" fill="#13355A" opacity="0.9">
                 <animateMotion dur="4s" repeatCount="indefinite"
                     path={YOUR_PRICE.map((v, i) => {
                         const n = YOUR_PRICE.length;
@@ -2036,15 +2036,15 @@ export const RepricerSVG = (props: SVGProps<SVGSVGElement>) => {
             </circle>
 
             {/* Highlighted point - pulse ring */}
-            <circle cx={hx} cy={hy} r="9" fill="#C7D2FE" opacity="0.6">
+            <circle cx={hx} cy={hy} r="9" fill="#BDD9EE" opacity="0.6">
                 <animate attributeName="r" values="9;13;9" dur="2.4s" repeatCount="indefinite" />
                 <animate attributeName="opacity" values="0.6;0.15;0.6" dur="2.4s" repeatCount="indefinite" />
             </circle>
-            <circle cx={hx} cy={hy} r="5" fill="#3B4CD8" stroke="white" strokeWidth="1.5" />
+            <circle cx={hx} cy={hy} r="5" fill="#13355A" stroke="white" strokeWidth="1.5" />
 
             {/* Floor line */}
-            <line x1={CHART_X0 - 10} y1={FLOOR_Y} x2={CHART_X1 + 10} y2={FLOOR_Y} stroke="#F59E0B" strokeWidth="1.6" strokeDasharray="6 5" />
-            <text x={CHART_X1 + 10} y={FLOOR_Y - 8} textAnchor="end" fontSize="13" fontWeight="700" fill="#C2410C">Floor $18.50</text>
+            <line x1={CHART_X0 - 10} y1={FLOOR_Y} x2={CHART_X1 + 10} y2={FLOOR_Y} stroke="#3C9AC4" strokeWidth="1.6" strokeDasharray="6 5" />
+            <text x={CHART_X1 + 10} y={FLOOR_Y - 8} textAnchor="end" fontSize="13" fontWeight="700" fill="#13355A">Floor $18.50</text>
 
             {/* X axis labels */}
             {

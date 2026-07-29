@@ -8,15 +8,15 @@ export const DashboardMockup = (props: SVGProps<SVGSVGElement>) => (
         <defs>
             <linearGradient id="dm-bg" x1="0" x2="1" y1="0" y2="1">
                 <stop offset="0%" stopColor="#ffffff" />
-                <stop offset="100%" stopColor="#f5f3ff" />
+                <stop offset="100%" stopColor="#f0f4f8" />
             </linearGradient>
             <linearGradient id="dm-bar" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="hsl(226 71% 50%)" />
-                <stop offset="100%" stopColor="hsl(280 70% 55%)" />
+                <stop offset="0%" stopColor="hsl(199 54% 50%)" />
+                <stop offset="100%" stopColor="hsl(211 65% 21%)" />
             </linearGradient>
             <linearGradient id="dm-bar2" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="hsl(330 81% 60%)" />
-                <stop offset="100%" stopColor="hsl(280 70% 55%)" />
+                <stop offset="0%" stopColor="hsl(211 65% 35%)" />
+                <stop offset="100%" stopColor="hsl(211 65% 21%)" />
             </linearGradient>
         </defs>
         <rect x="20" y="20" width="560" height="380" rx="20" fill="url(#dm-bg)" stroke="hsl(220 15% 88%)" />
@@ -24,12 +24,12 @@ export const DashboardMockup = (props: SVGProps<SVGSVGElement>) => (
         <circle cx="62" cy="46" r="5" fill="#f59e0b" />
         <circle cx="78" cy="46" r="5" fill="#10b981" />
         <rect x="120" y="38" width="200" height="16" rx="8" fill="hsl(220 20% 96%)" />
-        <rect x="40" y="80" width="120" height="300" rx="12" fill="hsl(226 71% 96%)" />
-        <rect x="56" y="100" width="88" height="10" rx="5" fill="hsl(226 71% 50%)" />
-        <rect x="56" y="124" width="64" height="8" rx="4" fill="hsl(226 30% 80%)" />
-        <rect x="56" y="144" width="80" height="8" rx="4" fill="hsl(226 30% 80%)" />
-        <rect x="56" y="164" width="56" height="8" rx="4" fill="hsl(226 30% 80%)" />
-        <rect x="56" y="184" width="72" height="8" rx="4" fill="hsl(226 30% 80%)" />
+        <rect x="40" y="80" width="120" height="300" rx="12" fill="hsl(211 71% 96%)" />
+        <rect x="56" y="100" width="88" height="10" rx="5" fill="hsl(211 71% 50%)" />
+        <rect x="56" y="124" width="64" height="8" rx="4" fill="hsl(211 30% 80%)" />
+        <rect x="56" y="144" width="80" height="8" rx="4" fill="hsl(211 30% 80%)" />
+        <rect x="56" y="164" width="56" height="8" rx="4" fill="hsl(211 30% 80%)" />
+        <rect x="56" y="184" width="72" height="8" rx="4" fill="hsl(211 30% 80%)" />
         <g>
             <rect x="180" y="80" width="120" height="70" rx="12" fill="white" stroke="hsl(220 15% 92%)" />
             <rect x="194" y="96" width="40" height="8" rx="4" fill="hsl(220 15% 80%)" />
@@ -39,7 +39,7 @@ export const DashboardMockup = (props: SVGProps<SVGSVGElement>) => (
             <text x="326" y="130" fontFamily="Inter,system-ui" fontWeight="700" fontSize="20" fill="hsl(232 60% 18%)">12,840</text>
             <rect x="444" y="80" width="120" height="70" rx="12" fill="white" stroke="hsl(220 15% 92%)" />
             <rect x="458" y="96" width="40" height="8" rx="4" fill="hsl(220 15% 80%)" />
-            <text x="458" y="130" fontFamily="Inter,system-ui" fontWeight="700" fontSize="20" fill="hsl(330 81% 50%)">+24%</text>
+            <text x="458" y="130" fontFamily="Inter,system-ui" fontWeight="700" fontSize="20" fill="hsl(199 54% 50%)">+24%</text>
         </g>
         <rect x="180" y="170" width="384" height="210" rx="14" fill="white" stroke="hsl(220 15% 92%)" />
         <g style={{ transformOrigin: "200px 360px" }}>
@@ -51,7 +51,7 @@ export const DashboardMockup = (props: SVGProps<SVGSVGElement>) => (
                 </rect>
             ))}
         </g>
-        <path d="M200 260 Q 240 220, 280 240 T 360 220 T 440 200 T 540 180" stroke="hsl(330 81% 60%)" strokeWidth="3" fill="none" strokeLinecap="round" strokeDasharray="600" strokeDashoffset="0">
+        <path d="M200 260 Q 240 220, 280 240 T 360 220 T 440 200 T 540 180" stroke="hsl(199 54% 50%)" strokeWidth="3" fill="none" strokeLinecap="round" strokeDasharray="600" strokeDashoffset="0">
             <animate attributeName="stroke-dashoffset" from="600" to="0" dur="2.2s" fill="freeze" />
         </path>
     </svg>
@@ -85,11 +85,11 @@ export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => {
 
     const featureX = [40, 210, 370, 530, 680];
 
-    // Shared palette - matched to the reference screenshot
-    const indigo = "hsl(226 71% 50%)";       // primary accent (tabs, underline, product accent, icons)
-    const indigoDark = "hsl(226 71% 40%)";    // CTASIS text / active tab text
-    const indigoIcon = "hsl(226 71% 45%)";    // KPI + feature icon stroke
-    const indigoSoft = "hsl(226 71% 95%)";    // light pill/icon backgrounds
+    // Shared palette - CTAS Brand colors (Navy primary, Accent Blue secondary)
+    const indigo = "hsl(211 65% 21%)";       // CTAS Navy (tabs, underline, product accent, icons)
+    const indigoDark = "hsl(211 65% 21%)";    // CTAS Navy (active tab text)
+    const indigoIcon = "hsl(199 54% 50%)";    // CTAS Accent Blue (KPI + feature icon stroke)
+    const indigoSoft = "hsl(211 65% 95%)";    // light navy backgrounds
     const green = "hsl(150 70% 40%)";         // positive delta text
     const greenDot = "hsl(150 70% 45%)";      // in-stock dot
     const greenBg = "hsl(150 70% 92%)";       // in-stock pill bg
@@ -103,8 +103,8 @@ export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => {
         <svg viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
             <defs>
                 <linearGradient id="shm-accent" x1="0" x2="1" y1="0" y2="0">
-                    <stop offset="0%" stopColor="hsl(226 71% 50%)" />
-                    <stop offset="100%" stopColor="hsl(226 71% 40%)" />
+                    <stop offset="0%" stopColor="hsl(199 54% 50%)" />
+                    <stop offset="100%" stopColor="hsl(211 65% 21%)" />
                 </linearGradient>
                 <linearGradient id="shm-shine" x1="0" x2="1" y1="0" y2="0">
                     <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
@@ -173,8 +173,8 @@ export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => {
 
                 {/* Product thumb */}
                 <rect x="75" y="230" width="70" height="70" rx="12" fill={indigoSoft} />
-                <circle cx="110" cy="265" r="22" fill="hsl(226 71% 60%)" />
-                <circle cx="110" cy="265" r="14" fill="hsl(226 71% 80%)" />
+                <circle cx="110" cy="265" r="22" fill="hsl(211 71% 60%)" />
+                <circle cx="110" cy="265" r="14" fill="hsl(211 71% 80%)" />
                 <text x="75" y="318" fontFamily="Inter,system-ui" fontSize="10" fill={slate400}>SKU: 8632010</text>
 
                 {/* Column headers */}
@@ -257,7 +257,7 @@ export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => {
             </g>
 
             {/* Sparkles */}
-            <g fill="#ffffff" stroke="hsl(226 71% 70%)" strokeWidth={0.6}>
+            <g fill="#ffffff" stroke="hsl(211 71% 70%)" strokeWidth={0.6}>
                 <path d="M540 150 q4 14 18 18 q-14 4 -18 18 q-4 -14 -18 -18 q14 -4 18 -18 z">
                     <animate attributeName="opacity" values="0.3;1;0.3" dur="2.2s" repeatCount="indefinite" />
                 </path>
@@ -328,10 +328,10 @@ export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => {
 
 export const SyncEngineDiagram = (props: SVGProps<SVGSVGElement>) => {
 
-    const blue = "#2563EB";
-    const blueSoft = "#EFF6FF";
-    const blueBorder = "#93c1fa";
-    const blueText = "#1D4ED8";
+    const blue = "#13355A";
+    const blueSoft = "#E8F4FA";
+    const blueBorder = "#9ECBE0";
+    const blueText = "#13355A";
 
     const green = "#10B981";
     const greenSoft = "#ECFDF5";
@@ -840,10 +840,10 @@ export const InfraIllustration = (props: SVGProps<SVGSVGElement>) => {
 export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 560 420" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg" {...props}>
         <defs>
-            <linearGradient id="hd-core" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="#2563eb" />
-                <stop offset="100%" stopColor="#1e3a8a" />
-            </linearGradient>
+    <linearGradient id="hd-core" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stopColor="#3C9AC4"/>
+            <stop offset="100%" stopColor="#13355A"/>
+    </linearGradient>
             <filter id="hd-sh" x="-20%" y="-20%" width="140%" height="140%">
                 <feGaussianBlur stdDeviation="6" /><feOffset dy="3" />
                 <feComponentTransfer><feFuncA type="linear" slope="0.14" /></feComponentTransfer>
@@ -868,10 +868,10 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
             <rect x="210" y="140" width="150" height="150" rx="18" fill="url(#hd-core)" />
             <circle cx="285" cy="200" r="26" fill="#fff" opacity="0.14" />
             <circle cx="285" cy="200" r="16" fill="#fff" />
-            <path d="M279 200l4 4 8-8" stroke="#1e3a8a" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-            <text x="285" y="256" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#bfdbfe">Inventory · Pricing · Orders</text>
+            <path d="M279 200l4 4 8-8" stroke="#13355A" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <text x="285" y="256" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#D0E8F0">Inventory · Pricing · Orders</text>
             <text x="285" y="240" textAnchor="middle" fontFamily="Inter" fontSize="13" fontWeight="800" fill="#fff">SellerBuz Core</text>
-            <text x="285" y="272" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#bfdbfe">Real-time · 2-way sync</text>
+            <text x="285" y="272" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#D0E8F0">Real-time · 2-way sync</text>
         </g>
 
         {/* right output cards */}
@@ -883,7 +883,7 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
         ].map((c) => (
             <g key={c.title} filter="url(#hd-sh)">
                 <rect x="392" y={c.y} width="140" height="50" rx="10" fill="white" stroke="#e2e8f0" />
-                <rect x="392" y={c.y} width="3" height="50" rx="1.5" fill="#2563eb" />
+                <rect x="392" y={c.y} width="3" height="50" rx="1.5" fill="#13355A" />
                 <text x="405" y={c.y + 20} fontFamily="Inter" fontSize="10" fontWeight="700" fill="#64748b" letterSpacing="1">
                     {c.title.toUpperCase()}
                 </text>
@@ -894,10 +894,10 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
         {/* ── left arrows (channel → core) with flowing dots ── */}
         {[215].map((y, i) => (
             <g key={"l" + y}>
-                <line x1="170" y1={y} x2="208" y2="215" stroke="#60a5fa" strokeWidth="1.4" strokeDasharray="4 4">
+                <line x1="170" y1={y} x2="208" y2="215" stroke="#7EC8E3" strokeWidth="1.4" strokeDasharray="4 4">
                     <animate attributeName="stroke-dashoffset" values="0;-16" dur={`${1.2 + i * 0.15}s`} repeatCount="indefinite" />
                 </line>
-                <circle r="3" fill="#60a5fa" opacity="0.8">
+                <circle r="3" fill="#7EC8E3" opacity="0.8">
                     <animateMotion dur={`${1.8 + i * 0.2}s`} repeatCount="indefinite"
                         path={`M180 ${y} L208 215`} />
                 </circle>
@@ -907,10 +907,10 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
         {/* ── right arrows (core → output) with flowing dots ── */}
         {[95, 170, 245, 320].map((y, i) => (
             <g key={"r" + y}>
-                <line x1="360" y1="215" x2="390" y2={y} stroke="#2563eb" strokeWidth="1.4" strokeDasharray="4 4">
+                <line x1="360" y1="215" x2="390" y2={y} stroke="#3C9AC4" strokeWidth="1.4" strokeDasharray="4 4">
                     <animate attributeName="stroke-dashoffset" values="0;-16" dur={`${1.2 + i * 0.15}s`} repeatCount="indefinite" />
                 </line>
-                <circle r="3" fill="#2563eb" opacity="0.8">
+                <circle r="3" fill="#3C9AC4" opacity="0.8">
                     <animateMotion dur={`${1.8 + i * 0.2}s`} repeatCount="indefinite"
                         path={`M360 215 L390 ${y}`} />
                 </circle>
@@ -940,7 +940,7 @@ export const MarketplaceMeshDiagram = (props: SVGProps<SVGSVGElement>) => {
     }
     const channels: Channel[] = [
         { a: -90, l: "Amazon", c: "#F59E0B", bg: "#FFF7E6", logo: "/logos/amazon-color-svgrepo-com.svg" },
-        { a: -45, l: "Walmart", c: "#2563EB", bg: "#EFF6FF", logo: "/logos/walmart.png" },
+        { a: -45, l: "Walmart", c: "#3C9AC4", bg: "#EFF6FF", logo: "/logos/walmart.png" },
         { a: 0, l: "eBay", c: "#FF1744", bg: "#FFF1F3", logo: "/logos/EBay_logo.svg.webp" },
         { a: 45, l: "Shopify", c: "#16A34A", bg: "#ECFDF5", logo: "/logos/shopify-color-svgrepo-com.svg" },
         { a: 90, l: "Etsy", c: "#F4511E", bg: "#FFF7ED", logo: "/logos/etsy-svgrepo-com.svg" },
@@ -965,13 +965,13 @@ export const MarketplaceMeshDiagram = (props: SVGProps<SVGSVGElement>) => {
         >
             <defs>
                 <radialGradient id="mm-bg" cx="50%" cy="50%" r="60%">
-                    <stop offset="0%" stopColor="#eff6ff" />
-                    <stop offset="100%" stopColor="#dbeafe" />
+                    <stop offset="0%" stopColor="#f0f4f8" />
+                    <stop offset="100%" stopColor="#e2e8f0" />
                 </radialGradient>
 
                 <linearGradient id="mm-core" x1="0" x2="1" y1="0" y2="1">
-                    <stop offset="0%" stopColor="#2563eb" />
-                    <stop offset="100%" stopColor="#1e3a8a" />
+                    <stop offset="0%" stopColor="#3C9AC4" />
+                    <stop offset="100%" stopColor="#13355A" />
                 </linearGradient>
 
                 <radialGradient id="mm-shine" cx="35%" cy="30%" r="60%">
@@ -990,7 +990,7 @@ export const MarketplaceMeshDiagram = (props: SVGProps<SVGSVGElement>) => {
 
             {/* orbit rings */}
             {[70, 120, 175].map((r, i) => (
-                <circle key={i} cx={cx} cy={cy} r={r} stroke="#93c5fd" strokeWidth="1" strokeDasharray="4 5" opacity={0.4} fill="none">
+                <circle key={i} cx={cx} cy={cy} r={r} stroke="#A8D5E8" strokeWidth="1" strokeDasharray="4 5" opacity={0.4} fill="none">
                     <animateTransform
                         attributeName="transform"
                         type="rotate"
@@ -1016,12 +1016,12 @@ export const MarketplaceMeshDiagram = (props: SVGProps<SVGSVGElement>) => {
             })}
 
             {/* pulse rings */}
-            <circle cx={cx} cy={cy} r="56" fill="#2563eb" opacity="0.18">
+            <circle cx={cx} cy={cy} r="56" fill="#3C9AC4" opacity="0.18">
                 <animate attributeName="r" values="56;90" dur="2.8s" repeatCount="indefinite" />
                 <animate attributeName="opacity" values="0.22;0" dur="2.8s" repeatCount="indefinite" />
             </circle>
 
-            <circle cx={cx} cy={cy} r="56" fill="#1e40af" opacity="0.12">
+            <circle cx={cx} cy={cy} r="56" fill="#13355A" opacity="0.12">
                 <animate attributeName="r" values="56;110" dur="3.4s" repeatCount="indefinite" />
                 <animate attributeName="opacity" values="0.18;0" dur="3.4s" repeatCount="indefinite" />
             </circle>
@@ -1100,7 +1100,7 @@ export const MarketplaceMeshDiagram = (props: SVGProps<SVGSVGElement>) => {
             {/* legend */}
             <g transform="translate(70,455)">
                 {[
-                    { c: "#2563eb", l: "Live sync" },
+                    { c: "#3C9AC4", l: "Live sync" },
                     { c: "#1d4ed8", l: "Auto-repricer" },
                     { c: "#3b82f6", l: "AI listing" },
                 ].map((p, i) => (
@@ -1130,16 +1130,16 @@ export const InventoryDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
                     <circle cx="0" cy="0" r="40" />
                 </clipPath>
                 <marker id="arrowHead" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-                    <path d="M0,0 L8,4 L0,8 Z" fill="#2563EB" />
+                    <path d="M0,0 L8,4 L0,8 Z" fill="#13355A" />
                 </marker>
                 <symbol id="star4" viewBox="0 0 24 24">
-                    <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#2563EB" />
+                    <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#13355A" />
                 </symbol>
             </defs>
 
             {/* marketplace logo nodes with shimmer halos */}
             {[
-                { tx: 505, stroke: "#2563EB", logo: "logos/amazon-color-svgrepo-com.svg", label: "Amazon" },
+                { tx: 505, stroke: "#13355A", logo: "logos/amazon-color-svgrepo-com.svg", label: "Amazon" },
             ].map((n, i) => (
                 <g key={n.label} transform={`translate(${n.tx},55)`}>
                     <circle r="48" fill="none" stroke={n.stroke} strokeWidth="1" opacity="0.18">
@@ -1156,7 +1156,7 @@ export const InventoryDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
 
             {/* animated connection lines from logos to horizontal rail */}
             {[
-                { x: 505, c: "#2563EB" },
+                { x: 505, c: "#13355A" },
 
             ].map((l, i) => (
                 <g key={"vl" + l.x}>
@@ -1169,31 +1169,31 @@ export const InventoryDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
                 </g>
             ))}
 
-            <line x1={505} y1={150} x2={505} y2={160} stroke="#2563EB" strokeWidth="2.5" strokeDasharray="4 5">
+            <line x1={505} y1={150} x2={505} y2={160} stroke="#13355A" strokeWidth="2.5" strokeDasharray="4 5">
                 <animate attributeName="stroke-dashoffset" values="0;-18" dur="1.8s" repeatCount="indefinite" />
             </line>
 
             {/* center sync icon with pulse rings */}
             <g transform="translate(505,180)">
-                <circle r="20" fill="#FFFFFF" stroke="#2563EB" strokeWidth="2.5" />
-                <circle r="10" fill="#FFFFFF" stroke="#2563EB" strokeWidth="2.5" />
+                <circle r="20" fill="#FFFFFF" stroke="#13355A" strokeWidth="2.5" />
+                <circle r="10" fill="#FFFFFF" stroke="#13355A" strokeWidth="2.5" />
             </g>
-            <line x1="505" y1="202" x2="505" y2="212" stroke="#2563EB" strokeWidth="1.5" markerEnd="url(#arrowHead)">
+            <line x1="505" y1="202" x2="505" y2="212" stroke="#13355A" strokeWidth="1.5" markerEnd="url(#arrowHead)">
                 <animate attributeName="stroke-dasharray" values="0 20;20 0" dur="1.6s" repeatCount="indefinite" />
             </line>
 
 
-            <rect x="20" y="275" width="170" height="215" rx="16" fill="#FFFFFF" stroke="#2563EB" strokeWidth="2" />
+            <rect x="20" y="275" width="170" height="215" rx="16" fill="#FFFFFF" stroke="#13355A" strokeWidth="2" />
             <text x="35" y="305" fontSize="14.5" fontWeight="700" fill="#1E1B4B">Your Inventory</text>
 
 
             <g transform="translate(70,335)">
-                <path d="M0,45 L40,15 L80,45 L80,95 L0,95 Z" fill="#EEF0F6" stroke="#2563EB" strokeWidth="2.5" strokeLinejoin="round" />
-                <rect x="30" y="65" width="20" height="30" fill="#EEF0F6" stroke="#2563EB" />
-                <rect x="10" y="55" width="14" height="14" rx="2" fill="#EEF0F6" stroke="#2563EB" strokeWidth="1.5" />
-                <rect x="56" y="55" width="14" height="14" rx="2" fill="#EEF0F6" stroke="#2563EB" strokeWidth="1.5" />
+                <path d="M0,45 L40,15 L80,45 L80,95 L0,95 Z" fill="#EEF0F6" stroke="#3C9AC4" strokeWidth="2.5" strokeLinejoin="round" />
+                <rect x="30" y="65" width="20" height="30" fill="#EEF0F6" stroke="#3C9AC4" />
+                <rect x="10" y="55" width="14" height="14" rx="2" fill="#EEF0F6" stroke="#3C9AC4" strokeWidth="1.5" />
+                <rect x="56" y="55" width="14" height="14" rx="2" fill="#EEF0F6" stroke="#3C9AC4" strokeWidth="1.5" />
             </g>
-            <g fill="#EEF0F6" stroke="#2563EB" strokeWidth="1.5">
+            <g fill="#EEF0F6" stroke="#3C9AC4" strokeWidth="1.5">
                 <rect x="115" y="405" width="26" height="26" rx="3" />
                 <rect x="140" y="418" width="20" height="20" rx="3" />
             </g>
@@ -1204,19 +1204,19 @@ export const InventoryDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
             <rect x="35" y="472" width="85" height="8" rx="4" fill="#EEF0F6" />
 
 
-            <line x1="190" y1="382" x2="203" y2="382" stroke="#2563EB" strokeWidth="1.5" markerEnd="url(#arrowHead)">
+            <line x1="190" y1="382" x2="203" y2="382" stroke="#13355A" strokeWidth="1.5" markerEnd="url(#arrowHead)">
                 <animate attributeName="stroke-dasharray" values="0 15;15 0" dur="1.8s" repeatCount="indefinite" />
             </line>
-            <circle r="2" fill="#2563EB" opacity="0.8">
+            <circle r="2" fill="#3C9AC4" opacity="0.8">
                 <animateMotion dur="2s" repeatCount="indefinite" path="M190 382 L203 382" />
             </circle>
 
 
-            <rect x="205" y="215" width="625" height="305" rx="18" fill="#FFFFFF" stroke="#2563EB" strokeWidth="2" />
+            <rect x="205" y="215" width="625" height="305" rx="18" fill="#FFFFFF" stroke="#13355A" strokeWidth="2" />
 
             <g clipPath="url(#cardClip)">
 
-                <rect x="205" y="215" width="60" height="305" fill="#2563EB" />
+                <rect x="205" y="215" width="60" height="305" fill="#13355A" />
 
 
                 <path d="M235,246 l10,6 l0,12 l-10,6 l-10,-6 l0,-12 Z" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinejoin="round" transform="translate(0,0)" />
@@ -1243,25 +1243,25 @@ export const InventoryDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
             <g fontSize="10.5" fill="#6B7280">
 
                 <rect x="280" y="255" width="112" height="56" rx="10" fill="#FAFAFF" stroke="#EDE9FE" strokeWidth="1.5" />
-                <path d="M300,265 l6,3.5 l0,7 l-6,3.5 l-6,-3.5 l0,-7 Z" fill="none" stroke="#2563EB" strokeWidth="1.3" />
+                <path d="M300,265 l6,3.5 l0,7 l-6,3.5 l-6,-3.5 l0,-7 Z" fill="none" stroke="#13355A" strokeWidth="1.3" />
                 <text x="310" y="275" fontWeight="650">Total Products</text>
                 <text x="310" y="300" fontSize="16" fontWeight="800" fill="#1E1B4B">8,642</text>
 
 
                 <rect x="405" y="255" width="112" height="56" rx="10" fill="#FAFAFF" stroke="#EDE9FE" strokeWidth="1.5" />
-                <path d="M425,265 h12 v10 h-12 Z 425,265 l6,-4 l6,4" fill="none" stroke="#2563EB" strokeWidth="1.3" strokeLinejoin="round" />
+                <path d="M425,265 h12 v10 h-12 Z 425,265 l6,-4 l6,4" fill="none" stroke="#13355A" strokeWidth="1.3" strokeLinejoin="round" />
                 <text x="445" y="275" fontWeight="650">Total Stock</text>
                 <text x="445" y="300" fontSize="16" fontWeight="800" fill="#1E1B4B">45,278</text>
 
 
                 <rect x="530" y="255" width="112" height="56" rx="10" fill="#FAFAFF" stroke="#EDE9FE" strokeWidth="1.5" />
-                <text x="550" y="275" textAnchor="middle" fontSize="11" fontWeight="900" fill="#2563EB">$</text>
+                <text x="550" y="275" textAnchor="middle" fontSize="11" fontWeight="900" fill="#13355A">$</text>
                 <text x="560" y="275" fontWeight="650">Average Price</text>
                 <text x="560" y="300" fontSize="16" fontWeight="800" fill="#1E1B4B">$24.68</text>
 
 
                 <rect x="655" y="255" width="112" height="56" rx="10" fill="#FAFAFF" stroke="#EDE9FE" strokeWidth="1.5" />
-                <path d="M670,275 l3,-4 l3,3 l4,-6" fill="none" stroke="#2563EB" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M670,275 l3,-4 l3,3 l4,-6" fill="none" stroke="#13355A" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                 <text x="685" y="275" fontWeight="650">Active Listings</text>
                 <text x="685" y="300" fontSize="16" fontWeight="800" fill="#1E1B4B">7,842</text>
             </g>
@@ -1276,10 +1276,10 @@ export const InventoryDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
                 <line x1="325" y1="460" x2="700" y2="460" />
             </g>
             <polyline points="340,440 390,455 440,420 490,450 540,400 590,452 640,375 690,432"
-                fill="none" stroke="#2563EB" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="1000" strokeDashoffset="0">
+                fill="none" stroke="#13355A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="1000" strokeDashoffset="0">
                 <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="6.4s" fill="freeze" />
             </polyline>
-            <g fill="#2563EB">
+            <g fill="#13355A">
                 <circle cx="340" cy="440" r="3.5" /><circle cx="390" cy="455" r="3.5" /><circle cx="440" cy="420" r="3.5" />
                 <circle cx="490" cy="450" r="3.5" /><circle cx="540" cy="400" r="3.5" /><circle cx="590" cy="452" r="3.5" />
                 <circle cx="640" cy="375" r="3.5" /><circle cx="690" cy="432" r="3.5" />
@@ -1301,25 +1301,25 @@ export const InventoryDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
                 <text x="315" y="370" textAnchor="end">15K</text>
             </g>
 
-            <line x1="830" y1="382" x2="845" y2="382" stroke="#2563EB" strokeWidth="1.5" markerEnd="url(#arrowHead)">
+            <line x1="830" y1="382" x2="845" y2="382" stroke="#13355A" strokeWidth="1.5" markerEnd="url(#arrowHead)">
                 <animate attributeName="stroke-dasharray" values="0 18;18 0" dur="1.6s" repeatCount="indefinite" />
             </line>
-            <circle r="2" fill="#2563EB" opacity="0.8">
+            <circle r="2" fill="#3C9AC4" opacity="0.8">
                 <animateMotion dur="1.8s" repeatCount="indefinite" path="M830 382 L845 382" />
             </circle>
 
 
             <g>
-                <rect x="845" y="290" width="150" height="195" rx="16" fill="#FFFFFF" stroke="#2563EB" strokeWidth="2.5" />
-                <circle cx="920" cy="308" r="6" fill="#FFFFFF" stroke="#2563EB" strokeWidth="2.5" />
+                <rect x="845" y="290" width="150" height="195" rx="16" fill="#FFFFFF" stroke="#13355A" strokeWidth="2.5" />
+                <circle cx="920" cy="308" r="6" fill="#FFFFFF" stroke="#13355A" strokeWidth="2.5" />
 
-                <circle cx="920" cy="345" r="20" fill="#2563EB">
+                <circle cx="920" cy="345" r="20" fill="#13355A">
                     <animate attributeName="r" values="20;22;20" dur="3s" repeatCount="indefinite" />
                 </circle>
                 <text x="920" y="352" textAnchor="middle" fontSize="19" fontWeight="800" fill="#FFFFFF">$</text>
 
                 <text x="920" y="390" textAnchor="middle" fontSize="11.5" fill="#6B7280" fontWeight="600">Price Updated</text>
-                <text x="920" y="415" textAnchor="middle" fontSize="21" fontWeight="800" fill="#2563EB">$24.68</text>
+                <text x="920" y="415" textAnchor="middle" fontSize="21" fontWeight="800" fill="#13355A">$24.68</text>
 
                 <rect x="890" y="435" width="60" height="8" rx="4" fill="#EEF0F6" />
             </g>
@@ -1328,7 +1328,7 @@ export const InventoryDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
             <use href="#star4" x="995" y="270" width="26" height="26" />
             <use href="#star4" x="1008" y="330" width="18" height="18" />
             <use href="#star4" x="985" y="470" width="20" height="20" />
-            <circle cx="1005" cy="300" r="9" fill="none" stroke="#2563EB" strokeWidth="2" />
+            <circle cx="1005" cy="300" r="9" fill="none" stroke="#13355A" strokeWidth="2" />
 
         </svg>
     )
@@ -1337,10 +1337,10 @@ export const InventoryDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
 
 
 export const ListingWorkflowIllustration = (props: SVGProps<SVGSVGElement>) => {
-    const indigo = "#4338CA";
-    const blue = "#2563EB";
-    const blueLight = "#DBEAFE";
-    const blue50 = "#EFF6FF";
+    const indigo = "#13355A";
+    const blue = "#3C9AC4";
+    const blueLight = "#E8F4FA";
+    const blue50 = "#E8F4FA";
     const emerald = "#10B981";
     const emeraldLight = "#D1FAE5";
     const amber = "#F59E0B";
@@ -1367,8 +1367,8 @@ export const ListingWorkflowIllustration = (props: SVGProps<SVGSVGElement>) => {
 
             <defs>
                 <linearGradient id="lw-ai-grad" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#7C3AED" />
-                    <stop offset="100%" stopColor="#4338CA" />
+                    <stop offset="0%" stopColor="#3C9AC4" />
+                    <stop offset="100%" stopColor="#13355A" />
                 </linearGradient>
                 <linearGradient id="lw-success-grad" x1="0" y1="0" x2="1" y2="0">
                     <stop offset="0%" stopColor="#10B981" />
@@ -1692,8 +1692,8 @@ type FeatureItem = {
 };
 
 const defaultFeatures: FeatureItem[] = [
-    { icon: "box", color: "#2563EB", bg: "#eff6ff", title: "Inventory Sync", desc: "Real-time updates" },
-    { icon: "tag", color: "#1D4ED8", bg: "#dbeafe", title: "Auto Repricer", desc: "AI-powered pricing" },
+    { icon: "box", color: "#3C9AC4", bg: "#eff6ff", title: "Inventory Sync", desc: "Real-time updates" },
+    { icon: "tag", color: "#13355A", bg: "#dbeafe", title: "Auto Repricer", desc: "AI-powered pricing" },
     { icon: "cart", color: "#ef4444", bg: "#fee2e2", title: "Order Management", desc: "Centralized orders" },
     { icon: "chart", color: "#10b981", bg: "#d1fae5", title: "Listing Management", desc: "Bulk & AI optimized" },
 ];
@@ -1750,8 +1750,8 @@ export const EcosystemHubMockup = ({
     trustSubtitle?: string;
     features?: FeatureItem[];
 } & SVGProps<SVGSVGElement>) => {
-    const blue = "#2563EB";
-    const blueDeep = "#1D4ED8";
+    const blue = "#3C9AC4";
+    const blueDeep = "#13355A";
     const ink = "#0f172a";
     const muted = "#64748b";
     const border = "#e6e9f5";
@@ -1807,10 +1807,10 @@ export const EcosystemHubMockup = ({
                 </text>
 
                 {/* Line: source → hub (animated) */}
-                <line x1={hub.cx} y1="208" x2={hub.cx} y2={hub.cy - hub.r} stroke={blue} strokeWidth={2} strokeDasharray="6 6" strokeLinecap="round" opacity={0.55}>
+                <line x1={hub.cx} y1="208" x2={hub.cx} y2={hub.cy - hub.r} stroke={blueDeep} strokeWidth={2} strokeDasharray="6 6" strokeLinecap="round" opacity={0.55}>
                     <animate attributeName="stroke-dashoffset" values="0;-24" dur="1.8s" repeatCount="indefinite" />
                 </line>
-                <circle r="3" fill={blue} opacity={0.7}>
+                <circle r="3" fill={blueDeep} opacity={0.7}>
                     <animateMotion dur="1.8s" repeatCount="indefinite"
                         path={`M${hub.cx} 208 L${hub.cx} ${hub.cy - hub.r}`} />
                 </circle>
@@ -1838,15 +1838,15 @@ export const EcosystemHubMockup = ({
                 <text x={hub.cx} y={hub.cy + 8} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="18" fontWeight={800} fill="white">
                     {hubTitle}
                 </text>
-                <text x={hub.cx} y={hub.cy + 28} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="11.5" fill="#bfdbfe">
+                <text x={hub.cx} y={hub.cy + 28} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="11.5" fill="#D0E8F0">
                     {hubSubtitle}
                 </text>
 
                 {/* Line: hub → trust badge (animated) */}
-                <line x1={hub.cx} y1={hub.cy + hub.r} x2={hub.cx} y2="516" stroke={blue} strokeWidth={2} strokeDasharray="6 6" strokeLinecap="round" opacity={0.55}>
+                <line x1={hub.cx} y1={hub.cy + hub.r} x2={hub.cx} y2="516" stroke={blueDeep} strokeWidth={2} strokeDasharray="6 6" strokeLinecap="round" opacity={0.55}>
                     <animate attributeName="stroke-dashoffset" values="0;-24" dur="1.8s" repeatCount="indefinite" />
                 </line>
-                <circle r="3" fill={blue} opacity={0.7}>
+                <circle r="3" fill={blueDeep} opacity={0.7}>
                     <animateMotion dur="1.8s" repeatCount="indefinite"
                         path={`M${hub.cx} ${hub.cy + hub.r} L${hub.cx} 516`} />
                 </circle>
@@ -1884,7 +1884,7 @@ export const EcosystemHubMockup = ({
                             <path
                                 d={curveD}
                                 fill="none"
-                                stroke={blue}
+                                stroke={blueDeep}
                                 strokeWidth={2}
                                 strokeDasharray="6 6"
                                 strokeLinecap="round"

@@ -44,18 +44,30 @@ const Home = () => {
       value: "50,000+",
       label: "Active Sellers",
       trend: "12.4%",
-      accentColor: "#9333EA",
-      iconBg: "bg-[#F3E8FF]/60",
-      iconColor: "text-[#9333EA]",
-      trendBg: "bg-[#F3E8FF]/80",
-      trendText: "text-[#7C3AED]",
-      borderColor: "border-t-4 border-t-[#A855F7]",
+      accentColor: "#13355A",
+      iconBg: "bg-[#E8EDF3]/60",
+      iconColor: "text-[#13355A]",
+      trendBg: "bg-[#E8EDF3]/80",
+      trendText: "text-[#13355A]",
+      borderColor: "border-t-4 border-t-[#13355A]",
     },
     {
       icon: DollarSign,
       value: "$300M+",
       label: "GMV Processed",
       trend: "18.6%",
+      accentColor: "#3C9AC4",
+      iconBg: "bg-[#E8F4FA]/60",
+      iconColor: "text-[#3C9AC4]",
+      trendBg: "bg-[#E8F4FA]/80",
+      trendText: "text-[#3C9AC4]",
+      borderColor: "border-t-4 border-t-[#3C9AC4]",
+    },
+    {
+      icon: Package,
+      value: "10M+",
+      label: "Orders Managed",
+      trend: "16.3%",
       accentColor: "#2563EB",
       iconBg: "bg-[#DBEAFE]/60",
       iconColor: "text-[#2563EB]",
@@ -64,28 +76,16 @@ const Home = () => {
       borderColor: "border-t-4 border-t-[#3B82F6]",
     },
     {
-      icon: Package,
-      value: "10M+",
-      label: "Orders Managed",
-      trend: "16.3%",
+      icon: Globe,
+      value: "150+",
+      label: "Countries",
+      trend: "9.8%",
       accentColor: "#059669",
       iconBg: "bg-[#D1FAE5]/60",
       iconColor: "text-[#059669]",
       trendBg: "bg-[#D1FAE5]/80",
       trendText: "text-[#047857]",
       borderColor: "border-t-4 border-t-[#10B981]",
-    },
-    {
-      icon: Globe,
-      value: "150+",
-      label: "Countries",
-      trend: "9.8%",
-      accentColor: "#EA580C",
-      iconBg: "bg-[#FFEDD5]/60",
-      iconColor: "text-[#EA580C]",
-      trendBg: "bg-[#FFEDD5]/80",
-      trendText: "text-[#C2410C]",
-      borderColor: "border-t-4 border-t-[#F97316]",
     },
   ];
 
@@ -102,40 +102,40 @@ const Home = () => {
   return (
     <Layout>
       <div ref={ref} className="antialiased [text-rendering:optimizeLegibility]">
-        {/* HERO – Clean blue & white canvas, light, polished */}
+        {/* HERO – Clean CTAS blue & white canvas, light, polished */}
         <section className="relative overflow-hidden hero-cream slope-divider-bottom">
           <div className="absolute inset-0 hero-cream-grid pointer-events-none" />
-          <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-500/10 blur-3xl pointer-events-none" />
+          <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-[#3C9AC4]/15 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-[#13355A]/10 blur-3xl pointer-events-none" />
 
           <div className="relative px-5 sm:px-8 lg:px-[70px] pt-16 pb-20 sm:pt-20 sm:pb-24 lg:pt-24 lg:pb-28">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Copy */}
               <div className="lg:col-span-6 reveal">
-                <Badge className="mb-6 bg-white text-blue-700 border border-blue-100 shadow-sm hover:bg-white">
+                <Badge className="mb-6 bg-white text-primary border border-primary/10 shadow-sm hover:bg-white">
                   <Sparkles className="w-3.5 h-3.5 mr-1.5" />
                   Trusted By 50,000+ Multichannel Sellers
                 </Badge>
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] font-bold text-slate-900 mb-6 leading-[1.1] sm:leading-[1.05] tracking-tight">
                   The Smartest
-                  <span className="block bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">
+                  <span className="block bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
                     AI Catalog & Inventory Platform
                   </span>
                   for Amazon and Shopify Sellers
                 </h1>
-                <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 mb-10 leading-relaxed max-w-xl">
+                <p className="text-lg sm:text-xl lg:text-2xl text-[#334155] mb-10 leading-relaxed max-w-xl">
                   Generate AI-optimized listings, sync inventory in real-time, and manage your Amazon and Shopify stores from one beautiful dashboard.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 mb-4">
                   <Link href="/services">
-                    <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-100 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm">
+                    <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-100 bg-white hover:bg-accent text-slate-900 rounded-full shadow-sm">
                       See Features
                     </Button>
                   </Link>
 
                   <Link href="/pricing">
-                    <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
+                    <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-stripe-xl group bg-gradient-to-r from-[#3C9AC4] to-[#13355A] hover:opacity-95 border-0">
                       Quick Start
                       <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                     </Button>
@@ -163,16 +163,16 @@ const Home = () => {
 
                 {/* Floating chips */}
                 <div className="absolute -top-12 -left-4 sm:-left-8 bg-white rounded-2xl shadow-stripe-xl px-4 py-3 flex items-center gap-3 animate-float">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-900 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3C9AC4] to-[#13355A] flex items-center justify-center">
                     <RefreshCw className="w-5 h-5 text-white" />
                   </div>
                   <div className="text-xs">
-                    <div className="font-bold text-slate-900">All channels synced</div>
+                    <div className="font-bold text-[#13355A]">All channels synced</div>
                     <div className="text-slate-500">2 sec ago</div>
                   </div>
                 </div>
                 <div className="absolute -bottom-12 right-2 sm:-right-4 bg-white rounded-2xl shadow-stripe-xl px-4 py-3 flex items-center gap-3 animate-float" style={{ animationDelay: "1.5s" }}>
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3C9AC4] to-[#13355A] flex items-center justify-center">
                     <TrendingUp className="w-5 h-5 text-white" />
                   </div>
                   <div className="text-xs">
@@ -201,8 +201,8 @@ const Home = () => {
                 }}
               >
                 {/* Fade edges */}
-                <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-24 bg-gradient-to-r from-blue-50/60 via-blue-50/60 to-transparent z-10" />
-                <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-24 bg-gradient-to-l from-blue-50/60 via-blue-50/60 to-transparent z-10" />
+                <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-24 bg-gradient-to-r from-[#F5F7FA]/60 via-[#F5F7FA]/60 to-transparent z-10" />
+                <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-24 bg-gradient-to-l from-[#F5F7FA]/60 via-[#F5F7FA]/60 to-transparent z-10" />
 
                 <div className="marquee-track flex w-max py-2" style={{ animation: 'marquee-scroll 30s linear infinite' }}>
                   {Array.from({ length: 4 }).flatMap((_, set) =>
@@ -211,7 +211,7 @@ const Home = () => {
                       { name: "Shopify Plus Partner", sub: "Certified App", logo: "/logos/shopify-color-svgrepo-com.svg" },
                       { name: "AWS Advanced Tier", sub: "Technology Partner", logo: "/logos/aws-svgrepo-com.svg" },
                     ].map((p, i) => (
-                      <div key={`${set}-${i}`} className="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/90 backdrop-blur border border-slate-200/70 shadow-sm hover:shadow-lg hover:border-blue-200 transition-stripe shrink-0 mr-4 sm:mr-6">
+                      <div key={`${set}-${i}`} className="flex items-center gap-3 px-5 py-3 rounded-xl bg-white/90 backdrop-blur border border-slate-200/70 shadow-sm hover:shadow-lg hover:border-[#3C9AC4]/30 transition-stripe shrink-0 mr-4 sm:mr-6">
                         <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center p-1">
                           <img
                             src={p.logo}
@@ -240,11 +240,11 @@ const Home = () => {
         <section className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
             <div className="reveal">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The Problem</Badge>
+              <Badge className="mb-4 bg-accent text-primary border border-primary/10">The Problem</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-4">
                 Selling on 5 marketplaces shouldn't feel like running 5 businesses.
               </h2>
-              <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
+              <p className="text-base sm:text-lg lg:text-xl text-[#334155] leading-relaxed mb-6">
                 Most sellers juggle a dozen tabs, broken CSV exports and 2 a.m. inventory mismatches. One oversell on Amazon can cost an account suspension worth months of revenue.
               </p>
               <ul className="space-y-2.5">
@@ -256,7 +256,7 @@ const Home = () => {
                   "Time-consuming spreadsheet management",
                 ].map((t) => (
                   <li key={t} className="flex items-center gap-2 text-slate-700">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500" /> {t}
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" /> {t}
                   </li>
                 ))}
               </ul>
@@ -272,7 +272,7 @@ const Home = () => {
         <section className="py-12 sm:py-14 lg:py-16 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="relative px-5 sm:px-8 lg:px-[70px] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
             <div className="reveal">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100 ">
+              <Badge className="mb-4 bg-accent text-primary border border-primary/10">
                 <Workflow className="w-3.5 h-3.5 mr-1" />
                 Listing Workflow
               </Badge>
@@ -281,7 +281,7 @@ const Home = () => {
                 From a raw file to a live, whitelabel listing — without the busywork.
               </h2>
 
-              <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
+              <p className="text-base sm:text-lg lg:text-xl text-[#334155] leading-relaxed mb-6">
                 Upload your catalog, we validate every row, push a test listing, grab the
                 marketplace error, and hand it to an AI that retries up to 10 times — adding,
                 removing or rewriting attributes until it passes. SEO titles and descriptions
@@ -306,7 +306,7 @@ const Home = () => {
                     key={i}
                     className="flex items-center gap-2 text-sm text-slate-700 font-medium"
                   >
-                    <f.icon className="w-4 h-4 text-blue-600 shrink-0" />
+                    <f.icon className="w-4 h-4 text-primary shrink-0" />
                     {f.label}
                   </div>
                 ))}
@@ -314,7 +314,7 @@ const Home = () => {
 
               {/* Workflow stages — expanded explainer */}
               <div className="mb-6 rounded-2xl border border-slate-200/70 bg-white/70 backdrop-blur-sm p-4 sm:p-5 shadow-sm">
-                <div className="text-[11px] font-bold uppercase tracking-wider text-blue-700 mb-3">
+                <div className="text-[11px] font-bold uppercase tracking-wider text-primary mb-3">
                   How a listing goes from raw file to live
                 </div>
                 <ul className="space-y-2.5">
@@ -356,7 +356,7 @@ const Home = () => {
                     },
                   ].map((s) => (
                     <li key={s.step} className="flex items-start gap-3">
-                      <span className="mt-0.5 w-6 h-6 shrink-0 rounded-full bg-gradient-to-br from-blue-600 to-blue-900 text-white text-[11px] font-bold flex items-center justify-center shadow-sm">
+                      <span className="mt-0.5 w-6 h-6 shrink-0 rounded-full bg-gradient-to-br from-[#3C9AC4] to-[#13355A] text-white text-[11px] font-bold flex items-center justify-center shadow-sm">
                         {s.step}
                       </span>
                       <div className="text-sm leading-snug">
@@ -405,8 +405,8 @@ const Home = () => {
             {/* Section header */}
             <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
               <div className="flex justify-center mb-6 reveal">
-                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-100 bg-[#EBF5FF] text-[11px] sm:text-xs font-semibold text-[#1C64F2] uppercase tracking-wider shadow-sm">
-                  <span className="w-2 h-2 rounded-full bg-[#1C64F2] animate-pulse" />
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/10 bg-accent text-[11px] sm:text-xs font-semibold text-primary uppercase tracking-wider shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                   Live Platform Stats
                 </span>
               </div>
@@ -475,18 +475,18 @@ const Home = () => {
           <div className="relative px-5 sm:px-8 lg:px-[70px]">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center mb-16 md:mb-20 lg:mb-24">
               <div className="order-2 lg:order-1 reveal">
-                <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The Problem</Badge>
+                <Badge className="mb-4 bg-accent text-primary border border-primary/10">The Problem</Badge>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                   Selling on 5 Marketplace shouldn't feel like running 5 businesses.
                 </h2>
-                <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
+                <p className="text-base sm:text-lg lg:text-xl text-[#334155] leading-relaxed mb-6">
                   Most sellers juggle a dozen tabs, broken CSV exports and 2 a.m. inventory mismatches.
                   One overselling incident on Amazon can cost an account suspension worth months of revenue.
                 </p>
                 <ul className="space-y-3">
                   {["Manual stock updates across platforms", "Lost orders & angry customers", "No single source of truth", "Hours wasted reconciling data"].map((p, i) => (
                     <li key={i} className="flex items-start gap-3 text-slate-700">
-                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0" />
+                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
                       {p}
                     </li>
                   ))}
@@ -502,17 +502,17 @@ const Home = () => {
                 <SyncIllustration className="w-full h-auto" />
               </div>
               <div className="reveal delay-200">
-                <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">The SellerBuz Way</Badge>
+                <Badge className="mb-4 bg-accent text-primary border border-primary/10">The SellerBuz Way</Badge>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                   One source of truth. Synced everywhere in milliseconds.
                 </h2>
-                <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-6">
+                <p className="text-base sm:text-lg lg:text-xl text-[#334155] leading-relaxed mb-6">
                   Update your product information once and let the platform automatically synchronize inventory, pricing, listings,
                   and operational data across your connected workflows.
                   Intelligent automation minimizes manual intervention, reduces costly errors, and keeps your business running efficiently as your catalog continues to grow.
                 </p>
                 <Link href="/services">
-                  <Button size="lg" className="rounded-full shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
+                  <Button size="lg" className="rounded-full shadow-lg group bg-gradient-to-r from-[#3C9AC4] to-[#13355A] hover:opacity-95 border-0">
                     Explore Our Services
                     <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </Button>
@@ -529,13 +529,13 @@ const Home = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
               {/* Left copy */}
               <div className="lg:col-span-5 reveal">
-                <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
+                <Badge className="mb-4 bg-accent text-primary border border-primary/10">
                   <Zap className="w-3.5 h-3.5 mr-1" />  Amazon + Shopify Integrations
                 </Badge>
                 <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-slate-900 leading-tight mb-6">
-                  Connect your <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Amazon and Shopify stores in minutes.</span>
+                  Connect your <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">Amazon and Shopify stores in minutes.</span>
                 </h2>
-                <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-8">
+                <p className="text-base sm:text-lg lg:text-xl text-[#334155] leading-relaxed mb-8">
                   Bring inventory, orders, listings, analytics, and business operations together in one centralized platform. Automate repetitive tasks, improve accuracy, and keep your workflows running smoothly.
                 </p>
                 <div className="space-y-3 mb-8">
@@ -548,19 +548,19 @@ const Home = () => {
                     "Secure APIs with scalable integrations",
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 shrink-0" />
+                      <CheckCircle className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                       <span className="text-slate-700 text-sm lg:text-base">{item}</span>
                     </div>
                   ))}
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <Link href="/marketplaces/amazon">
-                    <Button size="lg" variant="outline" className="text-base px-6 h-12 border-slate-200 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm">
+                    <Button size="lg" variant="outline" className="text-base px-6 h-12 border-slate-200 bg-white hover:bg-accent text-slate-900 rounded-full shadow-sm">
                       Explore Integrations
                     </Button>
                   </Link>
                   <Link href="/contact">
-                    <Button size="lg" className="text-base px-6 h-12 rounded-full shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
+                    <Button size="lg" className="text-base px-6 h-12 rounded-full shadow-lg group bg-gradient-to-r from-[#3C9AC4] to-[#13355A] hover:opacity-95 border-0">
                       Request An Integration
                       <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                     </Button>
@@ -569,8 +569,8 @@ const Home = () => {
 
                 <div className="flex flex-wrap gap-3 text-slate-700 text-sm">
                   {["FBA & FBM support", "One-click connect", "Real-time sync"].map((t, i) => (
-                    <span key={i} className="flex items-center gap-2 bg-blue-50/60 px-3 py-1.5 rounded-full border border-blue-100 shadow-sm">
-                      <CheckCircle className="w-4 h-4 text-blue-600" /> {t}
+                    <span key={i} className="flex items-center gap-2 bg-accent/60 px-3 py-1.5 rounded-full border border-primary/10 shadow-sm">
+                      <CheckCircle className="w-4 h-4 text-primary" /> {t}
                     </span>
                   ))}
                 </div>
@@ -601,13 +601,13 @@ const Home = () => {
               {/* Right Visual card */}
 
               <div className="lg:col-span-5 reveal">
-                <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
+                <Badge className="mb-4 bg-accent text-primary border border-primary/10">
                   <RefreshCw className="w-3.5 h-3.5 mr-1" /> Inventory Sync
                 </Badge>
                 <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-slate-900 leading-tight mb-6">
-                  Stock everywhere. <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Always accurate.</span>
+                  Stock everywhere. <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">Always accurate.</span>
                 </h2>
-                <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-8">
+                <p className="text-base sm:text-lg lg:text-xl text-[#334155] leading-relaxed mb-8">
                   Real-time stock sync across all marketplaces and warehouses. One update. Everywhere. Instantly.
                 </p>
 
@@ -635,7 +635,7 @@ const Home = () => {
                     }
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-[#EEF2FF] text-[#6366F1]">
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-accent text-primary">
                         <item.icon className="w-5 h-5 font-bold" />
                       </div>
                       <div>
@@ -652,8 +652,8 @@ const Home = () => {
 
                 <div className="flex flex-wrap gap-3 text-slate-700 text-sm">
                   {["Sub-2s propagation", "Zero overselling", "Full audit trail"].map((t, i) => (
-                    <span key={i} className="flex items-center gap-2 bg-blue-50/60 px-3 py-1.5 rounded-full border border-blue-100 shadow-sm">
-                      <CheckCircle className="w-4 h-4 text-blue-600" /> {t}
+                    <span key={i} className="flex items-center gap-2 bg-accent/60 px-3 py-1.5 rounded-full border border-primary/10 shadow-sm">
+                      <CheckCircle className="w-4 h-4 text-primary" /> {t}
                     </span>
                   ))}
                 </div>
@@ -676,12 +676,12 @@ const Home = () => {
               {journey.map((j, i) => (
                 <div key={i} className="reveal text-center relative" style={{ transitionDelay: `${i * 150}ms` }}>
                   <div className="relative inline-flex w-24 h-24 items-center justify-center mb-6">
-                    <span className="absolute inset-0 rounded-full bg-blue-100 animate-pulse-ring" />
-                    <span className="relative w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-900 rounded-full flex items-center justify-center shadow-lg">
+                    <span className="absolute inset-0 rounded-full bg-accent animate-pulse-ring" />
+                    <span className="relative w-20 h-20 bg-gradient-to-br from-[#3C9AC4] to-[#13355A] rounded-full flex items-center justify-center shadow-lg">
                       <j.icon className="w-9 h-9 text-white" />
                     </span>
                   </div>
-                  <div className="text-sm font-bold text-blue-600 mb-2 tracking-widest">{j.step}</div>
+                  <div className="text-sm font-bold text-primary mb-2 tracking-widest">{j.step}</div>
                   <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-2">{j.title}</h3>
                   <p className="text-slate-600 lg:text-lg max-w-xs mx-auto">{j.desc}</p>
                 </div>
@@ -693,9 +693,9 @@ const Home = () => {
 
 
         {/* CTA */}
-        <section className="py-14 lg:py-16 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
+        <section className="py-14 lg:py-16 relative overflow-hidden bg-gradient-to-br from-[#13355A] to-[#1a4a7a]">
           <div className="relative max-w-5xl mx-auto px-5 sm:px-8 lg:px-[70px] text-center reveal">
-            <Sparkles className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
+            <Sparkles className="w-12 h-12 text-white/20 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Ready to grow your<br />multichannel business?
             </h2>
@@ -704,7 +704,7 @@ const Home = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing">
-                <Button size="lg" className="text-lg px-8 rounded-full bg-white text-blue-600 hover:bg-blue-50 border-0 shadow-lg">
+                <Button size="lg" className="text-lg px-8 rounded-full bg-white text-primary hover:bg-accent border-0 shadow-lg">
                   Get started
                 </Button>
               </Link>

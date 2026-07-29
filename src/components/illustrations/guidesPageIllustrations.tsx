@@ -5,11 +5,11 @@ import { SVGProps } from "react";
 /* ------------------------------------------------------------------ */
 export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
     const STAGES = [
-        { n: 1, title: "Order received", sub: "Amazon SP-API", from: "#1e40af", to: "#2563eb" },
-        { n: 2, title: "Inventory check", sub: "Multi-WH route", from: "#1d4ed8", to: "#3b82f6" },
-        { n: 3, title: "Pick & pack", sub: "WMS barcode", from: "#1e3a8a", to: "#1e40af" },
-        { n: 4, title: "Label + ship", sub: "Best courier rate", from: "#2563eb", to: "#60a5fa" },
-        { n: 5, title: "Tracked delivery", sub: "Customer notified", from: "#1d4ed8", to: "#3b82f6" },
+        { n: 1, title: "Order received", sub: "Amazon SP-API", from: "#13355A", to: "#3C9AC4" },
+        { n: 2, title: "Inventory check", sub: "Multi-WH route", from: "#13355A", to: "#3C9AC4" },
+        { n: 3, title: "Pick & pack", sub: "WMS barcode", from: "#0D2440", to: "#13355A" },
+        { n: 4, title: "Label + ship", sub: "Best courier rate", from: "#3C9AC4", to: "#6BC1E0" },
+        { n: 5, title: "Tracked delivery", sub: "Customer notified", from: "#13355A", to: "#3C9AC4" },
     ];
 
     const TIMES = ["0s", "2s", "30s", "5m", "Out for delivery"];
@@ -37,9 +37,9 @@ export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
             <defs>
                 {/* Outer card gradient */}
                 <linearGradient id="of-bg" x1="0" x2="1" y1="0" y2="1">
-                    <stop offset="0%" stopColor="#f0f4ff" />
-                    <stop offset="55%" stopColor="#eff6ff" />
-                    <stop offset="100%" stopColor="#f0f7ff" />
+                    <stop offset="0%" stopColor="#E8F0F6" />
+                    <stop offset="55%" stopColor="#E8F0F6" />
+                    <stop offset="100%" stopColor="#E8F0F6" />
                 </linearGradient>
 
                 {/* Timeline gradient */}
@@ -51,8 +51,8 @@ export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
                     y2={TL_Y}
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0%" stopColor="#2563eb" />
-                    <stop offset="100%" stopColor="#1e40af" />
+                    <stop offset="0%" stopColor="#3C9AC4" />
+                    <stop offset="100%" stopColor="#13355A" />
                 </linearGradient>
 
                 {/* Per-stage card gradients */}
@@ -65,10 +65,10 @@ export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
 
                 {/* Card shadow */}
                 <filter id="of-card-shadow" x="-5%" y="-5%" width="110%" height="115%">
-                    <feDropShadow dx="0" dy="3" stdDeviation="7" floodColor="#93c5fd" floodOpacity="0.18" />
+                    <feDropShadow dx="0" dy="3" stdDeviation="7" floodColor="#BDD9EE" floodOpacity="0.18" />
                 </filter>
                 <filter id="of-outer-shadow" x="-3%" y="-3%" width="106%" height="110%">
-                    <feDropShadow dx="0" dy="2" stdDeviation="8" floodColor="#93c5fd" floodOpacity="0.15" />
+                    <feDropShadow dx="0" dy="2" stdDeviation="8" floodColor="#BDD9EE" floodOpacity="0.15" />
                 </filter>
             </defs>
 
@@ -76,7 +76,7 @@ export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
             <rect
                 x="8" y="8" width="744" height="324" rx="22"
                 fill="url(#of-bg)"
-                stroke="#bfdbfe" strokeWidth="1.2"
+                stroke="#BDD9EE" strokeWidth="1.2"
                 filter="url(#of-outer-shadow)"
             />
 
@@ -162,13 +162,13 @@ export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
                                 <line
                                     x1={sx + CARD_W + 2} y1={CARD_Y + CARD_H / 2}
                                     x2={sx + CARD_W + ARROW_W - 2} y2={CARD_Y + CARD_H / 2}
-                                    stroke="#93c5fd" strokeWidth="1.5"
+                                    stroke="#BDD9EE" strokeWidth="1.5"
                                     className="of-arrow-flow"
                                     style={{ animationDelay: `${i * 0.15}s` }}
                                 />
                                 <path
                                     d={`M${sx + CARD_W + ARROW_W - 7} ${CARD_Y + CARD_H / 2 - 5} L${sx + CARD_W + ARROW_W - 1} ${CARD_Y + CARD_H / 2} L${sx + CARD_W + ARROW_W - 7} ${CARD_Y + CARD_H / 2 + 5}`}
-                                    stroke="#93c5fd" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                                    stroke="#BDD9EE" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
                                 />
                             </g>
                         )}
@@ -177,7 +177,7 @@ export const OrderFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
                         <circle
                             cx={midX} cy={DOT_YS}
                             r="5"
-                            fill="white" stroke="#2563eb" strokeWidth="2"
+                            fill="white" stroke="#3C9AC4" strokeWidth="2"
                             className={`of-dot-${i}`}
                         />
 
@@ -243,10 +243,10 @@ export const AnalyticsFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
         <text x="40" y="46" fontSize="11" fontWeight="800" fill="#64748b" letterSpacing="1">SOURCES</text>
         {[
             { y: 60, l: "Amazon SP-API", c: "#f59e0b" },
-            { y: 110, l: "Walmart Marketplace", c: "#1d4ed8" },
+            { y: 110, l: "Walmart Marketplace", c: "#13355A" },
             { y: 160, l: "Shopify Plus", c: "#10b981" },
             { y: 210, l: "Meta · Google Ads", c: "#ec4899" },
-            { y: 260, l: "Customer reviews", c: "#8b5cf6" },
+            { y: 260, l: "Customer reviews", c: "#3C9AC4" },
         ].map((s, i) => (
             <g key={i}>
                 <rect x={30} y={s.y} width={170} height={38} rx={10} fill="white" stroke="#e2e8f0" />
@@ -257,8 +257,8 @@ export const AnalyticsFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
 
         {/* Pipeline */}
         <g>
-            <rect x={250} y={120} width={170} height={120} rx={16} fill="white" stroke="#6366f1" strokeWidth={2} />
-            <rect x={250} y={120} width={170} height={26} rx={14} fill="#6366f1" />
+            <rect x={250} y={120} width={170} height={120} rx={16} fill="white" stroke="#3C9AC4" strokeWidth={2} />
+            <rect x={250} y={120} width={170} height={26} rx={14} fill="#3C9AC4" />
             <text x={262} y={138} fontSize={11} fontWeight={800} fill="white">▶ KAFKA STREAM</text>
             <text x={262} y={170} fontSize={11} fontWeight={800} fill="#0f172a">Real-time ingest</text>
             <text x={262} y={188} fontSize={10} fill="#64748b">10M+ events / day</text>
@@ -268,12 +268,12 @@ export const AnalyticsFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
 
         {/* BigQuery warehouse */}
         <g>
-            <rect x={460} y={100} width={180} height={160} rx={16} fill="white" stroke="#0ea5e9" strokeWidth={2} />
-            <rect x={460} y={100} width={180} height={26} rx={14} fill="#0ea5e9" />
+            <rect x={460} y={100} width={180} height={160} rx={16} fill="white" stroke="#3C9AC4" strokeWidth={2} />
+            <rect x={460} y={100} width={180} height={26} rx={14} fill="#3C9AC4" />
             <text x={472} y={118} fontSize={11} fontWeight={800} fill="white">▣ BIGQUERY WAREHOUSE</text>
             {/* mini bars */}
             {[40, 70, 55, 85, 60, 92, 75].map((h, i) => (
-                <rect key={i} x={478 + i * 22} y={234 - h} width={14} height={h} rx={2} fill={i % 2 ? "#a5f3fc" : "#0ea5e9"} />
+                <rect key={i} x={478 + i * 22} y={234 - h} width={14} height={h} rx={2} fill={i % 2 ? "#a5f3fc" : "#3C9AC4"} />
             ))}
             <text x={472} y={250} fontSize={10} fill="#64748b">Petabyte-scale · SQL anywhere</text>
         </g>
@@ -282,8 +282,8 @@ export const AnalyticsFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
         <text x={680} y={46} fontSize={11} fontWeight={800} fill="#64748b" letterSpacing={1}>CONSUMERS</text>
         {[
             { y: 70, l: "Power BI", c: "#f59e0b" },
-            { y: 120, l: "Looker Studio", c: "#3b82f6" },
-            { y: 170, l: "Custom dashboards", c: "#8b5cf6" },
+            { y: 120, l: "Looker Studio", c: "#3C9AC4" },
+            { y: 170, l: "Custom dashboards", c: "#3C9AC4" },
             { y: 220, l: "CSV / API export", c: "#10b981" },
             { y: 270, l: "AI forecast model", c: "#ec4899" },
         ].map((s, i) => (
@@ -300,11 +300,11 @@ export const AnalyticsFlowDiagram = (props: SVGProps<SVGSVGElement>) => (
                 stroke="#94a3b8" strokeWidth={1.5} fill="none" strokeDasharray="3 4" />
         ))}
         {/* Stream → BigQuery */}
-        <path d="M420 180 L 460 180" stroke="#6366f1" strokeWidth={2.5} markerEnd="url(#arrow-purple)" />
+        <path d="M420 180 L 460 180" stroke="#3C9AC4" strokeWidth={2.5} markerEnd="url(#arrow-purple)" />
         {/* BQ → consumers */}
         {[88, 138, 188, 238, 288].map((y, i) => (
             <path key={i} d={`M640 180 C 660 180, 660 ${y}, 670 ${y}`}
-                stroke="#0ea5e9" strokeWidth={1.5} fill="none" strokeDasharray="3 4" />
+                stroke="#3C9AC4" strokeWidth={1.5} fill="none" strokeDasharray="3 4" />
         ))}
 
         <text x={410} y={344} textAnchor="middle" fontSize={11} fill="#64748b">Every order, click and review - queryable in seconds, exportable forever.</text>
@@ -320,8 +320,8 @@ export const RepricerStrategyChart = (props: SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 600 360" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
         <defs>
             <linearGradient id="rsc-fill" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="hsl(226 71% 50%)" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="hsl(226 71% 50%)" stopOpacity="0" />
+                <stop offset="0%" stopColor="#3C9AC4" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#3C9AC4" stopOpacity="0" />
             </linearGradient>
         </defs>
         <rect x="10" y="10" width="580" height="340" rx="20" fill="white" stroke="#e2e8f0" />
@@ -348,15 +348,15 @@ export const RepricerStrategyChart = (props: SVGProps<SVGSVGElement>) => (
 
         {/* SellerBuz line (smooth, slightly under ceiling) */}
         <path d="M60 195 C 110 175, 170 200, 230 155 S 350 215, 410 145 S 500 195, 540 165"
-            stroke="hsl(226 71% 50%)" strokeWidth="3" fill="none" />
+            stroke="#3C9AC4" strokeWidth="3" fill="none" />
         <path d="M60 195 C 110 175, 170 200, 230 155 S 350 215, 410 145 S 500 195, 540 165 L 540 280 L 60 280 Z"
             fill="url(#rsc-fill)" />
-        <text x="540" y="155" fontSize="10" fontWeight="800" fill="hsl(226 71% 40%)">SellerBuz</text>
+        <text x="540" y="155" fontSize="10" fontWeight="800" fill="#13355A">SellerBuz</text>
 
         {/* Data points */}
         {[[230, 155], [410, 145], [540, 165]].map(([x, y], i) => (
             <g key={i}>
-                <circle cx={x} cy={y} r="5" fill="white" stroke="hsl(226 71% 50%)" strokeWidth="2.5" />
+                <circle cx={x} cy={y} r="5" fill="white" stroke="#3C9AC4" strokeWidth="2.5" />
             </g>
         ))}
     </svg>
@@ -374,10 +374,10 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
     const STAGE_XS = [32, 32 + STAGE_W + STAGE_GAP, 32 + (STAGE_W + STAGE_GAP) * 2, 32 + (STAGE_W + STAGE_GAP) * 3];
 
     const STAGES = [
-        { label: "INGEST", title: "Raw product CSV", sub: "Photos · brief · specs", hdr: "#2563eb", border: "#bfdbfe", cls: "ap-stage-0" },
-        { label: "EMBED", title: "Vector + tags", sub: "OpenAI · category model", hdr: "#1d4ed8", border: "#bfdbfe", cls: "ap-stage-1" },
-        { label: "GENERATE", title: "Per-channel listing", sub: "Title · bullets · keywords", hdr: "#1e40af", border: "#bfdbfe", cls: "ap-stage-2" },
-        { label: "PUBLISH", title: "Push to live", sub: "Amazon · eBay · Fnac", hdr: "#1e3a8a", border: "#bfdbfe", cls: "ap-stage-3" },
+        { label: "INGEST", title: "Raw product CSV", sub: "Photos · brief · specs", hdr: "#3C9AC4", border: "#BDD9EE", cls: "ap-stage-0" },
+        { label: "EMBED", title: "Vector + tags", sub: "OpenAI · category model", hdr: "#13355A", border: "#BDD9EE", cls: "ap-stage-1" },
+        { label: "GENERATE", title: "Per-channel listing", sub: "Title · bullets · keywords", hdr: "#13355A", border: "#BDD9EE", cls: "ap-stage-2" },
+        { label: "PUBLISH", title: "Push to live", sub: "Amazon · eBay · Fnac", hdr: "#0D2440", border: "#BDD9EE", cls: "ap-stage-3" },
     ];
 
     return (
@@ -390,41 +390,41 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
             <defs>
                 {/* Outer bg */}
                 <linearGradient id="ap-bg" x1="0" x2="1" y1="0" y2="1">
-                    <stop offset="0%" stopColor="#f0f7ff" />
-                    <stop offset="50%" stopColor="#eff6ff" />
-                    <stop offset="100%" stopColor="#f0f4ff" />
+                    <stop offset="0%" stopColor="#E8F0F6" />
+                    <stop offset="50%" stopColor="#E8F0F6" />
+                    <stop offset="100%" stopColor="#E8F0F6" />
                 </linearGradient>
 
                 {/* Stage header gradients */}
                 <linearGradient id="ap-hdr-ingest" x1="0" x2="1" y1="0" y2="0">
-                    <stop offset="0%" stopColor="#2563eb" />
-                    <stop offset="100%" stopColor="#3b82f6" />
+                    <stop offset="0%" stopColor="#3C9AC4" />
+                    <stop offset="100%" stopColor="#3C9AC4" />
                 </linearGradient>
                 <linearGradient id="ap-hdr-embed" x1="0" x2="1" y1="0" y2="0">
-                    <stop offset="0%" stopColor="#1d4ed8" />
-                    <stop offset="100%" stopColor="#60a5fa" />
+                    <stop offset="0%" stopColor="#13355A" />
+                    <stop offset="100%" stopColor="#6BC1E0" />
                 </linearGradient>
                 <linearGradient id="ap-hdr-gen" x1="0" x2="1" y1="0" y2="0">
-                    <stop offset="0%" stopColor="#1e40af" />
-                    <stop offset="100%" stopColor="#3b82f6" />
+                    <stop offset="0%" stopColor="#13355A" />
+                    <stop offset="100%" stopColor="#3C9AC4" />
                 </linearGradient>
                 <linearGradient id="ap-hdr-pub" x1="0" x2="1" y1="0" y2="0">
-                    <stop offset="0%" stopColor="#1e3a8a" />
-                    <stop offset="100%" stopColor="#2563eb" />
+                    <stop offset="0%" stopColor="#0D2440" />
+                    <stop offset="100%" stopColor="#3C9AC4" />
                 </linearGradient>
 
                 {/* Bar fill gradient */}
                 <linearGradient id="ap-bar" x1="0" x2="1" y1="0" y2="0">
-                    <stop offset="0%" stopColor="#1e40af" />
-                    <stop offset="100%" stopColor="#3b82f6" />
+                    <stop offset="0%" stopColor="#13355A" />
+                    <stop offset="100%" stopColor="#3C9AC4" />
                 </linearGradient>
 
                 {/* Card shadow */}
                 <filter id="ap-card-shadow" x="-6%" y="-6%" width="112%" height="120%">
-                    <feDropShadow dx="0" dy="2" stdDeviation="5" floodColor="#93c5fd" floodOpacity="0.14" />
+                    <feDropShadow dx="0" dy="2" stdDeviation="5" floodColor="#BDD9EE" floodOpacity="0.14" />
                 </filter>
                 <filter id="ap-outer-shadow" x="-4%" y="-4%" width="108%" height="112%">
-                    <feDropShadow dx="0" dy="3" stdDeviation="8" floodColor="#93c5fd" floodOpacity="0.16" />
+                    <feDropShadow dx="0" dy="3" stdDeviation="8" floodColor="#BDD9EE" floodOpacity="0.16" />
                 </filter>
 
                 {/* Arrow marker */}
@@ -432,7 +432,7 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
                     <path d="M1 1L7 4L1 7" fill="none" stroke="#94a3b8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </marker>
                 <marker id="ap-arr-blue" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto">
-                    <path d="M1 1L7 4L1 7" fill="none" stroke="#2563eb" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M1 1L7 4L1 7" fill="none" stroke="#3C9AC4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </marker>
             </defs>
 
@@ -440,7 +440,7 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
             <rect
                 x="8" y="8" width="744" height="414" rx="22"
                 fill="url(#ap-bg)"
-                stroke="#bfdbfe" strokeWidth="1.2"
+                stroke="#BDD9EE" strokeWidth="1.2"
                 filter="url(#ap-outer-shadow)"
             />
 
@@ -500,7 +500,7 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
                         {i === 0 && (
                             /* INGEST: coloured file chips */
                             <>
-                                {[["CSV", "#dbeafe", "#1d4ed8"], ["IMG", "#ede9fe", "#5b21b6"], ["SKU", "#dcfce7", "#15803d"], ["TXT", "#fee2e2", "#b91c1c"]].map(([l, bg, col], j) => (
+                                {[["CSV", "#E8F0F6", "#13355A"], ["IMG", "#BDD9EE", "#13355A"], ["SKU", "#dcfce7", "#15803d"], ["TXT", "#fee2e2", "#b91c1c"]].map(([l, bg, col], j) => (
                                     <g key={j}>
                                         <rect x={sx + 12 + j * 32} y={STAGE_Y + 120} width={28} height={22} rx="6" fill={bg} />
                                         <text x={sx + 26 + j * 32} y={STAGE_Y + 135} textAnchor="middle"
@@ -516,7 +516,7 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
                                     <circle key={j}
                                         cx={sx + 22 + j * 26} cy={STAGE_Y + 130}
                                         r={r / 2}
-                                        fill="#3b82f6"
+                                        fill="#3C9AC4"
                                         opacity={0.3 + j * 0.1}
                                         className="ap-blob-anim"
                                         style={{ animationDelay: `${j * 0.18}s`, transformOrigin: `${sx + 18 + j * 22}px ${STAGE_Y + 108}px` }}
@@ -529,7 +529,7 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
                             <>
                                 {[[100, 0.4], [80, 0.55], [62, 0.7]].map(([w, delay], j) => (
                                     <g key={j}>
-                                        <rect x={sx + 12} y={STAGE_Y + 120 + j * 14} width={STAGE_W - 24} height={7} rx="3" fill="#e0e7ff" />
+                                        <rect x={sx + 12} y={STAGE_Y + 120 + j * 14} width={STAGE_W - 24} height={7} rx="3" fill="#BDD9EE" />
                                         <rect
                                             x={sx + 12} y={STAGE_Y + 120 + j * 14}
                                             width={((STAGE_W - 24) * w) / 100}
@@ -549,7 +549,7 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
                         {i === 3 && (
                             /* PUBLISH: Marketplace circles */
                             <>
-                                {[["A", "#f59e0b"], ["W", "#1d4ed8"], ["F", "#ef4444"]].map(([label, col], j) => (
+                                {[["A", "#f59e0b"], ["W", "#13355A"], ["F", "#ef4444"]].map(([label, col], j) => (
                                     <g key={j} className="ap-mkt-anim" style={{ animationDelay: `${j * 0.35}s`, transformOrigin: `${sx + 22 + j * 38}px ${STAGE_Y + 108}px` }}>
                                         <circle cx={sx + 35 + j * 38} cy={STAGE_Y + 130} r="14" fill={col} />
                                         <text x={sx + 35 + j * 38} y={STAGE_Y + 135} textAnchor="middle"
@@ -583,7 +583,7 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
             <line
                 x1={STAGE_XS[2] + STAGE_W / 2} y1={STAGE_Y + STAGE_H + 2}
                 x2={STAGE_XS[2] + STAGE_W / 2} y2={280}
-                stroke="#2563eb" strokeWidth="1.5"
+                stroke="#3C9AC4" strokeWidth="1.5"
                 markerEnd="url(#ap-arr-blue)"
                 className="ap-conn-pulse"
                 style={{ animationDelay: "0.5s" }}
@@ -591,8 +591,8 @@ export const AIPipelineDiagram = (props: SVGProps<SVGSVGElement>) => {
 
             <g className="ap-qa-anim">
                 <rect x={186} y={280} width={372} height={90} rx="16"
-                    fill="#f0f7ff"
-                    stroke="#2563eb" strokeWidth="1.5"
+                    fill="#E8F0F6"
+                    stroke="#3C9AC4" strokeWidth="1.5"
                     strokeDasharray="8 5"
                     filter="url(#ap-card-shadow)"
                     className="ap-qa-dash"
@@ -644,10 +644,10 @@ export const GuideEditorialMockup = (props: SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 720 500" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
         <defs>
             <linearGradient id="be-cover" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0%" stopColor="hsl(226 71% 95%)" /><stop offset="100%" stopColor="hsl(226 71% 90%)" />
+                <stop offset="0%" stopColor="#E8F0F6" /><stop offset="100%" stopColor="#E8F0F6" />
             </linearGradient>
             <linearGradient id="be-bg" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="#ffffff" /><stop offset="100%" stopColor="#eff6ff" />
+                <stop offset="0%" stopColor="#ffffff" /><stop offset="100%" stopColor="#E8F0F6" />
             </linearGradient>
             <linearGradient id="be-shine" x1="0" x2="1" y1="0" y2="0">
                 <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
@@ -674,8 +674,8 @@ export const GuideEditorialMockup = (props: SVGProps<SVGSVGElement>) => (
         {/* Magazine cover left */}
         <g filter="url(#be-shadow)">
             <rect x="40" y="50" width="280" height="400" rx="16" fill="url(#be-cover)" />
-            <rect x="60" y="70" width="80" height="22" rx="11" fill="hsl(226 71% 50%)" opacity="0.15" />
-            <text x="100" y="86" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight="800" fill="hsl(226 71% 40%)" letterSpacing="1.5">ISSUE 04</text>
+            <rect x="60" y="70" width="80" height="22" rx="11" fill="#3C9AC4" opacity="0.15" />
+            <text x="100" y="86" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight="800" fill="#13355A" letterSpacing="1.5">ISSUE 04</text>
             <text x="60" y="180" fontFamily="Inter,system-ui" fontSize="22" fontWeight="800" fill="#0f172a">The Repricer</text>
             <text x="60" y="208" fontFamily="Inter,system-ui" fontSize="22" fontWeight="800" fill="#0f172a">Playbook</text>
             <line x1="60" y1="226" x2="240" y2="226" stroke="#0f172a" opacity="0.15" />
@@ -684,8 +684,8 @@ export const GuideEditorialMockup = (props: SVGProps<SVGSVGElement>) => (
             <text x="60" y="284" fontFamily="Inter,system-ui" fontSize="11" fill="#334155">across 40,000 SKUs.</text>
             {/* Decorative chart */}
             <polyline points="60,400 90,380 120,390 150,360 180,370 210,340 240,350 270,320"
-                stroke="hsl(226 71% 50%)" strokeWidth="2" fill="none" opacity="0.6" />
-            <circle cx="270" cy="320" r="4" fill="hsl(226 71% 50%)" opacity="0.8" />
+                stroke="#3C9AC4" strokeWidth="2" fill="none" opacity="0.6" />
+            <circle cx="270" cy="320" r="4" fill="#3C9AC4" opacity="0.8" />
             <text x="60" y="430" fontFamily="Inter,system-ui" fontSize="9" fill="#64748b">- Buy Box win rate, last 30 days</text>
 
             {/* Diagonal shine sweep on cover */}
@@ -707,8 +707,8 @@ export const GuideEditorialMockup = (props: SVGProps<SVGSVGElement>) => (
         ].map((p, i) => (
             <g key={i} filter="url(#be-shadow)">
                 <rect x="350" y={p.y} width="320" height="92" rx="14" fill="white" stroke="#e2e8f0" />
-                <rect x="366" y={p.y + 18} width="60" height="18" rx="9" fill="hsl(226 71% 95%)" />
-                <text x="396" y={p.y + 31} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="9" fontWeight="800" fill="hsl(226 71% 40%)">{p.c}</text>
+                <rect x="366" y={p.y + 18} width="60" height="18" rx="9" fill="#E8F0F6" />
+                <text x="396" y={p.y + 31} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="9" fontWeight="800" fill="#13355A">{p.c}</text>
                 <text x="436" y={p.y + 31} fontFamily="Inter,system-ui" fontSize="10" fill="#94a3b8">· {p.k}</text>
                 <text x="366" y={p.y + 58} fontFamily="Inter,system-ui" fontSize="13" fontWeight="800" fill="#0f172a">{p.t}</text>
                 <text x="366" y={p.y + 78} fontFamily="Inter,system-ui" fontSize="10" fill="#64748b">Read the full article →</text>
@@ -716,7 +716,7 @@ export const GuideEditorialMockup = (props: SVGProps<SVGSVGElement>) => (
         ))}
 
         {/* Sparkles */}
-        <g fill="white" stroke="hsl(226 71% 70%)" strokeWidth={0.6}>
+        <g fill="white" stroke="#BDD9EE" strokeWidth={0.6}>
             <path d="M680 40 q4 14 18 18 q-14 4 -18 18 q-4 -14 -18 -18 q14 -4 18 -18 z">
                 <animate attributeName="opacity" values="0.3;1;0.3" dur="2.2s" repeatCount="indefinite" />
             </path>
@@ -756,8 +756,8 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
             </linearGradient>
 
             <linearGradient id="ab-purple" x1="0" x2="1">
-                <stop offset="0%" stopColor="#8b5cf6" />
-                <stop offset="100%" stopColor="#7c3aed" />
+                <stop offset="0%" stopColor="#3C9AC4" />
+                <stop offset="100%" stopColor="#3C9AC4" />
             </linearGradient>
 
             {/* Arrow */}
@@ -790,12 +790,12 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
         />
       </marker> */}
             <linearGradient id="ab-border-bl" x1="0" x2="1" y1="0" y2="0" >
-                <stop offset="0%" stopColor="#4338ca" />
-                <stop offset="100%" stopColor="#6366f1" />
+                <stop offset="0%" stopColor="#13355A" />
+                <stop offset="100%" stopColor="#3C9AC4" />
             </linearGradient>
             <linearGradient id="ab-card-bl" x1="0" x2="1" y1="0" y2="0">
-                <stop offset="0%" stopColor="#6366f1" />
-                <stop offset="100%" stopColor="#818cf8" />
+                <stop offset="0%" stopColor="#3C9AC4" />
+                <stop offset="100%" stopColor="#6BC1E0" />
             </linearGradient>
         </defs>
 
@@ -817,7 +817,7 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
 
         {/* TRIGGER */}
         <g>
-            <rect x="5" y="5" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3c4df0" strokeWidth="2" />
+            <rect x="5" y="5" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3C9AC4" strokeWidth="2" />
             <text x="25" y="40" fontSize="14" fontWeight="800" fill="white">
                 TRIGGER
             </text>
@@ -829,8 +829,8 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
                 width="200"
                 height="30"
                 rx="12"
-                fill="#dbeafe"
-                stroke="#3c4df0"
+                fill="#E8F0F6"
+                stroke="#3C9AC4"
                 strokeWidth="2"
             />
 
@@ -851,7 +851,7 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
 
         {/* Schedule loop */}
         <g>
-            <rect x="5" y="345" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3c4df0" strokeWidth="2" />
+            <rect x="5" y="345" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3C9AC4" strokeWidth="2" />
             <text x="25" y="390" fontSize="14" fontWeight="800" fill="white">
                 SCHEDULE · DAILY 09:00
             </text>
@@ -863,8 +863,8 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
                 width="200"
                 height="30"
                 rx="12"
-                fill="#dbeafe"
-                stroke="#3c4df0"
+                fill="#E8F0F6"
+                stroke="#3C9AC4"
                 strokeWidth="2"
             />
 
@@ -877,7 +877,7 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
         </g>
         {/* Condition  */}
         <g>
-            <rect x="350" y="40" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3c4df0" strokeWidth="2" />
+            <rect x="350" y="40" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3C9AC4" strokeWidth="2" />
             <text x="374" y="80" fontSize="14" fontWeight="800" fill="white">
                 IF / FILTER
             </text>
@@ -889,8 +889,8 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
                 width="200"
                 height="30"
                 rx="12"
-                fill="#dbeafe"
-                stroke="#3c4df0"
+                fill="#E8F0F6"
+                stroke="#3C9AC4"
                 strokeWidth="2"
             />
 
@@ -904,7 +904,7 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
         {/* Webhook to Zapier/n8n */}
 
         <g>
-            <rect x="350" y="340" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3c4df0" strokeWidth="2" />
+            <rect x="350" y="340" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3C9AC4" strokeWidth="2" />
             <text x="374" y="380" fontSize="14" fontWeight="800" fill="white">
                 FAN OUT · WEBHOOK
             </text>
@@ -916,8 +916,8 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
                 width="200"
                 height="30"
                 rx="12"
-                fill="#dbeafe"
-                stroke="#3c4df0"
+                fill="#E8F0F6"
+                stroke="#3C9AC4"
                 strokeWidth="2"
             />
 
@@ -932,7 +932,7 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
         {/* Slack */}
 
         <g>
-            <rect x="655" y="5" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3c4df0" strokeWidth="2" />
+            <rect x="655" y="5" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3C9AC4" strokeWidth="2" />
             <text x="684" y="45" fontSize="14" fontWeight="800" fill="white">
                 ACTION · SLACK
             </text>
@@ -944,8 +944,8 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
                 width="200"
                 height="30"
                 rx="12"
-                fill="#dbeafe"
-                stroke="#3c4df0"
+                fill="#E8F0F6"
+                stroke="#3C9AC4"
                 strokeWidth="2"
             />
 
@@ -960,7 +960,7 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
         {/* Email PDF */}
 
         <g>
-            <rect x="655" y="200" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3c4df0" strokeWidth="2" />
+            <rect x="655" y="200" width="260" height="170" rx="18" fill="url(#ab-card-bl)" stroke="#3C9AC4" strokeWidth="2" />
             <text x="684" y="240" fontSize="14" fontWeight="800" fill="white">
                 ACTION · EMAIL
             </text>
@@ -972,8 +972,8 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
                 width="200"
                 height="30"
                 rx="12"
-                fill="#dbeafe"
-                stroke="#3c4df0"
+                fill="#E8F0F6"
+                stroke="#3C9AC4"
                 strokeWidth="2"
             />
 
@@ -992,8 +992,8 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
                 width="200"
                 height="100"
                 rx="12"
-                fill="#dbeafe"
-                stroke="#3c4df0"
+                fill="#E8F0F6"
+                stroke="#3C9AC4"
                 strokeWidth="2"
             />
 
@@ -1011,8 +1011,8 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
                 width="200"
                 height="100"
                 rx="12"
-                fill="#dbeafe"
-                stroke="#3c4df0"
+                fill="#E8F0F6"
+                stroke="#3C9AC4"
                 strokeWidth="2"
             />
 
@@ -1035,7 +1035,7 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
         {/* TRIGGER-IF / FILTER */}
         <path
             d="M264 80  C320 80 320 120 350 120"
-            stroke="#3c4df0"
+            stroke="#3C9AC4"
             strokeWidth="3"
             fill="none"
             markerEnd="url(#ab-arrow)"
@@ -1047,7 +1047,7 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
 
         {/* SCHEDULE · DAILY 09:00-FAN OUT · WEBHOOK */}
         <path
-            d="M264 430 C300 430 300 420 350 420" stroke="#3c4df0"
+            d="M264 430 C300 430 300 420 350 420" stroke="#3C9AC4"
             strokeWidth="3"
             fill="none"
             markerEnd="url(#ab-arrow)"
@@ -1064,7 +1064,7 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
             // d="M460 210 C490 210 490 340 465 340"
             d="M460 210 L460 340"
 
-            stroke="#3c4df0"
+            stroke="#3C9AC4"
             strokeWidth="3"
             fill="none"
             markerEnd="url(#ab-arrow)"
@@ -1077,7 +1077,7 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
         <path
             // d="M610 120  C485 120 485 85 660 85"
             d="M610 120 C630 120 630 85 655 85"
-            stroke="#3c4df0"
+            stroke="#3C9AC4"
             strokeWidth="3"
             fill="none"
             markerEnd="url(#ab-arrow)"
@@ -1091,7 +1091,7 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
         <path
             // d="M610 120  C485 120 485 85 660 85"
             d="M610 120 C630 120 630 280 655 280"
-            stroke="#3c4df0"
+            stroke="#3C9AC4"
             strokeWidth="3"
             fill="none"
             markerEnd="url(#ab-arrow)"
@@ -1103,7 +1103,7 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
 
         <path
             d="M610 420 C630 420 630 460 670 460"
-            stroke="#3c4df0"
+            stroke="#3C9AC4"
             strokeWidth="3"
             fill="none"
             markerEnd="url(#ab-arrow)"
@@ -1114,7 +1114,7 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
         {/* FAN OUT · WEBHOOK -n8n */}
         <path
             d="M460 340 C400 340 400 270 320 270"
-            stroke="#3c4df0"
+            stroke="#3C9AC4"
             strokeWidth="3"
             fill="none"
             markerEnd="url(#ab-arrow)"
@@ -1133,27 +1133,27 @@ export const AutomationBuilderDiagram = (props: SVGProps<SVGSVGElement>) => (
 export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
     const REPORTS = [
         { t: "Daily profit digest", c: "Slack · #sales", time: "09:00", col: "#10b981", live: true },
-        { t: "Weekly Buy Box recap", c: "Email · ops team", time: "Mon 08:00", col: "#2563eb", live: false },
+        { t: "Weekly Buy Box recap", c: "Email · ops team", time: "Mon 08:00", col: "#3C9AC4", live: false },
         { t: "Stockout alert", c: "SMS · on-call", time: "real-time", col: "#ef4444", live: true },
-        { t: "Returns spike (>5%)", c: "Slack + Webhook", time: "real-time", col: "#7c3aed", live: true },
-        { t: "Monthly P&L PDF", c: "Email · finance@", time: "1st 07:00", col: "#0ea5e9", live: false },
+        { t: "Returns spike (>5%)", c: "Slack + Webhook", time: "real-time", col: "#3C9AC4", live: true },
+        { t: "Monthly P&L PDF", c: "Email · finance@", time: "1st 07:00", col: "#3C9AC4", live: false },
         { t: "Competitor moved", c: "n8n webhook", time: "real-time", col: "#ea580c", live: true },
     ];
 
     const KPIS = [
-        { l: "Revenue", v: "$48.2k", d: "+12%", col: "#7c3aed" },
-        { l: "Margin", v: "31.4%", d: "+1.6%", col: "#2563eb" },
+        { l: "Revenue", v: "$48.2k", d: "+12%", col: "#3C9AC4" },
+        { l: "Margin", v: "31.4%", d: "+1.6%", col: "#3C9AC4" },
         { l: "Buy Box", v: "92%", d: "+4%", col: "#10b981" },
     ];
 
     const CHANNELS = [
         { l: "Slack", c: "#10b981", on: true },
-        { l: "Email", c: "#2563eb", on: true },
+        { l: "Email", c: "#3C9AC4", on: true },
         { l: "SMS", c: "#ef4444", on: true },
-        { l: "Webhook", c: "#7c3aed", on: true },
+        { l: "Webhook", c: "#3C9AC4", on: true },
         { l: "Zapier", c: "#ea580c", on: true },
-        { l: "n8n", c: "#7c3aed", on: true },
-        { l: "Teams", c: "#2563eb", on: false },
+        { l: "n8n", c: "#3C9AC4", on: true },
+        { l: "Teams", c: "#3C9AC4", on: false },
         { l: "PagerDuty", c: "#ef4444", on: false },
     ];
 
@@ -1180,24 +1180,24 @@ export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
                 <radialGradient id="rc-bg" cx="45%" cy="40%" r="65%">
                     <stop offset="0%" stopColor="#f6f2ff" />
                     <stop offset="55%" stopColor="#fff8f2" />
-                    <stop offset="100%" stopColor="#eff6ff" />
+                    <stop offset="100%" stopColor="#E8F0F6" />
                 </radialGradient>
 
                 {/* Profit line gradient */}
                 <linearGradient id="rc-line" x1="0" x2="1" y1="0" y2="0">
-                    <stop offset="0%" stopColor="#4338ca" />
-                    <stop offset="100%" stopColor="#dc2626" />
+                    <stop offset="0%" stopColor="#13355A" />
+                    <stop offset="100%" stopColor="#13355A" />
                 </linearGradient>
 
                 {/* Chart area fill */}
                 <linearGradient id="rc-fill" x1="0" x2="0" y1="0" y2="1">
-                    <stop offset="0%" stopColor="#7c3aed" stopOpacity="0.18" />
-                    <stop offset="100%" stopColor="#7c3aed" stopOpacity="0" />
+                    <stop offset="0%" stopColor="#3C9AC4" stopOpacity="0.18" />
+                    <stop offset="100%" stopColor="#3C9AC4" stopOpacity="0" />
                 </linearGradient>
 
                 {/* Card shadow filter */}
                 <filter id="rc-shadow" x="-5%" y="-5%" width="110%" height="115%">
-                    <feDropShadow dx="0" dy="2" stdDeviation="5" floodColor="#c4b5fd" floodOpacity="0.15" />
+                    <feDropShadow dx="0" dy="2" stdDeviation="5" floodColor="#BDD9EE" floodOpacity="0.15" />
                 </filter>
             </defs>
 
@@ -1205,7 +1205,7 @@ export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
             <rect
                 x="10" y="10" width="800" height="540" rx="22"
                 fill="url(#rc-bg)"
-                stroke="#ede9fe" strokeWidth="1.2"
+                stroke="#BDD9EE" strokeWidth="1.2"
                 filter="url(#rc-shadow)"
             />
 
@@ -1218,12 +1218,12 @@ export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
                 Reports &amp; Notifications
             </text>
             {/* Badge */}
-            <rect x="36" y="62" width="182" height="22" rx="11" fill="#ede9fe" />
-            <circle cx="50" cy="73" r="4" fill="#7c3aed" className="rc-glow" />
+            <rect x="36" y="62" width="182" height="22" rx="11" fill="#BDD9EE" />
+            <circle cx="50" cy="73" r="4" fill="#3C9AC4" className="rc-glow" />
             <text
                 x="60" y="77"
                 fontFamily="'DM Sans',sans-serif"
-                fontSize="10" fontWeight="700" fill="#5b21b6"
+                fontSize="10" fontWeight="700" fill="#13355A"
             >
                 12 schedules · 4 channels active
             </text>
@@ -1233,7 +1233,7 @@ export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
                 {/* Panel bg */}
                 <rect
                     x="30" y="98" width="332" height="440" rx="16"
-                    fill="white" stroke="#ede9fe" strokeWidth="1"
+                    fill="white" stroke="#BDD9EE" strokeWidth="1"
                     filter="url(#rc-shadow)"
                 />
                 {/* Panel header */}
@@ -1248,7 +1248,7 @@ export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
                     x="348" y="123"
                     textAnchor="end"
                     fontFamily="'DM Sans',sans-serif"
-                    fontSize="11" fontWeight="700" fill="#7c3aed"
+                    fontSize="11" fontWeight="700" fill="#3C9AC4"
                 >
                     + New
                 </text>
@@ -1267,8 +1267,8 @@ export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
                             {/* Row bg */}
                             <rect
                                 x="36" y={ry} width="320" height="54" rx="10"
-                                fill={isActive ? "#f5f2ff" : "white"}
-                                stroke={isActive ? "#c4b5fd" : "#f3f0ff"}
+                                fill={isActive ? "#E8F0F6" : "white"}
+                                stroke={isActive ? "#BDD9EE" : "#f3f0ff"}
                                 strokeWidth={isActive ? 1.2 : 1}
                             />
                             {/* Left accent */}
@@ -1321,7 +1321,7 @@ export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
             <g className="rc-right-anim" style={{ animationDelay: "0.1s" }}>
                 <rect
                     x="378" y="98" width="402" height="230" rx="16"
-                    fill="white" stroke="#ede9fe" strokeWidth="1"
+                    fill="white" stroke="#BDD9EE" strokeWidth="1"
                     filter="url(#rc-shadow)"
                 />
                 <text
@@ -1331,20 +1331,20 @@ export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
                 >
                     Daily profit digest · preview
                 </text>
-                <rect x="722" y="110" width="48" height="18" rx="6" fill="#eff6ff" />
+                <rect x="722" y="110" width="48" height="18" rx="6" fill="#E8F0F6" />
                 <text
                     x="746" y="122"
                     textAnchor="middle"
                     fontFamily="'DM Sans',sans-serif"
-                    fontSize="9.5" fontWeight="700" fill="#2563eb"
+                    fontSize="9.5" fontWeight="700" fill="#3C9AC4"
                 >
                     PDF · 2pp
                 </text>
 
                 {/* Y-axis baseline */}
-                <line x1="392" y1="268" x2="768" y2="268" stroke="#f0eeff" strokeWidth="1" />
-                <line x1="392" y1="245" x2="768" y2="245" stroke="#f0eeff" strokeWidth="1" strokeDasharray="2 3" />
-                <line x1="392" y1="222" x2="768" y2="222" stroke="#f0eeff" strokeWidth="1" strokeDasharray="2 3" />
+                <line x1="392" y1="268" x2="768" y2="268" stroke="#E8F0F6" strokeWidth="1" />
+                <line x1="392" y1="245" x2="768" y2="245" stroke="#E8F0F6" strokeWidth="1" strokeDasharray="2 3" />
+                <line x1="392" y1="222" x2="768" y2="222" stroke="#E8F0F6" strokeWidth="1" strokeDasharray="2 3" />
 
                 {/* Y labels */}
                 {[["$52k", 168], ["$45k", 191], ["$38k", 214]].map(([l, y], i) => (
@@ -1369,8 +1369,8 @@ export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
                 />
 
                 {/* Endpoint glow dot */}
-                <circle cx="672" cy="180" r="4" fill="#dc2626" opacity="0.6" className="rc-pulse-a" />
-                <circle cx="672" cy="180" r="4" fill="#dc2626" />
+                <circle cx="672" cy="180" r="4" fill="#13355A" opacity="0.6" className="rc-pulse-a" />
+                <circle cx="672" cy="180" r="4" fill="#13355A" />
 
                 {/* KPI chips */}
                 {KPIS.map((k, i) => {
@@ -1381,7 +1381,7 @@ export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
                             className="rc-kpi-anim"
                             style={{ animationDelay: `${0.4 + i * 0.1}s` }}
                         >
-                            <rect x={kx} y="278" width="118" height="42" rx="9" fill="#faf8ff" stroke={k.col} strokeWidth="0" />
+                            <rect x={kx} y="278" width="118" height="42" rx="9" fill="#F4F8FC" stroke={k.col} strokeWidth="0" />
                             <rect x={kx} y="278" width="4" height="42" rx="2" fill={k.col} opacity="0.65" />
                             <text
                                 x={kx + 12} y="292"
@@ -1421,7 +1421,7 @@ export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
             <g className="rc-right-anim" style={{ animationDelay: "0.2s" }}>
                 <rect
                     x="378" y="340" width="402" height="198" rx="16"
-                    fill="white" stroke="#ede9fe" strokeWidth="1"
+                    fill="white" stroke="#BDD9EE" strokeWidth="1"
                     filter="url(#rc-shadow)"
                 />
                 <text
@@ -1448,7 +1448,7 @@ export const ReportingConsoleMockup = (props: SVGProps<SVGSVGElement>) => {
                         >
                             <rect
                                 x={cx2} y={cy2} width="90" height="44" rx="10"
-                                fill={ch.on ? "white" : "#f8f7ff"}
+                                fill={ch.on ? "white" : "#F4F8FC"}
                                 stroke={ch.c}
                                 strokeWidth={ch.on ? 1.6 : 0.8}
                             />
@@ -1510,7 +1510,7 @@ export const AlertTriageDiagram = (props: SVGProps<SVGSVGElement>) => {
     ];
 
     const LANE_META = [
-        { label: "INFO", dotColor: "#3b82f6", laneBg: "#eff6ff", laneBorder: "#bfdbfe", cardBg: "#ffffff", cardBorder: "#dbeafe", labelColor: "#1d4ed8" },
+        { label: "INFO", dotColor: "#3C9AC4", laneBg: "#E8F0F6", laneBorder: "#BDD9EE", cardBg: "#ffffff", cardBorder: "#E8F0F6", labelColor: "#13355A" },
         { label: "WARNING", dotColor: "#f59e0b", laneBg: "#fffbeb", laneBorder: "#fde68a", cardBg: "#ffffff", cardBorder: "#fef3c7", labelColor: "#b45309" },
         { label: "CRITICAL", dotColor: "#f43f5e", laneBg: "#fff1f2", laneBorder: "#fecdd3", cardBg: "#ffffff", cardBorder: "#fce7f3", labelColor: "#be123c" },
     ];
@@ -1535,17 +1535,17 @@ export const AlertTriageDiagram = (props: SVGProps<SVGSVGElement>) => {
             <defs>
                 {/* Outer card gradient */}
                 <linearGradient id="at-bg" x1="0" x2="1" y1="0" y2="1">
-                    <stop offset="0%" stopColor="#f0f4ff" />
+                    <stop offset="0%" stopColor="#E8F0F6" />
                     <stop offset="55%" stopColor="#fdf8ff" />
                     <stop offset="100%" stopColor="#fff0f5" />
                 </linearGradient>
 
                 {/* Card shadow */}
                 <filter id="at-card-shadow" x="-5%" y="-5%" width="110%" height="114%">
-                    <feDropShadow dx="0" dy="2" stdDeviation="6" floodColor="#c4b5fd" floodOpacity="0.16" />
+                    <feDropShadow dx="0" dy="2" stdDeviation="6" floodColor="#BDD9EE" floodOpacity="0.16" />
                 </filter>
                 <filter id="at-lane-shadow" x="-6%" y="-6%" width="112%" height="116%">
-                    <feDropShadow dx="0" dy="1" stdDeviation="4" floodColor="#c4b5fd" floodOpacity="0.10" />
+                    <feDropShadow dx="0" dy="1" stdDeviation="4" floodColor="#BDD9EE" floodOpacity="0.10" />
                 </filter>
             </defs>
 
@@ -1700,15 +1700,15 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
             {/* Light background gradient - soft sky-to-lavender */}
             <linearGradient id="ah-bg" x1="0" x2="1" y1="0" y2="1">
                 <stop offset="0%" stopColor="#e0f2fe" />
-                <stop offset="45%" stopColor="#ede9fe" />
+                <stop offset="45%" stopColor="#BDD9EE" />
                 <stop offset="75%" stopColor="#fce7f3" />
                 <stop offset="100%" stopColor="#fff7ed" />
             </linearGradient>
 
             {/* Ambient glow blobs */}
             <linearGradient id="glow1" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0%" stopColor="#a5b4fc" stopOpacity="0.35" />
-                <stop offset="100%" stopColor="#a5b4fc" stopOpacity="0" />
+                <stop offset="0%" stopColor="#6BC1E0" stopOpacity="0.35" />
+                <stop offset="100%" stopColor="#6BC1E0" stopOpacity="0" />
             </linearGradient>
             <linearGradient id="glow2" x1="0" x2="1" y1="0" y2="1">
                 <stop offset="0%" stopColor="#fb923c" stopOpacity="0.22" />
@@ -1717,8 +1717,8 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
 
             {/* Chart fill under the algo line */}
             <linearGradient id="chart-fill" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="#6366f1" stopOpacity="0.15" />
-                <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
+                <stop offset="0%" stopColor="#3C9AC4" stopOpacity="0.15" />
+                <stop offset="100%" stopColor="#3C9AC4" stopOpacity="0" />
             </linearGradient>
 
             {/* Card drop shadow */}
@@ -1774,7 +1774,7 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
             height="400"
             rx="22"
             fill="none"
-            stroke="#c7d2fe"
+            stroke="#BDD9EE"
             strokeWidth="1"
         />
 
@@ -1786,7 +1786,7 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
         <g opacity="0.12">
             {[60, 100, 140, 180, 220, 260, 300, 340, 380, 420].map((cx) =>
                 [60, 100, 140, 180, 220, 260, 300, 340, 380].map((cy) => (
-                    <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="1.2" fill="#6366f1" />
+                    <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="1.2" fill="#3C9AC4" />
                 ))
             )}
         </g>
@@ -1802,17 +1802,17 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
             filter="url(#paper-shadow)"
         />
         {/* Paper top accent strip */}
-        <rect x="48" y="52" width="360" height="6" rx="3" fill="#6366f1" opacity="0.15" />
+        <rect x="48" y="52" width="360" height="6" rx="3" fill="#3C9AC4" opacity="0.15" />
 
         {/* Category pill */}
-        <rect x="68" y="72" width="68" height="16" rx="8" fill="#ede9fe" />
+        <rect x="68" y="72" width="68" height="16" rx="8" fill="#BDD9EE" />
         <text
             x="102"
             y="84"
             textAnchor="middle"
             fontSize="8.5"
             fontWeight="700"
-            fill="#6d28d9"
+            fill="#13355A"
             fontFamily="Georgia, serif"
         >
             Repricing
@@ -1848,9 +1848,9 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
         <rect x="68" y="160" width="280" height="8" rx="3" fill="url(#glow2)" />
 
         <rect x="68" y="180" width="275" height="110" rx="12" fill="url(#glow1)" />
-        <circle cx="84" cy="200" r="5" fill="#6366f1" />
-        <circle cx="84" cy="230" r="5" fill="#6366f1" />
-        <circle cx="84" cy="260" r="5" fill="#6366f1" />
+        <circle cx="84" cy="200" r="5" fill="#3C9AC4" />
+        <circle cx="84" cy="230" r="5" fill="#3C9AC4" />
+        <circle cx="84" cy="260" r="5" fill="#3C9AC4" />
         <text
             x="95"
             y="203"
@@ -1889,7 +1889,7 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
         <line x1="68" y1="310" x2="388" y2="310" stroke="#e2e8f0" strokeWidth="1" />
 
         {/* Author row inside paper */}
-        <circle cx="84" cy="330" r="10" fill="#6366f1" />
+        <circle cx="84" cy="330" r="10" fill="#3C9AC4" />
         <text
             x="84"
             y="334"
@@ -1992,7 +1992,7 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
         {/* Algo line (solid indigo) */}
         <path
             d="M452 230 L482 210 L512 218 L542 192 L572 178 L602 160 L632 168 L662 140"
-            stroke="#6366f1"
+            stroke="#3C9AC4"
             strokeWidth="2.4"
             fill="none"
             strokeLinecap="round"
@@ -2014,11 +2014,11 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
             [452, 230], [482, 210], [512, 218], [542, 192],
             [572, 178], [602, 160], [632, 168], [662, 140],
         ].map(([cx, cy], i) => (
-            <circle key={i} cx={cx} cy={cy} r="3" fill="#6366f1" />
+            <circle key={i} cx={cx} cy={cy} r="3" fill="#3C9AC4" />
         ))}
 
         {/* +7% callout badge */}
-        <rect x="622" y="126" width="32" height="15" rx="7" fill="#6366f1" />
+        <rect x="622" y="126" width="32" height="15" rx="7" fill="#3C9AC4" />
         <text
             x="638"
             y="137"
@@ -2032,7 +2032,7 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
         </text>
 
         {/* Legend */}
-        <line x1="452" y1="252" x2="466" y2="252" stroke="#6366f1" strokeWidth="2.5" strokeLinecap="round" />
+        <line x1="452" y1="252" x2="466" y2="252" stroke="#3C9AC4" strokeWidth="2.5" strokeLinecap="round" />
         <text x="470" y="256" fontSize="8" fill="#64748b" fontFamily="Georgia, serif">
             algo wins
         </text>
@@ -2065,8 +2065,8 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
 
         {/* ── STAT CHIPS BOTTOM RIGHT ── */}
         {[
-            { x: 432, label: "3.2×", sub: "Buy Box wins", accent: "#6366f1" },
-            { x: 514, label: "200+", sub: "SKU threshold", accent: "#0ea5e9" },
+            { x: 432, label: "3.2×", sub: "Buy Box wins", accent: "#3C9AC4" },
+            { x: 514, label: "200+", sub: "SKU threshold", accent: "#3C9AC4" },
             { x: 596, label: "24/7", sub: "Auto repricing", accent: "#10b981" },
         ].map(({ x, label, sub, accent }) => (
             <g key={x}>
@@ -2106,14 +2106,14 @@ export const ArticleHeroMockup = (props: SVGProps<SVGSVGElement>) => (
 
         {/* ── BADGES BOTTOM LEFT ── */}
         {/* Strategy badge */}
-        <rect x="48" y="368" width="78" height="24" rx="12" fill="#ede9fe" />
+        <rect x="48" y="368" width="78" height="24" rx="12" fill="#BDD9EE" />
         <text
             x="87"
             y="384"
             textAnchor="middle"
             fontSize="9.5"
             fontWeight="700"
-            fill="#4f46e5"
+            fill="#13355A"
             fontFamily="Georgia, serif"
         >
             Strategy

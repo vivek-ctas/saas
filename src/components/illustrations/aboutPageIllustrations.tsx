@@ -7,14 +7,14 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
     <svg viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
         <defs>
             <linearGradient id="aj-bg" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="#ffffff" /><stop offset="100%" stopColor="#eff6ff" />
+                <stop offset="0%" stopColor="#ffffff" /><stop offset="100%" stopColor="#E8F0F6" />
             </linearGradient>
             <linearGradient id="aj-card" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0%" stopColor="hsl(226 71% 95%)" />
-                <stop offset="100%" stopColor="hsl(226 71% 90%)" />
+                <stop offset="0%" stopColor="#E8F0F6" />
+                <stop offset="100%" stopColor="#E8F0F6" />
             </linearGradient>
             <linearGradient id="aj-accent" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="hsl(226 71% 50%)" /><stop offset="100%" stopColor="hsl(226 71% 40%)" />
+                <stop offset="0%" stopColor="#3C9AC4" /><stop offset="100%" stopColor="#13355A" />
             </linearGradient>
             <linearGradient id="aj-shine" x1="0" x2="1" y1="0" y2="0">
                 <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
@@ -41,22 +41,22 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
                 width="95"
                 height="22"
                 rx="11"
-                fill="hsl(226 71% 50%)"
+                fill="#3C9AC4"
                 opacity="0.15"
             />
-            <text x="100" y="86" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight="800" fill="hsl(226 71% 40%)" letterSpacing="1.5">2019 → 2026</text>
+            <text x="100" y="86" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight="800" fill="#13355A" letterSpacing="1.5">2019 → 2026</text>
 
             {/* Founders avatars */}
             <g transform="translate(60, 120)">
-                <circle cx="28" cy="28" r="28" fill="hsl(226 71% 50%)" />
+                <circle cx="28" cy="28" r="28" fill="#3C9AC4" />
                 <text x="28" y="33" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="14" fontWeight="800" fill="white">RS</text>
-                <circle cx="76" cy="28" r="28" fill="hsl(226 71% 45%)" />
+                <circle cx="76" cy="28" r="28" fill="#13355A" />
                 <text x="76" y="33" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="14" fontWeight="800" fill="white">AP</text>
             </g>
 
             <text x="60" y="220" fontFamily="Inter,system-ui" fontSize="20" fontWeight="800" fill="#0f172a">Two engineers,</text>
             <text x="60" y="246" fontFamily="Inter,system-ui" fontSize="20" fontWeight="800" fill="#0f172a">one mission.</text>
-            <line x1="60" y1="266" x2="160" y2="266" stroke="hsl(226 71% 50%)" strokeWidth="3" />
+            <line x1="60" y1="266" x2="160" y2="266" stroke="#3C9AC4" strokeWidth="3" />
             <text x="60" y="296" fontFamily="Inter,system-ui" fontSize="11" fill="#475569">We started SellerBuz in an Ahmedabad</text>
             <text x="60" y="312" fontFamily="Inter,system-ui" fontSize="11" fill="#475569">garage to end the spreadsheet hell</text>
             <text x="60" y="328" fontFamily="Inter,system-ui" fontSize="11" fill="#475569">of multichannel sellers.</text>
@@ -75,7 +75,7 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
                 ))}
             </g>
 
-            <rect x="60" y="420" width="260" height="32" rx="16" fill="hsl(226 71% 50%)" />
+            <rect x="60" y="420" width="260" height="32" rx="16" fill="#3C9AC4" />
             <text x="190" y="441" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="11" fontWeight="800" fill="white">Read the founder story →</text>
 
             {/* Diagonal shine sweep on founder card */}
@@ -92,11 +92,11 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
         <g>
             <text x="400" y="74" fontFamily="Inter,system-ui" fontSize="11" fontWeight="800" fill="#64748b" letterSpacing="2">MILESTONES</text>
             {[
-                { y: 100, year: "2019", t: "Founded in Ahmedabad", c: "hsl(226 71% 50%)" },
-                { y: 170, year: "2021", t: "Series A · $12M raised", c: "hsl(226 71% 45%)" },
-                { y: 240, year: "2023", t: "Crossed 50 countries", c: "hsl(226 71% 50%)" },
-                { y: 310, year: "2024", t: "AI Repricer launched", c: "hsl(226 71% 40%)" },
-                { y: 380, year: "2026", t: "100K-seller goal", c: "hsl(226 71% 40%)" },
+                { y: 100, year: "2019", t: "Founded in Ahmedabad", c: "#3C9AC4" },
+                { y: 170, year: "2021", t: "Series A · $12M raised", c: "#13355A" },
+                { y: 240, year: "2023", t: "Crossed 50 countries", c: "#3C9AC4" },
+                { y: 310, year: "2024", t: "AI Repricer launched", c: "#13355A" },
+                { y: 380, year: "2026", t: "100K-seller goal", c: "#13355A" },
             ].map((m, i, arr) => (
                 <g key={i}>
                     {i < arr.length - 1 && (
@@ -117,7 +117,7 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
         </g>
 
         {/* Sparkles */}
-        <g fill="white" stroke="hsl(226 71% 70%)" strokeWidth={0.6}>
+        <g fill="white" stroke="#6BC1E0" strokeWidth={0.6}>
             <path d="M680 40 q4 14 18 18 q-14 4 -18 18 q-4 -14 -18 -18 q14 -4 18 -18 z">
                 <animate attributeName="opacity" values="0.3;1;0.3" dur="2.2s" repeatCount="indefinite" />
             </path>
@@ -142,8 +142,8 @@ export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => {
     const DiagramDefs = () => (
         <defs>
             <linearGradient id="ai-tile" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#A855F7" />
-                <stop offset="100%" stopColor="#7C3AED" />
+                <stop offset="0%" stopColor="#3C9AC4" />
+                <stop offset="100%" stopColor="#13355A" />
             </linearGradient>
         </defs>
     );
@@ -266,13 +266,13 @@ export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => {
             <rect x="10" y="10" width="620" height="520" rx="20" fill="#FAFAFD" />
 
             {/* Column labels */}
-            <text x={IN_X + IN_W / 2} y="35" textAnchor="middle" fontSize="12" fontWeight="800" fill="#7C3AED" letterSpacing="1.5">
+            <text x={IN_X + IN_W / 2} y="35" textAnchor="middle" fontSize="12" fontWeight="800" fill="#13355A" letterSpacing="1.5">
                 INPUT LAYER
             </text>
-            <text x={tileCx} y="35" textAnchor="middle" fontSize="12" fontWeight="800" fill="#7C3AED" letterSpacing="1.5">
+            <text x={tileCx} y="35" textAnchor="middle" fontSize="12" fontWeight="800" fill="#13355A" letterSpacing="1.5">
                 AI ENGINE
             </text>
-            <text x={OUT_X + OUT_W / 2} y="35" textAnchor="middle" fontSize="12" fontWeight="800" fill="#7C3AED" letterSpacing="1.5">
+            <text x={OUT_X + OUT_W / 2} y="35" textAnchor="middle" fontSize="12" fontWeight="800" fill="#13355A" letterSpacing="1.5">
                 OUTPUT LAYER
             </text>
 
@@ -287,14 +287,14 @@ export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => {
                             <path
                                 d={d}
                                 fill="none"
-                                stroke="#C4B5FD"
+                                stroke="#BDD9EE"
                                 strokeWidth="1"
                                 opacity="0.7"
                                 strokeDasharray="4 4"
                             >
                                 <animate attributeName="stroke-dashoffset" values="0;-16" dur={`${1.4 + (i + j) * 0.1}s`} repeatCount="indefinite" />
                             </path>
-                            <circle r="2" fill="#7C3AED" opacity={0.6}>
+                            <circle r="2" fill="#3C9AC4" opacity={0.6}>
                                 <animateMotion dur={`${1.8 + (i + j) * 0.1}s`} repeatCount="indefinite" path={d} />
                             </circle>
                         </g>
@@ -304,11 +304,11 @@ export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => {
 
             {/* dots at input card edges */}
             {IN_YS.map((iy, i) => (
-                <circle key={`ind-${i}`} cx={IN_X + IN_W} cy={iy + IN_H / 2} r="4" fill="#7C3AED" />
+                <circle key={`ind-${i}`} cx={IN_X + IN_W} cy={iy + IN_H / 2} r="4" fill="#3C9AC4" />
             ))}
             {/* dots where bundles enter the AI engine */}
             {TILE_YS.map((ty, j) => (
-                <circle key={`aid-${j}`} cx={AI_X - 6} cy={ty + TILE_SIZE / 2} r="4" fill="#3B82F6" />
+                <circle key={`aid-${j}`} cx={AI_X - 6} cy={ty + TILE_SIZE / 2} r="4" fill="#3C9AC4" />
             ))}
 
             {/* Connections: AI nodes -> outputs */}
@@ -337,7 +337,7 @@ export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => {
                 );
             })}
             {TILE_YS.map((ty, j) => (
-                <circle key={`aido-${j}`} cx={AI_X + AI_W + 6} cy={ty + TILE_SIZE / 2} r="4" fill="#3B82F6" />
+                <circle key={`aido-${j}`} cx={AI_X + AI_W + 6} cy={ty + TILE_SIZE / 2} r="4" fill="#3C9AC4" />
             ))}
             {OUT_YS.map((oy, i) => (
                 <circle key={`outd-${i}`} cx={OUT_X} cy={oy + OUT_H / 2} r="4" fill="#14B8A6" />
@@ -348,9 +348,9 @@ export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => {
                 const y = IN_YS[i];
                 return (
                     <g key={inp.label.join(" ")}>
-                        <rect x={IN_X} y={y} width={IN_W} height={IN_H} rx="14" fill="white" stroke="#ECE9F7" />
-                        <circle cx={IN_X + 36} cy={y + IN_H / 2} r="22" fill="#F1EBFC" />
-                        <g transform={`translate(${IN_X + 24},${y + IN_H / 2 - 12})`} color="#7C3AED">
+                        <rect x={IN_X} y={y} width={IN_W} height={IN_H} rx="14" fill="white" stroke="#BDD9EE" />
+                        <circle cx={IN_X + 36} cy={y + IN_H / 2} r="22" fill="#E8F0F6" />
+                        <g transform={`translate(${IN_X + 24},${y + IN_H / 2 - 12})`} color="#3C9AC4">
                             <Icon name={inp.icon} size="24" />
                         </g>
                         <text x={IN_X + 70} y={y + IN_H / 2 - 2} fontSize="14" fontWeight="700" fill="#0F172A">
@@ -364,7 +364,7 @@ export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => {
             })}
 
             {/* AI engine container */}
-            <rect x={AI_X} y={AI_TOP} width={AI_W} height={AI_H} rx="20" fill="white" stroke="#E4DBFB" />
+            <rect x={AI_X} y={AI_TOP} width={AI_W} height={AI_H} rx="20" fill="white" stroke="#BDD9EE" />
 
             {NODES.map((node, j) => {
                 const ty = TILE_YS[j];
@@ -382,7 +382,7 @@ export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => {
                             {node.label[1]}
                         </text>
                         {j < NODES.length - 1 && (
-                            <g fill="#C4B5FD">
+                            <g fill="#BDD9EE">
                                 <circle cx={tileCx} cy={ty + TILE_SIZE + 52} r="1.6" />
                                 <circle cx={tileCx} cy={ty + TILE_SIZE + 60} r="1.6" />
                                 <circle cx={tileCx} cy={ty + TILE_SIZE + 68} r="1.6" />

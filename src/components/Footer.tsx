@@ -108,7 +108,7 @@ const FooterLinkColumn = ({ title, links }: FooterLinkGroup) => (
   <div className="space-y-4">
     <div>
       <h4 className="font-semibold text-white text-base">{title}</h4>
-      <span className="mt-2 block h-0.5 w-6 rounded-full bg-gradient-to-r from-[#3C9AC4] to-[#5BB8E8]" />
+      <span className="mt-2 block h-0.5 w-6 rounded-full bg-gradient-to-r from-[#3C9AC4] to-[#6BC1E0]" />
     </div>
     <ul className="space-y-3 text-sm">
       {links.map((link) => {

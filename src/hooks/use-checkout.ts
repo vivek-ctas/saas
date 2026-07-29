@@ -169,7 +169,7 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
           preferences: { show_default_blocks: true },
         },
       },
-      theme: { color: '#6366f1' },
+      theme: { color: '#3C9AC4' },
 
       handler: async (response) => {
         try {

@@ -62,29 +62,29 @@ function SelectMarketplaceMockup() {
                 >
                     {/* ── Continent blobs ── */}
                     {/* Americas */}
-                    <ellipse cx="52" cy="58" rx="28" ry="20" fill="#DBEAFE" fillOpacity="0.8" />
-                    <ellipse cx="56" cy="86" rx="15" ry="13" fill="#DBEAFE" fillOpacity="0.8" />
+                    <ellipse cx="52" cy="58" rx="28" ry="20" fill="#E8F0F6" fillOpacity="0.8" />
+                    <ellipse cx="56" cy="86" rx="15" ry="13" fill="#E8F0F6" fillOpacity="0.8" />
                     {/* Europe */}
-                    <ellipse cx="138" cy="46" rx="22" ry="15" fill="#DBEAFE" fillOpacity="0.8" />
+                    <ellipse cx="138" cy="46" rx="22" ry="15" fill="#E8F0F6" fillOpacity="0.8" />
                     {/* Africa */}
-                    <ellipse cx="140" cy="74" rx="15" ry="18" fill="#DBEAFE" fillOpacity="0.8" />
+                    <ellipse cx="140" cy="74" rx="15" ry="18" fill="#E8F0F6" fillOpacity="0.8" />
                     {/* Asia */}
-                    <ellipse cx="208" cy="50" rx="42" ry="20" fill="#DBEAFE" fillOpacity="0.8" />
+                    <ellipse cx="208" cy="50" rx="42" ry="20" fill="#E8F0F6" fillOpacity="0.8" />
                     {/* Australia */}
-                    <ellipse cx="240" cy="88" rx="18" ry="10" fill="#DBEAFE" fillOpacity="0.8" />
+                    <ellipse cx="240" cy="88" rx="18" ry="10" fill="#E8F0F6" fillOpacity="0.8" />
 
                     {/* ── Dashed connection lines from USA (52,58) ── */}
-                    <line x1="52" y1="58" x2="135" y2="43" stroke="#93C5FD" strokeWidth="1.2" strokeDasharray="5 3" />
-                    <line x1="52" y1="58" x2="208" y2="47" stroke="#93C5FD" strokeWidth="1.2" strokeDasharray="5 3" />
-                    <line x1="52" y1="58" x2="204" y2="72" stroke="#93C5FD" strokeWidth="1.2" strokeDasharray="5 3" />
+                    <line x1="52" y1="58" x2="135" y2="43" stroke="#BDD9EE" strokeWidth="1.2" strokeDasharray="5 3" />
+                    <line x1="52" y1="58" x2="208" y2="47" stroke="#BDD9EE" strokeWidth="1.2" strokeDasharray="5 3" />
+                    <line x1="52" y1="58" x2="204" y2="72" stroke="#BDD9EE" strokeWidth="1.2" strokeDasharray="5 3" />
 
                     {/* ── Canada (inactive) ── */}
                     <circle cx="48" cy="28" r="11" fill="white" stroke="#CBD5E1" strokeWidth="1.5" />
                     <text x="48" y="33" textAnchor="middle" fontSize="13" dominantBaseline="auto">🇨🇦</text>
 
                     {/* ── USA (active — large blue ring) ── */}
-                    <circle cx="52" cy="58" r="16" fill="#2563EB" />
-                    <circle cx="52" cy="58" r="20" fill="none" stroke="#93C5FD" strokeWidth="2" />
+                    <circle cx="52" cy="58" r="16" fill="#3C9AC4" />
+                    <circle cx="52" cy="58" r="20" fill="none" stroke="#BDD9EE" strokeWidth="2" />
                     <text x="52" y="64" textAnchor="middle" fontSize="17" dominantBaseline="auto">🇺🇸</text>
 
                     {/* ── UK ── */}
@@ -111,7 +111,7 @@ function SelectMarketplaceMockup() {
                     <Plus className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
                     <span className="truncate">Add More Region…</span>
                 </button>
-                <div className="w-full flex items-center justify-center gap-1.5 bg-blue-600 text-white rounded-lg sm:rounded-xl py-2 text-[11px] sm:text-xs font-semibold cursor-pointer select-none">
+                <div className="w-full flex items-center justify-center gap-1.5 bg-[#13355A] text-white rounded-lg sm:rounded-xl py-2 text-[11px] sm:text-xs font-semibold cursor-pointer select-none">
                     Next <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
                 </div>
             </div>
@@ -155,7 +155,7 @@ function AddStoreMockup() {
                     </div>
                 </div>
                 {/* Continue button */}
-                <div className="w-full flex items-center justify-center gap-1.5 bg-blue-600 text-white rounded-lg sm:rounded-xl py-2.5 text-[11px] sm:text-xs font-semibold">
+                <div className="w-full flex items-center justify-center gap-1.5 bg-[#13355A] text-white rounded-lg sm:rounded-xl py-2.5 text-[11px] sm:text-xs font-semibold">
                     Continue <ArrowRight className="w-3.5 h-3.5 shrink-0" />
                 </div>
             </div>
@@ -184,7 +184,7 @@ function ConnectAmazonMockup() {
                         </p>
                     </div>
                     {/* connect button */}
-                    <div className="w-full flex items-center justify-center gap-1.5 bg-blue-600 text-white rounded-lg sm:rounded-xl py-2.5 text-[11px] sm:text-xs font-semibold">
+                    <div className="w-full flex items-center justify-center gap-1.5 bg-[#13355A] text-white rounded-lg sm:rounded-xl py-2.5 text-[11px] sm:text-xs font-semibold">
                         <LockKeyhole className="w-3.5 h-3.5 shrink-0" />
                         <span className="truncate">Connect to Amazon</span>
                     </div>
@@ -201,11 +201,11 @@ function ConnectAmazonMockup() {
                                 className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center border-2 shrink-0 ${i === 2
                                     ? "bg-emerald-500 border-emerald-500"
                                     : i === 1
-                                        ? "bg-blue-100 border-blue-300"
+                                        ? "bg-[#E8F0F6] border-[#BDD9EE]"
                                         : "bg-slate-100 border-slate-200"
                                     }`}
                             >
-                                <Icon className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${i === 2 ? "text-white" : i === 1 ? "text-blue-600" : "text-slate-500"}`} />
+                                <Icon className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${i === 2 ? "text-white" : i === 1 ? "text-[#3C9AC4]" : "text-slate-500"}`} />
                             </div>
                             <span className="text-[9px] sm:text-[10px] text-slate-500 font-medium truncate">{label}</span>
                         </div>
@@ -245,7 +245,7 @@ function BottomConnector({ visible }: { visible: boolean }) {
                                 : "bg-white border-slate-200 shadow-sm"
                                 }`}
                         >
-                            <n.icon className={`w-4 h-4 sm:w-5 sm:h-5 ${n.success ? "text-emerald-600" : "text-blue-600"}`} />
+                            <n.icon className={`w-4 h-4 sm:w-5 sm:h-5 ${n.success ? "text-emerald-600" : "text-[#3C9AC4]"}`} />
                         </div>
                         <div className="text-center mt-1">
                             <p
@@ -304,7 +304,7 @@ function StepCard({
         >
             {/* step header */}
             <div className="flex items-start gap-2.5 sm:gap-3">
-                <span className="inline-flex items-center px-2.5 sm:px-3 py-1 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold bg-blue-600 text-white shrink-0 shadow">
+                <span className="inline-flex items-center px-2.5 sm:px-3 py-1 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold bg-[#13355A] text-white shrink-0 shadow">
                     {num}
                 </span>
                 <div className="min-w-0">
@@ -331,8 +331,8 @@ function StepArrow({ visible }: { visible: boolean }) {
             }}
         >
             <svg width="44" height="14" viewBox="0 0 44 14">
-                <line x1="2" y1="7" x2="34" y2="7" stroke="#BFDBFE" strokeWidth="2" />
-                <polyline points="30,3 38,7 30,11" fill="none" stroke="#60A5FA" strokeWidth="2" strokeLinejoin="round" />
+                <line x1="2" y1="7" x2="34" y2="7" stroke="#BDD9EE" strokeWidth="2" />
+                <polyline points="30,3 38,7 30,11" fill="none" stroke="#6BC1E0" strokeWidth="2" strokeLinejoin="round" />
             </svg>
         </div>
     );
@@ -357,7 +357,7 @@ export function ConnectAmazonGuide() {
                         transform: visible ? "translateY(0)" : "translateY(14px)",
                     }}
                 >
-                    <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100 mb-2.5 sm:mb-3">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold bg-[#E8F0F6] text-[#13355A] border border-[#BDD9EE] mb-2.5 sm:mb-3">
                         How It Works
                     </span>
                     <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-2.5 sm:mb-3 leading-tight">
@@ -379,7 +379,7 @@ export function ConnectAmazonGuide() {
                 >
                     {/* top label strip */}
                     <div className="flex flex-wrap items-center gap-2 sm:gap-3 px-3 sm:px-6 lg:px-8 py-3 sm:py-4 border-b border-slate-100 bg-slate-50">
-                        <span className="inline-flex items-center px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-blue-600 text-white shadow shrink-0">
+                        <span className="inline-flex items-center px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-[#13355A] text-white shadow shrink-0">
                             STEP 2
                         </span>
                         <span className="text-sm sm:text-base font-semibold text-slate-700">Amazon Workflow</span>
@@ -452,13 +452,13 @@ export function ConnectAmazonGuide() {
 
                         {/* footer info strip */}
                         <div
-                            className="mt-4 sm:mt-5 flex items-start gap-2 sm:gap-2.5 bg-blue-50 border border-blue-100 rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3"
+                            className="mt-4 sm:mt-5 flex items-start gap-2 sm:gap-2.5 bg-[#E8F0F6] border border-[#BDD9EE] rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3"
                             style={{
                                 transition: "opacity 0.6s ease 800ms",
                                 opacity: visible ? 1 : 0,
                             }}
                         >
-                            <BadgeCheck className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 shrink-0 mt-0.5 sm:mt-0" />
+                            <BadgeCheck className="w-4 h-4 sm:w-5 sm:h-5 text-[#3C9AC4] shrink-0 mt-0.5 sm:mt-0" />
                             <p className="text-xs sm:text-sm font-semibold text-slate-700 leading-relaxed">
                                 One-time setup. Once authorized, SellerBuz syncs your Amazon store automatically — inventory, orders and pricing update in real time.
                             </p>
@@ -493,8 +493,8 @@ export function ConnectAmazonGuide() {
                         },
                     ].map(({ icon: Icon, title, desc }) => (
                         <div key={title} className="flex items-start gap-3 bg-white border border-slate-200 rounded-xl sm:rounded-2xl px-4 py-4 sm:px-5 sm:py-5 shadow-sm">
-                            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-blue-50 flex items-center justify-center shrink-0 mt-0.5">
-                                <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
+                            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-[#E8F0F6] flex items-center justify-center shrink-0 mt-0.5">
+                                <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#3C9AC4]" />
                             </div>
                             <div className="min-w-0">
                                 <p className="text-sm sm:text-base font-semibold text-slate-900">{title}</p>

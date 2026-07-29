@@ -2,13 +2,13 @@ import { ReactNode, SVGProps } from "react";
 import { Boxes, ShoppingCart, DollarSign, BarChart3, Wand2, RefreshCw, LayoutGrid, ShieldCheck, Image as ImageIcon, Sparkles } from "lucide-react";
 
 export const ILL = {
-    navy: "#0b1e3f",
+    navy: "#13355A",
     ink: "#0f172a",
-    blue: "#2563eb",
-    blueDeep: "#1d4ed8",
-    sky: "#60a5fa",
-    tint: "#dbeafe",
-    wash: "#eff6ff",
+    blue: "#3C9AC4",
+    blueDeep: "#2B7AA8",
+    sky: "#6BC1E0",
+    tint: "#E8F0F6",
+    wash: "#F4F8FC",
     stroke: "#cbd5e1",
     softStroke: "#e2e8f0",
     muted: "#64748b",
@@ -22,30 +22,30 @@ export type IconKind = "warehouse" | "box" | "bag" | "cart" | "tag" | "dot";
 export const IllDefs = ({ id = "ill" }: { id?: string }) => (
     <defs>
         <linearGradient id={`${id}-wash`} x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0%" stopColor="#f8fafc" />
-            <stop offset="100%" stopColor="#eff6ff" />
+            <stop offset="0%" stopColor="#FFFFFF" />
+            <stop offset="100%" stopColor="#E8F0F6" />
         </linearGradient>
         <linearGradient id={`${id}-blue`} x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0%" stopColor="#2563eb" />
-            <stop offset="100%" stopColor="#1d4ed8" />
+            <stop offset="0%" stopColor="#3C9AC4" />
+            <stop offset="100%" stopColor="#2B7AA8" />
         </linearGradient>
         <linearGradient id={`${id}-navy`} x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#1e3a8a" />
-            <stop offset="100%" stopColor="#0b1e3f" />
+            <stop offset="0%" stopColor="#235A8A" />
+            <stop offset="100%" stopColor="#13355A" />
         </linearGradient>
-        {/* Violet → navy diagonal used for "sync hub" style centerpieces */}
+        {/* Accent Blue → Navy diagonal used for "sync hub" style centerpieces */}
         <linearGradient id={`${id}-hub`} x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0%" stopColor="#5b21b6" />
-            <stop offset="100%" stopColor="#0b1e3f" />
+            <stop offset="0%" stopColor="#3C9AC4" />
+            <stop offset="100%" stopColor="#13355A" />
         </linearGradient>
         <pattern id={`${id}-grid`} width="24" height="24" patternUnits="userSpaceOnUse">
-            <path d="M24 0H0V24" stroke="#dbeafe" strokeWidth="0.6" fill="none" />
+            <path d="M24 0H0V24" stroke="#E8F0F6" strokeWidth="0.6" fill="none" />
         </pattern>
         <marker id={`${id}-arrow`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-            <path d="M0,0 L10,5 L0,10 z" fill="#2563eb" />
+            <path d="M0,0 L10,5 L0,10 z" fill="#3C9AC4" />
         </marker>
         <marker id={`${id}-arrow-sky`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-            <path d="M0,0 L10,5 L0,10 z" fill="#60a5fa" />
+            <path d="M0,0 L10,5 L0,10 z" fill="#6BC1E0" />
         </marker>
         <filter id={`${id}-shadow`} x="-10%" y="-10%" width="120%" height="130%">
             <feGaussianBlur stdDeviation="6" />
@@ -78,7 +78,7 @@ export const IllCard = ({
 export const IllHeader = ({ x = 10, y = 10, label }: { x?: number; y?: number; label: string }) => (
     <g>
         <rect x={x} y={y} width={(label.length * 8) + 28} height="24" rx="12" fill={ILL.navy} />
-        <circle cx={x + 14} cy={y + 12} r="3.5" fill="#60a5fa" />
+        <circle cx={x + 14} cy={y + 12} r="3.5" fill="#6BC1E0" />
         <text x={x + 24} y={y + 16} fontFamily={ILL.font} fontSize="10.5" fontWeight="800" fill="white" letterSpacing="1.2">
             {label.toUpperCase()}
         </text>
@@ -210,12 +210,12 @@ export const DashListVisual = ({
     const StatusIcon = ({ kind, cx, cy }: { kind: "check" | "warn"; cx: number; cy: number }) =>
         kind === "check" ? (
             <g>
-                <circle cx={cx} cy={cy} r="6" fill="#10b981" />
+                <circle cx={cx} cy={cy} r="6" fill="#3C9AC4" />
                 <path d={`M${cx - 2.6} ${cy} L${cx - 0.6} ${cy + 2} L${cx + 2.8} ${cy - 2.4}`} stroke="white" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
             </g>
         ) : (
             <g>
-                <path d={`M${cx} ${cy - 6} L${cx + 6} ${cy + 5} H${cx - 6} Z`} fill="#f59e0b" />
+                <path d={`M${cx} ${cy - 6} L${cx + 6} ${cy + 5} H${cx - 6} Z`} fill="#3C9AC4" />
                 <rect x={cx - 0.6} y={cy - 2} width="1.2" height="4" fill="white" />
                 <rect x={cx - 0.6} y={cy + 3} width="1.2" height="1.2" fill="white" />
             </g>
@@ -258,7 +258,7 @@ export const DashListVisual = ({
                     const kx = W - 32 - kw;
                     return (
                         <g>
-                            <rect x={kx} y={78} width={kw} height={28} rx={14} fill={ILL.tint} stroke="#bfdbfe" />
+                            <rect x={kx} y={78} width={kw} height={28} rx={14} fill={ILL.tint} stroke="#BDD9EE" />
                             <text x={kx + 16} y={97} fontFamily={ILL.font} fontSize="11.5" fontWeight="700" fill={ILL.blueDeep}>
                                 {kpi.label}: <tspan fontWeight="800" fill={ILL.blue}>{kpi.value}</tspan>
                             </text>
@@ -289,9 +289,9 @@ export const DashListVisual = ({
                 {rows.map((r, ri) => {
                     const y = 150 + ri * 42;
                     const badgeTone = r.badge?.tone === "amber"
-                        ? { bg: "#fef3c7", fg: "#92400e" }
+                        ? { bg: "#E8F0F6", fg: "#13355A" }
                         : r.badge?.tone === "emerald"
-                            ? { bg: "#d1fae5", fg: "#065f46" }
+                            ? { bg: "#E8F0F6", fg: "#13355A" }
                             : r.badge?.tone === "muted"
                                 ? { bg: "#f1f5f9", fg: "#475569" }
                                 : { bg: ILL.tint, fg: ILL.blueDeep };
@@ -315,7 +315,7 @@ export const DashListVisual = ({
                                             const tagW = cell.tag.length * 5.8 + 18;
                                             return (
                                                 <g>
-                                                    <rect x={tagX} y={y - 14} width={tagW} height={16} rx={8} fill={ILL.tint} stroke="#bfdbfe" />
+                                                    <rect x={tagX} y={y - 14} width={tagW} height={16} rx={8} fill={ILL.tint} stroke="#BDD9EE" />
                                                     <text x={tagX + tagW / 2} y={y - 3} textAnchor="middle" fontFamily={ILL.font} fontSize="8.5" fontWeight="700" fill={ILL.blueDeep}>
                                                         {cell.tag}
                                                     </text>
@@ -417,22 +417,22 @@ export const FlowVisual = ({
             {/* Hub */}
             <g filter={`url(#${id}-shadow)`}>
                 <rect x={hubX} y={hubY} width={hubW} height={hubH} rx="24" fill={`url(#${id}-hub)`} />
-                <g transform={`translate(${W / 2},${hubY + 48})`} stroke="#93c5fd" strokeWidth="2.4" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <g transform={`translate(${W / 2},${hubY + 48})`} stroke="#6BC1E0" strokeWidth="2.4" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M-12 -1 A12 12 0 0 1 8 -10" />
-                    <polygon points="8,-10 2,-11 7,-16" fill="#93c5fd" />
+                    <polygon points="8,-10 2,-11 7,-16" fill="#6BC1E0" />
                     <path d="M12 1 A12 12 0 0 1 -8 10" />
-                    <polygon points="-8,10 -2,11 -7,16" fill="#93c5fd" />
+                    <polygon points="-8,10 -2,11 -7,16" fill="#6BC1E0" />
                 </g>
                 <text x={W / 2} y={hubY + 102} textAnchor="middle" fontFamily={ILL.font} fontSize="17" fontWeight="800" fill="white">
                     {hub}
                 </text>
                 {hubLatency && (
-                    <text x={W / 2} y={hubY + 124} textAnchor="middle" fontFamily={ILL.font} fontSize="11.5" fill="#bfdbfe">
+                    <text x={W / 2} y={hubY + 124} textAnchor="middle" fontFamily={ILL.font} fontSize="11.5" fill="#BDD9EE">
                         {hubLatency}
                     </text>
                 )}
-                <circle cx={W / 2} cy={hubY + hubH - 26} r="9" fill="#60a5fa" opacity="0.35" />
-                <circle cx={W / 2} cy={hubY + hubH - 26} r="4.5" fill="#60a5fa" />
+                <circle cx={W / 2} cy={hubY + hubH - 26} r="9" fill="#6BC1E0" opacity="0.35" />
+                <circle cx={W / 2} cy={hubY + hubH - 26} r="4.5" fill="#6BC1E0" />
             </g>
 
             {/* Left (source) nodes → hub */}
@@ -654,16 +654,16 @@ export const GenVisual = ({
         <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
             <IllDefs id={id} />
             <IllHeader label={title} />
-            <GenIcon x={42} y={38} kind="wand" color="#a5b4fc" size={12} />
+            <GenIcon x={42} y={38} kind="wand" color="#6BC1E0" size={12} />
 
             {/* INPUT card */}
             <IllCard id={id} x={24} y={72} w={150} h={220} accent={ILL.sky}>
                 <GenTile x={38} y={86} size={22} color={ILL.blue} kind="document" />
                 <text x={68} y={101} fontFamily={ILL.font} fontSize="10" fontWeight="800" fill={ILL.blueDeep} letterSpacing="1">INPUT</text>
 
-                <rect x={38} y={118} width={122} height={78} rx="8" fill="#eef2ff" />
-                <path d="M46 122 h6 M154 122 h-6 M46 190 h6 M154 190 h-6" stroke="#c7d2fe" strokeWidth="2" strokeLinecap="round" />
-                <circle cx={80} cy={148} r={9} fill="#c7d2fe" />
+                <rect x={38} y={118} width={122} height={78} rx="8" fill="#F4F8FC" />
+                <path d="M46 122 h6 M154 122 h-6 M46 190 h6 M154 190 h-6" stroke="#BDD9EE" strokeWidth="2" strokeLinecap="round" />
+                <circle cx={80} cy={148} r={9} fill="#BDD9EE" />
                 <path d={`M52 178 L78 152 L95 168 L112 148 L152 178 Z`} fill={`url(#${id}-blue)`} opacity="0.8" />
 
                 <text x={38} y={214} fontFamily={ILL.font} fontSize="11" fontWeight="800" fill={ILL.ink}>{inputLabel}</text>
@@ -686,14 +686,14 @@ export const GenVisual = ({
             {/* ENGINE card */}
             <g filter={`url(#${id}-shadow)`}>
                 <rect x={205} y={95} width={150} height={175} rx="16" fill={`url(#${id}-hub)`} />
-                <GenIcon x={222} y={112} kind="wand" color="#c4b5fd" size={11} />
-                <GenIcon x={338} y={122} kind="wand" color="#c4b5fd" size={9} />
+                <GenIcon x={222} y={112} kind="wand" color="#6BC1E0" size={11} />
+                <GenIcon x={338} y={122} kind="wand" color="#6BC1E0" size={9} />
                 <rect x={252} y={110} width={56} height={56} rx="14" fill="white" fillOpacity="0.14" stroke="white" strokeOpacity="0.4" />
                 <text x={280} y={145} textAnchor="middle" fontFamily={ILL.font} fontSize="16" fontWeight="800" fill="white">AI</text>
                 <text x={280} y={186} textAnchor="middle" fontFamily={ILL.font} fontSize="14" fontWeight="800" fill="white">{engineLabel}</text>
-                <text x={280} y={201} textAnchor="middle" fontFamily={ILL.font} fontSize="9.5" fill="#c7d2fe">{engineSub}</text>
+                <text x={280} y={201} textAnchor="middle" fontFamily={ILL.font} fontSize="9.5" fill="#BDD9EE">{engineSub}</text>
                 <rect x={228} y={212} width={104} height={4} rx="2" fill="white" fillOpacity="0.25" />
-                <rect x={228} y={212} width={62} height={4} rx="2" fill="#a5b4fc" />
+                <rect x={228} y={212} width={62} height={4} rx="2" fill="#6BC1E0" />
                 <line x1={222} y1={246} x2={338} y2={246} stroke="white" strokeOpacity="0.2" />
                 {[
                     { icon: "wand" as const, label: "Analyze" },
@@ -702,26 +702,26 @@ export const GenVisual = ({
                 ].map((s, i) => (
                     <g key={i}>
                         <GenIcon x={240 + i * 41} y={238} kind={s.icon} color="white" size={13} />
-                        <text x={240 + i * 41} y={252} textAnchor="middle" fontFamily={ILL.font} fontSize="7.6" fontWeight="700" fill="#e0e7ff">{s.label}</text>
+                        <text x={240 + i * 41} y={252} textAnchor="middle" fontFamily={ILL.font} fontSize="7.6" fontWeight="700" fill="#E8F0F6">{s.label}</text>
                     </g>
                 ))}
             </g>
 
             {/* OUTPUT card */}
-            <IllCard id={id} x={386} y={44} w={150} h={252} accent="#7c3aed">
-                <GenTile x={400} y={58} size={22} color="#7c3aed" kind="wand" />
-                <text x={430} y={73} fontFamily={ILL.font} fontSize="10" fontWeight="800" fill="#6d28d9" letterSpacing="1">GENERATED</text>
+            <IllCard id={id} x={386} y={44} w={150} h={252} accent="#3C9AC4">
+                <GenTile x={400} y={58} size={22} color="#3C9AC4" kind="wand" />
+                <text x={430} y={73} fontFamily={ILL.font} fontSize="10" fontWeight="800" fill="#2B7AA8" letterSpacing="1">GENERATED</text>
 
                 {outputLines.map((l, i) => {
                     const y = 100 + i * 46;
                     return (
                         <g key={i}>
-                            <GenTile x={400} y={y - 14} size={18} color="#7c3aed" kind={l.icon} />
+                            <GenTile x={400} y={y - 14} size={18} color="#3C9AC4" kind={l.icon} />
                             <text x={426} y={y} fontFamily={ILL.font} fontSize="10.5" fontWeight="800" fill={ILL.ink}>{l.title}</text>
                             <text x={400} y={y + 15} fontFamily={ILL.font} fontSize="8.4" fontWeight="500" fill={ILL.muted}>
                                 {l.body.length > 46 ? l.body.slice(0, 46) + "…" : l.body}
                             </text>
-                            <rect x={400} y={y + 22} width={122} height={3} rx="1.5" fill="#ede9fe" />
+                            <rect x={400} y={y + 22} width={122} height={3} rx="1.5" fill="#E8F0F6" />
                         </g>
                     );
                 })}
@@ -732,9 +732,9 @@ export const GenVisual = ({
                     const emerald = s.tone === "emerald";
                     return (
                         <g key={i}>
-                            <rect x={sx} y={252} width={sw} height={34} rx="8" fill={emerald ? "#d1fae5" : ILL.tint} />
-                            <text x={sx + sw / 2} y={264} textAnchor="middle" fontFamily={ILL.font} fontSize="7.6" fontWeight="700" fill={emerald ? "#065f46" : ILL.blueDeep}>{s.label}</text>
-                            <text x={sx + sw / 2} y={278} textAnchor="middle" fontFamily={ILL.font} fontSize="11.5" fontWeight="800" fill={emerald ? "#059669" : ILL.blue}>{s.value}</text>
+                            <rect x={sx} y={252} width={sw} height={34} rx="8" fill={emerald ? "#E8F0F6" : ILL.tint} />
+                            <text x={sx + sw / 2} y={264} textAnchor="middle" fontFamily={ILL.font} fontSize="7.6" fontWeight="700" fill={emerald ? "#13355A" : ILL.blueDeep}>{s.label}</text>
+                            <text x={sx + sw / 2} y={278} textAnchor="middle" fontFamily={ILL.font} fontSize="11.5" fontWeight="800" fill={emerald ? "#2B7AA8" : ILL.blue}>{s.value}</text>
                         </g>
                     );
                 })}
@@ -755,15 +755,15 @@ export const GenVisual = ({
 
             {/* Engine → Output connector */}
             <g>
-                <circle cx={355} cy={182} r="4" fill="#7c3aed" />
-                <line x1={355} y1={182} x2={386} y2={182} stroke="#7c3aed" strokeWidth="1.6" strokeDasharray="5 4">
+                <circle cx={355} cy={182} r="4" fill="#3C9AC4" />
+                <line x1={355} y1={182} x2={386} y2={182} stroke="#3C9AC4" strokeWidth="1.6" strokeDasharray="5 4">
                     <animate attributeName="stroke-dashoffset" values="0;-18" dur="1.4s" repeatCount="indefinite" />
                 </line>
-                <circle r="3" fill="#7c3aed" opacity="0.8">
+                <circle r="3" fill="#3C9AC4" opacity="0.8">
                     <animateMotion dur="1.8s" repeatCount="indefinite" path="M355 182 L386 182" />
                 </circle>
-                <polygon points="386,182 379,177.5 379,186.5" fill="#7c3aed" />
-                <circle cx={386} cy={182} r="4" fill="#7c3aed" />
+                <polygon points="386,182 379,177.5 379,186.5" fill="#3C9AC4" />
+                <circle cx={386} cy={182} r="4" fill="#3C9AC4" />
             </g>
 
             {/* bottom feature strip */}
@@ -773,8 +773,8 @@ export const GenVisual = ({
                     {features.map((f, i) => {
                         const fw = (W - 48) / features.length;
                         const fx = 24 + i * fw + 20;
-                        const color = f.tone === "violet" ? "#7c3aed" : f.tone === "emerald" ? "#059669" : ILL.blue;
-                        const bg = f.tone === "violet" ? "#ede9fe" : f.tone === "emerald" ? "#d1fae5" : ILL.tint;
+                        const color = f.tone === "violet" ? "#3C9AC4" : f.tone === "emerald" ? "#2B7AA8" : ILL.blue;
+                        const bg = f.tone === "violet" ? "#E8F0F6" : f.tone === "emerald" ? "#E8F0F6" : ILL.tint;
                         return (
                             <g key={i}>
                                 {i > 0 && <line x1={24 + i * fw} y1={348} x2={24 + i * fw} y2={388} stroke="#f1f5f9" />}
@@ -878,9 +878,9 @@ export const KpiChartVisual = ({
 
                 {pill && (
                     <g>
-                        <rect x={W - 172} y={80} width={132} height={26} rx={13} fill={pill.tone === "emerald" ? "#d1fae5" : ILL.tint} />
-                        <circle cx={W - 152} cy={93} r={3.5} fill={pill.tone === "emerald" ? "#059669" : ILL.blueDeep} />
-                        <text x={W - 142} y={97} fontFamily={ILL.font} fontSize="10.5" fontWeight="800" fill={pill.tone === "emerald" ? "#065f46" : ILL.blueDeep}>
+                        <rect x={W - 172} y={80} width={132} height={26} rx={13} fill={pill.tone === "emerald" ? "#E8F0F6" : ILL.tint} />
+                        <circle cx={W - 152} cy={93} r={3.5} fill={pill.tone === "emerald" ? "#2B7AA8" : ILL.blueDeep} />
+                        <text x={W - 142} y={97} fontFamily={ILL.font} fontSize="10.5" fontWeight="800" fill={pill.tone === "emerald" ? "#13355A" : ILL.blueDeep}>
                             {pill.label}
                         </text>
                     </g>
@@ -903,7 +903,7 @@ export const KpiChartVisual = ({
                                 {k.value}
                             </text>
                             {k.delta && (
-                                <text x={kx + 62} y={tileY + 78} fontFamily={ILL.font} fontSize="10.5" fontWeight="700" fill="#059669">
+                                <text x={kx + 62} y={tileY + 78} fontFamily={ILL.font} fontSize="10.5" fontWeight="700" fill="#2B7AA8">
                                     ▲ {k.delta}
                                 </text>
                             )}
@@ -925,15 +925,15 @@ export const KpiChartVisual = ({
                 {/* Threshold / reorder line */}
                 {floorValue !== undefined && (
                     <>
-                        <line x1={chartX} y1={yToPx(floorValue)} x2={chartX + chartW} y2={yToPx(floorValue)} stroke="#f59e0b" strokeWidth="1.4" strokeDasharray="5 4">
+                        <line x1={chartX} y1={yToPx(floorValue)} x2={chartX + chartW} y2={yToPx(floorValue)} stroke="#3C9AC4" strokeWidth="1.4" strokeDasharray="5 4">
                             <animate attributeName="stroke-dashoffset" values="0;-18" dur="2s" repeatCount="indefinite" />
                         </line>
-                        <circle r="2.5" fill="#f59e0b" opacity="0.7">
+                        <circle r="2.5" fill="#3C9AC4" opacity="0.7">
                             <animateMotion dur="3s" repeatCount="indefinite"
                                 path={`M${chartX} ${yToPx(floorValue)} L${chartX + chartW} ${yToPx(floorValue)}`} />
                         </circle>
                         {floorLabel && (
-                            <text x={chartX + chartW} y={yToPx(floorValue) - 8} textAnchor="end" fontFamily={ILL.font} fontSize="10" fontWeight="700" fill="#c2410c">
+                            <text x={chartX + chartW} y={yToPx(floorValue) - 8} textAnchor="end" fontFamily={ILL.font} fontSize="10" fontWeight="700" fill="#13355A">
                                 {floorLabel}
                             </text>
                         )}
@@ -941,7 +941,7 @@ export const KpiChartVisual = ({
                 )}
 
                 {/* Filled area under primary series */}
-                <path d={areaPath(series)} fill="#e0e7ff" fillOpacity="0.7" stroke="none" />
+                <path d={areaPath(series)} fill="#E8F0F6" fillOpacity="0.7" stroke="none" />
 
                 {/* Comparison (dashed) line */}
                 {compareSeries && (
@@ -951,10 +951,10 @@ export const KpiChartVisual = ({
                 )}
 
                 {/* Primary line */}
-                <polyline fill="none" stroke="#4338ca" strokeWidth="2.6" strokeLinejoin="round" strokeLinecap="round" points={toPath(series)} />
+                <polyline fill="none" stroke="#13355A" strokeWidth="2.6" strokeLinejoin="round" strokeLinecap="round" points={toPath(series)} />
 
                 {/* Flowing data dot along primary line */}
-                <circle r="3.5" fill="#4338ca" opacity="0.85">
+                <circle r="3.5" fill="#13355A" opacity="0.85">
                     <animateMotion dur="4s" repeatCount="indefinite"
                         path={series.map((v, i) => `${i === 0 ? "M" : "L"}${xToPx(i, series.length)} ${yToPx(v)}`).join(" ")} />
                 </circle>
@@ -1037,10 +1037,10 @@ const MarketBadge = ({
     x, y, channel,
 }: { x: number; y: number; channel: string }) => {
     const map: Record<string, { bg: string; fg: string; label: string }> = {
-        Amazon: { bg: "#fff7ed", fg: "#111827", label: "a" },
-        Walmart: { bg: "#fffbeb", fg: "#f59e0b", label: "✳" },
-        eBay: { bg: "#fef2f2", fg: "#e11d48", label: "eB" },
-        Etsy: { bg: "#fff7ed", fg: "#ea580c", label: "E" },
+        Amazon: { bg: "#F4F8FC", fg: "#111827", label: "a" },
+        Walmart: { bg: "#F4F8FC", fg: "#3C9AC4", label: "✳" },
+        eBay: { bg: "#fef2f2", fg: "#13355A", label: "eB" },
+        Etsy: { bg: "#F4F8FC", fg: "#2B7AA8", label: "E" },
     };
     const s = map[channel] ?? { bg: ILL.wash, fg: ILL.blue, label: channel[0] };
     return (
@@ -1160,7 +1160,7 @@ export const MatrixVisual = ({
                                             x={cx + cw / 2 - 40}
                                             y={y + cellH / 2}
                                             kind={cell.icon}
-                                            color={cell.icon === "check" ? "#059669" : "#4338ca"}
+                                            color={cell.icon === "check" ? "#2B7AA8" : "#13355A"}
                                             size={18}
                                         />
                                         <text x={cx + cw / 2 + 4} y={y + cellH / 2 + 4} textAnchor="middle" fontFamily={ILL.font} fontSize="16" fontWeight="600" fill={cell.textFill}>
@@ -1230,12 +1230,12 @@ type StatItem = {
  *  progression in the reference (first two "done" rows share the violet
  *  brand color, then the palette rotates per row). */
 const STEP_THEMES = [
-    { icon: "doc", color: "#7c3aed", bg: "#f5f3ff", border: "#ddd6fe" },
-    { icon: "dollar", color: "#7c3aed", bg: "#f5f3ff", border: "#ddd6fe" },
-    { icon: "refresh", color: "#2563eb", bg: "#eff6ff", border: "#bfdbfe" },
-    { icon: "pie", color: "#10b981", bg: "#ecfdf5", border: "#a7f3d0" },
-    { icon: "upload", color: "#f97316", bg: "#fff7ed", border: "#fed7aa" },
-    { icon: "send", color: "#94a3b8", bg: "#f8fafc", border: "#e2e8f0" },
+    { icon: "doc", color: "#3C9AC4", bg: "#F4F8FC", border: "#BDD9EE" },
+    { icon: "dollar", color: "#3C9AC4", bg: "#F4F8FC", border: "#BDD9EE" },
+    { icon: "refresh", color: "#3C9AC4", bg: "#F4F8FC", border: "#BDD9EE" },
+    { icon: "pie", color: "#3C9AC4", bg: "#F4F8FC", border: "#BDD9EE" },
+    { icon: "upload", color: "#3C9AC4", bg: "#F4F8FC", border: "#BDD9EE" },
+    { icon: "send", color: "#94a3b8", bg: "#F4F8FC", border: "#e2e8f0" },
 ] as const;
 
 /** White line-art glyph, drawn centered at (x, y) inside a colored square. */
@@ -1338,7 +1338,7 @@ const GlobeGlyph = ({ x, y, color }: { x: number; y: number; color: string }) =>
 const ShieldGlyph = ({ x, y }: { x: number; y: number }) => (
     <g>
         <path d={`M${x} ${y - 10} l8 3.2 v6 c0 5.6 -3.4 9 -8 10.4 c-4.6 -1.4 -8 -4.8 -8 -10.4 v-6 z`} fill="white" />
-        <path d={`M${x - 4} ${y} l3 3 l5.5 -6.5`} stroke="#5b21b6" strokeWidth={2.1} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <path d={`M${x - 4} ${y} l3 3 l5.5 -6.5`} stroke="#13355A" strokeWidth={2.1} fill="none" strokeLinecap="round" strokeLinejoin="round" />
     </g>
 );
 
@@ -1394,15 +1394,15 @@ export const ProgressListVisual = ({
             <IllDefs id={id} />
             {/* top-right chrome icons, matching the faint page controls in the reference */}
             <g>
-                <circle cx={W - 82} cy={38} r={16} fill="#ede9fe" />
-                <path d="M-6,3 a5,5 0 0 1 1,-9.8 a6,6 0 0 1 11.4,2 a4.3,4.3 0 0 1 -1.2,7.8 z" transform={`translate(${W - 82} 38)`} fill="none" stroke="#7c3aed" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                <rect x={W - 56} y={22} width={32} height={32} rx={10} fill="#ede9fe" />
-                <path d={`M${W - 48} 34 h16 M${W - 48} 38 h16 M${W - 48} 42 h16`} stroke="#7c3aed" strokeWidth="1.8" strokeLinecap="round" />
+                <circle cx={W - 82} cy={38} r={16} fill="#E8F0F6" />
+                <path d="M-6,3 a5,5 0 0 1 1,-9.8 a6,6 0 0 1 11.4,2 a4.3,4.3 0 0 1 -1.2,7.8 z" transform={`translate(${W - 82} 38)`} fill="none" stroke="#3C9AC4" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                <rect x={W - 56} y={22} width={32} height={32} rx={10} fill="#E8F0F6" />
+                <path d={`M${W - 48} 34 h16 M${W - 48} 38 h16 M${W - 48} 42 h16`} stroke="#3C9AC4" strokeWidth="1.8" strokeLinecap="round" />
             </g>
 
-            <IllCard id={id} x={cardX} y={64} w={cardW} h={cardH} accent="#7c3aed">
+            <IllCard id={id} x={cardX} y={64} w={cardW} h={cardH} accent="#3C9AC4">
                 <text x={innerL} y={100} fontFamily={ILL.font} fontSize="15" fontWeight="800" fill={ILL.ink}>{title}</text>
-                <StatusPill x={innerR - 130} y={84} w={130} h={28} label={overallLabel} color="#7c3aed" bg="#f5f3ff" border="#ddd6fe" dashed={overallActive} />
+                <StatusPill x={innerR - 130} y={84} w={130} h={28} label={overallLabel} color="#3C9AC4" bg="#F4F8FC" border="#BDD9EE" dashed={overallActive} />
 
                 {/* vertical dotted timeline connecting each node */}
                 {steps.length > 1 && (
@@ -1410,11 +1410,11 @@ export const ProgressListVisual = ({
                         <line
                             x1={innerL + 62} y1={stepsY0 + 18}
                             x2={innerL + 62} y2={lastRowY + 18}
-                            stroke="#c4b5fd" strokeWidth="1.6" strokeDasharray="1 5" strokeLinecap="round"
+                            stroke="#6BC1E0" strokeWidth="1.6" strokeDasharray="1 5" strokeLinecap="round"
                         >
                             <animate attributeName="stroke-dashoffset" values="0;-12" dur="2s" repeatCount="indefinite" />
                         </line>
-                        <circle r="2.5" fill="#c4b5fd" opacity={0.7}>
+                        <circle r="2.5" fill="#6BC1E0" opacity={0.7}>
                             <animateMotion dur="2.4s" repeatCount="indefinite"
                                 path={`M${innerL + 62} ${stepsY0 + 18} L${innerL + 62} ${lastRowY + 18}`} />
                         </circle>
@@ -1432,7 +1432,7 @@ export const ProgressListVisual = ({
 
                     return (
                         <g key={i}>
-                            <rect x={innerL + 88} y={y} width={innerR - (innerL + 88)} height={36} rx={8} fill={st.state === "queued" ? "#f8fafc" : theme.bg} opacity={st.state === "queued" ? 1 : 0.7} />
+                            <rect x={innerL + 88} y={y} width={innerR - (innerL + 88)} height={36} rx={8} fill={st.state === "queued" ? "#F4F8FC" : theme.bg} opacity={st.state === "queued" ? 1 : 0.7} />
                             <SquareBadge x={innerL} y={y - 2} color={st.state === "queued" ? "#cbd5e1" : theme.color} kind={theme.icon} />
                             <TimelineNode x={innerL + 62} y={y + 18} state={st.state} color={nodeColor} />
                             <text x={innerL + 100} y={y + 15} fontFamily={ILL.font} fontSize="11.5" fontWeight="800" fill={ILL.ink}>{st.label}</text>
@@ -1443,25 +1443,25 @@ export const ProgressListVisual = ({
                 })}
 
                 {/* bottom stats strip */}
-                <line x1={leftX + sideW} y1={statsY + sideH / 2} x2={midX} y2={midY + midH / 2} stroke="#c4b5fd" strokeWidth="1.6" strokeDasharray="1 5">
+                <line x1={leftX + sideW} y1={statsY + sideH / 2} x2={midX} y2={midY + midH / 2} stroke="#6BC1E0" strokeWidth="1.6" strokeDasharray="1 5">
                     <animate attributeName="stroke-dashoffset" values="0;-12" dur="1.6s" repeatCount="indefinite" />
                 </line>
-                <circle r="2.5" fill="#c4b5fd" opacity={0.7}>
+                <circle r="2.5" fill="#6BC1E0" opacity={0.7}>
                     <animateMotion dur="1.8s" repeatCount="indefinite"
                         path={`M${leftX + sideW} ${statsY + sideH / 2} L${midX} ${midY + midH / 2}`} />
                 </circle>
-                <line x1={midX + midW} y1={midY + midH / 2} x2={rightX} y2={statsY + sideH / 2} stroke="#c4b5fd" strokeWidth="1.6" strokeDasharray="1 5">
+                <line x1={midX + midW} y1={midY + midH / 2} x2={rightX} y2={statsY + sideH / 2} stroke="#6BC1E0" strokeWidth="1.6" strokeDasharray="1 5">
                     <animate attributeName="stroke-dashoffset" values="0;-12" dur="1.6s" repeatCount="indefinite" />
                 </line>
-                <circle r="2.5" fill="#c4b5fd" opacity={0.7}>
+                <circle r="2.5" fill="#6BC1E0" opacity={0.7}>
                     <animateMotion dur="1.8s" repeatCount="indefinite"
                         path={`M${midX + midW} ${midY + midH / 2} L${rightX} ${statsY + sideH / 2}`} />
                 </circle>
 
                 <g>
                     <rect x={leftX} y={statsY} width={sideW} height={sideH} rx={sideH / 2} fill="white" stroke={ILL.softStroke} />
-                    <circle cx={leftX + 30} cy={statsY + sideH / 2} r={16} fill="#ede9fe" />
-                    <PinGlyph x={leftX + 30} y={statsY + sideH / 2} color="#7c3aed" />
+                    <circle cx={leftX + 30} cy={statsY + sideH / 2} r={16} fill="#E8F0F6" />
+                    <PinGlyph x={leftX + 30} y={statsY + sideH / 2} color="#3C9AC4" />
                     <text x={leftX + 54} y={statsY + sideH / 2 - 4} fontFamily={ILL.font} fontSize="9.5" fontWeight="700" fill={ILL.muted}>{s.left.eyebrow}</text>
                     <text x={leftX + 54} y={statsY + sideH / 2 + 14} fontFamily={ILL.font} fontSize="13" fontWeight="800" fill={ILL.ink}>{s.left.value}</text>
                 </g>
@@ -1471,13 +1471,13 @@ export const ProgressListVisual = ({
                     <circle cx={midX + 38} cy={midY + midH / 2} r={17} fill="white" fillOpacity="0.18" />
                     <ShieldGlyph x={midX + 38} y={midY + midH / 2} />
                     <text x={midX + 64} y={midY + midH / 2 - 4} fontFamily={ILL.font} fontSize="16" fontWeight="800" fill="white">{s.uptimeValue}</text>
-                    <text x={midX + 64} y={midY + midH / 2 + 15} fontFamily={ILL.font} fontSize="10.5" fontWeight="600" fill="#e9d5ff">{s.uptimeLabel}</text>
+                    <text x={midX + 64} y={midY + midH / 2 + 15} fontFamily={ILL.font} fontSize="10.5" fontWeight="600" fill="#6BC1E0">{s.uptimeLabel}</text>
                 </g>
 
                 <g>
                     <rect x={rightX} y={statsY} width={sideW} height={sideH} rx={sideH / 2} fill="white" stroke={ILL.softStroke} />
-                    <circle cx={rightX + 30} cy={statsY + sideH / 2} r={16} fill="#ede9fe" />
-                    <GlobeGlyph x={rightX + 30} y={statsY + sideH / 2} color="#7c3aed" />
+                    <circle cx={rightX + 30} cy={statsY + sideH / 2} r={16} fill="#E8F0F6" />
+                    <GlobeGlyph x={rightX + 30} y={statsY + sideH / 2} color="#3C9AC4" />
                     <text x={rightX + 54} y={statsY + sideH / 2 - 4} fontFamily={ILL.font} fontSize="9.5" fontWeight="700" fill={ILL.muted}>{s.right.eyebrow}</text>
                     <text x={rightX + 54} y={statsY + sideH / 2 + 14} fontFamily={ILL.font} fontSize="13" fontWeight="800" fill={ILL.ink}>{s.right.value}</text>
                 </g>
@@ -1498,7 +1498,7 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
         connect: (
             <g>
                 <rect x="-58" y="-46" width="116" height="92" rx="10" fill="url(#ob-window)" />
-                <rect x="-58" y="-46" width="116" height="20" rx="10" fill="#C7D2FE" />
+                <rect x="-58" y="-46" width="116" height="20" rx="10" fill="#BDD9EE" />
                 <circle cx="-46" cy="-36" r="2.6" fill="white" />
                 <circle cx="-38" cy="-36" r="2.6" fill="white" />
                 <circle cx="-30" cy="-36" r="2.6" fill="white" />
@@ -1521,10 +1521,10 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
                     d="M-34 -46h48l20 20v72a4 4 0 01-4 4h-64a4 4 0 01-4-4v-88a4 4 0 014-4z"
                     fill="url(#ob-doc)"
                 />
-                <path d="M14 -46l20 20h-16a4 4 0 01-4-4z" fill="#C7D2FE" />
-                <rect x="-24" y="-18" width="36" height="4" rx="2" fill="#93A4F5" />
-                <rect x="-24" y="-8" width="50" height="4" rx="2" fill="#C7D2FE" />
-                <circle cx="0" cy="26" r="20" fill="#6D5DF2" />
+                <path d="M14 -46l20 20h-16a4 4 0 01-4-4z" fill="#BDD9EE" />
+                <rect x="-24" y="-18" width="36" height="4" rx="2" fill="#6BC1E0" />
+                <rect x="-24" y="-8" width="50" height="4" rx="2" fill="#BDD9EE" />
+                <circle cx="0" cy="26" r="20" fill="#2B7AA8" />
                 <path
                     d="M0 34v-16M-7 25l7-7 7 7"
                     fill="none"
@@ -1538,17 +1538,17 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
         set: (
             <g>
                 <rect x="-58" y="-46" width="116" height="92" rx="10" fill="url(#ob-window)" />
-                <rect x="-58" y="-46" width="116" height="20" rx="10" fill="#C7D2FE" />
+                <rect x="-58" y="-46" width="116" height="20" rx="10" fill="#BDD9EE" />
                 <circle cx="-46" cy="-36" r="2.6" fill="white" />
                 <circle cx="-38" cy="-36" r="2.6" fill="white" />
                 <circle cx="-30" cy="-36" r="2.6" fill="white" />
                 {[0, 1, 2].map((i) => (
                     <g key={i} transform={`translate(-42,${-10 + i * 16})`}>
-                        <circle cx="0" cy="0" r="3" fill="#7C86F0" />
-                        <rect x="10" y="-2.5" width="52" height="5" rx="2.5" fill="#C7D2FE" />
+                        <circle cx="0" cy="0" r="3" fill="#6BC1E0" />
+                        <rect x="10" y="-2.5" width="52" height="5" rx="2.5" fill="#BDD9EE" />
                     </g>
                 ))}
-                <circle cx="42" cy="30" r="18" fill="#5847EB" />
+                <circle cx="42" cy="30" r="18" fill="#13355A" />
                 <g stroke="white" strokeWidth="2.6" fill="none" strokeLinecap="round">
                     <circle cx="42" cy="30" r="7" />
                     <path d="M42 19v-4M42 45v-4M31 30h-4M57 30h-4M34 22l-3-3M53 38l3 3M50 22l3-3M34 38l-3 3" />
@@ -1557,28 +1557,28 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
         ),
         go: (
             <g>
-                <circle cx="0" cy="0" r="58" fill="#EEF1FE" />
-                <path d="M8 40l8 6M-30 -10l-8 -4" stroke="#C7D2FE" strokeWidth="2" strokeLinecap="round" />
+                <circle cx="0" cy="0" r="58" fill="#F4F8FC" />
+                <path d="M8 40l8 6M-30 -10l-8 -4" stroke="#BDD9EE" strokeWidth="2" strokeLinecap="round" />
                 <g transform="rotate(35)">
                     <path
                         d="M0 -46c14 4 22 16 22 32 0 8-3 16-8 22l-14-6-14 6c-5-6-8-14-8-22 0-16 8-28 22-32z"
                         fill="url(#ob-rocket)"
                     />
-                    <circle cx="0" cy="-24" r="7" fill="#EEF1FE" stroke="#3730A3" strokeWidth="1.5" />
-                    <path d="M-14 8l-10 18 16-8z" fill="#C7D2FE" />
-                    <path d="M14 8l10 18-16-8z" fill="#C7D2FE" />
-                    <path d="M-6 30q6 14 6 22q6-8 6-22z" fill="#C7D2FE" />
+                    <circle cx="0" cy="-24" r="7" fill="#F4F8FC" stroke="#13355A" strokeWidth="1.5" />
+                    <path d="M-14 8l-10 18 16-8z" fill="#BDD9EE" />
+                    <path d="M14 8l10 18-16-8z" fill="#BDD9EE" />
+                    <path d="M-6 30q6 14 6 22q6-8 6-22z" fill="#BDD9EE" />
                 </g>
-                <path d="M-46 -30l4 4M46 -34l-4 4M-40 40l4-4M42 36l-4-4" stroke="#3730A3" strokeWidth="2.4" strokeLinecap="round" />
+                <path d="M-46 -30l4 4M46 -34l-4 4M-40 40l4-4M42 36l-4-4" stroke="#13355A" strokeWidth="2.4" strokeLinecap="round" />
             </g>
         ),
     };
 
     const STEPS = [
-        { title: "Connect", subtitle: "SP-API", icon: "connect", badge: "#3730A3", bar: "#3B4CD8" },
-        { title: "Import", subtitle: "catalog", icon: "import", badge: "#3730A3", bar: "#3B4CD8" },
-        { title: "Set", subtitle: "rules", icon: "set", badge: "#3730A3", bar: "#3B4CD8" },
-        { title: "Go", subtitle: "live", icon: "go", badge: "#3730A3", bar: "#3B4CD8" },
+        { title: "Connect", subtitle: "SP-API", icon: "connect", badge: "#13355A", bar: "#2B7AA8" },
+        { title: "Import", subtitle: "catalog", icon: "import", badge: "#13355A", bar: "#2B7AA8" },
+        { title: "Set", subtitle: "rules", icon: "set", badge: "#13355A", bar: "#2B7AA8" },
+        { title: "Go", subtitle: "live", icon: "go", badge: "#13355A", bar: "#2B7AA8" },
     ];
 
     const CARD_W = 190;
@@ -1592,16 +1592,16 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
         <svg viewBox="0 80 1000 390" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
             <defs>
                 <linearGradient id="ob-window" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#7C86F0" />
-                    <stop offset="100%" stopColor="#5847EB" />
+                    <stop offset="0%" stopColor="#6BC1E0" />
+                    <stop offset="100%" stopColor="#13355A" />
                 </linearGradient>
                 <linearGradient id="ob-doc" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#F5F6FE" />
-                    <stop offset="100%" stopColor="#E4E7FB" />
+                    <stop offset="0%" stopColor="#F4F8FC" />
+                    <stop offset="100%" stopColor="#E8F0F6" />
                 </linearGradient>
                 <linearGradient id="ob-rocket" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#7C86F0" />
-                    <stop offset="100%" stopColor="#3730A3" />
+                    <stop offset="0%" stopColor="#6BC1E0" />
+                    <stop offset="100%" stopColor="#13355A" />
                 </linearGradient>
 
             </defs>
@@ -1637,7 +1637,7 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
                         <text x={cx} y={CARD_TOP + 235} textAnchor="middle" fontSize="16" fill="#64748B">
                             {s.subtitle}
                         </text>
-                        <rect x={cx - 18} y={CARD_TOP + 253} width="36" height="3" rx="1.5" fill="#93A4F5" />
+                        <rect x={cx - 18} y={CARD_TOP + 253} width="36" height="3" rx="1.5" fill="#6BC1E0" />
 
                         {i < STEPS.length - 1 && (
                             <g>
@@ -1646,13 +1646,13 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
                                     y1={ICON_CY}
                                     x2={x + CARD_W + GAP / 2 - 17}
                                     y2={ICON_CY}
-                                    stroke="#93A4F5"
+                                    stroke="#6BC1E0"
                                     strokeWidth="1.8"
                                     strokeDasharray="4 4"
                                 >
                                     <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.2s" repeatCount="indefinite" />
                                 </line>
-                                <circle r="3" fill="#3B4CD8" opacity="0.8">
+                                <circle r="3" fill="#2B7AA8" opacity="0.8">
                                     <animateMotion dur="1.2s" repeatCount="indefinite" path={`M ${x + CARD_W} ${ICON_CY} L ${x + CARD_W + GAP / 2 - 17} ${ICON_CY}`} />
                                 </circle>
 
@@ -1661,21 +1661,21 @@ export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
                                     y1={ICON_CY}
                                     x2={x + CARD_W + GAP}
                                     y2={ICON_CY}
-                                    stroke="#93A4F5"
+                                    stroke="#6BC1E0"
                                     strokeWidth="1.8"
                                     strokeDasharray="4 4"
                                 >
                                     <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.2s" repeatCount="indefinite" />
                                 </line>
-                                <circle r="3" fill="#3B4CD8" opacity="0.8">
+                                <circle r="3" fill="#2B7AA8" opacity="0.8">
                                     <animateMotion dur="1.2s" repeatCount="indefinite" path={`M ${x + CARD_W + GAP / 2 + 17} ${ICON_CY} L ${x + CARD_W + GAP} ${ICON_CY}`} />
                                 </circle>
 
-                                <circle cx={x + CARD_W + GAP / 2} cy={ICON_CY} r="17" fill="white" stroke="#93A4F5" strokeWidth="1.6" />
+                                <circle cx={x + CARD_W + GAP / 2} cy={ICON_CY} r="17" fill="white" stroke="#6BC1E0" strokeWidth="1.6" />
                                 <path
                                     d={`M${x + CARD_W + GAP / 2 - 5} ${ICON_CY - 5} l6 5 -6 5`}
                                     fill="none"
-                                    stroke="#3B4CD8"
+                                    stroke="#2B7AA8"
                                     strokeWidth="2"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
@@ -1717,7 +1717,7 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: SVGProps<SVGSVGElement> & 
     };
     const ICONS: Record<string, JSX.Element> = {
         check: (
-            <path fill="none" stroke="#0B1E4F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" d="M5 12.5l4.5 4.5L19 7" />
+            <path fill="none" stroke="#13355A" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" d="M5 12.5l4.5 4.5L19 7" />
         ),
         cube: (
             <path
@@ -1775,17 +1775,17 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: SVGProps<SVGSVGElement> & 
 
     const GOTCHA_ICONS = ["shield", "bolt", "refresh", "barChart"];
     const GOTCHA_ACCENTS = [
-        { accent: "#2563EB", tint: "#E4ECFD" },
-        { accent: "#7C3AED", tint: "#EFEAFC" },
-        { accent: "#10B981", tint: "#E4FAF0" },
-        { accent: "#7C3AED", tint: "#EFEAFC" },
+        { accent: "#3C9AC4", tint: "#E8F0F6" },
+        { accent: "#3C9AC4", tint: "#E8F0F6" },
+        { accent: "#10B981", tint: "#E8F0F6" },
+        { accent: "#3C9AC4", tint: "#E8F0F6" },
     ];
 
     const OP_ACCENTS = [
-        { accent: "#4F46E5", tint: "#EEF0FE" },
-        { accent: "#2563EB", tint: "#EAF1FE" },
-        { accent: "#10B981", tint: "#E7FBF3" },
-        { accent: "#7C3AED", tint: "#F3EEFE" },
+        { accent: "#13355A", tint: "#E8F0F6" },
+        { accent: "#3C9AC4", tint: "#F4F8FC" },
+        { accent: "#10B981", tint: "#E8F0F6" },
+        { accent: "#3C9AC4", tint: "#E8F0F6" },
     ];
 
     const OPS = cfg.capabilities.slice(0, 4).map((c, i) => ({
@@ -1825,8 +1825,8 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: SVGProps<SVGSVGElement> & 
         <svg viewBox="10 10 980 645" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
             <defs>
                 <linearGradient id="ch-engine" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#2F5FF0" />
-                    <stop offset="100%" stopColor="#0B1E4F" />
+                    <stop offset="0%" stopColor="#3C9AC4" />
+                    <stop offset="100%" stopColor="#13355A" />
                 </linearGradient>
                 <clipPath id="mainCardClip">
                     <rect
@@ -1851,11 +1851,11 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: SVGProps<SVGSVGElement> & 
             </defs>
 
             {/* Subtle dot cluster decorations – transparent bg so they float */}
-            <DotCluster x={24} y={24} color="#93A4F5" />
-            <DotCluster x={870} y={555} color="#93A4F5" />
+            <DotCluster x={24} y={24} color="#6BC1E0" />
+            <DotCluster x={870} y={555} color="#6BC1E0" />
 
             {/* Marketplace card */}
-            <rect x="30" y="222" width="270" height="180" rx="16" fill="white" stroke="#ECEFF7" strokeWidth="1.2" />
+            <rect x="30" y="222" width="270" height="180" rx="16" fill="white" stroke="#E8F0F6" strokeWidth="1.2" />
             <rect x="30" y="220" width="270" height="10" rx="2.5" fill={cfg.dot} clipPath="url(#mainCardClip)" />
             {cfg.logo ? (
                 <image href={cfg.logo} x="44" y="244" width="56" height="56" preserveAspectRatio="xMidYMid meet" />
@@ -1868,24 +1868,24 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: SVGProps<SVGSVGElement> & 
             )}
             <text x="112" y="268" fontSize="21" fontWeight="800" fill="#0F172A">{cfg.name}</text>
             <text x="112" y="292" fontSize="14" fill="#64748B">Native integration</text>
-            <rect x="50" y="324" width="230" height="44" rx="22" fill="#E7F7EF" />
-            <circle cx="70" cy="346" r="6" fill="#16A34A">
+            <rect x="50" y="324" width="230" height="44" rx="22" fill="#E8F0F6" />
+            <circle cx="70" cy="346" r="6" fill="#3C9AC4">
                 {/* Pulse on the "live" dot */}
                 <animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite" />
                 <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
             </circle>
-            <circle cx="70" cy="346" r="5" fill="#16A34A" />
-            <text x="86" y="351" fontSize="14" fontWeight="700" fill="#4338CA">Connected · live</text>
+            <circle cx="70" cy="346" r="5" fill="#3C9AC4" />
+            <text x="86" y="351" fontSize="14" fontWeight="700" fill="#13355A">Connected · live</text>
 
             {/* Arrow line: marketplace → Engine */}
-            <line x1="300" y1="312" x2="382" y2="312" stroke="#3B82F6" strokeWidth="2.4" strokeDasharray="6 5">
+            <line x1="300" y1="312" x2="382" y2="312" stroke="#3C9AC4" strokeWidth="2.4" strokeDasharray="6 5">
                 <animate attributeName="stroke-dashoffset" values="0;-22" dur="1.2s" repeatCount="indefinite" />
             </line>
             {/* flowing dot on the arrow */}
-            <circle r="4" fill="#3B82F6" opacity="0.85">
+            <circle r="4" fill="#3C9AC4" opacity="0.85">
                 <animateMotion dur="1.6s" repeatCount="indefinite" path="M300 312 L382 312" />
             </circle>
-            <path d="M382 303l14 9-14 9z" fill="#3B82F6" />
+            <path d="M382 303l14 9-14 9z" fill="#3C9AC4" />
 
             {/* Engine box */}
             <rect x="400" y="200" width="220" height="220" rx="24" fill="url(#ch-engine)" />
@@ -1894,16 +1894,16 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: SVGProps<SVGSVGElement> & 
                 <animate attributeName="opacity" values="0;0.05;0" dur="3s" repeatCount="indefinite" />
             </circle>
             <circle cx="510" cy="278" r="55" fill="white" opacity="0.08" />
-            <circle cx="470" cy="230" r="2" fill="#93C5FD" opacity="0.7" />
-            <circle cx="555" cy="235" r="2.4" fill="#93C5FD" opacity="0.6" />
-            <circle cx="545" cy="215" r="1.8" fill="#93C5FD" opacity="0.6" />
+            <circle cx="470" cy="230" r="2" fill="#6BC1E0" opacity="0.7" />
+            <circle cx="555" cy="235" r="2.4" fill="#6BC1E0" opacity="0.6" />
+            <circle cx="545" cy="215" r="1.8" fill="#6BC1E0" opacity="0.6" />
             {/* Engine inner white disc with check */}
             <circle cx="510" cy="278" r="45" fill="white" />
             <g transform="translate(490,258)">
                 <Icon name="check" size="40" />
             </g>
             <text x="510" y="365" textAnchor="middle" fontSize="22" fontWeight="800" fill="white">SellerBuz Sync</text>
-            <text x="510" y="390" textAnchor="middle" fontSize="15" fill="#BFDBFE">2-way · &lt; 2s latency</text>
+            <text x="510" y="390" textAnchor="middle" fontSize="15" fill="#BDD9EE">2-way · &lt; 2s latency</text>
 
             {/* Connector paths: engine right face → ops cards */}
             {OP_YS.map((y, i) => (
@@ -1911,19 +1911,19 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: SVGProps<SVGSVGElement> & 
                     <path
                         d={`M622 305 C 670 305, 700 ${y + OP_H / 2}, ${OP_X} ${y + OP_H / 2}`}
                         fill="none"
-                        stroke="#3B82F6"
+                        stroke="#3C9AC4"
                         strokeWidth="1.8"
                         strokeDasharray="5 5"
                     >
                         <animate attributeName="stroke-dashoffset" values="0;-20" dur={`${1.2 + i * 0.15}s`} repeatCount="indefinite" />
                     </path>
                     {/* Flowing data dot along each path */}
-                    <circle r="3.5" fill="#3B82F6" opacity="0.85">
+                    <circle r="3.5" fill="#3C9AC4" opacity="0.85">
                         <animateMotion dur={`${1.8 + i * 0.2}s`} repeatCount="indefinite"
                             path={`M622 305 C 670 305, 700 ${y + OP_H / 2}, ${OP_X} ${y + OP_H / 2}`} />
                     </circle>
                     {/* Junction dot on ops card edge */}
-                    <circle cx={OP_X} cy={y + OP_H / 2} r="5" fill="#2563EB">
+                    <circle cx={OP_X} cy={y + OP_H / 2} r="5" fill="#3C9AC4">
                         <animate attributeName="opacity" values="1;0.5;1" dur={`${1.6 + i * 0.2}s`} repeatCount="indefinite" />
                     </circle>
                 </g>
@@ -1934,7 +1934,7 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: SVGProps<SVGSVGElement> & 
                 const y = OP_YS[i];
                 return (
                     <g key={op.label}>
-                        <rect x={OP_X} y={y} width={OP_W} height={OP_H} rx="14" fill="white" stroke="#ECEFF7" strokeWidth="1.2" />
+                        <rect x={OP_X} y={y} width={OP_W} height={OP_H} rx="14" fill="white" stroke="#E8F0F6" strokeWidth="1.2" />
                         <rect x={OP_X} y={y} width="4" height={OP_H} rx="2" fill={op.accent} clipPath={`url(#opsClip${i})`} />
                         <circle cx={OP_X + 42} cy={y + OP_H / 2} r="26" fill={op.tint} />
                         <g transform={`translate(${OP_X + 30},${y + OP_H / 2 - 12})`} color={op.accent}>
@@ -1951,7 +1951,7 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: SVGProps<SVGSVGElement> & 
             })}
 
             {/* Footer feature row */}
-            <rect x="30" y="512" width="940" height="100" rx="18" fill="white" stroke="#ECEFF7" strokeWidth="1.2" />
+            <rect x="30" y="512" width="940" height="100" rx="18" fill="white" stroke="#E8F0F6" strokeWidth="1.2" />
             {FEATURES.map((f, i) => {
                 const x = 60 + i * 230;
                 return (

@@ -106,16 +106,16 @@ const Services = () => {
               <React.Fragment key={c}>
                 <div className="font-bold text-slate-700 py-2">{c}</div>
                 {[0, 1, 2, 3].map((si) => (
-                  <div key={c + si} className={`h-8 rounded-md flex items-center justify-center font-semibold ${(ci + si) % 3 === 0 ? "bg-blue-600 text-white" : "bg-blue-50 text-blue-700 border border-blue-100"}`}>
+                  <div key={c + si} className={`h-8 rounded-md flex items-center justify-center font-semibold ${(ci + si) % 3 === 0 ? "bg-primary text-white" : "bg-accent text-primary border border-primary/10"}`}>
                     {(ci + si) % 3 === 0 ? "sync" : "12"}
                   </div>
                 ))}
               </React.Fragment>
             ))}
           </div>
-          <div className="mt-4 flex items-center gap-2 p-3 rounded-lg bg-blue-50 border border-blue-100">
-            <GitMerge className="w-4 h-4 text-blue-700" />
-            <div className="text-xs text-blue-900">
+          <div className="mt-4 flex items-center gap-2 p-3 rounded-lg bg-accent border border-primary/10">
+            <GitMerge className="w-4 h-4 text-primary" />
+            <div className="text-xs text-primary">
               <span className="font-bold">Variant sync complete:</span> All variants are synchronized across your catalog.
             </div>
           </div>
@@ -177,8 +177,8 @@ const Services = () => {
       icon: Upload,
       visual: (
         <div className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5">
-          <div className="rounded-xl border-2 border-dashed border-blue-200 bg-blue-50/60 p-8 text-center">
-            <Upload className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+          <div className="rounded-xl border-2 border-dashed border-primary/20 bg-accent/60 p-8 text-center">
+            <Upload className="w-8 h-8 text-primary mx-auto mb-2" />
             <div className="font-semibold text-slate-900">Drop inventory_master.xlsx</div>
             <div className="text-xs text-slate-500 mt-1">or browse · up to 250 MB</div>
           </div>
@@ -207,18 +207,18 @@ const Services = () => {
         <PageHero
           badgeIcon={Sparkles}
           badgeText="9 services · 1 platform"
-          title={<>Services that <span className="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">do the heavy lifting.</span></>}
+          title={<>Services that <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">do the heavy lifting.</span></>}
           subtitle="From inventory sync to AI-powered catalog optimization - every service is designed to remove a manual task and add a measurable result."
           visual={<ServicesHeroMockup className="w-full h-auto" />}
           actions={
             <>
               <Link href="/pricing">
-                <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-200 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm">
+                <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-200 bg-white hover:bg-accent text-slate-900 rounded-full shadow-sm">
                   View Pricing
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
+                <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-[#3C9AC4] to-[#13355A] hover:opacity-95 border-0">
                   Talk to Our Team
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -233,13 +233,13 @@ const Services = () => {
             <div className="px-5 sm:px-8 lg:px-[70px]">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
                 <div className={`reveal ${s.reverse ? "lg:order-2" : ""}`}>
-                  <Badge className="mb-3 bg-blue-50 text-blue-700 border border-blue-100 text-xs">{s.eyebrow}</Badge>
+                  <Badge className="mb-3 bg-accent text-primary border border-primary/10 text-xs">{s.eyebrow}</Badge>
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-3">{s.title}</h2>
                   <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed mb-5">{s.desc}</p>
                   <ul className="space-y-2">
                     {s.bullets.map((b) => (
                       <li key={b} className="flex items-start gap-2 text-sm lg:text-base text-slate-700">
-                        <CheckCircle2 className="w-4 h-4 text-blue-600 mt-0.5 shrink-0" /> {b}
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" /> {b}
                       </li>
                     ))}
                   </ul>
@@ -253,16 +253,16 @@ const Services = () => {
         ))}
 
         {/* CTA */}
-        <section className="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
-          <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
+        <section className="py-16 lg:py-20 relative overflow-hidden bg-[#13355A]">
+          <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-white/10 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-white/5 blur-3xl pointer-events-none" />
           <div className="relative px-5 sm:px-8 lg:px-[70px] text-center">
-            <Sparkles className="w-12 h-12 mx-auto text-blue-200 mb-6 animate-float" />
+            <Sparkles className="w-12 h-12 mx-auto text-white/20 mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Ready to simplify your marketplace operations?</h2>
             <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">Manage Amazon and Shopify from one centralized platform.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50 rounded-full px-8 h-12 border-0 shadow-lg">
+                <Button size="lg" className="bg-white text-primary hover:bg-accent rounded-full px-8 h-12 border-0 shadow-lg">
                   View Pricing <ArrowRight className="w-4 h-4 ml-1.5" />
                 </Button>
               </Link>

@@ -81,15 +81,15 @@ const PLAN_PERKS = [
     icon: RefreshCw,
     title: 'Order synchronization',
     desc: 'Sync orders in real-time across all channels',
-    color: 'text-blue-600',
-    bg: 'bg-blue-50',
+    color: 'text-primary',
+    bg: 'bg-accent',
   },
   {
     icon: BarChart2,
     title: 'Analytics dashboard',
     desc: 'Insightful reports to grow your business',
-    color: 'text-indigo-600',
-    bg: 'bg-indigo-50',
+    color: 'text-[#3C9AC4]',
+    bg: 'bg-[#E8F0F6]',
   },
   {
     icon: ShieldCheck,
@@ -118,8 +118,8 @@ const PLAN_PERKS = [
     icon: Headphones,
     title: 'Multi-channel support',
     desc: 'Email, chat and priority support options',
-    color: 'text-violet-600',
-    bg: 'bg-violet-50',
+    color: 'text-[#3C9AC4]',
+    bg: 'bg-[#E8F0F6]',
   },
 ];
 
@@ -195,7 +195,7 @@ const Pricing = () => {
           title={
             <>
               Pricing that scales{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
                 with your business.
               </span>
             </>
@@ -208,7 +208,7 @@ const Pricing = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-base px-8 h-12 border-slate-200 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm"
+                  className="text-base px-8 h-12 border-slate-200 bg-white hover:bg-accent text-slate-900 rounded-full shadow-sm"
                 >
                   Compare plans
                 </Button>
@@ -216,7 +216,7 @@ const Pricing = () => {
 
               <Link
                 href="#plans"
-                className="inline-flex items-center justify-center rounded-full text-base px-8 h-12 shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0 text-white"
+                className="inline-flex items-center justify-center rounded-full text-base px-8 h-12 shadow-lg group bg-gradient-to-r from-[#3C9AC4] to-[#13355A] hover:opacity-95 border-0 text-white"
               >
                 See Plans
                 <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
@@ -253,13 +253,13 @@ const Pricing = () => {
                 <div className="mb-6 flex items-center justify-center gap-3">
                   <button
                     onClick={() => setSelectedInterval('month')}
-                    className={`px-4 py-2 rounded-full text-sm font-semibold transition ${selectedInterval === 'month' ? 'bg-blue-600 text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-700 hover:bg-blue-50'}`}
+                    className={`px-4 py-2 rounded-full text-sm font-semibold transition ${selectedInterval === 'month' ? 'bg-primary text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-700 hover:bg-accent'}`}
                   >
                     Monthly
                   </button>
                   <button
                     onClick={() => setSelectedInterval('quarterly')}
-                    className={`px-4 py-2 rounded-full text-sm font-semibold transition ${selectedInterval === 'quarterly' ? 'bg-blue-600 text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-700 hover:bg-blue-50'}`}
+                    className={`px-4 py-2 rounded-full text-sm font-semibold transition ${selectedInterval === 'quarterly' ? 'bg-primary text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-700 hover:bg-accent'}`}
                   >
                     Quarterly
                   </button>
@@ -280,16 +280,16 @@ const Pricing = () => {
                       <Card
                         key={plan._id}
                         className={`relative overflow-hidden p-2 transition-all ${plan.is_popular
-                          ? 'border-2 border-blue-600 shadow-lg lg:scale-105 bg-gradient-to-br from-white via-blue-50/40 to-blue-50'
-                          : 'border border-slate-200 hover:border-blue-200 hover:shadow-lg'
+                          ? 'border-2 border-primary shadow-lg lg:scale-105 bg-gradient-to-br from-white via-accent to-accent/60'
+                          : 'border border-slate-200 hover:border-primary/20 hover:shadow-lg'
                           }`}
                         style={{ transitionDelay: `${i * 120}ms` }}
                       >
                         {plan.is_popular && (
                           <>
-                            <div className="absolute -top-px left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-blue-900" />
+                            <div className="absolute -top-px left-0 right-0 h-1 bg-gradient-to-r from-[#3C9AC4] to-[#13355A]" />
                             <div className="absolute top-4 right-4">
-                              <Badge className="bg-gradient-to-r from-blue-600 to-blue-900 text-white border-0 shadow-md">
+                              <Badge className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] text-white border-0 shadow-md">
                                 Most Popular
                               </Badge>
                             </div>
@@ -310,7 +310,7 @@ const Pricing = () => {
                               ✓ {plan.trial_days}-day free trial included
                             </p>
                           )} */}
-                          <p className="text-xs text-blue-600 font-medium mt-1">
+                          <p className="text-xs text-primary font-medium mt-1">
                             ✓ Get started immediately
                           </p>
                         </CardHeader>
@@ -319,10 +319,10 @@ const Pricing = () => {
                           <button
                             onClick={() => handlePlanClick(plan)}
                             className={`w-full py-3 rounded-2xl text-sm font-semibold transition-all ${plan.is_popular
-                              ? 'bg-gradient-to-r from-blue-600 to-blue-900 text-white shadow-md hover:opacity-90'
+                              ? 'bg-gradient-to-r from-[#3C9AC4] to-[#13355A] text-white shadow-md hover:opacity-90'
                               : plan.is_custom_plan
                                 ? 'bg-slate-900 text-white hover:bg-slate-700'
-                                : 'border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white'
+                                : 'border-2 border-primary text-primary hover:bg-primary hover:text-white'
                               } disabled:opacity-60 disabled:cursor-not-allowed`}
                           >
                             {getCtaLabel(plan)}
@@ -331,7 +331,7 @@ const Pricing = () => {
                           <ul className="space-y-3 pt-2">
                             {plan.marketing_features.map((f, j) => (
                               <li key={j} className="flex items-start gap-3 text-sm lg:text-base">
-                                <span className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${plan.is_popular ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-600'
+                                <span className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${plan.is_popular ? 'bg-primary text-white' : 'bg-accent text-primary'
                                   }`}>
                                   <Check className="w-3 h-3" />
                                 </span>
@@ -377,7 +377,7 @@ const Pricing = () => {
                 return (
                   <div
                     key={i}
-                    className="flex flex-col items-center text-center gap-3 p-4 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md hover:border-blue-100 transition-all"
+                    className="flex flex-col items-center text-center gap-3 p-4 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md hover:border-primary/20 transition-all"
                   >
                     <span className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${perk.bg}`}>
                       <Icon className={`w-5 h-5 ${perk.color}`} />
@@ -405,13 +405,13 @@ const Pricing = () => {
                   <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
                 ))}
               </div>
-              <Quote className="w-10 h-10 text-blue-600 mb-4" />
+              <Quote className="w-10 h-10 text-primary mb-4" />
               <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-slate-900 leading-relaxed mb-6">
                 "We tried 3 other platforms before SellerBuz. The Pro plan paid for itself in week one
                 from saved labor alone."
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-blue-900 flex items-center justify-center text-white font-bold">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#3C9AC4] to-[#13355A] flex items-center justify-center text-white font-bold">
                   MK
                 </div>
                 <div>
@@ -427,7 +427,7 @@ const Pricing = () => {
         <section className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3]">
           <div className="relative px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-14 reveal max-w-3xl mx-auto">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Inside Pro & Enterprise</Badge>
+              <Badge className="mb-4 bg-accent text-primary border border-primary/10">Inside Pro & Enterprise</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
                 The premium services that pay for the plan
               </h2>
@@ -444,7 +444,7 @@ const Pricing = () => {
                 >
                   <CardContent className="p-7">
                     <div className="flex items-center gap-2 mb-3">
-                      <Sparkles className="w-5 h-5 text-blue-600" />
+                      <Sparkles className="w-5 h-5 text-primary" />
                       <h3 className="font-bold text-slate-900 text-lg lg:text-xl">{b.title}</h3>
                     </div>
                     <p className="text-base sm:text-lg text-slate-600 leading-relaxed">{b.desc}</p>
@@ -459,7 +459,7 @@ const Pricing = () => {
         <section className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-12 reveal">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">FAQ</Badge>
+              <Badge className="mb-4 bg-accent text-primary border border-primary/10">FAQ</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Frequently asked questions</h2>
             </div>
             <Accordion type="single" collapsible className="reveal space-y-3">
@@ -467,7 +467,7 @@ const Pricing = () => {
                 <AccordionItem
                   key={i}
                   value={`item-${i}`}
-                  className="bg-white rounded-2xl border border-slate-200/70 px-6 shadow-sm hover:shadow-lg hover:border-blue-200 transition-all"
+                  className="bg-white rounded-2xl border border-slate-200/70 px-6 shadow-sm hover:shadow-lg hover:border-primary/20 transition-all"
                 >
                   <AccordionTrigger className="text-left font-semibold text-slate-900 hover:no-underline py-5">
                     {f.q}
@@ -482,16 +482,16 @@ const Pricing = () => {
         </section>
 
         {/* ── BOTTOM CTA ─────────────────────────────────────────────────────── */}
-        <section className="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
-          <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-blue-300/15 blur-3xl pointer-events-none" />
+        <section className="py-16 lg:py-20 relative overflow-hidden bg-[#13355A]">
+          <div className="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-white/10 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-32 -left-32 w-[480px] h-[480px] rounded-full bg-white/5 blur-3xl pointer-events-none" />
           <div className="relative px-5 sm:px-8 lg:px-[70px] text-center reveal">
-            <Sparkles className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
+            <Sparkles className="w-12 h-12 text-white/20 mx-auto mb-6 animate-float" />
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Ready to scale your marketplace business?</h2>
             <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto"> Choose the plan that fits your business and start managing every marketplace from one powerful platform.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing#plans">
-                <Button size="lg" className="text-lg px-8 rounded-full bg-white text-blue-600 hover:bg-blue-50 border-0 shadow-lg">
+                <Button size="lg" className="text-lg px-8 rounded-full bg-white text-primary hover:bg-accent border-0 shadow-lg">
                   Choose Your Plan
                 </Button>
               </Link>

@@ -26,7 +26,7 @@ export default function CheckoutCancelPage() {
         <div className="flex flex-col gap-3">
           <Link
             href="/pricing"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-blue-900 text-white px-8 py-3 text-sm font-semibold hover:opacity-90 transition-opacity shadow-lg"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#13355A] to-[#0D2440] text-white px-8 py-3 text-sm font-semibold hover:opacity-90 transition-opacity shadow-lg"
           >
             <RefreshCw className="w-4 h-4" /> Try again
           </Link>
@@ -40,7 +40,7 @@ export default function CheckoutCancelPage() {
 
         <p className="mt-6 text-xs text-slate-400">
           Need help?{' '}
-          <a href="/contact" className="underline hover:text-blue-600">Contact us</a>
+          <a href="/contact" className="underline hover:text-[#3C9AC4]">Contact us</a>
         </p>
       </div>
     </div>

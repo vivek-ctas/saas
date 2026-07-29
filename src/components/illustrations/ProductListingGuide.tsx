@@ -49,9 +49,9 @@ function Arrow({ dashed = false }: { dashed?: boolean }) {
                 {dashed ? (
                     <line x1="3" y1="9" x2="34" y2="9" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="5 4" />
                 ) : (
-                    <line x1="3" y1="9" x2="34" y2="9" stroke="#BFDBFE" strokeWidth="2" />
+                    <line x1="3" y1="9" x2="34" y2="9" stroke="#BDD9EE" strokeWidth="2" />
                 )}
-                <polyline points="30,4 40,9 30,14" fill="none" stroke={dashed ? "#94A3B8" : "#60A5FA"} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+                <polyline points="30,4 40,9 30,14" fill="none" stroke={dashed ? "#94A3B8" : "#6BC1E0"} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
             </svg>
         </div>
     );
@@ -67,9 +67,9 @@ function ArrowDown({ dashed = false }: { dashed?: boolean }) {
                 {dashed ? (
                     <line x1="9" y1="4" x2="9" y2="26" stroke="#CBD5E1" strokeWidth="2" strokeDasharray="5 4" />
                 ) : (
-                    <line x1="9" y1="4" x2="9" y2="26" stroke="#BFDBFE" strokeWidth="2" />
+                    <line x1="9" y1="4" x2="9" y2="26" stroke="#BDD9EE" strokeWidth="2" />
                 )}
-                <polyline points="4,22 9,30 14,22" fill="none" stroke={dashed ? "#94A3B8" : "#60A5FA"} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+                <polyline points="4,22 9,30 14,22" fill="none" stroke={dashed ? "#94A3B8" : "#6BC1E0"} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
             </svg>
         </div>
     );
@@ -81,7 +81,7 @@ function ArrowDown({ dashed = false }: { dashed?: boolean }) {
 function OptionLabel({ badge, label }: { badge: string; label: string }) {
     return (
         <div className="flex flex-col items-center gap-2" style={{ width: 96, flexShrink: 0 }}>
-            <span className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white leading-none shadow text-center">
+            <span className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-bold bg-[#13355A] text-white leading-none shadow text-center">
                 {badge}
             </span>
             <span className="text-xs font-semibold text-slate-600 text-center leading-tight">{label}</span>
@@ -111,14 +111,14 @@ function Node({
 }) {
     const ring =
         variant === "blue"
-            ? "bg-blue-600 border-2 border-blue-700 shadow-lg shadow-blue-200"
+            ? "bg-[#13355A] border-2 border-[#0D2440] shadow-lg shadow-[#BDD9EE]"
             : variant === "green"
                 ? "bg-emerald-500 border-2 border-emerald-600 shadow-lg shadow-emerald-100"
                 : "bg-white border-2 border-slate-200 shadow-md";
     const iconCls =
         variant === "blue" || variant === "green"
             ? "text-white"
-            : "text-blue-600";
+            : "text-[#3C9AC4]";
 
     return (
         <div
@@ -167,9 +167,9 @@ function FormNode({ visible = true, delay = 0 }: { visible?: boolean; delay?: nu
                 </div>
                 <div className="p-1.5 space-y-1.5">
                     {/* Upload */}
-                    <div className="flex items-center gap-1 rounded border border-dashed border-blue-200 bg-blue-50 px-1.5 py-1">
-                        <ImageIcon className="w-2.5 h-2.5 text-blue-400 shrink-0" />
-                        <span className="text-[8px] text-blue-600">Upload Image</span>
+                    <div className="flex items-center gap-1 rounded border border-dashed border-[#BDD9EE] bg-[#E8F0F6] px-1.5 py-1">
+                        <ImageIcon className="w-2.5 h-2.5 text-[#6BC1E0] shrink-0" />
+                        <span className="text-[8px] text-[#3C9AC4]">Upload Image</span>
                     </div>
                     {/* 2 Column Fields */}
                     <div className="grid grid-cols-2 gap-1">
@@ -224,7 +224,7 @@ function CatalogPanel({ visible = true, delay = 0 }: { visible?: boolean; delay?
             }}
         >
             {/* browser chrome */}
-            <div className="flex items-center gap-2 px-4 py-3 bg-blue-600">
+            <div className="flex items-center gap-2 px-4 py-3 bg-[#13355A]">
                 <span className="w-2.5 h-2.5 rounded-full bg-white/40" />
                 <span className="w-2.5 h-2.5 rounded-full bg-white/40" />
                 <span className="w-2.5 h-2.5 rounded-full bg-white/40" />
@@ -239,8 +239,8 @@ function CatalogPanel({ visible = true, delay = 0 }: { visible?: boolean; delay?
             {/* rows */}
             {PRODUCTS.map((p) => (
                 <div key={p.sku} className="grid grid-cols-[28px_1fr_56px_24px] gap-2 items-center px-4 py-2 border-b border-slate-50 last:border-0">
-                    <div className="w-6 h-6 rounded-md bg-blue-50 flex items-center justify-center">
-                        <span className="text-[8px] font-bold text-blue-700">{p.init}</span>
+                    <div className="w-6 h-6 rounded-md bg-[#E8F0F6] flex items-center justify-center">
+                        <span className="text-[8px] font-bold text-[#13355A]">{p.init}</span>
                     </div>
                     <span className="text-xs font-semibold text-slate-800 truncate">{p.name}</span>
                     <span className="text-[10px] font-mono text-slate-500 truncate">{p.sku}</span>
@@ -271,7 +271,7 @@ function Sidebar({ visible }: { visible: boolean }) {
                 transform: visible ? "translateX(0)" : "translateX(-12px)",
             }}
         >
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-600 text-white shadow self-start">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-[#13355A] text-white shadow self-start">
                 STEP 1
             </span>
             <div>
@@ -279,13 +279,13 @@ function Sidebar({ visible }: { visible: boolean }) {
                 <p className="text-sm sm:text-base text-slate-500 mt-2 leading-relaxed">Add products to your catalog manually or in bulk. Listings appear in My Catalog instantly, ready to go live.</p>
             </div>
             {/* Option 1 */}
-            <div className="rounded-2xl border border-blue-100 bg-blue-50 p-3 sm:p-4">
+            <div className="rounded-2xl border border-[#BDD9EE] bg-[#E8F0F6] p-3 sm:p-4">
                 <div className="flex gap-2.5 sm:gap-3">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-blue-600 flex items-center justify-center shrink-0 mt-px">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#13355A] flex items-center justify-center shrink-0 mt-px">
                         <Tag className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
                     </div>
                     <div className="min-w-0">
-                        <p className="text-xs font-bold text-blue-600 uppercase tracking-wider">Option 1</p>
+                        <p className="text-xs font-bold text-[#3C9AC4] uppercase tracking-wider">Option 1</p>
                         <p className="text-sm sm:text-base font-semibold text-slate-800 mt-0.5">Add Product Manually</p>
                         <p className="text-xs sm:text-sm text-slate-500 mt-1 sm:mt-1.5 leading-relaxed">Fill product details one by one - title, SKU, price, stock, images — and save your listing.</p>
                     </div>
@@ -298,13 +298,13 @@ function Sidebar({ visible }: { visible: boolean }) {
                 <div className="flex-1 h-px bg-slate-200" />
             </div>
             {/* Option 2 */}
-            <div className="rounded-2xl border border-blue-100 bg-blue-50 p-3 sm:p-4">
+            <div className="rounded-2xl border border-[#BDD9EE] bg-[#E8F0F6] p-3 sm:p-4">
                 <div className="flex gap-2.5 sm:gap-3">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-blue-600 flex items-center justify-center shrink-0 mt-px">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#13355A] flex items-center justify-center shrink-0 mt-px">
                         <UploadCloud className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
                     </div>
                     <div className="min-w-0">
-                        <p className="text-xs font-bold text-blue-600 uppercase tracking-wider">Option 2</p>
+                        <p className="text-xs font-bold text-[#3C9AC4] uppercase tracking-wider">Option 2</p>
                         <p className="text-sm sm:text-base font-semibold text-slate-800 mt-0.5">Import via File</p>
                         <p className="text-xs sm:text-sm text-slate-500 mt-1 sm:mt-1.5 leading-relaxed">Download the template, fill in your product data, upload the file — all products are created automatically.</p>
                     </div>
@@ -342,9 +342,9 @@ function StepCard({
     visible?: boolean;
 }) {
     const ring = variant === "blue"
-        ? "bg-blue-600 shadow-blue-200"
+        ? "bg-[#13355A] shadow-[#BDD9EE]"
         : "bg-white border border-slate-200";
-    const iconCls = variant === "blue" ? "text-white" : "text-blue-600";
+    const iconCls = variant === "blue" ? "text-white" : "text-[#3C9AC4]";
 
     return (
         <div
@@ -385,7 +385,7 @@ export function ProductListingGuide() {
                         transform: visible ? "translateY(0)" : "translateY(14px)",
                     }}
                 >
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100 mb-3">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#E8F0F6] text-[#13355A] border border-[#BDD9EE] mb-3">
                         How It Works
                     </span>
                     <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-2 sm:mb-3">
@@ -465,10 +465,10 @@ export function ProductListingGuide() {
 
                                 {/* Bottom sync strip */}
                                 <div
-                                    className="mt-4 flex items-start gap-2 bg-white border border-blue-100 rounded-2xl px-4 py-3 shadow-sm w-full max-w-[380px]"
+                                    className="mt-4 flex items-start gap-2 bg-white border border-[#BDD9EE] rounded-2xl px-4 py-3 shadow-sm w-full max-w-[380px]"
                                     style={{ transition: "opacity 0.6s ease 700ms", opacity: visible ? 1 : 0 }}
                                 >
-                                    <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-px" />
+                                    <CheckCircle2 className="w-4 h-4 text-[#3C9AC4] shrink-0 mt-px" />
                                     <p className="text-xs font-semibold text-slate-700 leading-relaxed">
                                         Both paths sync instantly to My Catalog — listings go live on Amazon within seconds.
                                     </p>
@@ -489,7 +489,7 @@ export function ProductListingGuide() {
                                     style={{ transition: `opacity 0.5s ease 100ms`, opacity: visible ? 1 : 0 }}
                                 >
                                     <div className="flex items-center gap-2">
-                                        <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-[11px] font-bold bg-blue-600 text-white leading-none shadow">OPTION 1</span>
+                                        <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-[11px] font-bold bg-[#13355A] text-white leading-none shadow">OPTION 1</span>
                                         <span className="text-sm font-semibold text-slate-600">Add Product Manually</span>
                                     </div>
                                     <div className="grid grid-cols-2 gap-3">
@@ -513,7 +513,7 @@ export function ProductListingGuide() {
                                     style={{ transition: `opacity 0.5s ease 300ms`, opacity: visible ? 1 : 0 }}
                                 >
                                     <div className="flex items-center gap-2">
-                                        <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-[11px] font-bold bg-blue-600 text-white leading-none shadow">OPTION 2</span>
+                                        <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-[11px] font-bold bg-[#13355A] text-white leading-none shadow">OPTION 2</span>
                                         <span className="text-sm font-semibold text-slate-600">Import Products via File</span>
                                     </div>
                                     <div className="grid grid-cols-2 gap-3">
@@ -531,10 +531,10 @@ export function ProductListingGuide() {
 
                                 {/* Bottom sync strip */}
                                 <div
-                                    className="flex items-start gap-2.5 bg-white border border-blue-100 rounded-2xl px-4 py-3 shadow-sm"
+                                    className="flex items-start gap-2.5 bg-white border border-[#BDD9EE] rounded-2xl px-4 py-3 shadow-sm"
                                     style={{ transition: "opacity 0.6s ease 700ms", opacity: visible ? 1 : 0 }}
                                 >
-                                    <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-px" />
+                                    <CheckCircle2 className="w-4 h-4 text-[#3C9AC4] shrink-0 mt-px" />
                                     <p className="text-sm font-semibold text-slate-700">
                                         Both paths sync instantly to My Catalog — listings go live on Amazon within seconds.
                                     </p>
@@ -614,10 +614,10 @@ export function ProductListingGuide() {
 
                                 {/* Bottom sync strip */}
                                 <div
-                                    className="mt-6 flex items-start gap-2.5 bg-white border border-blue-100 rounded-2xl px-4 py-3 shadow-sm"
+                                    className="mt-6 flex items-start gap-2.5 bg-white border border-[#BDD9EE] rounded-2xl px-4 py-3 shadow-sm"
                                     style={{ transition: "opacity 0.6s ease 700ms", opacity: visible ? 1 : 0 }}
                                 >
-                                    <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" />
+                                    <CheckCircle2 className="w-5 h-5 text-[#3C9AC4] shrink-0" />
                                     <p className="text-sm font-semibold text-slate-700">
                                         Both paths sync instantly to My Catalog — listings go live on Amazon within seconds.
                                     </p>
@@ -643,8 +643,8 @@ export function ProductListingGuide() {
                         { icon: CheckCircle2, title: "Instant Catalog Sync", desc: "Every product appears in My Catalog within seconds, ready to push live on Amazon." },
                     ].map(({ icon: Icon, title, desc }) => (
                         <div key={title} className="flex items-start gap-3 bg-white border border-slate-200 rounded-2xl px-4 py-4 sm:px-5 sm:py-5 shadow-sm">
-                            <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 mt-0.5">
-                                <Icon className="w-5 h-5 text-blue-600" />
+                            <div className="w-9 h-9 rounded-xl bg-[#E8F0F6] flex items-center justify-center shrink-0 mt-0.5">
+                                <Icon className="w-5 h-5 text-[#3C9AC4]" />
                             </div>
                             <div>
                                 <p className="text-base font-semibold text-slate-900">{title}</p>

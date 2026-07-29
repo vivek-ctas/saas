@@ -31,21 +31,21 @@ const TermsIllustration = () => (
         xmlns="http://www.w3.org/2000/svg"
     >
         {/* Background glowing sphere decoration */}
-        <circle cx="210" cy="130" r="100" fill="#EEF2FF" />
-        <circle cx="210" cy="130" r="60" fill="#E0E7FF" opacity="0.6" />
+        <circle cx="210" cy="130" r="100" fill="#E8F0F6" />
+        <circle cx="210" cy="130" r="60" fill="#BDD9EE" opacity="0.6" />
 
         {/* Floating plant leaves / accent shapes */}
         <path
             d="M240 180 c-10-25-30-20-40-5 c-10 15 5 35 15 35 s20-15 25-30z"
-            fill="#818CF8"
+            fill="#6BC1E0"
             opacity="0.3"
         />
         <path
             d="M260 140 c10-20 30-10 25 15 c-5 25-25 15-25 0z"
-            fill="#C7D2FE"
+            fill="#BDD9EE"
             opacity="0.5"
         />
-        <circle cx="98" cy="115" r="6" fill="#818CF8" opacity="0.6" />
+        <circle cx="98" cy="115" r="6" fill="#6BC1E0" opacity="0.6" />
 
         {/* Document shadow */}
         <rect x="54" y="24" width="180" height="210" rx="16" fill="#E2E8F0" opacity="0.5" />
@@ -58,13 +58,13 @@ const TermsIllustration = () => (
             height="210"
             rx="16"
             fill="white"
-            stroke="#ECEFF7"
+            stroke="#BDD9EE"
             strokeWidth="1.5"
         />
         <rect x="58" y="28" width="164" height="194" rx="12" fill="#FAFBFD" />
 
         {/* Lines representing document content */}
-        <rect x="76" y="52" width="70" height="8" rx="4" fill="#818CF8" opacity="0.8" />
+        <rect x="76" y="52" width="70" height="8" rx="4" fill="#6BC1E0" opacity="0.8" />
         <rect x="76" y="72" width="128" height="5" rx="2.5" fill="#E2E8F0" />
         <rect x="76" y="88" width="120" height="5" rx="2.5" fill="#E2E8F0" />
         <rect x="76" y="104" width="128" height="5" rx="2.5" fill="#E2E8F0" />
@@ -75,7 +75,7 @@ const TermsIllustration = () => (
         <path
             d="M76 172 Q 88 165 98 174 T 115 168"
             fill="none"
-            stroke="#4F46E5"
+            stroke="#13355A"
             strokeWidth="2.5"
             strokeLinecap="round"
         />
@@ -89,7 +89,7 @@ const TermsIllustration = () => (
                 width="66"
                 height="66"
                 rx="18"
-                fill="#3B82F6"
+                fill="#3C9AC4"
                 stroke="#FFFFFF"
                 strokeWidth="2"
             />
@@ -248,7 +248,7 @@ const Terms = () => {
                     <div className="px-5 sm:px-8 lg:px-[70px]">
                         <div className="reveal grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                             <div className="md:col-span-7 text-left space-y-5">
-                                <Badge className="bg-cyan-50 text-cyan-700 hover:bg-cyan-100 border border-cyan-200/80 px-3 py-1 rounded-full gap-1.5 text-sm font-semibold select-none">
+                                <Badge className="bg-[#E8F0F6] text-[#13355A] hover:bg-[#E8F0F6] border border-[#BDD9EE]/80 px-3 py-1 rounded-full gap-1.5 text-sm font-semibold select-none">
                                     <Shield className="w-3.5 h-3.5" /> Legal
                                 </Badge>
                                 <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
@@ -259,7 +259,7 @@ const Terms = () => {
                                     you agree to be bound by these legal conditions.
                                 </p>
                                 <div className="flex items-center gap-2 text-slate-500 text-sm">
-                                    <Calendar className="w-4 h-4 text-blue-500" />
+                                    <Calendar className="w-4 h-4 text-[#3C9AC4]" />
                                     <span>Last updated: July 2026</span>
                                 </div>
                             </div>
@@ -282,7 +282,7 @@ const Terms = () => {
                                             return (
                                                 <div key={section.id} className="flex gap-4 items-start">
                                                     {/* Icon Badge */}
-                                                    <div className="w-11 h-11 rounded-xl bg-blue-50/90 text-blue-600 flex items-center justify-center flex-shrink-0 border border-blue-100/40">
+                                                    <div className="w-11 h-11 rounded-xl bg-[#E8F0F6]/90 text-[#3C9AC4] flex items-center justify-center flex-shrink-0 border border-[#BDD9EE]/40">
                                                         <IconComp className="w-5 h-5" />
                                                     </div>
 
@@ -298,7 +298,7 @@ const Terms = () => {
                                                             <ul className="space-y-1.5 pt-1.5">
                                                                 {section.bullets.map((bullet, index) => (
                                                                     <li key={index} className="flex items-start text-xs text-slate-500 leading-relaxed">
-                                                                        <span className="text-blue-500 mr-2 mt-0.5 select-none font-semibold">•</span>
+                                                                        <span className="text-[#3C9AC4] mr-2 mt-0.5 select-none font-semibold">•</span>
                                                                         <span>{bullet}</span>
                                                                     </li>
                                                                 ))}
@@ -322,7 +322,7 @@ const Terms = () => {
                         <div className="reveal mb-6">
                             <Card className="border border-slate-200/60 shadow-lg shadow-slate-100/20 rounded-2xl bg-white">
                                 <CardContent className="p-6 sm:p-8 flex gap-4 items-start">
-                                    <div className="w-11 h-11 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0 border border-indigo-100/40">
+                                    <div className="w-11 h-11 rounded-xl bg-[#E8F0F6] text-[#13355A] flex items-center justify-center flex-shrink-0 border border-[#BDD9EE]/40">
                                         <Scale className="w-5 h-5" />
                                     </div>
                                     <div className="space-y-2">
@@ -342,7 +342,7 @@ const Terms = () => {
                         <div className="reveal">
                             <Card className="border border-slate-200/60 shadow-lg shadow-slate-100/20 rounded-2xl bg-white">
                                 <CardContent className="p-6 sm:p-8 flex gap-4 items-start">
-                                    <div className="w-11 h-11 rounded-xl bg-blue-100/80 text-blue-600 flex items-center justify-center flex-shrink-0">
+                                    <div className="w-11 h-11 rounded-xl bg-[#E8F0F6]/80 text-[#3C9AC4] flex items-center justify-center flex-shrink-0">
                                         <Mail className="w-5 h-5" />
                                     </div>
                                     <div className="space-y-2">
@@ -351,11 +351,11 @@ const Terms = () => {
                                         </h3>
                                         <p className="text-slate-600 leading-relaxed text-sm">
                                             If you have any questions regarding these Terms, please contact our legal and support team at{" "}
-                                            <a href="mailto:info@ctasis.com" className="text-blue-600 hover:text-blue-700 underline font-medium">
+                                            <a href="mailto:info@ctasis.com" className="text-[#3C9AC4] hover:text-[#13355A] underline font-medium">
                                                 info@ctasis.com
                                             </a>{" "}
                                             or visit{" "}
-                                            <a href="https://ctasis.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline font-medium">
+                                            <a href="https://ctasis.com/" target="_blank" rel="noopener noreferrer" className="text-[#3C9AC4] hover:text-[#13355A] underline font-medium">
                                                 CTAS Info Services LLP
                                             </a>.
                                         </p>

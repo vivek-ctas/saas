@@ -110,8 +110,8 @@ export default function CheckoutSuccessPage() {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
         <div className="bg-white rounded-3xl border border-slate-200 shadow-sm px-10 py-14 max-w-md w-full text-center">
-          <div className="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-6">
-            <Loader2 className="w-10 h-10 text-blue-600 animate-spin" />
+          <div className="w-20 h-20 rounded-full bg-[#E8F0F6] flex items-center justify-center mx-auto mb-6">
+            <Loader2 className="w-10 h-10 text-[#3C9AC4] animate-spin" />
           </div>
           <h1 className="text-xl font-bold text-slate-900 mb-2">Confirming your payment…</h1>
           <p className="text-slate-500 text-sm">
@@ -134,7 +134,7 @@ export default function CheckoutSuccessPage() {
           <p className="text-slate-500 text-sm mb-2">{verifyError}</p>
           <p className="text-slate-400 text-xs mb-8">
             If you were charged, email{' '}
-            <a href="mailto:support@ctas.in" className="underline hover:text-blue-600">
+            <a href="mailto:support@ctas.in" className="underline hover:text-[#3C9AC4]">
               support@ctas.in
             </a>{' '}
             with your payment reference.
@@ -152,10 +152,10 @@ export default function CheckoutSuccessPage() {
 
   // ── Success ───────────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-[#F4F8FC] flex items-center justify-center px-4">
       <div className="bg-white rounded-3xl border border-slate-200 shadow-xl px-10 py-14 max-w-lg w-full text-center relative overflow-hidden">
         <div className="absolute -top-20 -right-20 w-64 h-64 bg-emerald-100 rounded-full blur-3xl opacity-40 pointer-events-none" />
-        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-40 pointer-events-none" />
+        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-[#E8F0F6] rounded-full blur-3xl opacity-40 pointer-events-none" />
 
         <div className="relative">
           <div className="w-24 h-24 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-emerald-200">
@@ -192,9 +192,9 @@ export default function CheckoutSuccessPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 rounded-2xl bg-blue-50/60 border border-blue-100 px-5 py-4">
-              <div className="w-9 h-9 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0">
-                <Sparkles className="w-4 h-4 text-blue-600" />
+            <div className="flex items-center gap-3 rounded-2xl bg-[#F4F8FC]/60 border border-[#BDD9EE] px-5 py-4">
+              <div className="w-9 h-9 rounded-xl bg-[#E8F0F6] flex items-center justify-center flex-shrink-0">
+                <Sparkles className="w-4 h-4 text-[#3C9AC4]" />
               </div>
               <div>
                 <div className="text-xs text-slate-500">Onboarding</div>
@@ -214,7 +214,7 @@ export default function CheckoutSuccessPage() {
             </Link>
             <Link
               href="/"
-              className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-blue-900 text-white px-6 py-3 text-sm font-semibold hover:opacity-90 transition-opacity shadow-lg"
+              className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#13355A] to-[#0D2440] text-white px-6 py-3 text-sm font-semibold hover:opacity-90 transition-opacity shadow-lg"
             >
               Go to homepage <ArrowRight className="w-4 h-4" />
             </Link>

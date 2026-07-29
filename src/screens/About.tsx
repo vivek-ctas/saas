@@ -6,6 +6,9 @@ import {
   Sparkles, Heart, Shield, Lightbulb, Eye, Users, Globe,
   Rocket, Trophy, Building2, Brain, ArrowRight, Award, Lock,
   Zap, Truck, Megaphone, Store, CheckCircle, Cpu,
+  Workflow,
+  RefreshCw,
+  Server,
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
@@ -27,10 +30,10 @@ const About = () => {
   ];
 
   const values = [
-    { icon: Lightbulb, title: "Simplicity", desc: "Complex problems deserve simple, beautiful solutions.", tone: "from-blue-500 to-cyan-500" },
-    { icon: Shield, title: "Reliability", desc: "Your business depends on us. We don't take that lightly.", tone: "from-blue-700 to-indigo-600" },
-    { icon: Sparkles, title: "Innovation", desc: "We ship the next thing - not the obvious thing.", tone: "from-blue-400 to-blue-600" },
-    { icon: Heart, title: "Transparency", desc: "Honest pricing. Honest roadmap. Honest support.", tone: "from-blue-600 to-blue-900" }
+    { icon: Lightbulb, title: "Simplicity", desc: "Complex problems deserve simple, beautiful solutions.", tone: "from-[#3C9AC4] to-[#13355A]" },
+    { icon: Shield, title: "Reliability", desc: "Your business depends on us. We don't take that lightly.", tone: "from-[#13355A] to-[#0D2440]" },
+    { icon: Sparkles, title: "Innovation", desc: "We ship the next thing - not the obvious thing.", tone: "from-[#3C9AC4] to-[#13355A]" },
+    { icon: Heart, title: "Transparency", desc: "Honest pricing. Honest roadmap. Honest support.", tone: "from-[#13355A] to-[#0D2440]" }
   ];
 
   return (
@@ -39,18 +42,18 @@ const About = () => {
         <PageHero
           badgeIcon={Sparkles}
           badgeText="Our Story"
-          title={<>We're building the <span className="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">operating system</span> for modern commerce.</>}
+          title={<>We're building the <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">operating system</span> for modern commerce.</>}
           subtitle="50,000+ sellers in 150+ countries trust SellerBuz to power their multichannel operations. This is how we got here - and where we're going."
           visual={<AboutJourneyMockup className="w-full h-auto" />}
           actions={
             <>
               <Link href="/guide">
-                <Button size="lg" variant="outline" className="text-base px-8 h-12 border-blue-200 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm">
+                <Button size="lg" variant="outline" className="text-base px-8 h-12 border-primary/20 bg-white hover:bg-accent text-slate-900 rounded-full shadow-sm">
                   Read our guide
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button size="lg" className="text-base px-8 h-12 rounded-full group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
+                <Button size="lg" className="text-base px-8 h-12 rounded-full group bg-gradient-to-r from-[#3C9AC4] to-[#13355A] hover:opacity-95 border-0">
                   Talk to Our Team
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -64,7 +67,7 @@ const About = () => {
         <section className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
             <div className="reveal">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Our Mission</Badge>
+              <Badge className="mb-4 bg-accent text-primary border border-primary/10">Our Mission</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                 Level the playing field<br />for every seller.
               </h2>
@@ -78,8 +81,8 @@ const About = () => {
               </p>
             </div>
             <div className="reveal delay-200 relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 to-blue-300/20 blur-3xl rounded-3xl" />
-              <div className="relative rounded-3xl bg-gradient-to-br from-blue-600 to-blue-900 p-10 text-white shadow-stripe-2xl overflow-hidden">
+              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-primary/10 blur-3xl rounded-3xl" />
+              <div className="relative rounded-3xl bg-gradient-to-br from-[#13355A] to-[#0D2440] p-10 text-white shadow-stripe-2xl overflow-hidden">
                 <div className="absolute -top-12 -right-12 w-40 h-40 bg-white/10 rounded-full blur-2xl" />
                 <Eye className="w-10 h-10 mb-6" />
                 <h3 className="text-3xl lg:text-4xl font-bold mb-4">Our vision</h3>
@@ -96,14 +99,14 @@ const About = () => {
         <section className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="relative px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-16 reveal">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Our Journey</Badge>
+              <Badge className="mb-4 bg-accent text-primary border border-primary/10">Our Journey</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Building Smarter Commerce Solutions</h2>
               <p className="text-lg sm:text-xl lg:text-2xl text-slate-600">Continuously evolving our platform to help businesses automate, scale, and grow.</p>
             </div>
 
             <div className="relative">
               {/* Center line */}
-              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500 via-blue-300 to-blue-100 md:-translate-x-1/2" />
+              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-[#3C9AC4] to-primary/10 md:-translate-x-1/2" />
 
               <div className="space-y-12">
                 {milestones.map((m, i) => {
@@ -111,16 +114,16 @@ const About = () => {
                   return (
                     <div key={i} className={`reveal relative flex md:items-center ${isLeft ? "md:flex-row" : "md:flex-row-reverse"}`} style={{ transitionDelay: `${i * 100}ms` }}>
                       {/* Dot */}
-                      <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-blue-600 to-blue-900 shadow-stripe ring-4 ring-white z-10" />
+                      <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-[#3C9AC4] to-[#13355A] shadow-stripe ring-4 ring-white z-10" />
                       {/* Card */}
                       <div className={`pl-20 md:pl-0 md:w-1/2 ${isLeft ? "md:pr-12" : "md:pl-12"}`}>
                         <Card className="hover-lift overflow-hidden border border-slate-100">
                           <CardContent className="p-6">
                             <div className="flex items-center gap-3 mb-3">
-                              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-blue-900 flex items-center justify-center shadow-stripe">
+                              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#3C9AC4] to-[#13355A] flex items-center justify-center shadow-stripe">
                                 <m.icon className="w-5 h-5 text-white" />
                               </div>
-                              <div className="text-3xl lg:text-4xl font-bold text-blue-600 tracking-tight">{m.year}</div>
+                              <div className="text-3xl lg:text-4xl font-bold text-primary tracking-tight">{m.year}</div>
                             </div>
                             <h3 className="text-xl lg:text-2xl font-bold text-slate-900 mb-2">{m.title}</h3>
                             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">{m.desc}</p>
@@ -142,22 +145,34 @@ const About = () => {
               <WorkflowIllustration className="w-full h-auto " />
             </div>
             <div className="reveal delay-200">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Impact</Badge>
+              <Badge className="mb-4 bg-accent text-primary border border-primary/10">Our Strengths</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-8 leading-tight">
-                Numbers that mean<br />real businesses, growing.
+                Technology built for<br /> modern commerce.
               </h2>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {[
-                  { v: "50K+", l: "Active sellers" },
-                  { v: "$300M+", l: "GMV processed" },
-                  { v: "10M+", l: "Orders managed" },
-                  { v: "150+", l: "Countries" },
-                  { v: "45%", l: "Avg. revenue lift" },
-                  { v: "99.9%", l: "Uptime SLA" }
+                  { icon: Brain, title: "AI Automation", desc: "Intelligent catalog and workflow automation" },
+                  { icon: Shield, title: "Enterprise Security", desc: "Secure infrastructure and protected data" },
+                  { icon: Workflow, title: "Workflow Automation", desc: "Reduce manual effort with smart processes" },
+                  { icon: RefreshCw, title: "Inventory Sync", desc: "Real-time synchronization across channels" },
+                  { icon: Globe, title: "Marketplace Integration", desc: "Connect with major commerce platforms" },
+                  { icon: Server, title: "Cloud Infrastructure", desc: "Reliable and scalable platform architecture" },
                 ].map((s, i) => (
-                  <div key={i} className="rounded-2xl p-5 bg-gradient-to-br from-slate-50 to-blue-50/40 border border-slate-100 hover-lift">
-                    <div className="text-3xl lg:text-4xl font-bold text-blue-600 tracking-tight">{s.v}</div>
-                    <div className="text-sm lg:text-base text-slate-600 mt-1">{s.l}</div>
+                  <div
+                    key={i}
+                    className="group flex items-start gap-4 rounded-2xl border border-[#E3E8EC] bg-white p-6 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all duration-300"
+                  >
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 group-hover:bg-primary/15 transition-colors">
+                      <s.icon className="w-6 h-6 text-primary" />
+                    </div>
+
+                    <h3 className="text-lg font-semibold text-[#13355A] mb-2">
+                      {s.title}
+                    </h3>
+
+                    <p className="text-sm leading-6 text-[#64748B]">
+                      {s.desc}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -169,7 +184,7 @@ const About = () => {
         <section className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-14 reveal">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
+              <Badge className="mb-4 bg-accent text-primary border border-primary/10">
                 <Award className="w-3.5 h-3.5 mr-1" /> Why Sellers Trust Us
               </Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Trust isn't claimed. It's earned.</h2>
@@ -177,12 +192,12 @@ const About = () => {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { icon: Lock, title: "SOC 2 Type II", desc: "Independently audited every year. Your data, encrypted at rest and in transit.", tone: "from-blue-600 to-indigo-600" },
-                { icon: Brain, title: "AI for customer favour", desc: "ML models surface what your buyers want next - purchase-behaviour analytics built in.", tone: "from-blue-500 to-blue-700" },
-                { icon: Zap, title: "Innovation cadence", desc: "2-3 new integrations every month, shipped without breaking your workflows.", tone: "from-blue-400 to-blue-600" },
-                { icon: Shield, title: "99.99% uptime SLA", desc: "Multi-region failover means your store stays open even when AWS regions don't.", tone: "from-blue-700 to-blue-900" },
-                { icon: Cpu, title: "Built-in compliance", desc: "GDPR, ISO 27001, PCI DSS L1 and HIPAA-ready out of the box.", tone: "from-blue-500 to-cyan-500" },
-                { icon: Heart, title: "Transparent pricing", desc: "No hidden fees, no per-order surcharges. What you see is what you pay.", tone: "from-blue-600 to-blue-900" },
+                { icon: Lock, title: "SOC 2 Type II", desc: "Independently audited every year. Your data, encrypted at rest and in transit.", tone: "from-[#3C9AC4] to-[#13355A]" },
+                { icon: Brain, title: "AI for customer favour", desc: "ML models surface what your buyers want next - purchase-behaviour analytics built in.", tone: "from-[#3C9AC4] to-[#13355A]" },
+                { icon: Zap, title: "Innovation cadence", desc: "2-3 new integrations every month, shipped without breaking your workflows.", tone: "from-[#13355A] to-[#0D2440]" },
+                { icon: Shield, title: "99.99% uptime SLA", desc: "Multi-region failover means your store stays open even when AWS regions don't.", tone: "from-[#13355A] to-[#0D2440]" },
+                { icon: Cpu, title: "Built-in compliance", desc: "GDPR, ISO 27001, PCI DSS L1 and HIPAA-ready out of the box.", tone: "from-[#3C9AC4] to-[#13355A]" },
+                { icon: Heart, title: "Transparent pricing", desc: "No hidden fees, no per-order surcharges. What you see is what you pay.", tone: "from-[#13355A] to-[#0D2440]" },
               ].map((t, i) => (
                 <Card key={i} className="reveal hover-lift relative overflow-hidden border border-slate-100" style={{ transitionDelay: `${i * 70}ms` }}>
                   <div className={`absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br ${t.tone} opacity-10 blur-2xl`} />
@@ -203,7 +218,7 @@ const About = () => {
         <section className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="relative px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-14 reveal">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">Partnership Ecosystem</Badge>
+              <Badge className="mb-4 bg-accent text-primary border border-primary/10">Partnership Ecosystem</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Powered by world-class partners</h2>
               <p className="text-lg sm:text-xl lg:text-2xl text-slate-600">Logistics across India, Europe and the USA · Marketplace · ad networks · offline retail.</p>
             </div>
@@ -211,7 +226,7 @@ const About = () => {
             <div className="space-y-8">
               <div className="reveal">
                 <div className="flex items-center gap-2 mb-4">
-                  <Truck className="w-5 h-5 text-blue-600" />
+                  <Truck className="w-5 h-5 text-primary" />
                   <h3 className="font-bold text-slate-900">Logistics & shipping APIs</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">
@@ -223,7 +238,7 @@ const About = () => {
 
               <div className="reveal delay-100">
                 <div className="flex items-center gap-2 mb-4">
-                  <Store className="w-5 h-5 text-blue-500" />
+                  <Store className="w-5 h-5 text-primary" />
                   <h3 className="font-bold text-slate-900">Marketplace & offline chains</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">
@@ -252,7 +267,7 @@ const About = () => {
         <section className="py-14 sm:py-16 lg:py-20 bg-[#F1F3FC] border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px] grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
             <div className="reveal">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">
+              <Badge className="mb-4 bg-accent text-primary border border-primary/10">
                 <Brain className="w-3.5 h-3.5 mr-1" /> AI-Powered Catalog
               </Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
@@ -271,7 +286,7 @@ const About = () => {
                   "Bulk regenerate entire categories with new SEO focus or brand voice",
                 ].map((it, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm sm:text-base text-slate-700">
-                    <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" /> {it}
+                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" /> {it}
                   </li>
                 ))}
               </ul>
@@ -286,7 +301,7 @@ const About = () => {
         <section className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-16 reveal">
-              <Badge className="mb-4 bg-blue-50 text-blue-700 border border-blue-100">What We Believe</Badge>
+              <Badge className="mb-4 bg-accent text-primary border border-primary/10">What We Believe</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Our values</h2>
               <p className="text-lg sm:text-xl lg:text-2xl text-slate-600">The principles behind every decision we make.</p>
             </div>
@@ -309,9 +324,9 @@ const About = () => {
 
         {/* CAREERS CTA - clean, minimal */}
         {/* CAREERS CTA */}
-        <section className="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-br from-[hsl(226,71%,50%)] to-[hsl(226,71%,35%)]">
+        <section className="py-16 lg:py-20 relative overflow-hidden bg-[#13355A]">
           <div className="relative px-5 sm:px-8 lg:px-[70px] text-center reveal">
-            <Trophy className="w-12 h-12 text-blue-200 mx-auto mb-6 animate-float" />
+            <Trophy className="w-12 h-12 text-white/20 mx-auto mb-6 animate-float" />
 
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Want to build the future of commerce with us?
@@ -327,7 +342,7 @@ const About = () => {
               <Link href="/pricing">
                 <Button
                   size="lg"
-                  className="text-lg px-8 rounded-full bg-white text-blue-600 hover:bg-blue-50 border-0 shadow-lg"
+                  className="text-lg px-8 rounded-full bg-white text-primary hover:bg-accent border-0 shadow-lg"
                 >
                   Get Started
                   <ArrowRight className="w-4 h-4 ml-2" />

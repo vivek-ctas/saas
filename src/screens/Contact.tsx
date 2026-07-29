@@ -126,18 +126,18 @@ const Contact = () => {
         <PageHero
           badgeIcon={MessageCircle}
           badgeText="We reply within 4 hours"
-          title={<>Let's talk about <span className="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">your operations.</span></>}
+          title={<>Let's talk about <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">your operations.</span></>}
           subtitle="Sales, support, partnerships - whatever brings you here, we're listening. Real humans across 5 hubs, 24/7 coverage. No bots."
           visual={<ContactMapIllustration className="w-full h-auto" />}
           actions={
             <>
               <Link href="#contact-form">
-                <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-200 bg-white hover:bg-blue-50 text-slate-900 rounded-full shadow-sm">
+                <Button size="lg" variant="outline" className="text-base px-8 h-12 border-slate-200 bg-white hover:bg-[#E8F0F6] text-slate-900 rounded-full shadow-sm">
                   Contact us
                 </Button>
               </Link>
               <Link href="/pricing">
-                <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0">
+                <Button size="lg" className="text-base px-8 h-12 rounded-full shadow-lg group bg-gradient-to-r from-[#13355A] to-[#0D2440] hover:opacity-95 border-0">
                   View Pricing
                   <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -153,7 +153,7 @@ const Contact = () => {
               {quickChannels.map((c, i) => (
                 <Card key={i} className="reveal hover-lift group" style={{ transitionDelay: `${i * 100}ms` }}>
                   <CardContent className="p-6 flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-blue-900 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#13355A] to-[#0D2440] flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
                       <c.icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -174,7 +174,7 @@ const Contact = () => {
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-10 lg:gap-12">
               {/* Form */}
               <Card className="reveal lg:col-span-3 border-0 shadow-xl bg-white relative overflow-hidden">
-                <div className="absolute -top-20 -right-20 w-60 h-60 bg-blue-200 rounded-full blur-3xl opacity-40" />
+                <div className="absolute -top-20 -right-20 w-60 h-60 bg-[#BDD9EE] rounded-full blur-3xl opacity-40" />
                 <CardHeader className="relative">
                   <CardTitle className="text-3xl lg:text-4xl font-bold text-slate-900">Send us a message</CardTitle>
                   <p className="text-slate-600">We'll respond within 24 hours, usually faster.</p>
@@ -182,7 +182,7 @@ const Contact = () => {
                 <CardContent className="relative space-y-5">
                   {success ? (
                     <div className="flex flex-col items-center justify-center py-12 text-center gap-4">
-                      <CheckCircle2 className="w-16 h-16 text-blue-600" />
+                      <CheckCircle2 className="w-16 h-16 text-[#3C9AC4]" />
                       <h3 className="text-2xl lg:text-3xl font-bold text-slate-900">Message sent!</h3>
                       <p className="text-slate-600 max-w-sm">
                         Thank you for reaching out. Our team will get back to you within 24 hours.
@@ -289,7 +289,7 @@ const Contact = () => {
                       )}
 
                       <Button
-                        className="w-full rounded-full shadow-lg group bg-gradient-to-r from-blue-600 to-blue-900 hover:opacity-95 border-0"
+                        className="w-full rounded-full shadow-lg group bg-gradient-to-r from-[#13355A] to-[#0D2440] hover:opacity-95 border-0"
                         size="lg"
                         onClick={onSubmit}
                         disabled={loading}
@@ -310,8 +310,8 @@ const Contact = () => {
 
               {/* Sidebar info */}
               <div className="lg:col-span-2 space-y-6">
-                <Card className="reveal delay-200 relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-blue-700 text-white border-0 shadow-xl">
-                  <div className="absolute -bottom-16 -right-16 w-60 h-60 bg-blue-500/30 rounded-full blur-3xl" />
+                <Card className="reveal delay-200 relative overflow-hidden bg-gradient-to-br from-slate-900 via-[#0D2440] to-[#13355A] text-white border-0 shadow-xl">
+                  <div className="absolute -bottom-16 -right-16 w-60 h-60 bg-[#3C9AC4]/30 rounded-full blur-3xl" />
                   <CardContent className="relative p-8 space-y-6">
                     <h3 className="text-2xl lg:text-3xl font-bold">Reach our team</h3>
                     {sidebarInfo.map((b, i) => (
@@ -320,7 +320,7 @@ const Contact = () => {
                           <b.icon className="w-5 h-5" />
                         </div>
                         {b.link ? (
-                          <a href={b.link} target="_blank" rel="noopener noreferrer" className="hover:text-blue-200 transition-colors">
+                          <a href={b.link} target="_blank" rel="noopener noreferrer" className="hover:text-[#6BC1E0] transition-colors">
                             <div className="font-semibold">{b.title}</div>
                             {b.lines.map((l, j) => <div key={j} className="text-white/80 text-sm">{l}</div>)}
                           </a>
@@ -345,8 +345,8 @@ const Contact = () => {
                       { icon: Video, label: "Video tutorials" },
                       { icon: Code, label: "API documentation" }
                     ].map((r, i) => (
-                      <Button key={i} variant="ghost" className="w-full justify-start hover:bg-blue-50">
-                        <r.icon className="w-4 h-4 mr-3 text-blue-600" />
+                      <Button key={i} variant="ghost" className="w-full justify-start hover:bg-[#E8F0F6]">
+                        <r.icon className="w-4 h-4 mr-3 text-[#3C9AC4]" />
                         {r.label}
                       </Button>
                     ))}

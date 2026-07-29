@@ -14,13 +14,13 @@ const cfg: PlatformConfig = {
       hub="SellerBuz Sync"
       hubLatency="latency < 2s"
       leftNodes={[
-        { label: "Warehouse", sub: "1,240 on hand", dot: "#0ea5e9", logo: "/logos/warehouse-svgrepo-com.svg" },
-        { label: "3PL / FBA", sub: "428 units", dot: "#6366f1", logo: "/logos/fba.webp" },
+        { label: "Warehouse", sub: "1,240 on hand", dot: "#3C9AC4", logo: "/logos/warehouse-svgrepo-com.svg" },
+        { label: "3PL / FBA", sub: "428 units", dot: "#13355A", logo: "/logos/fba.webp" },
       ]}
       rightNodes={[
-        { label: "Amazon", sub: "Stock: 1,240", dot: "#f59e0b", logo: "/logos/amazon-color-svgrepo-com.svg" },
+        { label: "Amazon", sub: "Stock: 1,240", dot: "#3C9AC4", logo: "/logos/amazon-color-svgrepo-com.svg" },
         {
-          label: "Shopify", sub: "Stock: 1,240", dot: "#2563eb", logo: "/logos/shopify-color-svgrepo-com.svg"
+          label: "Shopify", sub: "Stock: 1,240", dot: "#3C9AC4", logo: "/logos/shopify-color-svgrepo-com.svg"
         },
       ]}
     />
@@ -61,14 +61,14 @@ const cfg: PlatformConfig = {
           hub="Sync Engine"
           hubLatency="< 2s propagation"
           leftNodes={[
-            { label: "Warehouse", sub: "master stock", dot: "#10b981", logo: "/logos/warehouse-svgrepo-com.svg" },
+            { label: "Warehouse", sub: "master stock", dot: "#3C9AC4", logo: "/logos/warehouse-svgrepo-com.svg" },
             {
-              label: "Receiving", sub: "+420 units", dot: "#0ea5e9", logo: "/logos/receive-square-2-svgrepo-com.svg"
+              label: "Receiving", sub: "+420 units", dot: "#3C9AC4", logo: "/logos/receive-square-2-svgrepo-com.svg"
             },
           ]}
           rightNodes={[
-            { label: "Amazon", sub: "1,240 units", dot: "#f59e0b", logo: '/logos/amazon-color-svgrepo-com.svg' },
-            { label: "Shopify", sub: "1,240 units", dot: "#2563eb", logo: "/logos/shopify-color-svgrepo-com.svg" },
+            { label: "Amazon", sub: "1,240 units", dot: "#3C9AC4", logo: '/logos/amazon-color-svgrepo-com.svg' },
+            { label: "Shopify", sub: "1,240 units", dot: "#3C9AC4", logo: "/logos/shopify-color-svgrepo-com.svg" },
           ]}
         />
       ),
@@ -90,9 +90,9 @@ const cfg: PlatformConfig = {
           chip={{ label: "Net available: 1,668", tone: "blue" }}
           columns={["Location", "On hand", "Reserved", "Available"]}
           rows={[
-            { cells: [{ dot: "#10b981", text: "US · Ohio WH" }, "820", "42", "778"], badge: { text: "OK", tone: "emerald" } },
-            { cells: [{ dot: "#f59e0b", text: "Amazon FBA" }, "512", "18", "494"], badge: { text: "OK", tone: "emerald" } },
-            { cells: [{ dot: "#6366f1", text: "EU · Rotterdam 3PL" }, "148", "0", "148"], badge: { text: "Low", tone: "amber" } },
+            { cells: [{ dot: "#3C9AC4", text: "US · Ohio WH" }, "820", "42", "778"], badge: { text: "OK", tone: "emerald" } },
+            { cells: [{ dot: "#3C9AC4", text: "Amazon FBA" }, "512", "18", "494"], badge: { text: "OK", tone: "emerald" } },
+            { cells: [{ dot: "#13355A", text: "EU · Rotterdam 3PL" }, "148", "0", "148"], badge: { text: "Low", tone: "amber" } },
           ]}
         />
       ),
