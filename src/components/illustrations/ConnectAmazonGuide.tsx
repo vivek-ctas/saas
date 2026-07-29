@@ -12,7 +12,9 @@ import {
     LockKeyhole,
     BadgeCheck,
     Check,
+    StoreIcon,
 } from "lucide-react";
+import { StepFlowDiagram } from "./guidePageIllustrations";
 
 /* ─────────────────────────────────────
    Scroll-reveal hook
@@ -447,7 +449,17 @@ export function ConnectAmazonGuide() {
                             </div>
 
                             {/* bottom connector flow */}
-                            <BottomConnector visible={visible} />
+                            <div className="w-full overflow-hidden flex justify-center" style={{ height: 278 }}>
+                                <div style={{ width: 1424, height: 580, transform: 'scale(0.48)', transformOrigin: 'top center' }}>
+                                    <StepFlowDiagram
+                                        steps={[
+                                            { icon: <Globe size={40} color="#2A3FD6" />, title: "Select Region", subtitle: "Choose your Amazon\nmarketplace region." },
+                                            { icon: <Store size={40} color="#2A3FD6" />, title: "Store Details", subtitle: "Add your store name\nand marketplace." },
+                                            { icon: <ShieldCheck size={40} color="#2A3FD6" />, title: "Authorize", subtitle: "Securely connect your\nSeller Central account." },
+                                            { icon: <StoreIcon size={40} color="#2A3FD6" />, title: "Store Created", subtitle: "Your Amazon store\nis now connected!" },
+                                        ]} />
+                                </div>
+                            </div>
                         </div>
 
                         {/* footer info strip */}
