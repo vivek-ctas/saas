@@ -19,7 +19,6 @@ import {
   Instagram,
 } from "lucide-react";
 import footerBackground from "@/assets/footer-background.webp";
-import { API_BASE_URL } from "@/lib/api";
 import { useCompanySettings } from "@/hooks/use-company-contact";
 
 /* ------------------------------------------------------------------ */
@@ -197,9 +196,7 @@ const SocialIconLink = ({
 const Footer = () => {
   const { settingsData } = useCompanySettings();
 
-  const primaryLogo: string = "/ctasis-logo_white.svg";
-  const apiLogo = settingsData?.company?.logo ? `${API_BASE_URL}/${settingsData.company.logo}` : "";
-  const logoSrc = primaryLogo || apiLogo || "";
+  const logoSrc = "/ctasis-logo_white.svg";
 
   const companyInfo = {
     name: settingsData?.company?.name || "SellerBuz",

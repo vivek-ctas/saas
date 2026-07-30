@@ -25,20 +25,13 @@ export interface CompanyContact {
 export interface CompanySettingsData {
   company: {
     name: string;
-    legal_name?: string;
-    logo?: string;
-    white_logo?: string;
-    favicon?: string;
     website?: string;
     tagline?: string;
     about?: string;
   };
   contact: {
     email: string;
-    support_email?: string;
-    sales_email?: string;
     phone: string;
-    support_phone?: string;
     address: string;
     city?: string;
     state?: string;
