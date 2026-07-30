@@ -197,7 +197,7 @@ const SocialIconLink = ({
 const Footer = () => {
   const { settingsData } = useCompanySettings();
 
-  const primaryLogo: string = "/sellerBuz_footer.png";
+  const primaryLogo: string = "/ctasis-logo_white.svg";
   const apiLogo = settingsData?.company?.logo ? `${API_BASE_URL}/${settingsData.company.logo}` : "";
   const logoSrc = primaryLogo || apiLogo || "";
 
@@ -279,13 +279,25 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-x-8 gap-y-10">
           {/* Brand / contact column */}
           <div className="col-span-2 md:col-span-2 space-y-5 md:pr-6 md:border-r md:border-slate-800">
-            <Link href="/" className="group flex items-center gap-2.5 w-fit">
+
+            {/* <Link href="/" className="group flex items-center gap-2.5 w-fit">
               <img
                 src={companyInfo.logoSrc}
                 alt={companyInfo.logoAlt}
                 className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
+            </Link> */}
+            <Link href="/" className="flex items-center gap-2.5 w-fit">
+              <img
+                src={companyInfo.logoSrc}
+                alt={companyInfo.logoAlt}
+                className="h-14 w-auto object-contain"
+              />
+              <span className="text-[1.8rem] font-bold tracking-tight font-outfit bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
+                {companyInfo.name}
+              </span>
             </Link>
+
 
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
               {companyInfo.description}

@@ -82,7 +82,7 @@ const Navigation = () => {
       <div className="px-[50px] lg:px-[70px]">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link
+          {/* <Link
             href="/"
             className="flex items-center gap-2.5 group"
           >
@@ -91,7 +91,24 @@ const Navigation = () => {
               alt="SellerBuz Logo"
               className="w-auto h-14 object-contain transition-all duration-300 group-hover:scale-105"
             />
+          </Link> */}
+          {/* Logo */}
+          {/* Logo */}
+          <Link
+            href="/"
+            className="flex items-center gap-1 group shrink-0"
+          >
+            <img
+              src="/ctasis-logo copy.svg"
+              alt="SellerBuz"
+              className="h-10 w-auto object-contain"
+            />
+
+            <span className="text-[1.8rem] font-bold tracking-tight font-outfit bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
+              SellerBuz
+            </span>
           </Link>
+
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-6">

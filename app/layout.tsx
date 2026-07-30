@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Inter, Montserrat, Outfit } from "next/font/google";
 import Providers from "./providers";
 
 import "./globals.css";
@@ -23,6 +23,14 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
   preload: true,
   weight: ["300", "400", "500", "600", "700"],
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-outfit",
+  preload: true,
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 // ─── Global / fallback metadata ────────────────────────────────────────────
@@ -110,7 +118,7 @@ const softwareJsonLd = {
 // ─── Layout ─────────────────────────────────────────────────────────────────
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
+    <html lang="en" className={`${inter.variable} ${montserrat.variable} ${outfit.variable}`}>
       <head>
         {/* JSON-LD structured data */}
         <script
