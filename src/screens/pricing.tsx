@@ -257,7 +257,7 @@ const Pricing = () => {
             />
           </div>
 
-          <div className="relative max-w-6xl mx-auto px-5 sm:px-8 lg:px-10">
+          <div className="relative w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-16">
 
             {/* Section header */}
             <div className="text-center mb-10">
@@ -300,12 +300,12 @@ const Pricing = () => {
                 })
                 .sort((a, b) => (a.is_custom_plan === b.is_custom_plan ? 0 : a.is_custom_plan ? 1 : -1));
 
-              // Responsive column count: ≤2 → 1-col, 3 → 3-col, 4 → 2-col, 5+ → 3-col
+              // Max 4 cards per row on lg; 5th+ wraps to the next row automatically
               const colClass =
                 filteredPlans.length === 1 ? 'grid-cols-1 max-w-sm mx-auto' :
                   filteredPlans.length === 2 ? 'grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto' :
-                    filteredPlans.length === 4 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4' :
-                      'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
+                    filteredPlans.length === 3 ? 'grid-cols-1 sm:grid-cols-3' :
+                      'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4';
 
               return (
                 <div>
@@ -333,7 +333,7 @@ const Pricing = () => {
                     </div>
                   </div>
 
-                  {/* Cards grid — auto-adapts to plan count */}
+                  {/* Cards — max 4 per row on lg, 5th wraps to next row */}
                   <div className={`grid gap-5 lg:gap-6 items-stretch ${colClass}`}>
                     {filteredPlans.map((plan, i) => {
                       // ── Dynamic plan-type icon & accent config ──────────────
@@ -350,11 +350,12 @@ const Pricing = () => {
                       return (
                         <div
                           key={plan._id}
-                          className={`relative flex flex-col rounded-2xl overflow-hidden transition-all duration-300 ${plan.is_popular
-                            ? 'bg-gradient-to-b from-white via-[#EFF6FF] to-accent/60 border-2 border-primary shadow-2xl md:-translate-y-3'
-                            : plan.is_custom_plan
-                              ? 'bg-slate-900 border border-slate-700 text-white hover:shadow-2xl hover:scale-[1.01]'
-                              : 'bg-white border border-slate-200 hover:border-primary/30 hover:shadow-xl hover:scale-[1.005]'
+                          className={`relative flex flex-col rounded-2xl overflow-hidden transition-all duration-300
+                            ${plan.is_popular
+                              ? 'bg-gradient-to-b from-white via-[#EFF6FF] to-accent/60 border-2 border-primary shadow-2xl md:-translate-y-3'
+                              : plan.is_custom_plan
+                                ? 'bg-slate-900 border border-slate-700 text-white hover:shadow-2xl hover:scale-[1.01]'
+                                : 'bg-white border border-slate-200 hover:border-primary/30 hover:shadow-xl hover:scale-[1.005]'
                             }`}
                           style={{ transitionDelay: `${i * 80}ms` }}
                         >
