@@ -257,7 +257,7 @@ const Pricing = () => {
             />
           </div>
 
-          <div className="relative w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-16">
+          <div className="relative w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-[70px]">
 
             {/* Section header */}
             <div className="text-center mb-10">
@@ -268,7 +268,7 @@ const Pricing = () => {
                 </span>
               </h2>
               <p className="text-slate-500 text-base sm:text-lg max-w-xl mx-auto">
-                Simple, transparent pricing — no hidden fees, no surprises.
+                Choose the plan that fits your business and upgrade anytime.
               </p>
             </div>
 
@@ -304,8 +304,8 @@ const Pricing = () => {
               const colClass =
                 filteredPlans.length === 1 ? 'grid-cols-1 max-w-sm mx-auto' :
                   filteredPlans.length === 2 ? 'grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto' :
-                    filteredPlans.length === 3 ? 'grid-cols-1 sm:grid-cols-3' :
-                      'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4';
+                    filteredPlans.length === 3 ? 'grid-cols-1 md:grid-cols-3 max-w-5xl mx-auto' :
+                      'grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto';
 
               return (
                 <div>
@@ -402,7 +402,7 @@ const Pricing = () => {
 
                             {/* Price */}
                             <div className="flex items-baseline gap-1 mb-1">
-                              <span className={`text-4xl sm:text-5xl font-extrabold tracking-tight ${plan.is_custom_plan ? 'text-white' : 'text-slate-900'
+                              <span className={`text-3xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight break-words ${plan.is_custom_plan ? 'text-white' : 'text-slate-900'
                                 }`}>
                                 {formatPrice(plan, selectedInterval)}
                               </span>
@@ -476,7 +476,7 @@ const Pricing = () => {
             {!plansLoading && !plansError && (
               <div className="mt-12">
                 {/* Card strip */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 rounded-2xl border border-slate-200 bg-[#F7F9FC] p-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 rounded-2xl border border-slate-200 bg-[#F7F9FC] p-3 sm:p-4">
                   {([
                     { icon: Zap, title: 'Instant Activation', sub: 'Get started right away' },
                     { icon: Globe, title: 'Global Payments', sub: 'Pay from anywhere' },

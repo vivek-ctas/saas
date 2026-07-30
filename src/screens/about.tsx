@@ -225,9 +225,9 @@ const About = () => {
 
             <div className="space-y-8">
               <div className="reveal">
-                <div className="flex items-center gap-2 mb-4">
-                  <Truck className="w-5 h-5 text-primary" />
-                  <h3 className="font-bold text-slate-900">Logistics & shipping APIs</h3>
+                <div className="flex items-center gap-3 mb-4">
+                  <Truck className="w-6 h-6 shrink-0 text-primary" />
+                  <h3 className="text-xl lg:text-2xl font-bold text-slate-900">Logistics & shipping APIs</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">
                   {["Shiprocket", "Tirupati", "DHL", "USPS", "PostNL", "Rakuten Post", "FedEx", "Delhivery", "Blue Dart", "ship station"].map((n, i) => (
@@ -237,9 +237,9 @@ const About = () => {
               </div>
 
               <div className="reveal delay-100">
-                <div className="flex items-center gap-2 mb-4">
-                  <Store className="w-5 h-5 text-primary" />
-                  <h3 className="font-bold text-slate-900">Marketplace & offline chains</h3>
+                <div className="flex items-center gap-3 mb-4">
+                  <Store className="w-6 h-6 shrink-0 text-primary" />
+                  <h3 className="text-xl lg:text-2xl font-bold text-slate-900">Marketplace & offline chains</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">
                   {["Amazon", "Shopify"].map((n, i) => (
