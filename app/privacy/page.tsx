@@ -1,4 +1,4 @@
-import Privacy from "@/screens/Privacy";
+import Privacy from "@/screens/privacy";
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 

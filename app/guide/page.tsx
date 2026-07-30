@@ -1,4 +1,4 @@
-import Guide from "@/screens/Guide";
+import Guide from "@/screens/guide/page";
 import type { Metadata } from "next";
 import { buildMetadata, SITE_URL } from "@/lib/seo";
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SITE_URL } from "@/lib/seo";
-import Home from "@/screens/Home";
+import Home from "@/screens/home";
 
 // ─── Page metadata ───────────────────────────────────────────────────────────
 export const metadata: Metadata = buildMetadata({

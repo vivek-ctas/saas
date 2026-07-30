@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import Layout from "@/components/Layout";
+import Layout from "@/components/layout";
 import { ArrowRight, CheckCircle2, Sparkles, ChevronRight } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { ReactNode } from "react";
@@ -82,22 +82,22 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Before */}
-              <div className="reveal group rounded-3xl border border-[#BDD9EE] bg-gradient-to-br from-[#E8F0F6] to-[#E8F0F6]/30 p-7 relative overflow-hidden hover:border-[#BDD9EE] hover:shadow-lg transition-all duration-300">
-                <div className="absolute top-0 right-0 w-40 h-40 bg-[#E8F0F6]/30 rounded-full -translate-y-16 translate-x-16 pointer-events-none" />
+              <div className="reveal group rounded-3xl border border-[#E2BEBE] bg-gradient-to-br from-[#F0E8E8] to-[#F0E8E8]/30 p-7 relative overflow-hidden hover:border-[#E2BEBE] hover:shadow-lg transition-all duration-300">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-[#F0E8E8]/30 rounded-full -translate-y-16 translate-x-16 pointer-events-none" />
                 <div className="flex items-start gap-3 mb-5">
-                  <div className="w-8 h-8 rounded-full bg-[#E8F0F6] border border-[#BDD9EE] flex items-center justify-center shrink-0 mt-0.5">
-                    <span className="text-[#3C9AC4] text-sm font-bold">✕</span>
+                  <div className="w-8 h-8 rounded-full bg-[#F0E8E8] border border-[#E2BEBE] flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="text-[#C43B3B] text-sm font-bold">✕</span>
                   </div>
                   <div>
-                    <Badge className="mb-1.5 bg-[#E8F0F6] text-[#13355A] border border-[#BDD9EE] shadow-none text-xs">Before SellerBuz</Badge>
+                    <Badge className="mb-1.5 bg-[#F0E8E8] text-[#C43B3B] border border-[#E2BEBE] shadow-none text-xs">Before SellerBuz</Badge>
                     <h3 className="text-xl lg:text-2xl font-bold text-slate-900 leading-snug">{cfg.problem.title}</h3>
                   </div>
                 </div>
                 <ul className="space-y-3">
                   {cfg.problem.points.map((p) => (
                     <li key={p} className="flex items-start gap-3 text-sm text-slate-600">
-                      <span className="w-5 h-5 rounded-full bg-[#E8F0F6] border border-[#BDD9EE] flex items-center justify-center shrink-0 mt-0.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#3C9AC4]" />
+                      <span className="w-5 h-5 rounded-full bg-[#F0E8E8] border border-[#E2BEBE] flex items-center justify-center shrink-0 mt-0.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#C43B3B]" />
                       </span>
                       {p}
                     </li>
@@ -282,7 +282,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
                       ))}
                     </ul>
                     <Link href="/pricing" className="inline-flex items-center gap-2 text-[#3C9AC4] font-semibold text-sm hover:gap-3 transition-all duration-200 group">
-                      Get started free <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                      Get started immediately <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                     </Link>
                   </div>
                 </div>
@@ -345,6 +345,12 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
                 85%  { opacity: 1; }
                 100% { transform: translateX(80px); opacity: 0; }
               }
+              @keyframes flowDotVertical {
+                0%   { transform: translateY(0) translateX(-50%); opacity: 0; }
+                15%  { opacity: 1; }
+                85%  { opacity: 1; }
+                100% { transform: translateY(24px) translateX(-50%); opacity: 0; }
+              }
               @keyframes pipelinePulse {
                 0%, 100% { box-shadow: 0 0 0 0 rgba(60,154,196,0.3); }
                 50%       { box-shadow: 0 0 0 8px rgba(60,154,196,0); }
@@ -358,7 +364,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
               .pipeline-pulse { animation: pipelinePulse 2.4s ease-in-out infinite; }
             `}</style>
 
-            <div className="relative px-5 sm:px-8 lg:px-[70px]">
+            <div className="relative px-5 sm:px-8 lg:px-10 xl:px-[70px]">
 
               {/* ── Header ── */}
               <div className="text-center mb-12 reveal">
@@ -382,7 +388,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
               <div className="reveal delay-100">
 
                 {/* Desktop / Tablet: horizontal */}
-                <div className="hidden md:flex items-center justify-center gap-0">
+                <div className="hidden lg:flex items-center justify-center gap-0">
 
                   {/* ── Stage 1: Warehouse ── */}
                   <div className="flex flex-col items-center gap-3">
@@ -521,7 +527,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
                 </div>
 
                 {/* Mobile: vertical stack */}
-                <div className="flex md:hidden flex-col items-center gap-0">
+                <div className="flex lg:hidden flex-col items-center gap-0">
                   {[
                     { label: "Warehouse", sub: "Stock Update", icon: <svg className="w-5 h-5 text-[#3C9AC4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg> },
                     { label: "Sync Engine", sub: "Processing Update", icon: <svg className="w-5 h-5 text-[#3C9AC4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg> },
@@ -541,14 +547,17 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
                       {i < 3 && (
                         <div className="relative flex flex-col items-center my-1 h-8">
                           <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 border-l-2 border-dashed border-[#BDD9EE] w-0" />
-                          <div className="flow-dot absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#3C9AC4]" style={{ animation: "flowDot 1.8s ease-in-out infinite", animationDelay: `${i * 0.4}s`, transform: "none" }} />
+                          <div className="flow-dot absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#3C9AC4]" style={{ animation: "flowDotVertical 1.8s ease-in-out infinite", animationDelay: `${i * 0.4}s` }} />
                         </div>
                       )}
                     </div>
                   ))}
                   {/* Marketplace end card — mobile */}
                   <div className="flex flex-col items-center mt-1">
-                    <div className="relative w-0 h-8 border-l-2 border-dashed border-[#6BC1E0]" />
+                    <div className="relative flex flex-col items-center my-1 h-8">
+                      <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 border-l-2 border-dashed border-[#6BC1E0] w-0" />
+                      <div className="flow-dot absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#6BC1E0]" style={{ animation: "flowDotVertical 1.8s ease-in-out infinite", animationDelay: "1.2s" }} />
+                    </div>
                     <div className="flex items-center gap-3 w-full max-w-xs bg-white border-2 border-[#6BC1E0] rounded-2xl shadow-lg px-4 py-3">
                       <div className="w-10 h-10 rounded-xl overflow-hidden bg-white border border-slate-100 flex items-center justify-center shrink-0">
                         <img src="/logos/amazon-color-svgrepo-com.svg" alt="Amazon" className="w-full h-full object-contain p-1" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />

@@ -14,7 +14,7 @@ import {
     Check,
     StoreIcon,
 } from "lucide-react";
-import { StepFlowDiagram } from "./guidePageIllustrations";
+import { StepFlowDiagram } from "../../components/illustrations/guidePageIllustrations";
 
 /* ─────────────────────────────────────
    Scroll-reveal hook
@@ -217,66 +217,6 @@ function ConnectAmazonMockup() {
         </div>
     );
 }
-
-/* ─────────────────────────────────────
-   Bottom connector flow bar
-────────────────────────────────────── */
-function BottomConnector({ visible }: { visible: boolean }) {
-    const nodes = [
-        { icon: Globe, label: "Select Region", sub: "Choose your Amazon\nmarketplace", },
-        { icon: Store, label: "Store Details", sub: "Add your store name\nand marketplace", },
-        { icon: ShieldCheck, label: "Authorize", sub: "Securely connect your\nSeller Central account", },
-        { icon: Store, label: "Store Created", sub: "Your Amazon store\nis now connected!", success: true },
-    ];
-
-    return (
-        <div
-            className="flex flex-wrap items-start justify-center gap-x-1 gap-y-4 pt-6 pb-2"
-            style={{
-                transition: "opacity 0.6s ease 700ms",
-                opacity: visible ? 1 : 0,
-            }}
-        >
-            {nodes.map((n, i) => (
-                <div key={i} className="flex items-start">
-                    {/* node */}
-                    <div className="flex flex-col items-center gap-1.5 w-[86px] sm:w-[120px]">
-                        <div
-                            className={`w-9 h-9 sm:w-12 sm:h-12 rounded-full border-2 flex items-center justify-center shrink-0 ${n.success
-                                ? "bg-emerald-50 border-emerald-400"
-                                : "bg-white border-slate-200 shadow-sm"
-                                }`}
-                        >
-                            <n.icon className={`w-4 h-4 sm:w-5 sm:h-5 ${n.success ? "text-emerald-600" : "text-[#3C9AC4]"}`} />
-                        </div>
-                        <div className="text-center mt-1">
-                            <p
-                                className={`text-xs sm:text-sm font-bold leading-tight ${n.success ? "text-emerald-700" : "text-slate-800"
-                                    }`}
-                            >
-                                {n.label}
-                            </p>
-
-                            <p className="text-[10px] sm:text-xs text-slate-500 leading-tight mt-0.5 whitespace-pre-line">
-                                {n.sub}
-                            </p>
-                        </div>
-                    </div>
-                    {/* connector dashes (not after last node) */}
-                    {i < nodes.length - 1 && (
-                        <div className="flex items-center px-1 mt-4 sm:mt-5 shrink-0">
-                            <svg width="60" height="14" viewBox="0 0 60 14">
-                                <line x1="2" y1="7" x2="50" y2="7" stroke="#CBD5E1" strokeWidth="1.5" strokeDasharray="5 3" />
-                                <polyline points="46,3 54,7 46,11" fill="none" stroke="#94A3B8" strokeWidth="1.5" strokeLinejoin="round" />
-                            </svg>
-                        </div>
-                    )}
-                </div>
-            ))}
-        </div>
-    );
-}
-
 /* ─────────────────────────────────────
    Individual step card
 ────────────────────────────────────── */
@@ -449,16 +389,16 @@ export function ConnectAmazonGuide() {
                             </div>
 
                             {/* bottom connector flow */}
-                            <div className="w-full overflow-hidden flex justify-center" style={{ height: 278 }}>
-                                <div style={{ width: 1424, height: 580, transform: 'scale(0.48)', transformOrigin: 'top center' }}>
-                                    <StepFlowDiagram
-                                        steps={[
-                                            { icon: <Globe size={40} color="#2A3FD6" />, title: "Select Region", subtitle: "Choose your Amazon\nmarketplace region." },
-                                            { icon: <Store size={40} color="#2A3FD6" />, title: "Store Details", subtitle: "Add your store name\nand marketplace." },
-                                            { icon: <ShieldCheck size={40} color="#2A3FD6" />, title: "Authorize", subtitle: "Securely connect your\nSeller Central account." },
-                                            { icon: <StoreIcon size={40} color="#2A3FD6" />, title: "Store Created", subtitle: "Your Amazon store\nis now connected!" },
-                                        ]} />
-                                </div>
+                            <div className="w-full flex justify-center px-2">
+                                <StepFlowDiagram
+                                    steps={[
+                                        { icon: <Globe size={60} color="#13355A" />, title: "Select Region", subtitle: "Choose your Amazon\nmarketplace region." },
+                                        { icon: <Store size={60} color="#13355A" />, title: "Store Details", subtitle: "Add your store name\nand marketplace." },
+                                        { icon: <ShieldCheck size={60} color="#13355A" />, title: "Authorize", subtitle: "Securely connect your\nSeller Central account." },
+                                        { icon: <StoreIcon size={60} color="#13355A" />, title: "Store Created", subtitle: "Your Amazon store\nis now connected!" },
+                                    ]}
+                                    style={{ width: '100%', maxWidth: 700, height: 'auto' }}
+                                />
                             </div>
                         </div>
 

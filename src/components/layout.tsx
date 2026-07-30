@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
-import Navigation from "./Navigation";
-import Footer from "./Footer";
-import { FloatingWidgets } from "./FloatingWidgets";
+import Navigation from "./navigation";
+import Footer from "./footer";
+import { FloatingWidgets } from "./floatingWidgets";
 
 interface LayoutProps {
   children: ReactNode;

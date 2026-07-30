@@ -4,7 +4,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import Layout from "@/components/Layout";
+import Layout from "@/components/layout";
 import {
   ArrowRight, Boxes, RefreshCw, ShoppingCart, Wand2, LayoutGrid,
   GitMerge, Image as ImageIcon, ShieldCheck, Upload, DollarSign,
@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { AssetLibraryMockup, ServicesHeroMockup, RolesIllustration, InventorySyncSVG, AICatalogSVG, /* RepricerSVG, */ AnalyticsDashboardSVG, SyncSequenceDiagramSVG, SyncFlowDiagram, SyncFlowDiagramV2 } from "@/components/illustrations/servicePageIllustrations";
-import PageHero from "@/components/PageHero";
+import PageHero from "@/components/pageHero";
 
 
 /* -------------------- Section blocks -------------------- */

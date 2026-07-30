@@ -1,4 +1,4 @@
-import About from "@/screens/About";
+import About from "@/screens/about";
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { buildMetadata, SITE_URL } from "@/lib/seo";
-import Contact from "@/screens/Contact";
+import Contact from "@/screens/contact";
 
 // ─── Page metadata ───────────────────────────────────────────────────────────
 export const metadata: Metadata = buildMetadata({

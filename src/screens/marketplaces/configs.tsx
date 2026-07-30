@@ -1,5 +1,5 @@
 import { Boxes, ShoppingCart, DollarSign, BarChart3, Wand2, Image as ImageIcon } from "lucide-react";
-import type { MarketplaceConfig } from "./MarketplacePage";
+import type { MarketplaceConfig } from "./marketplacePage";
 
 const others = (name: string) =>
   ["Amazon"].filter((n) => n !== name);

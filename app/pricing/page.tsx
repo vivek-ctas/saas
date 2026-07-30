@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { buildMetadata, SITE_URL } from "@/lib/seo";
-import Pricing from "@/screens/Pricing";
+import Pricing from "@/screens/pricing";
 
 // ─── Page metadata ───────────────────────────────────────────────────────────
 export const metadata: Metadata = buildMetadata({

@@ -1,4 +1,4 @@
-import PlatformPage, { PlatformConfig } from "./PlatformPage";
+import PlatformPage, { PlatformConfig } from "./platformPage";
 import { Boxes, RefreshCw, ShieldCheck, BarChart3, Layers, Upload } from "lucide-react";
 import { FlowVisual, DashListVisual, KpiChartVisual } from "@/components/illustrations/platformPageIllustrations";
 const cfg: PlatformConfig = {

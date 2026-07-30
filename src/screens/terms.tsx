@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Layout from "@/components/Layout";
+import Layout from "@/components/layout";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { useReveal } from "@/hooks/use-reveal";

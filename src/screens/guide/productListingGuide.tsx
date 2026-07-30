@@ -7,7 +7,7 @@ import {
     FileSpreadsheet,
     Tag,
 } from "lucide-react";
-import { ProductImportFlow } from "./guidePageIllustrations";
+import { ProductImportFlow } from "../../components/illustrations/guidePageIllustrations";
 
 /* ─────────────────────────────────────
    Scroll-reveal hook

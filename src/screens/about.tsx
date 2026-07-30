@@ -10,8 +10,8 @@ import {
   RefreshCw,
   Server,
 } from "lucide-react";
-import Layout from "@/components/Layout";
-import PageHero from "@/components/PageHero";
+import Layout from "@/components/layout";
+import PageHero from "@/components/pageHero";
 import { WorkflowIllustration, LogoChip } from "@/components/illustrations";
 import { AboutJourneyMockup, NeuralIllustration } from "@/components/illustrations/aboutPageIllustrations";
 import { useReveal } from "@/hooks/use-reveal";
@@ -147,7 +147,7 @@ const About = () => {
             <div className="reveal delay-200">
               <Badge className="mb-4 bg-accent text-primary border border-primary/10">Our Strengths</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-8 leading-tight">
-                Technology built for<br /> <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">modern commerce.</span>
+                Technology built for <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">modern commerce.</span>
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {[
@@ -165,14 +165,14 @@ const About = () => {
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 group-hover:bg-primary/15 transition-colors">
                       <s.icon className="w-6 h-6 text-primary" />
                     </div>
-
-                    <h3 className="text-lg font-semibold text-[#13355A] mb-2">
-                      {s.title}
-                    </h3>
-
-                    <p className="text-sm leading-6 text-[#64748B]">
-                      {s.desc}
-                    </p>
+                    <div>
+                      <h3 className="text-lg font-semibold text-[#13355A] mb-2">
+                        {s.title}
+                      </h3>
+                      <p className="text-sm leading-6 text-[#64748B]">
+                        {s.desc}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>

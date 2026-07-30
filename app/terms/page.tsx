@@ -1,4 +1,4 @@
-import Terms from "@/screens/Terms";
+import Terms from "@/screens/terms";
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 

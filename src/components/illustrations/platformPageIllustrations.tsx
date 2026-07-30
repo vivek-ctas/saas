@@ -1491,7 +1491,7 @@ export const ProgressListVisual = ({
 /* marketplace -amazon                                               */
 /* ------------------------------------------------------------------ */
 
-import type { MarketplaceConfig } from "@/screens/marketplaces/MarketplacePage";
+import type { MarketplaceConfig } from "@/screens/marketplaces/marketplacePage";
 export const OnboardingDiagram = (props: SVGProps<SVGSVGElement>) => {
 
     const STEP_ICONS: Record<string, JSX.Element> = {

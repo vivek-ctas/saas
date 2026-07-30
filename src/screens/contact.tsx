@@ -7,8 +7,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Mail, MapPin, Phone, Clock, ArrowRight, MessageCircle, Headphones, BookOpen, Code, Video, CheckCircle2, Loader2 } from "lucide-react";
-import Layout from "@/components/Layout";
-import PageHero from "@/components/PageHero";
+import Layout from "@/components/layout";
+import PageHero from "@/components/pageHero";
 import { ContactMapIllustration } from "@/components/illustrations/contactIllustrations";
 import { useReveal } from "@/hooks/use-reveal";
 

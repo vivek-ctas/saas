@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import Layout from "@/components/Layout";
+import Layout from "@/components/layout";
 import { ArrowRight, CheckCircle2, Sparkles, Boxes, ShoppingCart, DollarSign, BarChart3, Wand2, RefreshCw } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { ChannelHeroDiagram, OnboardingDiagram } from "@/components/illustrations/platformPageIllustrations";

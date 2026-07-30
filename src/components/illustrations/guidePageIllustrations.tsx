@@ -378,14 +378,14 @@ const stepColor = (i: number, total: number) => {
 
 export const StepFlowDiagram = ({ steps, ...props }: StepFlowDiagramProps) => {
 
-    const cardW = 300;
-    const cardH = 380;
-    const gap = 48;
-    const marginX = 40;
-    const marginTop = 50;
+    const cardW = 350;
+    const cardH = 350;
+    const gap = 50;
+    const marginX = 50;
+    const marginTop = 30;
 
-    const badgeR = 34;
-    const iconR = 56;
+    const badgeR = 60;
+    const iconR = 55;
     const cardTop = marginTop + badgeR;
 
     const width = marginX * 2 + steps.length * cardW + (steps.length - 1) * gap;
@@ -410,13 +410,11 @@ export const StepFlowDiagram = ({ steps, ...props }: StepFlowDiagramProps) => {
                     <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
                 </filter>
             </defs>
-
             {/* ================= CONNECTORS ================= */}
             {steps.slice(0, -1).map((_, i) => {
                 const x1 = cardX(i) + cardW;
                 const x2 = cardX(i + 1);
-                const midY = cardTop + iconR + 34;
-                const midX = (x1 + x2) / 2;
+                const midY = cardTop + iconR + 100;
                 return (
                     <g key={`connector-${i}`}>
                         <line x1={x1} y1={midY} x2={x2} y2={midY} stroke={connector} strokeWidth={2.5} strokeDasharray="6 6">
@@ -437,25 +435,29 @@ export const StepFlowDiagram = ({ steps, ...props }: StepFlowDiagramProps) => {
                 const x = cardX(i);
                 const cx = x + cardW / 2;
                 const color = stepColor(i, steps.length);
-                const iconCy = cardTop + iconR + 30;
-                const titleY = iconCy + iconR + 46;
+                const iconCy = cardTop + iconR + 80;
+                const titleY = iconCy + iconR + 50;
                 const subLines = step.subtitle.split("\n");
 
                 return (
                     <g key={i}>
                         {/* card */}
                         <g filter="url(#stepflow-shadow)">
-                            <rect x={x} y={cardTop} width={cardW} height={cardH} rx={22} fill="#ffffff" stroke={color} strokeOpacity={0.55} strokeWidth={1.6} />
+                            <rect x={x} y={cardTop} width={cardW} height={cardH} rx={22} fill="#ffffff" stroke={color} strokeOpacity={0.55} strokeWidth={1.6}>
+                                <animate attributeName="y" values={`${cardTop - 3};${cardTop};${cardTop - 3}`} dur={`${3 + i * 0.3}s`} repeatCount="indefinite" />
+                            </rect>
                         </g>
 
                         {/* icon circle */}
-                        <circle cx={cx} cy={iconCy} r={iconR} fill={iconBg} />
-                        <g transform={`translate(${cx - 20},${iconCy - 20})`}>
+                        <circle cx={cx} cy={iconCy} r={iconR} fill={iconBg}>
+                            <animate attributeName="r" values={`${iconR};${iconR + 4};${iconR}`} dur={`${2.5 + i * 0.2}s`} repeatCount="indefinite" />
+                        </circle>
+                        <g transform={`translate(${cx - 30},${iconCy - 30})`} >
                             {step.icon}
                         </g>
 
                         {/* title */}
-                        <text x={cx} y={titleY} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="21" fontWeight={800} fill={slate900}>
+                        <text x={cx} y={titleY} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="30" fontWeight={600} fill={slate900}>
                             {step.title}
                         </text>
 
@@ -464,11 +466,11 @@ export const StepFlowDiagram = ({ steps, ...props }: StepFlowDiagramProps) => {
                             <text
                                 key={li}
                                 x={cx}
-                                y={titleY + 32 + li * 24}
+                                y={titleY + 50 + li * 24}
                                 textAnchor="middle"
-                                fontFamily="Inter,system-ui"
-                                fontSize="15"
-                                fontWeight={500}
+                                // fontFamily="Inter,system-ui"
+                                fontSize="25"
+                                fontWeight={300}
                                 fill={slateGray}
                             >
                                 {line}
@@ -476,8 +478,11 @@ export const StepFlowDiagram = ({ steps, ...props }: StepFlowDiagramProps) => {
                         ))}
 
                         {/* number badge, overlapping the top edge of the card */}
-                        <circle cx={cx} cy={marginTop + badgeR} r={badgeR} fill={color} filter="url(#stepflow-shadow)" />
-                        <text x={cx} y={marginTop + badgeR + 7} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="20" fontWeight={800} fill="#ffffff">
+                        <rect x={cx - 65} y={marginTop + 40} width={badgeR + 60} height={badgeR - 20} rx="15" fill={color}>
+                            <animate attributeName="y" values={`${marginTop + 40 - 2};${marginTop + 40};${marginTop + 40 - 2}`} dur="2s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
+                        </rect>
+
+                        <text x={cx} y={marginTop + badgeR + 12} textAnchor="middle" fontFamily="Inter,system-ui" fontSize="30" fontWeight={600} fill="#ffffff">
                             {`S${i + 1}`}
                         </text>
                     </g>

@@ -1,4 +1,4 @@
-import PlatformPage, { PlatformConfig } from "./PlatformPage";
+import PlatformPage, { PlatformConfig } from "./platformPage";
 import { MatrixVisual, ILL, DashListVisual, GenVisual } from "@/components/illustrations/platformPageIllustrations";
 import { Wand2, LayoutGrid, GitMerge, Image as ImageIcon, Upload, BarChart3 } from "lucide-react";
 

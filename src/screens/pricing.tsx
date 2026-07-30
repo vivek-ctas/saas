@@ -15,16 +15,15 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import Layout from '@/components/Layout';
-import PageHero from '@/components/PageHero';
+import Layout from '@/components/layout';
+import PageHero from '@/components/pageHero';
 import { AnalyticsIllustration, PricingCalculatorMockup } from '@/components/illustrations/pricePageIllustrations';
 import { useReveal } from '@/hooks/use-reveal';
 import { MaintenanceState } from '@/components/maintenancestate';
 import { usePlans } from '@/hooks/use-plans';
 
 import { useCheckout } from '@/hooks/use-checkout';
-import CheckoutModal from '@/components/CheckoutModal';
+import CheckoutModal from '@/components/checkoutModal';
 import type { Plan } from '@/types';
 import { formatConvertedPrice } from '@/services/currency.service';
 
@@ -459,28 +458,25 @@ const Pricing = () => {
         </section>
 
         {/* ── FAQ ────────────────────────────────────────────────────────────── */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
+        <section className="py-14 bg-[#F1F3FC] border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px]">
-            <div className="text-center mb-12 reveal">
-              <Badge className="mb-4 bg-accent text-primary border border-primary/10">FAQ</Badge>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">Frequently asked questions</h2>
-            </div>
-            <Accordion type="single" collapsible className="reveal space-y-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 text-center mb-8 reveal">
+              <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">Frequently asked</span> questions
+            </h2>
+            <div className="space-y-3 reveal">
               {FAQS.map((f, i) => (
-                <AccordionItem
+                <details
                   key={i}
-                  value={`item-${i}`}
-                  className="bg-white rounded-2xl border border-slate-200/70 px-6 shadow-sm hover:shadow-lg hover:border-primary/20 transition-all"
+                  className="group rounded-2xl border border-slate-200/70 bg-white p-5 hover:border-[#BDD9EE] shadow-sm hover:shadow-lg transition-all"
                 >
-                  <AccordionTrigger className="text-left font-semibold text-slate-900 hover:no-underline py-5">
+                  <summary className="cursor-pointer font-semibold text-slate-900 flex items-center justify-between list-none">
                     {f.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-slate-600 pb-5 leading-relaxed">
-                    {f.a}
-                  </AccordionContent>
-                </AccordionItem>
+                    <span className="text-[#3C9AC4] group-open:rotate-45 transition-transform text-2xl leading-none shrink-0">+</span>
+                  </summary>
+                  <p className="mt-3 text-slate-600 text-sm leading-relaxed">{f.a}</p>
+                </details>
               ))}
-            </Accordion>
+            </div>
           </div>
         </section>
 
