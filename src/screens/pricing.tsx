@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Check, X, Sparkles, ArrowRight, Quote, Star, Loader2, AlertCircle,
@@ -11,6 +11,11 @@ import {
   BookOpen,
   Headphones,
   Zap,
+  Globe,
+  Lock,
+  Gauge,
+  LayoutGrid,
+  Rocket,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -203,30 +208,69 @@ const Pricing = () => {
           visual={<PricingCalculatorMockup className="w-full h-auto" />}
           actions={
             <>
-              <Link href="#comparison">
+              <Link href="#plan-benefits">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-base px-8 h-12 border-slate-200 bg-white hover:bg-accent text-slate-900 rounded-full shadow-sm"
+                  className="text-base px-8 h-12 border-primary/20 bg-white hover:bg-accent text-slate-900 rounded-full shadow-sm"
                 >
-                  Compare plans
+                  View Plan Benefits
                 </Button>
               </Link>
-
-              <Link
-                href="#plans"
-                className="inline-flex items-center justify-center rounded-full text-base px-8 h-12 shadow-lg group bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] hover:opacity-95 border-0 text-white"
-              >
-                See Plans
-                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+              <Link href="#plans">
+                <Button size="lg" className="text-base px-8 h-12 rounded-full group bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] hover:opacity-95 border-0">
+                  See plan
+                  <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+                </Button>
               </Link>
             </>
           }
         />
 
         {/* ── PLANS SECTION ──────────────────────────────────────────────────── */}
-        <section id="plans" className="py-14 sm:py-16 lg:py-20 bg-white border-t border-[#EAECF3]">
-          <div className="px-5 sm:px-8 lg:px-[70px]">
+        <section id="plans" className="relative py-16 sm:py-20 lg:py-24 bg-white border-t border-[#EAECF3] overflow-hidden">
+
+          {/* ── Animated background ── */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+            {/* Blob A – top-left */}
+            <div className="pricing-blob-a absolute -top-32 -left-32 w-[420px] h-[420px] rounded-full bg-[#3C9AC4]/8 blur-[80px]" />
+            {/* Blob B – top-right */}
+            <div className="pricing-blob-b absolute -top-24 -right-24 w-[360px] h-[360px] rounded-full bg-[#13355A]/7 blur-[70px]" />
+            {/* Blob C – bottom-centre */}
+            <div className="pricing-blob-c absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[280px] rounded-full bg-[#3C9AC4]/6 blur-[90px]" />
+
+            {/* Scrolling SVG wave path */}
+            <div className="absolute bottom-0 left-0 w-[200%] h-28 opacity-[0.07] pricing-wave">
+              <svg viewBox="0 0 1440 112" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" preserveAspectRatio="none">
+                <path d="M0 56 C240 0, 480 112, 720 56 S1200 0, 1440 56 V112 H0Z" fill="#13355A" />
+                <path d="M0 56 C240 0, 480 112, 720 56 S1200 0, 1440 56 V112 H0Z" fill="#13355A" transform="translate(720)" />
+              </svg>
+            </div>
+
+            {/* Subtle dot grid */}
+            <div
+              className="absolute inset-0 opacity-[0.035]"
+              style={{
+                backgroundImage: 'radial-gradient(circle, #13355A 1px, transparent 1px)',
+                backgroundSize: '36px 36px',
+              }}
+            />
+          </div>
+
+          <div className="relative max-w-6xl mx-auto px-5 sm:px-8 lg:px-10">
+
+            {/* Section header */}
+            <div className="text-center mb-10">
+              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3">
+                Choose your{' '}
+                <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
+                  plan
+                </span>
+              </h2>
+              <p className="text-slate-500 text-base sm:text-lg max-w-xl mx-auto">
+                Simple, transparent pricing — no hidden fees, no surprises.
+              </p>
+            </div>
 
             {/* Loading */}
             {plansLoading && (
@@ -247,122 +291,225 @@ const Pricing = () => {
             )}
 
             {/* Plan cards */}
-            {!plansLoading && !plansError && plans.length > 0 && (
-              <div>
-                <div className="mb-6 flex items-center justify-center gap-3">
-                  <button
-                    onClick={() => setSelectedInterval('month')}
-                    className={`px-4 py-2 rounded-full text-sm font-semibold transition ${selectedInterval === 'month' ? 'bg-primary text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-700 hover:bg-accent'}`}
-                  >
-                    Monthly
-                  </button>
-                  <button
-                    onClick={() => setSelectedInterval('quarterly')}
-                    className={`px-4 py-2 rounded-full text-sm font-semibold transition ${selectedInterval === 'quarterly' ? 'bg-primary text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-700 hover:bg-accent'}`}
-                  >
-                    Quarterly
-                  </button>
-                </div>
+            {!plansLoading && !plansError && plans.length > 0 && (() => {
+              const filteredPlans = plans
+                .filter(p => {
+                  if (selectedInterval === 'month') return p.interval === 'month' || p.interval === 'both';
+                  if (selectedInterval === 'quarterly') return p.interval === 'quarterly' || p.interval === 'both';
+                  return false;
+                })
+                .sort((a, b) => (a.is_custom_plan === b.is_custom_plan ? 0 : a.is_custom_plan ? 1 : -1));
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-                  {plans.filter(p => {
-                    if (selectedInterval === 'month') {
-                      return p.interval === 'month' || p.interval === 'both';
-                    }
-                    if (selectedInterval === 'quarterly') {
-                      return p.interval === 'quarterly' || p.interval === 'both';
-                    }
-                    return false;
-                  })
-                    .sort((a, b) => (a.is_custom_plan === b.is_custom_plan ? 0 : a.is_custom_plan ? 1 : -1))
-                    .map((plan, i) => (
-                      <Card
-                        key={plan._id}
-                        className={`relative overflow-hidden p-2 transition-all ${plan.is_popular
-                          ? 'border-2 border-primary shadow-lg lg:scale-105 bg-gradient-to-br from-white via-accent to-accent/60'
-                          : 'border border-slate-200 hover:border-primary/20 hover:shadow-lg'
+              // Responsive column count: ≤2 → 1-col, 3 → 3-col, 4 → 2-col, 5+ → 3-col
+              const colClass =
+                filteredPlans.length === 1 ? 'grid-cols-1 max-w-sm mx-auto' :
+                  filteredPlans.length === 2 ? 'grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto' :
+                    filteredPlans.length === 4 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4' :
+                      'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
+
+              return (
+                <div>
+                  {/* Billing toggle */}
+                  <div className="mb-10 flex items-center justify-center">
+                    <div className="inline-flex items-center gap-1 bg-white/80 backdrop-blur-sm rounded-full p-1 border border-slate-200 shadow-md">
+                      <button
+                        onClick={() => setSelectedInterval('month')}
+                        className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${selectedInterval === 'month'
+                          ? 'bg-primary text-white shadow-sm'
+                          : 'text-slate-500 hover:text-slate-800'
                           }`}
-                        style={{ transitionDelay: `${i * 120}ms` }}
                       >
-                        {plan.is_popular && (
-                          <>
-                            <div className="absolute -top-px left-0 right-0 h-1 bg-gradient-to-r from-[#3C9AC4] to-[#13355A]" />
-                            <div className="absolute top-4 right-4">
-                              <Badge className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] text-white border-0 shadow-md">
-                                Most Popular
-                              </Badge>
-                            </div>
-                          </>
-                        )}
+                        Monthly
+                      </button>
+                      <button
+                        onClick={() => setSelectedInterval('quarterly')}
+                        className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${selectedInterval === 'quarterly'
+                          ? 'bg-primary text-white shadow-sm'
+                          : 'text-slate-500 hover:text-slate-800'
+                          }`}
+                      >
+                        Quarterly
+                      </button>
+                    </div>
+                  </div>
 
-                        <CardHeader className="pb-4 pt-8">
-                          <CardTitle className="text-2xl lg:text-3xl font-bold text-slate-900">{plan.name}</CardTitle>
-                          <p className="text-slate-600 text-sm">{plan.desc}</p>
-                          <div className="mt-6 flex items-baseline gap-1">
-                            <span className="text-5xl font-bold text-slate-900 tracking-tight">
-                              {formatPrice(plan, selectedInterval)}
-                            </span>
-                            <span className="text-slate-500">{getPeriod(plan, selectedInterval)}</span>
-                          </div>
-                          {/* {plan.trial_days > 0 && !plan.is_custom_plan && (
-                            <p className="text-xs text-emerald-600 font-medium mt-1">
-                              ✓ {plan.trial_days}-day free trial included
-                            </p>
-                          )} */}
-                          <p className="text-xs text-primary font-medium mt-1">
-                            ✓ Get started immediately
-                          </p>
-                        </CardHeader>
+                  {/* Cards grid — auto-adapts to plan count */}
+                  <div className={`grid gap-5 lg:gap-6 items-stretch ${colClass}`}>
+                    {filteredPlans.map((plan, i) => {
+                      // ── Dynamic plan-type icon & accent config ──────────────
+                      const PlanIcon = plan.is_custom_plan ? LayoutGrid : plan.is_popular ? Rocket : Zap;
+                      const iconBg = plan.is_custom_plan
+                        ? 'bg-slate-800'
+                        : plan.is_popular
+                          ? 'bg-gradient-to-br from-[#3C9AC4] to-[#13355A]'
+                          : 'bg-accent';
+                      const iconColor = plan.is_custom_plan || plan.is_popular
+                        ? 'text-white'
+                        : 'text-primary';
 
-                        <CardContent className="space-y-5">
-                          <button
-                            onClick={() => handlePlanClick(plan)}
-                            className={`w-full py-3 rounded-2xl text-sm font-semibold transition-all ${plan.is_popular
-                              ? 'bg-gradient-to-r from-[#3C9AC4] to-[#13355A] text-white shadow-md hover:opacity-90'
-                              : plan.is_custom_plan
-                                ? 'bg-slate-900 text-white hover:bg-slate-700'
-                                : 'border-2 border-primary text-primary hover:bg-primary hover:text-white'
-                              } disabled:opacity-60 disabled:cursor-not-allowed`}
-                          >
-                            {getCtaLabel(plan)}
-                          </button>
+                      return (
+                        <div
+                          key={plan._id}
+                          className={`relative flex flex-col rounded-2xl overflow-hidden transition-all duration-300 ${plan.is_popular
+                            ? 'bg-gradient-to-b from-white via-[#EFF6FF] to-accent/60 border-2 border-primary shadow-2xl md:-translate-y-3'
+                            : plan.is_custom_plan
+                              ? 'bg-slate-900 border border-slate-700 text-white hover:shadow-2xl hover:scale-[1.01]'
+                              : 'bg-white border border-slate-200 hover:border-primary/30 hover:shadow-xl hover:scale-[1.005]'
+                            }`}
+                          style={{ transitionDelay: `${i * 80}ms` }}
+                        >
+                          {/* Popular top accent bar */}
+                          {plan.is_popular && (
+                            <div className="h-1 w-full bg-gradient-to-r from-[#3C9AC4] to-[#13355A] flex-shrink-0" />
+                          )}
 
-                          <ul className="space-y-3 pt-2">
-                            {plan.marketing_features.map((f, j) => (
-                              <li key={j} className="flex items-start gap-3 text-sm lg:text-base">
-                                <span className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${plan.is_popular ? 'bg-primary text-white' : 'bg-accent text-primary'
-                                  }`}>
-                                  <Check className="w-3 h-3" />
+                          <div className="flex flex-col flex-1 p-6 sm:p-7">
+
+                            {/* ── Plan header icon + name + type badge ── */}
+                            <div className="flex items-start justify-between gap-2 mb-3">
+                              <div className="flex items-center gap-3">
+                                {/* Plan-type icon */}
+                                <span className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm ${iconBg}`}>
+                                  <PlanIcon className={`w-5 h-5 ${iconColor}`} />
                                 </span>
-                                <span className="text-slate-700">{f}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </CardContent>
-                      </Card>
-                    ))}
+                                <div>
+                                  <h3 className={`text-xl font-bold leading-tight ${plan.is_custom_plan ? 'text-white' : 'text-slate-900'
+                                    }`}>{plan.name}</h3>
+                                  {/* Plan-type label under name */}
+                                  <p className={`text-[11px] font-medium mt-0.5 ${plan.is_custom_plan ? 'text-slate-400' :
+                                    plan.is_popular ? 'text-[#3C9AC4]' :
+                                      'text-slate-400'
+                                    }`}>
+                                    {plan.is_custom_plan ? 'Enterprise / Custom' :
+                                      plan.is_popular ? '★ Recommended Plan' :
+                                        'Standard Plan'}
+                                  </p>
+                                </div>
+                              </div>
+
+                              {/* Badge (popular only) */}
+                              {plan.is_popular && (
+                                <Badge className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] text-white border-0 shadow text-[10px] px-2 py-0.5 flex-shrink-0 mt-0.5">
+                                  Popular
+                                </Badge>
+                              )}
+                            </div>
+
+                            {/* Description */}
+                            <p className={`text-sm mb-5 ${plan.is_custom_plan ? 'text-slate-400' : 'text-slate-500'
+                              }`}>{plan.desc}</p>
+
+                            {/* Price */}
+                            <div className="flex items-baseline gap-1 mb-1">
+                              <span className={`text-4xl sm:text-5xl font-extrabold tracking-tight ${plan.is_custom_plan ? 'text-white' : 'text-slate-900'
+                                }`}>
+                                {formatPrice(plan, selectedInterval)}
+                              </span>
+                              <span className={`text-base font-medium ${plan.is_custom_plan ? 'text-slate-400' : 'text-slate-400'
+                                }`}>{getPeriod(plan, selectedInterval)}</span>
+                            </div>
+
+                            {/* {plan.trial_days > 0 && !plan.is_custom_plan && (
+                              <p className="text-xs text-emerald-600 font-medium mt-1">
+                                ✓ {plan.trial_days}-day free trial included
+                              </p>
+                            )} */}
+                            <p className={`text-xs font-semibold mb-6 ${plan.is_custom_plan ? 'text-slate-400' : 'text-primary'
+                              }`}>
+                              ✓ Get started immediately
+                            </p>
+
+                            {/* CTA button */}
+                            <button
+                              onClick={() => handlePlanClick(plan)}
+                              className={`w-full py-3 rounded-xl text-sm font-semibold transition-all duration-200 ${plan.is_popular
+                                ? 'bg-gradient-to-r from-[#3C9AC4] to-[#13355A] text-white shadow-md hover:opacity-90 hover:shadow-lg'
+                                : plan.is_custom_plan
+                                  ? 'bg-white text-slate-900 hover:bg-slate-100 shadow-md'
+                                  : 'border-2 border-primary text-primary hover:bg-primary hover:text-white'
+                                } disabled:opacity-60 disabled:cursor-not-allowed`}
+                            >
+                              {getCtaLabel(plan)}
+                            </button>
+
+                            {/* Divider */}
+                            <hr className={`my-5 ${plan.is_custom_plan ? 'border-slate-700' : 'border-slate-200/70'
+                              }`} />
+
+                            {/* Feature list */}
+                            <ul className="space-y-2.5 flex-1">
+                              {plan.marketing_features.map((f, j) => (
+                                <li key={j} className="flex items-start gap-3 text-sm">
+                                  <span className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${plan.is_custom_plan
+                                    ? 'bg-slate-700 text-slate-300'
+                                    : plan.is_popular
+                                      ? 'bg-primary text-white'
+                                      : 'bg-accent text-primary'
+                                    }`}>
+                                    <Check className="w-3 h-3" />
+                                  </span>
+                                  <span className={`leading-snug ${plan.is_custom_plan ? 'text-slate-300' : 'text-slate-600'
+                                    }`}>{f.trim()}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          {/* Bottom "MOST POPULAR" ribbon (popular card only) */}
+                          {plan.is_popular && (
+                            <div className="absolute -bottom-px inset-x-0 flex justify-center">
+                              <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] text-white text-[10px] font-bold tracking-widest px-4 py-1 rounded-t-lg shadow">
+                                BEST VALUE
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            )}
+              );
+            })()}
 
             {/* Trust indicators */}
             {!plansLoading && !plansError && (
-              <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-slate-500">
-                {[
-                  '⚡ Instant activation',
-                  '🌍 Global payments',
-                  '🔒 Secure checkout',
-                  '💬 Dedicated support',
-                ].map((item, i) => (
-                  <span key={i} className="flex items-center gap-1">{item}</span>
-                ))}
+              <div className="mt-12">
+                {/* Card strip */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 rounded-2xl border border-slate-200 bg-[#F7F9FC] p-3">
+                  {([
+                    { icon: Zap, title: 'Instant Activation', sub: 'Get started right away' },
+                    { icon: Globe, title: 'Global Payments', sub: 'Pay from anywhere' },
+                    { icon: Lock, title: 'Secure Checkout', sub: '100% secure payments' },
+                    { icon: Gauge, title: '99.9% Uptime', sub: 'Reliable & always on' },
+                    { icon: Headphones, title: 'Dedicated Support', sub: "We're here to help" },
+                  ] as { icon: React.ElementType; title: string; sub: string }[]).map(({ icon: Icon, title, sub }, i) => (
+                    <div
+                      key={i}
+                      className="flex items-center gap-3 rounded-xl bg-white border border-slate-100 px-4 py-3 shadow-sm"
+                    >
+                      <span className="w-9 h-9 rounded-lg bg-accent flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-4 h-4 text-primary" />
+                      </span>
+                      <div>
+                        <p className="text-sm font-semibold text-slate-800 leading-tight">{title}</p>
+                        <p className="text-xs text-slate-400 mt-0.5 leading-tight">{sub}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Footer note */}
+                <p className="mt-4 text-center text-xs text-slate-400 flex items-center justify-center gap-1.5">
+                  <Lock className="w-3 h-3" />
+                  Cancel anytime &nbsp;·&nbsp; No hidden charges
+                </p>
               </div>
             )}
           </div>
         </section>
 
         {/* ── PLAN PERKS BANNER ───────────────────────────────────────────────── */}
-        <section className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
+        <section id="plan-benefits" className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px]">
             {/* Heading */}
             <p className="text-center text-lg font-semibold text-slate-700 mb-8">

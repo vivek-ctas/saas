@@ -344,6 +344,30 @@ All colors MUST be HSL.
   }
 }
 
+/* ── Pricing Section animated background blobs ─────────────────────────── */
+@keyframes pricingBlobA {
+  0%, 100% { transform: translate(0px,  0px)  scale(1);   }
+  33%       { transform: translate(40px, 30px) scale(1.08); }
+  66%       { transform: translate(-20px,50px) scale(0.95); }
+}
+@keyframes pricingBlobB {
+  0%, 100% { transform: translate(0px,  0px)  scale(1);   }
+  33%       { transform: translate(-50px,-30px) scale(1.1); }
+  66%       { transform: translate(30px, -60px) scale(0.9); }
+}
+@keyframes pricingBlobC {
+  0%, 100% { transform: translate(0px, 0px) scale(1);    }
+  50%       { transform: translate(60px, 40px) scale(1.12); }
+}
+@keyframes pricingWave {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.pricing-blob-a { animation: pricingBlobA 14s ease-in-out infinite; }
+.pricing-blob-b { animation: pricingBlobB 18s ease-in-out infinite 2s; }
+.pricing-blob-c { animation: pricingBlobC 22s ease-in-out infinite 5s; }
+.pricing-wave   { animation: pricingWave  28s linear infinite; }
+
 
 
 @keyframes csPulseRing {
