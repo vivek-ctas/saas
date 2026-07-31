@@ -13,7 +13,7 @@ import { ContactMapIllustration } from "@/components/illustrations/contactIllust
 import { useReveal } from "@/hooks/use-reveal";
 
 // ── Contact-specific hooks ───────────────────────────────────────────────
-import { useCompanySettings } from "@/hooks/use-company-contact";
+import { useWebSettings } from "@/hooks/use-company-contact";
 import { useContactForm } from "@/hooks/use-contact-form";
 import Link from "next/link";
 
@@ -43,7 +43,7 @@ const validateField = (field: FieldName, value: string): string => {
 const Contact = () => {
   const ref = useReveal<HTMLDivElement>();
 
-  const { settingsData } = useCompanySettings();
+  const { settingsData } = useWebSettings();
   const { form, loading, success, error, handleChange, handleSubmit, resetForm } = useContactForm();
 
   const contactEmail = settingsData?.contact?.email || "info@ctasis.com";
@@ -51,25 +51,23 @@ const Contact = () => {
   const contactAddress = (
     settingsData?.contact?.address ||
     "A-865/866, Money Plant High Street, Jagatpur Road, Sarkhej - Gandhinagar Hwy, near BSNL Office, Gota, Ahmedabad, Gujarat 382470"
-  ) +
-    (settingsData?.contact?.city ? `, ${settingsData.contact.city}` : "") +
-    (settingsData?.contact?.state ? `, ${settingsData.contact.state}` : "") +
-    (settingsData?.contact?.country ? `, ${settingsData.contact.country}` : "");
+  )
   const contactPostalCode = settingsData?.contact?.postal_code || "382470";
-  const supportHours = settingsData?.contact?.working_hours || "Mon–Fri · 9–6 EST";
+  const supportHours = settingsData?.contact?.working_hours || "Mon–Fri, 10:30 AM – 8:30 PM IST";
   const emailHours = "24/7 Response";
-  const googleMapUrl = settingsData?.contact?.google_map_url || "https://maps.google.com";
+
+  const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactAddress)}`;
 
   const quickChannels = [
-    { icon: Mail, title: "Email us", value: contactEmail, note: "General & sales" },
+    { icon: Mail, title: "Email us", value: contactEmail, note: "General & sales", href: `mailto:${contactEmail}` },
     { icon: Headphones, title: "Live chat", value: "Available 24/7", note: "For Pro & Enterprise" },
-    { icon: Phone, title: "Call us", value: contactPhone, note: "Mon–Fri · 9–6 EST" },
+    { icon: Phone, title: "Call us", value: contactPhone, note: "Mon–Fri, 10:30 AM – 8:30 PM IST", href: `tel:${contactPhone.replace(/\s+/g, "")}` },
   ];
 
   const sidebarInfo = [
-    { icon: Mail, title: "Email", lines: [contactEmail] },
-    { icon: Phone, title: "Phone", lines: [contactPhone, "Mon–Fri · 9–6 EST"] },
-    { icon: MapPin, title: "HQ", lines: [contactAddress, contactPostalCode], link: googleMapUrl },
+    { icon: Mail, title: "Email", lines: [contactEmail], href: `mailto:${contactEmail}` },
+    { icon: Phone, title: "Phone", lines: [contactPhone], href: `tel:${contactPhone.replace(/\s+/g, "")}` },
+    { icon: MapPin, title: "HQ", lines: [contactAddress, contactPostalCode], href: mapsHref, external: true },
     { icon: Clock, title: "Hours", lines: [supportHours, emailHours] },
   ];
 
@@ -158,7 +156,20 @@ const Contact = () => {
                     </div>
                     <div>
                       <div className="text-sm lg:text-base text-slate-500">{c.title}</div>
-                      <div className="font-bold text-slate-900 lg:text-lg">{c.value}</div>
+                      {c.href ? (
+                        <a
+                          href={c.href}
+                          {...(c.href.startsWith("http") && {
+                            target: "_blank",
+                            rel: "noopener noreferrer",
+                          })}
+                          className="font-bold text-slate-900 lg:text-lg hover:text-[#3C9AC4] transition-colors"
+                        >
+                          {c.value}
+                        </a>
+                      ) : (
+                        <div className="font-bold text-slate-900 lg:text-lg">{c.value}</div>
+                      )}
                       <div className="text-xs text-slate-500 mt-1">{c.note}</div>
                     </div>
                   </CardContent>
@@ -319,17 +330,25 @@ const Contact = () => {
                         <div className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur flex items-center justify-center flex-shrink-0">
                           <b.icon className="w-5 h-5" />
                         </div>
-                        {b.link ? (
-                          <a href={b.link} target="_blank" rel="noopener noreferrer" className="hover:text-[#6BC1E0] transition-colors">
-                            <div className="font-semibold">{b.title}</div>
-                            {b.lines.map((l, j) => <div key={j} className="text-white/80 text-sm">{l}</div>)}
-                          </a>
-                        ) : (
-                          <div>
-                            <div className="font-semibold">{b.title}</div>
-                            {b.lines.map((l, j) => <div key={j} className="text-white/80 text-sm">{l}</div>)}
-                          </div>
-                        )}
+                        <div>
+                          <div className="font-semibold">{b.title}</div>
+                          {b.href ? (
+                            <a
+                              href={b.href}
+                              {...(b.href.startsWith("http") && {
+                                target: "_blank",
+                                rel: "noopener noreferrer",
+                              })}
+                              className="block text-white/80 text-sm hover:text-[#3C9AC4] transition-colors"
+                            >
+                              {b.lines.map((l, j) => (
+                                <div key={j}>{l}</div>
+                              ))}
+                            </a>
+                          ) : (
+                            b.lines.map((l, j) => <div key={j} className="text-white/80 text-sm">{l}</div>)
+                          )}
+                        </div>
                       </div>
                     ))}
                   </CardContent>

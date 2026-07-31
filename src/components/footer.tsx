@@ -19,7 +19,7 @@ import {
   Instagram,
 } from "lucide-react";
 import footerBackground from "@/assets/footer-background.webp";
-import { useCompanySettings } from "@/hooks/use-company-contact";
+import { useWebSettings } from "@/hooks/use-company-contact";
 
 /* ------------------------------------------------------------------ */
 /*  Static placeholder data                                           */
@@ -149,7 +149,14 @@ const ContactRow = ({
   );
 
   return href ? (
-    <a href={href} className="flex items-start text-slate-300 text-sm hover:text-[#3C9AC4] transition-colors">
+    <a
+      href={href}
+      {...(href.startsWith("http") && {
+        target: "_blank",
+        rel: "noopener noreferrer",
+      })}
+      className="flex items-start text-slate-300 text-sm hover:text-[#3C9AC4] transition-colors"
+    >
       {content}
     </a>
   ) : (
@@ -194,7 +201,8 @@ const SocialIconLink = ({
 /* ------------------------------------------------------------------ */
 
 const Footer = () => {
-  const { settingsData } = useCompanySettings();
+  const { settingsData } = useWebSettings();
+  console.log("Footer settingsData:", settingsData);
 
   const logoSrc = "/ctasis-logo_white.svg";
 
@@ -204,7 +212,6 @@ const Footer = () => {
     logoAlt: `${settingsData?.company?.name || "SellerBuz"} Logo`,
     description:
       settingsData?.footer?.about ||
-      settingsData?.company?.about ||
       "The complete multichannel selling platform trusted by sellers worldwide. Manage inventory, process orders, and grow your business faster.",
     siblingText: "A product by",
     siblingLinkLabel: "CTAS Info Services LLP",
@@ -225,14 +232,13 @@ const Footer = () => {
     });
   }
   if (settingsData?.footer?.show_address !== false) {
+    const address =
+      settingsData?.contact?.address ||
+      "A-865/866, Money Plant High Street, Jagatpur Road, Sarkhej - Gandhinagar Hwy, near BSNL Office, Gota, Ahmedabad, Gujarat 382470";
     contactDetails.push({
       icon: MapPin,
-      value:
-        settingsData?.contact?.address ||
-        "A-865/866, Money Plant High Street, Jagatpur Road, Sarkhej - Gandhinagar Hwy, near BSNL Office, Gota, Ahmedabad, Gujarat 382470",
-      href:
-        settingsData?.contact?.google_map_url ||
-        "https://maps.google.com",
+      value: address,
+      href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`,
     });
   }
 
@@ -290,7 +296,7 @@ const Footer = () => {
                 alt={companyInfo.logoAlt}
                 className="h-14 w-auto object-contain"
               />
-              <span className="text-[1.8rem] font-bold tracking-tight font-outfit bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
+              <span className="text-[1.8rem] font-bold tracking-tight font-outfit bg-gradient-to-r from-white via-[#8FE7FF] to-[#3C9AC4] bg-clip-text text-transparent">
                 {companyInfo.name}
               </span>
             </Link>
@@ -322,7 +328,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom bar */}
         {/* Bottom bar */}
         <div className="mt-10 pt-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4 text-center md:text-left">

@@ -4,7 +4,7 @@ import type {
   CompanyContact,
   ContactSubmitResponse,
   CompanyContactResponse,
-  CompanySettingsData,
+  WebSettingsData,
 } from '../types/contact.types';
 
 // ── Company Info ──────────────────────────────────────────────────────────
@@ -25,13 +25,13 @@ export async function fetchCompanyContact(): Promise<{
 
 /**
  * Fetch full company settings (public - no auth needed).
- * Endpoint: GET /v1/company-settings
+ * Endpoint: GET /v1/web-settings
  */
-export async function fetchCompanySettings(): Promise<{
-  data: CompanySettingsData | null;
+export async function fetchWebSettings(): Promise<{
+  data: WebSettingsData | null;
   error: string | null;
 }> {
-  const { data, error } = await apiFetch<{ status: number; data: CompanySettingsData }>('/v1/company-settings');
+  const { data, error } = await apiFetch<{ status: number; data: WebSettingsData }>('/v1/web-settings');
   return {
     data: data?.data ?? null,
     error,

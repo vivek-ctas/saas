@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { fetchCompanyContact, fetchCompanySettings } from '@/services/contact.service';
-import type { CompanyContact, CompanySettingsData } from '@/types/contact.types';
+import { fetchCompanyContact, fetchWebSettings } from '@/services/contact.service';
+import type { CompanyContact, WebSettingsData } from '@/types/contact.types';
 
 interface UseCompanyContactResult {
   companyData: CompanyContact | null;
@@ -36,15 +36,15 @@ export function useCompanyContact(): UseCompanyContactResult {
   return { companyData, loading, error, refetch: () => setTick((t) => t + 1) };
 }
 
-interface UseCompanySettingsResult {
-  settingsData: CompanySettingsData | null;
+interface UseWebSettingsResult {
+  settingsData: WebSettingsData | null;
   loading: boolean;
   error: string | null;
   refetch: () => void;
 }
 
-export function useCompanySettings(): UseCompanySettingsResult {
-  const [settingsData, setSettingsData] = useState<CompanySettingsData | null>(null);
+export function useWebSettings(): UseWebSettingsResult {
+  const [settingsData, setSettingsData] = useState<WebSettingsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [tick, setTick] = useState(0);
@@ -54,7 +54,7 @@ export function useCompanySettings(): UseCompanySettingsResult {
     setLoading(true);
     setError(null);
 
-    fetchCompanySettings().then(({ data, error: err }) => {
+    fetchWebSettings().then(({ data, error: err }) => {
       if (cancelled) return;
       if (err) setError(err);
       else setSettingsData(data);

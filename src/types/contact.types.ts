@@ -20,9 +20,9 @@ export interface CompanyContact {
   email_hours: string;
 }
 
-// ── Full company settings returned by GET /v1/company-settings ───────────
+// ── Full company settings returned by GET /v1/web-settings ─────────────
 
-export interface CompanySettingsData {
+export interface WebSettingsData {
   company: {
     name: string;
     website?: string;
@@ -37,7 +37,6 @@ export interface CompanySettingsData {
     state?: string;
     country?: string;
     postal_code: string;
-    google_map_url?: string;
     working_hours?: string;
     timezone?: string;
   };
