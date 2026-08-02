@@ -249,7 +249,7 @@ const Navigation = () => {
 
         {/* Sidebar content */}
         <div className="flex-1 overflow-y-auto px-4 py-5 space-y-6">
-          {/* Platform section — card list, mirrors the desktop mega dropdown */}
+          {/* Platform section - card list, mirrors the desktop mega dropdown */}
           <div
             style={{ transitionDelay: isOpen ? "60ms" : "0ms" }}
             className={`transition-all duration-300 ${isOpen ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-3"

@@ -61,7 +61,7 @@ function Sidebar({ visible }: { visible: boolean }) {
                     <div className="min-w-0">
                         <p className="text-xs font-bold text-[#3C9AC4] uppercase tracking-wider">Option 1</p>
                         <p className="text-sm sm:text-base font-semibold text-slate-800 mt-0.5">Add Product Manually</p>
-                        <p className="text-xs sm:text-sm text-slate-500 mt-1 sm:mt-1.5 leading-relaxed">Fill product details one by one — title, SKU, price, stock, images — and save your listing.</p>
+                        <p className="text-xs sm:text-sm text-slate-500 mt-1 sm:mt-1.5 leading-relaxed">Fill product details one by one - title, SKU, price, stock, images - and save your listing.</p>
                         <ul className="mt-2 space-y-1">
                             <li className="flex items-start gap-1.5 text-xs text-slate-600">
                                 <CheckCircle2 className="w-3 h-3 text-[#3C9AC4] mt-0.5 shrink-0" />
@@ -90,7 +90,7 @@ function Sidebar({ visible }: { visible: boolean }) {
                     <div className="min-w-0">
                         <p className="text-xs font-bold text-[#3C9AC4] uppercase tracking-wider">Option 2</p>
                         <p className="text-sm sm:text-base font-semibold text-slate-800 mt-0.5">Import via File</p>
-                        <p className="text-xs sm:text-sm text-slate-500 mt-1 sm:mt-1.5 leading-relaxed">Download the template, fill in your product data, upload the file — all products are created automatically.</p>
+                        <p className="text-xs sm:text-sm text-slate-500 mt-1 sm:mt-1.5 leading-relaxed">Download the template, fill in your product data, upload the file - all products are created automatically.</p>
                         <ul className="mt-2 space-y-1">
                             <li className="flex items-start gap-1.5 text-xs text-slate-600">
                                 <CheckCircle2 className="w-3 h-3 text-[#3C9AC4] mt-0.5 shrink-0" />
@@ -108,7 +108,7 @@ function Sidebar({ visible }: { visible: boolean }) {
                     </div>
                 </div>
             </div>
-            <p className="text-xs text-slate-400 italic leading-relaxed">Both methods validate your data and sync every product to My Catalog within seconds — ready to publish on any marketplace.</p>
+            <p className="text-xs text-slate-400 italic leading-relaxed">Both methods validate your data and sync every product to My Catalog within seconds - ready to publish on any marketplace.</p>
         </div>
     );
 }
@@ -179,7 +179,7 @@ export function ProductListingGuide() {
                     }}
                 >
                     {[
-                        { icon: Tag, title: "No Limits on Products", desc: "Add as many products as your plan allows — one at a time or thousands via bulk import." },
+                        { icon: Tag, title: "No Limits on Products", desc: "Add as many products as your plan allows - one at a time or thousands via bulk import." },
                         { icon: FileSpreadsheet, title: "Excel & CSV Supported", desc: "Download our sample template, fill it in, and upload. We handle the rest automatically." },
                         { icon: CheckCircle2, title: "Instant Catalog Sync", desc: "Every product appears in My Catalog within seconds, ready to push live on Amazon." },
                     ].map(({ icon: Icon, title, desc }) => (

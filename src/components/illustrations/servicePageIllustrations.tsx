@@ -70,7 +70,7 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
             <text x="64" y="382" fontFamily="Inter,system-ui" fontSize="11" fontWeight="800" fill="#64748b" letterSpacing="1">LIVE ACTIVITY</text>
             {[
                 { y: 402, t: "AI optimizer refreshed 24 listing titles", c: "hsl(211 65% 50%)" },
-                { y: 424, t: "Inventory synced from Shopify → Amazon (FBM)", c: "hsl(199 54% 50%)" },
+                { y: 424, t: "Inventory synced from Shopify ➞ Amazon (FBM)", c: "hsl(199 54% 50%)" },
                 { y: 446, t: "Bulk import validated 12,480 product rows", c: "hsl(211 65% 40%)" },
                 { y: 468, t: "AI listing generator drafted 18 new bullets", c: "hsl(211 65% 55%)" },
             ].map((a, i) => (
@@ -591,14 +591,14 @@ export const AICatalogSVG = (props: SVGProps<SVGSVGElement>) => (
             <rect x="440" y="192" width="46" height="18" rx="9" fill="#E8F0F6" />
             <text x="463" y="204" textAnchor="middle" fontFamily="Inter" fontSize="9" fontWeight="700" fill="#3C9AC4">A+ ✓</text>
         </g>
-        {/* animated line: input → AI engine */}
+        {/* animated line: input ➞ AI engine */}
         <line x1="160" y1="160" x2="200" y2="160" stroke="#6BC1E0" strokeWidth="1.6" strokeDasharray="4 4" markerEnd="url(#hd-arrow2)">
             <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.4s" repeatCount="indefinite" />
         </line>
         <circle r="3" fill="#6BC1E0" opacity="0.8">
             <animateMotion dur="1.8s" repeatCount="indefinite" path="M160 160 L200 160" />
         </circle>
-        {/* animated line: AI engine → output */}
+        {/* animated line: AI engine ➞ output */}
         <line x1="320" y1="160" x2="360" y2="160" stroke="#13355A" strokeWidth="1.6" strokeDasharray="4 4" markerEnd="url(#hd-arrow3)">
             <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.4s" repeatCount="indefinite" />
         </line>

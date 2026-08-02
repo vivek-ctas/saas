@@ -140,7 +140,7 @@ export const PricingCalculatorMockup = (props: SVGProps<SVGSVGElement>) => {
             })}
 
             <rect x="58" y="440" width="336" height="42" rx="21" fill="url(#pc-grad)" />
-            <text x="230" y="465" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="15" fontWeight="700" fill="white">Recalculate →</text>
+            <text x="230" y="465" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="15" fontWeight="700" fill="white">Recalculate ➞</text>
 
             {/* Right output cards */}
             {/* Card 1: Listings generated */}

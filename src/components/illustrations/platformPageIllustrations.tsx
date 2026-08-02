@@ -33,7 +33,7 @@ const IllDefs = ({ id = "ill" }: { id?: string }) => (
             <stop offset="0%" stopColor="#235A8A" />
             <stop offset="100%" stopColor="#13355A" />
         </linearGradient>
-        {/* Accent Blue → Navy diagonal used for "sync hub" style centerpieces */}
+        {/* Accent Blue ➞ Navy diagonal used for "sync hub" style centerpieces */}
         <linearGradient id={`${id}-hub`} x1="0" x2="1" y1="0" y2="1">
             <stop offset="0%" stopColor="#3C9AC4" />
             <stop offset="100%" stopColor="#13355A" />
@@ -363,7 +363,7 @@ type FlowNode = {
 };
 
 /**
- * Multi-node sync diagram: N source nodes → a central hub → N destination
+ * Multi-node sync diagram: N source nodes ➞ a central hub ➞ N destination
  * nodes. Reused across every "flow" hero/deep-dive visual (inventory sync,
  * order routing, pricing, etc.) - only the node lists, labels and colors
  * change per page, the layout math and visual language stay identical.
@@ -423,7 +423,7 @@ export const FlowVisual = ({
                 <circle cx={W / 2} cy={hubY + hubH - 26} r="4.5" fill="#6BC1E0" />
             </g>
 
-            {/* Left (source) nodes → hub */}
+            {/* Left (source) nodes ➞ hub */}
             {leftNodes.map((n) => {
                 const idx = leftNodes.indexOf(n);
                 const y = lStart + idx * stepL;
@@ -465,7 +465,7 @@ export const FlowVisual = ({
                 );
             })}
 
-            {/* Hub → right (destination) nodes */}
+            {/* Hub ➞ right (destination) nodes */}
             {rightNodes.map((n) => {
                 const idx = rightNodes.indexOf(n);
                 const y = rStart + idx * stepR;
@@ -726,7 +726,7 @@ export const GenVisual = ({
                 })}
             </IllCard>
 
-            {/* Input → Engine connector */}
+            {/* Input ➞ Engine connector */}
             <g>
                 <circle cx={174} cy={182} r="4" fill={ILL.blue} />
                 <line x1={174} y1={182} x2={205} y2={182} stroke={ILL.blue} strokeWidth="1.6" strokeDasharray="5 4">
@@ -739,7 +739,7 @@ export const GenVisual = ({
                 <circle cx={205} cy={182} r="4" fill={ILL.blue} />
             </g>
 
-            {/* Engine → Output connector */}
+            {/* Engine ➞ Output connector */}
             <g>
                 <circle cx={355} cy={182} r="4" fill="#3C9AC4" />
                 <line x1={355} y1={182} x2={386} y2={182} stroke="#3C9AC4" strokeWidth="1.6" strokeDasharray="5 4">
@@ -832,7 +832,7 @@ export const KpiChartVisual = ({
     compareSeries?: number[];
     /** Chart ceiling; defaults to the next nice round number above the data max. */
     yMax?: number;
-    /** Number of gridline divisions above zero (default 3 → 0/…/…/max, matching the reference's 0-10-20-30). */
+    /** Number of gridline divisions above zero (default 3 ➞ 0/…/…/max, matching the reference's 0-10-20-30). */
     yTicks?: number;
     xLabels?: string[];
     /** Value (in data units) for the dashed threshold line, e.g. 20 for "Reorder at 20". */
@@ -1057,7 +1057,7 @@ export const MatrixVisual = ({
     rows: string[];
     cellFor: (r: number, c: number) => { fill: string; text: string; textFill: string; icon: "clock" | "check" };
     stats?: { skuLabel: string; skuValue: string; deltaLabel: string; deltaValue: string };
-    /** Optional map of column name → SVG logo path. When provided the logo is
+    /** Optional map of column name ➞ SVG logo path. When provided the logo is
      *  rendered instead of the default `MarketBadge` initial. */
     colLogos?: Record<string, string>;
 }) => {
@@ -1580,7 +1580,7 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: SVGProps<SVGSVGElement> & 
             <circle cx="70" cy="346" r="5" fill="#3C9AC4" />
             <text x="86" y="351" fontSize="14" fontWeight="700" fill="#13355A">Connected · live</text>
 
-            {/* Arrow line: marketplace → Engine */}
+            {/* Arrow line: marketplace ➞ Engine */}
             <line x1="300" y1="312" x2="382" y2="312" stroke="#3C9AC4" strokeWidth="2.4" strokeDasharray="6 5">
                 <animate attributeName="stroke-dashoffset" values="0;-22" dur="1.2s" repeatCount="indefinite" />
             </line>
@@ -1608,7 +1608,7 @@ export const ChannelHeroDiagram = ({ cfg, ...props }: SVGProps<SVGSVGElement> & 
             <text x="510" y="365" textAnchor="middle" fontSize="22" fontWeight="800" fill="white">SellerBuz Sync</text>
             <text x="510" y="390" textAnchor="middle" fontSize="15" fill="#BDD9EE">2-way · &lt; 2s latency</text>
 
-            {/* Connector paths: engine right face → ops cards */}
+            {/* Connector paths: engine right face ➞ ops cards */}
             {OP_YS.map((y, i) => (
                 <g key={`conn-${i}`}>
                     <path

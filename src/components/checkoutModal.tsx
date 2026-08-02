@@ -299,7 +299,7 @@ export default function CheckoutModal({
   const price = displayPrice(plan, billingCycle, exchangeRates);
   const period = periodLabel(plan, billingCycle);
 
-  // Prices are stored in cents - divide by 100 first, then convert INR→USD if needed.
+  // Prices are stored in cents - divide by 100 first, then convert INR➞USD if needed.
   let humanAmount = (billingCycle === 'quarterly' && plan.price_quarterly ? plan.price_quarterly : plan.price) / 100;
   if (plan.currency.toLowerCase() === 'inr' && Object.keys(exchangeRates).length > 0) {
     humanAmount = convertInrToUsd(humanAmount, exchangeRates);

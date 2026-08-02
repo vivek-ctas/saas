@@ -33,7 +33,7 @@ const Services = () => {
   const sections: FeatureSection[] = [
     {
       eyebrow: "Core Platform",
-      title: <>Centralized inventory & pricing — <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">one source of truth.</span></>,
+      title: <>Centralized inventory & pricing - <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">one source of truth.</span></>,
       desc: "Manage stock levels and pricing from one unified dashboard. Every update reflects instantly across Amazon and Shopify, so you never oversell or misprice a listing again.",
       bullets: [
         "Single dashboard for stock and price",

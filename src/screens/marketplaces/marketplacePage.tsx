@@ -154,20 +154,44 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
           </div>
         </section> */}
 
-        {/* FAQ */}
-        <section className="py-14 bg-[#F1F3FC] border-t border-[#EAECF3]">
+        {/* ═══════════════════════════════════════
+            FAQ  –  2-col (sticky heading + accordion)
+        ═══════════════════════════════════════ */}
+        <section className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
           <div className="px-5 sm:px-8 lg:px-[70px]">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 text-center mb-8 reveal">{cfg.name} - <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">frequently asked</span></h2>
-            <div className="space-y-3">
-              {cfg.faq.map((f) => (
-                <details key={f.q} className="group rounded-2xl border border-slate-200/70 bg-white p-5 hover:border-[#BDD9EE] transition-all">
-                  <summary className="cursor-pointer font-semibold text-slate-900 flex items-center justify-between list-none">
-                    {f.q}
-                    <span className="text-[#3C9AC4] group-open:rotate-45 transition-transform text-2xl leading-none">+</span>
-                  </summary>
-                  <p className="mt-3 text-slate-600 text-sm leading-relaxed">{f.a}</p>
-                </details>
-              ))}
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.7fr] gap-10 lg:gap-20 items-start">
+              <div className="reveal lg:sticky lg:top-24">
+                <Badge className="mb-3 bg-[#E8F0F6] text-[#13355A] border border-[#BDD9EE] shadow-sm text-xs">FAQ</Badge>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-4">
+                  Frequently<br className="hidden lg:block" /> asked
+                </h2>
+                <p className="text-slate-500 text-base leading-relaxed mb-6">
+                  Everything you need to know about this platform capability.
+                </p>
+                <Link href="/contact">
+                  <Button variant="outline" className="rounded-full border-slate-200 text-slate-700 hover:bg-[#E8F0F6] hover:border-[#BDD9EE] text-sm">
+                    Ask us directly <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+                  </Button>
+                </Link>
+              </div>
+              <div className="reveal delay-100 space-y-2.5">
+                {cfg.faq.map((f) => (
+                  <details
+                    key={f.q}
+                    className="group rounded-2xl border border-slate-200/70 bg-slate-50/50 hover:bg-white hover:border-[#BDD9EE] hover:shadow-md transition-all duration-200 overflow-hidden"
+                  >
+                    <summary className="cursor-pointer font-semibold text-slate-900 flex items-center justify-between list-none px-5 py-4 text-sm sm:text-base select-none">
+                      {f.q}
+                      <span className="w-6 h-6 rounded-full bg-slate-200 group-open:bg-[#E8F0F6] group-hover:bg-[#E8F0F6] flex items-center justify-center shrink-0 ml-4 transition-colors duration-200">
+                        <span className="text-slate-500 group-open:text-[#3C9AC4] group-hover:text-[#3C9AC4] group-open:rotate-45 transition-all duration-200 text-lg leading-none font-light">+</span>
+                      </span>
+                    </summary>
+                    <div className="px-5 pb-4 pt-0">
+                      <p className="text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-3">{f.a}</p>
+                    </div>
+                  </details>
+                ))}
+              </div>
             </div>
           </div>
         </section>

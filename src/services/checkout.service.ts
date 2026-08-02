@@ -33,7 +33,7 @@ export async function createGuestLead(
 //
 // POST /v1/public-checkout/razorpay/create-order
 // Body: { lead_id }
-// Returns razorpay_order_id + amount (paise) → open Razorpay Checkout SDK.
+// Returns razorpay_order_id + amount (paise) ➞ open Razorpay Checkout SDK.
 
 export async function createRazorpayOrder(
   leadId: string,

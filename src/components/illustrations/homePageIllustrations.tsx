@@ -512,7 +512,7 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
             </g>
         ))}
 
-        {/* ── left arrows (channel → core) with flowing dots ── */}
+        {/* ── left arrows (channel ➞ core) with flowing dots ── */}
         {[215].map((y, i) => (
             <g key={"l" + y}>
                 <line x1="170" y1={y} x2="208" y2="215" stroke="#7EC8E3" strokeWidth="1.4" strokeDasharray="4 4">
@@ -525,7 +525,7 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
             </g>
         ))}
 
-        {/* ── right arrows (core → output) with flowing dots ── */}
+        {/* ── right arrows (core ➞ output) with flowing dots ── */}
         {[95, 170, 245, 320].map((y, i) => (
             <g key={"r" + y}>
                 <line x1="360" y1="215" x2="390" y2={y} stroke="#3C9AC4" strokeWidth="1.4" strokeDasharray="4 4">
@@ -807,7 +807,7 @@ export const ListingWorkflowIllustration = (props: SVGProps<SVGSVGElement>) => {
                 </marker>
             </defs>
 
-            {/* central spine — the "happy path" lifeline */}
+            {/* central spine - the "happy path" lifeline */}
             <line x1="170" y1="70" x2="170" y2="930" stroke={slate300} strokeWidth="2" strokeDasharray="3 5" opacity={0.7}>
                 <animate attributeName="stroke-dashoffset" values="0;-16" dur="2s" repeatCount="indefinite" />
             </line>
@@ -900,7 +900,7 @@ export const ListingWorkflowIllustration = (props: SVGProps<SVGSVGElement>) => {
                     Loops until it passes
                 </text>
                 <text x="575" y="205" fontFamily="Inter,system-ui" fontSize="12" fontWeight={500} fill={slate500}>
-                    Reads the marketplace error each pass — never the same fix twice.
+                    Reads the marketplace error each pass - never the same fix twice.
                 </text>
 
                 {/* attempt counter ring */}
@@ -916,7 +916,7 @@ export const ListingWorkflowIllustration = (props: SVGProps<SVGSVGElement>) => {
                     { n: 1, label: "Read error", desc: '"material" is required', color: slate500 },
                     { n: 2, label: "Add missing attribute", desc: 'injects material = "cotton 100%"', color: emerald },
                     { n: 3, label: "Remove rejected field", desc: 'strips "custom_label_3"', color: rose },
-                    { n: 4, label: "Rewrite non-conforming", desc: 'normalizes "Color→Colour"', color: amber },
+                    { n: 4, label: "Rewrite non-conforming", desc: 'normalizes "Color➞Colour"', color: amber },
                 ].map((s, i) => {
                     const yPos = 290 + i * 62;
                     return (
@@ -939,7 +939,7 @@ export const ListingWorkflowIllustration = (props: SVGProps<SVGSVGElement>) => {
                         <path d="M3 8h10" />
                     </g>
                     <text x="42" y="17" fontFamily="Inter,system-ui" fontSize="15" fontWeight={800} fill="#B45309">If still failing after 10×</text>
-                    <text x="42" y="35" fontFamily="Inter,system-ui" fontSize="13" fontWeight={500} fill="#92400E">Return row to seller with exact reason — never a silent drop.</text>
+                    <text x="42" y="35" fontFamily="Inter,system-ui" fontSize="13" fontWeight={500} fill="#92400E">Return row to seller with exact reason - never a silent drop.</text>
                 </g>
 
                 {/* arrow from "grab error" into AI engine */}
@@ -1006,7 +1006,7 @@ export const ListingWorkflowIllustration = (props: SVGProps<SVGSVGElement>) => {
                 {/* right column - AI rewrite with diff marks */}
                 <g fontFamily="Inter,system-ui" fontSize="12.5">
                     <rect x="590" y="616" width="350" height="14" rx="3" fill={emeraldLight} opacity={0.6} />
-                    <text x="596" y="627" fontWeight={600} fill={slate900}>Men's Premium Cotton T-Shirt — XL, Heather Blue</text>
+                    <text x="596" y="627" fontWeight={600} fill={slate900}>Men's Premium Cotton T-Shirt - XL, Heather Blue</text>
                     <text x="925" y="627" textAnchor="end" fontWeight={700} fill={emerald}>+</text>
 
                     <text x="596" y="648" fontWeight={500} fill={slate700}>
@@ -1225,7 +1225,7 @@ export const EcosystemHubMockup = ({
                     {sourceStatus}
                 </text>
 
-                {/* Line: source → hub (animated) */}
+                {/* Line: source ➞ hub (animated) */}
                 <line x1={hub.cx} y1="208" x2={hub.cx} y2={hub.cy - hub.r} stroke={blueDeep} strokeWidth={2} strokeDasharray="6 6" strokeLinecap="round" opacity={0.55}>
                     <animate attributeName="stroke-dashoffset" values="0;-24" dur="1.8s" repeatCount="indefinite" />
                 </line>
@@ -1261,7 +1261,7 @@ export const EcosystemHubMockup = ({
                     {hubSubtitle}
                 </text>
 
-                {/* Line: hub → trust badge (animated) */}
+                {/* Line: hub ➞ trust badge (animated) */}
                 <line x1={hub.cx} y1={hub.cy + hub.r} x2={hub.cx} y2="516" stroke={blueDeep} strokeWidth={2} strokeDasharray="6 6" strokeLinecap="round" opacity={0.55}>
                     <animate attributeName="stroke-dashoffset" values="0;-24" dur="1.8s" repeatCount="indefinite" />
                 </line>

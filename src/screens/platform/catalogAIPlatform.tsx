@@ -154,7 +154,7 @@ const cfg: PlatformConfig = {
       ),
     },
     {
-      eyebrow: "Image → Attributes",
+      eyebrow: "Image ➞ Attributes",
       title: <>Vision models read the photo, <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">fill the category attributes.</span></>,
       desc: "Category attributes are the tax nobody wants to pay. SellerBuz reads product images plus your uploaded spec sheet and fills the required attributes for each marketplace's category schema.",
       bullets: [
@@ -224,7 +224,7 @@ const cfg: PlatformConfig = {
   ],
   featureGrid: [
     { icon: Wand2, t: "Titles & bullets", d: "Channel-specific title, bullets and description generation." },
-    { icon: ImageIcon, t: "Image → attributes", d: "Auto-fill category attributes from product photos." },
+    { icon: ImageIcon, t: "Image ➞ attributes", d: "Auto-fill category attributes from product photos." },
     { icon: LayoutGrid, t: "Variant scaffolding", d: "Generate parent-child variation trees automatically." },
     { icon: GitMerge, t: "Smart matching", d: "Detect existing retail catalog matches to save listing effort." },
     { icon: Upload, t: "Bulk regenerate", d: "Refresh entire categories with new tone or SEO focus." },

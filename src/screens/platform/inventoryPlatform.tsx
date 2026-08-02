@@ -29,7 +29,7 @@ const cfg: PlatformConfig = {
     title: <>Selling multi-channel from spreadsheets is <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">a time bomb.</span></>,
     points: [
       "Manual stock updates across 5 dashboards",
-      "One late edit → oversell → suspended listing",
+      "One late edit ➞ oversell ➞ suspended listing",
       "Inventory stock and channel stock disagree",
       "Flash sales cause chaos across marketplaces",
     ],
@@ -57,7 +57,7 @@ const cfg: PlatformConfig = {
       visual: (
         <FlowVisual
           id="inv-sync"
-          title="LIVE SYNC · INVENTORY → CHANNELS"
+          title="LIVE SYNC · INVENTORY ➞ CHANNELS"
           hub="Sync Engine"
           hubLatency="< 2s propagation"
           leftNodes={[

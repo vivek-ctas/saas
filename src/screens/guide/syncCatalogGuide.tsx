@@ -90,7 +90,7 @@ function StepCard({
 }
 
 /* ─────────────────────────────────────
-   STEP 01 MOCKUP — My Catalog Table
+   STEP 01 MOCKUP - My Catalog Table
 ────────────────────────────────────── */
 const CATALOG_ROWS = [
     { init: "🎧", name: "Wireless Headphones", sku: "WH-1000XM5", price: "$199.00", stock: 45, checked: true },
@@ -153,7 +153,7 @@ function MyCatalogMockup() {
 }
 
 /* ─────────────────────────────────────
-   STEP 02 MOCKUP — Amazon Inventory
+   STEP 02 MOCKUP - Amazon Inventory
 ────────────────────────────────────── */
 const INV_ROWS = [
     { init: "🎧", title: "Wireless Headphones", sku: "WH-1000XM5" },
@@ -185,7 +185,7 @@ function AmazonInventoryMockup() {
                     <span className="text-xs sm:text-sm">{r.init}</span>
                     <span className="text-[9px] sm:text-[10px] font-medium text-slate-800 truncate">{r.title}</span>
                     <span className="text-[8px] sm:text-[9px] font-mono text-slate-400 truncate">{r.sku}</span>
-                    <span className="text-[8px] sm:text-[9px] text-slate-400">—</span>
+                    <span className="text-[8px] sm:text-[9px] text-slate-400">-</span>
                     <span className="inline-flex items-center px-1 sm:px-1.5 py-0.5 rounded-full text-[8px] sm:text-[9px] font-semibold bg-amber-50 text-amber-700 border border-amber-200">
                         Draft
                     </span>
@@ -219,7 +219,7 @@ function AmazonInventoryMockup() {
 }
 
 /* ─────────────────────────────────────
-   STEP 03 MOCKUP — Add Inventory Details
+   STEP 03 MOCKUP - Add Inventory Details
 ────────────────────────────────────── */
 function AddInventoryMockup() {
     return (
@@ -407,7 +407,7 @@ export function SyncCatalogGuide() {
                         </span>
                         <span className="text-sm sm:text-base font-semibold text-slate-700">Sync to Amazon Inventory</span>
                         <span className="text-xs sm:text-sm text-slate-400 sm:ml-auto hidden md:block">
-                            Select products → Sync → Add details → Go live
+                            Select products ➞ Sync ➞ Add details ➞ Go live
                         </span>
                     </div>
 
@@ -467,7 +467,7 @@ export function SyncCatalogGuide() {
                                 </div>
                             </div>
 
-                            {/* White Label → Retail strip */}
+                            {/* White Label ➞ Retail strip */}
                             <div className="w-full flex justify-center px-2">
                                 <StepFlowDiagram
                                     steps={[

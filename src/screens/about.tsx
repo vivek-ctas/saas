@@ -278,11 +278,11 @@ const About = () => {
               </p>
               <ul className="space-y-3 mb-6">
                 {[
-                  "AI listing generator for Amazon and Shopify — titles, bullets, search terms",
+                  "AI listing generator for Amazon and Shopify - titles, bullets, search terms",
                   "Automatic listing mismatch detection and AI-powered retry",
                   "S3-backed asset storage for white-label listing images and brand content",
                   "A+ content management with reusable modules and templates",
-                  "Channel-aware formatting — each listing optimized per marketplace rules",
+                  "Channel-aware formatting - each listing optimized per marketplace rules",
                   "Bulk regenerate entire categories with new SEO focus or brand voice",
                 ].map((it, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm sm:text-base text-slate-700">

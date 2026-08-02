@@ -1,4 +1,4 @@
-# Copy Migration Log — AI Catalog Management
+# Copy Migration Log - AI Catalog Management
 
 Every text-content change made across the site while migrating from repricer / warehouse /
 profit / revenue framing to **AI Catalog Management** positioning. Format: `before` ---> `after`.
@@ -9,15 +9,15 @@ profit / revenue framing to **AI Catalog Management** positioning. Format: `befo
 
 **File:** `src/components/illustrations/aboutPageIllustrations.tsx`
 
-### `AboutJourneyMockup` — hero stats
+### `AboutJourneyMockup` - hero stats
 | Before | After |
 |---|---|
 | `{ l: "GMV", v: "$300M" }` | `{ l: "Products", v: "5M+" }` |
 
-### `AboutJourneyMockup` — timeline
+### `AboutJourneyMockup` - timeline
 - `"AI Repricer launched"` ---> `"AI Catalog launched"`
 
-### `NeuralIllustration` — output nodes
+### `NeuralIllustration` - output nodes
 - `{ icon: "trendUp", label: ["Smart", "Pricing"] }` ---> `{ icon: "tag", label: ["SEO", "Titles"] }`
 - `{ icon: "barChart", label: ["Demand", "Forecast"] }` ---> `{ icon: "barChart", label: ["Listing", "Bullets"] }`
 - `{ icon: "cube", label: ["Inventory", "Planning"] }` ---> `{ icon: "target", label: ["Validation", "Checks"] }`
@@ -57,20 +57,20 @@ profit / revenue framing to **AI Catalog Management** positioning. Format: `befo
 
 **File:** `src/components/illustrations/homePageIllustrations.tsx`
 
-### `SellerHeroMockup` — KPI columns
+### `SellerHeroMockup` - KPI columns
 - `{ label: "ORDERS", value: "850", delta: "+10%" }` ---> `{ label: "PRODUCTS", value: "12.5K", delta: "+320" }`
 - `{ label: "BUY BOX", value: "82%", delta: "+9%" }` ---> `{ label: "LISTINGS", value: "8.9K", delta: "+185" }`
 - `{ label: "REVENUE", value: "$21.5k", delta: "+19.4%" }` ---> `{ label: "CATALOGS", value: "420", delta: "+24" }`
 - `{ label: "PROFIT", value: "$6.8k", delta: "+23.6%" }` ---> `{ label: "PUBLISHED", value: "98%", delta: "+6%" }`
 
-### `SellerHeroMockup` — feature list
+### `SellerHeroMockup` - feature list
 - `"Live Performance" / "Real-time updates"` ---> `"AI Catalog" / "Smart product management"`
 - `"Smart Repricing" / "Maximize Buy Box"` ---> `"Bulk Import" / "Upload products in minutes"`
 - `"Higher Profit" / "Automated insights"` ---> `"Marketplace Ready" / "Amazon & Shopify"`
 - `"Healthy Margin" / "Sustainable growth"` ---> `"AI Optimization" / "Better listing quality"`
 - `"Scale Faster" / "Grow your business"` ---> removed
 
-### `SellerHeroMockup` — misc labels
+### `SellerHeroMockup` - misc labels
 - `"CTASIS · Listings"` ---> `"SellerBuz · Listings"`
 - `"Repricer ON"` ---> `"AI Optimized"`
 - platform pill `"walmart"` ---> `"shopify"`
@@ -85,8 +85,8 @@ profit / revenue framing to **AI Catalog Management** positioning. Format: `befo
 - feature `{ title: "Auto Repricer", desc: "AI-powered pricing" }` ---> `{ title: "AI Catalog", desc: "Smart product management" }`
 
 ### Removed dead components (never rendered; contained banned copy)
-- `InfraIllustration` — had `"Marketplace"`/`"ORDER FLOW"`, row `"Analytics & Insights / Track performance, revenue, and operational metrics in real-time."`
-- `MarketplaceMeshDiagram` — had channels `"Walmart"`, `"eBay"`, `"Etsy"`, `"Fnac"`, `"Allegro"`, `"Bol.com"`, and legend `"Auto-repricer"`
+- `InfraIllustration` - had `"Marketplace"`/`"ORDER FLOW"`, row `"Analytics & Insights / Track performance, revenue, and operational metrics in real-time."`
+- `MarketplaceMeshDiagram` - had channels `"Walmart"`, `"eBay"`, `"Etsy"`, `"Fnac"`, `"Allegro"`, `"Bol.com"`, and legend `"Auto-repricer"`
 
 ---
 
@@ -124,7 +124,7 @@ profit / revenue framing to **AI Catalog Management** positioning. Format: `befo
 - `ORDERS_TICKS = ["0", "2K", "4K", "6K", "8K", "10K"]` ---> `["0", "400", "800", "1.2K", "1.6K", "2K"]`
 
 ### Removed dead component (never rendered)
-- `RepricerSVG` — had `"PRICE $21.40"`, `"BUY BOX WINNER 82%"`, `"MARGIN 31.6%"`, `"Buy Box tracking"`, `"Buy Box · WON"`, `"Floor $18.50"`, `"Your Price / Competitor Price"` chart
+- `RepricerSVG` - had `"PRICE $21.40"`, `"BUY BOX WINNER 82%"`, `"MARGIN 31.6%"`, `"Buy Box tracking"`, `"Buy Box · WON"`, `"Floor $18.50"`, `"Your Price / Competitor Price"` chart
 
 ---
 
@@ -186,7 +186,7 @@ profit / revenue framing to **AI Catalog Management** positioning. Format: `befo
 **File:** `src/screens/platform/inventoryPlatform.tsx`
 - `{ label: "Warehouse", sub: "1,240 on hand", logo: "/logos/warehouse-svgrepo-com.svg" }` ---> `{ label: "Inventory", sub: "1,240 on hand", logo: "/logos/inventory-svgrepo-com.svg" }`
 - `{ label: "Warehouse", sub: "master stock", logo: "/logos/warehouse-svgrepo-com.svg" }` ---> `{ label: "Inventory", sub: "master stock", logo: "/logos/inventory-svgrepo-com.svg" }`
-- `"LIVE SYNC · WAREHOUSE → CHANNELS"` ---> `"LIVE SYNC · INVENTORY → CHANNELS"`
+- `"LIVE SYNC · WAREHOUSE ➞ CHANNELS"` ---> `"LIVE SYNC · INVENTORY ➞ CHANNELS"`
 - `"Warehouse stock and channel stock disagree"` ---> `"Inventory stock and channel stock disagree"`
 - `"SellerBuz sits between your warehouse and every marketplace."` ---> `"SellerBuz sits between your inventory and every marketplace."`
 
@@ -210,7 +210,7 @@ profit / revenue framing to **AI Catalog Management** positioning. Format: `befo
 ## 8. Shared illustration index
 
 **File:** `src/components/illustrations/index.tsx`
-- Removed dead `ChannelSyncFlow` export (never rendered) — had `"Channel sync · bidirectional"`, `"Inventory · pricing · orders"`, `"Buy Box 92%"`, `"Kafka · RabbitMQ"`
+- Removed dead `ChannelSyncFlow` export (never rendered) - had `"Channel sync · bidirectional"`, `"Inventory · pricing · orders"`, `"Buy Box 92%"`, `"Kafka · RabbitMQ"`
 
 ---
 
@@ -223,7 +223,7 @@ profit / revenue framing to **AI Catalog Management** positioning. Format: `befo
 - Article card `"Algorithmic vs rule-based repricing"` (Strategy) ---> `"AI-generated listings vs manual upload"` (AI)
 - Article card `"Walmart Buy Box: a different game"` (Walmart) ---> `"Amazon vs Shopify: catalog differences"` (Channels)
 - Article card `"5 analytics that actually move revenue"` (Analytics) ---> `"5 listing metrics that actually move sales"` (Analytics)
-- Article card `"From CSV to Fnac in 4 minutes"` (AI) — kept
+- Article card `"From CSV to Fnac in 4 minutes"` (AI) - kept
 - Removed 8 dead exports (never imported; contained banned copy): `OrderFlowDiagram`, `AnalyticsFlowDiagram` (`"BigQuery warehouse"`), `RepricerStrategyChart` (`"Buy Box won 92%"`), `AIPipelineDiagram`, `AutomationBuilderDiagram`, `ReportingConsoleMockup` (`"Daily profit digest"`), `AlertTriageDiagram` (`"Buy Box dropped"`), `ArticleHeroMockup`. File 2,159 ---> 94 lines.
 
 **File:** `app/pricing/page.tsx`
@@ -235,11 +235,11 @@ profit / revenue framing to **AI Catalog Management** positioning. Format: `befo
 **File:** `app/services/page.tsx`
 - ItemList item "Analytics & Performance" description `"Revenue and performance trends in one clean view."` ---> `"Listing quality and performance trends in one clean view."`
 
-**Kept intentionally (out of scope / legal):** `app/guide/[slug]/page.tsx` posts array (repricer stub articles — metadata-only blank pages, approved to leave), `src/screens/terms.tsx` legal disclaimer.
+**Kept intentionally (out of scope / legal):** `app/guide/[slug]/page.tsx` posts array (repricer stub articles - metadata-only blank pages, approved to leave), `src/screens/terms.tsx` legal disclaimer.
 
 ---
 
 ## Notes
-- **No layout/UI changes** — copy and data labels only, plus icon/asset swaps where noted.
+- **No layout/UI changes** - copy and data labels only, plus icon/asset swaps where noted.
 - New asset added: `public/logos/inventory-svgrepo-com.svg` (replaces warehouse logo on inventory sync visuals); orphaned `public/logos/warehouse-svgrepo-com.svg` removed.
 - All changes verified: `npm run lint` = 0 errors (3 pre-existing warnings in checkout files), `npm run build` = exit 0.

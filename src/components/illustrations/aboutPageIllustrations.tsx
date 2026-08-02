@@ -44,7 +44,7 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
                 fill="#3C9AC4"
                 opacity="0.15"
             />
-            <text x="100" y="86" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight="800" fill="#13355A" letterSpacing="1.5">2019 → 2026</text>
+            <text x="100" y="86" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight="800" fill="#13355A" letterSpacing="1.5">2019 ➞ 2026</text>
 
             {/* Founders avatars */}
             <g transform="translate(60, 120)">
@@ -76,7 +76,7 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
             </g>
 
             <rect x="60" y="420" width="260" height="32" rx="16" fill="#3C9AC4" />
-            <text x="190" y="441" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="11" fontWeight="800" fill="white">Read the founder story →</text>
+            <text x="190" y="441" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="11" fontWeight="800" fill="white">Read the founder story ➞</text>
 
             {/* Diagonal shine sweep on founder card */}
             <g clipPath="url(#aj-card-clip)">
@@ -134,7 +134,7 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
 
 
 /* ------------------------------------------------------------------ */
-/* NeuralIllustration – ML pipeline (inputs → layers → outputs)        */
+/* NeuralIllustration – ML pipeline (inputs ➞ layers ➞ outputs)        */
 /* Styled after the AI Automation Engine reference card                */
 /* ------------------------------------------------------------------ */
 export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => {

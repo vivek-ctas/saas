@@ -72,7 +72,7 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
   // ── STEP 1: Create GuestLead ───────────────────────────────
   //
   // POST /v1/public-checkout/lead
-  // On success → moves to 'summary' step and holds lead_id for next steps.
+  // On success ➞ moves to 'summary' step and holds lead_id for next steps.
 
   const submitForm = useCallback(async (plan: Plan) => {
     const { first_name, last_name, email, company_name, contact_number, currency_id } = form;
@@ -140,7 +140,7 @@ export function useCheckout(initialGateway: Gateway = 'razorpay'): UseCheckoutRe
   //
   // 1. Create Razorpay order on backend (gets amount in paise + order_id)
   // 2. Open Razorpay checkout SDK
-  // 3. On payment success → send razorpay_signature to backend for HMAC verify
+  // 3. On payment success ➞ send razorpay_signature to backend for HMAC verify
   // 4. Backend marks payment SUCCESS + creates tbl_user_plans
   // 5. Redirect to /checkout/success
 

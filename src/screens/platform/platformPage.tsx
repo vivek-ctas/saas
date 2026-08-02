@@ -133,7 +133,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
             3-COL FEATURE CARD ROW
             Shows SVG visual as scaled thumbnail
             at the top of each card, then eyebrow
-            badge + title + desc + Learn more →
+            badge + title + desc + Learn more ➞
             Matches the reference image exactly.
         ═══════════════════════════════════════ */}
         <section className="py-14 sm:py-16 lg:py-20 bg-[#F7F9FC] border-t border-[#EAECF3]">
@@ -196,9 +196,9 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
 
         {/* ═══════════════════════════════════════
             DEEP DIVES  –  3 alternating layouts
-            0 → 2-col (text L, visual R)
-            1 → full-width centered showcase
-            2 → 2-col (visual L, text R)
+            0 ➞ 2-col (text L, visual R)
+            1 ➞ full-width centered showcase
+            2 ➞ 2-col (visual L, text R)
         ═══════════════════════════════════════ */}
         {cfg.deepDives.map((s, i) => {
           const pattern = i % 3;
@@ -305,7 +305,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
                 <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Every feature, built in</h2>
               </div>
 
-              {/* Single horizontal row — 6 chips on desktop */}
+              {/* Single horizontal row - 6 chips on desktop */}
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                 {cfg.featureGrid.map((f, idx) => (
                   <div
@@ -552,7 +552,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
                       )}
                     </div>
                   ))}
-                  {/* Marketplace end card — mobile */}
+                  {/* Marketplace end card - mobile */}
                   <div className="flex flex-col items-center mt-1">
                     <div className="relative flex flex-col items-center my-1 h-8">
                       <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 border-l-2 border-dashed border-[#6BC1E0] w-0" />

@@ -276,12 +276,12 @@ const Home = () => {
                 <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
                   live, whitelabel listing
                 </span>{" "}
-                — without the busywork.
+                - without the busywork.
               </h2>
 
               <p className="text-base sm:text-lg lg:text-xl text-[#334155] leading-relaxed mb-6">
                 Upload your catalog, we validate every row, push a test listing, grab the
-                marketplace error, and hand it to an AI that retries up to 10 times — adding,
+                marketplace error, and hand it to an AI that retries up to 10 times - adding,
                 removing or rewriting attributes until it passes. SEO titles and descriptions
                 are regenerated from your catalog data, then a clean draft with side-by-side
                 diffs lands in your dashboard for one-click finalization.
@@ -310,7 +310,7 @@ const Home = () => {
                 ))}
               </div>
 
-              {/* Workflow stages — expanded explainer */}
+              {/* Workflow stages - expanded explainer */}
               <div className="mb-6 rounded-2xl border border-slate-200/70 bg-white/70 backdrop-blur-sm p-4 sm:p-5 shadow-sm">
                 <div className="text-[11px] font-bold uppercase tracking-wider text-primary mb-3">
                   How a listing goes from raw file to live
@@ -325,17 +325,17 @@ const Home = () => {
                     {
                       step: "2",
                       title: "Add to test listing",
-                      desc: "Each item is pushed to the marketplace's test endpoint so we can capture the real validation response — not a guess.",
+                      desc: "Each item is pushed to the marketplace's test endpoint so we can capture the real validation response - not a guess.",
                     },
                     {
                       step: "3",
-                      title: "Grab error → AI retries (up to 10×)",
+                      title: "Grab error ➞ AI retries (up to 10×)",
                       desc: "Our AI reads the error, then loops: add missing attributes, remove rejected ones, rewrite non-conforming values, resubmit. Tireless, not tireless-by-hand.",
                     },
                     {
                       step: "4",
                       title: "Return to seller if blocked",
-                      desc: "If 10 retries still fail, the row is returned to the seller with the marketplace's exact reason — no silent drops, no zombie rows.",
+                      desc: "If 10 retries still fail, the row is returned to the seller with the marketplace's exact reason - no silent drops, no zombie rows.",
                     },
                     {
                       step: "5",
@@ -345,7 +345,7 @@ const Home = () => {
                     {
                       step: "6",
                       title: "Draft with diff marks",
-                      desc: "A clean draft lands in your dashboard showing exactly what you uploaded vs. what the AI changed — green for added, red for removed, yellow for rewritten.",
+                      desc: "A clean draft lands in your dashboard showing exactly what you uploaded vs. what the AI changed - green for added, red for removed, yellow for rewritten.",
                     },
                     {
                       step: "7",
@@ -358,7 +358,7 @@ const Home = () => {
                         {s.step}
                       </span>
                       <div className="text-sm leading-snug">
-                        <span className="font-semibold text-slate-900">{s.title} — </span>
+                        <span className="font-semibold text-slate-900">{s.title} - </span>
                         <span className="text-slate-600">{s.desc}</span>
                       </div>
                     </li>
@@ -471,7 +471,7 @@ const Home = () => {
           </div>
         </section>
 
-        {/* STORY: PROBLEM → SOLUTION */}
+        {/* STORY: PROBLEM ➞ SOLUTION */}
         <section className="py-12 sm:py-14 lg:py-16 bg-white border-t border-[#EAECF3]">
           <div className="relative px-5 sm:px-8 lg:px-[70px]">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center mb-16 md:mb-20 lg:mb-24">

@@ -39,7 +39,7 @@ function useInView(threshold = 0.08) {
 
 /* ─────────────────────────────────────
    Step 01: Select Marketplace mockup
-   Single unified SVG — continents + flags
+   Single unified SVG - continents + flags
    in the same coordinate space so they
    always align at any container width.
 ────────────────────────────────────── */
@@ -54,7 +54,7 @@ function SelectMarketplaceMockup() {
                 <span className="ml-2 text-[11px] sm:text-xs font-semibold text-slate-500">Amazon</span>
             </div>
 
-            {/* Single unified SVG map — everything in one coordinate system */}
+            {/* Single unified SVG map - everything in one coordinate system */}
             <div className="mx-1.5 sm:mx-2 mt-1.5 sm:mt-2 mb-1 rounded-lg sm:rounded-xl overflow-hidden border border-slate-100">
                 <svg
                     viewBox="0 0 280 118"
@@ -84,7 +84,7 @@ function SelectMarketplaceMockup() {
                     <circle cx="48" cy="28" r="11" fill="white" stroke="#CBD5E1" strokeWidth="1.5" />
                     <text x="48" y="33" textAnchor="middle" fontSize="13" dominantBaseline="auto">🇨🇦</text>
 
-                    {/* ── USA (active — large blue ring) ── */}
+                    {/* ── USA (active - large blue ring) ── */}
                     <circle cx="52" cy="58" r="16" fill="#3C9AC4" />
                     <circle cx="52" cy="58" r="20" fill="none" stroke="#BDD9EE" strokeWidth="2" />
                     <text x="52" y="64" textAnchor="middle" fontSize="17" dominantBaseline="auto">🇺🇸</text>
@@ -412,7 +412,7 @@ export function ConnectAmazonGuide() {
                         >
                             <BadgeCheck className="w-4 h-4 sm:w-5 sm:h-5 text-[#3C9AC4] shrink-0 mt-0.5 sm:mt-0" />
                             <p className="text-xs sm:text-sm font-semibold text-slate-700 leading-relaxed">
-                                One-time setup. Once authorized, SellerBuz syncs your Amazon store automatically — inventory, orders and pricing update in real time.
+                                One-time setup. Once authorized, SellerBuz syncs your Amazon store automatically - inventory, orders and pricing update in real time.
                             </p>
                         </div>
                     </div>
@@ -436,7 +436,7 @@ export function ConnectAmazonGuide() {
                         {
                             icon: LockKeyhole,
                             title: "Secure OAuth Flow",
-                            desc: "Authorization uses Amazon's official OAuth — your credentials are never stored by SellerBuz.",
+                            desc: "Authorization uses Amazon's official OAuth - your credentials are never stored by SellerBuz.",
                         },
                         {
                             icon: CheckCircle2,
