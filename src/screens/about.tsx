@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import {
   Sparkles, Heart, Shield, Lightbulb, Eye, Users, Globe,
   Rocket, Trophy, Building2, Brain, ArrowRight, Award, Lock,
-  Zap, Truck, Megaphone, Store, CheckCircle, Cpu,
+  Zap, Truck, Store, CheckCircle, Cpu,
   Workflow,
   RefreshCw,
   Server,

@@ -1,8 +1,8 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import {
-  Check, X, Sparkles, ArrowRight, Quote, Star, Loader2, AlertCircle,
+  Check, Sparkles, ArrowRight, Quote, Star, Loader2,
   Clock,
   CheckCircle2,
   RefreshCw,
@@ -18,7 +18,7 @@ import {
   Rocket,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Layout from '@/components/layout';
 import PageHero from '@/components/pageHero';
@@ -34,16 +34,6 @@ import { formatConvertedPrice } from '@/services/currency.service';
 
 // ── Static content ─────────────────────────────────────────────────────────────
 
-const COMPARE = [
-  ['Marketplace connections', '3', '10', 'Unlimited'],
-  ['Product listings', '5,000', '25,000', 'Unlimited'],
-  ['Real-time inventory sync', false, true, true],
-  ['Custom workflows', false, true, true],
-  ['API access', false, false, true],
-  ['Dedicated account manager', false, false, true],
-  ['SLA guarantee', false, false, true],
-];
-
 const FAQS = [
   {
     q: "How do I get started?",
@@ -57,10 +47,6 @@ const FAQS = [
 ];
 
 const ADDONS = [
-  // {
-  //   title: 'Auto-repricer with your margin rules',
-  //   desc: "Tell us your minimum profit and maximum price. We'll watch every Buy Box competitor 24/7 and reprice automatically - never below your floor, never above your ceiling. Sellers typically recover 8–18% margin in the first month.",
-  // },
   {
     title: 'AI listing generator',
     desc: "Got a spreadsheet of products? Paste it in. Our AI writes complete Amazon and Shopify listings - titles, bullets, search terms - formatted exactly to each Marketplace's rules so you stop getting suppressed listings.",
@@ -71,7 +57,7 @@ const ADDONS = [
   },
   {
     title: 'Centralized catalog + FBA/FBM',
-    desc: 'One golden record per SKU, mapped to every channel. Hybrid fulfillment routing decides whether to ship from FBA, your own warehouse or a 3PL - based on cost, speed and stock levels.',
+    desc: 'One golden record per SKU, mapped to every channel. Hybrid fulfillment routing decides whether to ship from FBA, FBM or a 3PL - based on cost, speed and stock levels.',
   },
   {
     title: 'AI listing mismatch retry',
@@ -104,8 +90,6 @@ const PLAN_PERKS = [
   },
   {
     icon: Zap,
-    // title: 'AI-powered repricing',
-    // desc: 'Auto-adjust prices to win the Buy Box 24/7',
     title: 'AI-powered tools',
     desc: 'Smart automation to help grow your business',
     color: 'text-amber-600',

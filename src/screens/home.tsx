@@ -2,13 +2,10 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
-  BarChart3, RefreshCw, ShoppingCart, TrendingUp, Zap, Shield,
-  Users, DollarSign, Package, Globe, Clock, CheckCircle, Sparkles,
-  Star, ShoppingBag, ArrowRight, Quote,
-  Truck, Megaphone, Brain, Server, Workflow, Boxes,
-  RefreshCcw, Settings, FileText,
-  Layers,
-  Wand2,
+  RefreshCw, TrendingUp, Zap, Shield,
+  Users, Package, Globe, Clock, CheckCircle, Sparkles,
+  Star, ArrowRight,
+  Workflow, Settings, FileText,
   Upload,
   FileCheck,
   FlaskConical,
@@ -23,7 +20,6 @@ import Link from "next/link";
 import Layout from "@/components/layout";
 import {
   SellerHeroMockup, SyncIllustration,
-  InfraIllustration, MarketplaceMeshDiagram,
   InventoryDashboardSVG,
   ListingWorkflowIllustration,
   EcosystemHubMockup,
@@ -31,7 +27,6 @@ import {
 } from "@/components/illustrations/homePageIllustrations";
 import { WorkflowIllustration } from "@/components/illustrations";
 import { useReveal } from "@/hooks/use-reveal";
-import { useState } from "react";
 
 
 
@@ -52,9 +47,9 @@ const Home = () => {
       borderColor: "border-t-4 border-t-[#13355A]",
     },
     {
-      icon: DollarSign,
-      value: "$300M+",
-      label: "GMV Processed",
+      icon: Upload,
+      value: "5M+",
+      label: "Products Imported",
       trend: "18.6%",
       accentColor: "#3C9AC4",
       iconBg: "bg-[#E8F4FA]/60",
@@ -89,14 +84,10 @@ const Home = () => {
     },
   ];
 
-  const marketplaces = [
-    { name: "Amazon", icon: ShoppingBag }, { name: "Shopify", icon: ShoppingCart },
-  ];
-
   const journey = [
-    { step: "01", title: "Connect", desc: "Link your Marketplace in minutes with one-click integrations.", icon: Zap },
-    { step: "02", title: "Sync", desc: "Inventory, stock & pricing flow automatically across every channel.", icon: RefreshCw },
-    { step: "03", title: "Grow", desc: "AI insights surface what to list next, where to restock, and what to scale.", icon: TrendingUp }
+    { step: "01", title: "Connect", desc: "Link Amazon and Shopify in minutes with one-click integrations.", icon: Zap },
+    { step: "02", title: "Sync", desc: "Your catalog & inventory flow automatically across every channel.", icon: RefreshCw },
+    { step: "03", title: "Grow", desc: "AI insights surface what to list next, what to optimize, and what to publish.", icon: TrendingUp }
   ];
 
   return (
@@ -114,7 +105,7 @@ const Home = () => {
               <div className="lg:col-span-6 reveal">
                 <Badge className="mb-6 bg-white text-primary border border-primary/10 shadow-sm hover:bg-white">
                   <Sparkles className="w-3.5 h-3.5 mr-1.5" />
-                  Trusted By 50,000+ Multichannel Sellers
+                  Trusted By 50,000+ Amazon & Shopify Sellers
                 </Badge>
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] font-bold text-slate-900 mb-6 leading-[1.1] sm:leading-[1.05] tracking-tight">
                   The Smartest
@@ -150,7 +141,7 @@ const Home = () => {
                       <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <span className="text-sm font-semibold text-slate-700">4.9 Amazon Stores Rating</span>
+                  <span className="text-sm font-semibold text-slate-700">Trusted by Growing Ecommerce Brands</span>
                 </div>
               </div>
 
@@ -167,7 +158,7 @@ const Home = () => {
                     <RefreshCw className="w-5 h-5 text-white" />
                   </div>
                   <div className="text-xs">
-                    <div className="font-bold text-[#13355A]">All channels synced</div>
+                    <div className="font-bold text-[#13355A]">Catalog synchronized</div>
                     <div className="text-slate-500">2 sec ago</div>
                   </div>
                 </div>
@@ -176,7 +167,7 @@ const Home = () => {
                     <TrendingUp className="w-5 h-5 text-white" />
                   </div>
                   <div className="text-xs">
-                    <div className="font-bold text-slate-900">+24% MoM revenue</div>
+                    <div className="font-bold text-slate-900">2,500+ Listings Published</div>
                     <div className="text-slate-500">Last 30 days</div>
                   </div>
                 </div>
@@ -242,13 +233,13 @@ const Home = () => {
             <div className="reveal">
               <Badge className="mb-4 bg-accent text-primary border border-primary/10">The Problem</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                Selling on 5 Marketplace shouldn't feel like{" "}
+                Selling across Amazon and Shopify shouldn't feel like{" "}
                 <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
-                  running 5 businesses.
+                  running two businesses.
                 </span>
               </h2>
               <p className="text-base sm:text-lg lg:text-xl text-[#334155] leading-relaxed mb-6">
-                Most sellers juggle a dozen tabs, broken CSV exports and 2 a.m. inventory mismatches. One oversell on Amazon can cost an account suspension worth months of revenue.
+                Most sellers juggle a dozen tabs, broken CSV exports and 2 a.m. inventory mismatches. One oversell on Amazon can cost an account suspension.
               </p>
               <ul className="space-y-2.5">
                 {[
@@ -493,7 +484,7 @@ const Home = () => {
                   </span>
                 </h2>
                 <p className="text-base sm:text-lg lg:text-xl text-[#334155] leading-relaxed mb-6">
-                  Replace disconnected tools with one centralized workspace for inventory, catalog management, order operations, and AI-powered automation. Spend less time managing systems and more time growing your business.
+                  Replace disconnected tools with one centralized workspace for product catalog management, inventory, order operations, and AI-powered automation. Spend less time managing systems and more time growing your business.
                 </p>
                 <ul className="space-y-3">
                   {["One unified dashboard for all operations", "AI-powered catalog and listing management", "Real-time inventory synchronization", "Automated workflows that save hours every day"].map((p, i) => (
@@ -523,9 +514,8 @@ const Home = () => {
                   in milliseconds.
                 </h2>
                 <p className="text-base sm:text-lg lg:text-xl text-[#334155] leading-relaxed mb-6">
-                  Update your product information once and let the platform automatically synchronize inventory, pricing, listings,
-                  and operational data across your connected workflows.
-                  Intelligent automation minimizes manual intervention, reduces costly errors, and keeps your business running efficiently as your catalog continues to grow.
+                  Update your catalog once and let the platform synchronize listings, inventory, and product data across Amazon and Shopify.
+                  Intelligent automation minimizes manual intervention, reduces costly errors, and keeps your catalog marketplace-ready as it grows.
                 </p>
                 <Link href="/services">
                   <Button size="lg" className="rounded-full shadow-lg group bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] hover:opacity-95 border-0">
@@ -627,7 +617,7 @@ const Home = () => {
                   Stock everywhere. <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">Always accurate.</span>
                 </h2>
                 <p className="text-base sm:text-lg lg:text-xl text-[#334155] leading-relaxed mb-8">
-                  Real-time stock sync across all marketplaces and warehouses. One update. Everywhere. Instantly.
+                  Real-time stock sync across all your Amazon and Shopify stores. One update. Everywhere. Instantly.
                 </p>
 
                 <div className="space-y-5 mb-8">

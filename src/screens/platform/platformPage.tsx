@@ -6,7 +6,7 @@ import { ArrowRight, CheckCircle2, Sparkles, ChevronRight } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { ReactNode } from "react";
 
-export type DeepDive = {
+type DeepDive = {
   eyebrow: string;
   title: string | ReactNode;
   desc: string;
@@ -327,7 +327,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
 
         {/* ═══════════════════════════════════════
             CHANNEL PIPELINE  –  redesigned
-            "From warehouse to marketplace in
+            "From inventory to marketplace in
              milliseconds." – reference-image layout
         ═══════════════════════════════════════ */}
         {cfg.channels && (
@@ -375,7 +375,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
                   Lightning Fast Sync
                 </span>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-3">
-                  From warehouse to{" "}
+                  From inventory to{" "}
                   <span className="text-[#3C9AC4]">marketplace</span>
                   <br className="hidden sm:block" /> in milliseconds.
                 </h2>
@@ -390,7 +390,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
                 {/* Desktop / Tablet: horizontal */}
                 <div className="hidden lg:flex items-center justify-center gap-0">
 
-                  {/* ── Stage 1: Warehouse ── */}
+                  {/* ── Stage 1: Inventory ── */}
                   <div className="flex flex-col items-center gap-3">
                     <div className="w-[148px] bg-white border border-slate-200/80 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 hover:border-[#BDD9EE] transition-all duration-300 p-4 flex flex-col items-center gap-3 cursor-default">
                       <div className="w-12 h-12 rounded-xl bg-[#E8F0F6] border border-[#BDD9EE] flex items-center justify-center pipeline-pulse">
@@ -399,7 +399,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
                         </svg>
                       </div>
                       <div className="text-center">
-                        <p className="text-sm font-bold text-slate-800">Warehouse</p>
+                        <p className="text-sm font-bold text-slate-800">Inventory</p>
                         <p className="text-[11px] text-slate-400 mt-0.5">Stock Update</p>
                       </div>
                     </div>
@@ -529,7 +529,7 @@ const PlatformPage = ({ cfg }: { cfg: PlatformConfig }) => {
                 {/* Mobile: vertical stack */}
                 <div className="flex lg:hidden flex-col items-center gap-0">
                   {[
-                    { label: "Warehouse", sub: "Stock Update", icon: <svg className="w-5 h-5 text-[#3C9AC4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg> },
+                    { label: "Inventory", sub: "Stock Update", icon: <svg className="w-5 h-5 text-[#3C9AC4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg> },
                     { label: "Sync Engine", sub: "Processing Update", icon: <svg className="w-5 h-5 text-[#3C9AC4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg> },
                     { label: "Data Sent", sub: "Secure Transmission", icon: <svg className="w-5 h-5 text-[#3C9AC4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg> },
                     { label: "Channel API", sub: "Update Received", icon: <svg className="w-5 h-5 text-[#3C9AC4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> },

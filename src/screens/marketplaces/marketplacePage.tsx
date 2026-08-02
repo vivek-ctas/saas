@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Layout from "@/components/layout";
-import { ArrowRight, CheckCircle2, Sparkles, Boxes, ShoppingCart, DollarSign, BarChart3, Wand2, RefreshCw } from "lucide-react";
+import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { ChannelHeroDiagram, OnboardingDiagram } from "@/components/illustrations/platformPageIllustrations";
 import type { ReactNode } from "react";
@@ -207,5 +207,3 @@ const MarketplacePage = ({ cfg }: { cfg: MarketplaceConfig }) => {
 };
 
 export default MarketplacePage;
-
-export const MP_ICONS = { Boxes, ShoppingCart, DollarSign, BarChart3, Wand2, RefreshCw };

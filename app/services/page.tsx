@@ -25,7 +25,7 @@ const servicesJsonLd = {
     { "@type": "ListItem", position: 4, name: "AI Catalog", description: "Generate optimized titles, descriptions, and listing details." },
     { "@type": "ListItem", position: 5, name: "Variants & Matching", description: "Manage variants and smart catalog matching." },
     // { "@type": "ListItem", position: 6, name: "Growth (Repricer)", description: "Automatically adjust prices based on rules and competition." },
-    { "@type": "ListItem", position: 6, name: "Analytics & Performance", description: "Revenue and performance trends in one clean view." },
+    { "@type": "ListItem", position: 6, name: "Analytics & Performance", description: "Listing quality and performance trends in one clean view." },
     { "@type": "ListItem", position: 7, name: "A+ Content Asset Library", description: "Organized, reusable assets for premium product listings." },
     { "@type": "ListItem", position: 8, name: "Role-Based Access Control", description: "Granular permissions for owners, managers, and staff." },
     { "@type": "ListItem", position: 9, name: "Bulk Operations", description: "Update inventory, pricing, and listings via file upload." },

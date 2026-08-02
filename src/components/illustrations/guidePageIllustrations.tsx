@@ -55,8 +55,6 @@ export const ProductImportFlow = (props: SVGProps<SVGSVGElement>) => {
         </svg>
     );
 
-    const BLUE = "#13355A";
-
 
     /* -------------------------------------------------------------------------- */
 
@@ -75,7 +73,6 @@ export const ProductImportFlow = (props: SVGProps<SVGSVGElement>) => {
 
     const navy = "#13355A";
     const accent = "#3C9AC4";
-    const light = "#6BC1E0";
     const tint = "#E8F0F6";
     const border = "#BDD9EE";
     const slate900 = "#0F172A";
@@ -344,13 +341,13 @@ export const ProductImportFlow = (props: SVGProps<SVGSVGElement>) => {
  * (e.g. a lucide-react icon like `<Globe size={40} color="#2A3FD6" />`,
  * or your own inline <svg>...</svg>). It is placed centered inside a 64x64 circle.
  */
-export interface StepFlowStep {
+interface StepFlowStep {
     icon: ReactNode;
     title: string;
     subtitle: string;
 }
 
-export interface StepFlowDiagramProps extends Omit<SVGProps<SVGSVGElement>, "children"> {
+interface StepFlowDiagramProps extends Omit<SVGProps<SVGSVGElement>, "children"> {
     steps: StepFlowStep[];
 }
 

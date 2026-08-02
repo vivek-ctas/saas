@@ -14,7 +14,7 @@ const cfg: PlatformConfig = {
       hub="SellerBuz Sync"
       hubLatency="latency < 2s"
       leftNodes={[
-        { label: "Warehouse", sub: "1,240 on hand", dot: "#3C9AC4", logo: "/logos/warehouse-svgrepo-com.svg" },
+        { label: "Inventory", sub: "1,240 on hand", dot: "#3C9AC4", logo: "/logos/inventory-svgrepo-com.svg" },
         { label: "3PL / FBA", sub: "428 units", dot: "#13355A", logo: "/logos/fba.webp" },
       ]}
       rightNodes={[
@@ -30,7 +30,7 @@ const cfg: PlatformConfig = {
     points: [
       "Manual stock updates across 5 dashboards",
       "One late edit → oversell → suspended listing",
-      "Warehouse stock and channel stock disagree",
+      "Inventory stock and channel stock disagree",
       "Flash sales cause chaos across marketplaces",
     ],
   },
@@ -39,7 +39,7 @@ const cfg: PlatformConfig = {
     points: [
       "Sub-2-second propagation across every channel",
       "Cross-channel stock reservations during checkout",
-      "Warehouse + FBA + WFS tracked separately, netted centrally",
+      "Merchant stock + FBA + WFS tracked separately, netted centrally",
       "Full audit log of every stock movement",
     ],
   },
@@ -47,7 +47,7 @@ const cfg: PlatformConfig = {
     {
       eyebrow: "Real-Time Sync",
       title: <>One stock number. Fanned out to every channel <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">in under 2 seconds.</span></>,
-      desc: "SellerBuz sits between your warehouse and every marketplace. When stock moves, we push the new number to Amazon and Shopify in parallel - with automatic retries and full audit history.",
+      desc: "SellerBuz sits between your inventory and every marketplace. When stock moves, we push the new number to Amazon and Shopify in parallel - with automatic retries and full audit history.",
       bullets: [
         "Sub-2-second propagation via native marketplace APIs",
         "Parallel writes - one slow channel doesn't block the others",
@@ -57,11 +57,11 @@ const cfg: PlatformConfig = {
       visual: (
         <FlowVisual
           id="inv-sync"
-          title="LIVE SYNC · WAREHOUSE → CHANNELS"
+          title="LIVE SYNC · INVENTORY → CHANNELS"
           hub="Sync Engine"
           hubLatency="< 2s propagation"
           leftNodes={[
-            { label: "Warehouse", sub: "master stock", dot: "#3C9AC4", logo: "/logos/warehouse-svgrepo-com.svg" },
+            { label: "Inventory", sub: "master stock", dot: "#3C9AC4", logo: "/logos/inventory-svgrepo-com.svg" },
             {
               label: "Receiving", sub: "+420 units", dot: "#3C9AC4", logo: "/logos/receive-square-2-svgrepo-com.svg"
             },
@@ -74,11 +74,11 @@ const cfg: PlatformConfig = {
       ),
     },
     {
-      eyebrow: "Multi-Warehouse",
-      title: <>Split inventory across warehouses, <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">netted for the seller.</span></>,
-      desc: "Track stock separately across your own warehouse, FBA, WFS and 3PLs - with allocation rules per region and per channel. Available-to-sell is netted centrally so no channel ever oversells.",
+      eyebrow: "Multi-Location",
+      title: <>Split inventory across locations, <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">netted for the seller.</span></>,
+      desc: "Track stock separately across your own inventory, FBA, WFS and 3PLs - with allocation rules per region and per channel. Available-to-sell is netted centrally so no channel ever oversells.",
       bullets: [
-        "Per-warehouse and per-channel allocation rules",
+        "Per-location and per-channel allocation rules",
         "FBA, WFS and merchant stock tracked side by side",
         "Region-based routing (US vs EU vs IN)",
         "Buffer stock per channel - set globally or per SKU",
@@ -86,11 +86,11 @@ const cfg: PlatformConfig = {
       visual: (
         <DashListVisual
           id="inv-wh"
-          title="Multi-warehouse ledger · SKU-42891"
+          title="Multi-location ledger · SKU-42891"
           chip={{ label: "Net available: 1,668", tone: "blue" }}
           columns={["Location", "On hand", "Reserved", "Available"]}
           rows={[
-            { cells: [{ dot: "#3C9AC4", text: "US · Ohio WH" }, "820", "42", "778"], badge: { text: "OK", tone: "emerald" } },
+            { cells: [{ dot: "#3C9AC4", text: "US · Ohio" }, "820", "42", "778"], badge: { text: "OK", tone: "emerald" } },
             { cells: [{ dot: "#3C9AC4", text: "Amazon FBA" }, "512", "18", "494"], badge: { text: "OK", tone: "emerald" } },
             { cells: [{ dot: "#13355A", text: "EU · Rotterdam 3PL" }, "148", "0", "148"], badge: { text: "Low", tone: "amber" } },
           ]}
@@ -127,7 +127,7 @@ const cfg: PlatformConfig = {
   featureGrid: [
     { icon: Boxes, t: "Master catalog", d: "Single SKU per product with per-channel mappings and identifiers." },
     { icon: RefreshCw, t: "Real-time sync", d: "Push and pull inventory via native APIs - no polling delays." },
-    { icon: Layers, t: "Multi-warehouse", d: "Split inventory across warehouses and 3PLs with allocation rules." },
+    { icon: Layers, t: "Multi-Location", d: "Split inventory across locations and 3PLs with allocation rules." },
     { icon: Upload, t: "Bulk adjustments", d: "Cycle counts, receiving and adjustments via CSV or Excel." },
     { icon: ShieldCheck, t: "Guardrails", d: "Buffer stock, safety thresholds and low-stock alerts per channel." },
     { icon: BarChart3, t: "Movement analytics", d: "Sell-through, days-of-cover and reorder recommendations." },
@@ -138,7 +138,7 @@ const cfg: PlatformConfig = {
     { q: "Can I hold buffer stock per channel?", a: "Yes - set per-channel buffers globally or per-SKU." },
     { q: "Does it handle bundles and kits?", a: "Yes. Component-level inventory decrements with bundle logic." },
     { q: "What about pre-orders and back-orders?", a: "Supported. Pre-orders show as future stock without blocking current sales." },
-    { q: "Does it work with FBA + WFS + own warehouse?", a: "Yes - all three are tracked separately and netted for available-to-sell." },
+    { q: "Does it work with FBA + WFS + own inventory?", a: "Yes - all three are tracked separately and netted for available-to-sell." },
   ],
 };
 export default function InventoryPlatform() { return <PlatformPage cfg={cfg} />; }

@@ -2,7 +2,7 @@
  * Central API configuration for the frontend.
  * Set NEXT_PUBLIC_API_BASE_URL in your .env.local to point to your backend.
  */
-export const API_BASE_URL =
+const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:7010';
 
 /**

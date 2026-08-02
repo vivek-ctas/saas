@@ -8,6 +8,14 @@ import {
 import { verifyStripeSession, verifyRazorpayActivation } from '@/services/checkout.service';
 import type { ActivationData } from '@/types';
 
+// Admin panel login URL - update this to an env var when deploying
+const rawAdminUrl = process.env.NEXT_PUBLIC_ADMIN_PANEL_URL?.trim();
+const ADMIN_LOGIN_URL = rawAdminUrl
+  ? rawAdminUrl.endsWith('/sign-in')
+    ? rawAdminUrl
+    : `${rawAdminUrl.replace(/\/+$/, '')}/sign-in`
+  : 'http://localhost:4200/sign-in';
+
 /**
  * /checkout/success
  *
@@ -187,7 +195,7 @@ export default function CheckoutSuccessPage() {
               <div>
                 <div className="text-xs text-slate-500">What happens next</div>
                 <div className="text-sm font-semibold text-slate-800">
-                  Check your inbox - a password setup link is on its way
+                  Check your inbox - your login OTP is on its way. Log in to the admin panel to get started.
                 </div>
               </div>
             </div>
@@ -205,19 +213,28 @@ export default function CheckoutSuccessPage() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="space-y-3">
             <Link
-              href="/contact"
-              className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 text-slate-700 px-6 py-3 text-sm font-semibold hover:bg-slate-50 transition-colors"
+              href={ADMIN_LOGIN_URL}
+              className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#13355A] to-[#0D2440] text-white px-6 py-3 text-sm font-semibold hover:opacity-90 transition-opacity shadow-lg"
             >
-              Contact support
+              Log in to Admin Panel <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link
-              href="/"
-              className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#13355A] to-[#0D2440] text-white px-6 py-3 text-sm font-semibold hover:opacity-90 transition-opacity shadow-lg"
-            >
-              Go to homepage <ArrowRight className="w-4 h-4" />
-            </Link>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/contact"
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 text-slate-700 px-6 py-3 text-sm font-semibold hover:bg-slate-50 transition-colors"
+              >
+                Contact support
+              </Link>
+              <Link
+                href="/"
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 text-slate-700 px-6 py-3 text-sm font-semibold hover:bg-slate-50 transition-colors"
+              >
+                Go to homepage <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

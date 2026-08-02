@@ -1,27 +1,11 @@
 import { apiFetch } from '@/lib/api';
 import type {
   ContactFormPayload,
-  CompanyContact,
   ContactSubmitResponse,
-  CompanyContactResponse,
   WebSettingsData,
 } from '../types/contact.types';
 
 // ── Company Info ──────────────────────────────────────────────────────────
-
-/**
- * Fetch company contact details for the contact page (public - no auth needed).
- */
-export async function fetchCompanyContact(): Promise<{
-  data: CompanyContact | null;
-  error: string | null;
-}> {
-  const { data, error } = await apiFetch<CompanyContact>('/v1/company-contact');
-  return {
-    data: data ?? null,
-    error,
-  };
-}
 
 /**
  * Fetch full company settings (public - no auth needed).

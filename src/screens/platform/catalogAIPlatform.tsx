@@ -36,7 +36,6 @@ const cfg: PlatformConfig = {
           body: "ANC • BT 5.3 • 40h",
         },
       ]}
-      outputChips={[]}
       stats={[
         { label: "SEO", value: "96", tone: "blue" },
         { label: "Grade", value: "A+", tone: "emerald" },
@@ -121,7 +120,6 @@ const cfg: PlatformConfig = {
               body: "Ready listing",
             },
           ]}
-          outputChips={[]}
           stats={[
             { label: "Channels", value: "12+", tone: "blue" },
             { label: "Quality", value: "AI+", tone: "emerald" },

@@ -28,7 +28,7 @@ const EMPTY_FORM: CheckoutFormState = {
   country_name: '',
 };
 
-export interface UseCheckoutResult {
+interface UseCheckoutResult {
   step: CheckoutStep;
   form: CheckoutFormState;
   gateway: Gateway;

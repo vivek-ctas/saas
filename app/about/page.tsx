@@ -17,7 +17,7 @@ const aboutJsonLd = {
   name: "About Ctasis",
   url: "https://ctasis.com/about",
   description:
-    "Ctasis was founded in 2019 in Ahmedabad to end spreadsheet hell for multichannel sellers. Today we power $300M+ in GMV for 50,000+ sellers in 150+ countries.",
+    "Ctasis was founded in 2019 in Ahmedabad to end spreadsheet hell for multichannel sellers. Today we help 50,000+ sellers in 150+ countries power their multichannel operations.",
   breadcrumb: {
     "@type": "BreadcrumbList",
     itemListElement: [

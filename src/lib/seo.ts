@@ -13,7 +13,7 @@ export const DEFAULT_OG_IMAGE = `/ctas-logo.png`;
 // const TWITTER_HANDLE = "@ctasis_hq"; 
 
 // ─── Helper: build a canonical URL ─────────────────────────────────────────
-export function canonicalUrl(path: string) {
+function canonicalUrl(path: string) {
   const clean = path.startsWith("/") ? path : `/${path}`;
   return `${SITE_URL}${clean}`;
 }

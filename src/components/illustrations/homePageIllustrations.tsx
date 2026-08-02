@@ -1,64 +1,5 @@
 import { SVGProps } from "react";
 
-/* ------------------------------------------------------------------ */
-/* Hero dashboard – kept                                               */
-/* ------------------------------------------------------------------ */
-export const DashboardMockup = (props: SVGProps<SVGSVGElement>) => (
-    <svg viewBox="0 0 600 420" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-        <defs>
-            <linearGradient id="dm-bg" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0%" stopColor="#ffffff" />
-                <stop offset="100%" stopColor="#f0f4f8" />
-            </linearGradient>
-            <linearGradient id="dm-bar" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="hsl(199 54% 50%)" />
-                <stop offset="100%" stopColor="hsl(211 65% 21%)" />
-            </linearGradient>
-            <linearGradient id="dm-bar2" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="hsl(211 65% 35%)" />
-                <stop offset="100%" stopColor="hsl(211 65% 21%)" />
-            </linearGradient>
-        </defs>
-        <rect x="20" y="20" width="560" height="380" rx="20" fill="url(#dm-bg)" stroke="hsl(220 15% 88%)" />
-        <circle cx="46" cy="46" r="5" fill="#ef4444" />
-        <circle cx="62" cy="46" r="5" fill="#f59e0b" />
-        <circle cx="78" cy="46" r="5" fill="#10b981" />
-        <rect x="120" y="38" width="200" height="16" rx="8" fill="hsl(220 20% 96%)" />
-        <rect x="40" y="80" width="120" height="300" rx="12" fill="hsl(211 71% 96%)" />
-        <rect x="56" y="100" width="88" height="10" rx="5" fill="hsl(211 71% 50%)" />
-        <rect x="56" y="124" width="64" height="8" rx="4" fill="hsl(211 30% 80%)" />
-        <rect x="56" y="144" width="80" height="8" rx="4" fill="hsl(211 30% 80%)" />
-        <rect x="56" y="164" width="56" height="8" rx="4" fill="hsl(211 30% 80%)" />
-        <rect x="56" y="184" width="72" height="8" rx="4" fill="hsl(211 30% 80%)" />
-        <g>
-            <rect x="180" y="80" width="120" height="70" rx="12" fill="white" stroke="hsl(220 15% 92%)" />
-            <rect x="194" y="96" width="40" height="8" rx="4" fill="hsl(220 15% 80%)" />
-            <text x="194" y="130" fontFamily="Inter,system-ui" fontWeight="700" fontSize="20" fill="hsl(232 60% 18%)">$48.2k</text>
-            <rect x="312" y="80" width="120" height="70" rx="12" fill="white" stroke="hsl(220 15% 92%)" />
-            <rect x="326" y="96" width="40" height="8" rx="4" fill="hsl(220 15% 80%)" />
-            <text x="326" y="130" fontFamily="Inter,system-ui" fontWeight="700" fontSize="20" fill="hsl(232 60% 18%)">12,840</text>
-            <rect x="444" y="80" width="120" height="70" rx="12" fill="white" stroke="hsl(220 15% 92%)" />
-            <rect x="458" y="96" width="40" height="8" rx="4" fill="hsl(220 15% 80%)" />
-            <text x="458" y="130" fontFamily="Inter,system-ui" fontWeight="700" fontSize="20" fill="hsl(199 54% 50%)">+24%</text>
-        </g>
-        <rect x="180" y="170" width="384" height="210" rx="14" fill="white" stroke="hsl(220 15% 92%)" />
-        <g style={{ transformOrigin: "200px 360px" }}>
-            {[[220, 80], [260, 120], [300, 60], [340, 140], [380, 100], [420, 170], [460, 130], [500, 180], [540, 110]].map(([x, h], i) => (
-                <rect key={i} x={x} y={360 - h} width="22" height={h} rx="6"
-                    fill={i % 2 === 0 ? "url(#dm-bar)" : "url(#dm-bar2)"}>
-                    <animate attributeName="height" from="0" to={h} dur={`${0.6 + i * 0.08}s`} fill="freeze" />
-                    <animate attributeName="y" from="360" to={360 - h} dur={`${0.6 + i * 0.08}s`} fill="freeze" />
-                </rect>
-            ))}
-        </g>
-        <path d="M200 260 Q 240 220, 280 240 T 360 220 T 440 200 T 540 180" stroke="hsl(199 54% 50%)" strokeWidth="3" fill="none" strokeLinecap="round" strokeDasharray="600" strokeDashoffset="0">
-            <animate attributeName="stroke-dashoffset" from="600" to="0" dur="2.2s" fill="freeze" />
-        </path>
-    </svg>
-);
-
-
-
 
 /* ------------------------------------------------------------------ */
 /* SellerHeroMockup – SellerSnap-inspired product table dashboard      */
@@ -69,21 +10,20 @@ export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => {
     const skeletonRowsBelow = [360, 390, 420, 450];
 
     const kpis = [
-        { x: 365, label: "ORDERS", value: "850", delta: "+10%", icon: "bag" as const },
-        { x: 445, label: "BUY BOX", value: "82%", delta: "+9%", icon: "target" as const },
-        { x: 525, label: "REVENUE", value: "$21.5k", delta: "+19.4%", icon: "dollar" as const },
-        { x: 605, label: "PROFIT", value: "$6.8k", delta: "+23.6%", icon: "chart" as const },
+        { x: 365, label: "PRODUCTS", value: "12.5K", delta: "+320", icon: "bag" as const },
+        { x: 445, label: "LISTINGS", value: "8.9K", delta: "+185", icon: "target" as const },
+        { x: 525, label: "CATALOGS", value: "420", delta: "+24", icon: "dollar" as const },
+        { x: 605, label: "PUBLISHED", value: "98%", delta: "+6%", icon: "chart" as const },
     ];
 
     const features = [
-        { label: "Live Performance", desc: "Real-time updates", icon: "trend" as const },
-        { label: "Smart Repricing", desc: "Maximize Buy Box", icon: "pulse" as const },
-        { label: "Higher Profit", desc: "Automated insights", icon: "target" as const },
-        { label: "Healthy Margin", desc: "Sustainable growth", icon: "shield" as const },
-        { label: "Scale Faster", desc: "Grow your business", icon: "rocket" as const },
+        { label: "AI Catalog", desc: "Smart product management", icon: "trend" as const },
+        { label: "Bulk Import", desc: "Upload products in minutes", icon: "pulse" as const },
+        { label: "Marketplace Ready", desc: "Amazon & Shopify", icon: "target" as const },
+        { label: "AI Optimization", desc: "Better listing quality", icon: "shield" as const },
     ];
 
-    const featureX = [40, 210, 370, 530, 680];
+    const featureX = [40, 250, 450, 650];
 
     // Shared palette - CTAS Brand colors (Navy primary, Accent Blue secondary)
     const indigo = "hsl(211 65% 21%)";       // CTAS Navy (tabs, underline, product accent, icons)
@@ -129,7 +69,7 @@ export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => {
                 <circle cx="80" cy="64" r="5.5" fill="#f59e0b" />
                 <circle cx="96" cy="64" r="5.5" fill="#10b981" />
                 <rect x="120" y="56" width="140" height="16" rx="8" fill={indigoSoft} />
-                <text x="190" y="68" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill={indigoDark}>CTASIS · Listings</text>
+                <text x="190" y="68" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill={indigoDark}>SellerBuz · Listings</text>
                 {/* tabs */}
                 <text x="290" y="68" fontFamily="Inter,system-ui" fontSize="12" fontWeight={600} fill={indigoDark}>Overview</text>
                 <text x="360" y="68" fontFamily="Inter,system-ui" fontSize="12" fill={slate500}>Listings</text>
@@ -182,15 +122,15 @@ export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => {
                 <rect x="78" y="215" width="55" height="2" rx="1" fill={indigo} />
                 <text x="150" y="260" fontFamily="Inter,system-ui" fontSize="17" fontWeight={700} fill={slate900}>Wireless Speaker</text>
                 <rect x="155" y="272" width="100" height="18" rx="8" fill={indigoSoft} />
-                <text x="214" y="285" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="12" fontWeight={700} fill={indigoDark}>Repricer ON</text>
+                <text x="214" y="285" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="12" fontWeight={700} fill={indigoDark}>AI Optimized</text>
 
                 {/* Platform pills */}
                 <text x="300" y="210" fontFamily="Inter,system-ui" fontSize="10" fontWeight={600} fill={slate400} letterSpacing="0.5">PLATFORM</text>
                 <rect x="300" y="215" width="58" height="2" rx="1" fill={indigo} />
                 <rect x="300" y="234" width="56" height="24" rx="6" fill="#0f172a" />
                 <text x="328" y="249" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="12" fontWeight={700} fill="white">amazon</text>
-                <rect x="300" y="268" width="56" height="24" rx="6" fill="hsl(210 100% 50%)" />
-                <text x="328" y="283" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="12" fontWeight={700} fill="white">walmart</text>
+                <rect x="300" y="268" width="56" height="24" rx="6" fill="hsl(158 100% 25%)" />
+                <text x="328" y="283" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="12" fontWeight={700} fill="white">shopify</text>
 
                 {/* KPI columns with icons */}
                 {kpis.map((k) => (
@@ -230,17 +170,17 @@ export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => {
                     </g>
                 ))}
 
-                {/* Margin column */}
+                {/* Validation column */}
                 <circle cx="710" cy="246" r="16" fill={indigoSoft} />
                 <g transform="translate(710,246)" stroke={indigoIcon} strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="0" cy="0" r="7" fill="none" />
                     <path d="M0 0 L0 -7 A7 7 0 0 1 6.06 -3.5 Z" fill={indigoIcon} stroke="none" />
                 </g>
-                <text x="685" y="210" fontFamily="Inter,system-ui" fontSize="10" fontWeight={600} fill={slate400} letterSpacing="0.5">MARGIN</text>
-                <text x="690" y="288" fontFamily="Inter,system-ui" fontSize="18" fontWeight={800} fill="url(#shm-accent)">31.6%</text>
-                <text x="690" y="308" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill={green}>▲ +3.6%</text>
+                <text x="685" y="210" fontFamily="Inter,system-ui" fontSize="10" fontWeight={600} fill={slate400} letterSpacing="0.5">VALIDATED</text>
+                <text x="690" y="288" fontFamily="Inter,system-ui" fontSize="18" fontWeight={800} fill="url(#shm-accent)">98.2%</text>
+                <text x="690" y="308" fontFamily="Inter,system-ui" fontSize="10" fontWeight={700} fill={green}>▲ +2.1%</text>
 
-                {/* Subtle pulse ring on Repricer ON */}
+                {/* Subtle pulse ring on validation pass */}
                 <circle cx="168" cy="280" r="3" fill={indigo}>
                     <animate attributeName="r" values="3;7;3" dur="2.4s" repeatCount="indefinite" />
                     <animate attributeName="opacity" values="1;0;1" dur="2.4s" repeatCount="indefinite" />
@@ -274,7 +214,7 @@ export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => {
                 {features.map((f, i) => {
                     const x = featureX[i];
                     const cy = 545;
-                    const iconCx = x - 20;
+                    const iconCx = x - 15;
                     const textX = x + 8;
                     return (
                         <g key={f.label}>
@@ -300,15 +240,6 @@ export const SellerHeroMockup = (props: SVGProps<SVGSVGElement>) => {
                                     <>
                                         <path d="M0 -8 L7 -5 V1 C7 6 3.5 8.5 0 10 C-3.5 8.5 -7 6 -7 1 V-5 Z" />
                                         <path d="M-3.5 0 L-0.5 3 L4 -3" />
-                                    </>
-                                )}
-                                {f.icon === "rocket" && (
-                                    <>
-                                        <path d="M0 -8 C3 -5 4 0 3 4 L-3 4 C-4 0 -3 -5 0 -8 Z" />
-                                        <circle cx="0" cy="-2" r="1.3" fill={indigoIcon} stroke="none" />
-                                        <path d="M-3 3 L-6.5 7 L-3 5.8 Z" fill={indigoIcon} stroke="none" />
-                                        <path d="M3 3 L6.5 7 L3 5.8 Z" fill={indigoIcon} stroke="none" />
-                                        <path d="M-1.4 4.2 L0 8.5 L1.4 4.2 Z" fill={indigoIcon} stroke="none" />
                                     </>
                                 )}
                             </g>
@@ -522,316 +453,6 @@ export const SyncEngineDiagram = (props: SVGProps<SVGSVGElement>) => {
     );
 };
 
-/* ------------------------------------------------------------------ */
-/* InfraIllustration – Stacked cloud architecture (CDN → DB)            */
-/* Styled after the AWS Cloud Infrastructure reference card             */
-/* ------------------------------------------------------------------ */
-export const InfraIllustration = (props: SVGProps<SVGSVGElement>) => {
-    const DiagramDefs = () => (
-        <defs>
-            <linearGradient id="mo-purple" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#C026D3" />
-                <stop offset="100%" stopColor="#7E22CE" />
-            </linearGradient>
-            <linearGradient id="mo-pill" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#C026D3" />
-                <stop offset="100%" stopColor="#7E22CE" />
-            </linearGradient>
-        </defs>
-    );
-
-    const ICONS: Record<string, JSX.Element> = {
-        cloud: (
-            <path fill="currentColor" d="M17.6 10.1a5 5 0 00-9.5-1.4A4.3 4.3 0 006 17h11.2a3.9 3.9 0 00.4-6.9z" />
-        ),
-        cart: (
-            <g fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="9" cy="20" r="1.3" />
-                <circle cx="17" cy="20" r="1.3" />
-                <path d="M2.5 3.5h2.4l2.5 12.2a2 2 0 002 1.6h8a2 2 0 002-1.6l1.5-8H6" />
-            </g>
-        ),
-        cube: (
-            <path
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.9"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 3.5l7.5 4.3v8.4L12 20.5l-7.5-4.3V7.8L12 3.5zM4.5 7.8L12 12l7.5-4.2M12 12v8.5"
-            />
-        ),
-        refresh: (
-            <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4 12a8 8 0 0113.6-5.7M20 12a8 8 0 01-13.6 5.7" />
-                <path d="M17 3v4h-4M7 21v-4h4" />
-            </g>
-        ),
-        clipboard: (
-            <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="5" y="4.5" width="14" height="16" rx="2" />
-                <rect x="9" y="3" width="6" height="3.5" rx="1" fill="currentColor" stroke="none" />
-                <path d="M8.5 11h7M8.5 14.5h7" />
-            </g>
-        ),
-        truck: (
-            <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="7" width="12" height="9" rx="1.5" />
-                <path d="M14 10h4l3.5 3.5V16h-7.5z" />
-                <circle cx="7" cy="18.5" r="1.7" />
-                <circle cx="17" cy="18.5" r="1.7" />
-            </g>
-        ),
-        barChart: (
-            <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <path d="M5 19v-6M11 19V6M17 19v-9" />
-            </g>
-        ),
-        pin: (
-            <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 21s-6.5-5.6-6.5-10.5a6.5 6.5 0 0113 0C18.5 15.4 12 21 12 21z" />
-                <circle cx="12" cy="10.5" r="2.2" />
-            </g>
-        ),
-        shield: (
-            <path fill="currentColor" d="M12 3l7 3v5.2c0 4.7-3 8.7-7 9.8-4-1.1-7-5.1-7-9.8V6l7-3z" />
-        ),
-        globe: (
-            <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="8.5" />
-                <path d="M3.5 12h17" />
-                <path d="M12 3.5c2.6 2.3 4 5.2 4 8.5s-1.4 6.2-4 8.5c-2.6-2.3-4-5.2-4-8.5s1.4-6.2 4-8.5z" />
-            </g>
-        ),
-        menu: (
-            <g stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <path d="M4 7h16M4 12h16M4 17h11" />
-            </g>
-        ),
-    };
-
-    const Icon = ({ name, size = 22 }: { name: string; size?: number | string }) => (
-        <svg width={size} height={size} viewBox="0 0 24 24">
-            {ICONS[name]}
-        </svg>
-    );
-
-    const ROWS = [
-        {
-            icon: "cart",
-            tile: "#9333EA",
-            tint: "#F6EEFC",
-            accent: "#9333EA",
-            num: "01",
-            title: "Order Received",
-            subtitle: "Orders captured from multiple marketplaces in real-time.",
-        },
-        {
-            icon: "cube",
-            tile: "#9333EA",
-            tint: "#F5EEFC",
-            accent: "#9333EA",
-            num: "02",
-            title: "Validation & Deduplication",
-            subtitle: "Validate order data and remove duplicates to ensure accuracy.",
-        },
-        {
-            icon: "refresh",
-            tile: "#4338CA",
-            tint: "#EEF0FE",
-            accent: "#4338CA",
-            num: "03",
-            title: "Inventory Sync",
-            subtitle: "Update and sync inventory across all sales channels.",
-        },
-        {
-            icon: "clipboard",
-            tile: "#10B981",
-            tint: "#E7FBF3",
-            accent: "#10B981",
-            num: "04",
-            title: "Order Processing",
-            subtitle: "Pick, pack, label, and prepare order for shipment.",
-        },
-        {
-            icon: "truck",
-            tile: "#DC2626",
-            tint: "#FDEEEC",
-            accent: "#DC2626",
-            num: "05",
-            title: "Shipping & Tracking",
-            subtitle: "Ship the order and share tracking details with the marketplace.",
-        },
-        {
-            icon: "barChart",
-            tile: "#9333EA",
-            tint: "#F6EEFC",
-            accent: "#9333EA",
-            num: "06",
-            title: "Analytics & Insights",
-            subtitle: "Track performance, revenue, and operational metrics in real-time.",
-        },
-    ];
-
-    const ROW_X = 20;
-    const ROW_W = 570;
-    const ROW_H = 68;
-    const ROW_GAP = 14;
-    const ROW_START_Y = 92;
-    const LINE_X = ROW_X + 36;
-
-    const lastRowBottom = ROW_START_Y + (ROWS.length - 1) * (ROW_H + ROW_GAP) + ROW_H;
-    const footY = lastRowBottom + 40;
-    const pillY = footY + 20;
-    const midX = ROW_X + ROW_W / 2;
-    const leftPillCx = ROW_X + 55;
-    const rightPillCx = ROW_X + ROW_W - 55;
-
-    return (
-        <svg viewBox="0 0 610 700" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-            <DiagramDefs />
-
-            {/* Header */}
-            <rect x="20" y="18" width="46" height="46" rx="14" fill="url(#mo-purple)" />
-            <g transform="translate(33,31)" color="white">
-                <Icon name="cloud" size="20" />
-            </g>
-            <text x="78" y="42" fontSize="19" fontWeight="800" fill="#7E22CE">Marketplace</text>
-            <rect x="78" y="50" width="86" height="3" rx="1.5" fill="#7E22CE" />
-            <text x="200" y="42" fontSize="12" fontWeight="700" fill="#9CA3AF" letterSpacing="1.5">ORDER FLOW</text>
-
-            <g transform="translate(500,20)" color="#E9B8F0" opacity="0.9">
-                <Icon name="cloud" size="26" />
-            </g>
-            <rect x="538" y="18" width="36" height="36" rx="11" fill="url(#mo-purple)" />
-            <g transform="translate(547,27)" color="white">
-                <Icon name="menu" size="18" />
-            </g>
-
-            {/* Header -> row1 connector */}
-            <line x1={LINE_X} y1="66" x2={LINE_X} y2={ROW_START_Y} stroke="#C026D3" strokeWidth="1.5" strokeDasharray="3 4" opacity="0.6">
-                <animate attributeName="stroke-dashoffset" values="0;-14" dur="1.4s" repeatCount="indefinite" />
-            </line>
-            <circle r="2.5" fill="#C026D3" opacity={0.6}>
-                <animateMotion dur="1.6s" repeatCount="indefinite"
-                    path={`M${LINE_X} 66 L${LINE_X} ${ROW_START_Y}`} />
-            </circle>
-
-            {/* Row -> row connectors */}
-            {ROWS.slice(0, -1).map((row, i) => {
-                const y1 = ROW_START_Y + i * (ROW_H + ROW_GAP) + ROW_H;
-                const y2 = ROW_START_Y + (i + 1) * (ROW_H + ROW_GAP);
-                return (
-                    <g key={`c${i}`}>
-                        <line
-                            x1={LINE_X}
-                            y1={y1}
-                            x2={LINE_X}
-                            y2={y2}
-                            stroke="#C026D3"
-                            strokeWidth="1.5"
-                            strokeDasharray="3 4"
-                            opacity="0.6"
-                        >
-                            <animate attributeName="stroke-dashoffset" values="0;-14" dur={`${1.4 + i * 0.15}s`} repeatCount="indefinite" />
-                        </line>
-                        <circle r="2.5" fill="#C026D3" opacity={0.6}>
-                            <animateMotion dur={`${1.6 + i * 0.15}s`} repeatCount="indefinite"
-                                path={`M${LINE_X} ${y1} L${LINE_X} ${y2}`} />
-                        </circle>
-                    </g>
-                );
-            })}
-
-            {/* Rows */}
-            {ROWS.map((row, i) => {
-                const y = ROW_START_Y + i * (ROW_H + ROW_GAP);
-                return (
-                    <g key={row.title}>
-                        <rect x={ROW_X} y={y} width={ROW_W} height={ROW_H} rx="16" fill={row.tint} />
-                        <rect x={ROW_X + ROW_W - 5} y={y + 8} width="5" height={ROW_H - 16} rx="2.5" fill={row.accent} />
-
-                        <rect x={ROW_X + 10} y={y + 8} width="52" height="52" rx="15" fill={row.tile} />
-                        <g transform={`translate(${ROW_X + 23},${y + 21})`} color="white">
-                            <Icon name={row.icon} size="26" />
-                        </g>
-
-                        <text x={ROW_X + 78} y={y + 30} fontSize="16" fontWeight="800" fill="#1E1B33">
-                            {row.title}
-                        </text>
-                        <text x={ROW_X + 78} y={y + 49} fontSize="12.5" fill="#6B7280">
-                            {row.subtitle}
-                        </text>
-
-                        <rect x={ROW_X + ROW_W - 78} y={y + 17} width="52" height="34" rx="17" fill={row.tile} fillOpacity="0.14" />
-                        <text x={ROW_X + ROW_W - 52} y={y + 39} textAnchor="middle" fontSize="15" fontWeight="800" fill={row.accent}>
-                            {row.num}
-                        </text>
-                    </g>
-                );
-            })}
-
-            {/* Footer connector routing */}
-            <line x1={LINE_X} y1={lastRowBottom} x2={LINE_X} y2={footY + 15} stroke="#C026D3" strokeWidth="1.5" strokeDasharray="3 4" opacity="0.6">
-                <animate attributeName="stroke-dashoffset" values="0;-14" dur="1.4s" repeatCount="indefinite" />
-            </line>
-            <circle r="2.5" fill="#C026D3" opacity={0.6}>
-                <animateMotion dur="1.6s" repeatCount="indefinite"
-                    path={`M${LINE_X} ${lastRowBottom} L${LINE_X} ${footY + 15}`} />
-            </circle>
-            <line x1={leftPillCx} y1={footY} x2={rightPillCx} y2={footY} stroke="#C026D3" strokeWidth="1.5" strokeDasharray="3 4" opacity="0.6">
-                <animate attributeName="stroke-dashoffset" values="0;-14" dur="1.6s" repeatCount="indefinite" />
-            </line>
-            <circle r="2.5" fill="#C026D3" opacity={0.6}>
-                <animateMotion dur="4.8s" repeatCount="indefinite"
-                    path={`M${leftPillCx} ${footY} L${rightPillCx} ${footY}`} />
-            </circle>
-            <line x1={leftPillCx} y1={footY} x2={leftPillCx} y2={pillY} stroke="#C026D3" strokeWidth="1.5" strokeDasharray="3 4" opacity="0.6">
-                <animate attributeName="stroke-dashoffset" values="0;-14" dur="1.2s" repeatCount="indefinite" />
-            </line>
-            <circle r="2.5" fill="#C026D3" opacity={0.6}>
-                <animateMotion dur="1.4s" repeatCount="indefinite"
-                    path={`M${leftPillCx} ${footY} L${leftPillCx} ${pillY}`} />
-            </circle>
-            <line x1={midX} y1={footY} x2={midX} y2={pillY - 6} stroke="#C026D3" strokeWidth="1.5" strokeDasharray="3 4" opacity="0.6">
-                <animate attributeName="stroke-dashoffset" values="0;-14" dur="1.2s" repeatCount="indefinite" />
-            </line>
-            <circle r="2.5" fill="#C026D3" opacity={0.6}>
-                <animateMotion dur="1.4s" repeatCount="indefinite"
-                    path={`M${midX} ${footY} L${midX} ${pillY - 6}`} />
-            </circle>
-            <line x1={rightPillCx} y1={footY} x2={rightPillCx} y2={pillY} stroke="#C026D3" strokeWidth="1.5" strokeDasharray="3 4" opacity="0.6">
-                <animate attributeName="stroke-dashoffset" values="0;-14" dur="1.2s" repeatCount="indefinite" />
-            </line>
-            <circle r="2.5" fill="#C026D3" opacity={0.6}>
-                <animateMotion dur="1.4s" repeatCount="indefinite"
-                    path={`M${rightPillCx} ${footY} L${rightPillCx} ${pillY}`} />
-            </circle>
-
-            {/* Footer pills */}
-            <rect x={leftPillCx - 62} y={pillY} width="124" height="52" rx="26" fill="white" stroke="#EDEBF3" />
-            <g transform={`translate(${leftPillCx - 44},${pillY + 13})`} color="#7E22CE">
-                <Icon name="pin" size="22" />
-            </g>
-            <text x={leftPillCx - 8} y={pillY + 21} fontSize="11" fontWeight="600" fill="#9CA3AF">Region</text>
-            <text x={leftPillCx - 8} y={pillY + 38} fontSize="15" fontWeight="800" fill="#1E1B33">India</text>
-
-            <rect x={midX - 88} y={pillY - 8} width="176" height="64" rx="32" fill="url(#mo-pill)" />
-            <g transform={`translate(${midX - 65},${pillY + 10})`} color="white">
-                <Icon name="shield" size="24" />
-            </g>
-            <text x={midX - 32} y={pillY + 22} fontSize="15" fontWeight="800" fill="white">99.99%</text>
-            <text x={midX - 32} y={pillY + 40} fontSize="12" fill="#EAD6F5">Uptime SLA</text>
-
-            <rect x={rightPillCx - 62} y={pillY} width="135" height="52" rx="26" fill="white" stroke="#EDEBF3" />
-            <g transform={`translate(${rightPillCx - 44},${pillY + 13})`} color="#7E22CE">
-                <Icon name="globe" size="22" />
-            </g>
-            <text x={rightPillCx - 8} y={pillY + 21} fontSize="11" fontWeight="600" fill="#9CA3AF">Global reach</text>
-            <text x={rightPillCx - 8} y={pillY + 38} fontSize="15" fontWeight="800" fill="#1E1B33">USA · EU</text>
-        </svg>
-    );
-};
 
 /* ------------------------------------------------------------------ */
 /* SyncIllustration – Channel-flow diagram (Listings <-> SellerBuz <-> Orders / Shipping)
@@ -869,7 +490,7 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
             <circle cx="285" cy="200" r="26" fill="#fff" opacity="0.14" />
             <circle cx="285" cy="200" r="16" fill="#fff" />
             <path d="M279 200l4 4 8-8" stroke="#13355A" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-            <text x="285" y="256" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#D0E8F0">Inventory · Pricing · Orders</text>
+            <text x="285" y="256" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#D0E8F0">Catalog · Listings · Inventory</text>
             <text x="285" y="240" textAnchor="middle" fontFamily="Inter" fontSize="13" fontWeight="800" fill="#fff">SellerBuz Core</text>
             <text x="285" y="272" textAnchor="middle" fontFamily="Inter" fontSize="10" fill="#D0E8F0">Real-time · 2-way sync</text>
         </g>
@@ -877,7 +498,7 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
         {/* right output cards */}
         {[
             { y: 70, title: "Inventory", val: "12,480 SKUs" },
-            { y: 145, title: "Pricing", val: "Rules Active" },
+            { y: 145, title: "Listings", val: "AI Optimized" },
             { y: 220, title: "Orders", val: "241 / Today" },
             { y: 295, title: "Catalog", val: "AI Generated" },
         ].map((c) => (
@@ -918,206 +539,6 @@ export const SyncIllustration = (props: SVGProps<SVGSVGElement>) => (
         ))}
     </svg>
 );
-
-/* ------------------------------------------------------------------ */
-/* MarketplaceMeshDiagram - radial channel hub                         */
-/* ------------------------------------------------------------------ */
-
-export const MarketplaceMeshDiagram = (props: SVGProps<SVGSVGElement>) => {
-
-    type Channel = {
-        a: number;
-        l: string;
-        c: string;
-        bg: string;
-        /** Optional override for the logo path. Defaults to `/${slug(l)}.svg`. */
-        logo?: string;
-    };
-
-    /** Turns a marketplace name into a filesystem-friendly slug, e.g. "Bol.com" -> "bolcom". */
-    function slug(name: string): string {
-        return name.toLowerCase().replace(/[^a-z0-9]/g, "");
-    }
-    const channels: Channel[] = [
-        { a: -90, l: "Amazon", c: "#F59E0B", bg: "#FFF7E6", logo: "/logos/amazon-color-svgrepo-com.svg" },
-        { a: -45, l: "Walmart", c: "#3C9AC4", bg: "#EFF6FF", logo: "/logos/walmart.png" },
-        { a: 0, l: "eBay", c: "#FF1744", bg: "#FFF1F3", logo: "/logos/EBay_logo.svg.webp" },
-        { a: 45, l: "Shopify", c: "#16A34A", bg: "#ECFDF5", logo: "/logos/shopify-color-svgrepo-com.svg" },
-        { a: 90, l: "Etsy", c: "#F4511E", bg: "#FFF7ED", logo: "/logos/etsy-svgrepo-com.svg" },
-        { a: 135, l: "Fnac", c: "#F59E0B", bg: "#FFFBEA", logo: "/logos/fnac.png" },
-        { a: 180, l: "Allegro", c: "#A855F7", bg: "#FAF5FF", logo: "/logos/allegro.png" },
-        { a: 225, l: "Bol.com", c: "#4338CA", bg: "#EEF2FF", logo: "/logos/bol.png" },
-    ];
-
-    const cx = 380;
-    const cy = 220;
-    const R = 175;
-    const NODE_R = 26;
-    const LOGO_SIZE = 28;
-
-    return (
-        <svg
-            viewBox="0 0 760 500"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-auto"
-            {...props}
-        >
-            <defs>
-                <radialGradient id="mm-bg" cx="50%" cy="50%" r="60%">
-                    <stop offset="0%" stopColor="#f0f4f8" />
-                    <stop offset="100%" stopColor="#e2e8f0" />
-                </radialGradient>
-
-                <linearGradient id="mm-core" x1="0" x2="1" y1="0" y2="1">
-                    <stop offset="0%" stopColor="#3C9AC4" />
-                    <stop offset="100%" stopColor="#13355A" />
-                </linearGradient>
-
-                <radialGradient id="mm-shine" cx="35%" cy="30%" r="60%">
-                    <stop offset="0%" stopColor="rgba(255,255,255,.28)" />
-                    <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-                </radialGradient>
-
-                <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
-                    <feGaussianBlur stdDeviation="8" result="blur" />
-                    <feMerge>
-                        <feMergeNode in="blur" />
-                        <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                </filter>
-            </defs>
-
-            {/* orbit rings */}
-            {[70, 120, 175].map((r, i) => (
-                <circle key={i} cx={cx} cy={cy} r={r} stroke="#A8D5E8" strokeWidth="1" strokeDasharray="4 5" opacity={0.4} fill="none">
-                    <animateTransform
-                        attributeName="transform"
-                        type="rotate"
-                        from={`0 ${cx} ${cy}`}
-                        to={`360 ${cx} ${cy}`}
-                        dur={`${28 + i * 8}s`}
-                        repeatCount="indefinite"
-                    />
-                </circle>
-            ))}
-
-            {/* edge lines */}
-            {channels.map((ch, i) => {
-                const rad = (ch.a * Math.PI) / 180;
-                const x = cx + R * Math.cos(rad);
-                const y = cy + R * Math.sin(rad);
-
-                return (
-                    <line key={i} x1={cx} y1={cy} x2={x} y2={y} stroke={ch.c} strokeWidth={1.4} opacity={0.38} strokeDasharray="4 5">
-                        <animate attributeName="stroke-dashoffset" values="0;-40" dur={`${2 + (i % 4) * 0.4}s`} repeatCount="indefinite" />
-                    </line>
-                );
-            })}
-
-            {/* pulse rings */}
-            <circle cx={cx} cy={cy} r="56" fill="#3C9AC4" opacity="0.18">
-                <animate attributeName="r" values="56;90" dur="2.8s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.22;0" dur="2.8s" repeatCount="indefinite" />
-            </circle>
-
-            <circle cx={cx} cy={cy} r="56" fill="#13355A" opacity="0.12">
-                <animate attributeName="r" values="56;110" dur="3.4s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.18;0" dur="3.4s" repeatCount="indefinite" />
-            </circle>
-
-            {/* nodes */}
-            {channels.map((ch, i) => {
-                const rad = (ch.a * Math.PI) / 180;
-                const x = cx + R * Math.cos(rad);
-                const y = cy + R * Math.sin(rad);
-                const logoHref = ch.logo ?? `/${slug(ch.l)}.svg`;
-
-                return (
-                    <g key={i}>
-                        {/* shimmer halo */}
-                        <circle cx={x} cy={y} r="34" fill="none" stroke={ch.c} strokeWidth="1" opacity="0.22">
-                            <animate attributeName="opacity" values="0.15;0.5;0.15" dur={`${2.2 + (i % 5) * 0.3}s`} repeatCount="indefinite" />
-                        </circle>
-
-                        {/* soft halo */}
-                        <circle cx={x} cy={y} r="30" fill={ch.c} opacity="0.12">
-                            <animate attributeName="r" values="28;36;28" dur={`${2.5 + (i % 5) * 0.3}s`} repeatCount="indefinite" />
-                        </circle>
-
-                        {/* node bg */}
-                        <circle cx={x} cy={y} r={NODE_R} fill={ch.bg} stroke={ch.c} strokeWidth="2" />
-
-                        {/* marketplace logo */}
-                        <image
-                            href={logoHref}
-                            x={x - LOGO_SIZE / 2}
-                            y={y - LOGO_SIZE / 2}
-                            width={LOGO_SIZE}
-                            height={LOGO_SIZE}
-                            preserveAspectRatio="xMidYMid meet"
-                        />
-
-                        {/* marketplace name, below the node */}
-                        <text
-                            x={x}
-                            y={y + NODE_R + 18}
-                            textAnchor="middle"
-                            fontSize="12"
-                            fontWeight="700"
-                            fill={ch.c}
-                            style={{ fontFamily: "DM Sans, sans-serif" }}
-                        >
-                            {ch.l}
-                        </text>
-                    </g>
-                );
-            })}
-
-            {/* core */}
-            <g filter="url(#glow)">
-                <circle cx={cx} cy={cy} r="58" fill="url(#mm-core)" />
-                <circle cx={cx} cy={cy} r="58" fill="url(#mm-shine)" />
-            </g>
-
-            <text x={cx} y={cy - 4} textAnchor="middle" fontSize="16" fontWeight="800" fill="white" style={{ fontFamily: "Space Grotesk, sans-serif" }}>
-                SellerBuz
-            </text>
-
-            <text
-                x={cx}
-                y={cy + 16}
-                textAnchor="middle"
-                fontSize="10"
-                fontWeight="600"
-                fill="rgba(255,255,255,.82)"
-                letterSpacing=".5"
-                style={{ fontFamily: "DM Sans, sans-serif" }}
-            >
-                Sync Engine
-            </text>
-
-            {/* legend */}
-            <g transform="translate(70,455)">
-                {[
-                    { c: "#3C9AC4", l: "Live sync" },
-                    { c: "#1d4ed8", l: "Auto-repricer" },
-                    { c: "#3b82f6", l: "AI listing" },
-                ].map((p, i) => (
-                    <g key={i} transform={`translate(${i * 180},0)`}>
-                        <rect x="50" y="-5" width="160" height="28" rx="14" fill="white" stroke="#e2e8f0" />
-                        <circle cx="66" cy="10" r="5" fill={p.c} />
-                        <text x="80" y="12" fontSize="11" fontWeight="700" fill="#334155" style={{ fontFamily: "DM Sans, sans-serif" }}>
-                            {p.l}
-                        </text>
-                    </g>
-                ))}
-            </g>
-        </svg>
-    );
-};
-
-
 
 export const InventoryDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
     return (
@@ -1337,7 +758,6 @@ export const InventoryDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
 
 
 export const ListingWorkflowIllustration = (props: SVGProps<SVGSVGElement>) => {
-    const indigo = "#13355A";
     const blue = "#3C9AC4";
     const blueLight = "#E8F4FA";
     const blue50 = "#E8F4FA";
@@ -1354,7 +774,6 @@ export const ListingWorkflowIllustration = (props: SVGProps<SVGSVGElement>) => {
     const slate400 = "#94A3B8";
     const slate300 = "#CBD5E1";
     const slate200 = "#E2E8F0";
-    const slate100 = "#F1F5F9";
     const slate50 = "#F8FAFC";
     const white = "#FFFFFF";
 
@@ -1693,7 +1112,7 @@ type FeatureItem = {
 
 const defaultFeatures: FeatureItem[] = [
     { icon: "box", color: "#3C9AC4", bg: "#eff6ff", title: "Inventory Sync", desc: "Real-time updates" },
-    { icon: "tag", color: "#13355A", bg: "#dbeafe", title: "Auto Repricer", desc: "AI-powered pricing" },
+    { icon: "tag", color: "#13355A", bg: "#dbeafe", title: "AI Catalog", desc: "Smart product management" },
     { icon: "cart", color: "#ef4444", bg: "#fee2e2", title: "Order Management", desc: "Centralized orders" },
     { icon: "chart", color: "#10b981", bg: "#d1fae5", title: "Listing Management", desc: "Bulk & AI optimized" },
 ];
@@ -1735,7 +1154,7 @@ function FeatureGlyph({ icon, color }: { icon: FeatureIcon; color: string }) {
 export const EcosystemHubMockup = ({
     sourceLabel = "Marketplace",
     sourceStatus = "Connected",
-    hubTitle = "Ctasis Core",
+    hubTitle = "SellerBuz Core",
     hubSubtitle = "Sync Engine",
     trustTitle = "Secure • Reliable • Scalable",
     trustSubtitle = "Built for serious sellers",

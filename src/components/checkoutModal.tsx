@@ -1,8 +1,8 @@
 'use client';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import {
-  ArrowLeft, ArrowRight, Check, CreditCard,
-  Globe, Loader2, Lock, Shield, Smartphone, X, Zap, ChevronDown, AlertCircle,
+  ArrowRight, Check, CreditCard,
+  Globe, Loader2, Lock, Shield, X, Zap, ChevronDown, AlertCircle,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -229,7 +229,7 @@ interface CheckoutModalProps {
 
 export default function CheckoutModal({
   plan, step, form, gateway, billingCycle, leadData, loading, error,
-  onClose, onFormChange, onGateway, onBilling, onSubmitForm, onStartPayment, onClearError,
+  onClose, onFormChange, onGateway, onSubmitForm, onStartPayment, onClearError,
   // onBack,
 }: CheckoutModalProps) {
   const [countries, setCountries] = useState<CurrencyOption[]>([]);

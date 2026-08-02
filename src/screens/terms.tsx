@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import Layout from "@/components/layout";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -20,7 +19,6 @@ import {
     Scale,
     Mail,
     Calendar,
-    LucideIcon,
 } from "lucide-react";
 
 // Header SVG Illustration matching the reference style

@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import { XCircle, ArrowLeft, RefreshCw } from 'lucide-react';
 
 /**
@@ -8,9 +7,6 @@ import { XCircle, ArrowLeft, RefreshCw } from 'lucide-react';
  * Stripe redirects here when user clicks "Back" on the Stripe hosted page.
  */
 export default function CheckoutCancelPage() {
-  const params = useSearchParams();
-  const leadId = params.get('lead_id') || '';
-
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
       <div className="bg-white rounded-3xl border border-slate-200 shadow-sm px-10 py-14 max-w-md w-full text-center">

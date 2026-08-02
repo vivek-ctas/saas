@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ShieldCheck, Lock, RefreshCcw, AlertTriangle } from 'lucide-react';
+import { ShieldCheck, RefreshCcw, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { MaintenanceIllustration } from './maintenanceillustration';

@@ -1,11 +1,9 @@
 "use client";
-import React from "react";
 import Layout from "@/components/layout";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { useReveal } from "@/hooks/use-reveal";
 import {
-    Shield,
     Lock,
     User,
     Eye,
@@ -17,10 +15,7 @@ import {
     Calendar,
     Database,
     Users,
-    Compass,
-    FileSpreadsheet,
     Blocks,
-    FileText,
 } from "lucide-react";
 
 // Header SVG Illustration matching the reference style for Privacy Policy

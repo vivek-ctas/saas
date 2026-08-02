@@ -6,12 +6,12 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Layout from "@/components/layout";
 import {
-  ArrowRight, Boxes, RefreshCw, ShoppingCart, Wand2, LayoutGrid,
-  GitMerge, Image as ImageIcon, ShieldCheck, Upload, DollarSign,
-  BarChart3, Sparkles, CheckCircle2, Layers,
+  ArrowRight, Boxes, RefreshCw, Wand2, LayoutGrid,
+  GitMerge, Image as ImageIcon, ShieldCheck, Upload,
+  BarChart3, Sparkles, CheckCircle2,
 } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
-import { AssetLibraryMockup, ServicesHeroMockup, RolesIllustration, InventorySyncSVG, AICatalogSVG, /* RepricerSVG, */ AnalyticsDashboardSVG, SyncSequenceDiagramSVG, SyncFlowDiagram, SyncFlowDiagramV2 } from "@/components/illustrations/servicePageIllustrations";
+import { AssetLibraryMockup, ServicesHeroMockup, RolesIllustration, AICatalogSVG, AnalyticsDashboardSVG, SyncFlowDiagram, SyncFlowDiagramV2 } from "@/components/illustrations/servicePageIllustrations";
 import PageHero from "@/components/pageHero";
 
 
@@ -124,10 +124,10 @@ const Services = () => {
     },
     {
       eyebrow: "Analytics",
-      title: <>Revenue and performance <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">in one dashboard.</span></>,
-      desc: "A centralized dashboard surfaces revenue trends, listing performance and key KPIs - giving you a clear view of business health across every channel, side by side.",
+      title: <>Catalog and performance <span className="bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">in one dashboard.</span></>,
+      desc: "A centralized dashboard surfaces listing quality, catalog health and key KPIs - giving you a clear view of how your products perform across every channel, side by side.",
       bullets: [
-        "Cross-channel revenue and margin",
+        "Cross-channel catalog health",
         "Listing-level performance and conversion",
         "Cohort views by channel and category",
         "Exportable reports for finance",

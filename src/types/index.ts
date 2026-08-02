@@ -182,7 +182,7 @@ export interface ActivationResponse {
 
 // ── Razorpay SDK types ────────────────────────────────────────────────────────
 
-export interface RazorpayDisplayConfig {
+interface RazorpayDisplayConfig {
   hide?: string[];
   preferences?: { show_default_blocks?: boolean };
 }
@@ -207,7 +207,7 @@ export interface RazorpayOptions {
   modal?: { ondismiss?: () => void };
 }
 
-export interface RazorpayHandlerResponse {
+interface RazorpayHandlerResponse {
   razorpay_payment_id: string;
   razorpay_order_id: string;
   razorpay_signature: string;

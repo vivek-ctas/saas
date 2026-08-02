@@ -40,7 +40,7 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
         </defs>
         <rect x="20" y="20" width="720" height="480" rx="24" fill="url(#svh-bg)" stroke="#E2E8F0" />
         <text x="48" y="60" fontFamily="Inter,system-ui" fontSize="13" fontWeight="800" fill="#0f172a">Service Console</text>
-        <text x="48" y="80" fontFamily="Inter,system-ui" fontSize="11" fill="#64748b">12 services, one operator view - every action is auditable.</text>
+        <text x="48" y="80" fontFamily="Inter,system-ui" fontSize="11" fill="#64748b">9 services, one operator view - every action is auditable.</text>
         <rect x="600" y="44" width="118" height="26" rx="13" fill="hsl(199 54% 92%)" />
         <circle cx="614" cy="57" r="4" fill="hsl(199 54% 45%)" />
         <text x="709" y="61" textAnchor="end" fontFamily="Inter,system-ui" fontSize="10" fontWeight="800" fill="hsl(199 54% 30%)">ALL HEALTHY</text>
@@ -48,11 +48,11 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
         {/* Service tiles grid */}
         {[
             { x: 48, y: 110, t: "Inventory Sync", v: "12,840 SKUs", k: "↻ 2s", c: "url(#svh-tile)" },
-            { x: 232, y: 110, t: "Order Routing", v: "847 today", k: "▶ live", c: "url(#svh-tile)" },
-            { x: 416, y: 110, t: "Repricer", v: "Buy Box 92%", k: "AI", c: "url(#svh-tile2)" },
-            { x: 48, y: 230, t: "Analytics", v: "$48.2k GMV", k: "+24%", c: "url(#svh-tile)" },
+            { x: 232, y: 110, t: "Catalog Sync", v: "5M+ products", k: "▶ live", c: "url(#svh-tile)" },
+            { x: 416, y: 110, t: "Product Validation", v: "98.2% pass", k: "AI", c: "url(#svh-tile2)" },
+            { x: 48, y: 230, t: "Products Imported", v: "1.2M this year", k: "+24%", c: "url(#svh-tile)" },
             { x: 232, y: 230, t: "AI Listings", v: "184 generated", k: "AI", c: "url(#svh-tile2)" },
-            { x: 416, y: 230, t: "Logistics", v: "8 carriers", k: "✓", c: "url(#svh-tile)" },
+            { x: 416, y: 230, t: "Bulk Import", v: "12,480 rows", k: "✓", c: "url(#svh-tile)" },
         ].map((tile, i) => (
             <g key={i} filter="url(#svh-shadow)">
                 <rect x={tile.x} y={tile.y} width={168} height={104} rx={16} fill="white" stroke="#E2E8F0" />
@@ -69,9 +69,9 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
             <rect x="48" y="358" width="664" height="124" rx="16" fill="white" stroke="#E2E8F0" />
             <text x="64" y="382" fontFamily="Inter,system-ui" fontSize="11" fontWeight="800" fill="#64748b" letterSpacing="1">LIVE ACTIVITY</text>
             {[
-                { y: 402, t: "Repricer raised SKU-8632 to $24.49", c: "hsl(211 65% 50%)" },
+                { y: 402, t: "AI optimizer refreshed 24 listing titles", c: "hsl(211 65% 50%)" },
                 { y: 424, t: "Inventory synced from Shopify → Amazon (FBM)", c: "hsl(199 54% 50%)" },
-                { y: 446, t: "Order #14829 routed to USA-East warehouse", c: "hsl(211 65% 40%)" },
+                { y: 446, t: "Bulk import validated 12,480 product rows", c: "hsl(211 65% 40%)" },
                 { y: 468, t: "AI listing generator drafted 18 new bullets", c: "hsl(211 65% 55%)" },
             ].map((a, i) => (
                 <g key={i}>
@@ -110,143 +110,6 @@ export const ServicesHeroMockup = (props: SVGProps<SVGSVGElement>) => (
 );
 
 
-export const InventorySyncSVG = (props: SVGProps<SVGSVGElement>) => (
-    <svg viewBox="0 0 700 420" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg" {...props}>
-        <defs>
-
-            <linearGradient id="s-eng" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="#3C9AC4" /><stop offset="100%" stopColor="#13355A" />
-            </linearGradient>
-
-            {/* Navy gradient for center engine */}
-            <linearGradient id="sync-eng-grad" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="#13355A" />
-                <stop offset="100%" stopColor="#13355A" />
-            </linearGradient>
-            {/* Soft background glow behind center */}
-            <radialGradient id="sync-glow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#13355A" stopOpacity="0.18" />
-                <stop offset="100%" stopColor="#13355A" stopOpacity="0" />
-            </radialGradient>
-            {/* Drop shadow filter */}
-            <filter id="sync-shadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="3" stdDeviation="6" floodColor="#00000022" />
-            </filter>
-        </defs>
-
-
-        {/* Glow behind center box */}
-        <circle cx="350" cy="210" r="100" fill="url(#sync-glow)" />
-
-        {/* ── Left channel cards ── */}
-        {/* Amazon */}
-        <g filter="url(#sync-shadow)">
-            <rect x="30" y="60" width="185" height="68" rx="14" fill="white" />
-            <image href="/logos/amazon-color-svgrepo-com.svg" x="48" y="76" width="36" height="36" preserveAspectRatio="xMidYMid meet" />
-            <text x="96" y="91" fontFamily="Inter,system-ui" fontSize="14" fontWeight="700" fill="#0f172a">Amazon</text>
-            <text x="96" y="111" fontFamily="Inter,system-ui" fontSize="12" fill="#64748b">Stock: 1,240</text>
-        </g>
-        {/* Walmart */}
-        <g filter="url(#sync-shadow)">
-            <rect x="30" y="176" width="185" height="68" rx="14" fill="white" />
-            <image href="/logos/walmart.png" x="48" y="192" width="36" height="36" preserveAspectRatio="xMidYMid meet" />
-            <text x="96" y="207" fontFamily="Inter,system-ui" fontSize="14" fontWeight="700" fill="#0f172a">Walmart</text>
-            <text x="96" y="227" fontFamily="Inter,system-ui" fontSize="12" fill="#64748b">Stock: 1,240</text>
-        </g>
-        {/* eBay */}
-        <g filter="url(#sync-shadow)">
-            <rect x="30" y="292" width="185" height="68" rx="14" fill="white" />
-            <image href="/logos/EBay_logo.svg.webp" x="48" y="308" width="36" height="36" preserveAspectRatio="xMidYMid meet" />
-            <text x="96" y="323" fontFamily="Inter,system-ui" fontSize="14" fontWeight="700" fill="#0f172a">eBay</text>
-            <text x="96" y="343" fontFamily="Inter,system-ui" fontSize="12" fill="#64748b">Stock: 1,240</text>
-        </g>
-
-        {/* ── Dashed connecting lines: Left → Center ── */}
-        {/* Amazon → Center */}
-        <path d="M215 94 C 270 94, 285 210, 290 210" stroke="#3C9AC4" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
-            <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.4s" repeatCount="indefinite" />
-        </path>
-        <circle cx="215" cy="94" r="5" fill="#3C9AC4" />
-        <circle cx="290" cy="210" r="5" fill="white" stroke="#3C9AC4" strokeWidth="2" />
-        <circle r="3.5" fill="#3C9AC4" opacity="0.85">
-            <animateMotion dur="2s" repeatCount="indefinite" path="M215 94 C 270 94, 285 210, 290 210" />
-        </circle>
-
-        {/* Walmart → Center */}
-        <path d="M215 210 L290 210" stroke="#3C9AC4" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
-            <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.2s" repeatCount="indefinite" />
-        </path>
-        <circle cx="215" cy="210" r="5" fill="#13355A" />
-        <circle r="3.5" fill="#3C9AC4" opacity="0.85">
-            <animateMotion dur="1.6s" repeatCount="indefinite" path="M215 210 L290 210" />
-        </circle>
-
-        {/* eBay → Center */}
-        <path d="M215 326 C 270 326, 285 210, 290 210" stroke="#3C9AC4" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
-            <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.6s" repeatCount="indefinite" />
-        </path>
-        <circle cx="215" cy="326" r="5" fill="#13355A" />
-        <circle r="3.5" fill="#3C9AC4" opacity="0.85">
-            <animateMotion dur="2.2s" repeatCount="indefinite" path="M215 326 C 270 326, 285 210, 290 210" />
-        </circle>
-
-        {/* ── Center Sync Engine box ── */}
-        <g filter="url(#sync-shadow)">
-            <rect x="290" y="148" width="120" height="124" rx="22" fill="url(#sync-eng-grad)" />
-            {/* Refresh / sync arrows icon */}
-            <g transform="translate(350,185)" fill="none" stroke="white" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                {/* Outer arc top-right */}
-                <path d="M-14 -6 A16 16 0 0 1 14 -6" />
-                <polyline points="14,-6 14,-13 21,-6" fill="white" stroke="none" />
-                {/* Outer arc bottom-left */}
-                <path d="M14 6 A16 16 0 0 1 -14 6" />
-                <polyline points="-14,6 -14,13 -21,6" fill="white" stroke="none" />
-            </g>
-            <text x="350" y="222" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="13" fontWeight="800" fill="white">Sync Engine</text>
-            <text x="350" y="240" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="10.5" fill="#BDD9EE">latency &lt; 2s</text>
-            {/* Small white dot at bottom */}
-            <circle cx="350" cy="258" r="6" fill="white" opacity="0.25" />
-            <circle cx="350" cy="258" r="3" fill="white" />
-        </g>
-
-        {/* ── Dashed connecting lines: Center → Right ── */}
-        {/* Center → Etsy */}
-        <path d="M410 210 C 430 210, 445 94, 485 94" stroke="#3C9AC4" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
-            <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.4s" repeatCount="indefinite" />
-        </path>
-        <circle cx="410" cy="210" r="5" fill="white" stroke="#3C9AC4" strokeWidth="2" />
-        <circle cx="485" cy="94" r="5" fill="#3C9AC4" />
-        <circle r="3.5" fill="#3C9AC4" opacity="0.85">
-            <animateMotion dur="2s" repeatCount="indefinite" path="M410 210 C 430 210, 445 94, 485 94" />
-        </circle>
-
-        {/* Center → Warehouse */}
-        <path d="M410 210 C 430 210, 445 326, 485 326" stroke="#3C9AC4" strokeWidth="1.6" strokeDasharray="5 5" fill="none">
-            <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.6s" repeatCount="indefinite" />
-        </path>
-        <circle r="3.5" fill="#3C9AC4" opacity="0.85">
-            <animateMotion dur="2.2s" repeatCount="indefinite" path="M410 210 C 430 210, 445 326, 485 326" />
-        </circle>
-
-        {/* ── Right channel cards ── */}
-        {/* Etsy */}
-        <g filter="url(#sync-shadow)">
-            <rect x="485" y="60" width="185" height="68" rx="14" fill="white" />
-            <image href="/logos/etsy-svgrepo-com.svg" x="504" y="76" width="36" height="36" preserveAspectRatio="xMidYMid meet" />
-            <text x="552" y="91" fontFamily="Inter,system-ui" fontSize="14" fontWeight="700" fill="#0f172a">Etsy</text>
-            <text x="552" y="111" fontFamily="Inter,system-ui" fontSize="12" fill="#64748b">Stock: 1,240</text>
-        </g>
-        {/* Warehouse */}
-        <g filter="url(#sync-shadow)">
-            <rect x="485" y="292" width="185" height="68" rx="14" fill="white" />
-            <image href="/logos/warehouse-svgrepo-com.svg" x="504" y="308" width="36" height="36" preserveAspectRatio="xMidYMid meet" />
-            <text x="552" y="323" fontFamily="Inter,system-ui" fontSize="14" fontWeight="700" fill="#0f172a">Warehouse</text>
-            <text x="552" y="343" fontFamily="Inter,system-ui" fontSize="12" fill="#64748b">Stock: 1,240</text>
-        </g>
-    </svg>
-);
-
-
 export const SyncFlowDiagramV2 = (props: SVGProps<SVGSVGElement>) => {
 
     const blue = "#13355A";
@@ -262,7 +125,6 @@ export const SyncFlowDiagramV2 = (props: SVGProps<SVGSVGElement>) => {
     const slate900 = "#111827";
     const slateGray = "#6B7280";
     const cardBorder = "#ECEBF3";
-    const pageBg = "#F5F4FA";
 
     const cols = [67, 233, 376, 520, 681];
     const cardW = 130;
@@ -472,288 +334,10 @@ export const SyncFlowDiagramV2 = (props: SVGProps<SVGSVGElement>) => {
     );
 };
 
-export const SyncSequenceDiagramSVG = (props: SVGProps<SVGSVGElement>) => {
-    return (
-        <svg viewBox="0 0 1050 520" fill="none" xmlns="http://www.w3.org/2000/svg"  {...props} fontFamily="-apple-system,Segoe UI,Helvetica Neue,Arial,sans-serif">
-            <defs>
-                <clipPath id="logoClip2"><circle cx="0" cy="0" r="20" /></clipPath>
-                <filter id="boxShadow" x="-30%" y="-30%" width="160%" height="160%">
-                    <feDropShadow dx="0" dy="3" stdDeviation="6" floodColor="#13355A" floodOpacity="0.10" />
-                </filter>
-                <radialGradient id="sd-glow" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="#13355A" stopOpacity="0.15" />
-                    <stop offset="100%" stopColor="#13355A" stopOpacity="0" />
-                </radialGradient>
-            </defs>
-
-
-            <g strokeWidth="2" strokeDasharray="5 4">
-                <line x1="62" y1="128" x2="62" y2="480" stroke="#13355A">
-                    <animate attributeName="strokeDashoffset" values="0;-18" dur="4s" repeatCount="indefinite" />
-                </line>
-                <line x1="277" y1="128" x2="277" y2="480" stroke="#13355A">
-                    <animate attributeName="strokeDashoffset" values="0;-18" dur="4s" repeatCount="indefinite" />
-                </line>
-                <line x1="500" y1="128" x2="500" y2="480" stroke="#3C9AC4">
-                    <animate attributeName="strokeDashoffset" values="0;-18" dur="3.6s" repeatCount="indefinite" />
-                </line>
-                <line x1="617" y1="128" x2="617" y2="480" stroke="#6BC1E0">
-                    <animate attributeName="strokeDashoffset" values="0;-18" dur="3.8s" repeatCount="indefinite" />
-                </line>
-                <line x1="732" y1="128" x2="732" y2="480" stroke="#3C9AC4">
-                    <animate attributeName="strokeDashoffset" values="0;-18" dur="4.2s" repeatCount="indefinite" />
-                </line>
-                <line x1="847" y1="128" x2="847" y2="480" stroke="#6BC1E0">
-                    <animate attributeName="strokeDashoffset" values="0;-18" dur="3.4s" repeatCount="indefinite" />
-                </line>
-                <line x1="965" y1="128" x2="965" y2="480" stroke="#13355A">
-                    <animate attributeName="strokeDashoffset" values="0;-18" dur="4.4s" repeatCount="indefinite" />
-                </line>
-            </g>
-
-
-            <g>
-                <rect x="14" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
-                <g transform="translate(62,48)">
-                    <path d="M-20,4 L0,-14 L20,4 L20,26 L-20,26 Z" fill="#E8F0F6" stroke="#13355A" strokeWidth="2" strokeLinejoin="round" />
-                    <rect x="-6" y="10" width="12" height="16" fill="#13355A" />
-                    <rect x="-15" y="4" width="8" height="8" rx="1.5" fill="#BDD9EE" />
-                </g>
-                <text x="62" y="98" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">Seller /</text>
-                <text x="62" y="114" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">Warehouse</text>
-            </g>
-
-            <g>
-                <rect x="229" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
-                <g transform="translate(277,46)">
-                    <circle r="21" fill="#E8F0F6" />
-                    <path d="M-9,-3 a9,9 0 1 1 1.6,5.8" fill="none" stroke="#13355A" strokeWidth="2.4" strokeLinecap="round" />
-                    <path d="M-10,2.5 l2.6,-6.2 l5.4,3.6 Z" fill="#13355A" />
-                    <path d="M9,3 a9,9 0 1 1 -1.6,-5.8" fill="none" stroke="#13355A" strokeWidth="2.4" strokeLinecap="round" />
-                    <path d="M10,-2.5 l-2.6,6.2 l-5.4,-3.6 Z" fill="#13355A" />
-                </g>
-                <text x="277" y="98" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">SellerBuz</text>
-                <text x="277" y="114" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">Sync Engine</text>
-            </g>
-
-
-
-            <g>
-                <rect x="452" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
-                <g transform="translate(500,48)"><image href="logos/amazon-color-svgrepo-com.svg" x="-25" y="-20" width="50" height="50" clipPath="url(#logoClip2)" /></g>
-                <text x="500" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">Amazon</text>
-            </g>
-
-            <g>
-                <rect x="569" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
-                <g transform="translate(617,48)"><image href="logos/walmart.png" x="-25" y="-20" width="50" height="50" clipPath="url(#logoClip2)" /></g>
-                <text x="617" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">Walmart</text>
-            </g>
-
-            <g>
-                <rect x="684" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
-                <g transform="translate(732,48)"><image href="logos/EBay_logo.svg.webp" x="-25" y="-20" width="50" height="50" clipPath="url(#logoClip2)" /></g>
-                <text x="732" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">eBay</text>
-            </g>
-
-            <g>
-                <rect x="799" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
-                <g transform="translate(847,48)"><image href="logos/etsy-svgrepo-com.svg" x="-25" y="-20" width="50" height="50" clipPath="url(#logoClip2)" /></g>
-                <text x="847" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">Etsy</text>
-            </g>
-
-            <g>
-                <rect x="917" y="12" width="96" height="112" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" filter="url(#boxShadow)" />
-                <g transform="translate(965,48)"><image href="logos/fnac.png" x="-25" y="-20" width="50" height="50" clipPath="url(#logoClip2)" /></g>
-                <text x="965" y="108" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">Fnac</text>
-            </g>
-
-            {/* Glow behind Sync Engine */}
-            <ellipse cx="277" cy="285" rx="60" ry="100" fill="url(#sd-glow)" />
-
-            <rect x="57" y="170" width="10" height="120" rx="5" fill="#13355A">
-                <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" />
-            </rect>
-            <rect x="272" y="170" width="10" height="230" rx="5" fill="#13355A">
-                <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" />
-            </rect>
-            <rect x="495" y="270" width="10" height="80" rx="5" fill="#3C9AC4">
-                <animate attributeName="opacity" values="0.5;1;0.5" dur="2.6s" repeatCount="indefinite" />
-            </rect>
-            <rect x="612" y="270" width="10" height="80" rx="5" fill="#6BC1E0">
-                <animate attributeName="opacity" values="0.5;1;0.5" dur="2.8s" repeatCount="indefinite" />
-            </rect>
-            <rect x="727" y="270" width="10" height="80" rx="5" fill="#3C9AC4">
-                <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" />
-            </rect>
-            <rect x="842" y="270" width="10" height="80" rx="5" fill="#6BC1E0">
-                <animate attributeName="opacity" values="0.5;1;0.5" dur="2.4s" repeatCount="indefinite" />
-            </rect>
-            <rect x="960" y="270" width="10" height="80" rx="5" fill="#13355A">
-                <animate attributeName="opacity" values="0.5;1;0.5" dur="3.2s" repeatCount="indefinite" />
-            </rect>
-
-
-            <text x="168" y="188" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">1. Update Stock / Price</text>
-            <line x1="67" y1="200" x2="270" y2="200" stroke="#13355A" strokeWidth="2" strokeDasharray="8 5" markerEnd="url(#arrowP)">
-                <animate attributeName="strokeDashoffset" values="0;-26" dur="1.4s" repeatCount="indefinite" />
-            </line>
-            <circle r="4" fill="#13355A" opacity="0.9">
-                <animateMotion dur="1.8s" repeatCount="indefinite" path="M67 200 L270 200" />
-            </circle>
-
-
-            <text x="390" y="225" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">3. Send Update to Channels</text>
-            <line x1="282" y1="235" x2="965" y2="235" stroke="#13355A" strokeWidth="2" strokeDasharray="10 6">
-                <animate attributeName="strokeDashoffset" values="0;-32" dur="2s" repeatCount="indefinite" />
-            </line>
-            {/* Moving dots along the horizontal distribution line */}
-            <circle r="4" fill="#3C9AC4" opacity="0.9">
-                <animateMotion dur="1.2s" repeatCount="indefinite" path="M282 235 L500 235" />
-            </circle>
-            <circle r="4" fill="#6BC1E0" opacity="0.9">
-                <animateMotion dur="1.6s" repeatCount="indefinite" path="M282 235 L617 235" />
-            </circle>
-            <circle r="4" fill="#3C9AC4" opacity="0.9">
-                <animateMotion dur="2s" repeatCount="indefinite" path="M282 235 L732 235" />
-            </circle>
-            <circle r="4" fill="#6BC1E0" opacity="0.9">
-                <animateMotion dur="2.3s" repeatCount="indefinite" path="M282 235 L847 235" />
-            </circle>
-            <circle r="4" fill="#13355A" opacity="0.9">
-                <animateMotion dur="2.6s" repeatCount="indefinite" path="M282 235 L965 235" />
-            </circle>
-            {/* Vertical drops to channels */}
-            <line x1="500" y1="235" x2="500" y2="266" stroke="#3C9AC4" strokeWidth="2" strokeDasharray="5 4">
-                <animate attributeName="strokeDashoffset" values="0;-18" dur="1s" repeatCount="indefinite" />
-            </line>
-            <line x1="617" y1="235" x2="617" y2="266" stroke="#6BC1E0" strokeWidth="2" strokeDasharray="5 4">
-                <animate attributeName="strokeDashoffset" values="0;-18" dur="1.2s" repeatCount="indefinite" />
-            </line>
-            <line x1="732" y1="235" x2="732" y2="266" stroke="#3C9AC4" strokeWidth="2" strokeDasharray="5 4">
-                <animate attributeName="strokeDashoffset" values="0;-18" dur="1.4s" repeatCount="indefinite" />
-            </line>
-            <line x1="847" y1="235" x2="847" y2="266" stroke="#6BC1E0" strokeWidth="2" strokeDasharray="5 4">
-                <animate attributeName="strokeDashoffset" values="0;-18" dur="1.1s" repeatCount="indefinite" />
-            </line>
-            <line x1="965" y1="235" x2="965" y2="266" stroke="#13355A" strokeWidth="2" strokeDasharray="5 4">
-                <animate attributeName="strokeDashoffset" values="0;-18" dur="1.3s" repeatCount="indefinite" />
-            </line>
-            {/* Moving dots down the vertical drops */}
-            <circle r="3.5" fill="#3C9AC4" opacity="0.85">
-                <animateMotion dur="0.8s" repeatCount="indefinite" path="M500 235 L500 266" />
-            </circle>
-            <circle r="3.5" fill="#6BC1E0" opacity="0.85">
-                <animateMotion dur="0.9s" repeatCount="indefinite" path="M617 235 L617 266" />
-            </circle>
-            <circle r="3.5" fill="#3C9AC4" opacity="0.85">
-                <animateMotion dur="1s" repeatCount="indefinite" path="M732 235 L732 266" />
-            </circle>
-            <circle r="3.5" fill="#6BC1E0" opacity="0.85">
-                <animateMotion dur="0.85s" repeatCount="indefinite" path="M847 235 L847 266" />
-            </circle>
-            <circle r="3.5" fill="#13355A" opacity="0.85">
-                <animateMotion dur="0.95s" repeatCount="indefinite" path="M965 235 L965 266" />
-            </circle>
-
-
-            <line x1="270" y1="262" x2="67" y2="262" stroke="#13355A" strokeWidth="2" strokeDasharray="8 5">
-                <animate attributeName="strokeDashoffset" values="0;-26" dur="1.6s" repeatCount="indefinite" />
-            </line>
-            <circle r="4" fill="#13355A" opacity="0.9">
-                <animateMotion dur="1.8s" repeatCount="indefinite" path="M270 262 L67 262" />
-            </circle>
-            <text x="168" y="282" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">2. Update Received</text>
-
-
-            <line x1="960" y1="372" x2="852" y2="372" stroke="#13355A" strokeWidth="2" strokeDasharray="8 5">
-                <animate attributeName="strokeDashoffset" values="0;-26" dur="2s" repeatCount="indefinite" />
-            </line>
-            <circle r="4" fill="#13355A" opacity="0.9">
-                <animateMotion dur="1s" repeatCount="indefinite" path="M960 372 L852 372" />
-            </circle>
-            <line x1="842" y1="372" x2="737" y2="372" stroke="#6BC1E0" strokeWidth="2" strokeDasharray="8 5">
-                <animate attributeName="strokeDashoffset" values="0;-26" dur="1.8s" repeatCount="indefinite" />
-            </line>
-            <circle r="4" fill="#6BC1E0" opacity="0.9">
-                <animateMotion dur="1.1s" repeatCount="indefinite" path="M842 372 L737 372" />
-            </circle>
-            <line x1="727" y1="372" x2="622" y2="372" stroke="#3C9AC4" strokeWidth="2" strokeDasharray="8 5">
-                <animate attributeName="strokeDashoffset" values="0;-26" dur="1.6s" repeatCount="indefinite" />
-            </line>
-            <circle r="4" fill="#3C9AC4" opacity="0.9">
-                <animateMotion dur="1.2s" repeatCount="indefinite" path="M727 372 L622 372" />
-            </circle>
-            <line x1="612" y1="372" x2="505" y2="372" stroke="#6BC1E0" strokeWidth="2" strokeDasharray="8 5">
-                <animate attributeName="strokeDashoffset" values="0;-26" dur="1.4s" repeatCount="indefinite" />
-            </line>
-            <circle r="4" fill="#6BC1E0" opacity="0.9">
-                <animateMotion dur="1.3s" repeatCount="indefinite" path="M612 372 L505 372" />
-            </circle>
-            <line x1="495" y1="372" x2="284" y2="372" stroke="#3C9AC4" strokeWidth="2" strokeDasharray="8 5">
-                <animate attributeName="strokeDashoffset" values="0;-26" dur="1.2s" repeatCount="indefinite" />
-            </line>
-            <circle r="4" fill="#3C9AC4" opacity="0.9">
-                <animateMotion dur="1.4s" repeatCount="indefinite" path="M495 372 L284 372" />
-            </circle>
-            <text x="390" y="397" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">4. Acknowledgement</text>
-
-
-            <line x1="270" y1="437" x2="67" y2="437" stroke="#13355A" strokeWidth="2" strokeDasharray="8 5">
-                <animate attributeName="strokeDashoffset" values="0;-26" dur="1.4s" repeatCount="indefinite" />
-            </line>
-            <circle r="4" fill="#13355A" opacity="0.9">
-                <animateMotion dur="1.6s" repeatCount="indefinite" path="M270 437 L67 437" />
-            </circle>
-            <text x="168" y="470" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0F263F">5. All Channels Updated</text>
-
-
-            <g fontSize="12.5" fontWeight="700" fill="#0F263F">
-                <circle cx="500" cy="453" r="17" fill="#FFFFFF" stroke="#3C9AC4" strokeWidth="2">
-                    <animate attributeName="r" values="17;19;17" dur="2.4s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="1;0.8;1" dur="2.4s" repeatCount="indefinite" />
-                </circle>
-                <path d="M492,453 l6,6 l11,-13" fill="none" stroke="#3C9AC4" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-                <text x="500" y="491" textAnchor="middle">Updated</text>
-
-                <circle cx="617" cy="453" r="17" fill="#FFFFFF" stroke="#6BC1E0" strokeWidth="2">
-                    <animate attributeName="r" values="17;19;17" dur="2.6s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="1;0.8;1" dur="2.6s" repeatCount="indefinite" />
-                </circle>
-                <path d="M609,453 l6,6 l11,-13" fill="none" stroke="#6BC1E0" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-                <text x="617" y="491" textAnchor="middle">Updated</text>
-
-                <circle cx="732" cy="453" r="17" fill="#FFFFFF" stroke="#3C9AC4" strokeWidth="2">
-                    <animate attributeName="r" values="17;19;17" dur="2.8s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="1;0.8;1" dur="2.8s" repeatCount="indefinite" />
-                </circle>
-                <path d="M724,453 l6,6 l11,-13" fill="none" stroke="#3C9AC4" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-                <text x="732" y="491" textAnchor="middle">Updated</text>
-
-                <circle cx="847" cy="453" r="17" fill="#FFFFFF" stroke="#6BC1E0" strokeWidth="2">
-                    <animate attributeName="r" values="17;19;17" dur="2.2s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="1;0.8;1" dur="2.2s" repeatCount="indefinite" />
-                </circle>
-                <path d="M839,453 l6,6 l11,-13" fill="none" stroke="#6BC1E0" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-                <text x="847" y="491" textAnchor="middle">Updated</text>
-
-                <circle cx="965" cy="453" r="17" fill="#FFFFFF" stroke="#13355A" strokeWidth="2">
-                    <animate attributeName="r" values="17;19;17" dur="3s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="1;0.8;1" dur="3s" repeatCount="indefinite" />
-                </circle>
-                <path d="M957,453 l6,6 l11,-13" fill="none" stroke="#13355A" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-                <text x="965" y="491" textAnchor="middle">Updated</text>
-            </g>
-
-        </svg>
-    )
-}
-
 
 export const SyncFlowDiagram = (props: SVGProps<SVGSVGElement>) => {
 
     const blue = "#13355A";
-    const blueDark = "#13355A";
     const blueSoft = "#E8F0F6";
     const blueBorder = "#BDD9EE";
     const blueText = "#13355A";
@@ -1029,7 +613,6 @@ export const AICatalogSVG = (props: SVGProps<SVGSVGElement>) => (
 );
 
 
-
 export const AnalyticsDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
 
     const DATES = ["May 12", "May 16", "May 20", "May 24", "May 28", "Jun 01", "Jun 05", "Jun 09"];
@@ -1043,8 +626,8 @@ export const AnalyticsDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
     const CHART_TOP = 96;
     const CHART_BOTTOM = 260;
 
-    const REVENUE_TICKS = ["0", "20K", "40K", "60K", "80K", "100K"];
-    const ORDERS_TICKS = ["0", "2K", "4K", "6K", "8K", "10K"];
+    const REVENUE_TICKS = ["0", "2K", "4K", "6K", "8K", "10K"];
+    const ORDERS_TICKS = ["0", "400", "800", "1.2K", "1.6K", "2K"];
 
     function pointsFor(values: number[]) {
         const n = values.length;
@@ -1067,7 +650,7 @@ export const AnalyticsDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
             <rect x="10" y="10" width="620" height="300" rx="16" fill="white" stroke="#E2E8F0" />
 
             {/* Title + info icon */}
-            <text x="34" y="42" fontSize="17" fontWeight="800" fill="#0F172A">Revenue Over Time</text>
+            <text x="34" y="42" fontSize="17" fontWeight="800" fill="#0F172A">Catalog Performance</text>
             <circle cx="210" cy="36" r="8" fill="none" stroke="#94A3B8" strokeWidth="1.4" />
             <text x="210" y="40" textAnchor="middle" fontSize="10" fontWeight="700" fill="#94A3B8">i</text>
 
@@ -1079,9 +662,9 @@ export const AnalyticsDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
             {/* Legend */}
             <line x1="34" y1="68" x2="58" y2="68" stroke="#13355A" strokeWidth="3" strokeLinecap="round" />
             <circle cx="46" cy="68" r="3.4" fill="#13355A" />
-            <text x="66" y="72" fontSize="13" fontWeight="600" fill="#334155">Revenue</text>
+            <text x="66" y="72" fontSize="13" fontWeight="600" fill="#334155">Live Listings</text>
             <line x1="140" y1="68" x2="164" y2="68" stroke="#3C9AC4" strokeWidth="2" strokeDasharray="4 3" />
-            <text x="172" y="72" fontSize="13" fontWeight="600" fill="#334155">Orders</text>
+            <text x="172" y="72" fontSize="13" fontWeight="600" fill="#334155">Imported</text>
 
             {/* Gridlines + left/right axis labels */}
             {REVENUE_TICKS.map((label, i) => {
@@ -1105,7 +688,7 @@ export const AnalyticsDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
                 fill="#94A3B8"
                 transform={`rotate(-90 18 ${(CHART_TOP + CHART_BOTTOM) / 2})`}
             >
-                Revenue (USD)
+                Live Listings
             </text>
             <text
                 x="632"
@@ -1116,9 +699,8 @@ export const AnalyticsDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
                 fill="#94A3B8"
                 transform={`rotate(90 632 ${(CHART_TOP + CHART_BOTTOM) / 2})`}
             >
-                Orders
+                Imported Products
             </text>
-
             {/* Orders line (dashed, hollow markers) */}
             <polyline fill="none" stroke="#3C9AC4" strokeWidth="1.8" strokeDasharray="5 4" points={ordersPolyline}>
                 <animate attributeName="stroke-dashoffset" values="0;-18" dur="2s" repeatCount="indefinite" />
@@ -1148,7 +730,6 @@ export const AnalyticsDashboardSVG = (props: SVGProps<SVGSVGElement>) => {
         </svg>
     );
 };
-
 
 
 /* ------------------------------------------------------------------ */
@@ -1763,23 +1344,13 @@ export const RolesIllustration = (props: SVGProps<SVGSVGElement>) => {
         },
     ];
 
-    const DotCluster = ({ x, y, color }: { x: number; y: number; color: string }) => (
-        <g fill={color}>
-            {Array.from({ length: 5 }).map((_, row) =>
-                Array.from({ length: 6 }).map((_, col) => (
-                    <circle key={`${row}-${col}`} cx={x + col * 16} cy={y + row * 16} r="2.4" opacity={0.15 + (row + col) * 0.02} />
-                ))
-            )}
-        </g>
-    );
-
     return (
         <svg viewBox="0 0 1000 720" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
             <defs>
                 <pattern id="dot-grid" width="24" height="24" patternUnits="userSpaceOnUse">
                     <circle cx="1.5" cy="1.5" r="1.2" fill="#DCE1F0" />
                 </pattern>
-                {ROLES.map((r, i) => (
+                {ROLES.map((_, i) => (
                     <clipPath id={`card-clip-${i}`} key={i}>
                         <rect
                             x={START_X + i * (CARD_W + GAP)}
@@ -1898,165 +1469,3 @@ export const RolesIllustration = (props: SVGProps<SVGSVGElement>) => {
     )
 };
 
-
-export const RepricerSVG = (props: SVGProps<SVGSVGElement>) => {
-    const ICONS: Record<string, JSX.Element> = {
-        tag: (
-            <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12.5 3.5H19a1.5 1.5 0 011.5 1.5v6.5a1.5 1.5 0 01-.44 1.06l-8 8a1.5 1.5 0 01-2.12 0l-6.5-6.5a1.5 1.5 0 010-2.12l8-8a1.5 1.5 0 011.06-.44z" />
-                <circle cx="16.5" cy="7.5" r="1.4" fill="currentColor" stroke="none" />
-            </g>
-        ),
-        trophy: (
-            <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M7 4h10v6a5 5 0 01-10 0V4z" />
-                <path d="M7 5.5H4a3 3 0 003 4.3M17 5.5h3a3 3 0 01-3 4.3" />
-                <path d="M12 15v3M8.5 21h7M9.5 18h5v3h-5z" />
-            </g>
-        ),
-        trendUp: (
-            <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M3 16l6-6 4 4 8-9" />
-                <path d="M16 6H21V11" />
-            </g>
-        ),
-    };
-
-    const Icon = ({ name, size = 22 }: { name: string; size?: number | string }) => (
-        <svg width={size} height={size} viewBox="0 0 24 24">
-            {ICONS[name]}
-        </svg>
-    );
-
-    const KPIS = [
-        { x: 50, icon: "tag", iconBg: "#E8F0F6", iconColor: "#13355A", label: "PRICE", value: "$21.40", delta: "+$0.30" },
-        { x: 355, icon: "trophy", iconBg: "#D4E5F2", iconColor: "#13355A", label: "BUY BOX WINNER", value: "82%", delta: "+9%" },
-        { x: 660, icon: "trendUp", iconBg: "#E8F0F6", iconColor: "#3C9AC4", label: "MARGIN", value: "31.6%", delta: "+3.6%" },
-    ];
-    const KPI_W = 290;
-    const KPI_Y = 160;
-    const KPI_H = 130;
-
-    const DATES = ["May 12", "May 16", "May 20", "May 24", "May 28", "Jun 01", "Jun 05", "Jun 09"];
-    const YOUR_PRICE = [0.34, 0.31, 0.38, 0.44, 0.35, 0.5, 0.47, 0.56, 0.53, 0.58];
-    const COMP_PRICE = [0.24, 0.22, 0.28, 0.33, 0.26, 0.38, 0.36, 0.42, 0.4, 0.46];
-
-    const CHART_X0 = 90;
-    const CHART_X1 = 890;
-    const CHART_TOP = 380;
-    const CHART_BOTTOM = 500;
-    const FLOOR_Y = 470;
-
-    function pointsFor(values: number[]) {
-        const n = values.length;
-        return values
-            .map((v, i) => {
-                const x = CHART_X0 + (i / (n - 1)) * (CHART_X1 - CHART_X0);
-                const y = CHART_BOTTOM - v * (CHART_BOTTOM - CHART_TOP);
-                return `${x},${y}`;
-            })
-            .join(" ");
-    }
-    const yourPts = pointsFor(YOUR_PRICE);
-    const compPts = pointsFor(COMP_PRICE);
-    const highlightIdx = 6;
-    const hx = CHART_X0 + (highlightIdx / (YOUR_PRICE.length - 1)) * (CHART_X1 - CHART_X0);
-    const hy = CHART_BOTTOM - YOUR_PRICE[highlightIdx] * (CHART_BOTTOM - CHART_TOP);
-
-    return (
-        <svg viewBox="0 0 1000 570" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-            {/* Main card */}
-            <rect x="30" y="30" width="940" height="510" rx="20" fill="white" stroke="#E7E9F3" />
-
-            {/* Title + subtitle */}
-            <text x="50" y="100" fontSize="24" fontWeight="800" fill="#0F172A">Repricer · SKU-42891</text>
-            <text x="50" y="130" fontSize="15" fill="#64748B">Buy Box tracking · rule-based · guardrails on</text>
-
-            {/* Buy Box WON pill */}
-            <rect x="800" y="80" width="150" height="38" rx="19" fill="#E8F0F6" />
-            <circle cx="820" cy="100" r="5" fill="#3C9AC4">
-                <animate attributeName="r" values="5;6.5;5" dur="2s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite" />
-            </circle>
-            <text x="834" y="105" fontSize="14" fontWeight="700" fill="#13355A">Buy Box · WON</text>
-
-            {/* KPI cards */}
-            {KPIS.map((k) => (
-                <g key={k.label}>
-                    <rect x={k.x} y={KPI_Y} width={KPI_W} height={KPI_H} rx="16" fill="white" stroke="#ECEFF7" />
-                    <circle cx={k.x + 48} cy={KPI_Y + 55} r="26" fill={k.iconBg} />
-                    <g transform={`translate(${k.x + 37},${KPI_Y + 44})`} color={k.iconColor}>
-                        <Icon name={k.icon} size="22" />
-                    </g>
-                    <text x={k.x + 92} y={KPI_Y + 44} fontSize="13" fontWeight="700" fill="#64748B" letterSpacing="0.6">
-                        {k.label}
-                    </text>
-                    <text x={k.x + 92} y={KPI_Y + 82} fontSize="30" fontWeight="800" fill="#0F172A">
-                        {k.value}
-                    </text>
-                    <path d={`M${k.x + 33} ${KPI_Y + 107} l5 -8 l5 8 z`} fill="#3C9AC4" />
-                    <text x={k.x + 46} y={KPI_Y + 108} fontSize="14" fontWeight="700" fill="#3C9AC4">{k.delta}</text>
-                </g>
-            ))}
-
-            {/* Chart card */}
-            < rect x="50" y="310" width="900" height="210" rx="16" fill="white" stroke="#ECEFF7" />
-
-            {/* Legend */}
-            < line x1="80" y1="346" x2="115" y2="346" stroke="#13355A" strokeWidth="3" strokeLinecap="round" />
-            <text x="124" y="351" fontSize="14" fill="#0F172A">Your Price</text>
-            <line x1="242" y1="346" x2="277" y2="346" stroke="#9BC7E0" strokeWidth="2.4" strokeDasharray="5 4" strokeLinecap="round" />
-            <text x="286" y="351" fontSize="14" fill="#0F172A">Competitor Price</text>
-
-            {/* Gridlines under each date */}
-            {
-                DATES.map((_, i) => {
-                    const x = CHART_X0 + (i / (DATES.length - 1)) * (CHART_X1 - CHART_X0);
-                    return <line key={i} x1={x} y1={CHART_TOP - 10} x2={x} y2={CHART_BOTTOM + 10} stroke="#F1F5F9" strokeWidth="1" />;
-                })
-            }
-
-            {/* Competitor line - animated dashes */}
-            < polyline fill="none" stroke="#9BC7E0" strokeWidth="2.4" strokeDasharray="6 5" points={compPts} >
-                <animate attributeName="stroke-dashoffset" values="0;-22" dur="2.4s" repeatCount="indefinite" />
-            </polyline>
-
-            {/* Your price line */}
-            <polyline fill="none" stroke="#13355A" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" points={yourPts} />
-
-            {/* Moving dot along your price line */}
-            <circle r="3.5" fill="#13355A" opacity="0.9">
-                <animateMotion dur="4s" repeatCount="indefinite"
-                    path={YOUR_PRICE.map((v, i) => {
-                        const n = YOUR_PRICE.length;
-                        const x = CHART_X0 + (i / (n - 1)) * (CHART_X1 - CHART_X0);
-                        const y = CHART_BOTTOM - v * (CHART_BOTTOM - CHART_TOP);
-                        return `${i === 0 ? 'M' : 'L'}${x.toFixed(1)} ${y.toFixed(1)}`;
-                    }).join(' ')} />
-            </circle>
-
-            {/* Highlighted point - pulse ring */}
-            <circle cx={hx} cy={hy} r="9" fill="#BDD9EE" opacity="0.6">
-                <animate attributeName="r" values="9;13;9" dur="2.4s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.6;0.15;0.6" dur="2.4s" repeatCount="indefinite" />
-            </circle>
-            <circle cx={hx} cy={hy} r="5" fill="#13355A" stroke="white" strokeWidth="1.5" />
-
-            {/* Floor line */}
-            <line x1={CHART_X0 - 10} y1={FLOOR_Y} x2={CHART_X1 + 10} y2={FLOOR_Y} stroke="#3C9AC4" strokeWidth="1.6" strokeDasharray="6 5" />
-            <text x={CHART_X1 + 10} y={FLOOR_Y - 8} textAnchor="end" fontSize="13" fontWeight="700" fill="#13355A">Floor $18.50</text>
-
-            {/* X axis labels */}
-            {
-                DATES.map((d, i) => {
-                    const x = CHART_X0 + (i / (DATES.length - 1)) * (CHART_X1 - CHART_X0);
-                    return (
-                        <text key={d} x={x} y={FLOOR_Y + 40} textAnchor="middle" fontSize="14" fill="#94A3B8">
-                            {d}
-                        </text>
-                    );
-                })
-            }
-        </svg >
-    );
-};

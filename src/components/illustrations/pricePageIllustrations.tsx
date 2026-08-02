@@ -1,7 +1,7 @@
 import { SVGProps } from "react";
 
 /* ------------------------------------------------------------------ */
-/* PricingCalculatorMockup – seller-facing ROI / margin calc            */
+/* PricingCalculatorMockup – catalog plan estimator                    */
 /* ------------------------------------------------------------------ */
 export const PricingCalculatorMockup = (props: SVGProps<SVGSVGElement>) => {
 
@@ -42,12 +42,6 @@ export const PricingCalculatorMockup = (props: SVGProps<SVGSVGElement>) => {
                 <path d="M12 3.5v8.5h8.5A8.5 8.5 0 1112 3.5z" />
             </g>
         ),
-        dollar: (
-            <g fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2v20" />
-                <path d="M16.5 6.5c0-1.9-2-3-4.5-3s-4.5 1.1-4.5 3 2 2.6 4.5 3 4.5 1.1 4.5 3-2 3-4.5 3-4.5-1.1-4.5-3" />
-            </g>
-        ),
         barChart: (
             <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                 <path d="M5 19v-6M11 19V6M17 19v-9" />
@@ -70,9 +64,9 @@ export const PricingCalculatorMockup = (props: SVGProps<SVGSVGElement>) => {
 
     const FIELDS = [
         { icon: "shop", label: "Marketplace", value: "5" },
-        { icon: "cart", label: "Monthly orders", value: "12,400" },
-        { icon: "cube", label: "Avg. order value", value: "$48.20" },
-        { icon: "pieChart", label: "Current margin", value: "18%" },
+        { icon: "cart", label: "Products", value: "12,400" },
+        { icon: "cube", label: "Catalog SKUs", value: "48,200" },
+        { icon: "pieChart", label: "Avg. listing time", value: "18 min" },
     ];
 
     const FIELD_TOP = 156;
@@ -81,7 +75,6 @@ export const PricingCalculatorMockup = (props: SVGProps<SVGSVGElement>) => {
     const indigo = "#3C9AC4";
     const indigoDark = "#13355A";
     const indigoSoft = "#E8F0F6";
-    const green = "hsl(150 70% 40%)";
     const slate900 = "#0f172a";
     const slate500 = "#64748b";
     const slate400 = "#94a3b8";
@@ -123,8 +116,8 @@ export const PricingCalculatorMockup = (props: SVGProps<SVGSVGElement>) => {
                 <animate attributeName="r" values="3;10;3" dur="2.4s" repeatCount="indefinite" />
                 <animate attributeName="opacity" values="1;0;1" dur="2.4s" repeatCount="indefinite" />
             </circle>
-            <text x="120" y="72" fontFamily="Inter,system-ui" fontSize="20" fontWeight="800" fill={slate900}>ROI calculator · projected impact</text>
-            <text x="120" y="94" fontFamily="Inter,system-ui" fontSize="13" fill={slate500}>Based on your channels, SKUs and average order value.</text>
+            <text x="120" y="72" fontFamily="Inter,system-ui" fontSize="20" fontWeight="800" fill={slate900}>Catalog estimator · projected impact</text>
+            <text x="120" y="94" fontFamily="Inter,system-ui" fontSize="13" fill={slate500}>Based on your catalog size and sales channels.</text>
 
             {/* Left inputs panel */}
             <rect x="44" y="130" width="360" height="400" rx="20" fill="#FBFBFD" stroke={border} />
@@ -150,24 +143,24 @@ export const PricingCalculatorMockup = (props: SVGProps<SVGSVGElement>) => {
             <text x="230" y="465" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="15" fontWeight="700" fill="white">Recalculate →</text>
 
             {/* Right output cards */}
-            {/* Card 1: Projected margin */}
+            {/* Card 1: Listings generated */}
             <rect x="424" y="130" width="372" height="130" rx="18" fill={indigoSoft} stroke={border} />
             <circle cx="470" cy="195" r="30" fill="none" stroke={border} strokeWidth="1.5" strokeDasharray="3 4">
                 <animate attributeName="stroke-dashoffset" values="0;-14" dur="2s" repeatCount="indefinite" />
             </circle>
             <circle cx="470" cy="195" r="21" fill="white" />
             <g transform="translate(459,184)" color={indigo}>
-                <Icon name="dollar" size="22" />
+                <Icon name="cube" size="22" />
             </g>
-            <text x="516" y="176" fontFamily="Inter,system-ui" fontSize="12" fontWeight="800" fill={indigo} letterSpacing="0.6">PROJECTED MARGIN</text>
-            <text x="516" y="216" fontFamily="Inter,system-ui" fontSize="34" fontWeight="800" fill={indigoDark}>+9.4%</text>
-            <text x="700" y="216" fontFamily="Inter,system-ui" fontSize="12" fill={slate500}>in 90 days</text>
+            <text x="516" y="176" fontFamily="Inter,system-ui" fontSize="12" fontWeight="800" fill={indigo} letterSpacing="0.6">LISTINGS GENERATED</text>
+            <text x="516" y="216" fontFamily="Inter,system-ui" fontSize="34" fontWeight="800" fill={indigoDark}>12.4K</text>
+            <text x="700" y="216" fontFamily="Inter,system-ui" fontSize="12" fill={slate500}>this month</text>
             <path d="M424 248 Q 520 226 620 246 T 796 240" fill="none" stroke={border} strokeWidth="2" />
             <circle cx="796" cy="240" r="4" fill={indigo}>
                 <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite" />
             </circle>
 
-            {/* Card 2: Extra revenue */}
+            {/* Card 2: Validation pass */}
             <rect x="424" y="272" width="372" height="130" rx="18" fill="#E8F0F6" stroke={border} />
             <circle cx="470" cy="337" r="30" fill="none" stroke={border} strokeWidth="1.5" strokeDasharray="3 4">
                 <animate attributeName="stroke-dashoffset" values="0;-14" dur="2.2s" repeatCount="indefinite" />
@@ -176,9 +169,9 @@ export const PricingCalculatorMockup = (props: SVGProps<SVGSVGElement>) => {
             <g transform="translate(459,326)" color="#3C9AC4">
                 <Icon name="barChart" size="22" />
             </g>
-            <text x="516" y="318" fontFamily="Inter,system-ui" fontSize="12" fontWeight="800" fill="#3C9AC4" letterSpacing="0.6">EXTRA REVENUE</text>
-            <text x="516" y="358" fontFamily="Inter,system-ui" fontSize="34" fontWeight="800" fill="#13355A">$54.8k</text>
-            <text x="700" y="358" fontFamily="Inter,system-ui" fontSize="12" fill={slate500}>/ month</text>
+            <text x="516" y="318" fontFamily="Inter,system-ui" fontSize="12" fontWeight="800" fill="#3C9AC4" letterSpacing="0.6">VALIDATION PASS</text>
+            <text x="516" y="358" fontFamily="Inter,system-ui" fontSize="34" fontWeight="800" fill="#13355A">98.2%</text>
+            <text x="700" y="358" fontFamily="Inter,system-ui" fontSize="12" fill={slate500}>pass rate</text>
             <path d="M424 390 Q 520 368 620 388 T 796 382" fill="none" stroke={border} strokeWidth="2" />
             <circle cx="796" cy="382" r="4" fill="#3C9AC4">
                 <animate attributeName="r" values="4;6;4" dur="2.2s" repeatCount="indefinite" />
@@ -193,9 +186,9 @@ export const PricingCalculatorMockup = (props: SVGProps<SVGSVGElement>) => {
             <g transform="translate(459,461)" color="#6BC1E0">
                 <Icon name="calendar" size="22" />
             </g>
-            <text x="516" y="454" fontFamily="Inter,system-ui" fontSize="12" fontWeight="800" fill="#6BC1E0" letterSpacing="0.6">PAYBACK PERIOD</text>
-            <text x="516" y="492" fontFamily="Inter,system-ui" fontSize="28" fontWeight="800" fill="white">18 days</text>
-            <text x="672" y="492" fontFamily="Inter,system-ui" fontSize="12" fill={slate400}>to break even</text>
+            <text x="516" y="454" fontFamily="Inter,system-ui" fontSize="12" fontWeight="800" fill="#6BC1E0" letterSpacing="0.6">HOURS SAVED</text>
+            <text x="516" y="492" fontFamily="Inter,system-ui" fontSize="28" fontWeight="800" fill="white">320h</text>
+            <text x="672" y="492" fontFamily="Inter,system-ui" fontSize="12" fill={slate400}>per month</text>
             <path d="M424 522 Q 520 505 620 520 T 796 515" fill="none" stroke="#3B3A66" strokeWidth="2" />
 
             {/* Continuous diagonal shine sweep */}
@@ -264,11 +257,15 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => {
                 <path d="M15 5h6v6" />
             </g>
         ),
-        dollar: (
-            <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2v20" />
-                <path d="M16.5 6.5c0-1.9-2-3-4.5-3s-4.5 1.1-4.5 3 2 2.6 4.5 3 4.5 1.1 4.5 3-2 3-4.5 3-4.5-1.1-4.5-3" />
-            </g>
+        cube: (
+            <path
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 3.5l7.5 4.3v8.4L12 20.5l-7.5-4.3V7.8L12 3.5zM4.5 7.8L12 12l7.5-4.2M12 12v8.5"
+            />
         ),
         cart: (
             <g fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -302,9 +299,9 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => {
             accent: indigo,
             tint: indigoSoft,
             iconBg: indigoSoft,
-            icon: Icon.dollar,
-            label: "GMV",
-            value: "$12.4M",
+            icon: Icon.cube,
+            label: "Products",
+            value: "5M+",
             valueColor: slate900,
             delta: "18.6%",
             deltaColor: indigo,
@@ -315,7 +312,7 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => {
             tint: "#E8F0F6",
             iconBg: "#E8F0F6",
             icon: Icon.cart,
-            label: "Orders",
+            label: "Live Listings",
             value: "84,210",
             valueColor: slate900,
             delta: "14.3%",
@@ -327,8 +324,8 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => {
             tint: "#ECFDF5",
             iconBg: "#D1FAE5",
             icon: Icon.trendUp,
-            label: "ROAS",
-            value: "4.8×",
+            label: "Validation Pass",
+            value: "98.2%",
             valueColor: slate900,
             delta: "22.1%",
             deltaColor: "#10B981",
@@ -341,7 +338,6 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => {
 
     const CHART_X = 30;
     const CHART_W = 660;
-    const CHART_TOP = 355;
     const BASE_Y = 590;
     const MAX_H = 190;
     const GROUP_W = (CHART_W - 40) / DATES.length;
@@ -377,8 +373,8 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => {
             <text x="635" y="95" textAnchor="middle" fontFamily="Inter,system-ui" fontSize="15" fontWeight="800" fill={indigo} opacity="0.7">AI</text>
 
             {/* Title + subtitle */}
-            <text x="30" y="104" fontFamily="Inter,system-ui" fontSize="25" fontWeight="800" fill={slate900}>Performance Insights</text>
-            <text x="30" y="130" fontFamily="Inter,system-ui" fontSize="14" fill={slate500}>Track your business performance with AI-powered analytics</text>
+            <text x="30" y="104" fontFamily="Inter,system-ui" fontSize="25" fontWeight="800" fill={slate900}>Catalog Insights</text>
+            <text x="30" y="130" fontFamily="Inter,system-ui" fontSize="14" fill={slate500}>Track your catalog performance with AI-powered analytics</text>
 
             {/* KPI cards */}
             {KPIS.map((k, i) => (
@@ -403,9 +399,9 @@ export const AnalyticsIllustration = (props: SVGProps<SVGSVGElement>) => {
 
             {/* Legend */}
             <circle cx="50" cy="322" r="5" fill={indigo} />
-            <text x="62" y="326" fontFamily="Inter,system-ui" fontSize="12" fontWeight="600" fill="#334155">BigQuery</text>
+            <text x="62" y="326" fontFamily="Inter,system-ui" fontSize="12" fontWeight="600" fill="#334155">Amazon</text>
             <circle cx="146" cy="322" r="5" fill="#3C9AC4" />
-            <text x="158" y="326" fontFamily="Inter,system-ui" fontSize="12" fontWeight="600" fill="#334155">Power BI</text>
+            <text x="158" y="326" fontFamily="Inter,system-ui" fontSize="12" fontWeight="600" fill="#334155">Shopify</text>
 
             {/* Date range pill */}
             <rect x="565" y="308" width="110" height="30" rx="15" fill="white" stroke={border} />

@@ -9,17 +9,6 @@ export interface ContactFormPayload {
   message: string;
 }
 
-// ── Company contact info returned by backend (legacy) ────────────────────
-
-export interface CompanyContact {
-  email: string;
-  phone: string;
-  address: string;
-  postal_code: string;
-  support_hours: string;
-  email_hours: string;
-}
-
 // ── Full company settings returned by GET /v1/web-settings ─────────────
 
 export interface WebSettingsData {
@@ -62,9 +51,4 @@ export interface WebSettingsData {
 export interface ContactSubmitResponse {
   status: number;
   message: string;
-}
-
-export interface CompanyContactResponse {
-  status: number;
-  data: CompanyContact;
 }

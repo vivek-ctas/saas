@@ -34,7 +34,7 @@ const pricingJsonLd = {
       price: "79",
       priceCurrency: "USD",
       priceSpecification: { "@type": "UnitPriceSpecification", price: "79", priceCurrency: "USD", unitCode: "MON" },
-      description: "For growing businesses. 10 connections, 25,000 listings, real-time sync, AI repricer, advanced analytics.",
+      description: "For growing businesses. 10 connections, 25,000 listings, real-time sync, AI listing tools, advanced analytics.",
       url: `${SITE_URL}/pricing`,
     },
     {

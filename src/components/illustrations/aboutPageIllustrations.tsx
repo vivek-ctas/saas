@@ -66,7 +66,7 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
                 {[
                     { l: "Sellers", v: "50K+" },
                     { l: "Countries", v: "150+" },
-                    { l: "GMV", v: "$300M" },
+                    { l: "Products", v: "5M+" },
                 ].map((s, i) => (
                     <g key={i} transform={`translate(${i * 90}, 0)`}>
                         <text x="0" y="0" fontFamily="Inter,system-ui" fontSize="20" fontWeight="800" fill="#0f172a">{s.v}</text>
@@ -95,7 +95,7 @@ export const AboutJourneyMockup = (props: SVGProps<SVGSVGElement>) => (
                 { y: 100, year: "2019", t: "Founded in Ahmedabad", c: "#3C9AC4" },
                 { y: 170, year: "2021", t: "Series A · $12M raised", c: "#13355A" },
                 { y: 240, year: "2023", t: "Crossed 50 countries", c: "#3C9AC4" },
-                { y: 310, year: "2024", t: "AI Repricer launched", c: "#13355A" },
+                { y: 310, year: "2024", t: "AI Catalog launched", c: "#13355A" },
                 { y: 380, year: "2026", t: "100K-seller goal", c: "#13355A" },
             ].map((m, i, arr) => (
                 <g key={i}>
@@ -235,9 +235,9 @@ export const NeuralIllustration = (props: SVGProps<SVGSVGElement>) => {
     ];
 
     const OUTPUTS = [
-        { icon: "trendUp", label: ["Smart", "Pricing"] },
-        { icon: "barChart", label: ["Demand", "Forecast"] },
-        { icon: "cube", label: ["Inventory", "Planning"] },
+        { icon: "tag", label: ["SEO", "Titles"] },
+        { icon: "barChart", label: ["Listing", "Bullets"] },
+        { icon: "target", label: ["Validation", "Checks"] },
     ];
 
     const IN_X = 30;
