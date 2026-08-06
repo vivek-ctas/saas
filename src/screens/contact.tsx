@@ -497,7 +497,7 @@ const Contact = () => {
                 <div className="w-full h-64 sm:h-80 lg:h-full min-h-[280px] rounded-2xl overflow-hidden border border-[#EAECF3] shadow-sm">
                   <iframe
                     title="SellerBuz Headquarters Map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.0780!2d72.5414!3d23.0925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b5c5cbf!2sGota%2C%20Ahmedabad%2C%20Gujarat%20382481!5e0!3m2!1sen!2sin!4v1690000000000"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3669.550225591911!2d72.53868179999999!3d23.1135551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e82e3ddd2d6f9%3A0x9b528e318e53caeb!2sMoney%20Plant%20High%20Street%2C%20510%2C%20Jagatpur%20Rd%2C%20Gota%2C%20Ahmedabad%2C%20Gujarat%20382470!5e0!3m2!1sen!2sin!4v1786024630942!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
                     style={{ border: 0, minHeight: "280px" }}
