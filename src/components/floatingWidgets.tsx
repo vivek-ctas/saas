@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ChevronsUp } from "lucide-react";
+import { ChatbotWidget } from "./chatbotWidget";
 
 // ─── WhatsApp config ────────────────────────────────────────────────────────
 const WA_PHONE = "917948993409"; // country code + number, no spaces/symbols
@@ -49,7 +50,8 @@ export function FloatingWidgets() {
     }, []);
 
     return (<div>
-        <div className="fixed bottom-6 right-5 sm:right-6 z-50 flex flex-col items-center gap-3">
+        <ChatbotWidget />
+        <div className="fixed bottom-24 right-5 sm:right-6 z-40 flex flex-col items-center gap-3">
             {/* ── Scroll-to-top ── */}
             <button
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
