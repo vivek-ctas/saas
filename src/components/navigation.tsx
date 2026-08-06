@@ -99,7 +99,7 @@ const Navigation = () => {
             className="flex items-center gap-1 group shrink-0"
           >
             <img
-              src="/ctasis-logo copy.svg"
+              src="/ctasis-logo_blue.svg"
               alt="SellerBuz"
               className="h-10 w-auto object-contain"
             />

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen } from "lucide-react";
 import Layout from "@/components/layout";
 import PageHero from "@/components/pageHero";
-import { GuideEditorialMockup } from "@/components/illustrations/guidesPageIllustrations";
+import { GuideEditorialMockup } from "@/components/illustrations/guidePageIllustrations";
 import { useReveal } from "@/hooks/use-reveal";
 import { ProductListingGuide } from "@/screens/guide/productListingGuide";
 import { ConnectAmazonGuide } from "@/screens/guide/connectAmazonGuide";
